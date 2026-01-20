@@ -1,0 +1,56 @@
+- !<AssetImportMetadata/544c1a2b-e438-812a-50cc-75f857d5b9ed>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 3cbca8fc-1685-480a-b7f0-7164e191c966
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 3cbca8fc-1685-480a-b7f0-7164e191c966
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> d261bd82-7b6a-4264-854e-8137d0c13b50
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/d261bd82-7b6a-4264-854e-8137d0c13b50>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 48a2a00e-8bfc-4a92-9c94-17c16c98e9ab
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    nameText: false
+    priceText: false
+    productId: false
+    purchaseButton: false
+    statusText: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - productId: premium_upgrade
+      purchaseButton: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      nameText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      priceText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      statusText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input string productId = "premium_upgrade"'
+    - // @input AssignableType purchaseButton
+    - // @input Component.Text nameText
+    - // @input Component.Text priceText
+    - // @input Component.Text statusText

@@ -1,0 +1,62 @@
+- !<AssetImportMetadata/4159a06b-852f-4552-88a0-19d0914150df>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 1b370ca5-f11c-4e5c-9f8e-9891ab3015d9
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 1b370ca5-f11c-4e5c-9f8e-9891ab3015d9
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 15605b58-64a5-4eea-a67c-5a98b30e91b0
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/15605b58-64a5-4eea-a67c-5a98b30e91b0>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: d42d52a0-fe1f-4836-b145-27e81897fc77
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    debug: false
+    highlightTestData: false
+    nameText: false
+    positionText: false
+    regularColor: false
+    scoreText: false
+    testDataColor: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - positionText: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      nameText: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      scoreText: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      highlightTestData: true
+      testDataColor: !<Vec4> {x: 1.000000, y: 0.700000, z: 0.700000, w: 1.000000}
+      regularColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      debug: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject positionText {"hint":"Reference to the Position/Placement/Rank text object"}'
+    - '// @input SceneObject nameText {"hint":"Reference to the Name text object"}'
+    - '// @input SceneObject scoreText {"hint":"Reference to the Score text object"}'
+    - '// @input bool highlightTestData = true {"hint":"Enable highlighting for test data"}'
+    - '// @input vec4 testDataColor = {1,0.7,0.7,1} {"hint":"Test data highlight color"}'
+    - '// @input vec4 regularColor = {1,1,1,1} {"hint":"Regular data color"}'
+    - '// @input bool debug = true {"hint":"Enable debug logging"}'

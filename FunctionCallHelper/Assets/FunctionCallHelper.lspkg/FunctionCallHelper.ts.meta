@@ -1,0 +1,62 @@
+- !<AssetImportMetadata/f8f95891-1861-4fbc-ae5b-e9743bde6e2b>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 97be280a-edbf-43b6-9145-fa6752e87917
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 97be280a-edbf-43b6-9145-fa6752e87917
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 4b39b570-58e8-4929-93b8-3249c4e41847
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/4b39b570-58e8-4929-93b8-3249c4e41847>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 1ea90be2-85e9-4b92-9dda-d9dd2cdf6f89
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    buttonPrefab: false
+    gridLayout: false
+    parentObject: false
+    scrollWindow: false
+    triggerableFunctions: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - triggerableFunctions:
+        []
+      buttonPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      parentObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      scrollWindow: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      gridLayout: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - /*
+    - "@typedef TriggerableFunction"
+    - "@property {Component.ScriptComponent} script"
+    - "@property {string} functionName"
+    - "*/"
+    - "// @input TriggerableFunction[] triggerableFunctions"
+    - // @input Asset.ObjectPrefab buttonPrefab
+    - // @input SceneObject parentObject
+    - // @input AssignableType scrollWindow
+    - // @input AssignableType_1 gridLayout
