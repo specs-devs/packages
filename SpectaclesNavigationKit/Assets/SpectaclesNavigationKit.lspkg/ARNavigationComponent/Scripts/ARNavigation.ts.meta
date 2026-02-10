@@ -1,0 +1,78 @@
+- !<AssetImportMetadata/569efa4e-92aa-b49c-de0b-ddafbb55a6b8>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> a4af9554-7a86-42c5-a7ce-1016d20ec605
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> a4af9554-7a86-42c5-a7ce-1016d20ec605
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 60de8961-ff2e-494a-b34e-72c22b71d6d9
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/60de8961-ff2e-494a-b34e-72c22b71d6d9>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 023b9f57-6c32-4b15-bec8-e95747cc9c8e
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    arrowRenderMeshVisual: false
+    checkSignMeshVisual: false
+    distanceTexts: false
+    hereRadius: false
+    measurementSystem: false
+    navigationDataComponent: false
+    placeNameText: false
+    showByDefault: false
+    targetPivot: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - navigationDataComponent: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      targetPivot: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      arrowRenderMeshVisual: !<reference.RenderMeshVisual> 00000000-0000-0000-0000-000000000000
+      checkSignMeshVisual: !<reference.RenderMeshVisual> 00000000-0000-0000-0000-000000000000
+      distanceTexts: !<reference.Text[]>
+        []
+      placeNameText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      measurementSystem: 0
+      showByDefault: false
+      hereRadius: !<float> 300.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Navigation Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Navigation data source and target settings</span>"}'
+    - // @input AssignableType navigationDataComponent
+    - // @input SceneObject targetPivot
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Visual Elements</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Arrow, check sign, and distance text components</span>"}'
+    - '// @input Component.RenderMeshVisual arrowRenderMeshVisual {"hint":"The arrow showing the direction to the selected place."}'
+    - '// @input Component.RenderMeshVisual checkSignMeshVisual {"hint":"The check sign indicating the user reached the destination."}'
+    - '// @input Component.Text[] distanceTexts {"hint":"The text showing the distance to the selected place."}'
+    - '// @input Component.Text placeNameText {"hint":"The text showing the name of the selected place."}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Display Settings</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Measurement system, visibility, and arrival detection</span>"}'
+    - '// @input int measurementSystem {"widget":"combobox", "values":[{"label":"Metric", "value":0}, {"label":"US", "value":1}]}'
+    - // @input bool showByDefault
+    - '// @input float hereRadius = 3 {"hint":"When within this radius, the arrow will no longer show a direction."}'

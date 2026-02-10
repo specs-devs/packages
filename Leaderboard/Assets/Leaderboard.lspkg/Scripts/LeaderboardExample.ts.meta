@@ -1,0 +1,72 @@
+- !<AssetImportMetadata/9cfa967f-f902-bb47-d3c6-9e4fd0ba7e88>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> e50da608-f9b6-4afd-ace9-9a8e23195612
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> e50da608-f9b6-4afd-ace9-9a8e23195612
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 560182a0-adc1-40a8-85ae-d326b3a10234
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/560182a0-adc1-40a8-85ae-d326b3a10234>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: a0fe6ae9-148b-4ae2-80f7-9fbddd564b6b
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    debug: false
+    gridLayout: false
+    initialPlaceholderCount: false
+    itemPrefab: false
+    regularColor: false
+    scrollWindow: false
+    testDataColor: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - scrollWindow: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      gridLayout: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      itemPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      initialPlaceholderCount: !<float> 3.000000
+      testDataColor: !<Vec4> {x: 1.000000, y: 0.700000, z: 0.700000, w: 1.000000}
+      regularColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      debug: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Grid Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">IMPORTANT ScrollWindow setup:</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">1. GridLayout should be child of ScrollWindow content area</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">2. GridLayout position should be at TOP of content (not centered)</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">3. Disable Scroll Snapping OR set Snap Region = cell height + gap</span>"}'
+    - '// @input AssignableType scrollWindow {"hint":"(Optional) ScrollWindow component - will auto-update scroll dimensions as entries grow"}'
+    - '// @input AssignableType_1 gridLayout {"hint":"Reference to GridLayout component that will display leaderboard entries"}'
+    - '// @input Asset.ObjectPrefab itemPrefab {"hint":"Prefab template for leaderboard items (should have RectangleButton with Rank/Name/Score Text children)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Display Settings</span>"}'
+    - '// @input float initialPlaceholderCount = 3 {"hint":"Number of placeholder buttons to show initially"}'
+    - '// @input vec4 testDataColor = {1,0.7,0.7,1} {"hint":"Color for test data entries"}'
+    - '// @input vec4 regularColor = {1,1,1,1} {"hint":"Color for regular entries"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Debug Settings</span>"}'
+    - '// @input bool debug {"hint":"Enable debug logging"}'

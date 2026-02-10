@@ -1,0 +1,54 @@
+- !<AssetImportMetadata/5e8a866a-fc07-9bed-063e-6f17618bee4f>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 9dd91c9b-d43c-47f5-a190-bff06edd28f2
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 9dd91c9b-d43c-47f5-a190-bff06edd28f2
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> e279fbe6-5753-4f18-88ef-6e2a972cea15
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/e279fbe6-5753-4f18-88ef-6e2a972cea15>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 1
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: a6f49f3f-7c8f-4392-9394-e96090b2d19b
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    updateThreshold: false
+    userCamera: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - userCamera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      updateThreshold: !<float> 1.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">User Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Camera for user position tracking</span>"}'
+    - // @input Component.Camera userCamera
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Update Settings</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">GPS update frequency configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"How often map should be updated (seconds), 0 for never"}'
+    - // @input float updateThreshold = 1

@@ -1,0 +1,370 @@
+- !<ObjectPrefab/06ef402a-8bff-42e5-91dd-6eac23853fc4>
+  PackagePath: ""
+  objects:
+    - !<own> aa9330e9-802c-4fc9-badd-eb5ed7a52f2a
+  LazyLoading: false
+  RetainAssets: true
+- !<Head/079f3869-9b77-42db-bdab-1e701c52ef75>
+  PrefabRemaps:
+    []
+  Name: Head Binding
+  Enabled: true
+  AttachmentPointType: HeadCenter
+  FaceIndex: 0
+  AttachedBarycentricVertex:
+    indices:
+      - 0
+      - 0
+      - 0
+    weights:
+      - 0.000000
+      - 0.000000
+      - 0.000000
+  TrackingScope: !<reference> 00000000-0000-0000-0000-000000000000
+- !<SceneObject/2dc45c19-55c0-47d7-aadf-2fc4a5d2fb56>
+  PrefabRemaps:
+    []
+  Name: Face Mesh
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> f88b9821-ded2-491a-88f3-2ac3743a2e25
+    - !<own> 31e608f1-1433-4762-9682-2fa02244d786
+- !<ScriptComponent/31e608f1-1433-4762-9682-2fa02244d786>
+  PrefabRemaps:
+    []
+  Name: MatchTransform
+  Enabled: true
+  ScriptAsset: !<reference> b84d8915-d9f7-4e38-b68d-dec0a7c1bd65
+  ScriptInputsDefault:
+    positionOffset: true
+    usePositionLerp: true
+    scaleLerpSpeed: true
+    constrainPositionX: true
+    constrainPositionY: true
+    constrainPositionZ: true
+    constrainRotationX: true
+    constrainRotationY: true
+    constrainRotationZ: true
+    constrainScaleX: true
+    constrainScaleY: true
+    constrainScaleZ: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      target: !<reference.SceneObject> 74e9f299-a18b-41e9-ad94-46d1f7aefffb
+      positionOffset: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
+      usePositionLerp: true
+      positionLerpSpeed: !<float> 10.000000
+      rotationLerpSpeed: !<float> 10.000000
+      scaleLerpSpeed: !<float> 1.000000
+      constrainPositionX: false
+      constrainPositionY: false
+      constrainPositionZ: false
+      constrainRotationX: false
+      constrainRotationY: false
+      constrainRotationZ: false
+      constrainScaleX: false
+      constrainScaleY: false
+      constrainScaleZ: false
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/48aa9120-dbb3-4185-b81e-1ccb78388145>
+  PrefabRemaps:
+    []
+  Name: AmbientLight
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> bb4b18b7-b16f-47a5-a34f-be80c262441c
+- !<SceneObject/74e9f299-a18b-41e9-ad94-46d1f7aefffb>
+  PrefabRemaps:
+    []
+  Name: Head Binding
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 079f3869-9b77-42db-bdab-1e701c52ef75
+- !<Text/766cc209-3f43-4b86-8693-ee6bcf2016e0>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: |-
+    Add the prefab to your scene if not instantiated automatically
+    Unlink the prefab in the scene hierarchy (right-click > Unlink Prefab)
+    
+    Configure to use your own camera and lighting
+     Make sure there are NOT 2 cameras in the scene, the prefab that instantiates automatically or you drag  in scene hierarchy assumes you do not have camera in the scene
+    
+    Adjust materials and settings as needed
+     Build on Spectacles to see face mesh on the person in front of you
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  SizeToFit: false
+  FontSize: 48
+  Font: !<reference> 00000000-0000-0000-0000-000000000000
+  LayoutRect:
+    left: -10.000000
+    bottom: -2.250000
+    right: 10.000000
+    top: 2.250000
+  OverflowVertical: Overflow
+  OverflowHorizontal: Wrap
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlpha
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: true
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 1.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.500000
+      bottom: 0.500000
+      right: 0.500000
+      top: 0.500000
+    CornerRadius: 1.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false
+- !<DeviceTracking/7921f281-4a55-4984-9c35-18cedb022b3c>
+  PrefabRemaps:
+    []
+  Name: Device Tracking
+  Enabled: true
+  DeviceTrackingMode: World
+  RotationOptions: !<RotationOptions>
+    InvertRotation: false
+  SurfaceOptions: !<SurfaceOptions>
+    EnhanceWithNativeAR: false
+- !<Camera/a6e906a3-7e1c-4c38-886b-1896a7a571a2>
+  PrefabRemaps:
+    []
+  Name: Camera
+  Enabled: true
+  renderLayer: 1
+  MipmapLevel: 0
+  RenderOrder: 0
+  Size: 20.000000
+  Near: 1.000000
+  Far: 1000.000000
+  Fov: 63.541019
+  ClearColor: !<CameraClearColor>
+    Mode: None
+    Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+    InputTexture: !<reference> 00000000-0000-0000-0000-000000000000
+  ClearDepth: !<CameraClearDepth>
+    Mode: Value
+    Value: 1.000000
+    InputTexture: !<reference> 00000000-0000-0000-0000-000000000000
+  Aspect: 1.000000
+  CameraType: Perspective
+  DepthMode: Regular
+  DeviceProperty: All
+  AspectPreset: Custom
+  OitLayers: NoOit
+  RenderTarget: !<reference> 923415f5-4245-4675-ade1-6d69d6d23e71
+  DepthStencilRenderTarget: !<reference> 00000000-0000-0000-0000-000000000000
+  MaskTexture: !<reference> 00000000-0000-0000-0000-000000000000
+  RayTracing: !<reference> 00000000-0000-0000-0000-000000000000
+  DevicePropertiesSource: !<reference> 00000000-0000-0000-0000-000000000000
+- !<SceneObject/aa9330e9-802c-4fc9-badd-eb5ed7a52f2a>
+  PrefabRemaps:
+    - 079f3869-9b77-42db-bdab-1e701c52ef75: 079f3869-9b77-42db-4254-e18fe3ad108a
+    - 2dc45c19-55c0-47d7-aadf-2fc4a5d2fb56: 2dc45c19-55c0-47d7-5520-d03b5a2d04a9
+    - 31e608f1-1433-4762-9682-2fa02244d786: 31e608f1-1433-4762-697d-d05fddbb2879
+    - 48aa9120-dbb3-4185-b81e-1ccb78388145: 48aa9120-dbb3-4185-47e1-e33487c77eba
+    - 74e9f299-a18b-41e9-ad94-46d1f7aefffb: 74e9f299-a18b-41e9-526b-b92e08510004
+    - 766cc209-3f43-4b86-8693-ee6bcf2016e0: 51fe8757-a5d2-4aee-9929-d8f033a136dc
+    - 7921f281-4a55-4984-9c35-18cedb022b3c: 7921f281-4a55-4984-63ca-e73124fdd4c3
+    - a6e906a3-7e1c-4c38-886b-1896a7a571a2: a6e906a3-7e1c-4c38-7794-e769585a8e5d
+    - aa9330e9-802c-4fc9-badd-eb5ed7a52f2a: aa9330e9-802c-4fc9-4522-14a1285ad0d5
+    - b750730f-120a-45f9-acb0-32c69cb9d0ff: b750730f-120a-45f9-534f-cd3963462f00
+    - bb4b18b7-b16f-47a5-a34f-be80c262441c: bb4b18b7-b16f-47a5-5cb0-417f3d9dbbe3
+    - d6dd9625-1c8f-4827-96f1-5b43f5d24fa2: d6dd9625-1c8f-4827-690e-a4bc0a2db05d
+    - de89d6fb-9cfb-424e-a7c5-0276090ad063: 8dbb39ba-6016-405b-bf1a-0556749818ea
+    - f88b9821-ded2-491a-88f3-2ac3743a2e25: f88b9821-ded2-491a-770c-d53c8bc5d1da
+  Name: FaceMeshFullSetup_UnpackUseYourCamera__PLACE_IN_SCENE
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> d6dd9625-1c8f-4827-96f1-5b43f5d24fa2
+    - !<own> 2dc45c19-55c0-47d7-aadf-2fc4a5d2fb56
+    - !<own> de89d6fb-9cfb-424e-a7c5-0276090ad063
+  Components:
+    []
+- !<SceneObject/b750730f-120a-45f9-acb0-32c69cb9d0ff>
+  PrefabRemaps:
+    []
+  Name: Effects
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 74e9f299-a18b-41e9-ad94-46d1f7aefffb
+  Components:
+    []
+- !<LightSource/bb4b18b7-b16f-47a5-a34f-be80c262441c>
+  PrefabRemaps:
+    []
+  Name: Light Source
+  Enabled: true
+  renderLayer: 1835007
+  LightType: Ambient
+  Intensity: 1.000000
+  CastShadows: false
+  ShadowDensity: 1.000000
+  ShadowBlurRadius: 0.000000
+  ShadowTextureSize: 512
+  AutoLightSourcePosition: false
+  AutoShadowFrustumSize: false
+  AutoShadowFrustumSizeExtend: 2.000000
+  ShadowFrustumSize: 30.000000
+  ShadowFrustumNearClipPlane: 1.000000
+  ShadowFrustumFarClipPlane: 1000.000000
+  UseEnvMapFromCamera: false
+  EnvMapFromCameraMode: Auto
+  EstimationSharpness: 1.000000
+  EnvMapExposure: 1.000000
+  EnvMapRotation: 0.000000
+  DiffuseEnvTexture: !<reference> 00000000-0000-0000-0000-000000000000
+  SpecularEnvTexture: !<reference> 00000000-0000-0000-0000-000000000000
+  Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowColor: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+  DynamicEnvInputTexture: !<reference> 00000000-0000-0000-0000-000000000000
+  InnerConeAngle: 0.000000
+  OuterConeAngle: 45.000000
+  DecayType: None
+  DecayLimit: false
+  DecayRange: 40.000000
+- !<SceneObject/d6dd9625-1c8f-4827-96f1-5b43f5d24fa2>
+  PrefabRemaps:
+    []
+  Name: Camera
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 48aa9120-dbb3-4185-b81e-1ccb78388145
+    - !<own> b750730f-120a-45f9-acb0-32c69cb9d0ff
+  Components:
+    - !<own> a6e906a3-7e1c-4c38-886b-1896a7a571a2
+    - !<own> 7921f281-4a55-4984-9c35-18cedb022b3c
+- !<SceneObject/de89d6fb-9cfb-424e-a7c5-0276090ad063>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -70.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 766cc209-3f43-4b86-8693-ee6bcf2016e0
+- !<RenderMeshVisual/f88b9821-ded2-491a-88f3-2ac3743a2e25>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 3a2f3839-3a2f-480a-af27-f5c0b8909471
+  Mesh: !<reference> 2236a704-1279-4c80-a613-bb1ea8de9693
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}

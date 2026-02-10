@@ -1,0 +1,44 @@
+- !<ObjectPrefab/f10ce717-c491-43b3-b0c8-9147b8cf8223>
+  PackagePath: ""
+  objects:
+    - !<own> 3eec29ef-72b6-4a4e-8aae-dd873424875a
+  LazyLoading: false
+  RetainAssets: true
+- !<SceneObject/3eec29ef-72b6-4a4e-8aae-dd873424875a>
+  PrefabRemaps:
+    - 3eec29ef-72b6-4a4e-8aae-dd873424875a: 3eec29ef-72b6-4a4e-7551-2278cbdb78a5
+    - 5b586378-d0b4-4e01-809c-98eb9a3e6422: 5b586378-d0b4-4e01-7f63-671465c19bdd
+  Name: FastGrid__PLACE_IN_SCENE
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 70.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 5b586378-d0b4-4e01-809c-98eb9a3e6422
+- !<ScriptComponent/5b586378-d0b4-4e01-809c-98eb9a3e6422>
+  PrefabRemaps:
+    []
+  Name: FastGrid
+  Enabled: true
+  ScriptAsset: !<reference> c8be4c74-88b1-405e-afd3-ef97e392a238
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      rows: !<float> 2.000000
+      columns: !<float> 4.000000
+      buttonWidth: !<float> 11.000000
+      buttonHeight: 12.500000
+      buttonImageTexture: !<reference.Texture> 3e7a9034-d2b2-415a-bb22-355ee2b434e9
+      buttonImageMaterial: !<reference.Material> 762b21e5-2ddd-44ad-842c-9962f0ff8e17
+      draggable: true
+  ScriptTypes:
+    "":
+      {}

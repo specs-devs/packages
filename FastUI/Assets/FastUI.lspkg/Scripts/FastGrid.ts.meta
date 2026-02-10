@@ -1,0 +1,64 @@
+- !<AssetImportMetadata/7e472274-8417-4632-98c8-7f712951a5ec>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> c8be4c74-88b1-405e-afd3-ef97e392a238
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> c8be4c74-88b1-405e-afd3-ef97e392a238
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 16f96995-70b6-4349-9579-fb6007947ece
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/16f96995-70b6-4349-9579-fb6007947ece>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 65d73355-423d-414c-97a4-813f75fb2ced
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    buttonHeight: false
+    buttonImageMaterial: false
+    buttonImageTexture: false
+    buttonWidth: false
+    columns: false
+    draggable: false
+    rows: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - rows: !<float> 3.000000
+      columns: !<float> 3.000000
+      buttonWidth: !<float> 10.000000
+      buttonHeight: !<float> 10.000000
+      buttonImageTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      buttonImageMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      draggable: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">ℹ️ Programmatic UI Component</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Create a UI Manager script to customize buttons at runtime using:<br/>• <code>updateButtonText(index, title, subtitle)</code><br/>• <code>updateButtonImage(index, texture, material)</code><br/>• <code>setButtonCallback(index, callback)</code></span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input float rows = 2 {"hint":"Number of rows in the grid (2-4)", "widget":"slider", "min":2, "max":4, "step":1}'
+    - '// @input float columns = 4 {"hint":"Number of columns in the grid (2-8)", "widget":"slider", "min":2, "max":8, "step":1}'
+    - '// @input float buttonWidth = 10 {"hint":"Button width in cm (6-15)", "widget":"slider", "min":6, "max":15, "step":0.5}'
+    - '// @input float buttonHeight = 10 {"hint":"Button height in cm (8-15)", "widget":"slider", "min":8, "max":15, "step":0.5}'
+    - '// @input Asset.Texture buttonImageTexture {"hint":"Placeholder image texture for buttons (optional)"}'
+    - '// @input Asset.Material buttonImageMaterial {"hint":"Placeholder image material for buttons (optional)"}'
+    - '// @input bool draggable {"hint":"Enable drag-and-drop rearrangement of buttons"}'

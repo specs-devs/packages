@@ -1,0 +1,252 @@
+- !<AssetImportMetadata/60a640b3-5ba7-ff7d-9d57-64ccc3815e5c>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 88517298-96b6-4393-a3ce-57aad29969df
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 88517298-96b6-4393-a3ce-57aad29969df
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> c706426b-eb1e-4993-a594-fcf3a44c75d8
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/c706426b-eb1e-4993-a594-fcf3a44c75d8>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 7910d8b3-aa99-43bc-a04e-51b33723537d
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    onHoverEnter: false
+    onHoverExit: false
+    onPinchDown: false
+    onPinchUp_Select: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - onHoverEnter:
+        []
+      onHoverExit:
+        []
+      onPinchDown:
+        []
+      onPinchUp_Select:
+        []
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - /*
+    - "@typedef CallbackTargetObjectAction"
+    - "@property {SceneObject} targetObject"
+    - "@property {bool} setValue"
+    - "*/"
+    - /*
+    - "@typedef CallbackAction"
+    - '@ui {"widget":"separator"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Action Type</span>"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Choose whether to call a custom function or set object states</span>"}'
+    - '@property {float} actionType = -1 {"widget":"combobox", "values":[{"label":"Custom Callback", "value":0}, {"label":"Set State", "value":1}]}'
+    - '@ui {"widget":"separator"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Custom Callback Settings</span>"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Specify the script component and function name to call</span>"}'
+    - '@property {Component.ScriptComponent} script {"showIf":"actionType", "showIfValue":0}'
+    - '@property {string} functionName {"showIf":"actionType", "showIfValue":0}'
+    - '@ui {"widget":"separator"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Set State Settings</span>"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Define target objects and their enabled/disabled states</span>"}'
+    - '@property {CallbackTargetObjectAction[]} targetObjects {"showIf":"actionType", "showIfValue":1}'
+    - "*/"
+    - /*
+    - "@typedef TransformAnimation"
+    - '@ui {"widget":"separator"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Animation Type</span>"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Choose the type of transform animation (move, scale, or rotate)</span>"}'
+    - '@property {float} animationType {"widget":"combobox", "values":[{"label":"Move Local", "value":0}, {"label":"Move World", "value":1}, {"label":"Scale Local", "value":2}, {"label":"Scale World", "value":3}, {"label":"Rotate Local", "value":4}, {"label":"Rotate World", "value":5}]}'
+    - '@ui {"widget":"separator"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Animation Mode</span>"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Choose how the transform animation should play</span>"}'
+    - '@property {float} playOption {"widget":"combobox", "values":[{"label":"Play From Current Value", "value":0}, {"label":"Play Everytime", "value":1}, {"label":"Toggle", "value":2}]}'
+    - '@property {vec3} endVal {"showIf":"playOption", "showIfValue":0}'
+    - '@property {vec3} startValue {"showIf":"playOption", "showIfValue":1}'
+    - '@property {vec3} endValue {"showIf":"playOption", "showIfValue":1}'
+    - '@property {vec3} a {"showIf":"playOption", "showIfValue":2}'
+    - '@property {vec3} b {"showIf":"playOption", "showIfValue":2}'
+    - "@property {float} animationDurationInSeconds = 1"
+    - "@property {float} delay"
+    - "@property {EasingData} easingData"
+    - "@property {bool} doOnStart"
+    - '@property {CallbackAction} onStartAction {"showIf":"doOnStart", "showIfValue":true}'
+    - "@property {bool} doOnComplete"
+    - '@property {CallbackAction} onCompleteAction {"showIf":"doOnComplete", "showIfValue":true}'
+    - "*/"
+    - /*
+    - "@typedef BlendshapeAnimation"
+    - '@ui {"widget":"separator"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Blendshape Target</span>"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Specify the blendshape name to animate</span>"}'
+    - "@property {string} blenshapeName"
+    - '@ui {"widget":"separator"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Animation Mode</span>"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Choose how the blendshape animation should play</span>"}'
+    - '@property {float} playOption {"widget":"combobox", "values":[{"label":"Play From Current Value", "value":0}, {"label":"Play Everytime", "value":1}, {"label":"Toggle", "value":2}]}'
+    - '@property {float} endVal {"showIf":"playOption", "showIfValue":0}'
+    - '@property {float} startValue {"showIf":"playOption", "showIfValue":1}'
+    - '@property {float} endValue {"showIf":"playOption", "showIfValue":1}'
+    - '@property {float} a {"showIf":"playOption", "showIfValue":2}'
+    - '@property {float} b {"showIf":"playOption", "showIfValue":2}'
+    - "@property {float} animationDurationInSeconds = 1"
+    - "@property {float} delay"
+    - "@property {EasingData} easingData"
+    - "@property {bool} doOnStart"
+    - '@property {CallbackAction} onStartAction {"showIf":"doOnStart", "showIfValue":true}'
+    - "@property {bool} doOnComplete"
+    - '@property {CallbackAction} onCompleteAction {"showIf":"doOnComplete", "showIfValue":true}'
+    - "*/"
+    - /*
+    - "@typedef CustomAnimation"
+    - '@ui {"widget":"separator"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Animation Selection</span>"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Choose whether to play all animation clips or a specific named clip</span>"}'
+    - "@property {bool} iterateThroughAllClips = true"
+    - '@property {string} animationName {"showIf":"iterateThroughAllClips", "showIfValue":false}'
+    - "*/"
+    - /*
+    - "@typedef EasingData"
+    - '@ui {"widget":"separator"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Easing Function</span>"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Choose the easing curve for animation timing</span>"}'
+    - '@property {float} easing {"widget":"combobox", "values":[{"label":"None", "value":0}, {"label":"Linear In", "value":1}, {"label":"Linear Out", "value":2}, {"label":"Linear InOut", "value":3}, {"label":"Quadratic In", "value":4}, {"label":"Quadratic Out", "value":5}, {"label":"Quadratic InOut", "value":6}, {"label":"Cubic In", "value":7}, {"label":"Cubic Out", "value":8}, {"label":"Cubic InOut", "value":9}, {"label":"Quartic In", "value":10}, {"label":"Quartic Out", "value":11}, {"label":"Quartic InOut", "value":12}, {"label":"Quintic In", "value":13}, {"label":"Quintic Out", "value":14}, {"label":"Quintic InOut", "value":15}, {"label":"Exponential In", "value":16}, {"label":"Exponential Out", "value":17}, {"label":"Exponential InOut", "value":18}, {"label":"Circular In", "value":19}, {"label":"Circular Out", "value":20}, {"label":"Circular InOut", "value":21}, {"label":"Elastic In", "value":22}, {"label":"Elastic Out", "value":23}, {"label":"Elastic InOut", "value":24}, {"label":"Back In", "value":25}, {"label":"Back Out", "value":26}, {"label":"Back InOut", "value":27}, {"label":"Bounce In", "value":28}, {"label":"Bounce Out", "value":29}, {"label":"Bounce InOut", "value":30}, {"label":"Sinusoidal In", "value":31}, {"label":"Sinusoidal Out", "value":32}, {"label":"Sinusoidal InOut", "value":33}]}'
+    - "*/"
+    - /*
+    - "@typedef MaterialPropertyAnimation"
+    - '@ui {"widget":"separator"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Property Configuration</span>"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Specify the material property name (script name, not title) and value type</span>"}'
+    - '@property {string} propertyName {"hint":"Parameter Script Name, not Title"}'
+    - '@property {float} valueType {"widget":"combobox", "values":[{"label":"Float", "value":0}, {"label":"Vec3", "value":1}, {"label":"Vec4", "value":2}]}'
+    - '@ui {"widget":"separator"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Start Values</span>"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Define the starting value for the animation based on selected type</span>"}'
+    - '@property {float} startFloatValue {"showIf":"valueType", "showIfValue":0}'
+    - '@property {vec3} startVec3Value {"widget":"color", "showIf":"valueType", "showIfValue":1}'
+    - '@property {vec4} startVec4Value {"widget":"color", "showIf":"valueType", "showIfValue":2}'
+    - '@property {float} endFloatValue {"showIf":"valueType", "showIfValue":0}'
+    - '@property {vec3} endVec3Value {"widget":"color", "showIf":"valueType", "showIfValue":1}'
+    - '@property {vec4} endVec4Value {"widget":"color", "showIf":"valueType", "showIfValue":2}'
+    - "@property {float} animationDurationInSeconds = 1"
+    - "@property {float} delay"
+    - "@property {EasingData} easingData"
+    - "@property {bool} doOnStart"
+    - '@property {CallbackAction} onStartAction {"showIf":"doOnStart", "showIfValue":true}'
+    - "@property {bool} doOnComplete"
+    - '@property {CallbackAction} onCompleteAction {"showIf":"doOnComplete", "showIfValue":true}'
+    - "*/"
+    - /*
+    - "@typedef ColorProperyAnimation"
+    - '@ui {"widget":"separator"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Color Settings</span>"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Define the target color for the animation</span>"}'
+    - '@property {vec4} endColor {"widget":"color"}'
+    - '@ui {"widget":"separator"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Timing Settings</span>"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Configure animation duration, delay, and easing</span>"}'
+    - "@property {float} animationDurationInSeconds = 1"
+    - "@property {float} delay"
+    - "@property {EasingData} easingData"
+    - '@ui {"widget":"separator"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">On Start Callback</span>"}'
+    - "@property {bool} doOnStart"
+    - '@property {CallbackAction} onStartAction {"showIf":"doOnStart", "showIfValue":true}'
+    - '@ui {"widget":"separator"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">On Complete Callback</span>"}'
+    - "@property {bool} doOnComplete"
+    - '@property {CallbackAction} onCompleteAction {"showIf":"doOnComplete", "showIfValue":true}'
+    - "*/"
+    - /*
+    - "@typedef AudioComponentControl"
+    - '@ui {"widget":"separator"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Audio Behavior</span>"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Choose how the audio component should respond to interaction events</span>"}'
+    - '@property {float} audioControlBehavior {"widget":"combobox", "values":[{"label":"Play Once", "value":0}, {"label":"Play / Stop", "value":1}, {"label":"Play / Pause", "value":2}]}'
+    - '@ui {"widget":"separator"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Timing Settings</span>"}'
+    - '@property {float} delay {"showIf":"audioControlBehavior", "showIfValue":0}'
+    - "*/"
+    - /*
+    - "@typedef VideoTextureControl"
+    - '@ui {"widget":"separator"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Playback Behavior</span>"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Choose how the video texture should play</span>"}'
+    - '@property {float} videoTextureControlBehavior {"widget":"combobox", "values":[{"label":"Play Once", "value":0}, {"label":"Loop", "value":1}]}'
+    - '@ui {"widget":"separator"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Timing Settings</span>"}'
+    - '@property {float} delay {"showIf":"videoTextureControlBehavior", "showIfValue":0}'
+    - '@ui {"widget":"separator"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">On Start Callback</span>"}'
+    - "@property {bool} doOnStart"
+    - '@property {CallbackAction} onStartAction {"showIf":"doOnStart", "showIfValue":true}'
+    - '@ui {"widget":"separator"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">On Complete Callback</span>"}'
+    - "@property {bool} doOnComplete"
+    - '@property {CallbackAction} onCompleteAction {"showIf":"doOnComplete", "showIfValue":true}'
+    - "*/"
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Hover Enter Responses</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Configure responses when user starts hovering over the object</span>"}'
+    - /*
+    - "@typedef EventResponseType"
+    - '@ui {"widget":"separator"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Target Object</span>"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Specify the scene object to apply the response to</span>"}'
+    - "@property {SceneObject} sceneObject"
+    - '@ui {"widget":"separator"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Response Type</span>"}'
+    - '@ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Choose what action should occur when the event is triggered</span>"}'
+    - '@property {float} eventResponseType {"widget":"combobox", "values":[{"label":"SetState", "value":0}, {"label":"Toggle", "value":1}, {"label":"Iterate Through Children", "value":2}, {"label":"Transform Animation", "value":3}, {"label":"Custom Animation", "value":4}, {"label":"Material Property Animation", "value":5}, {"label":"Material Base Color Animation", "value":6}, {"label":"Custom Callback", "value":7}, {"label":"BlendShape Animation", "value":8}, {"label":"Play Audio Clip", "value":9}, {"label":"Play Video Texture", "value":10}]}'
+    - '@property {float} state {"widget":"combobox", "values":[{"label":"On", "value":0}, {"label":"Off", "value":1}], "showIf":"eventResponseType", "showIfValue":0}'
+    - '@property {float} delay {"showIf":"eventResponseType", "showIfValue":0}'
+    - '@property {TransformAnimation[]} animations {"showIf":"eventResponseType", "showIfValue":3}'
+    - '@property {CustomAnimation} customAnimationData {"showIf":"eventResponseType", "showIfValue":4}'
+    - '@property {MaterialPropertyAnimation} materialProperyData {"showIf":"eventResponseType", "showIfValue":5}'
+    - '@property {ColorProperyAnimation} colorProperyData {"showIf":"eventResponseType", "showIfValue":6}'
+    - '@property {Component.ScriptComponent} script {"showIf":"eventResponseType", "showIfValue":7}'
+    - '@property {string} functionName {"showIf":"eventResponseType", "showIfValue":7}'
+    - '@property {BlendshapeAnimation} blendShapeData {"showIf":"eventResponseType", "showIfValue":8}'
+    - '@property {AudioComponentControl} audioControl {"showIf":"eventResponseType", "showIfValue":9}'
+    - '@property {VideoTextureControl} videoTextureControl {"showIf":"eventResponseType", "showIfValue":10}'
+    - "*/"
+    - "// @input EventResponseType[] onHoverEnter"
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Hover Exit Responses</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Configure responses when user stops hovering over the object</span>"}'
+    - "// @input EventResponseType[] onHoverExit"
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Pinch Down Responses</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Configure responses when user starts pinching the object</span>"}'
+    - "// @input EventResponseType[] onPinchDown"
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Pinch Up / Select Responses</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Configure responses when user releases pinch or selects the object</span>"}'
+    - "// @input EventResponseType[] onPinchUp_Select"

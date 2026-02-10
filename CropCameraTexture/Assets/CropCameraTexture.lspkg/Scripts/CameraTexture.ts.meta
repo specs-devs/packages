@@ -1,0 +1,62 @@
+- !<AssetImportMetadata/804d5593-74f1-454a-fe73-616e90cf21d5>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 74ae0a66-62ec-42fd-9c70-e59aa9a380b6
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 74ae0a66-62ec-42fd-9c70-e59aa9a380b6
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> c4103730-bb17-4da3-9378-5a98810a2815
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/c4103730-bb17-4da3-9378-5a98810a2815>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 9b3ed587-5164-428f-8b5a-6528cdc96668
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    camModule: false
+    cropBottom: false
+    cropLeft: false
+    cropRight: false
+    cropTop: false
+    screenTexture: false
+    uiImage: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - uiImage: !<reference.Image> 00000000-0000-0000-0000-000000000000
+      screenTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      camModule: !<reference.CameraModule> 00000000-0000-0000-0000-000000000000
+      cropLeft: -0.200000
+      cropRight: 0.200000
+      cropBottom: -0.200000
+      cropTop: 0.200000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input Component.Image uiImage {"hint":"The image component that will display the cropped camera frame."}'
+    - '// @input Asset.Texture screenTexture {"hint":"Texture used for processing camera frames"}'
+    - '// @input Asset.CameraModule camModule {"hint":"Camera module reference from the scene."}'
+    - '// @input float cropLeft = -0.2 {"hint":"Crop rectangle left boundary (-1 to 1)."}'
+    - '// @input float cropRight = 0.2 {"hint":"Crop rectangle right boundary (-1 to 1)."}'
+    - '// @input float cropBottom = -0.2 {"hint":"Crop rectangle bottom boundary (-1 to 1)."}'
+    - '// @input float cropTop = 0.2 {"hint":"Crop rectangle top boundary (-1 to 1)."}'

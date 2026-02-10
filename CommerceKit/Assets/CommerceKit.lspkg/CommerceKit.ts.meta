@@ -1,0 +1,60 @@
+- !<AssetImportMetadata/ae3b6310-fa5f-a670-1826-fe7c1cc4721a>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> e1b5b8ae-cdf2-4ac9-b526-438f82433572
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> e1b5b8ae-cdf2-4ac9-b526-438f82433572
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 13370a79-5098-4491-af82-eb97da349abc
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/13370a79-5098-4491-af82-eb97da349abc>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 399dd569-5684-4b9f-befd-5481f3a6d14a
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    productCatalog: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - productCatalog:
+        []
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - /*
+    - "@typedef CommercePrice"
+    - '@property {int} price {"label":"Price In Cents"}'
+    - '@property {string} currency = "USD" {"label":"Currency", "widget":"combobox", "values":[{"label":"USD", "value":"USD"}]}'
+    - "*/"
+    - /*
+    - "@typedef CommerceProduct"
+    - '@property {string} id {"label":"ID"}'
+    - '@property {string} type = "NonConsumable" {"label":"Type", "widget":"combobox", "values":[{"label":"Non Consumable", "value":"NonConsumable"}]}'
+    - '@property {string} displayName {"label":"Display Name"}'
+    - '@property {string} description {"label":"Description"}'
+    - '@property {CommercePrice} price {"label":"Price"}'
+    - '@property {string} iconUri {"label":"Icon URI"}'
+    - '@property {string} extras {"label":"Extras"}'
+    - "*/"
+    - "// @input CommerceProduct[] productCatalog"

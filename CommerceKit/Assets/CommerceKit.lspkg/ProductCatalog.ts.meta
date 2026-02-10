@@ -1,0 +1,63 @@
+- !<AssetImportMetadata/c73e1eaf-6db6-eb49-2ac0-9e706ede40a3>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 03416f17-cc1c-46c3-809b-44a8dbd5aeac
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 03416f17-cc1c-46c3-809b-44a8dbd5aeac
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 73ec8788-7c67-4c35-8c39-6b5970663b3b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/73ec8788-7c67-4c35-8c39-6b5970663b3b>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 9c101430-6c08-49ce-8e1d-777583280ef9
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    productCatalog: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - productCatalog:
+        []
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - /*
+    - "@typedef CommercePrice"
+    - '@property {float} price = 1.99 {"label":"Price ($1.99 - $99.99)", "hint":"Set the price for the product.", "widget":"spinbox", "min":1.99, "max":99.99, "step":0.01}'
+    - '@property {string} currency = "USD" {"label":"Currency", "hint":"Currency code for this price. Currently supports USD.", "widget":"combobox", "values":[{"label":"USD", "value":"USD"}]}'
+    - "*/"
+    - '// @ui {"widget":"label", "label":"<div>⚠️ <span style=\"color: #FFCC80; font-weight: bold;\">CommerceKit is currently in Closed Beta.</span></div>"}'
+    - '// @ui {"widget":"label", "label":"<div style=\"color: #e2e2e2ff;\">You can test CommerceKit in a draft environment, but will need to request access to publish your Lens. For more details please visit our <a href=\"https://developers.snap.com/spectacles/spectacles-frameworks/commerce-kit/getting-started\" target=\"_blank\" style=\"color: #00D4FF; text-decoration: underline;\">docs</a>.</div>"}'
+    - '// @ui {"widget":"separator"}'
+    - /*
+    - "@typedef CommerceProduct"
+    - '@property {string} id {"label":"ID", "hint":"Unique product identifier. This ID is used in commerce operations."}'
+    - '@property {string} type = "NonConsumable" {"label":"Type", "hint":"Type of product (e.g., consumable, non-consumable). Determines how the product behaves after purchase.", "widget":"combobox", "values":[{"label":"Non Consumable", "value":"NonConsumable"}]}'
+    - '@property {string} displayName {"label":"Display Name", "hint":"Human-readable name for the product."}'
+    - '@property {string} description {"label":"Category", "hint":"Category description of the product for users."}'
+    - '@property {CommercePrice} price {"label":"Price", "hint":"Pricing information for this product."}'
+    - "@property {string} iconUri {\"label\":\"Icon URI [Optional]\", \"hint\":\"URI pointing to the product's icon image.\"}"
+    - '@property {string} extras {"label":"Extras [Optional]", "hint":"Additional metadata or configuration for the product in JSON format."}'
+    - "*/"
+    - "// @input CommerceProduct[] productCatalog"

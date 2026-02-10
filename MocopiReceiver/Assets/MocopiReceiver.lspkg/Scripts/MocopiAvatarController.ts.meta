@@ -1,0 +1,62 @@
+- !<AssetImportMetadata/9abbb75e-d53c-403c-9d5a-1e09f0bd612d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 51797423-7797-4ff6-bcee-457501b181b3
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 51797423-7797-4ff6-bcee-457501b181b3
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 2fe2a0f6-9010-4265-ba0d-44c3e3165f3d
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/2fe2a0f6-9010-4265-ba0d-44c3e3165f3d>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: e42f8c92-9612-42cd-9bd1-5ce5e7672446
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    applyCoordinateConversion: false
+    avatarScale: false
+    prefabPlacement: false
+    smoothFactor: false
+    updatePositions: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - prefabPlacement: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      updatePositions: false
+      applyCoordinateConversion: true
+      smoothFactor: 0.300000
+      avatarScale: !<float> 1.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Avatar Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Avatar is automatically initialized from prefab placement</span>"}'
+    - '// @input AssignableType prefabPlacement {"hint":"PrefabPlacement component to get avatar from instantiated prefab"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Transform Settings</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Configure how motion data is applied to the avatar</span>"}'
+    - '// @input bool updatePositions {"hint":"Enable position updates (not just rotation)"}'
+    - '// @input bool applyCoordinateConversion = true {"hint":"Apply coordinate system conversion (Unity to Lens Studio)"}'
+    - '// @input float smoothFactor = 0.3 {"hint":"Smooth factor for interpolation (0-1, 0=none, 1=max)"}'
+    - '// @input float avatarScale = 1 {"hint":"Avatar scale multiplier"}'

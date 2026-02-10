@@ -1,0 +1,92 @@
+- !<AssetImportMetadata/044bbee2-28db-417c-a62e-a343eec8ad2d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> fe643aa1-f904-4888-a7ef-2394207215d7
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> fe643aa1-f904-4888-a7ef-2394207215d7
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> ab515a98-745a-4c93-842b-e2b6da07be75
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/ab515a98-745a-4c93-842b-e2b6da07be75>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 3cee8ae7-456e-4e1a-a3fb-15a5e0e7c208
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    debugMode: false
+    handJoint: false
+    handSide: false
+    hideWhenNotTracked: false
+    positionOffset: false
+    positionSmoothSpeed: false
+    rotationOffset: false
+    rotationSmoothSpeed: false
+    targetObject: false
+    updatePositionOnly: false
+    updateRotationOnly: false
+    usePositionSmoothing: false
+    useRotationSmoothing: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - targetObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      handSide: right
+      handJoint: indexTip
+      positionOffset: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
+      rotationOffset: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
+      usePositionSmoothing: true
+      positionSmoothSpeed: !<float> 10.000000
+      useRotationSmoothing: true
+      rotationSmoothSpeed: !<float> 8.000000
+      updatePositionOnly: false
+      updateRotationOnly: false
+      hideWhenNotTracked: true
+      debugMode: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Target Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Specify the object to attach to the hand joint (leave empty to use this object)</span>"}'
+    - '// @input SceneObject targetObject {"hint":"Object to attach to hand joint (leave empty to use this object)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Hand Joint Selection</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Choose which hand and joint to attach to</span>"}'
+    - '// @input string handSide = "right" {"hint":"Hand: left | right | dominant | nondominant"}'
+    - '// @input string handJoint = "indexTip" {"hint":"Joint: wrist | thumbToWrist | thumbKnuckle | thumbMidJoint | thumbTip | indexToWrist | indexKnuckle | indexMidJoint | indexUpperJoint | indexTip | middleToWrist | middleKnuckle | middleMidJoint | middleUpperJoint | middleTip | ringToWrist | ringKnuckle | ringMidJoint | ringUpperJoint | ringTip | pinkyToWrist | pinkyKnuckle | pinkyMidJoint | pinkyUpperJoint | pinkyTip"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Position & Rotation Offsets</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Adjust position and rotation offsets relative to the joint</span>"}'
+    - "// @input vec3 positionOffset {\"hint\":\"Position offset from joint (in joint's local space)\"}"
+    - '// @input vec3 rotationOffset {"hint":"Rotation offset (in degrees)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Smoothing Settings</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Configure interpolation smoothing for position and rotation tracking</span>"}'
+    - '// @input bool usePositionSmoothing = true {"hint":"Enable smooth position interpolation"}'
+    - '// @input float positionSmoothSpeed = 10 {"hint":"Position smoothing speed (higher = faster response)"}'
+    - '// @input bool useRotationSmoothing = true {"hint":"Enable smooth rotation interpolation"}'
+    - '// @input float rotationSmoothSpeed = 8 {"hint":"Rotation smoothing speed (higher = faster response)"}'
+    - '// @input bool updatePositionOnly {"hint":"Only update position"}'
+    - '// @input bool updateRotationOnly {"hint":"Only update rotation"}'
+    - '// @input bool hideWhenNotTracked = true {"hint":"Hide object when hand is not tracked"}'
+    - '// @input bool debugMode {"hint":"Debug: Show tracking status in console"}'

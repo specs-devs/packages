@@ -1,0 +1,65 @@
+- !<AssetImportMetadata/810bba04-b76f-b29c-f0f3-5a18b28ff005>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> be69c5c4-ddaf-4e67-ab65-9f4dfba3de2b
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> be69c5c4-ddaf-4e67-ab65-9f4dfba3de2b
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 14ba9026-5ae8-4430-b98b-551232a3ab0c
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/14ba9026-5ae8-4430-b98b-551232a3ab0c>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 179cd017-fb1d-48c5-ba72-9e6ab9184be7
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    maxDistance: false
+    maxScale: false
+    minDistance: false
+    minScale: false
+    target: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - target: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      minDistance: !<float> 1.000000
+      maxDistance: !<float> 10.000000
+      minScale: 0.500000
+      maxScale: !<float> 2.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Target Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Target object to measure distance from</span>"}'
+    - '// @input SceneObject target {"hint":"Override default target mainCamera"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Distance Range</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Minimum and maximum distance thresholds for scaling</span>"}'
+    - '// @input float minDistance = 1 {"hint":"Minimum distance to map the scaling"}'
+    - '// @input float maxDistance = 10 {"hint":"Maximum distance to map the scaling"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Scale Range</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Scale values at minimum and maximum distances</span>"}'
+    - '// @input float minScale = 0.5 {"hint":"Minimum scale value"}'
+    - '// @input float maxScale = 2 {"hint":"Maximum scale value"}'

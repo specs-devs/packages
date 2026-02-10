@@ -1,0 +1,1293 @@
+- !<AssetImportMetadata/6913e576-3bfd-a816-2986-600dfb54d007>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> 8d646bef-0b7e-4935-b7ce-508c7a7de2d6
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> 8d646bef-0b7e-4935-b7ce-508c7a7de2d6
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> f2b475ac-2b46-49a9-9429-4e0804c767b6
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptComponent/017cc67d-da9d-4f97-68c4-4dda937364f8>
+  PrefabRemaps:
+    []
+  Name: AccessTSfromJS_TSComponentA
+  Enabled: true
+  ScriptAsset: !<reference> 16b0bee6-0120-4feb-98a2-5fd375e3d263
+  ScriptInputsDefault:
+    debug: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      debug: true
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/053f00ee-d33d-4e5d-40bd-ad4fea81bada>
+  PrefabRemaps:
+    []
+  Name: AccessJSfromTSwithouthDeclaration_JSComponentA
+  Enabled: true
+  ScriptAsset: !<reference> 93bbca20-4465-4237-af6e-67866614663c
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/09d7512d-cb7d-4800-7679-38b29893b8c9>
+  PrefabRemaps:
+    []
+  Name: AccessJSfromTSwithDeclaration_TSComponentB
+  Enabled: true
+  ScriptAsset: !<reference> 41f72f3a-7cea-4e96-abaf-c4f52febcaaf
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      refScript: !<reference.ScriptComponent> e1c8a053-8b9b-4d96-7e3d-0363d8368a11
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/0a8a2bd9-1d87-496b-52a7-ac29904c5c53>
+  PrefabRemaps:
+    []
+  Name: AccessComponentOnSceneObjectJS
+  Enabled: true
+  ScriptAsset: !<reference> 57247fcc-562c-4aa4-a7c1-3217487e6a8c
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      mySceneObject: !<reference.SceneObject> a71ffbe7-17fc-4c37-5e3f-371259b13d47
+      debug: true
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/0a98edca-bb53-4e00-5696-a685b2489354>
+  PrefabRemaps:
+    []
+  Name: CustomComponentJS
+  Enabled: true
+  ScriptAsset: !<reference> 679f22b8-42fa-4e9b-8b70-f2f499d73151
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/12907638-6997-4179-7d68-b3d1eb597434>
+  PrefabRemaps:
+    []
+  Name: "[AccessTSfromTS]"
+  Enabled: false
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 39f43cbc-f97c-454c-6521-04f5800f7c03
+    - !<own> db7c4289-d963-4001-55da-8f4999963bb7
+  Components:
+    []
+- !<ScriptComponent/1a99654f-0a97-4707-74e2-23fa060b07a7>
+  PrefabRemaps:
+    []
+  Name: AccessCustomComponentsUsingTypenameTS
+  Enabled: true
+  ScriptAsset: !<reference> f1ced0fa-892b-4ed6-b3ab-f1b1d2d13ff3
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      customComponent: !<Typename.CustomComponentTS> fcd3b44d-6b28-497b-659d-9865dd0c9e4c
+      debug: true
+  ScriptTypes:
+    "":
+      CustomComponentTS: !<reference.ScriptAsset> 53e006ad-9bf1-4883-abed-ca7bda168181
+- !<ScriptComponent/1aca6bcb-c7b9-4849-66a5-bb6898d73563>
+  PrefabRemaps:
+    []
+  Name: AccessCustomComponentsUsingRequiredJS
+  Enabled: true
+  ScriptAsset: !<reference> b8fb8769-cc88-47ca-a57c-68e31d561d2b
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      targetObject: !<reference.SceneObject> f9cf2704-e88a-4a00-726c-1bdfcd1295f2
+      debug: true
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/1b8f1ba3-d3bf-4b39-4a2b-36df535a26c9>
+  PrefabRemaps:
+    []
+  Name: AccessJSfromJS_ComponentA
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> caa1e55c-1077-4718-4def-6985d386d9cd
+- !<SceneObject/1f2f4472-a44b-415b-6bea-e221555f0a0b>
+  PrefabRemaps:
+    []
+  Name: AccessJSfromTSwithDeclaration_JSComponentA
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> e1c8a053-8b9b-4d96-7e3d-0363d8368a11
+- !<SceneObject/20525811-0473-4efe-54ba-495325ffa70e>
+  PrefabRemaps:
+    []
+  Name: AccessComponentOnChildSceneObjectTS
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> e3bb8965-642c-461a-678c-48f62f516d0d
+- !<ScriptComponent/25a0207e-eb25-4e0d-7a56-6947f756a967>
+  PrefabRemaps:
+    []
+  Name: AccessJSfromTSwithouthDeclaration_TSComponentB
+  Enabled: true
+  ScriptAsset: !<reference> 1d88bc3e-908a-409f-9a0b-035f5f549620
+  ScriptInputsDefault:
+    debug: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      refScript: !<reference.ScriptComponent> 053f00ee-d33d-4e5d-40bd-ad4fea81bada
+      debug: true
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/26173714-8da6-4e31-544b-ddcf68ab8089>
+  PrefabRemaps:
+    []
+  Name: AccessJSfromTSwithDeclaration_TSComponentB
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 09d7512d-cb7d-4800-7679-38b29893b8c9
+- !<SceneObject/3068a21f-5203-41ac-415b-51c2775d1c16>
+  PrefabRemaps:
+    []
+  Name: "[AccessJSfromTSwithDeclaration]"
+  Enabled: false
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 1f2f4472-a44b-415b-6bea-e221555f0a0b
+    - !<own> 26173714-8da6-4e31-544b-ddcf68ab8089
+    - !<own> 8d687239-ca92-4070-780a-3f493633d8f9
+  Components:
+    []
+- !<ScriptComponent/35f71497-1183-4f8b-74ad-9ca0371c8ead>
+  PrefabRemaps:
+    []
+  Name: AccessTSfromTS_TSComponentB
+  Enabled: true
+  ScriptAsset: !<reference> 0e17c7e0-a2aa-4c89-a1ee-2eba33a9fd20
+  ScriptInputsDefault:
+    debug: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      refScript: !<MappingBased.AssignableType> bf08ebb9-6b75-484f-49eb-ad3d19f8476e
+      debug: true
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/39f43cbc-f97c-454c-6521-04f5800f7c03>
+  PrefabRemaps:
+    []
+  Name: AccessTSfromTS_TSComponentA
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> bf08ebb9-6b75-484f-49eb-ad3d19f8476e
+- !<ScriptComponent/3a164c16-724a-464d-458b-3852037c9736>
+  PrefabRemaps:
+    []
+  Name: AccessJSfromTSwithDeclaration_JSComponentA_Declaration
+  Enabled: true
+  ScriptAsset: !<reference> d56f850b-cae8-418d-9d6e-df6534d57cee
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/3a21f834-8c90-4c20-67d1-41fd191fbac5>
+  PrefabRemaps:
+    []
+  Name: "[AccessJSfromTSwithouthDeclaration]"
+  Enabled: false
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> a7d4b43a-f095-431c-65de-19c80f83ba5b
+    - !<own> e85e2669-e792-4930-720a-b316189a32a5
+  Components:
+    []
+- !<SceneObject/3cab52d3-2d0c-438c-5977-4f9a81578bdb>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -150.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> fac9d4a7-bc71-45e3-6970-3d42cae5dc0b
+- !<SceneObject/4ace684d-7f1b-4974-4432-50ee946af05d>
+  PrefabRemaps:
+    []
+  Name: "[AccessTSfromJS]"
+  Enabled: false
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> fd4cee2b-b714-4f1d-627a-6a49f0de2b41
+    - !<own> 98cfdc43-4b38-4b27-47ec-5f068be36b47
+  Components:
+    []
+- !<RenderMeshVisual/4cb88713-eb87-4606-52b2-d1694bee87bd>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> bcff80a3-98b3-4b26-b778-3af6dd72b06c
+  Mesh: !<reference> 5b537b96-d052-4ca6-bbf9-26effd2b18e7
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<ScriptComponent/537e8514-a54f-4c7d-59a4-181d90903943>
+  PrefabRemaps:
+    []
+  Name: AccessCustomComponentsUsingRequiredTS
+  Enabled: true
+  ScriptAsset: !<reference> 69f3d4d6-6cba-4bc6-923c-d59681401f1e
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      targetObject: !<reference.SceneObject> e0585d54-c42b-4f7a-4834-c94ca0c8659e
+      debug: true
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/560d65ec-71cc-4f01-5f2a-e240ca430eb8>
+  PrefabRemaps:
+    []
+  Name: "[AccessCustomComponentsUsingRequiredTS]"
+  Enabled: false
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> ee6ae3d5-baff-435d-6cf9-0cf22c6ae3b3
+    - !<own> e0585d54-c42b-4f7a-4834-c94ca0c8659e
+  Components:
+    []
+- !<RenderMeshVisual/5c617e95-8be6-4aed-4812-bb2afc780b73>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> bcff80a3-98b3-4b26-b778-3af6dd72b06c
+  Mesh: !<reference> 5b537b96-d052-4ca6-bbf9-26effd2b18e7
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<ScriptComponent/641ba573-91e8-4d35-4036-21cc4cc939ca>
+  PrefabRemaps:
+    []
+  Name: CustomComponentJS
+  Enabled: true
+  ScriptAsset: !<reference> 679f22b8-42fa-4e9b-8b70-f2f499d73151
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/6710585c-907a-4d61-7519-e7b296dc2641>
+  PrefabRemaps:
+    []
+  Name: Parent
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 10.000000, y: 10.000000, z: 10.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> c7d8dd90-4a7b-472f-4b1f-c7705f8291c0
+  Components:
+    - !<own> b4166b80-7e51-4b81-49de-7699d3365917
+- !<ScriptComponent/673d51c3-e2e9-4702-7bc6-83ee42923a99>
+  PrefabRemaps:
+    []
+  Name: AccessCustomComponentsUsingTypenameJS
+  Enabled: true
+  ScriptAsset: !<reference> 131ddc45-ac1f-4af0-bfcc-44f34c7c1e00
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      customComponent: !<Typename.CustomComponentTS> 0a98edca-bb53-4e00-5696-a685b2489354
+      debug: true
+  ScriptTypes:
+    "":
+      CustomComponentTS: !<reference.ScriptAsset> 679f22b8-42fa-4e9b-8b70-f2f499d73151
+      annotation in JavaScript.: !<reference.ScriptAsset> 679f22b8-42fa-4e9b-8b70-f2f499d73151
+- !<SceneObject/68aa907d-b14c-4f85-4e46-d0b9d12db70c>
+  PrefabRemaps:
+    []
+  Name: AccessCustomComponentsUsingRequiredJS
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 1aca6bcb-c7b9-4849-66a5-bb6898d73563
+- !<SceneObject/6aa3ed11-08fd-42fc-7377-451c922ad211>
+  PrefabRemaps:
+    []
+  Name: CustomComponentJS
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 0a98edca-bb53-4e00-5696-a685b2489354
+- !<SceneObject/73b4a43c-9914-40e3-6259-80a12f2e6f1c>
+  PrefabRemaps:
+    []
+  Name: SceneObject
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 10.000000, y: 10.000000, z: 10.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 8879b3fb-0f8e-444c-70b5-5803b50c5174
+- !<SceneObject/7fa6e73e-54d2-4fb3-456f-e138f1c84cf7>
+  PrefabRemaps:
+    []
+  Name: "[AccessJSfromJS]"
+  Enabled: false
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 1b8f1ba3-d3bf-4b39-4a2b-36df535a26c9
+    - !<own> bb8da911-2ade-4abd-66d2-0f94146af0dd
+  Components:
+    []
+- !<RenderMeshVisual/8879b3fb-0f8e-444c-70b5-5803b50c5174>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> bcff80a3-98b3-4b26-b778-3af6dd72b06c
+  Mesh: !<reference> 5b537b96-d052-4ca6-bbf9-26effd2b18e7
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<SceneObject/8afb3d5b-f6fa-4e5c-650d-adcf4064cb85>
+  PrefabRemaps:
+    []
+  Name: CustomComponentTS
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> fcd3b44d-6b28-497b-659d-9865dd0c9e4c
+- !<SceneObject/8bbbf5f5-5f62-4791-5eb1-d45cccbfb795>
+  PrefabRemaps:
+    []
+  Name: "[AccessComponentOnSceneObjectJS]"
+  Enabled: false
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> fac09927-779b-4db1-7d97-03f8cb3bf110
+    - !<own> a71ffbe7-17fc-4c37-5e3f-371259b13d47
+  Components:
+    []
+- !<SceneObject/8d687239-ca92-4070-780a-3f493633d8f9>
+  PrefabRemaps:
+    []
+  Name: AccessJSfromTSwithDeclaration_JSComponentA_Declaration
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 3a164c16-724a-464d-458b-3852037c9736
+- !<ScriptComponent/8e3d60e6-41e3-4983-74d3-e58afb05fe7a>
+  PrefabRemaps:
+    []
+  Name: CustomComponentTS
+  Enabled: true
+  ScriptAsset: !<reference> 53e006ad-9bf1-4883-abed-ca7bda168181
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/95b9bf9a-7a4a-4383-4268-aa6949454bc2>
+  PrefabRemaps:
+    []
+  Name: Parent
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 10.000000, y: 10.000000, z: 10.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 9e6843fd-de6a-4523-5735-f1788a1781b2
+  Components:
+    - !<own> c3af8099-2b35-4712-4f62-d0ff75bca031
+- !<SceneObject/98cfdc43-4b38-4b27-47ec-5f068be36b47>
+  PrefabRemaps:
+    []
+  Name: AccessTSfromJS_JSComponentB
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> a21bfced-6137-4875-7c13-74db045f714b
+- !<SceneObject/9d1c26df-41e7-43dc-75f4-17808435d718>
+  PrefabRemaps:
+    []
+  Name: "[AccessComponentOnChildSceneObjectTS]"
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 20525811-0473-4efe-54ba-495325ffa70e
+    - !<own> 95b9bf9a-7a4a-4383-4268-aa6949454bc2
+  Components:
+    []
+- !<SceneObject/9e6843fd-de6a-4523-5735-f1788a1781b2>
+  PrefabRemaps:
+    []
+  Name: Children
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 5c617e95-8be6-4aed-4812-bb2afc780b73
+- !<ScriptComponent/a21bfced-6137-4875-7c13-74db045f714b>
+  PrefabRemaps:
+    []
+  Name: AccessTSfromJS_JSComponentB
+  Enabled: true
+  ScriptAsset: !<reference> da6b1dac-0b1b-461e-98e3-9fd17a460f90
+  ScriptInputsDefault:
+    debug: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      refScript: !<reference.ScriptComponent> 017cc67d-da9d-4f97-68c4-4dda937364f8
+      debug: true
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/a71ffbe7-17fc-4c37-5e3f-371259b13d47>
+  PrefabRemaps:
+    []
+  Name: SceneObject
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 10.000000, y: 10.000000, z: 10.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 4cb88713-eb87-4606-52b2-d1694bee87bd
+- !<SceneObject/a7d4b43a-f095-431c-65de-19c80f83ba5b>
+  PrefabRemaps:
+    []
+  Name: AccessJSfromTSwithouthDeclaration_JSComponentA
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 053f00ee-d33d-4e5d-40bd-ad4fea81bada
+- !<SceneObject/abc86cdb-7836-41b0-5268-c5cb9a8fa044>
+  PrefabRemaps:
+    []
+  Name: AccessCustomComponentsUsingTypeNameTS
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 1a99654f-0a97-4707-74e2-23fa060b07a7
+- !<ScriptComponent/ac64197c-74f6-41ce-6a95-32f83568993f>
+  PrefabRemaps:
+    []
+  Name: AccessComponentOnChildSceneObjectJS
+  Enabled: true
+  ScriptAsset: !<reference> c0422702-4457-4392-b356-087eca8e94cc
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      parentSceneObject: !<reference.SceneObject> 6710585c-907a-4d61-7519-e7b296dc2641
+      debug: true
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/add9b63a-c5c9-4739-6cb0-e34e5c00b502>
+  PrefabRemaps:
+    []
+  Name: "[AccessComponentOnChildSceneObjectJS]"
+  Enabled: false
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> f3a48316-7839-4d23-5caf-f2786a5e69f9
+    - !<own> 6710585c-907a-4d61-7519-e7b296dc2641
+  Components:
+    []
+- !<RenderMeshVisual/b29abde8-a28d-4925-77e9-921b43745f72>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> bcff80a3-98b3-4b26-b778-3af6dd72b06c
+  Mesh: !<reference> 5b537b96-d052-4ca6-bbf9-26effd2b18e7
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<RenderMeshVisual/b4166b80-7e51-4b81-49de-7699d3365917>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> bcff80a3-98b3-4b26-b778-3af6dd72b06c
+  Mesh: !<reference> 5b537b96-d052-4ca6-bbf9-26effd2b18e7
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<SceneObject/ba64cd83-d18c-46b2-7632-9f813b165888>
+  PrefabRemaps:
+    []
+  Name: "[AccessCustomComponentsUsingTypeNameTS]"
+  Enabled: false
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> abc86cdb-7836-41b0-5268-c5cb9a8fa044
+    - !<own> 8afb3d5b-f6fa-4e5c-650d-adcf4064cb85
+  Components:
+    []
+- !<SceneObject/bb8da911-2ade-4abd-66d2-0f94146af0dd>
+  PrefabRemaps:
+    []
+  Name: AccessJSfromJS_ComponentB
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> bd9cf5af-51b6-41cb-466e-2aa565d5c0e5
+- !<ScriptComponent/bd9cf5af-51b6-41cb-466e-2aa565d5c0e5>
+  PrefabRemaps:
+    []
+  Name: AccessJSfromJS_JSComponentB
+  Enabled: true
+  ScriptAsset: !<reference> 5f7a47df-f357-468e-af69-014e9441def0
+  ScriptInputsDefault:
+    updateInterval: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      refScript: !<reference.ScriptComponent> caa1e55c-1077-4718-4def-6985d386d9cd
+      debug: true
+      updateInterval: 60
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/bf08ebb9-6b75-484f-49eb-ad3d19f8476e>
+  PrefabRemaps:
+    []
+  Name: AccessTSfromTS_TSComponentA
+  Enabled: true
+  ScriptAsset: !<reference> 7c22ff0a-8254-4277-bc42-635bc20c988b
+  ScriptInputsDefault:
+    debug: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      debug: true
+  ScriptTypes:
+    "":
+      {}
+- !<RenderMeshVisual/c3af8099-2b35-4712-4f62-d0ff75bca031>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> bcff80a3-98b3-4b26-b778-3af6dd72b06c
+  Mesh: !<reference> e542623c-1432-4bfa-881d-a28905bd9e57
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<ScriptComponent/c4b6512b-07a9-4741-504c-deb72b4f6e0c>
+  PrefabRemaps:
+    []
+  Name: AccessComponentOnSceneObjectTS
+  Enabled: true
+  ScriptAsset: !<reference> fe9b3c6b-2d0d-4a47-b91f-594753ca6777
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      mySceneObject: !<reference.SceneObject> 73b4a43c-9914-40e3-6259-80a12f2e6f1c
+      debug: true
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/c50b98dd-29f0-482c-6ac7-22973ce45eb8>
+  PrefabRemaps:
+    []
+  Name: "[AccessCustomComponentsUsingTypenameJS]"
+  Enabled: false
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> ece688ec-db17-47a1-4ff5-4f255adb75a1
+    - !<own> 6aa3ed11-08fd-42fc-7377-451c922ad211
+  Components:
+    []
+- !<SceneObject/c7d8dd90-4a7b-472f-4b1f-c7705f8291c0>
+  PrefabRemaps:
+    []
+  Name: Children
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> b29abde8-a28d-4925-77e9-921b43745f72
+- !<ScriptComponent/caa1e55c-1077-4718-4def-6985d386d9cd>
+  PrefabRemaps:
+    []
+  Name: AccessJSfromJS_ComponentA
+  Enabled: true
+  ScriptAsset: !<reference> 7dcfd479-586d-4fc3-8c36-3e2970d0be39
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/cbe520a0-4e7e-4633-7480-32791d699452>
+  PrefabRemaps:
+    []
+  Name: "[AccessComponentOnSceneObjectTS]"
+  Enabled: false
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> e051a023-4166-44dd-43db-95fa0eb6a0f1
+    - !<own> 73b4a43c-9914-40e3-6259-80a12f2e6f1c
+  Components:
+    []
+- !<SceneObject/d2d4cc9f-1211-432c-7e6a-00db1c063c56>
+  PrefabRemaps:
+    []
+  Name: "[AccessCustomComponentsUsingRequiredJS]"
+  Enabled: false
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 68aa907d-b14c-4f85-4e46-d0b9d12db70c
+    - !<own> f9cf2704-e88a-4a00-726c-1bdfcd1295f2
+  Components:
+    []
+- !<SceneObject/db7c4289-d963-4001-55da-8f4999963bb7>
+  PrefabRemaps:
+    []
+  Name: AccessTSfromTS_TSComponentB
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 35f71497-1183-4f8b-74ad-9ca0371c8ead
+- !<SceneObject/e051a023-4166-44dd-43db-95fa0eb6a0f1>
+  PrefabRemaps:
+    []
+  Name: AccessComponentOnSceneObjectTS
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> c4b6512b-07a9-4741-504c-deb72b4f6e0c
+- !<SceneObject/e0585d54-c42b-4f7a-4834-c94ca0c8659e>
+  PrefabRemaps:
+    []
+  Name: CustomComponentTS
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 8e3d60e6-41e3-4983-74d3-e58afb05fe7a
+- !<ScriptComponent/e1c8a053-8b9b-4d96-7e3d-0363d8368a11>
+  PrefabRemaps:
+    []
+  Name: AccessJSfromTSwithDeclaration_JSComponentA
+  Enabled: true
+  ScriptAsset: !<reference> 6db84265-4b43-44bb-ae34-9f64cb96af11
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/e3bb8965-642c-461a-678c-48f62f516d0d>
+  PrefabRemaps:
+    []
+  Name: AccessComponentOnChildSceneObjectTS
+  Enabled: true
+  ScriptAsset: !<reference> f83893ce-4ea5-48ab-a6c3-18ac86dc66f1
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      parentSceneobject: !<reference.SceneObject> 95b9bf9a-7a4a-4383-4268-aa6949454bc2
+      debug: true
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/e85e2669-e792-4930-720a-b316189a32a5>
+  PrefabRemaps:
+    []
+  Name: AccessJSfromTSwithouthDeclaration_TSComponentB
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 25a0207e-eb25-4e0d-7a56-6947f756a967
+- !<SceneObject/ece688ec-db17-47a1-4ff5-4f255adb75a1>
+  PrefabRemaps:
+    []
+  Name: AccessCustomComponentsUsingTypenameJS
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 673d51c3-e2e9-4702-7bc6-83ee42923a99
+- !<SceneObject/ee6ae3d5-baff-435d-6cf9-0cf22c6ae3b3>
+  PrefabRemaps:
+    []
+  Name: AccessCustomComponentsUsingRequiredTS
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 537e8514-a54f-4c7d-59a4-181d90903943
+- !<ObjectPrefabAssetData/f2b475ac-2b46-49a9-9429-4e0804c767b6>
+  Prototype: !<ObjectOwner/d0916025-2ea4-4c19-933e-26a46f9c76a8>
+    PackagePath: ""
+    objects:
+      - !<own> fddf613b-3e9b-47a5-534d-4a37b05160d2
+- !<SceneObject/f3a48316-7839-4d23-5caf-f2786a5e69f9>
+  PrefabRemaps:
+    []
+  Name: AccessComponentOnChildSceneObjectJS
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> ac64197c-74f6-41ce-6a95-32f83568993f
+- !<SceneObject/f9cf2704-e88a-4a00-726c-1bdfcd1295f2>
+  PrefabRemaps:
+    []
+  Name: CustomComponentJS
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 641ba573-91e8-4d35-4036-21cc4cc939ca
+- !<SceneObject/fac09927-779b-4db1-7d97-03f8cb3bf110>
+  PrefabRemaps:
+    []
+  Name: AccessComponentOnSceneObjectJS
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 0a8a2bd9-1d87-496b-52a7-ac29904c5c53
+- !<Text/fac9d4a7-bc71-45e3-6970-3d42cae5dc0b>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Left
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: |-
+    This is a collection of examples scripts to understand how to access components or children of scene objects. Toggle your favorite use cases in the hierarchy and streamline the proces of accessing components. 
+    Refresh and check logs to see when the component has been accessed.
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  SizeToFit: false
+  FontSize: 150
+  Font: !<reference> 00000000-0000-0000-0000-000000000000
+  LayoutRect:
+    left: -30.000000
+    bottom: -2.250000
+    right: 30.000000
+    top: 2.250000
+  OverflowVertical: Overflow
+  OverflowHorizontal: Wrap
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlpha
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: true
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.016800, y: 0.198352, z: 1.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.500000
+      bottom: 0.500000
+      right: 0.500000
+      top: 0.500000
+    CornerRadius: 1.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false
+- !<ScriptComponent/fcd3b44d-6b28-497b-659d-9865dd0c9e4c>
+  PrefabRemaps:
+    []
+  Name: CustomComponentTS
+  Enabled: true
+  ScriptAsset: !<reference> 53e006ad-9bf1-4883-abed-ca7bda168181
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/fd4cee2b-b714-4f1d-627a-6a49f0de2b41>
+  PrefabRemaps:
+    []
+  Name: AccessTSfromJS_TSComponentA
+  Enabled: false
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 017cc67d-da9d-4f97-68c4-4dda937364f8
+- !<SceneObject/fddf613b-3e9b-47a5-534d-4a37b05160d2>
+  PrefabRemaps:
+    []
+  Name: "[AccessComponentsExample-__PLACE_IN_SCENE]"
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 3cab52d3-2d0c-438c-5977-4f9a81578bdb
+    - !<own> 9d1c26df-41e7-43dc-75f4-17808435d718
+    - !<own> add9b63a-c5c9-4739-6cb0-e34e5c00b502
+    - !<own> cbe520a0-4e7e-4633-7480-32791d699452
+    - !<own> 8bbbf5f5-5f62-4791-5eb1-d45cccbfb795
+    - !<own> 560d65ec-71cc-4f01-5f2a-e240ca430eb8
+    - !<own> d2d4cc9f-1211-432c-7e6a-00db1c063c56
+    - !<own> ba64cd83-d18c-46b2-7632-9f813b165888
+    - !<own> c50b98dd-29f0-482c-6ac7-22973ce45eb8
+    - !<own> 7fa6e73e-54d2-4fb3-456f-e138f1c84cf7
+    - !<own> 3068a21f-5203-41ac-415b-51c2775d1c16
+    - !<own> 3a21f834-8c90-4c20-67d1-41fd191fbac5
+    - !<own> 4ace684d-7f1b-4974-4432-50ee946af05d
+    - !<own> 12907638-6997-4179-7d68-b3d1eb597434
+  Components:
+    []

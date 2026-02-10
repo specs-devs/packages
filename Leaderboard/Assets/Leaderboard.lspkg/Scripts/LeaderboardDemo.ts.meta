@@ -1,0 +1,64 @@
+- !<AssetImportMetadata/7aedfa0a-b0fc-c435-82c0-20364f664692>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> abd27756-9414-4fe3-bb25-748da3446636
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> abd27756-9414-4fe3-bb25-748da3446636
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 86cdad02-2ce7-435d-8ac4-9d8af1ddcef5
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/86cdad02-2ce7-435d-8ac4-9d8af1ddcef5>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 4c8a9471-b0b5-40cb-8f4b-62fabfa8be14
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    createLeaderboardButton: false
+    debug: false
+    leaderboardExample: false
+    loadLeaderboardButton: false
+    statusText: false
+    submitScoreButton: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - leaderboardExample: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      createLeaderboardButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      loadLeaderboardButton: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      submitScoreButton: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      statusText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      debug: true
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input AssignableType leaderboardExample {"hint":"Reference to the LeaderboardExample component"}'
+    - '// @input AssignableType_1 createLeaderboardButton {"hint":"Button to create a new leaderboard"}'
+    - '// @input AssignableType_2 loadLeaderboardButton {"hint":"Button to load a previous leaderboard"}'
+    - '// @input AssignableType_3 submitScoreButton {"hint":"Reference to the Submit Score button with RectangleButton component"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Optional Status Display</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Optional text field to show status messages like \"Score submitted!\" or \"Loading...\"</span>"}'
+    - '// @input Component.Text statusText {"hint":"(Optional) Text component for debug/status messages"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Debug Settings</span>"}'
+    - '// @input bool debug = true {"hint":"Enable debug logging to console"}'

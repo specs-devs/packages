@@ -1,0 +1,122 @@
+- !<AssetImportMetadata/2ae51faa-13b1-4fe9-a844-33ed85111247>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 19333e2d-fd0f-4739-a629-6c46c5606ab6
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 19333e2d-fd0f-4739-a629-6c46c5606ab6
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 1b2abeb5-d847-4362-86a8-3d8b8bc18f72
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/1b2abeb5-d847-4362-86a8-3d8b8bc18f72>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: fc03be7a-5752-4406-8887-98f760260675
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    autoRegenerate: false
+    buttonAudio: false
+    buttonCornerRadius: false
+    buttonShadows: false
+    buttonSize: false
+    buttonStyle: false
+    buttonType: false
+    enableInteraction: false
+    frameAppearance: false
+    frameAutoShowHide: false
+    frameFollowing: false
+    frameSize: false
+    frameSizeOffset: false
+    gridCellPadding: false
+    gridCellSize: false
+    horizontalAlignment: false
+    horizontalSpacing: false
+    layoutPadding: false
+    logInteractions: false
+    patternType: false
+    renderOrder: false
+    sublabelTextSize: false
+    textSize: false
+    titleTextSize: false
+    useFrame: false
+    verticalAlignment: false
+    verticalSpacing: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - patternType: none
+      autoRegenerate: true
+      useFrame: true
+      frameAppearance: Large
+      frameAutoShowHide: true
+      frameFollowing: false
+      frameSize: !<Vec3> {x: 24.000000, y: 26.000000, z: 1.000000}
+      frameSizeOffset: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
+      buttonType: RectangleButton
+      buttonStyle: PrimaryNeutral
+      buttonSize: !<Vec3> {x: 4.000000, y: 4.000000, z: 1.000000}
+      buttonCornerRadius: 0.500000
+      buttonShadows: true
+      buttonAudio: true
+      gridCellSize: !<Vec2> {x: 4.000000, y: 4.000000}
+      gridCellPadding: 0.500000
+      verticalSpacing: 1.500000
+      horizontalSpacing: 1.500000
+      layoutPadding: !<Vec4> {x: 0.500000, y: 0.500000, z: 0.500000, w: 0.500000}
+      horizontalAlignment: Center
+      verticalAlignment: Top
+      textSize: !<float> 12.000000
+      titleTextSize: !<float> 16.000000
+      sublabelTextSize: !<float> 8.000000
+      renderOrder: !<float> 0.000000
+      enableInteraction: true
+      logInteractions: true
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input string patternType = "none" {"hint":"Select the UI pattern to generate", "widget":"combobox", "values":[{"label":"None", "value":"none"}, {"label":"--- Custom UI Examples ---", "value":"section1"}, {"label":"Simple Grid 2x2", "value":"grid_2x2"}, {"label":"Simple Grid 3x3", "value":"grid_3x3"}, {"label":"Simple Grid 4x4", "value":"grid_4x4"}, {"label":"Card Grid with Icons", "value":"card_grid"}, {"label":"Vertical Menu List", "value":"menu_list"}, {"label":"--- Horizon OS Patterns ---", "value":"section2"}, {"label":"Modal Dialog", "value":"modal_dialog"}, {"label":"Content Section with Buttons", "value":"content_section"}, {"label":"Image Content Section", "value":"image_content_section"}, {"label":"Settings Menu", "value":"settings_menu"}, {"label":"Action Sheet", "value":"action_sheet"}, {"label":"Grid Gallery", "value":"grid_gallery"}]}'
+    - '// @input bool autoRegenerate = true {"hint":"Regenerate pattern when changed at runtime"}'
+    - '// @input bool useFrame = true {"hint":"Use Frame component as root container"}'
+    - '// @input string frameAppearance = "Large" {"hint":"Frame appearance style", "widget":"combobox", "values":[{"label":"Large (Far-field)", "value":"Large"}, {"label":"Small (Near-field)", "value":"Small"}]}'
+    - '// @input bool frameAutoShowHide = true {"hint":"Frame automatically shows when hovered and hides when not interacting"}'
+    - '// @input bool frameFollowing {"hint":"Frame follows user"}'
+    - '// @input vec3 frameSize = {24,26,1} {"hint":"Frame size in cm (width, height, depth)"}'
+    - '// @input vec3 frameSizeOffset = {0,0,0} {"hint":"Frame size offset for padding adjustment"}'
+    - '// @input string buttonType = "RectangleButton" {"hint":"Default button type", "widget":"combobox", "values":[{"label":"Rectangle Button", "value":"RectangleButton"}, {"label":"Capsule Button", "value":"CapsuleButton"}, {"label":"Round Button", "value":"RoundButton"}]}'
+    - '// @input string buttonStyle = "PrimaryNeutral" {"hint":"Button style [NOTE: Cannot be changed at runtime, uses default PrimaryNeutral]", "widget":"combobox", "values":[{"label":"Primary Neutral", "value":"PrimaryNeutral"}, {"label":"Primary", "value":"Primary"}, {"label":"Secondary", "value":"Secondary"}, {"label":"Special", "value":"Special"}, {"label":"Ghost", "value":"Ghost"}]}'
+    - '// @input vec3 buttonSize = {4,4,1} {"hint":"Button size (width, height, depth) in cm"}'
+    - '// @input float buttonCornerRadius = 0.5 {"hint":"Button corner radius [NOTE: Automatically calculated based on button size]"}'
+    - '// @input bool buttonShadows = true {"hint":"Enable button shadows"}'
+    - '// @input bool buttonAudio = true {"hint":"Play audio on button interactions [NOTE: Cannot be changed at runtime, uses default]"}'
+    - '// @input vec2 gridCellSize = {4,4} {"hint":"Grid cell size (width, height) in cm"}'
+    - '// @input float gridCellPadding = 0.5 {"hint":"Grid cell padding between cells"}'
+    - '// @input float verticalSpacing = 1.5 {"hint":"Vertical layout spacing"}'
+    - '// @input float horizontalSpacing = 1.5 {"hint":"Horizontal layout spacing"}'
+    - '// @input vec4 layoutPadding = {0.5,0.5,0.5,0.5} {"hint":"Layout padding (left, top, right, bottom)"}'
+    - '// @input string horizontalAlignment = "Center" {"hint":"Horizontal alignment", "widget":"combobox", "values":[{"label":"Left", "value":"Left"}, {"label":"Center", "value":"Center"}, {"label":"Right", "value":"Right"}]}'
+    - '// @input string verticalAlignment = "Top" {"hint":"Vertical alignment", "widget":"combobox", "values":[{"label":"Top", "value":"Top"}, {"label":"Center", "value":"Center"}, {"label":"Bottom", "value":"Bottom"}]}'
+    - '// @input float textSize = 12 {"hint":"Text size for button labels"}'
+    - '// @input float titleTextSize = 16 {"hint":"Text size for titles"}'
+    - '// @input float sublabelTextSize = 8 {"hint":"Text size for sublabels"}'
+    - '// @input float renderOrder {"hint":"Render order for all components"}'
+    - '// @input bool enableInteraction = true {"hint":"Enable interaction on buttons"}'
+    - '// @input bool logInteractions = true {"hint":"Log button presses to console"}'

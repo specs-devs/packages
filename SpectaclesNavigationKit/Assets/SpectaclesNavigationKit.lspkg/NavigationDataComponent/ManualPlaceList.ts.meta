@@ -1,0 +1,100 @@
+- !<AssetImportMetadata/45ce83f5-5f28-3f7b-432e-52f7fe244dda>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> bf283da6-505d-4897-a8d4-f7f67f8f0314
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> bf283da6-505d-4897-a8d4-f7f67f8f0314
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 676c3750-87f3-4d93-ae53-425c248ceaff
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/676c3750-87f3-4d93-ae53-425c248ceaff>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 1
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 85e8ebec-b91c-4020-b686-7484bb5f5feb
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    customLocationComponents: false
+    imageDisplay: false
+    locationGroupComponents: false
+    navigationDataComponent: false
+    placeInputs: false
+    sceneObjects: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - navigationDataComponent: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      placeInputs:
+        []
+      sceneObjects:
+        []
+      customLocationComponents:
+        []
+      locationGroupComponents:
+        []
+      imageDisplay: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType navigationDataComponent
+    - '// @ui {"widget":"separator"}'
+    - /*
+    - "@typedef GeoPlaceInput"
+    - "@property {bool} active = true"
+    - "@property {string} latitude"
+    - "@property {string} longitude"
+    - "@property {string} label"
+    - '@property {Asset.Texture} icon {"hint":"Texture that will be located on the default 3D pin and in the compass carousel."}'
+    - "@property {string} description"
+    - '@property {float} distanceToActivate = 10 {"hint":"The distance, in meters, calculated from geo positions, that the user must be to visit the place."}'
+    - "*/"
+    - '// @input GeoPlaceInput[] placeInputs {"label":"Manual Geo Places"}'
+    - /*
+    - "@typedef SceneObjectPlaceInput"
+    - "@property {bool} active = true"
+    - "@property {SceneObject} sceneObject"
+    - "@property {string} label"
+    - '@property {Asset.Texture} icon {"hint":"Texture that will be located on the default 3D pin and in the compass carousel."}'
+    - "@property {string} description"
+    - '@property {float} distanceToActivate = 10 {"hint":"The distance, in meters, calculated from geo positions, that the user must be to visit the place."}'
+    - "*/"
+    - '// @input SceneObjectPlaceInput[] sceneObjects {"label":"Scene Object Places"}'
+    - /*
+    - "@typedef CustomLocationPlaceInput"
+    - "@property {bool} active = true"
+    - "@property {Component.LocatedAtComponent} locatedAt"
+    - "@property {SceneObject} center"
+    - "@property {string} label"
+    - '@property {Asset.Texture} icon {"hint":"Texture that will be located on the default 3D pin and in the compass carousel."}'
+    - "@property {string} description"
+    - '@property {Asset.Texture} promptImage {"hint":"A prompt image to help the user arrive at the location."}'
+    - '@property {float} distanceToActivate = 10 {"hint":"The distance, in meters, calculated from geo positions, that the user must be to visit the place."}'
+    - "*/"
+    - '// @input CustomLocationPlaceInput[] customLocationComponents {"label":"Custom Location Places"}'
+    - /*
+    - "@typedef CustomLocationGroupPlaceInput"
+    - "@property {bool} active = true"
+    - "@property {CustomLocationPlaceInput[]} customLocations"
+    - "*/"
+    - '// @input CustomLocationGroupPlaceInput[] locationGroupComponents {"label":"Custom Location Group Places"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input AssignableType_1 imageDisplay {"hint":"(Optional) Image display for Custom Location Places."}'

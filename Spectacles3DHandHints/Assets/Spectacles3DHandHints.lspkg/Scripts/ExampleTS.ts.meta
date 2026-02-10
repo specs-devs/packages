@@ -1,0 +1,50 @@
+- !<AssetImportMetadata/f378ce20-390e-4605-5bcc-7afc9687b0c0>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 5330310d-ff67-4c8d-9e97-1967a8229121
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 5330310d-ff67-4c8d-9e97-1967a8229121
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 13c8e432-8060-4e20-a8db-8a46c06ca687
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/13c8e432-8060-4e20-a8db-8a46c06ca687>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 1f576eaa-1f01-45cb-87d5-828ab8c862cf
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    demoOption: false
+    interactionHintController: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - interactionHintController: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      demoOption: 0
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Interaction Hint Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Controller and demo mode selection</span>"}'
+    - // @input AssignableType interactionHintController
+    - '// @input int demoOption {"widget":"combobox", "values":[{"label":"Demo Single Animation", "value":0}, {"label":"Demo Animation Sequence", "value":1}]}'

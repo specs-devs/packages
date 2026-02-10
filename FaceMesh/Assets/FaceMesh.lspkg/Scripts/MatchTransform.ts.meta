@@ -1,0 +1,107 @@
+- !<AssetImportMetadata/3234579e-3c60-4af3-b7da-4545c6acbaee>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> b84d8915-d9f7-4e38-b68d-dec0a7c1bd65
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> b84d8915-d9f7-4e38-b68d-dec0a7c1bd65
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> dd48a221-a1b6-4777-86fb-09945a9e6541
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/dd48a221-a1b6-4777-86fb-09945a9e6541>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 5995fc52-4ccc-4b45-a6a4-d9346eb14ccd
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    constrainPositionX: false
+    constrainPositionY: false
+    constrainPositionZ: false
+    constrainRotationX: false
+    constrainRotationY: false
+    constrainRotationZ: false
+    constrainScaleX: false
+    constrainScaleY: false
+    constrainScaleZ: false
+    positionLerpSpeed: false
+    positionOffset: false
+    rotationLerpSpeed: false
+    scaleLerpSpeed: false
+    target: false
+    usePositionLerp: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - target: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      positionOffset: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
+      usePositionLerp: true
+      positionLerpSpeed: !<float> 1.000000
+      rotationLerpSpeed: !<float> 1.000000
+      scaleLerpSpeed: !<float> 1.000000
+      constrainPositionX: false
+      constrainPositionY: false
+      constrainPositionZ: false
+      constrainRotationX: false
+      constrainRotationY: false
+      constrainRotationZ: false
+      constrainScaleX: false
+      constrainScaleY: false
+      constrainScaleZ: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Target Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Specify the target object whose transform should be matched</span>"}'
+    - '// @input SceneObject target {"hint":"Override default target mainCamera"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Position Settings</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Configure position matching with offset and lerp smoothing</span>"}'
+    - "// @input vec3 positionOffset = {0,0,0} {\"hint\":\"Position offset for matching the target's position\"}"
+    - '// @input bool usePositionLerp = true {"hint":"Use lerping for smooth position transitions"}'
+    - "// @input float positionLerpSpeed = 1 {\"hint\":\"Speed for moving towards the target's position (when lerping is enabled)\"}"
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Rotation Settings</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Configure smooth rotation matching speed</span>"}'
+    - "// @input float rotationLerpSpeed = 1 {\"hint\":\"Speed for rotating towards the target's rotation\"}"
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Scale Settings</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Configure smooth scale matching speed</span>"}'
+    - "// @input float scaleLerpSpeed = 1 {\"hint\":\"Speed for scaling towards the target's scale\"}"
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Position Constraints</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Lock specific position axes to prevent movement on those axes</span>"}'
+    - '// @input bool constrainPositionX {"hint":"Toggle to constrain movement on specific axes"}'
+    - // @input bool constrainPositionY
+    - // @input bool constrainPositionZ
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Rotation Constraints</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Lock specific rotation axes to prevent rotation on those axes</span>"}'
+    - '// @input bool constrainRotationX {"hint":"Toggle to constrain rotation on specific axes"}'
+    - // @input bool constrainRotationY
+    - // @input bool constrainRotationZ
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Scale Constraints</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Lock specific scale axes to prevent scaling on those axes</span>"}'
+    - '// @input bool constrainScaleX {"hint":"Toggle to constrain scaling on specific axes"}'
+    - // @input bool constrainScaleY
+    - // @input bool constrainScaleZ

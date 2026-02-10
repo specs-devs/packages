@@ -1,0 +1,50 @@
+- !<AssetImportMetadata/a93535f1-b46b-0e40-b8b5-b2549fcce88b>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 8bee8106-c3b5-4b3c-a7e4-adb49dcf3c4a
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 8bee8106-c3b5-4b3c-a7e4-adb49dcf3c4a
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> ddf78a43-2ae6-4eef-94fe-6eb90b015499
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/ddf78a43-2ae6-4eef-94fe-6eb90b015499>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 5f2f91bd-42e9-4291-afbc-f8b7ff33a94a
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    markerTrackingComponent: false
+    parentObject: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - markerTrackingComponent: !<reference.MarkerTrackingComponent> 00000000-0000-0000-0000-000000000000
+      parentObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Marker Tracking Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Configure the marker tracking component and parent object</span>"}'
+    - // @input Component.MarkerTrackingComponent markerTrackingComponent
+    - '// @input SceneObject parentObject {"hint":"Drop the parent of MarkerTrackingComponent here"}'

@@ -1,0 +1,209 @@
+- !<AssetImportMetadata/b427a3e3-c7cc-47a3-b64f-9734f5de5e08>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> 101e7a1b-98c6-4d09-bd8d-5dd7a1aa707e
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> 101e7a1b-98c6-4d09-bd8d-5dd7a1aa707e
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> 03dc687d-53b3-4f4c-8378-f57c8cf9cbd2
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ObjectPrefabAssetData/03dc687d-53b3-4f4c-8378-f57c8cf9cbd2>
+  Prototype: !<ObjectOwner/28a97ccc-6f9d-4523-995b-72b0975cde7d>
+    PackagePath: ""
+    objects:
+      - !<own> f09a9b8f-c58d-4f96-701c-6c12e90baaff
+- !<Text/0bfa07f4-d9be-4778-534e-d0306e5915a4>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: |-
+    Delete or remove this guideline 
+    Use the hand attacher component on the object you would 
+    like to attach to your hands.   Or use this script into an empty scene object and attach a 
+    target scene object.
+    
+    Configure what joint you want to attach 
+    Configure additional settings like offset, rotation and lerp
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  SizeToFit: false
+  FontSize: 48
+  Font: !<reference> 00000000-0000-0000-0000-000000000000
+  LayoutRect:
+    left: -7.500000
+    bottom: -2.250000
+    right: 7.500000
+    top: 2.250000
+  OverflowVertical: Overflow
+  OverflowHorizontal: Overflow
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlpha
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: true
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.016800, y: 0.198352, z: 1.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.500000
+      bottom: 0.500000
+      right: 0.500000
+      top: 0.500000
+    CornerRadius: 1.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false
+- !<ScriptComponent/17c8080a-f969-4dfa-5d31-8eaff6b35697>
+  PrefabRemaps:
+    []
+  Name: HandAttacher
+  Enabled: true
+  ScriptAsset: !<reference> fe643aa1-f904-4888-a7ef-2394207215d7
+  ScriptInputsDefault:
+    handSide: true
+    handJoint: true
+    usePositionSmoothing: true
+    positionSmoothSpeed: true
+    useRotationSmoothing: true
+    rotationSmoothSpeed: true
+    hideWhenNotTracked: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      targetObject: !<reference.SceneObject> 9e64a1b6-1ef2-4374-8785-89cb5ecc07d1
+      handSide: right
+      handJoint: indexTip
+      positionOffset: !<Vec3> {x: 0.000000, y: 2.000000, z: 0.000000}
+      rotationOffset: !<Vec3> {x: 2.000000, y: 0.000000, z: 0.000000}
+      usePositionSmoothing: true
+      positionSmoothSpeed: !<float> 10.000000
+      useRotationSmoothing: true
+      rotationSmoothSpeed: !<float> 8.000000
+      updatePositionOnly: true
+      updateRotationOnly: true
+      hideWhenNotTracked: true
+      debugMode: true
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/9e64a1b6-1ef2-4374-8785-89cb5ecc07d1>
+  PrefabRemaps:
+    []
+  Name: Box
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 9.999999, y: 9.999999, z: 9.999999}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> a9e0237a-6dc8-4b17-a8d5-d5048a7d8c38
+- !<RenderMeshVisual/a9e0237a-6dc8-4b17-a8d5-d5048a7d8c38>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> cb616a14-5a00-4055-8e2b-d733da3d085b
+  Mesh: !<reference> e542623c-1432-4bfa-881d-a28905bd9e57
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<SceneObject/c99da876-275a-4287-79f0-968e7fa68b74>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -70.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 0bfa07f4-d9be-4778-534e-d0306e5915a4
+- !<SceneObject/f09a9b8f-c58d-4f96-701c-6c12e90baaff>
+  PrefabRemaps:
+    []
+  Name: HandAttacher__PLACE_IN_SCENE
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 3.000000, y: 3.000000, z: 3.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> c99da876-275a-4287-79f0-968e7fa68b74
+    - !<own> 9e64a1b6-1ef2-4374-8785-89cb5ecc07d1
+  Components:
+    - !<own> 17c8080a-f969-4dfa-5d31-8eaff6b35697

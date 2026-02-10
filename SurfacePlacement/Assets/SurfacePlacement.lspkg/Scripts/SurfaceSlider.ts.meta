@@ -1,0 +1,50 @@
+- !<AssetImportMetadata/ca13e4e9-8606-4d28-8bc0-ac58e93e810c>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> d60202f4-4bc6-4642-abe7-cbc574f62aea
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> d60202f4-4bc6-4642-abe7-cbc574f62aea
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 7fce1c72-9041-4477-bd1e-180a121f4c5c
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/7fce1c72-9041-4477-bd1e-180a121f4c5c>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 84a59574-551a-45a0-b470-261b214dc3c3
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    groundVisualObj: false
+    sliderObj: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - sliderObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      groundVisualObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Slider Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Slider and ground visual components</span>"}'
+    - // @input SceneObject sliderObj
+    - // @input SceneObject groundVisualObj

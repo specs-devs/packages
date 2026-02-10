@@ -1,0 +1,59 @@
+- !<AssetImportMetadata/0f8a53cb-021a-a61a-8591-cecd789d2cf9>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 9827afa1-61b3-4d17-996d-9b279ebcbad1
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 9827afa1-61b3-4d17-996d-9b279ebcbad1
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 9b2baf34-2e2a-413c-b1e2-73e70ca3228b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/9b2baf34-2e2a-413c-b1e2-73e70ca3228b>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: e37b14bb-c8b1-4e96-80aa-1a6b3316bb17
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    debug: false
+    gridLayout: false
+    itemPrefab: false
+    itemsCount: false
+    regularColor: false
+    testDataColor: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - gridLayout: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      itemPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      itemsCount: !<float> 10.000000
+      testDataColor: !<Vec4> {x: 1.000000, y: 0.700000, z: 0.700000, w: 1.000000}
+      regularColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      debug: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input AssignableType gridLayout {"hint":"GridLayout component that will contain the leaderboard items"}'
+    - '// @input Asset.ObjectPrefab itemPrefab {"hint":"Prefab with RectangleButton and Rank/Name/Score Text children"}'
+    - '// @input float itemsCount = 10 {"hint":"Number of leaderboard entries to display"}'
+    - '// @input vec4 testDataColor = {1,0.7,0.7,1} {"hint":"Color for test data entries"}'
+    - '// @input vec4 regularColor = {1,1,1,1} {"hint":"Color for regular entries"}'
+    - '// @input bool debug {"hint":"Enable debug logging"}'

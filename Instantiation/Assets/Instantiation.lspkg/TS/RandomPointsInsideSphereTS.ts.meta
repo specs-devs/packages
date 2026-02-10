@@ -1,0 +1,59 @@
+- !<AssetImportMetadata/b9c07295-8dd2-e24d-479b-596218e503bf>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 50f7682d-008b-4062-ba82-808e04d28566
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 50f7682d-008b-4062-ba82-808e04d28566
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 7083edfd-2a71-4052-a0b2-10f451ece81d
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/7083edfd-2a71-4052-a0b2-10f451ece81d>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 47e5948f-74b6-435a-a43b-8e4b80486a5d
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    numberOfPoints: false
+    prefab: false
+    radius: false
+    sphere: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - sphere: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      prefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      numberOfPoints: !<float> 10.000000
+      radius: !<float> 1.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Sphere Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Define the sphere center and prefab to instantiate inside the volume</span>"}'
+    - '// @input SceneObject sphere {"hint":"Reference to the sphere (center point)"}'
+    - '// @input Asset.ObjectPrefab prefab {"hint":"Prefab to instantiate"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Distribution Settings</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Configure the number of random points and sphere radius</span>"}'
+    - '// @input float numberOfPoints = 10 {"hint":"Number of random points to generate"}'
+    - '// @input float radius = 1 {"hint":"Radius of the sphere"}'

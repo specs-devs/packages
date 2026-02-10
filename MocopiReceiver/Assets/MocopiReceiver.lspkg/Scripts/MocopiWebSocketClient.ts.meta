@@ -1,0 +1,65 @@
+- !<AssetImportMetadata/9002442a-a192-42b7-9738-1266b05a3c2c>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> ba7dd571-1934-4144-8644-7673463256de
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> ba7dd571-1934-4144-8644-7673463256de
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 62ec4d85-c883-4515-b2ef-6170187f08e8
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/62ec4d85-c883-4515-b2ef-6170187f08e8>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 6f264919-891e-41ae-80e5-e1672e93929d
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    autoConnect: false
+    enableDebugMode: false
+    maxReconnectAttempts: false
+    reconnectInterval: false
+    serverUrl: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - serverUrl: "ws://localhost:8080"
+      autoConnect: true
+      maxReconnectAttempts: !<float> 0.000000
+      reconnectInterval: !<float> 3.000000
+      enableDebugMode: true
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Server Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">WebSocket server URL (wss:// for production, ws:// for local testing)</span>"}'
+    - '// @input string serverUrl = "ws://10.28.65.216:8080"'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Connection Settings</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Configure connection behavior and reconnection logic</span>"}'
+    - '// @input bool autoConnect = true {"hint":"Auto-connect on start"}'
+    - '// @input float maxReconnectAttempts {"hint":"Maximum reconnection attempts (0 = infinite)"}'
+    - '// @input float reconnectInterval = 3 {"hint":"Reconnection interval in seconds"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Debug Settings</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Enable detailed logging for troubleshooting</span>"}'
+    - // @input bool enableDebugMode = true

@@ -1,0 +1,59 @@
+- !<AssetImportMetadata/8c82f24d-1606-ac00-3471-52b4ca2f08fc>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 742cb1ce-8c96-43b8-bd4a-9b863e4284bc
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 742cb1ce-8c96-43b8-bd4a-9b863e4284bc
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 0db5f1fa-0be4-4073-a4aa-16b836dd168f
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/0db5f1fa-0be4-4073-a4aa-16b836dd168f>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: b2a66b5b-6bd5-4222-a847-b74b806a04d8
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    center: false
+    numberOfPrefabs: false
+    prefab: false
+    size: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - center: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      prefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      numberOfPrefabs: !<float> 10.000000
+      size: !<float> 10.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Square Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Define the center point and prefab to instantiate within the square area</span>"}'
+    - '// @input SceneObject center {"hint":"Center of the square area"}'
+    - '// @input Asset.ObjectPrefab prefab {"hint":"Prefab to instantiate"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Distribution Settings</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Configure the number of objects and square size</span>"}'
+    - '// @input float numberOfPrefabs = 10 {"hint":"Number of prefabs to instantiate"}'
+    - '// @input float size = 5 {"hint":"Size of the square (half-width/half-height)"}'

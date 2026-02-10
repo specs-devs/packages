@@ -1,0 +1,475 @@
+- !<AssetImportMetadata/27bdf011-dce8-4fb5-8a29-d38846676c2e>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> d406d86a-3ec2-48d3-b81b-aa59a38965dd
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> d406d86a-3ec2-48d3-b81b-aa59a38965dd
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> 18ed2722-f60a-4eba-9f06-d5b94c073bf3
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptComponent/08adb84e-2de1-499c-6b18-7a34aac1b68b>
+  PrefabRemaps:
+    []
+  Name: MocopiAvatarController
+  Enabled: true
+  ScriptAsset: !<reference> 51797423-7797-4ff6-bcee-457501b181b3
+  ScriptInputsDefault:
+    updatePositions: true
+    applyCoordinateConversion: true
+    smoothFactor: true
+    avatarScale: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      prefabPlacement: !<MappingBased.AssignableType> 5d783b25-c355-4a80-61d1-850b85d9b6a8
+      updatePositions: false
+      applyCoordinateConversion: true
+      smoothFactor: 0.300000
+      avatarScale: !<float> 1.000000
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/0fd493d6-ca70-447b-4ebf-d8fa45f3aed8>
+  PrefabRemaps:
+    []
+  Name: "VisualParent [FOR TOGGLING VISUALS]"
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 2d8f7452-354d-41ec-57ac-ee5e14a0be6d
+  Components:
+    []
+- !<SceneObject/15b532f6-af6a-435d-6a67-3b7525834729>
+  PrefabRemaps:
+    []
+  Name: MocopiReceiverExample__PLACE_IN_SCENE
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> aa7904c7-7795-4f5d-5db3-bb0aa5044b0f
+    - !<own> 88b02578-53a8-4e0c-6794-e6f6d1e08e05
+    - !<own> 7d14aec9-12e0-4074-5aa3-f05c23e8d155
+    - !<own> fb4807d8-a58a-4942-5362-5be5df3fbd17
+    - !<own> d0e19329-fab8-4c59-479c-91d50cad4ed8
+  Components:
+    []
+- !<ObjectPrefabAssetData/18ed2722-f60a-4eba-9f06-d5b94c073bf3>
+  Prototype: !<ObjectOwner/9482d815-8bb5-41ca-ae8e-3deea59d4c57>
+    PackagePath: ""
+    objects:
+      - !<own> 15b532f6-af6a-435d-6a67-3b7525834729
+- !<SceneObject/2d8f7452-354d-41ec-57ac-ee5e14a0be6d>
+  PrefabRemaps:
+    []
+  Name: ResetButton
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 50.000000, z: 40.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 4.000000, y: 4.000000, z: 4.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> e7a7fed7-c700-47ab-4ee2-151c9ec03c61
+  Components:
+    - !<own> f1c0b5a0-e771-49b2-56df-70639f0a421a
+    - !<own> 66d0e088-7c28-4df7-7e15-539e2b5ac76a
+- !<ScriptComponent/439a03a2-67be-49c8-4d25-32cecead0b2e>
+  PrefabRemaps:
+    []
+  Name: MocopiMainController
+  Enabled: true
+  ScriptAsset: !<reference> b538decc-6679-4fa9-b679-25e23e81d543
+  ScriptInputsDefault:
+    showAvatar: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      webSocketClient: !<MappingBased.AssignableType> e1f3d7bf-8000-46d2-6b3e-97789b937706
+      avatarController: !<MappingBased.AssignableType_1> 08adb84e-2de1-499c-6b18-7a34aac1b68b
+      showAvatar: true
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/5d783b25-c355-4a80-61d1-850b85d9b6a8>
+  PrefabRemaps:
+    []
+  Name: PrefabPlacement
+  Enabled: true
+  ScriptAsset: !<reference> 83e062f1-8ae2-4b94-be0a-70f561617ec0
+  ScriptInputsDefault:
+    autoStart: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      objectVisuals: !<reference.SceneObject> 0fd493d6-ca70-447b-4ebf-d8fa45f3aed8
+      prefabToPlace: !<reference.ObjectPrefab> e2902c4f-22f6-49cf-b573-9e04878036d7
+      mocopiMainController: !<MappingBased.AssignableType> 439a03a2-67be-49c8-4d25-32cecead0b2e
+      placementSettingMode: 1
+      autoStart: true
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/66d0e088-7c28-4df7-7e15-539e2b5ac76a>
+  PrefabRemaps:
+    []
+  Name: CapsuleButton
+  Enabled: true
+  ScriptAsset: !<reference> a60d3b86-0a33-458b-8e5a-daaeb2d7266a
+  ScriptInputsDefault:
+    _inactive: true
+    _playAudio: true
+    _style: true
+    _hasShadow: true
+    _shadowPositionOffset: true
+    _toggleable: true
+    _defaultToOn: true
+    triggerDownCallbacks: true
+    onValueChangeCallbacks: true
+    onFinishedCallbacks: true
+    _size: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _renderOrder: 10
+      _inactive: false
+      _playAudio: false
+      _style: PrimaryNeutral
+      _hasShadow: false
+      _shadowPositionOffset: !<Vec3> {x: 0.050000, y: -0.050000, z: -0.010000}
+      _toggleable: false
+      _defaultToOn: false
+      addCallbacks: true
+      triggerUpCallbacks:
+        - scriptComponent: !<reference.ScriptComponent> f1c0b5a0-e771-49b2-56df-70639f0a421a
+          functionName: resetPlacement
+      triggerDownCallbacks:
+        []
+      onValueChangeCallbacks:
+        []
+      onFinishedCallbacks:
+        []
+      _size: !<Vec3> {x: 12.000000, y: 3.000000, z: 1.000000}
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/7d14aec9-12e0-4074-5aa3-f05c23e8d155>
+  PrefabRemaps:
+    []
+  Name: MocopiMainController
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 439a03a2-67be-49c8-4d25-32cecead0b2e
+- !<SceneObject/88b02578-53a8-4e0c-6794-e6f6d1e08e05>
+  PrefabRemaps:
+    []
+  Name: MocopiAvatarController
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 08adb84e-2de1-499c-6b18-7a34aac1b68b
+- !<Text/9aa8741a-a683-44df-6222-83f20235c4ed>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 200
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Left
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: |
+    Mocopi Receiver allows you to hook up the Sony Mocopi Sensor to Lens Studio and Spectacles using WebSockets!  Please check the Package README.md for a quickstart guide in details.   Step 1. Setup Mocopi and the Mocopi app 
+    
+    Step 2. Find your IP Address and add it to the Mocopi App > Settings > External Connections and add it to the input field in the Websocket Client Script
+    
+    Step 3.  Start the local server in the LocalServerExampleFolder on your machine (make sure you are on a public connection that does not block local websockets) 
+    
+    See the avatar synchronizing in Lens Studio?
+    You are ready to build on Spectacles. 
+
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  SizeToFit: false
+  FontSize: 55
+  Font: !<reference> 00000000-0000-0000-0000-000000000000
+  LayoutRect:
+    left: -12.000000
+    bottom: -2.250000
+    right: 12.000000
+    top: 2.250000
+  OverflowVertical: Overflow
+  OverflowHorizontal: Wrap
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlpha
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: true
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.016800, y: 0.198352, z: 1.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.500000
+      bottom: 0.500000
+      right: 0.500000
+      top: 0.500000
+    CornerRadius: 1.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false
+- !<SceneObject/aa7904c7-7795-4f5d-5db3-bb0aa5044b0f>
+  PrefabRemaps:
+    []
+  Name: MocopiWebSocketClient
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> e1f3d7bf-8000-46d2-6b3e-97789b937706
+- !<SceneObject/d0e19329-fab8-4c59-479c-91d50cad4ed8>
+  PrefabRemaps:
+    []
+  Name: "GUIDE [READ AND DISABLE]"
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: -10.000000, z: -100.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 9aa8741a-a683-44df-6222-83f20235c4ed
+- !<ScriptComponent/e1f3d7bf-8000-46d2-6b3e-97789b937706>
+  PrefabRemaps:
+    []
+  Name: MocopiWebSocketClient
+  Enabled: true
+  ScriptAsset: !<reference> ba7dd571-1934-4144-8644-7673463256de
+  ScriptInputsDefault:
+    autoConnect: true
+    maxReconnectAttempts: true
+    reconnectInterval: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      serverUrl: "ws://YOUR-IP-ADDRESS:8080"
+      autoConnect: true
+      maxReconnectAttempts: !<float> 0.000000
+      reconnectInterval: !<float> 3.000000
+      enableDebugMode: false
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/e7a7fed7-c700-47ab-4ee2-151c9ec03c61>
+  PrefabRemaps:
+    []
+  Name: Title
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.100000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> ef57d5fd-0f07-4e8c-58fa-c8f8df7e434e
+- !<Text/ef57d5fd-0f07-4e8c-58fa-c8f8df7e434e>
+  PrefabRemaps:
+    []
+  Name: Text 2
+  Enabled: true
+  RenderOrder: 20
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: Reset
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  SizeToFit: false
+  FontSize: 50
+  Font: !<reference> 709203b6-8b83-40d7-8dda-e5adc4fd2875
+  LayoutRect:
+    left: -7.500000
+    bottom: -2.250000
+    right: 7.500000
+    top: 2.250000
+  OverflowVertical: Overflow
+  OverflowHorizontal: Overflow
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlpha
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.000000
+      bottom: 0.000000
+      right: 0.000000
+      top: 0.000000
+    CornerRadius: 0.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.050000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false
+- !<ScriptComponent/f1c0b5a0-e771-49b2-56df-70639f0a421a>
+  PrefabRemaps:
+    []
+  Name: ResetButton
+  Enabled: true
+  ScriptAsset: !<reference> f935c626-83b6-4031-bb48-dea884d5b847
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      prefabPlacement: !<MappingBased.AssignableType> 5d783b25-c355-4a80-61d1-850b85d9b6a8
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/fb4807d8-a58a-4942-5362-5be5df3fbd17>
+  PrefabRemaps:
+    []
+  Name: PrefabPlacement
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 0fd493d6-ca70-447b-4ebf-d8fa45f3aed8
+  Components:
+    - !<own> 5d783b25-c355-4a80-61d1-850b85d9b6a8

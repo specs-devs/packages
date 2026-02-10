@@ -1,0 +1,56 @@
+- !<AssetImportMetadata/a28ad855-5678-468e-a9c8-825961bef240>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> b538decc-6679-4fa9-b679-25e23e81d543
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> b538decc-6679-4fa9-b679-25e23e81d543
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> d9f899d0-d56a-4b33-86f0-b2b3c9c05d9e
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/d9f899d0-d56a-4b33-86f0-b2b3c9c05d9e>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 3b3e9af7-0f3d-4dfe-8aa5-b9d42d74bb10
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    avatarController: false
+    showAvatar: false
+    webSocketClient: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - webSocketClient: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      avatarController: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      showAvatar: true
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Component References</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Assign all required mocopi system components</span>"}'
+    - '// @input AssignableType webSocketClient {"hint":"WebSocket client component"}'
+    - '// @input AssignableType_1 avatarController {"hint":"Avatar controller component"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">System Settings</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Configure which features are active</span>"}'
+    - '// @input bool showAvatar = true {"hint":"Show avatar"}'

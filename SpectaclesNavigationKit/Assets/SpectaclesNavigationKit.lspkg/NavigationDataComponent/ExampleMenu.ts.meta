@@ -1,0 +1,68 @@
+- !<AssetImportMetadata/e2655ba9-2034-6238-815a-25df1b17c3b2>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 9c543b78-86c3-4a78-b5f9-66a964cbc676
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 9c543b78-86c3-4a78-b5f9-66a964cbc676
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> e157e698-b9e7-48e7-b112-79e4d6467c43
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/e157e698-b9e7-48e7-b112-79e4d6467c43>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 56e0c586-1653-463a-8bde-2de2ad4c0cab
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    buttonA: false
+    buttonAText: false
+    buttonB: false
+    buttonBText: false
+    buttonC: false
+    buttonCText: false
+    navigationComponent: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - navigationComponent: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      buttonA: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      buttonAText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      buttonB: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      buttonBText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      buttonC: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      buttonCText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Navigation Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Navigation data source</span>"}'
+    - // @input AssignableType navigationComponent
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Menu Buttons</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Three pinch buttons with text labels for place selection</span>"}'
+    - // @input AssignableType_1 buttonA
+    - // @input Component.Text buttonAText
+    - // @input AssignableType_2 buttonB
+    - // @input Component.Text buttonBText
+    - // @input AssignableType_3 buttonC
+    - // @input Component.Text buttonCText

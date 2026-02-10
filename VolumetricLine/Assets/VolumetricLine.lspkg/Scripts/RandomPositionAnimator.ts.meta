@@ -1,0 +1,69 @@
+- !<AssetImportMetadata/cff6b98c-6a3f-44d9-8edc-9af2fde4574b>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> fed7d853-a636-46fd-bd56-35b4c4b2e7e2
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> fed7d853-a636-46fd-bd56-35b4c4b2e7e2
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 63de3cc5-2618-4f5b-b9a5-ff44b4ac7ea0
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/63de3cc5-2618-4f5b-b9a5-ff44b4ac7ea0>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 36d6b9dc-d0c0-4bec-8eca-bf29497fd9bb
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    objectsToAnimate: false
+    smoothing: false
+    speed: false
+    xRange: false
+    yRange: false
+    zRange: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - objectsToAnimate: !<reference.SceneObject[]>
+        []
+      xRange: !<float> 10.000000
+      yRange: !<float> 10.000000
+      zRange: !<float> 10.000000
+      speed: !<float> 1.000000
+      smoothing: 0.100000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Animation Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Objects and motion parameters</span>"}'
+    - "// @input SceneObject[] objectsToAnimate"
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Motion Range</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Maximum movement distance per axis</span>"}'
+    - // @input float xRange = 10
+    - // @input float yRange = 10
+    - // @input float zRange = 10
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Timing Settings</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Animation speed and smoothing</span>"}'
+    - // @input float speed = 1
+    - '// @input float smoothing = 0.1 {"hint":"Smoothing factor for movement (0=instant, 1=very smooth)"}'
