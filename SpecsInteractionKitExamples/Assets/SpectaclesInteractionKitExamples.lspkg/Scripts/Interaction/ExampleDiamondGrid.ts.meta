@@ -1,0 +1,77 @@
+- !<AssetImportMetadata/b41cb302-dc50-d65c-cd85-94bc719040e4>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> ae789804-f653-4da5-af6f-871b217d249c
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> ae789804-f653-4da5-af6f-871b217d249c
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> e01089ac-8a3c-490c-9b8a-50f801d20ecb
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/e01089ac-8a3c-490c-9b8a-50f801d20ecb>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: 5362316c-26a0-4705-ae6a-e233d358e66d
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    cols: false
+    cubePrefab: false
+    cubeSize: false
+    depthStep: false
+    gap: false
+    rotX: false
+    rotY: false
+    rotZ: false
+    rows: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - cubePrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      cols: !<float> 5.000000
+      rows: !<float> 5.000000
+      cubeSize: !<float> 10.000000
+      rotX: !<float> 30.000000
+      rotY: !<float> 30.000000
+      rotZ: !<float> 30.000000
+      gap: !<float> 0.000000
+      depthStep: !<float> 0.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">ExampleDiamondGrid – isometric diamond tile grid</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Tile centres follow X=halfX·(i−j), Y=halfY·(i+j). Step scalars are derived from the rotated cube AABB so tiles are flush at gap=0 for any rotation.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input Asset.ObjectPrefab cubePrefab {"hint":"Cube prefab to instantiate for each tile"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Grid"}'
+    - '// @input float cols = 5 {"hint":"Tile count along the i-axis (right-upward diagonal in screen space)"}'
+    - '// @input float rows = 5 {"hint":"Tile count along the j-axis (left-upward diagonal in screen space)"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Tile"}'
+    - '// @input float cubeSize = 1 {"hint":"Uniform scale applied to each tile; also sets the isometric unit step s in the formula"}'
+    - '// @input float rotX = 35.264 {"hint":"X rotation in degrees — 35.264° with Y=45° is canonical isometric"}'
+    - '// @input float rotY = 45 {"hint":"Y rotation in degrees"}'
+    - '// @input float rotZ {"hint":"Z rotation in degrees"}'
+    - '// @input float gap {"hint":"Extra spacing added to cubeSize when computing the step (s = cubeSize + gap). Negative values overlap tiles."}'
+    - '// @input float depthStep {"hint":"World-Z depth offset per j-row for depth layering (0 = flat grid)"}'
+    - '// @ui {"widget":"group_end"}'

@@ -1,0 +1,69 @@
+- !<AssetImportMetadata/5752ae5b-8534-4c87-b15e-87de0eb26dc0>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 542642a6-7ca6-4130-b7a0-4b9ab82b360f
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 542642a6-7ca6-4130-b7a0-4b9ab82b360f
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> b8ebf72a-2b8e-4725-aad4-f892098720bb
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/b8ebf72a-2b8e-4725-aad4-f892098720bb>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: 8462204d-8295-4c5a-8e8b-3efb1a058b2e
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    cube: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    internetModule: false
+    ipAddress: false
+    screenText: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - internetModule: !<reference.InternetModule> 00000000-0000-0000-0000-000000000000
+      ipAddress: "ws://192.168.1.100/ws"
+      screenText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      cube: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">WebSocket Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Configure WebSocket connection settings</span>"}'
+    - '// @input Asset.InternetModule internetModule {"hint":"Internet Module for WebSocket connectivity"}'
+    - '// @input string ipAddress = "ws://192.168.1.100/ws" {"hint":"WebSocket server URL (e.g., ws://192.168.1.100/ws)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Component References</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Assign required components</span>"}'
+    - '// @input Component.Text screenText {"hint":"Text component for displaying connection status messages"}'
+    - '// @input AssignableType_1 cube {"hint":"IMUCube script component that handles 3D rotation"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging (connection events, data received, etc.)"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)"}'

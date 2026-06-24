@@ -1,0 +1,60 @@
+- !<AssetImportMetadata/3894862c-5e94-4bf1-8821-2f5b671a73fe>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 82f1d943-6a77-4649-b217-2a09aea3454c
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 82f1d943-6a77-4649-b217-2a09aea3454c
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 9e429215-c4a4-4f41-a4dd-ecd1d16fceac
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/9e429215-c4a4-4f41-a4dd-ecd1d16fceac>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: d41e3dd8-023a-4b1f-8093-f410ee8a99d4
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    internetModule: false
+    ipAddress: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - internetModule: !<reference.InternetModule> 00000000-0000-0000-0000-000000000000
+      ipAddress: "ws://192.168.1.100/ws"
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">WebSocket Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Configure WebSocket connection settings</span>"}'
+    - '// @input Asset.InternetModule internetModule {"hint":"Internet Module for WebSocket connectivity"}'
+    - '// @input string ipAddress = "ws://192.168.1.100/ws" {"hint":"WebSocket server URL (e.g., ws://192.168.1.100/ws)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging (connection events, messages sent/received, etc.)"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)"}'

@@ -1,0 +1,173 @@
+- !<AssetImportMetadata/3d855d97-ec1c-df7d-9fdc-b135ccf2336f>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 1c6a397b-964a-4bc0-b713-ebb1e46e7180
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 1c6a397b-964a-4bc0-b713-ebb1e46e7180
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 0e88e2f9-d347-4168-9e95-fc86d8b99735
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/0e88e2f9-d347-4168-9e95-fc86d8b99735>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: 44935598-dcf0-4c82-a1e9-58c7bd02c365
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    cubeCount: false
+    cubePrefab: false
+    cubeSpacing: false
+    distanceHandMax: false
+    distanceHandMin: false
+    distancePinchMax: false
+    distancePinchMin: false
+    enableLogging: false
+    mockHandA: false
+    mockHandB: false
+    mockPinchA: false
+    mockPinchB: false
+    rotateHandDistAxis: false
+    rotateHandDistButton: false
+    rotatePinchAxis: false
+    rotatePinchButton: false
+    rotationAtOne: false
+    rotationAtZero: false
+    scaleAtOne: false
+    scaleAtZero: false
+    scaleHandDistAxes: false
+    scaleHandDistButton: false
+    scalePinchAxes: false
+    scalePinchButton: false
+    smoothSpeed: false
+    statusText: false
+    testHandAmplitude: false
+    testHandSpeed: false
+    testMode: false
+    testPinchAmplitude: false
+    testPinchSpeed: false
+    usePinchRightHand: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - statusText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      testMode: true
+      mockHandA: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      mockHandB: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      testHandSpeed: 0.350000
+      testHandAmplitude: 2.500000
+      mockPinchA: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      mockPinchB: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      testPinchSpeed: 0.500000
+      testPinchAmplitude: 2.500000
+      usePinchRightHand: true
+      distancePinchMin: 0.500000
+      distancePinchMax: !<float> 5.000000
+      distanceHandMin: !<float> 10.000000
+      distanceHandMax: !<float> 60.000000
+      scalePinchButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      scaleHandDistButton: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      rotatePinchButton: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      rotateHandDistButton: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
+      cubePrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      cubeCount: !<float> 5.000000
+      cubeSpacing: !<float> 7.000000
+      scaleAtZero: 0.400000
+      scaleAtOne: !<float> 2.000000
+      scalePinchAxes: !<Vec3> {x: 0.000000, y: 1.000000, z: 0.000000}
+      scaleHandDistAxes: !<Vec3> {x: 1.000000, y: 0.000000, z: 0.000000}
+      rotationAtZero: !<float> 0.000000
+      rotationAtOne: !<float> 360.000000
+      rotatePinchAxis: !<Vec3> {x: 1.000000, y: 0.000000, z: 0.000000}
+      rotateHandDistAxis: !<Vec3> {x: 0.000000, y: 1.000000, z: 0.000000}
+      smoothSpeed: !<float> 7.000000
+      enableLogging: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">InteractionModesManager</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Buttons toggle modes — any combination is allowed. Cubes appear only when a mode is active. In production hands are resolved via SIK automatically. Disable testMode before building to device.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Status"}'
+    - '// @input Component.Text statusText {"hint":"Text component that displays active modes and live channel values"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Test Mode"}'
+    - '// @input bool testMode = true {"hint":"Enable editor simulation with mock objects. Disable before building to device."}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Test Mode: Hands  (simulate left / right wrist separation, X-axis only)"}'
+    - '// @input SceneObject mockHandA {"hint":"Simulates the left hand. Animates LEFT along its X-axis."}'
+    - '// @input SceneObject mockHandB {"hint":"Simulates the right hand. Animates RIGHT along its X-axis."}'
+    - '// @input number testHandSpeed = "0.35" {"hint":"Oscillation frequency (cycles/sec) for the hand mock"}'
+    - '// @input number testHandAmplitude = "2.5" {"hint":"Visual half-amplitude (cm) each hand mock travels. Purely cosmetic — the actual input is always a 0-1 wave and is NOT derived from world positions, so this does not need to match distanceHandMin/Max."}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Test Mode: Pinch  (simulate thumb / index tip separation, Y-axis only)"}'
+    - '// @input SceneObject mockPinchA {"hint":"Simulates the thumb tip. Spreads DOWN (away from mockPinchB) when pinch = 0 (open)."}'
+    - '// @input SceneObject mockPinchB {"hint":"Simulates the index tip. Spreads UP (away from mockPinchA) when pinch = 0 (open). Both return to rest when pinch = 1 (closed)."}'
+    - '// @input number testPinchSpeed = "0.5" {"hint":"Oscillation frequency (cycles/sec) for the pinch mock"}'
+    - '// @input number testPinchAmplitude = "2.5" {"hint":"Visual half-amplitude (cm) each pinch mock travels. Purely cosmetic — actual input is always 0-1."}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Pinch Channel"}'
+    - '// @input bool usePinchRightHand = true {"hint":"Use right hand for pinch (false = left hand)"}'
+    - '// @input number distancePinchMin = "0.5" {"hint":"Thumb-to-index distance (cm) → pinch = 1 (fully closed). Distances ≤ this clamp to 1."}'
+    - '// @input number distancePinchMax = "5.0" {"hint":"Thumb-to-index distance (cm) → pinch = 0 (fully open). Distances ≥ this clamp to 0."}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Hand Distance Channel"}'
+    - '// @input number distanceHandMin = "10.0" {"hint":"Wrist-to-wrist distance (cm) mapped to hand-dist = 0 (hands close)"}'
+    - '// @input number distanceHandMax = "60.0" {"hint":"Wrist-to-wrist distance (cm) mapped to hand-dist = 1 (hands far apart)"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Mode Buttons — each toggles on/off independently"}'
+    - '// @input AssignableType_1 scalePinchButton {"hint":"Toggle Scale with Pinch"}'
+    - '// @input AssignableType_2 scaleHandDistButton {"hint":"Toggle Scale with Hand Distance"}'
+    - '// @input AssignableType_3 rotatePinchButton {"hint":"Toggle Rotate with Pinch"}'
+    - '// @input AssignableType_4 rotateHandDistButton {"hint":"Toggle Rotate with Hand Distance"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Cubes"}'
+    - '// @input Asset.ObjectPrefab cubePrefab {"hint":"Prefab to instantiate. Cubes start hidden and appear when a mode is activated."}'
+    - '// @input number cubeCount = "5" {"hint":"Number of cubes in the row"}'
+    - '// @input number cubeSpacing = "7.0" {"hint":"Centre-to-centre spacing (cm)"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Scale Effect"}'
+    - '// @input number scaleAtZero = "0.4" {"hint":"Scale value at input = 0 (shared by both scale modes)"}'
+    - '// @input number scaleAtOne = "2.0" {"hint":"Scale value at input = 1 (shared by both scale modes)"}'
+    - '// @input vec3 scalePinchAxes = "{0.0, 1.0, 0.0}" {"hint":"Which axes the Pinch scale affects. (0,1,0) = Y only, (1,1,1) = uniform. Each component is a 0-1 weight."}'
+    - '// @input vec3 scaleHandDistAxes = "{1.0, 0.0, 0.0}" {"hint":"Which axes the Hand Distance scale affects. (1,0,0) = X only, (1,1,1) = uniform."}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"group_start", "label":"Rotation Effect"}'
+    - '// @input number rotationAtZero = "0" {"hint":"Rotation (degrees) at input = 0 (shared by both rotation modes)"}'
+    - '// @input number rotationAtOne = "360" {"hint":"Rotation (degrees) at input = 1 (shared by both rotation modes)"}'
+    - '// @input vec3 rotatePinchAxis = "{1.0, 0.0, 0.0}" {"hint":"World axis the Pinch rotation spins around. Default (1,0,0) = X (tilt forward/back)."}'
+    - '// @input vec3 rotateHandDistAxis = "{0.0, 1.0, 0.0}" {"hint":"World axis the Hand Distance rotation spins around. Default (0,1,0) = Y (spin left/right)."}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"group_start", "label":"Smoothing"}'
+    - '// @input number smoothSpeed = "7.0" {"hint":"How fast cubes follow input — higher = snappier"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Logging"}'
+    - // @input bool enableLogging
+    - '// @ui {"widget":"group_end"}'

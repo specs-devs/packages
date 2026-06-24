@@ -1,0 +1,71 @@
+- !<AssetImportMetadata/3b064791-aa96-3015-e8fa-2e3aec321d24>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 89058561-3d8f-4bb9-bf01-d411643b9bdc
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 89058561-3d8f-4bb9-bf01-d411643b9bdc
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 898039c1-d340-47cf-a8a1-f7f1bd156e76
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/898039c1-d340-47cf-a8a1-f7f1bd156e76>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: 8e3b11ab-118a-422e-9618-04e38c4640a6
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    object0: false
+    object1: false
+    object2: false
+    object3: false
+    statusTextObject: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - statusTextObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      object0: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      object1: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      object2: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      object3: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">ExampleSimpleManipulation – manipulation event display</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Assign up to 4 scene objects that have InteractableManipulation, and drag the existing Text scene object into Status Text. On hover / grab / release the text updates with the event and object name.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input SceneObject statusTextObject {"hint":"Scene object that has the Text component to update (inside the existing Frame)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Manipulatable Objects"}'
+    - '// @input SceneObject object0 {"hint":"First scene object with InteractableManipulation + Interactable"}'
+    - '// @input SceneObject object1 {"hint":"Second scene object with InteractableManipulation + Interactable"}'
+    - '// @input SceneObject object2 {"hint":"Third scene object with InteractableManipulation + Interactable"}'
+    - '// @input SceneObject object3 {"hint":"Fourth scene object with InteractableManipulation + Interactable"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Logging"}'
+    - '// @input bool enableLogging {"hint":"Enable event logging (hover, select, release)"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onStart)"}'
+    - '// @ui {"widget":"group_end"}'

@@ -1,0 +1,73 @@
+- !<AssetImportMetadata/9c332704-4dee-4a42-bc89-d276ce31e1fe>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 3bcfb36b-3e22-4768-8e37-9056840572d8
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 3bcfb36b-3e22-4768-8e37-9056840572d8
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 5780004c-fdfd-40cd-b270-43057c6997bc
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/5780004c-fdfd-40cd-b270-43057c6997bc>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: bedf1ea1-fb6f-4b73-ba61-824c4af7087b
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    globalLeaderboard: false
+    itemPrefab: false
+    itemsCount: false
+    startPosition: false
+    step: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - itemPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      globalLeaderboard: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      itemsCount: !<float> 10.000000
+      startPosition: !<Vec3> {x: -10.000000, y: 0.000000, z: 0.000000}
+      step: !<Vec3> {x: -4.000000, y: 0.000000, z: 0.000000}
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA; font-weight: bold;\">Row pool</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Prefab and row count. Place this object under ScrollWindow content.</span>"}'
+    - '// @input Asset.ObjectPrefab itemPrefab {"hint":"The prefab object that will be instantiated for each row."}'
+    - '// @input AssignableType_1 globalLeaderboard {"hint":"Assign GlobalLeaderboard to use its itemsCount; otherwise uses itemsCount input."}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Number of rows when globalLeaderboard is not set</span>"}'
+    - "// @input float itemsCount = 10 {\"hint\":\"Number of rows when globalLeaderboard is not set; otherwise use globalLeaderboard's itemsCount.\"}"
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA; font-weight: bold;\">Position</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Local space (same units as ScrollWindow). First row position and step per row.</span>"}'
+    - '// @input vec3 startPosition = {-10,0,0} {"hint":"First row local position"}'
+    - '// @input vec3 step = {-4,0,0} {"hint":"Position step per row"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging (row creation, bind calls, etc.)"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)"}'

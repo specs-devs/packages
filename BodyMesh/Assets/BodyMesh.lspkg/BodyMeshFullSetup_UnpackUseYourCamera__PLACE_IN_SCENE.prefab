@@ -1,0 +1,305 @@
+- !<ObjectPrefab/10b90ef6-7aee-4044-834d-29d06b4c3c6c>
+  PackagePath: ""
+  objects:
+    - !<own> bfff7bc1-7915-4da0-80c7-5167c110f59b
+  LazyLoading: false
+  RetainAssets: true
+- !<RenderMeshVisual/0f0de85f-4a35-49a1-920a-233bb733f467>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> c00e6d0f-83c3-4e0d-822c-f219b0a0789c
+  Mesh: !<reference> 06f1a06f-97b5-4193-8aff-597954214667
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<SceneObject/219f6b83-9a8e-46a2-96fe-589891bcdc93>
+  PrefabRemaps:
+    []
+  Name: GUIDE_ReadAndDisable
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -70.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 9d9b6836-59a8-4b48-823b-7f637bad78e2
+- !<SceneObject/34ae0a2a-bb71-47d9-ab49-e7a43fdee552>
+  PrefabRemaps:
+    []
+  Name: 3D Body Tracking
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> f4f7ec7a-87a6-4e6d-9a0d-ff4e83909b5b
+  Components:
+    - !<own> db597480-fd14-425a-b7ec-a6fa0453c314
+- !<SceneObject/39d1bea2-ac64-4fd8-8278-47ca1cc2ec29>
+  PrefabRemaps:
+    []
+  Name: Camera
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 40.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> c64f4926-4df9-4070-b941-17f71ef5a798
+  Components:
+    - !<own> 9ca15670-8dfd-4c8e-bf54-7b87526d876e
+    - !<own> c901ddb0-9099-4d3d-9967-0012d46330f7
+- !<Camera/9ca15670-8dfd-4c8e-bf54-7b87526d876e>
+  PrefabRemaps:
+    []
+  Name: Camera
+  Enabled: true
+  renderLayer: 1
+  MipmapLevel: 0
+  RenderOrder: 0
+  Size: 20.000000
+  Near: 1.000000
+  Far: 1000.000000
+  Fov: 63.541019
+  ClearColor: !<CameraClearColor>
+    Mode: None
+    Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+    InputTexture: !<reference> 00000000-0000-0000-0000-000000000000
+  ClearDepth: !<CameraClearDepth>
+    Mode: Value
+    Value: 1.000000
+    InputTexture: !<reference> 00000000-0000-0000-0000-000000000000
+  Aspect: 1.000000
+  CameraType: Perspective
+  DepthMode: Regular
+  DeviceProperty: All
+  AspectPreset: Custom
+  OitLayers: NoOit
+  RenderTarget: !<reference> 923415f5-4245-4675-ade1-6d69d6d23e71
+  DepthStencilRenderTarget: !<reference> 00000000-0000-0000-0000-000000000000
+  MaskTexture: !<reference> 00000000-0000-0000-0000-000000000000
+  RayTracing: !<reference> 00000000-0000-0000-0000-000000000000
+  DevicePropertiesSource: !<reference> 00000000-0000-0000-0000-000000000000
+- !<Text/9d9b6836-59a8-4b48-823b-7f637bad78e2>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Left
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: "This package shows an example of body mesh set up.   Please make sure that you do not have duplicate cameras in the scene, this set up includes one.   Feel free to unpack or recreate the prefab with the same setup.   Whereas the whole mesh will be mapped to the tracked body, is highly suggested to keep it as reference and taking advantage of attaching point for accessories and so on.   Build on Specs and look at a human. "
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  SizeToFit: false
+  FontSize: 48
+  Font: !<reference> 00000000-0000-0000-0000-000000000000
+  LayoutRect:
+    left: -10.000000
+    bottom: -2.250000
+    right: 10.000000
+    top: 2.250000
+  OverflowVertical: Overflow
+  OverflowHorizontal: Wrap
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlpha
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: true
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.016800, y: 0.198352, z: 1.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.500000
+      bottom: 0.500000
+      right: 0.500000
+      top: 0.500000
+    CornerRadius: 1.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false
+- !<SceneObject/bfff7bc1-7915-4da0-80c7-5167c110f59b>
+  PrefabRemaps:
+    - 0f0de85f-4a35-49a1-920a-233bb733f467: 0f0de85f-4a35-49a1-6df5-dcc448cc0b98
+    - 219f6b83-9a8e-46a2-96fe-589891bcdc93: a50af2c8-886b-49dc-b6ed-bdf42525db0f
+    - 34ae0a2a-bb71-47d9-ab49-e7a43fdee552: 34ae0a2a-bb71-47d9-54b6-185bc0211aad
+    - 39d1bea2-ac64-4fd8-8278-47ca1cc2ec29: 39d1bea2-ac64-4fd8-7d87-b835e33d13d6
+    - 9ca15670-8dfd-4c8e-bf54-7b87526d876e: 9ca15670-8dfd-4c8e-40ab-8478ad927891
+    - 9d9b6836-59a8-4b48-823b-7f637bad78e2: cacb38e7-2e29-49d6-a266-c2575b862bd5
+    - bfff7bc1-7915-4da0-80c7-5167c110f59b: bfff7bc1-7915-4da0-7f38-ae983eef0a64
+    - c64f4926-4df9-4070-b941-17f71ef5a798: c64f4926-4df9-4070-46be-e808e10a5867
+    - c901ddb0-9099-4d3d-9967-0012d46330f7: c901ddb0-9099-4d3d-6698-ffed2b9ccf08
+    - db597480-fd14-425a-b7ec-a6fa0453c314: db597480-fd14-425a-4813-5905fbac3ceb
+    - f4f7ec7a-87a6-4e6d-9a0d-ff4e83909b5b: f4f7ec7a-87a6-4e6d-65f2-00b17c6f64a4
+  Name: BodyMeshFullSetup_UnpackUseYourCamera__PLACE_IN_SCENE
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 39d1bea2-ac64-4fd8-8278-47ca1cc2ec29
+    - !<own> 219f6b83-9a8e-46a2-96fe-589891bcdc93
+  Components:
+    []
+- !<SceneObject/c64f4926-4df9-4070-b941-17f71ef5a798>
+  PrefabRemaps:
+    []
+  Name: Effects
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 34ae0a2a-bb71-47d9-ab49-e7a43fdee552
+  Components:
+    []
+- !<DeviceTracking/c901ddb0-9099-4d3d-9967-0012d46330f7>
+  PrefabRemaps:
+    []
+  Name: Device Tracking
+  Enabled: true
+  DeviceTrackingMode: World
+  RotationOptions: !<RotationOptions>
+    InvertRotation: false
+  SurfaceOptions: !<SurfaceOptions>
+    EnhanceWithNativeAR: false
+- !<ObjectTracking3D/db597480-fd14-425a-b7ec-a6fa0453c314>
+  PrefabRemaps:
+    []
+  Name: Object Tracking 3D
+  Enabled: true
+  ObjectIndex: 0
+  TrackingMode: ProportionsAndPose
+  TrackPosition: true
+  TrackingAsset: !<reference> 2f902afc-56db-4c2d-96e4-39263f4f6979
+  AttachmentLabels:
+    - Hips
+    - Spine
+    - Spine1
+    - Spine2
+    - Neck
+    - Head
+    - LeftShoulder
+    - LeftArm
+    - LeftForeArm
+    - LeftHand
+    - RightShoulder
+    - RightArm
+    - RightForeArm
+    - RightHand
+    - LeftUpLeg
+    - LeftLeg
+    - LeftFoot
+    - LeftToeBase
+    - RightUpLeg
+    - RightLeg
+    - RightFoot
+    - RightToeBase
+  AttachedObjects:
+    - !<reference> 00000000-0000-0000-0000-000000000000
+    - !<reference> 00000000-0000-0000-0000-000000000000
+    - !<reference> 00000000-0000-0000-0000-000000000000
+    - !<reference> 00000000-0000-0000-0000-000000000000
+    - !<reference> 00000000-0000-0000-0000-000000000000
+    - !<reference> 00000000-0000-0000-0000-000000000000
+    - !<reference> 00000000-0000-0000-0000-000000000000
+    - !<reference> 00000000-0000-0000-0000-000000000000
+    - !<reference> 00000000-0000-0000-0000-000000000000
+    - !<reference> 00000000-0000-0000-0000-000000000000
+    - !<reference> 00000000-0000-0000-0000-000000000000
+    - !<reference> 00000000-0000-0000-0000-000000000000
+    - !<reference> 00000000-0000-0000-0000-000000000000
+    - !<reference> 00000000-0000-0000-0000-000000000000
+    - !<reference> 00000000-0000-0000-0000-000000000000
+    - !<reference> 00000000-0000-0000-0000-000000000000
+    - !<reference> 00000000-0000-0000-0000-000000000000
+    - !<reference> 00000000-0000-0000-0000-000000000000
+    - !<reference> 00000000-0000-0000-0000-000000000000
+    - !<reference> 00000000-0000-0000-0000-000000000000
+    - !<reference> 00000000-0000-0000-0000-000000000000
+    - !<reference> 00000000-0000-0000-0000-000000000000
+- !<SceneObject/f4f7ec7a-87a6-4e6d-9a0d-ff4e83909b5b>
+  PrefabRemaps:
+    []
+  Name: Body Mesh
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 0f0de85f-4a35-49a1-920a-233bb733f467

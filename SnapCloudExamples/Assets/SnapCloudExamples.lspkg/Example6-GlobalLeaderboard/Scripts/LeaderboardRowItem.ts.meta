@@ -1,0 +1,63 @@
+- !<AssetImportMetadata/b2197246-63d0-4378-8484-0d71a0baea66>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 6e6b07c8-1974-4538-a910-79540e8de7ca
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 6e6b07c8-1974-4538-a910-79540e8de7ca
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 7ebe7688-1dc7-4acb-9032-0dbfaea378b8
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/7ebe7688-1dc7-4acb-9032-0dbfaea378b8>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: 7f815740-3f6e-40c0-b6bf-f5dcc97d2eac
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    displaynameText: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    rankText: false
+    scoreText: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - rankText: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      displaynameText: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      scoreText: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA; font-weight: bold;\">Text targets</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">SceneObjects with Text component for rank, display name, and score. Used by bind(entry).</span>"}'
+    - '// @input SceneObject rankText {"hint":"SceneObject with Text component for rank display (e.g. #1)"}'
+    - '// @input SceneObject displaynameText {"hint":"SceneObject with Text component for display name"}'
+    - '// @input SceneObject scoreText {"hint":"SceneObject with Text component for score"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging (animation cycles, events, etc.)"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)"}'

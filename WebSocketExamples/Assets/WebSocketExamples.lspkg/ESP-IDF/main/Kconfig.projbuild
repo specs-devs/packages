@@ -1,0 +1,52 @@
+menu "Application Configuration"
+
+    menu "WiFi Configuration"
+        config WIFI_SSID
+            string "WiFi SSID"
+            default "myssid"
+            help
+                SSID of the WiFi network to connect to.
+
+        config WIFI_PASSWORD
+            string "WiFi Password"
+            default "mypassword"
+            help
+                Password of the WiFi network to connect to.
+
+        config STATIC_IP_ENABLE
+            bool "Use Static IP"
+            default n
+            help
+                Enable this to set a static IP address.
+
+        config STATIC_IP_ADDR
+            depends on STATIC_IP_ENABLE
+            string "Static IP Address"
+            default "192.168.0.123"
+            help
+                Static IP address to assign to the ESP32.
+
+        config STATIC_IP_NETMASK
+            depends on STATIC_IP_ENABLE
+            string "Subnet Mask"
+            default "255.255.255.0"
+            help
+                Subnet mask for the static IP.
+
+        config STATIC_IP_GW
+            depends on STATIC_IP_ENABLE
+            string "Gateway Address"
+            default "192.168.0.1"
+            help
+                Gateway address.
+    endmenu
+
+    menu "LED Configuration"
+        config LED_GPIO
+            int "LED GPIO Number"
+            default 2
+            help
+                GPIO number for the onboard LED.
+    endmenu
+
+endmenu

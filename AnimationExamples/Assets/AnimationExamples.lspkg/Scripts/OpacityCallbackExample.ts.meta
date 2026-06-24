@@ -1,0 +1,65 @@
+- !<AssetImportMetadata/b9a64b17-1b3d-4c10-8a91-9abc5e065ef3>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 6c468a83-910e-40b3-a1e4-bafea3a17cf9
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 6c468a83-910e-40b3-a1e4-bafea3a17cf9
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 0f15df8c-09a2-4b00-b44f-f8c0d45cb342
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/0f15df8c-09a2-4b00-b44f-f8c0d45cb342>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: 775a078c-30cd-4992-85fd-7690d4f6e9f4
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    endOpacity: false
+    startOpacity: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - startOpacity: !<float> 0.000000
+      endOpacity: !<float> 1.000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #F59E0B;\">Setup required: AnimationPlayer + Frame</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #F59E0B; font-size: 11px;\">1. Add an AnimationPlayer component on this SceneObject.</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #F59E0B; font-size: 11px;\">2. Add one Clip and configure Name / Playback Mode / Speed / Weight / Range.</span>"}'
+    - "// @ui {\"widget\":\"label\", \"label\":\"<span style=\\\"color: #F59E0B; font-size: 11px;\\\">3. Leave the Clip's Animation Asset empty to use this script's runtime curve.</span>\"}"
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #F59E0B; font-size: 11px;\">4. Add a SpectaclesUIKit Frame ScriptComponent on this SceneObject — its opacity cascades to Button children automatically.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Opacity Curve</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Start → end alpha (0..1) applied to the Frame and every Text in the stack each frame.</span>"}'
+    - '// @input float startOpacity {"widget":"slider", "min":0, "max":1, "step":0.01}'
+    - '// @input float endOpacity = 1 {"widget":"slider", "min":0, "max":1, "step":0.01}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging (animation cycles, events, etc.)"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)"}'

@@ -1,0 +1,77 @@
+- !<AssetImportMetadata/ebabd50f-cb76-4d21-8cf1-9c541ffee9e7>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 34de7707-1dd5-4d7a-a286-ffbd53aacbb4
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 34de7707-1dd5-4d7a-a286-ffbd53aacbb4
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> dac6bf4d-b3f1-4dfd-b749-4974127e951b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/dac6bf4d-b3f1-4dfd-b749-4974127e951b>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: 95ca7bee-430c-4512-aca8-1234178a303a
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    duration: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    endZ: false
+    overshootZ: false
+    startZ: false
+    target: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - target: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      startZ: !<float> 0.000000
+      overshootZ: 1.200000
+      endZ: !<float> 1.000000
+      duration: 0.600000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #F59E0B;\">Setup required: AnimationPlayer</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #F59E0B; font-size: 11px;\">1. Add an AnimationPlayer component on this SceneObject.</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #F59E0B; font-size: 11px;\">2. Add one Clip and configure Name / Playback Mode / Speed / Weight / Range.</span>"}'
+    - "// @ui {\"widget\":\"label\", \"label\":\"<span style=\\\"color: #F59E0B; font-size: 11px;\\\">3. Leave the Clip's Animation Asset empty to use the runtime curve below — or drop in an authored .animationAsset to override.</span>\"}"
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Target</span>"}'
+    - // @input SceneObject target
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Push Poses (absolute Z position)</span>"}'
+    - "// @ui {\"widget\":\"label\", \"label\":\"<span style=\\\"color: #94A3B8; font-size: 11px;\\\">TransformPosition is absolute — set values relative to the target's parent space, not its current local offset.</span>\"}"
+    - '// @input float startZ {"hint":"Start Z (absolute)."}'
+    - '// @input float overshootZ = 1.2 {"hint":"Overshoot peak Z — how far past the end the push briefly reaches."}'
+    - '// @input float endZ = 1 {"hint":"End Z (absolute) — settle position after the overshoot."}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Timing</span>"}'
+    - '// @input float duration = 0.6 {"hint":"Total duration (seconds) of the programmatic curve.", "widget":"slider", "min":0.1, "max":3, "step":0.05}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging (animation cycles, events, etc.)"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)"}'

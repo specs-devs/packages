@@ -1,0 +1,55 @@
+- !<AssetImportMetadata/765a9737-982b-4c37-a7e3-f8c5674d21d9>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 9ebb0f0b-85f9-4112-9c70-c1935e0eb236
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 9ebb0f0b-85f9-4112-9c70-c1935e0eb236
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 2620a306-2b2b-48b3-8094-e03de9077ee7
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/2620a306-2b2b-48b3-8094-e03de9077ee7>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: 8a57de69-48b0-417d-9aa1-744e3998d694
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #F59E0B;\">Setup required: AnimationPlayer</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #F59E0B; font-size: 11px;\">1. Add an AnimationPlayer component on this SceneObject.</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #F59E0B; font-size: 11px;\">2. Add one Clip — set its Name, drop an authored .animationAsset into its Animation Asset slot, and configure Playback Mode / Speed / Weight / Range.</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #F59E0B; font-size: 11px;\">This script plays the first configured clip on awake.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging (animation cycles, events, etc.)"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)"}'

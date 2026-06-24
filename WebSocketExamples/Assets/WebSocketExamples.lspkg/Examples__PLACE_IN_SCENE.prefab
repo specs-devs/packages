@@ -1,0 +1,399 @@
+- !<ObjectPrefab/23a5c29c-2164-4139-9f33-fa9e56f5094f>
+  PackagePath: ""
+  objects:
+    - !<own> c355dff3-fba1-41c1-99b0-8ec9b2c9dd25
+  LazyLoading: false
+  RetainAssets: true
+  PreviewEnvironment: !<reference> 00000000-0000-0000-0000-000000000000
+- !<RenderMeshVisual/06d6c5da-397a-4c4e-ac41-bc8c2959452c>
+  PrefabRemaps:
+    []
+  Name: Render Mesh Visual
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 0513b198-9eaa-4e6d-b055-ce6820c1faa5
+  Mesh: !<reference> 1fb78412-e19b-4c3c-a058-4c8c56ed8f04
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<SceneObject/30f27c09-9e0f-46fa-b316-9502497ec4a8>
+  PrefabRemaps:
+    []
+  Name: Guide_ReadAndDisable
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -80.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> a176b73f-e29e-4529-8f94-d4e56d7cd359
+- !<SceneObject/39b3c3e5-0081-4f4e-a73d-109316358165>
+  PrefabRemaps:
+    []
+  Name: IMUCube
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 983f15ee-8d97-42f5-b2bc-d0d17f4edc35
+  Components:
+    - !<own> f7dc1fae-7ee7-410b-8344-45a498283307
+- !<SceneObject/3e5d9cb3-3709-45d1-ab5c-4a0588900898>
+  PrefabRemaps:
+    []
+  Name: TextEcho
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> f4f11e18-3dc3-4e6d-99af-5bc9ec682e8a
+- !<Text/82929bec-d627-4ec4-b353-01fbf1eba485>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: Text
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableRichText: false
+  SizeToFit: false
+  FontSize: 48.000000
+  FontSource: !<reference> 00000000-0000-0000-0000-000000000000
+  FontWeight: 400
+  Italic: false
+  LayoutRect:
+    left: -7.500000
+    bottom: -2.250000
+    right: 7.500000
+    top: 2.250000
+  DebugRenderLayoutRect: false
+  OverflowVertical: Overflow
+  OverflowHorizontal: Overflow
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlpha
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.000000
+      bottom: 0.000000
+      right: 0.000000
+      top: 0.000000
+    CornerRadius: 0.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false
+- !<SceneObject/983f15ee-8d97-42f5-b2bc-d0d17f4edc35>
+  PrefabRemaps:
+    []
+  Name: Box
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 10.000000, y: 10.000000, z: 10.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 06d6c5da-397a-4c4e-ac41-bc8c2959452c
+- !<SceneObject/9e5cec73-c91a-4544-ab42-7a37afc33206>
+  PrefabRemaps:
+    []
+  Name: IMU
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 39b3c3e5-0081-4f4e-a73d-109316358165
+    - !<own> cbe353bc-b4e3-4913-a1d0-8ed3d9de4702
+  Components:
+    []
+- !<Text/a176b73f-e29e-4529-8f94-d4e56d7cd359>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: |-
+    Please read the README.md of the package to get started with this examples.   Example 1: Text Echo 
+    (Testing Connectivity)
+    
+    Example 2: IMU Visualization (Real-Time Sensor Data)
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableRichText: false
+  SizeToFit: false
+  FontSize: 48.000000
+  FontSource: !<reference> 00000000-0000-0000-0000-000000000000
+  FontWeight: 400
+  Italic: false
+  LayoutRect:
+    left: -12.000000
+    bottom: -2.250000
+    right: 12.000000
+    top: 2.250000
+  DebugRenderLayoutRect: false
+  OverflowVertical: Overflow
+  OverflowHorizontal: Wrap
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlpha
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: true
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.016800, y: 0.198352, z: 1.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.500000
+      bottom: 0.500000
+      right: 0.500000
+      top: 0.500000
+    CornerRadius: 1.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false
+- !<ScriptComponent/c2b42a60-6147-4312-acf7-8e1b02565e9b>
+  PrefabRemaps:
+    []
+  Name: IMUData
+  Enabled: true
+  ScriptAsset: !<reference> 542642a6-7ca6-4130-b7a0-4b9ab82b360f
+  ScriptInputsDefault:
+    enableLogging: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      internetModule: !<reference.InternetModule> 25282394-02a1-472f-b1bd-940025a03731
+      ipAddress: "ws://OUR-IP-ADDRESS/ws"
+      screenText: !<reference.Text> 82929bec-d627-4ec4-b353-01fbf1eba485
+      cube: !<MappingBased.AssignableType_1> f7dc1fae-7ee7-410b-8344-45a498283307
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/c355dff3-fba1-41c1-99b0-8ec9b2c9dd25>
+  PrefabRemaps:
+    - 06d6c5da-397a-4c4e-ac41-bc8c2959452c: 06d6c5da-397a-4c4e-53be-4373d6a6bad3
+    - 30f27c09-9e0f-46fa-b316-9502497ec4a8: 30f27c09-9e0f-46fa-4ce9-6afdb6813b57
+    - 39b3c3e5-0081-4f4e-a73d-109316358165: 39b3c3e5-0081-4f4e-58c2-ef6ce9ca7e9a
+    - 3e5d9cb3-3709-45d1-ab5c-4a0588900898: 3e5d9cb3-3709-45d1-54a3-b5fa776ff767
+    - 82929bec-d627-4ec4-b353-01fbf1eba485: 82929bec-d627-4ec4-4cac-fe040e145b7a
+    - 983f15ee-8d97-42f5-b2bc-d0d17f4edc35: 983f15ee-8d97-42f5-4d43-2f2e80b123ca
+    - 9e5cec73-c91a-4544-ab42-7a37afc33206: 9e5cec73-c91a-4544-54bd-85c8503ccdf9
+    - a176b73f-e29e-4529-8f94-d4e56d7cd359: a176b73f-e29e-4529-706b-2b1a92832ca6
+    - c2b42a60-6147-4312-acf7-8e1b02565e9b: c2b42a60-6147-4312-5308-71e4fda9a164
+    - c355dff3-fba1-41c1-99b0-8ec9b2c9dd25: c355dff3-fba1-41c1-664f-71364d3622da
+    - cbe353bc-b4e3-4913-a1d0-8ed3d9de4702: cbe353bc-b4e3-4913-5e2f-712c2621b8fd
+    - dba11662-61a2-419d-ac5f-97dac3617ed1: dba11662-61a2-419d-53a0-68253c9e812e
+    - f4f11e18-3dc3-4e6d-99af-5bc9ec682e8a: f4f11e18-3dc3-4e6d-6650-a4361397d175
+    - f7dc1fae-7ee7-410b-8344-45a498283307: f7dc1fae-7ee7-410b-7cbb-ba5b67d7ccf8
+  Name: Examples__PLACE_IN_SCENE
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 3e5d9cb3-3709-45d1-ab5c-4a0588900898
+    - !<own> 9e5cec73-c91a-4544-ab42-7a37afc33206
+    - !<own> 30f27c09-9e0f-46fa-b316-9502497ec4a8
+  Components:
+    []
+- !<SceneObject/cbe353bc-b4e3-4913-a1d0-8ed3d9de4702>
+  PrefabRemaps:
+    []
+  Name: IMUData
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> dba11662-61a2-419d-ac5f-97dac3617ed1
+  Components:
+    - !<own> c2b42a60-6147-4312-acf7-8e1b02565e9b
+- !<SceneObject/dba11662-61a2-419d-ac5f-97dac3617ed1>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 82929bec-d627-4ec4-b353-01fbf1eba485
+- !<ScriptComponent/f4f11e18-3dc3-4e6d-99af-5bc9ec682e8a>
+  PrefabRemaps:
+    []
+  Name: TextEcho
+  Enabled: true
+  ScriptAsset: !<reference> 82f1d943-6a77-4649-b217-2a09aea3454c
+  ScriptInputsDefault:
+    enableLogging: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      internetModule: !<reference.InternetModule> 25282394-02a1-472f-b1bd-940025a03731
+      ipAddress: "ws://YOUR-IP-ADDRESS/ws"
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/f7dc1fae-7ee7-410b-8344-45a498283307>
+  PrefabRemaps:
+    []
+  Name: IMUCube
+  Enabled: true
+  ScriptAsset: !<reference> 609f0566-3b6d-4595-bc55-4bffb1c76a20
+  ScriptInputsDefault:
+    camObj: true
+    enableLogging: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      camObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      {}

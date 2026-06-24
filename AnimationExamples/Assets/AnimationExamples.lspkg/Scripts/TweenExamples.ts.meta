@@ -1,0 +1,57 @@
+- !<AssetImportMetadata/efa2dfe1-a86f-435e-be58-51a9b7158476>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 22871725-2111-4845-a972-fd19c6f258e3
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 22871725-2111-4845-a972-fd19c6f258e3
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> e668ee5f-6482-4338-b2b1-1257e7c18a7c
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/e668ee5f-6482-4338-b2b1-1257e7c18a7c>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: fbbb319c-7d32-4d90-ba69-7e276a30bcee
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    animationAsset: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - animationAsset: !<reference.AnimationAsset> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Animation Asset</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Used by exampleFromAnimationAsset(). Drop an authored .animationAsset here.</span>"}'
+    - '// @input Asset.AnimationAsset animationAsset {"hint":"AnimationAsset created in the GUI; consumed by exampleFromAnimationAsset()."}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging (animation cycles, events, etc.)"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)"}'

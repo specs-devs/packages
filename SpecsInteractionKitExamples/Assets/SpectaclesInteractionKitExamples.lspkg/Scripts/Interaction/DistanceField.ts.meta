@@ -1,0 +1,113 @@
+- !<AssetImportMetadata/4e4c9108-9f1a-11c2-5803-c3134bce5250>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 0b115458-6c2c-4720-8a2e-d988601b65be
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 0b115458-6c2c-4720-8a2e-d988601b65be
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 4acb7021-4d4e-4eae-ae2a-87a97745f6b1
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/4acb7021-4d4e-4eae-ae2a-87a97745f6b1>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: 66031f5b-06aa-4ecd-a7d5-b5d108f24193
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    closedLoop: false
+    clusterRadius: false
+    controlPoints: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    instancesPerCluster: false
+    interpolationSteps: false
+    lineColor: false
+    lineMaterial: false
+    lineWidth: false
+    particlePrefab: false
+    projectionPrefab: false
+    pushDistance: false
+    pushSmoothSpeed: false
+    pushStrength: false
+    referenceObject: false
+    showCurve: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - controlPoints: !<reference.SceneObject[]>
+        []
+      interpolationSteps: !<float> 20.000000
+      closedLoop: false
+      particlePrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      instancesPerCluster: !<float> 8.000000
+      clusterRadius: !<float> 5.000000
+      referenceObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      projectionPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      pushDistance: !<float> 15.000000
+      pushStrength: !<float> 8.000000
+      pushSmoothSpeed: !<float> 6.000000
+      showCurve: true
+      lineMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      lineColor: !<Vec3> {x: 0.200000, y: 0.600000, z: 1.000000}
+      lineWidth: 0.400000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">DistanceField – gravitational curve field</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Control points define a Catmull-Rom path. Particle clusters spawn around each point. The reference object projects onto the path and drives a gravitational repulsion field.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Curve"}'
+    - '// @input SceneObject[] controlPoints {"hint":"Scene objects that define the Catmull-Rom galaxy path (minimum 2)"}'
+    - '// @input number interpolationSteps = "20" {"hint":"Interpolation steps between each pair of control points — higher = smoother curve"}'
+    - '// @input bool closedLoop {"hint":"Close the curve back to the first control point"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Particle Clusters"}'
+    - '// @input Asset.ObjectPrefab particlePrefab {"hint":"Prefab to instantiate inside each cluster sphere"}'
+    - '// @input number instancesPerCluster = "8" {"hint":"Number of particle instances spawned per control point"}'
+    - '// @input number clusterRadius = "5.0" {"hint":"Radius of the imaginary spawn sphere around each control point (cm)"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Reference Object"}'
+    - '// @input SceneObject referenceObject {"hint":"The object whose projection onto the curve drives the field (the spaceship)"}'
+    - '// @input Asset.ObjectPrefab projectionPrefab {"hint":"Prefab placed at the projection point on the curve (optional — the red spaceship indicator)"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Gravitational Field"}'
+    - '// @input number pushDistance = "15.0" {"hint":"Sphere of influence: particles within this distance (cm) are repelled"}'
+    - '// @input number pushStrength = "8.0" {"hint":"Maximum displacement magnitude when the projection point is at distance 0 (cm)"}'
+    - '// @input number pushSmoothSpeed = "6.0" {"hint":"Smoothing speed for particle return to rest (higher = snappier)"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Curve Visual"}'
+    - '// @input bool showCurve = true {"hint":"Render the Catmull-Rom path as a visible line"}'
+    - '// @input Asset.Material lineMaterial {"hint":"Material used to render the curve line (assign a line/unlit material)"}'
+    - '// @input vec3 lineColor = "{0.2, 0.6, 1.0}" {"hint":"RGB colour of the curve line", "widget":"color"}'
+    - '// @input number lineWidth = "0.4" {"hint":"Width of the curve line (cm)"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Logging"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging (spawn counts, projection updates)"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart)"}'
+    - '// @ui {"widget":"group_end"}'

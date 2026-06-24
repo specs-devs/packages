@@ -1,0 +1,78 @@
+- !<AssetImportMetadata/eba5459c-d371-48f9-a4b4-5e32f78356bc>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> a9f7f098-40a7-4112-8364-4dc55b68b126
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> a9f7f098-40a7-4112-8364-4dc55b68b126
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> f83eb009-dfb1-421b-9e8e-f06609a55a0d
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/f83eb009-dfb1-421b-9e8e-f06609a55a0d>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: 9264d99d-287c-40ae-8f65-e8901048b637
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    endPosition: false
+    eventName: false
+    eventTime: false
+    startPosition: false
+    target: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - target: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      startPosition: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
+      endPosition: !<Vec3> {x: 1.000000, y: 0.000000, z: 0.000000}
+      eventName: midpoint
+      eventTime: 0.500000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #F59E0B;\">Setup required: AnimationPlayer</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #F59E0B; font-size: 11px;\">1. Add an AnimationPlayer component on this SceneObject.</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #F59E0B; font-size: 11px;\">2. Add one Clip and configure Name / Playback Mode / Speed / Weight / Range.</span>"}'
+    - "// @ui {\"widget\":\"label\", \"label\":\"<span style=\\\"color: #F59E0B; font-size: 11px;\\\">3. Leave the Clip's Animation Asset empty to use the runtime curve below — or drop in an authored .animationAsset to override.</span>\"}"
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Target</span>"}'
+    - // @input SceneObject target
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Slide Poses (absolute position)</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">TransformPosition is absolute. Both vec3s drive X / Y / Z independently — leave a component equal in both poses to keep that axis still.</span>"}'
+    - '// @input vec3 startPosition = "{0, 0, 0}"'
+    - '// @input vec3 endPosition = "{1, 0, 0}"'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Mid-Clip Event</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Named event fired at a specific time inside the runtime curve — sync sounds, particles, state changes here.</span>"}'
+    - '// @input string eventName = "midpoint"'
+    - '// @input float eventTime = 0.5 {"hint":"Timestamp (seconds) where the event fires.", "widget":"slider", "min":0, "max":1, "step":0.05}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging (animation cycles, events, etc.)"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)"}'

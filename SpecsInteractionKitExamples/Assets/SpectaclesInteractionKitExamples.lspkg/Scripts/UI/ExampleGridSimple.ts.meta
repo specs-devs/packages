@@ -1,0 +1,110 @@
+- !<AssetImportMetadata/fc09a089-5ed2-14d4-3d59-6c828fe77f3b>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> f76df38f-7057-43a5-8853-d4970db7fb4a
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> f76df38f-7057-43a5-8853-d4970db7fb4a
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> cf082e7f-6854-49ee-85e0-1858887f2e6a
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/cf082e7f-6854-49ee-85e0-1858887f2e6a>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: 9931f732-7a8f-4bc5-ad15-0778bc95fbae
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    buttonHeight: false
+    buttonImages: false
+    buttonStyle: false
+    buttonWidth: false
+    columns: false
+    enableLogging: false
+    frameAppearance: false
+    positionX: false
+    positionY: false
+    positionZ: false
+    rows: false
+    showCloseButton: false
+    showFollowButton: false
+    spacing: false
+    testMode: false
+    theme: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - rows: !<float> 2.000000
+      columns: !<float> 4.000000
+      buttonWidth: !<float> 10.000000
+      buttonHeight: !<float> 10.000000
+      spacing: 0.500000
+      theme: Default
+      buttonStyle: PrimaryNeutral
+      testMode: true
+      buttonImages: !<reference.Texture[]>
+        []
+      positionX: !<float> 0.000000
+      positionY: !<float> 0.000000
+      positionZ: !<float> -110.000000
+      frameAppearance: Small
+      showCloseButton: true
+      showFollowButton: true
+      enableLogging: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA; font-size: 13px;\">Programmatic UI Component</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Simple adaptable grid — no pagination, no drag.<br/>Populate <code>items[]</code> before Play, or use <code>addItem()</code> at runtime.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Grid"}'
+    - '// @input float rows = 2 {"hint":"Number of rows"}'
+    - '// @input float columns = 4 {"hint":"Number of columns"}'
+    - '// @input float buttonWidth = 10 {"hint":"Button width in cm"}'
+    - '// @input float buttonHeight = 10 {"hint":"Button height in cm"}'
+    - '// @input float spacing = 0.5 {"hint":"Gap between buttons in cm"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Theme"}'
+    - '// @input string theme = "Dark" {"hint":"Visual theme applied to buttons and frame. Default uses the buttonStyle field; others override it.", "widget":"combobox", "values":[{"label":"Default", "value":"Default"}, {"label":"Dark", "value":"Dark"}, {"label":"Bright", "value":"Bright"}, {"label":"Focus", "value":"Focus"}]}'
+    - '// @input string buttonStyle = "PrimaryNeutral" {"hint":"Button style when theme is Default — PrimaryNeutral, Primary, Secondary, Ghost"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Test Mode"}'
+    - '// @input bool testMode = true {"hint":"Fill the grid with mock items automatically. Uncheck to start empty — populate via items[] or addItem()."}'
+    - '// @input Asset.Texture[] buttonImages = {} {"hint":"Image pool for test mode — sparsely distributed across items. Leave empty for text-only items."}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Position"}'
+    - '// @input float positionX {"hint":"World X position (0 = horizontal centre)"}'
+    - '// @input float positionY {"hint":"World Y position (0 = camera height)"}'
+    - '// @input float positionZ = -110 {"hint":"Distance from camera in cm (negative = in front)"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Frame"}'
+    - '// @input string frameAppearance = "Small" {"hint":"Frame appearance style — Small, Medium, or Large"}'
+    - '// @input bool showCloseButton = true {"hint":"Show the × close button on the frame"}'
+    - '// @input bool showFollowButton = true {"hint":"Show the follow / grip button on the frame"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Logging"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @ui {"widget":"group_end"}'

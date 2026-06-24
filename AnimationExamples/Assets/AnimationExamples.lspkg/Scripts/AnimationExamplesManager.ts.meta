@@ -1,0 +1,58 @@
+- !<AssetImportMetadata/3ad35de7-0f9e-4cc5-9837-512928cd83d6>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 00493d31-f262-4820-b663-2d0cd65ae6ab
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 00493d31-f262-4820-b663-2d0cd65ae6ab
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> b4cdbc7c-49d8-40f6-b940-e8f701884a0c
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/b4cdbc7c-49d8-40f6-b940-e8f701884a0c>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: e8bccd05-968d-4c74-8f4e-118a578f12d4
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    animationPrefabs: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - animationPrefabs: !<reference.ObjectPrefab[]>
+        []
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Animations</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Drag the 7 example prefabs from AnimationExamples.lspkg/Prefabs/ in any order.</span>"}'
+    - '// @input Asset.ObjectPrefab[] animationPrefabs {"hint":"The animation example prefabs to spawn and cycle through."}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging (spawn steps, cycle events, label updates, etc.)"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onDestroy, etc.)"}'

@@ -1,0 +1,122 @@
+- !<AssetImportMetadata/db24ed73-c1c2-add0-7be7-19c5af583c1d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 18889989-e0e5-4577-87c5-f7fd42f87fbf
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 18889989-e0e5-4577-87c5-f7fd42f87fbf
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> e548eaac-1849-4560-ba28-e176a65fd75d
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/e548eaac-1849-4560-ba28-e176a65fd75d>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: 931494d6-abb3-4224-b1ea-8b4b77e60a98
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    animDuration: false
+    bodyTextSize: false
+    contentInset: false
+    fontBold: false
+    fontLight: false
+    fontMedium: false
+    fontRegular: false
+    frameAppearance: false
+    frameAutoHide: false
+    framePadding: false
+    homeFrameSize: false
+    navTextSize: false
+    navWidth: false
+    positionX: false
+    positionY: false
+    positionZ: false
+    screenAbSize: false
+    screenCSize: false
+    showCloseButton: false
+    showFollowButton: false
+    titleTextSize: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - frameAppearance: Large
+      framePadding: !<Vec2> {x: 1.000000, y: 1.000000}
+      contentInset: !<Vec2> {x: 1.500000, y: 1.000000}
+      showCloseButton: true
+      showFollowButton: true
+      frameAutoHide: false
+      homeFrameSize: !<Vec2> {x: 33.000000, y: 18.000000}
+      screenAbSize: !<Vec2> {x: 33.000000, y: 28.000000}
+      screenCSize: !<Vec2> {x: 33.000000, y: 35.000000}
+      animDuration: 0.400000
+      navWidth: !<float> 8.000000
+      positionX: !<float> 0.000000
+      positionY: !<float> 0.000000
+      positionZ: !<float> -110.000000
+      titleTextSize: !<float> 36.000000
+      bodyTextSize: !<float> 22.000000
+      navTextSize: !<float> 22.000000
+      fontLight: !<reference.Font> 00000000-0000-0000-0000-000000000000
+      fontRegular: !<reference.Font> 00000000-0000-0000-0000-000000000000
+      fontMedium: !<reference.Font> 00000000-0000-0000-0000-000000000000
+      fontBold: !<reference.Font> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA; font-size: 13px;\">Programmatic UI Component</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Runtime port of UIManager — no scene wiring. Adjust inputs and press Play.</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Frame resizes with animation. Side nav visible on Home and Screen C only.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Frame"}'
+    - "// @input string frameAppearance = \"Large\" {\"hint\":\"Frame appearance — 'Large' (far-field) or 'Small' (near-field)\"}"
+    - '// @input vec2 framePadding = {1,1} {"hint":"Frame chrome padding in cm"}'
+    - '// @input vec2 contentInset = {1.5,1} {"hint":"Inset between frame edge and content — X = left/right, Y = top/bottom (cm)"}'
+    - '// @input bool showCloseButton = true {"hint":"Show the × close button on the frame"}'
+    - '// @input bool showFollowButton = true {"hint":"Show the follow / grip button on the frame"}'
+    - '// @input bool frameAutoHide {"hint":"Auto-hide the frame handle bar when idle"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Screen Sizes"}'
+    - '// @input vec2 homeFrameSize = {33,18} {"hint":"Frame inner size for the Home state (cm)"}'
+    - '// @input vec2 screenAbSize = {33,28} {"hint":"Frame inner size for Screen A and B (cm)"}'
+    - '// @input vec2 screenCSize = {33,35} {"hint":"Frame inner size for Screen C — tall grid view (cm)"}'
+    - '// @input float animDuration = 0.4 {"hint":"Frame resize animation duration in seconds"}'
+    - '// @input float navWidth = 8 {"hint":"Width of the side navigation column in cm"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Position"}'
+    - // @input float positionX
+    - // @input float positionY
+    - '// @input float positionZ = -110 {"hint":"Distance from camera in cm (negative = in front)"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Typography"}'
+    - '// @input float titleTextSize = 36 {"hint":"Panel title text size"}'
+    - '// @input float bodyTextSize = 22 {"hint":"Body / button label text size"}'
+    - '// @input float navTextSize = 22 {"hint":"Side nav button label text size"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Font slots are optional — SpecsSans is auto-loaded when left empty.</span>"}'
+    - // @input Asset.Font fontLight
+    - // @input Asset.Font fontRegular
+    - // @input Asset.Font fontMedium
+    - // @input Asset.Font fontBold
+    - '// @ui {"widget":"group_end"}'
