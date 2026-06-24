@@ -1,0 +1,250 @@
+- !<AssetImportMetadata/546597d1-7ee3-87d3-dd2a-e71f6a61d5f4>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> 7d294d23-b55a-41f9-94e2-fe3a7acdf6ac
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> 7d294d23-b55a-41f9-94e2-fe3a7acdf6ac
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> 65f51558-b89f-402d-9646-b2650304ab48
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<SceneObject/0303c2ae-b75a-46e8-69a2-3354848b5a53>
+  PrefabRemaps:
+    []
+  Name: Image Tracking
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 4433e568-0fef-44c8-7286-4ff4dd95efd1
+  Components:
+    - !<own> 4c25e32b-18e9-47c2-62a8-5b9c7af860ab
+- !<ScriptComponent/153bd9ff-c695-46b0-677c-b5e06dfbe48e>
+  PrefabRemaps:
+    []
+  Name: ImageTrackingController
+  Enabled: true
+  ScriptAsset: !<reference> 1ee84c52-45e4-4174-88ae-231b441d3708
+  ScriptInputsDefault:
+    enableLogging: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      markerTrackingComponent: !<reference.MarkerTrackingComponent> 4c25e32b-18e9-47c2-62a8-5b9c7af860ab
+      resizeObjectArray: !<reference.SceneObject[]>
+        - !<reference> 4433e568-0fef-44c8-7286-4ff4dd95efd1
+      editEventCallbacks: true
+      customFunctionScript: !<reference.ScriptComponent> 942efb3d-6f80-418e-737a-2eb78d92de4f
+      onMarkerFoundFunctionNames: !<string[]>
+        - onMarkerFound
+      onMarkerLostFunctionNames: !<string[]>
+        - onMarkerLost
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/4433e568-0fef-44c8-7286-4ff4dd95efd1>
+  PrefabRemaps:
+    []
+  Name: Image
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 29.280960, y: 29.280960, z: 29.280960}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 89ae9291-7291-4c8d-6386-192dadec6bd5
+- !<MarkerTrackingComponent/4c25e32b-18e9-47c2-62a8-5b9c7af860ab>
+  PrefabRemaps:
+    []
+  Name: Marker Tracking
+  Enabled: true
+  Marker: !<reference> 7e6bbc0c-cfa3-4b86-b68d-d4613919119c
+- !<ObjectPrefabAssetData/65f51558-b89f-402d-9646-b2650304ab48>
+  Prototype: !<ObjectOwner/1c7bfdcf-740f-4d0d-b90e-2d1bb277afe5>
+    PackagePath: ""
+    objects:
+      - !<own> a4051ce7-7468-488f-4cb6-16fc457ea7df
+- !<SceneObject/861bd6e2-9d12-4ab6-7228-becb6ca4097d>
+  PrefabRemaps:
+    []
+  Name: MarkerCallback
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 942efb3d-6f80-418e-737a-2eb78d92de4f
+- !<Image/89ae9291-7291-4c8d-6386-192dadec6bd5>
+  PrefabRemaps:
+    []
+  Name: Image
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Fit
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 094ee021-b8ac-4d34-9b18-b522fa51a37c
+  FlipX: false
+  FlipY: false
+  RotationAngle: 0
+  Pivot: {x: 0.000000, y: 0.000000}
+  ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+- !<ScriptComponent/942efb3d-6f80-418e-737a-2eb78d92de4f>
+  PrefabRemaps:
+    []
+  Name: MarkerCallback
+  Enabled: true
+  ScriptAsset: !<reference> 8051f4d8-eb7d-4942-a62c-3a827cad528d
+  ScriptInputsDefault:
+    enableLogging: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      animationImage: !<reference.Image> 89ae9291-7291-4c8d-6386-192dadec6bd5
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/a4051ce7-7468-488f-4cb6-16fc457ea7df>
+  PrefabRemaps:
+    []
+  Name: Resizable Marker Tracking with Callbacks
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 0303c2ae-b75a-46e8-69a2-3354848b5a53
+    - !<own> 861bd6e2-9d12-4ab6-7228-becb6ca4097d
+    - !<own> ed795c92-8c57-409f-9083-51b3a7b7b7ee
+  Components:
+    - !<own> 153bd9ff-c695-46b0-677c-b5e06dfbe48e
+- !<Text/aaf3884e-a602-466c-9367-cb4b28be3b00>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: "Make sure you match the real image size that will act as a tracker with the Image Marker asset size in the package. Different sizes won't deliver expected results!  Printed images will perform better.   Whereas results might vary we recommend consistent sizes like 30 cm and above. "
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  SizeToFit: false
+  FontSize: 48
+  Font: !<reference> 00000000-0000-0000-0000-000000000000
+  LayoutRect:
+    left: -12.000000
+    bottom: -2.250000
+    right: 12.000000
+    top: 2.250000
+  OverflowVertical: Overflow
+  OverflowHorizontal: Wrap
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlpha
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: true
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.016800, y: 0.198352, z: 1.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.500000
+      bottom: 0.500000
+      right: 0.500000
+      top: 0.500000
+    CornerRadius: 1.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false
+- !<SceneObject/ed795c92-8c57-409f-9083-51b3a7b7b7ee>
+  PrefabRemaps:
+    []
+  Name: GUIDE_ReadAndDisable
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> aaf3884e-a602-466c-9367-cb4b28be3b00

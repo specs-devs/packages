@@ -1,0 +1,78 @@
+- !<AssetImportMetadata/86dae8b1-676f-47b6-81ae-de297abe28ae>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> af52df6e-c928-443b-a60d-4c565c1e2571
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> af52df6e-c928-443b-a60d-4c565c1e2571
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 933be0d4-ce30-42fe-ba58-b6bd441cb744
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/933be0d4-ce30-42fe-ba58-b6bd441cb744>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: c40562be-3e27-45d1-a81e-4ebdc9109835
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    mainCamObj: false
+    modeText: false
+    modeToggleButton: false
+    nextButton: false
+    prevButton: false
+    stepCounterText: false
+    stepDescText: false
+    stepTitleText: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - mainCamObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      stepCounterText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      stepTitleText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      stepDescText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      modeText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      prevButton: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      nextButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      modeToggleButton: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">GuidancePanel – step-by-step maintenance guide</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Content from NespressoKnowledge.ts. Assign buttons below – events wired in code.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Camera</span>"}'
+    - '// @input SceneObject mainCamObj {"hint":"Main camera scene object – panel follows this in world space"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Display Texts</span>"}'
+    - "// @input Component.Text stepCounterText {\"hint\":\"Step counter + phase, e.g. '3 / 15  [DESCALING]'\"}"
+    - '// @input Component.Text stepTitleText {"hint":"Current step title"}'
+    - '// @input Component.Text stepDescText {"hint":"Current step description, warnings, and time notes"}'
+    - '// @input Component.Text modeText {"hint":"Current mode indicator: MANUAL or AUTO"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Buttons</span>"}'
+    - '// @input AssignableType prevButton {"hint":"RectangleButton for going to the previous step"}'
+    - '// @input AssignableType_1 nextButton {"hint":"RectangleButton for going to the next step"}'
+    - '// @input AssignableType_2 modeToggleButton {"hint":"RectangleButton to toggle between MANUAL and AUTO mode"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging"}'

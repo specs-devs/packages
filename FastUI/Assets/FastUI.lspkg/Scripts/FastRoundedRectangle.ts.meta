@@ -1,0 +1,61 @@
+- !<AssetImportMetadata/78c11eff-9a92-47e5-bb4a-a9766527a0ee>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> b0e74ef3-9d39-4803-adb5-1c2cc24679b0
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> b0e74ef3-9d39-4803-adb5-1c2cc24679b0
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> a381c6be-ee11-4ba5-9770-55f8aeaff5d9
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/a381c6be-ee11-4ba5-9770-55f8aeaff5d9>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 07bd509f-8170-4ed6-9a42-7c8472242c23
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    content: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    style: false
+    textColor: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - content: Card content
+      style: bot
+      textColor: black
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">FastRoundedRectangle – resizable button from text</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">No prefabs. Size is derived from content. Use in scene or via FastRoundedRectangle.createRoundedRectangle() from FastChat.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input string content = "Card content" {"hint":"Text content (height grows with content, truncated at max lines)"}'
+    - '// @input string style = "bot" {"hint":"Visual style: Gray (bot), Blue (user), or Green (no border)", "widget":"combobox", "values":[{"label":"Gray", "value":"bot"}, {"label":"Blue", "value":"user"}, {"label":"Green", "value":"green"}]}'
+    - '// @input string textColor = "white" {"hint":"Text color (content)", "widget":"combobox", "values":[{"label":"White", "value":"white"}, {"label":"Black", "value":"black"}, {"label":"Gray", "value":"gray"}]}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging (animation cycles, events, etc.)"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)"}'

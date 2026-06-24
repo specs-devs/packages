@@ -1,0 +1,330 @@
+- !<ObjectPrefab/435a1db8-5406-4b81-b55c-9a0713d920e4>
+  PackagePath: ""
+  objects:
+    - !<own> b699246b-8b1e-440b-bc46-530ed535b224
+  LazyLoading: false
+  RetainAssets: true
+- !<SceneObject/0f350945-4936-43e7-9154-acde0399ecc3>
+  PrefabRemaps:
+    []
+  Name: FastGrid
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> f51059ec-ad97-4f63-affc-abd320f6be40
+- !<SceneObject/1bed73d3-9f5a-4add-b89a-1b70f5d87f6d>
+  PrefabRemaps:
+    []
+  Name: FastDeckParent
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 45.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 0.800000, y: 0.800000, z: 0.800000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> c61c73ee-eff7-4d4f-837d-1ddb5bc117dd
+  Components:
+    []
+- !<SceneObject/214528a3-bac4-4b9a-9f62-1bfe82be0d06>
+  PrefabRemaps:
+    []
+  Name: GUIDE_ReadAndDisable
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 10.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> c93dbd3d-b52f-4d9c-a3c5-f3250fa84fd1
+- !<ScriptComponent/5df99af2-5c31-4d5f-b0ab-437271aeb192>
+  PrefabRemaps:
+    []
+  Name: FastDeck
+  Enabled: true
+  ScriptAsset: !<reference> 7ead8876-c0d3-4863-be41-81bb915aa1f0
+  ScriptInputsDefault:
+    swipeThreshold: true
+    animationSpeed: true
+    enableLogging: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      swipeThreshold: !<float> 50.000000
+      animationSpeed: 0.500000
+      swipeSpeedThreshold: !<float> 20.000000
+      leftCardRotationZ: !<float> 0.000000
+      rightCardRotationZ: !<float> 0.000000
+      testMode: true
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/780596e1-103f-4714-84f3-8cb08664ea86>
+  PrefabRemaps:
+    []
+  Name: FastRoundedRectangle
+  Enabled: true
+  ScriptAsset: !<reference> b0e74ef3-9d39-4803-adb5-1c2cc24679b0
+  ScriptInputsDefault:
+    content: true
+    style: true
+    enableLogging: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      content: Card content
+      style: bot
+      textColor: white
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/8fed8908-988b-4042-8d4e-9cebfe689487>
+  PrefabRemaps:
+    []
+  Name: FastChat
+  Enabled: true
+  ScriptAsset: !<reference> 5c2e0d37-b2e2-468f-aede-6908e1161873
+  ScriptInputsDefault:
+    textColor: true
+    colorStyle: true
+    layoutStyle: true
+    testMode: true
+    mask: true
+    enableLogging: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      textColor: white
+      colorStyle: blue_gray
+      layoutStyle: aligned
+      testMode: true
+      mask: true
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/aa117c60-1fab-4abd-8243-da575bac31f5>
+  PrefabRemaps:
+    []
+  Name: FastRoundedRectangle
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: -30.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 780596e1-103f-4714-84f3-8cb08664ea86
+- !<SceneObject/b699246b-8b1e-440b-bc46-530ed535b224>
+  PrefabRemaps:
+    - 0f350945-4936-43e7-9154-acde0399ecc3: 0f350945-4936-43e7-6eab-5321fc66133c
+    - 1bed73d3-9f5a-4add-b89a-1b70f5d87f6d: 1bed73d3-9f5a-4add-4765-e48f0a278092
+    - 214528a3-bac4-4b9a-9f62-1bfe82be0d06: 214528a3-bac4-4b9a-609d-e4017d41f2f9
+    - 5df99af2-5c31-4d5f-b0ab-437271aeb192: 5df99af2-5c31-4d5f-4f54-bc8d8e514e6d
+    - 780596e1-103f-4714-84f3-8cb08664ea86: 780596e1-103f-4714-7b0c-734f799b1579
+    - 8fed8908-988b-4042-8d4e-9cebfe689487: 8fed8908-988b-4042-72b1-631401976b78
+    - aa117c60-1fab-4abd-8243-da575bac31f5: aa117c60-1fab-4abd-7dbc-25a8a453ce0a
+    - b699246b-8b1e-440b-bc46-530ed535b224: b699246b-8b1e-440b-43b9-acf12aca4ddb
+    - c51cad11-69a5-4c32-9cca-d54c5b0ab81d: c51cad11-69a5-4c32-6335-2ab3a4f547e2
+    - c61c73ee-eff7-4d4f-837d-1ddb5bc117dd: c61c73ee-eff7-4d4f-7c82-e224a43ee822
+    - c93dbd3d-b52f-4d9c-a3c5-f3250fa84fd1: c93dbd3d-b52f-4d9c-5c3a-0cdaf057b02e
+    - d69db421-22ea-4f24-a96b-7575c89986e4: d69db421-22ea-4f24-5694-8a8a3766791b
+    - f51059ec-ad97-4f63-affc-abd320f6be40: f51059ec-ad97-4f63-5003-542cdf0941bf
+  Name: Examples__PLACE_IN_SCENE
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -100.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 214528a3-bac4-4b9a-9f62-1bfe82be0d06
+    - !<own> 1bed73d3-9f5a-4add-b89a-1b70f5d87f6d
+    - !<own> c51cad11-69a5-4c32-9cca-d54c5b0ab81d
+    - !<own> 0f350945-4936-43e7-9154-acde0399ecc3
+    - !<own> aa117c60-1fab-4abd-8243-da575bac31f5
+  Components:
+    []
+- !<SceneObject/c51cad11-69a5-4c32-9cca-d54c5b0ab81d>
+  PrefabRemaps:
+    []
+  Name: FastChatParent
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: -40.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> d69db421-22ea-4f24-a96b-7575c89986e4
+  Components:
+    []
+- !<SceneObject/c61c73ee-eff7-4d4f-837d-1ddb5bc117dd>
+  PrefabRemaps:
+    []
+  Name: FastDeck
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 5df99af2-5c31-4d5f-b0ab-437271aeb192
+- !<Text/c93dbd3d-b52f-4d9c-a3c5-f3250fa84fd1>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 200
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: |-
+    Fast UIs is a growing collection of programmatic UI multi-component compositions from UIKit.  Work with their own APIs or unpackage the FastUI package to modify the scripts further or provide a reference to your favorite AI tools and build UI fast. Often AI has an hard time understanding proportion across UI elements, this collection aims to mitigate that gap. 
+    
+    Zoom out to see more compositions or explore them in the scene hierarchy.   
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  SizeToFit: false
+  FontSize: 48
+  Font: !<reference> 00000000-0000-0000-0000-000000000000
+  LayoutRect:
+    left: -15.000000
+    bottom: -2.250000
+    right: 15.000000
+    top: 2.250000
+  OverflowVertical: Overflow
+  OverflowHorizontal: Wrap
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlpha
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: true
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.016800, y: 0.198352, z: 1.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.500000
+      bottom: 0.500000
+      right: 0.500000
+      top: 0.500000
+    CornerRadius: 1.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false
+- !<SceneObject/d69db421-22ea-4f24-a96b-7575c89986e4>
+  PrefabRemaps:
+    []
+  Name: FastChat
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 8fed8908-988b-4042-8d4e-9cebfe689487
+- !<ScriptComponent/f51059ec-ad97-4f63-affc-abd320f6be40>
+  PrefabRemaps:
+    []
+  Name: FastGrid
+  Enabled: true
+  ScriptAsset: !<reference> c8be4c74-88b1-405e-afd3-ef97e392a238
+  ScriptInputsDefault:
+    rows: true
+    columns: true
+    enableLogging: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      rows: !<float> 3.000000
+      columns: !<float> 3.000000
+      buttonWidth: 12.500000
+      buttonHeight: 10.500000
+      buttonImageTexture: !<reference.Texture> 3e7a9034-d2b2-415a-bb22-355ee2b434e9
+      buttonImageMaterial: !<reference.Material> 762b21e5-2ddd-44ad-842c-9962f0ff8e17
+      draggable: true
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      {}

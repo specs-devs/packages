@@ -1,0 +1,99 @@
+- !<AssetImportMetadata/eb649723-353b-428c-8afc-6761379d1598>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 1d05873b-69b7-4472-a285-f303707aba68
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 1d05873b-69b7-4472-a285-f303707aba68
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 05172306-c961-48ee-8aa3-2c553a95795e
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/05172306-c961-48ee-8aa3-2c553a95795e>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 205ad406-e38c-4a85-b578-fe5cf4adef30
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    exitScreenAButton: false
+    exitScreenBButton: false
+    expandedSize1: false
+    expandedSize2: false
+    frame: false
+    homeButton: false
+    homeContent: false
+    initialFrameSize: false
+    resizeAnimationDuration: false
+    screenAButton: false
+    screenAContent: false
+    screenBContent: false
+    screenCButton: false
+    screenCContent: false
+    sideMenuContent: false
+    startScreenBButton: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - frame: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      initialFrameSize: !<Vec2> {x: 33.000000, y: 18.000000}
+      expandedSize1: !<Vec2> {x: 33.000000, y: 28.000000}
+      expandedSize2: !<Vec2> {x: 33.000000, y: 35.000000}
+      resizeAnimationDuration: 0.400000
+      homeButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      screenAButton: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      screenCButton: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      homeContent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      screenAContent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      screenBContent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      screenCContent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      sideMenuContent: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      startScreenBButton: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
+      exitScreenAButton: !<MappingBased.AssignableType_5> 00000000-0000-0000-0000-000000000000
+      exitScreenBButton: !<MappingBased.AssignableType_6> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"group_start", "label":"Frame Settings"}'
+    - '// @input AssignableType frame {"hint":"Reference to the Frame component that will be resized"}'
+    - '// @input vec2 initialFrameSize = {33,18} {"hint":"Initial frame size (for Home/main menu) - only X and Y matter"}'
+    - '// @input vec2 expandedSize1 = {33,28} {"hint":"Expanded frame size for Screen A state - only X and Y matter"}'
+    - '// @input vec2 expandedSize2 = {33,35} {"hint":"Expanded frame size for Screen C state - only X and Y matter"}'
+    - '// @input float resizeAnimationDuration = 0.4 {"hint":"Duration for frame resize animation (in seconds)"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"group_start", "label":"Main Menu Buttons"}'
+    - '// @input AssignableType_1 homeButton {"hint":"Home button"}'
+    - '// @input AssignableType_2 screenAButton {"hint":"Screen A button"}'
+    - '// @input AssignableType_3 screenCButton {"hint":"Screen C button"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"group_start", "label":"Content Objects"}'
+    - '// @input SceneObject homeContent {"hint":"Scene object containing Home content (text, etc.)"}'
+    - '// @input SceneObject screenAContent {"hint":"Scene object containing Screen A content (instructions and buttons)"}'
+    - '// @input SceneObject screenBContent {"hint":"Scene object containing Screen B content (exit button)"}'
+    - '// @input SceneObject screenCContent {"hint":"Scene object containing Screen C grid content"}'
+    - '// @input SceneObject sideMenuContent {"hint":"Scene object containing the side menu buttons (will be hidden in some states)"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"group_start", "label":"Screen A Buttons"}'
+    - '// @input AssignableType_4 startScreenBButton {"hint":"Start Screen B button in Screen A"}'
+    - '// @input AssignableType_5 exitScreenAButton {"hint":"Exit button in Screen A"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"group_start", "label":"Screen B Buttons"}'
+    - '// @input AssignableType_6 exitScreenBButton {"hint":"Exit button in Screen B"}'
+    - '// @ui {"widget":"group_end"}'

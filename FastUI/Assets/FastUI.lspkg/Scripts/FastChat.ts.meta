@@ -1,0 +1,67 @@
+- !<AssetImportMetadata/c5f18b46-be94-420e-86f0-b867192089d7>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 5c2e0d37-b2e2-468f-aede-6908e1161873
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 5c2e0d37-b2e2-468f-aede-6908e1161873
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 453c7466-2605-4f51-b6c0-b60602188ea5
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/453c7466-2605-4f51-b6c0-b60602188ea5>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 636472f1-dcb6-4a5a-828c-1c0db6e29aee
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    colorStyle: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    layoutStyle: false
+    mask: false
+    testMode: false
+    textColor: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - textColor: white
+      colorStyle: blue_gray
+      layoutStyle: aligned
+      testMode: true
+      mask: true
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">FastChat – placeholder chat component</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">No prefabs. Build your own logic and use the public API: addUserMessage(string), addBotMessage(string), getCardCount(), getCard(index) → SceneObject, getCardMessage(index) → string. Only the options below are shown.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input string textColor = "white" {"hint":"Text color for all cards", "widget":"combobox", "values":[{"label":"White", "value":"white"}, {"label":"Black", "value":"black"}, {"label":"Gray", "value":"gray"}]}'
+    - '// @input string colorStyle = "blue_gray" {"hint":"Style 1: one color for user, gray for bot", "widget":"combobox", "values":[{"label":"Blue / Gray", "value":"blue_gray"}, {"label":"Green / Gray", "value":"green_gray"}]}'
+    - '// @input string layoutStyle = "aligned" {"hint":"Layout: Aligned (centered) or Shifted (user right, bot left)", "widget":"combobox", "values":[{"label":"Aligned", "value":"aligned"}, {"label":"Shifted", "value":"shifted"}]}'
+    - '// @input bool testMode = true {"hint":"Fill chat with mock-up data (multiple sample cards)"}'
+    - '// @input bool mask = true {"hint":"Clip chat content to a window (MaskingComponent only, no scroll interaction)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging (animation cycles, events, etc.)"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)"}'
