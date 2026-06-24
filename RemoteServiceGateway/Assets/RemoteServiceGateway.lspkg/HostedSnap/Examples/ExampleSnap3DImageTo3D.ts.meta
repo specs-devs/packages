@@ -1,0 +1,87 @@
+- !<AssetImportMetadata/ba0e15ba-c7db-4abb-9dca-7f5562549959>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> c454817c-8217-4325-a09d-6433ffceca4d
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> c454817c-8217-4325-a09d-6433ffceca4d
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 9c8006b0-69a8-46e5-a8b3-3dbff95cafe4
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/9c8006b0-69a8-46e5-a8b3-3dbff95cafe4>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: e430ae68-d5f0-4cc5-ad09-7fbf6abcc735
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    baseMeshRoot: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    hintText: false
+    imageUrl: false
+    modelMat: false
+    prompt: false
+    refineMesh: false
+    refinedMeshRoot: false
+    runOnTap: false
+    sourceImage: false
+    useVertexColor: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - imageUrl: "https://example.com/image.png"
+      prompt: an object
+      refineMesh: true
+      useVertexColor: false
+      sourceImage: !<reference.Image> 00000000-0000-0000-0000-000000000000
+      baseMeshRoot: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      refinedMeshRoot: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      modelMat: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      hintText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      runOnTap: false
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Image-to-3D Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Generate 3D models directly from image URLs</span>"}'
+    - '// @ui {"widget":"group_start", "label":"Image-to-3D Generation"}'
+    - '// @input string imageUrl = "https://example.com/image.png" {"hint":"URL of the image to convert to 3D (must be publicly accessible)", "widget":"text_area"}'
+    - "// @input string prompt = \"an object\" {\"hint\":\"Optional prompt to guide 3D generation (e.g., 'a toy car', 'a vase')\", \"widget\":\"text_area\"}"
+    - '// @input bool refineMesh = true {"hint":"Enable mesh refinement for higher quality (slower)"}'
+    - '// @input bool useVertexColor {"hint":"Use vertex colors instead of textures"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Display Configuration</span>"}'
+    - '// @input Component.Image sourceImage {"hint":"Image component to display the source image"}'
+    - '// @input SceneObject baseMeshRoot {"hint":"Parent object for base mesh"}'
+    - '// @input SceneObject refinedMeshRoot {"hint":"Parent object for refined mesh"}'
+    - '// @input Asset.Material modelMat {"hint":"Material to apply to generated meshes"}'
+    - '// @input Component.Text hintText {"hint":"Text component for status messages"}'
+    - '// @input bool runOnTap {"hint":"Enable generation on tap/pinch"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging (animation cycles, events, etc.)"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)"}'

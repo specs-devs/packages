@@ -1,0 +1,125 @@
+- !<AssetImportMetadata/5122ea7a-46b7-4a6c-a559-1b57d537ed2e>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 148b16bd-4d52-4af9-9781-53489ab659e7
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 148b16bd-4d52-4af9-9781-53489ab659e7
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> d292003a-bdb5-465b-8ca6-db5b2557e857
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/d292003a-bdb5-465b-8ca6-db5b2557e857>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 061956e7-6099-4801-a27c-481af6e0b8f4
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    ANTENNA_SMOOTHING: false
+    BODY_SMOOTHING: false
+    HEAD_PITCH_SMOOTHING: false
+    HEAD_YAW_SMOOTHING: false
+    MOTION_INTENSITY_SMOOTHING: false
+    WOBBLE_SPEED: false
+    antennaBaseDegrees: false
+    antennaMotionDegrees: false
+    daemonInterface: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    enableWobble: false
+    lookAtTarget: false
+    maxAntennaChangeDegrees: false
+    maxPitchChangeDegrees: false
+    maxYawChangeDegrees: false
+    pitchWobbleDegrees: false
+    reachyHeadOffset: false
+    reachyWorldPosition: false
+    rollWobbleDegrees: false
+    targetSpawnPosition: false
+    yawWobbleDegrees: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - daemonInterface: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      reachyWorldPosition: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      reachyHeadOffset: !<Vec3> {x: 0.000000, y: 15.000000, z: 0.000000}
+      targetSpawnPosition: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      lookAtTarget: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      HEAD_YAW_SMOOTHING: 0.060000
+      HEAD_PITCH_SMOOTHING: 0.040000
+      BODY_SMOOTHING: 0.040000
+      ANTENNA_SMOOTHING: 0.025000
+      MOTION_INTENSITY_SMOOTHING: 0.050000
+      maxYawChangeDegrees: !<float> 3.000000
+      maxPitchChangeDegrees: 1.500000
+      maxAntennaChangeDegrees: !<float> 2.000000
+      enableWobble: true
+      pitchWobbleDegrees: !<float> 6.000000
+      yawWobbleDegrees: !<float> 5.000000
+      rollWobbleDegrees: !<float> 8.000000
+      antennaBaseDegrees: !<float> 8.000000
+      antennaMotionDegrees: !<float> 20.000000
+      WOBBLE_SPEED: 0.400000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Daemon Interface</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Connection to Reachy robot daemon</span>"}'
+    - '// @input Component.ScriptComponent daemonInterface {"hint":"Reference to the DaemonInterface component (singleton)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Reachy Position in AR Space</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Configure robot position and head offset</span>"}'
+    - '// @input SceneObject reachyWorldPosition {"hint":"SceneObject representing where Reachy robot is positioned in the AR world (e.g., SpectaclesCamera or a fixed anchor point)"}'
+    - "// @input vec3 reachyHeadOffset = {0,15,0} {\"hint\":\"Offset from reachyWorldPosition to Reachy's head center in local space (default: 0, 15, 0 = 15cm above)\"}"
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Look-At Target Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Target prefab and spawn position</span>"}'
+    - '// @input SceneObject targetSpawnPosition {"hint":"SceneObject reference for where to instantiate/position the target when entering Look-At mode"}'
+    - '// @input Asset.ObjectPrefab lookAtTarget {"hint":"Prefab to instantiate as the target that Reachy will follow"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Smoothing Parameters</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control smoothing for natural movement</span>"}'
+    - '// @input float HEAD_YAW_SMOOTHING = 0.06 {"hint":"How fast head yaw moves towards target (0.01-0.2, default 0.06)"}'
+    - '// @input float HEAD_PITCH_SMOOTHING = 0.04 {"hint":"How fast head pitch moves towards target (0.01-0.2, default 0.04)"}'
+    - '// @input float BODY_SMOOTHING = 0.04 {"hint":"How fast body follows head (0.01-0.2, default 0.04)"}'
+    - '// @input float ANTENNA_SMOOTHING = 0.025 {"hint":"Antenna smoothing to prevent jitter (0.01-0.1, default 0.025)"}'
+    - '// @input float MOTION_INTENSITY_SMOOTHING = 0.05 {"hint":"How fast motion intensity adapts (0.01-0.2, default 0.05)"}'
+    - '// @input float maxYawChangeDegrees = 3 {"hint":"Max yaw change per frame in degrees (1-10, default 3)"}'
+    - '// @input float maxPitchChangeDegrees = 1.5 {"hint":"Max pitch change per frame in degrees (0.5-5, default 1.5)"}'
+    - '// @input float maxAntennaChangeDegrees = 2 {"hint":"Max antenna change per frame in degrees (1-5, default 2)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Character/Wobble Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Add personality through wobble and randomness</span>"}'
+    - '// @input bool enableWobble = true {"hint":"Enable character wobble for natural movement"}'
+    - '// @input float pitchWobbleDegrees = 6 {"hint":"Pitch wobble amplitude in degrees (0-10, default 6)"}'
+    - '// @input float yawWobbleDegrees = 5 {"hint":"Yaw wobble amplitude in degrees (0-10, default 5)"}'
+    - '// @input float rollWobbleDegrees = 8 {"hint":"Roll/tilt wobble amplitude in degrees (0-15, default 8)"}'
+    - '// @input float antennaBaseDegrees = 8 {"hint":"Base antenna movement when idle (0-15, default 8)"}'
+    - '// @input float antennaMotionDegrees = 20 {"hint":"Extra antenna movement during motion (0-30, default 20)"}'
+    - '// @input float WOBBLE_SPEED = 0.4 {"hint":"Wobble speed multiplier (0.1-2.0, default 0.4)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging (operations, events, etc.)"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)"}'
