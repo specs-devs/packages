@@ -1,0 +1,158 @@
+- !<ObjectPrefab/b57b995c-8fdf-4c37-9c0d-d22ca63b7122>
+  PackagePath: ""
+  objects:
+    - !<own> 3c36ad0e-f4a8-42aa-9064-cc5ab46747ca
+  LazyLoading: false
+  RetainAssets: true
+  PreviewEnvironment: !<reference> 00000000-0000-0000-0000-000000000000
+- !<SceneObject/3c36ad0e-f4a8-42aa-9064-cc5ab46747ca>
+  PrefabRemaps:
+    - 3c36ad0e-f4a8-42aa-9064-cc5ab46747ca: 3c36ad0e-f4a8-42aa-6f9b-33a54b98b835
+    - 8fc243ba-2489-4fd8-8520-c91eb95e8dac: 8fc243ba-2489-4fd8-7adf-36e146a17253
+    - a61b9910-24c9-4386-b2c9-61c5463b48ba: a61b9910-24c9-4386-4d36-9e3ab9c4b745
+    - cae7bdcb-48d3-4b4d-ac04-33a43e201c8c: cae7bdcb-48d3-4b4d-53fb-cc5bc1dfe373
+  Name: AnimationExamples__PLACE_IN_SCENE
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -100.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> a61b9910-24c9-4386-b2c9-61c5463b48ba
+  Components:
+    - !<own> 8fc243ba-2489-4fd8-8520-c91eb95e8dac
+- !<ScriptComponent/8fc243ba-2489-4fd8-8520-c91eb95e8dac>
+  PrefabRemaps:
+    []
+  Name: AnimationExamplesManager
+  Enabled: true
+  ScriptAsset: !<reference> 00493d31-f262-4820-b663-2d0cd65ae6ab
+  ScriptInputsDefault:
+    enableLogging: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      animationPrefabs: !<reference.ObjectPrefab[]>
+        - !<reference> 543a8feb-837b-49b6-960c-3f78f8337f3c
+        - !<reference> dbe7ca85-eb43-489a-b3f6-4d00270364fd
+        - !<reference> 9b8962bc-490a-44a4-a6e6-948787d2eb33
+        - !<reference> adff8f4e-f598-4940-bd88-aae9ef3f6208
+        - !<reference> e337210e-e163-4e76-a46f-266c4bd6a2a1
+        - !<reference> e6d234e4-cb50-4992-8cc9-d0e12bb9e894
+        - !<reference> 80f1225a-3c23-4bce-af46-8f3617960487
+        - !<reference> 4e452d1a-5e09-44d3-a804-369ef65cae8c
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/a61b9910-24c9-4386-b2c9-61c5463b48ba>
+  PrefabRemaps:
+    []
+  Name: GUIDE_ReadAndDisable
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> cae7bdcb-48d3-4b4d-ac04-33a43e201c8c
+- !<Text/cae7bdcb-48d3-4b4d-ac04-33a43e201c8c>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 1
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: |
+    This is a collection of example scripts to understand how to drive AnimationPlayer at runtime — tween curves, keyframes, material callbacks, finish events, and custom timestamp events. Toggle your favorite use case in the hierarchy and watch the motion play.
+    
+    Enable "enableLogging" on the script and refresh to see clip start, events, and finish in the logs.
+    
+    Disable this text object in the scene hierarchy to see the full scene.
+
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableRichText: false
+  SizeToFit: false
+  FontSize: 48.000000
+  FontSource: !<reference> 00000000-0000-0000-0000-000000000000
+  FontWeight: 400
+  Italic: false
+  LayoutRect:
+    left: -15.000000
+    bottom: -2.250000
+    right: 15.000000
+    top: 2.250000
+  DebugRenderLayoutRect: false
+  OverflowVertical: Overflow
+  OverflowHorizontal: Wrap
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlpha
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: true
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 1.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.500000
+      bottom: 0.500000
+      right: 0.500000
+      top: 0.500000
+    CornerRadius: 1.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false

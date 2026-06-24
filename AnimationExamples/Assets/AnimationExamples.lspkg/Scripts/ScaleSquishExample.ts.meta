@@ -1,0 +1,70 @@
+- !<AssetImportMetadata/142c7c12-d93e-4d8a-bc23-ba2a5bcda3d9>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 5763b475-d63e-4c21-9c46-6c285c077b8d
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 5763b475-d63e-4c21-9c46-6c285c077b8d
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 6bde1ec7-ad53-49b8-ad07-ba87aa812429
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/6bde1ec7-ad53-49b8-ad07-ba87aa812429>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: 850dd086-09c4-4771-9649-1b4aa57b495d
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    endScale: false
+    startScale: false
+    target: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - target: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      startScale: !<Vec3> {x: 1.000000, y: 1.000000, z: 1.000000}
+      endScale: !<Vec3> {x: 1.400000, y: 0.600000, z: 1.400000}
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #F59E0B;\">Setup required: AnimationPlayer</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #F59E0B; font-size: 11px;\">1. Add an AnimationPlayer component on this SceneObject.</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #F59E0B; font-size: 11px;\">2. Add one Clip and configure Name / Playback Mode / Speed / Weight / Range.</span>"}'
+    - "// @ui {\"widget\":\"label\", \"label\":\"<span style=\\\"color: #F59E0B; font-size: 11px;\\\">3. Leave the Clip's Animation Asset empty to use the runtime curve below — or drop in an authored .animationAsset to override.</span>\"}"
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Target</span>"}'
+    - "// @ui {\"widget\":\"label\", \"label\":\"<span style=\\\"color: #94A3B8; font-size: 11px;\\\">Which SceneObject's transform the curve drives. Defaults to this object.</span>\"}"
+    - // @input SceneObject target
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Squish Poses</span>"}'
+    - "// @ui {\"widget\":\"label\", \"label\":\"<span style=\\\"color: #94A3B8; font-size: 11px;\\\">Start scale → end scale of the spring-out curve. For a snap-back feel set the AnimationPlayer's Playback Mode to PingPong.</span>\"}"
+    - '// @input vec3 startScale = "{1, 1, 1}"'
+    - '// @input vec3 endScale = "{1.4, 0.6, 1.4}"'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging (animation cycles, events, etc.)"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)"}'

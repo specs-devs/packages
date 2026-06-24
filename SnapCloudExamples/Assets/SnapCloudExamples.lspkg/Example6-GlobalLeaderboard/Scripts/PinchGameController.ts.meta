@@ -1,0 +1,79 @@
+- !<AssetImportMetadata/c4c5b971-c5ad-4df4-9c19-105571ff8b2d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 6dc54f3f-4793-47e1-ac13-761c95cb397c
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 6dc54f3f-4793-47e1-ac13-761c95cb397c
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 03fdb914-0d47-4dff-b32e-394543b77ca6
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/03fdb914-0d47-4dff-b32e-394543b77ca6>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: ac71ea88-1e01-401f-8244-10d55a047a1f
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    controlsUIRoot: false
+    countdownSeconds: false
+    countdownText: false
+    displayName: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    gameUIRoot: false
+    globalLeaderboard: false
+    scoreText: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - countdownSeconds: !<float> 10.000000
+      countdownText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      scoreText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      globalLeaderboard: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      gameUIRoot: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      controlsUIRoot: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      displayName: Player
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA; font-weight: bold;\">Game settings</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Timer duration and UI text components for countdown and score.</span>"}'
+    - '// @input float countdownSeconds = 10 {"hint":"Timer duration in seconds for each game round"}'
+    - '// @input Component.Text countdownText {"hint":"Text component displaying the countdown timer"}'
+    - '// @input Component.Text scoreText {"hint":"Text component displaying the current score"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA; font-weight: bold;\">Leaderboard</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Required for score submission. UI roots toggle game vs leaderboard visibility at end of round.</span>"}'
+    - '// @input AssignableType_1 globalLeaderboard {"hint":"Assign the SceneObject that has the GlobalLeaderboard script (or the script component)"}'
+    - "// @input SceneObject gameUIRoot {\"hint\":\"SceneObject root for game UI (timer, score). If unset, this component's SceneObject is toggled.\"}"
+    - '// @input SceneObject controlsUIRoot {"hint":"SceneObject root for controls UI (description, Start button). Shown on awake, hidden when game starts."}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Used when SnapchatUser is unavailable (e.g. in editor)</span>"}'
+    - '// @input string displayName = "Player" {"hint":"Fallback display name when SnapchatUser is unavailable (e.g. in editor). Leaderboard uses SnapchatUser when available."}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging (game events, submit activity, etc.)"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)"}'

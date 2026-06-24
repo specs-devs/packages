@@ -1,0 +1,71 @@
+- !<AssetImportMetadata/ee109e2b-4806-4694-8c11-24f79884569d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 4f57d95c-d8b3-4b45-8875-904add0fb7d4
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 4f57d95c-d8b3-4b45-8875-904add0fb7d4
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 78621a54-e4a8-4eda-a8c3-cea4039316a8
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/78621a54-e4a8-4eda-a8c3-cea4039316a8>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: 7f817aaf-f8f5-4889-ae8f-d8d653fb3d09
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    baseSize: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    heightExpansion: false
+    widthExpansion: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - baseSize: !<Vec2> {x: 7.500000, y: 7.500000}
+      heightExpansion: !<float> 4.000000
+      widthExpansion: !<float> 4.000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #F59E0B;\">Setup required: AnimationPlayer + Frame</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #F59E0B; font-size: 11px;\">1. Add an AnimationPlayer component on this SceneObject.</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #F59E0B; font-size: 11px;\">2. Add one Clip and configure Name / Playback Mode (Loop recommended) / Speed / Weight / Range.</span>"}'
+    - "// @ui {\"widget\":\"label\", \"label\":\"<span style=\\\"color: #F59E0B; font-size: 11px;\\\">3. Leave the Clip's Animation Asset empty to use this script's runtime curve.</span>\"}"
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #F59E0B; font-size: 11px;\">4. Add a SpectaclesUIKit Frame ScriptComponent — its innerSize is what this example animates.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Base Frame Dimensions</span>"}'
+    - "// @ui {\"widget\":\"label\", \"label\":\"<span style=\\\"color: #94A3B8; font-size: 11px;\\\">The resting Frame size in centimeters. Should match the Frame ScriptComponent's Inner Size.</span>\"}"
+    - '// @input vec2 baseSize = "{7.5, 7.5}"'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Expansion Amounts</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">How much to grow each axis at peak. Expansion is symmetric — both sides grow equally.</span>"}'
+    - '// @input float heightExpansion = 4 {"hint":"How much the height grows at its peak (centimeters).", "widget":"slider", "min":0, "max":10, "step":0.1}'
+    - '// @input float widthExpansion = 4 {"hint":"How much the width grows at its peak (centimeters).", "widget":"slider", "min":0, "max":10, "step":0.1}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging (animation cycles, events, etc.)"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)"}'

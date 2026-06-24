@@ -1,0 +1,164 @@
+- !<AssetImportMetadata/2ac35b6d-9570-4ebe-82ce-680f62cfa479>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> 80f1225a-3c23-4bce-af46-8f3617960487
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> 80f1225a-3c23-4bce-af46-8f3617960487
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> 9ebbdf62-0e7e-418c-b042-fc8b8561bc1e
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<SceneObject/26e8db08-86bf-4fa6-5d6b-822c075a440f>
+  PrefabRemaps:
+    []
+  Name: ScaleSquishExample
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -20.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 10.000000, y: 10.000000, z: 10.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> c778fd66-6f6e-4e39-4dbf-77f51097432a
+    - !<own> 8dc597d3-543b-4fe3-5212-37d6d86773fd
+    - !<own> 4d7c4f8d-1c4d-4c4e-a620-da6028d9b2f9
+- !<ScriptComponent/4d7c4f8d-1c4d-4c4e-a620-da6028d9b2f9>
+  PrefabRemaps:
+    []
+  Name: Frame
+  Enabled: true
+  ScriptAsset: !<reference> 3b46d829-f6db-432a-914c-3551904d3994
+  ScriptInputsDefault:
+    _themeOverride: true
+    _padding: true
+    _allowScaling: true
+    allowNonUniformScaling: true
+    autoScaleContent: true
+    relativeZ: true
+    _onlyInteractOnMargin: true
+    _cutOutCenter: true
+    _minimumSize: true
+    _maximumSize: true
+    xOnTranslate: true
+    xAlways: true
+    xBufferDegrees: true
+    yOnTranslate: true
+    yAlways: true
+    yBufferDegrees: true
+    useSnapping: true
+    itemSnapping: true
+    worldSnapping: true
+    _useTagAlong: true
+    _tagAlongDistance: true
+    _showFollowButton: true
+    useFollowBehavior: true
+    _useTiltMode: true
+    _tiltUpThreshold: true
+    _tiltDownThreshold: true
+    _following: true
+    _showCloseButton: true
+    _enableInteractionPlane: true
+    _interactionPlaneOffset: true
+    _interactionPlanePadding: true
+    _targetingVisual: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _themeOverride: Inherited
+      autoShowHide: false
+      _appearance: Small
+      _innerSize: !<Vec2> {x: 7.500000, y: 7.500000}
+      _padding: !<Vec2> {x: 0.000000, y: 0.000000}
+      _allowScaling: true
+      allowNonUniformScaling: false
+      autoScaleContent: true
+      relativeZ: true
+      _onlyInteractOnMargin: false
+      allowTranslation: false
+      _cutOutCenter: false
+      _minimumSize: !<Vec2> {x: 10.000000, y: 10.000000}
+      _maximumSize: !<Vec2> {x: 150.000000, y: 150.000000}
+      useBillboarding: false
+      xOnTranslate: true
+      xAlways: false
+      xBufferDegrees: !<float> 0.000000
+      yOnTranslate: true
+      yAlways: false
+      yBufferDegrees: !<float> 0.000000
+      useSnapping: false
+      itemSnapping: false
+      worldSnapping: false
+      _useTagAlong: false
+      _tagAlongDistance: !<float> 110.000000
+      _showFollowButton: false
+      useFollowBehavior: false
+      _useTiltMode: false
+      _tiltUpThreshold: !<float> 25.000000
+      _tiltDownThreshold: !<float> 35.000000
+      _following: false
+      _showCloseButton: false
+      _enableInteractionPlane: true
+      _interactionPlaneOffset: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
+      _interactionPlanePadding: !<Vec2> {x: 0.000000, y: 0.000000}
+      _targetingVisual: !<float> 1.000000
+  ScriptTypes:
+    "":
+      {}
+- !<AnimationPlayer/8dc597d3-543b-4fe3-5212-37d6d86773fd>
+  PrefabRemaps:
+    []
+  Name: Animation Player
+  Enabled: true
+  Autoplay: true
+  ClipRangeType: Frames
+  AnimationClips:
+    - !<AnimationClip>
+      AnimationAsset: !<reference> 00000000-0000-0000-0000-000000000000
+      Name: ""
+      Weight: 1.000000
+      PlaybackSpeed: 1.000000
+      Begin: 0.000000
+      End: 1.000000
+      Offset: 0.000000
+      Reversed: false
+      Disabled: false
+      BlendMode: Default
+      ScaleMode: Multiply
+      PlaybackMode: Loop
+- !<ObjectPrefabAssetData/9ebbdf62-0e7e-418c-b042-fc8b8561bc1e>
+  Prototype: !<ObjectOwner/bbd1a842-d710-46f6-8c0a-623a4bb77792>
+    PackagePath: ""
+    objects:
+      - !<own> 26e8db08-86bf-4fa6-5d6b-822c075a440f
+- !<ScriptComponent/c778fd66-6f6e-4e39-4dbf-77f51097432a>
+  PrefabRemaps:
+    []
+  Name: ScaleSquishExample
+  Enabled: true
+  ScriptAsset: !<reference> 5763b475-d63e-4c21-9c46-6c285c077b8d
+  ScriptInputsDefault:
+    startScale: true
+    enableLogging: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      target: !<reference.SceneObject> 26e8db08-86bf-4fa6-5d6b-822c075a440f
+      startScale: !<Vec3> {x: 1.000000, y: 1.000000, z: 1.000000}
+      endScale: !<Vec3> {x: 2.000000, y: 2.000000, z: 1.000000}
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      {}

@@ -1,0 +1,79 @@
+- !<AssetImportMetadata/ac9fe25f-98b2-0020-423d-8dedfb24bffa>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> c2f20d67-98ea-4cfa-a34d-6f45b7181ba2
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> c2f20d67-98ea-4cfa-a34d-6f45b7181ba2
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 4dc46ea4-53d9-41aa-a527-bd7d957de2bf
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/4dc46ea4-53d9-41aa-a527-bd7d957de2bf>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: 27cc09a4-4f6b-4166-9dbc-307dc85d917b
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    animationSpeed: false
+    cardImages: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    imageToDescGap: false
+    leftCardRotationZ: false
+    rightCardRotationZ: false
+    swipeSpeedThreshold: false
+    swipeThreshold: false
+    testMode: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - testMode: false
+      cardImages: !<reference.Texture[]>
+        []
+      swipeThreshold: !<float> 50.000000
+      animationSpeed: 0.500000
+      swipeSpeedThreshold: !<float> 100.000000
+      leftCardRotationZ: !<float> -15.000000
+      rightCardRotationZ: !<float> 15.000000
+      imageToDescGap: 0.500000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">ExampleDeck – swipeable card stack</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">No prefabs. Each card: Title + Image (optional) + Description. Swipe center left = next, right = previous.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input bool testMode = true {"hint":"Fill deck with sample cards for testing. Uncheck to start empty — use addCard() or populate deckCards[] before Play."}'
+    - '// @input Asset.Texture[] cardImages = {} {"hint":"Image pool for test mode — images are sparsely distributed across cards. Leave empty for text-only cards."}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input number swipeThreshold = "50.0" {"hint":"Minimum swipe distance to trigger card change"}'
+    - '// @input number animationSpeed = "0.5" {"hint":"Animation speed for card transitions (0–1)"}'
+    - '// @input number swipeSpeedThreshold = "100.0" {"hint":"Minimum swipe speed to trigger quick swipe"}'
+    - '// @input number leftCardRotationZ = "0" {"hint":"Rotation (degrees) for left card"}'
+    - '// @input number rightCardRotationZ = "0" {"hint":"Rotation (degrees) for right card"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input number imageToDescGap = "0.5" {"hint":"Vertical gap in cm between the image bottom and the description text (only applies when a card has an image)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging"}'

@@ -1,0 +1,158 @@
+- !<ObjectPrefab/543a8feb-837b-49b6-960c-3f78f8337f3c>
+  PackagePath: ""
+  objects:
+    - !<own> 9a318ca3-3c59-4cc9-ab19-2440a589e922
+  LazyLoading: false
+  RetainAssets: true
+  PreviewEnvironment: !<reference> 00000000-0000-0000-0000-000000000000
+- !<AnimationPlayer/83953128-32a8-46d8-bdc4-bb9785797597>
+  PrefabRemaps:
+    []
+  Name: Animation Player
+  Enabled: true
+  Autoplay: true
+  ClipRangeType: Frames
+  AnimationClips:
+    - !<AnimationClip>
+      AnimationAsset: !<reference> 00000000-0000-0000-0000-000000000000
+      Name: ""
+      Weight: 1.000000
+      PlaybackSpeed: 1.000000
+      Begin: 0.000000
+      End: 1.000000
+      Offset: 0.000000
+      Reversed: false
+      Disabled: false
+      BlendMode: Default
+      ScaleMode: Multiply
+      PlaybackMode: Loop
+- !<SceneObject/9a318ca3-3c59-4cc9-ab19-2440a589e922>
+  PrefabRemaps:
+    - 83953128-32a8-46d8-bdc4-bb9785797597: 83953128-32a8-46d8-423b-44687a868a68
+    - 9a318ca3-3c59-4cc9-ab19-2440a589e922: 9a318ca3-3c59-4cc9-54e6-dbbf5a7616dd
+    - bc530aa7-705f-4b74-8666-1410fad77783: bc530aa7-705f-4b74-7999-ebef0528887c
+    - e7b6f975-fda9-467a-9288-86f16526a0c5: a4a8f8e5-d305-40ec-a8e8-8e8ced7a1508
+  Name: CustomTimestampEventExample
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> bc530aa7-705f-4b74-8666-1410fad77783
+    - !<own> 83953128-32a8-46d8-bdc4-bb9785797597
+    - !<own> e7b6f975-fda9-467a-9288-86f16526a0c5
+- !<ScriptComponent/bc530aa7-705f-4b74-8666-1410fad77783>
+  PrefabRemaps:
+    []
+  Name: CustomTimestampEventExample
+  Enabled: true
+  ScriptAsset: !<reference> a9f7f098-40a7-4112-8364-4dc55b68b126
+  ScriptInputsDefault:
+    startPosition: true
+    endPosition: true
+    eventName: true
+    eventTime: true
+    enableLogging: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      target: !<reference.SceneObject> 9a318ca3-3c59-4cc9-ab19-2440a589e922
+      startPosition: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
+      endPosition: !<Vec3> {x: 1.000000, y: 0.000000, z: 0.000000}
+      eventName: midpoint
+      eventTime: 0.500000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/e7b6f975-fda9-467a-9288-86f16526a0c5>
+  PrefabRemaps:
+    []
+  Name: Frame
+  Enabled: true
+  ScriptAsset: !<reference> 3b46d829-f6db-432a-914c-3551904d3994
+  ScriptInputsDefault:
+    _themeOverride: true
+    _padding: true
+    _allowScaling: true
+    allowNonUniformScaling: true
+    autoScaleContent: true
+    relativeZ: true
+    _onlyInteractOnMargin: true
+    _cutOutCenter: true
+    _minimumSize: true
+    _maximumSize: true
+    xOnTranslate: true
+    xAlways: true
+    xBufferDegrees: true
+    yOnTranslate: true
+    yAlways: true
+    yBufferDegrees: true
+    useSnapping: true
+    itemSnapping: true
+    worldSnapping: true
+    _useTagAlong: true
+    _tagAlongDistance: true
+    _showFollowButton: true
+    useFollowBehavior: true
+    _useTiltMode: true
+    _tiltUpThreshold: true
+    _tiltDownThreshold: true
+    _following: true
+    _showCloseButton: true
+    _enableInteractionPlane: true
+    _interactionPlaneOffset: true
+    _interactionPlanePadding: true
+    _targetingVisual: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _themeOverride: Inherited
+      autoShowHide: false
+      _appearance: Small
+      _innerSize: !<Vec2> {x: 7.500000, y: 7.500000}
+      _padding: !<Vec2> {x: 0.000000, y: 0.000000}
+      _allowScaling: true
+      allowNonUniformScaling: false
+      autoScaleContent: true
+      relativeZ: true
+      _onlyInteractOnMargin: false
+      allowTranslation: false
+      _cutOutCenter: false
+      _minimumSize: !<Vec2> {x: 10.000000, y: 10.000000}
+      _maximumSize: !<Vec2> {x: 150.000000, y: 150.000000}
+      useBillboarding: false
+      xOnTranslate: true
+      xAlways: false
+      xBufferDegrees: !<float> 0.000000
+      yOnTranslate: true
+      yAlways: false
+      yBufferDegrees: !<float> 0.000000
+      useSnapping: false
+      itemSnapping: false
+      worldSnapping: false
+      _useTagAlong: false
+      _tagAlongDistance: !<float> 110.000000
+      _showFollowButton: false
+      useFollowBehavior: false
+      _useTiltMode: false
+      _tiltUpThreshold: !<float> 25.000000
+      _tiltDownThreshold: !<float> 35.000000
+      _following: false
+      _showCloseButton: false
+      _enableInteractionPlane: true
+      _interactionPlaneOffset: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
+      _interactionPlanePadding: !<Vec2> {x: 0.000000, y: 0.000000}
+      _targetingVisual: !<float> 1.000000
+  ScriptTypes:
+    "":
+      {}

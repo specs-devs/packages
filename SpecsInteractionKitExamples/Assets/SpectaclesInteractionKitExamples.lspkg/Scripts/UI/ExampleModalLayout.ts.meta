@@ -1,0 +1,108 @@
+- !<AssetImportMetadata/ea7ea705-32b8-0411-08dc-f05b302b0114>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> f988d54d-539b-4ac7-b94a-7e1349e43f2a
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> f988d54d-539b-4ac7-b94a-7e1349e43f2a
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> ce4a41a3-92b5-4a86-9685-1d0ac9ed8abf
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/ce4a41a3-92b5-4a86-9685-1d0ac9ed8abf>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: 5ead2f5e-568d-4b2b-920e-c9584bd9591a
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    bodyFontSize: false
+    buttonFontSize: false
+    frameAppearance: false
+    frameAutoHide: false
+    framePadding: false
+    modalBodyFontSize: false
+    modalButtonFontSize: false
+    modalInnerSize: false
+    modalTitleFontSize: false
+    positionX: false
+    positionY: false
+    positionZ: false
+    primaryInnerSize: false
+    testMode: false
+    titleFontSize: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - testMode: true
+      frameAppearance: Large
+      primaryInnerSize: !<Vec2> {x: 30.000000, y: 18.000000}
+      framePadding: !<Vec2> {x: 0.800000, y: 0.800000}
+      frameAutoHide: false
+      positionX: !<float> 0.000000
+      positionY: !<float> 0.000000
+      positionZ: !<float> -110.000000
+      modalInnerSize: !<Vec2> {x: 28.000000, y: 20.000000}
+      titleFontSize: !<float> 36.000000
+      bodyFontSize: !<float> 22.000000
+      buttonFontSize: !<float> 26.000000
+      modalTitleFontSize: !<float> 32.000000
+      modalBodyFontSize: !<float> 22.000000
+      modalButtonFontSize: !<float> 24.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA; font-size: 13px;\">Programmatic UI Component</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Builds the full layout at runtime. Adjust inputs and press Play to rebuild.</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Uncheck Test Mode to start with an empty panel — call component.showModal() from another script.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Test Mode"}'
+    - '// @input bool testMode = true {"hint":"Show demo title, description, and Show Modal button. Uncheck to start empty — call showModal() / hideModal() programmatically."}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Primary Frame"}'
+    - "// @input string frameAppearance = \"Large\" {\"hint\":\"Frame appearance style — 'Small', 'Medium', or 'Large'\"}"
+    - "// @input vec2 primaryInnerSize = {30,18} {\"hint\":\"Content area size in cm (width × height). Matches the Frame 'Inner Size' property.\"}"
+    - "// @input vec2 framePadding = {0.8,0.8} {\"hint\":\"Border padding around the content area in cm. Matches the Frame 'Padding' property.\"}"
+    - '// @input bool frameAutoHide {"hint":"Auto-hide the frame handle bar when idle"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Position"}'
+    - '// @input float positionX {"hint":"World X position (0 = horizontal centre)"}'
+    - '// @input float positionY {"hint":"World Y position (0 = camera height)"}'
+    - '// @input float positionZ = -110 {"hint":"Distance from camera in cm (negative = in front)"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Modal Dialog"}'
+    - '// @input vec2 modalInnerSize = {28,20} {"hint":"Modal dialog size in cm (width × height)"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Primary Panel Text"}'
+    - '// @input float titleFontSize = 36 {"hint":"Font size for the panel title"}'
+    - '// @input float bodyFontSize = 22 {"hint":"Font size for the panel body description"}'
+    - "// @input float buttonFontSize = 26 {\"hint\":\"Font size for the 'Show Modal' button\"}"
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Modal Dialog Text"}'
+    - '// @input float modalTitleFontSize = 32 {"hint":"Font size for the modal title"}'
+    - '// @input float modalBodyFontSize = 22 {"hint":"Font size for the modal body text"}'
+    - '// @input float modalButtonFontSize = 24 {"hint":"Font size for the Cancel / Confirm buttons"}'
+    - '// @ui {"widget":"group_end"}'

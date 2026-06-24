@@ -1,0 +1,72 @@
+- !<AssetImportMetadata/f8c1e71e-c101-4b95-8dce-9d7671e852ee>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 60305c89-5813-45d6-86ec-97eadbe5117d
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 60305c89-5813-45d6-86ec-97eadbe5117d
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> dd80f0e8-5110-4ce6-8628-3ca17546063a
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/dd80f0e8-5110-4ce6-8628-3ca17546063a>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: 7f817aaf-f8f5-4889-ae8f-d8d653fb3d09
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    enableLoggingLifecycle: false
+    shakeAmplitudeX: false
+    shakeAmplitudeY: false
+    shakeAmplitudeZ: false
+    target: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - target: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      shakeAmplitudeX: !<float> 2.000000
+      shakeAmplitudeY: !<float> 2.000000
+      shakeAmplitudeZ: !<float> 0.000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #F59E0B;\">Setup required: AnimationPlayer</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #F59E0B; font-size: 11px;\">1. Add an AnimationPlayer component on this SceneObject.</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #F59E0B; font-size: 11px;\">2. Add one Clip and configure Name / Playback Mode / Speed / Weight / Range.</span>"}'
+    - "// @ui {\"widget\":\"label\", \"label\":\"<span style=\\\"color: #F59E0B; font-size: 11px;\\\">3. Drop an authored .animationAsset onto the Clip's Animation Asset slot (this example's focus), or leave empty for the fallback shake.</span>\"}"
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Target</span>"}'
+    - // @input SceneObject target
+    - '// @ui {"widget":"separator"}'
+    - "// @ui {\"widget\":\"label\", \"label\":\"<span style=\\\"color: #60A5FA;\\\">Fallback Shake (used only if Clip 0's Animation Asset is empty)</span>\"}"
+    - "// @ui {\"widget\":\"label\", \"label\":\"<span style=\\\"color: #94A3B8; font-size: 11px;\\\">TransformPosition is absolute. Shake offsets are added around 0 — set the target's base position to where you want it to oscillate.</span>\"}"
+    - '// @input float shakeAmplitudeX = 2 {"hint":"Horizontal shake amplitude.", "widget":"slider", "min":0, "max":10, "step":0.5}'
+    - '// @input float shakeAmplitudeY = 2 {"hint":"Vertical shake amplitude.", "widget":"slider", "min":0, "max":10, "step":0.5}'
+    - '// @input float shakeAmplitudeZ {"hint":"Depth shake amplitude.", "widget":"slider", "min":0, "max":10, "step":0.5}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging (animation cycles, events, etc.)"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)"}'

@@ -1,0 +1,158 @@
+- !<ObjectPrefab/e6d234e4-cb50-4992-8cc9-d0e12bb9e894>
+  PackagePath: ""
+  objects:
+    - !<own> 6442b2cd-1287-44e3-930e-ee85cbb34699
+  LazyLoading: false
+  RetainAssets: true
+  PreviewEnvironment: !<reference> 00000000-0000-0000-0000-000000000000
+- !<ScriptComponent/617a9390-6289-4cf1-8750-034b866b41e5>
+  PrefabRemaps:
+    []
+  Name: Frame
+  Enabled: true
+  ScriptAsset: !<reference> 3b46d829-f6db-432a-914c-3551904d3994
+  ScriptInputsDefault:
+    _themeOverride: true
+    _padding: true
+    _allowScaling: true
+    allowNonUniformScaling: true
+    autoScaleContent: true
+    relativeZ: true
+    _onlyInteractOnMargin: true
+    _cutOutCenter: true
+    _minimumSize: true
+    _maximumSize: true
+    xOnTranslate: true
+    xAlways: true
+    xBufferDegrees: true
+    yOnTranslate: true
+    yAlways: true
+    yBufferDegrees: true
+    useSnapping: true
+    itemSnapping: true
+    worldSnapping: true
+    _useTagAlong: true
+    _tagAlongDistance: true
+    _showFollowButton: true
+    useFollowBehavior: true
+    _useTiltMode: true
+    _tiltUpThreshold: true
+    _tiltDownThreshold: true
+    _following: true
+    _showCloseButton: true
+    _enableInteractionPlane: true
+    _interactionPlaneOffset: true
+    _interactionPlanePadding: true
+    _targetingVisual: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _themeOverride: Inherited
+      autoShowHide: false
+      _appearance: Small
+      _innerSize: !<Vec2> {x: 7.500000, y: 7.500000}
+      _padding: !<Vec2> {x: 0.000000, y: 0.000000}
+      _allowScaling: true
+      allowNonUniformScaling: false
+      autoScaleContent: true
+      relativeZ: true
+      _onlyInteractOnMargin: false
+      allowTranslation: false
+      _cutOutCenter: false
+      _minimumSize: !<Vec2> {x: 10.000000, y: 10.000000}
+      _maximumSize: !<Vec2> {x: 150.000000, y: 150.000000}
+      useBillboarding: false
+      xOnTranslate: true
+      xAlways: false
+      xBufferDegrees: !<float> 0.000000
+      yOnTranslate: true
+      yAlways: false
+      yBufferDegrees: !<float> 0.000000
+      useSnapping: false
+      itemSnapping: false
+      worldSnapping: false
+      _useTagAlong: false
+      _tagAlongDistance: !<float> 110.000000
+      _showFollowButton: false
+      useFollowBehavior: false
+      _useTiltMode: false
+      _tiltUpThreshold: !<float> 25.000000
+      _tiltDownThreshold: !<float> 35.000000
+      _following: false
+      _showCloseButton: false
+      _enableInteractionPlane: true
+      _interactionPlaneOffset: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
+      _interactionPlanePadding: !<Vec2> {x: 0.000000, y: 0.000000}
+      _targetingVisual: !<float> 1.000000
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/6442b2cd-1287-44e3-930e-ee85cbb34699>
+  PrefabRemaps:
+    - 617a9390-6289-4cf1-8750-034b866b41e5: 7c055e72-9326-4d5a-9b2c-2e929b4a1048
+    - 6442b2cd-1287-44e3-930e-ee85cbb34699: 6442b2cd-1287-44e3-6cf1-117a344cb966
+    - 9f6b7eb7-e5c4-44e2-996d-bbd20eb9f181: 9f6b7eb7-e5c4-44e2-6692-442df1460e7e
+    - c35a8331-bbe0-4bb5-89be-96bf4e02714f: c35a8331-bbe0-4bb5-7641-6940b1fd8eb0
+  Name: PushOutZExample
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> c35a8331-bbe0-4bb5-89be-96bf4e02714f
+    - !<own> 9f6b7eb7-e5c4-44e2-996d-bbd20eb9f181
+    - !<own> 617a9390-6289-4cf1-8750-034b866b41e5
+- !<AnimationPlayer/9f6b7eb7-e5c4-44e2-996d-bbd20eb9f181>
+  PrefabRemaps:
+    []
+  Name: Animation Player
+  Enabled: true
+  Autoplay: true
+  ClipRangeType: Frames
+  AnimationClips:
+    - !<AnimationClip>
+      AnimationAsset: !<reference> 00000000-0000-0000-0000-000000000000
+      Name: ""
+      Weight: 1.000000
+      PlaybackSpeed: 1.000000
+      Begin: 0.000000
+      End: 1.000000
+      Offset: 0.000000
+      Reversed: false
+      Disabled: false
+      BlendMode: Default
+      ScaleMode: Multiply
+      PlaybackMode: Loop
+- !<ScriptComponent/c35a8331-bbe0-4bb5-89be-96bf4e02714f>
+  PrefabRemaps:
+    []
+  Name: PushOutZExample
+  Enabled: true
+  ScriptAsset: !<reference> 34de7707-1dd5-4d7a-a286-ffbd53aacbb4
+  ScriptInputsDefault:
+    startZ: true
+    overshootZ: true
+    endZ: true
+    duration: true
+    enableLogging: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      target: !<reference.SceneObject> 6442b2cd-1287-44e3-930e-ee85cbb34699
+      startZ: !<float> 0.000000
+      overshootZ: 1.200000
+      endZ: !<float> 1.000000
+      duration: 0.600000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      {}

@@ -1,0 +1,191 @@
+- !<AssetImportMetadata/88e19b0d-00eb-7518-c7d6-ffa49f15d25c>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> c224ef90-5cee-430b-9672-e4048d77b205
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> c224ef90-5cee-430b-9672-e4048d77b205
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> f848fcac-8cab-4d2e-a344-114d952ab21b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/f848fcac-8cab-4d2e-a344-114d952ab21b>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  ComponentUid: abd0ab4f-3119-4391-a53d-c6384248b5f3
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    backplateStyle: false
+    contentInset: false
+    fontBold: false
+    fontLight: false
+    fontMedium: false
+    fontRegular: false
+    frameAppearance: false
+    frameAutoHide: false
+    frameInnerSize: false
+    framePadding: false
+    galleryColumns: false
+    galleryImages: false
+    galleryRows: false
+    homeCardTextSize: false
+    homeColumns: false
+    homeRows: false
+    panelTitle: false
+    placeholderImage: false
+    positionX: false
+    positionY: false
+    positionZ: false
+    settingsCardTextSize: false
+    settingsColumns: false
+    settingsRows: false
+    showCloseButton: false
+    showFollowButton: false
+    tabIcons: false
+    tabNames: false
+    tabTextSize: false
+    testMode: false
+    titleTextSize: false
+    useFrame: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - panelTitle: Menu Horizontal
+      useFrame: true
+      frameAppearance: Large
+      frameInnerSize: !<Vec2> {x: 40.000000, y: 28.000000}
+      framePadding: !<Vec2> {x: 0.800000, y: 0.800000}
+      contentInset: !<Vec2> {x: 1.500000, y: 1.000000}
+      showCloseButton: true
+      showFollowButton: true
+      frameAutoHide: false
+      backplateStyle: dark
+      positionX: !<float> 0.000000
+      positionY: !<float> 0.000000
+      positionZ: !<float> -110.000000
+      homeColumns: !<float> 3.000000
+      homeRows: !<float> 10.000000
+      galleryColumns: !<float> 4.000000
+      galleryRows: !<float> 10.000000
+      settingsColumns: !<float> 1.000000
+      settingsRows: !<float> 10.000000
+      testMode: true
+      placeholderImage: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      galleryImages: !<reference.Texture[]>
+        []
+      tabNames: !<string[]>
+        []
+      tabIcons: !<reference.Texture[]>
+        []
+      tabTextSize: !<float> 24.000000
+      titleTextSize: !<float> 36.000000
+      homeCardTextSize: !<float> 18.000000
+      settingsCardTextSize: !<float> 22.000000
+      fontLight: !<reference.Font> 00000000-0000-0000-0000-000000000000
+      fontRegular: !<reference.Font> 00000000-0000-0000-0000-000000000000
+      fontMedium: !<reference.Font> 00000000-0000-0000-0000-000000000000
+      fontBold: !<reference.Font> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA; font-size: 13px;\">Programmatic UI Component</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Builds the full layout at runtime. Adjust inputs and press Play to rebuild.</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Uncheck Test Mode to start with empty cards — populate via API instead.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Custom Items API</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Populate these arrays from another script before Play starts:</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #CBD5E1; font-size: 11px;\">component.homeItems     = [{ text, image, method }]</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #CBD5E1; font-size: 11px;\">component.galleryItems  = [{ text, image, method }]</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #CBD5E1; font-size: 11px;\">component.settingsItems = [{ text, image, method }]</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">ButtonItem Schema</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">text   — label shown on the card</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">image  — Texture asset (or undefined for no image)</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">method — () => void  callback fired when the card is tapped</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Quick Start</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">const menu = so.getComponent(\"ExampleMenuHorizontalLayout\")</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">menu.homeItems = [{ text: \"Open\", image: tex, method: () => print(\"ok\") }]</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Panel"}'
+    - '// @input string panelTitle = "Menu Horizontal" {"hint":"Title text shown at the top of the panel"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Frame"}'
+    - '// @input bool useFrame = true {"hint":"Enable for a draggable Frame with handle bar. Disable for a fixed BackPlate."}'
+    - "// @input string frameAppearance = \"Large\" {\"hint\":\"Frame appearance style — 'Small', 'Medium', or 'Large'\"}"
+    - "// @input vec2 frameInnerSize = {40,28} {\"hint\":\"Content area size in cm (width × height). Matches the Frame 'Inner Size' property.\"}"
+    - "// @input vec2 framePadding = {0.8,0.8} {\"hint\":\"Border padding around the content area in cm. Matches the Frame 'Padding' property.\"}"
+    - '// @input vec2 contentInset = {1.5,1} {"hint":"Inset between frame edge and content — X = left/right, Y = top/bottom (cm)"}'
+    - '// @input bool showCloseButton = true {"hint":"Show the × close button on the frame"}'
+    - '// @input bool showFollowButton = true {"hint":"Show the follow / grip button on the frame"}'
+    - '// @input bool frameAutoHide {"hint":"Auto-hide the frame handle bar when idle"}'
+    - "// @input string backplateStyle = \"dark\" {\"hint\":\"BackPlate style when Frame is disabled — 'dark' or 'light'\"}"
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Position"}'
+    - '// @input float positionX {"hint":"World X position (0 = horizontal centre)"}'
+    - '// @input float positionY {"hint":"World Y position (0 = camera height)"}'
+    - '// @input float positionZ = -110 {"hint":"Distance from camera in cm (negative = in front)"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Home Grid"}'
+    - '// @input float homeColumns = 3 {"hint":"Number of columns — Home tab"}'
+    - '// @input float homeRows = 10 {"hint":"Number of rows — Home tab"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Gallery Grid"}'
+    - '// @input float galleryColumns = 4 {"hint":"Number of columns — Gallery tab (cards are square)"}'
+    - '// @input float galleryRows = 10 {"hint":"Number of rows — Gallery tab"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Settings Grid"}'
+    - '// @input float settingsColumns = 1 {"hint":"Number of columns — Settings tab"}'
+    - '// @input float settingsRows = 10 {"hint":"Number of rows — Settings tab"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Test Mode"}'
+    - '// @input bool testMode = true {"hint":"Fill all cards with mockup data automatically. Uncheck to start empty and populate via homeItems / galleryItems / settingsItems."}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Card Images"}'
+    - '// @input Asset.Texture placeholderImage {"hint":"Placeholder texture used in every card in test mode. Drag any image asset here."}'
+    - '// @input Asset.Texture[] galleryImages = {} {"hint":"Gallery image pool — drag textures here. Gallery cards pick randomly from this list. Leave empty to use Placeholder Image instead."}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Tabs"}'
+    - '// @input string[] tabNames = {} {"hint":"Tab labels — provide exactly 3 strings. Defaults to Home / Gallery / Settings when empty."}'
+    - '// @input Asset.Texture[] tabIcons = {} {"hint":"Tab icons — provide exactly 3 textures (one per tab). When set each tab shows icon + label. Leave empty for text-only tabs."}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Typography"}'
+    - '// @input float tabTextSize = 24 {"hint":"Font size for tab button labels"}'
+    - '// @input float titleTextSize = 36 {"hint":"Font size for the panel title"}'
+    - '// @input float homeCardTextSize = 18 {"hint":"Font size for Home tab card labels"}'
+    - '// @input float settingsCardTextSize = 22 {"hint":"Font size for Settings tab card labels"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Font slots are optional — SpecsSans is auto-loaded from the Fonts folder when left empty.</span>"}'
+    - '// @input Asset.Font fontLight {"hint":"Light weight font — auto-loads SpecsSans-Light if empty"}'
+    - '// @input Asset.Font fontRegular {"hint":"Regular weight font — auto-loads SpecsSans-Regular if empty"}'
+    - '// @input Asset.Font fontMedium {"hint":"Medium weight font — auto-loads SpecsSans-Medium if empty"}'
+    - '// @input Asset.Font fontBold {"hint":"Bold font — auto-loads SpecsSans-Bold if empty"}'
+    - '// @ui {"widget":"group_end"}'
