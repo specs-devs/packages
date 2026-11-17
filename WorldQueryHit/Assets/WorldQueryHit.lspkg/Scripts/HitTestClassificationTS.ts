@@ -10,11 +10,11 @@
 import {
   InteractorTriggerType,
   InteractorInputType
-} from "SpectaclesInteractionKit.lspkg/Core/Interactor/Interactor"
-import {SIK} from "SpectaclesInteractionKit.lspkg/SIK"
+} from "InteractionKit.lspkg/Core/Interactor/Interactor"
+import {IK} from "InteractionKit.lspkg/IK"
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindUpdateEvent } from "SnapDecorators.lspkg/decorators";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event";
+import Event from "InteractionKit.lspkg/Utils/Event";
 
 const WorldQueryModule =
   require('LensStudio:WorldQueryModule') as WorldQueryModule;
@@ -194,7 +194,7 @@ export class HitTestClassification extends BaseScriptComponent {
     if (this.enableLoggingLifecycle) {
       this.logger.debug("LIFECYCLE: onUpdate() - Update event");
     }
-    this.primaryInteractor = SIK.InteractionManager.getTargetingInteractors().shift();
+    this.primaryInteractor = IK.InteractionManager.getTargetingInteractors().shift();
     if (this.primaryInteractor &&
         this.primaryInteractor.isActive() &&
         this.primaryInteractor.isTargeting()

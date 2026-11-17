@@ -33,11 +33,11 @@ Read the original setup tutorial, feature overview and Whiteboard mapping. The f
 | `Materials/` | `Card.mat`, `Anchor.mat`, `Connector.mat`, `FlowMarker.mat` (wired to the board's `cardMaterial`, `anchorMaterial`, `connectorMaterial`, `markerMaterial`) and their `unlit.graphShader` |
 | `Meshes/` | `CardBox.mesh` (`cardMesh`) and `AnchorSphere.mesh` (`anchorMesh`) |
 
-> **NOTE:** `Scripts/BezierLine.ts` is all you need for your own connectors. Only the `Examples` folder imports SpectaclesInteractionKit and SpectaclesUIKit.
+> **NOTE:** `Scripts/BezierLine.ts` is all you need for your own connectors. Only the `Examples` folder imports InteractionKit and UIKit.
 
 ## Design Guidelines
 
-Designing Lenses for SPECS offers all-new possibilities for immersive AR experiences. [View Design Guidelines](https://docs.snap.com/spectacles)
+Designing Lenses for SPECS offers all-new possibilities for immersive AR experiences. View Design Guidelines
 
 ## Original environment notes
 
@@ -47,7 +47,7 @@ The following device/app minimum versions were listed in the original tutorial. 
 - **SPECS OS Version**: v7.0+
 - **SPECS App iOS**: v1.7+
 - **SPECS App Android**: v1.7+
-- **Examples only**: SpectaclesInteractionKit and SpectaclesUIKit (SpectaclesUIKit also needs Motion and Icons)
+- **Examples only**: InteractionKit and UIKit (UIKit also needs Motion and Icons)
 
 ## Getting Started
 
@@ -89,7 +89,7 @@ export class ConnectTwoObjects extends BaseScriptComponent {
 
 ## Examples
 
-Drop `BezierLine__PLACE_IN_SCENE.prefab` into a Specs scene that has the SpectaclesInteractionKit prefab. You first get a `Guide` panel; after you press "Ok, I understood" the `ExampleCarousel` panel and the `BezierDemo` group appear: three cards joined by connectors and a UIKit panel.
+Drop `BezierLine__PLACE_IN_SCENE.prefab` into a Specs scene that has the InteractionKit prefab. You first get a `Guide` panel; after you press "Ok, I understood" the `ExampleCarousel` panel and the `BezierDemo` group appear: three cards joined by connectors and a UIKit panel.
 
 Try it in Preview or on device:
 
@@ -170,11 +170,11 @@ Changing `width`, `segments`, axes or offsets directly does not trigger a rebuil
 
 ## Support
 
-If you have any questions or need assistance, please don't hesitate to reach out to the [SPECS Developer Community](https://support.spectacles.com).
+If you have any questions or need assistance, please don't hesitate to reach out to the [SPECS Developer Community](https://developers.specs.com).
 
 ## Contributing
 
-This package is maintained by the SPECS team. For feature requests or bug reports, please contact your team lead.
+This package is maintained by the SPECS team. For feature requests or bug reports, visit https://developers.specs.com.
 
 ## Built with 👽 by the SPECS team <!-- -->
 

@@ -1,0 +1,27 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1024" y2="1024" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#004A5E"/>
+      <stop offset="0.55" stop-color="#001B24"/>
+      <stop offset="1" stop-color="#000000"/>
+    </linearGradient>
+    <linearGradient id="glyph" x1="0" y1="190" x2="0" y2="840" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8FE6FF"/>
+      <stop offset="1" stop-color="#005A75"/>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+  <g transform="translate(-62 6)">
+  <!-- three stacked layers: camera (back), AR (middle), UI (front) -->
+  <rect x="190" y="210" width="470" height="330" rx="44" stroke="url(#glyph)" stroke-width="34" opacity="0.55"/>
+  <rect x="260" y="300" width="470" height="330" rx="44" stroke="url(#glyph)" stroke-width="34" opacity="0.8"/>
+  <rect x="330" y="390" width="470" height="330" rx="44" fill="#001820" stroke="url(#glyph)" stroke-width="34"/>
+  <!-- play/stream glyph inside the front layer -->
+  <path d="M520 480 L640 555 L520 630 Z" fill="url(#glyph)"/>
+  <!-- record dot -->
+  <circle cx="800" cy="300" r="54" fill="#F87171"/>
+  <!-- stream arcs -->
+  <path d="M860 520 C 905 565 905 640 860 685" stroke="url(#glyph)" stroke-width="30" stroke-linecap="round"/>
+  <path d="M905 470 C 980 545 980 660 905 735" stroke="url(#glyph)" stroke-width="30" stroke-linecap="round" opacity="0.7"/>
+  </g>
+</svg>

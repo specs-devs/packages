@@ -1,0 +1,60 @@
+- !<AssetImportMetadata/7f207060-466b-40ce-be86-78941508feb8>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 7e4cab29-582f-49b1-94d9-bbc134f76639
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 7e4cab29-582f-49b1-94d9-bbc134f76639
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 70b65eda-b13e-43f2-9e70-bdd529ea7bc2
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/70b65eda-b13e-43f2-9e70-bdd529ea7bc2>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 8a003eba-4327-4a4b-a4e5-bfb51b0d69fc
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    compositeTexture: false
+    configAsset: false
+    fontScale: false
+    microphone: false
+    panelWidth: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - configAsset: !<reference.JsonAsset> 00000000-0000-0000-0000-000000000000
+      compositeTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      microphone: !<reference.AudioTrackAsset> 00000000-0000-0000-0000-000000000000
+      panelWidth: !<float> 44.000000
+      fontScale: !<float> 1.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"Snap Cloud Social Media"}'
+    - '// @input Asset.JsonAsset configAsset {"hint":"Public JSON configuration. Never add provider secrets to a Lens asset."}'
+    - '// @input Asset.Texture compositeTexture {"hint":"Optional rendered camera texture to include AR content. Leave empty to use the physical camera."}'
+    - '// @input Asset.AudioTrackAsset microphone {"hint":"Microphone audio track used when capture.includeAudio is enabled in JSON."}'
+    - '// @input float panelWidth = 44 {"hint":"Panel width in centimeters. Prefab is positioned at 110 cm.", "widget":"slider", "min":38, "max":48, "step":1}'
+    - '// @input float fontScale = 1 {"hint":"Font metric adjustment for your project theme.", "widget":"slider", "min":0.8, "max":1.4, "step":0.05}'

@@ -248,6 +248,21 @@
     PackagePath: ""
     objects:
       - !<own> 9cca8893-cab7-4d40-59fb-57cf1bc09836
+- !<SceneObject/6bffe740-529c-4f41-af8c-b37dcdc730fe>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> e7ba0e0d-609b-4dfe-8115-b093866e9419
 - !<ScriptComponent/6f3ee388-4a2e-4054-52da-13ddb58a56b8>
   PrefabRemaps:
     []
@@ -361,7 +376,7 @@
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
-    - !<own> 9f6a01ef-44d4-49ba-b972-a6d4cde1cf4a
+    - !<own> 6bffe740-529c-4f41-af8c-b37dcdc730fe
     - !<own> beba7981-1e61-41d9-9086-cceb57c470b3
     - !<own> 28163857-5fee-43ee-a126-96bf7ef8c0b2
     - !<own> 4fb7ada7-f150-4278-51d9-85de7459388f
@@ -370,37 +385,6 @@
     - !<own> 817f6be5-288e-40b7-5b36-479bb0bfd318
   Components:
     []
-- !<SceneObject/9f6a01ef-44d4-49ba-b972-a6d4cde1cf4a>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> b708534a-850f-4f6d-bb3f-88bf4e3c1ff8
-- !<ScriptComponent/b708534a-850f-4f6d-bb3f-88bf4e3c1ff8>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
-  ScriptInputsDefault:
-    _theme: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      _theme: System3
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/b81f7d2c-d3ff-483f-6aed-f785ca361799>
   PrefabRemaps:
     []
@@ -568,6 +552,22 @@
       snapCloudRequirements: !<MappingBased.AssignableType_1> 2998b9a8-d80a-45d3-ac9f-7bb52d293497
       supabaseProject: !<reference.SupabaseProject> 00000000-0000-0000-0000-000000000000
       texture: !<reference.Texture> 40179707-27c2-4b8a-95d9-9e4cd0225b03
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/e7ba0e0d-609b-4dfe-8115-b093866e9419>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
   ScriptTypes:
     "":
       {}

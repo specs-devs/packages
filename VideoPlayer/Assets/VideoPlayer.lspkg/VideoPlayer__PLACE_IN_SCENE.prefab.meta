@@ -1,0 +1,156 @@
+- !<AssetImportMetadata/a7cc1756-e420-40b0-a2ba-8e99319aa47c>
+  ImportedAssetIds:
+    ObjectPrefab: !<reference> 67201a9f-8b41-4bb0-aaa3-6bfa56c05992
+  ImporterName: ObjectPrefabImporter
+  PrimaryAsset: !<reference> 67201a9f-8b41-4bb0-aaa3-6bfa56c05992
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    ObjectPrefab: !<own> af0b9276-f5f6-4a01-b025-2db01e2e76f9
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptComponent/16c8e011-85db-45d7-556e-6faf937f9a5e>
+  PrefabRemaps:
+    []
+  Name: SpecsVideoPlayer
+  Enabled: true
+  ScriptAsset: !<reference> 0f8b69ca-4a78-4238-a23f-966794293e39
+  ScriptInputsDefault:
+    url: true
+    autoPlay: true
+    displayVisual: true
+    displayMaterial: true
+    textureParameter: true
+    maxFrameWidth: true
+    maxFrameHeight: true
+    backend: true
+    remoteMediaModule: true
+    internetModule: true
+    enableLogging: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      source: bundled
+      url: ""
+      videoTexture: !<reference.Texture> e5eda545-23e9-4384-a448-2ece504dee2e
+      autoPlay: true
+      loop: true
+      volume: 0.800000
+      displayVisual: !<reference.MaterialMeshVisual> 00000000-0000-0000-0000-000000000000
+      displayMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      textureParameter: baseTex
+      maxFrameWidth: 1280
+      maxFrameHeight: 720
+      backend: auto
+      remoteMediaModule: !<reference.RemoteMediaModule> 00000000-0000-0000-0000-000000000000
+      internetModule: !<reference.InternetModule> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/650ba78a-898f-46fb-6fb7-4b343a3b042c>
+  PrefabRemaps:
+    []
+  Name: VideoPlayerPanel
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> c09d6b06-22ec-4729-5483-1e5cd130cf55
+- !<SceneObject/7bc0b793-f039-4cc3-55a5-8fa10b1d43fc>
+  PrefabRemaps:
+    []
+  Name: SpecsVideoPlayer
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 16c8e011-85db-45d7-556e-6faf937f9a5e
+- !<SceneObject/8ea47747-1622-4794-4b15-ceb8aada1a4c>
+  PrefabRemaps:
+    []
+  Name: VideoPlayer__PLACE_IN_SCENE
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 7bc0b793-f039-4cc3-55a5-8fa10b1d43fc
+    - !<own> 650ba78a-898f-46fb-6fb7-4b343a3b042c
+  Components:
+    []
+- !<ObjectPrefabAssetData/af0b9276-f5f6-4a01-b025-2db01e2e76f9>
+  Prototype: !<ObjectOwner/c692aa0f-c6aa-4d8d-bf47-37725679325f>
+    PackagePath: ""
+    objects:
+      - !<own> 8ea47747-1622-4794-4b15-ceb8aada1a4c
+- !<ScriptComponent/c09d6b06-22ec-4729-5483-1e5cd130cf55>
+  PrefabRemaps:
+    []
+  Name: VideoPlayerPanel
+  Enabled: true
+  ScriptAsset: !<reference> 922cfc1b-1255-429c-aa9d-3b919796fda2
+  ScriptInputsDefault:
+    seekStep: true
+    showVolumeSlider: true
+    showMediaInfo: true
+    flexLayoutResize: true
+    panelWidth: true
+    aspectRatio: true
+    positionX: true
+    positionY: true
+    positionZ: true
+    videoCornerRadius: true
+    uiScale: true
+    textScale: true
+    timeLabelFontSize: true
+    buttonFontSize: true
+    volumeLabelFontSize: true
+    stateFontSize: true
+    infoFontSize: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      player: !<MappingBased.AssignableType_1> 16c8e011-85db-45d7-556e-6faf937f9a5e
+      seekStep: !<float> 1.000000
+      showVolumeSlider: true
+      showMediaInfo: true
+      flexLayoutResize: false
+      panelWidth: !<float> 32.000000
+      aspectRatio: auto
+      positionX: !<float> 0.000000
+      positionY: !<float> 0.000000
+      positionZ: !<float> -110.000000
+      videoCornerRadius: 1.500000
+      uiScale: 1.400000
+      textScale: 3.200000
+      timeLabelFontSize: !<float> 24.000000
+      buttonFontSize: !<float> 20.000000
+      volumeLabelFontSize: !<float> 22.000000
+      stateFontSize: !<float> 20.000000
+      infoFontSize: !<float> 16.000000
+  ScriptTypes:
+    "":
+      {}

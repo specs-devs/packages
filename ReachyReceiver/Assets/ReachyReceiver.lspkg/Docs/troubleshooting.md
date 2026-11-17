@@ -17,7 +17,7 @@ Bridge, target or panel behavior differs from the source contract. Rows come fro
 | Tracking toggles robot selection too / Enable Real Robot does nothing | Pre-2026-10-01 prefab wired `enableSimulationSwitch` to the tracking switch | Fixed in the prefab; re-instantiate old scene instances (they keep their own copy of the references). |
 | No target after turning on Look At | Target spawns ≈40 cm above the panel centre, above the default view | Look up; or move `ReferenceInstantiationPositionForGrabThisReachyWillFollow` in your scene. |
 | White plate but no axes on ReachyReference | Pre-2026-10-01 prefab pointed the move gizmo at dangling mesh/material ids (gltf re-imported in an earlier Lens Studio update) | Fixed in the prefab; re-instantiate old scene instances. |
-| Gizmo/plate covers other UI | ReachyReference sits 40 cm in front, 20 cm below the head pose | It is the robot anchor: grab it and move it onto the real robot. |
+| Gizmo/plate covers other UI | ReachyReference sits 60 cm in front, 20 cm below the head pose | It is the robot anchor: grab it and move it onto the real robot. |
 | "Failed to download the dependency Icons … 2C2Px5zRD3OJOQzl0gpL9R" warning | `package_dependencies.json` Icons entry has a zero exportId/id | Harmless when Icons is already installed; don't reinstall from the Asset Library. |
 | Target appears wrong when robot anchor rotated | World-direction yaw calculation | Check robot coordinate convention before changing anchor transforms. |
 | Rapid toggles create inconsistent target state | Async transitions have no cancellation-state guard | Exercise sequential transitions and test rapid toggles separately in live QA. |

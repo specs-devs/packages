@@ -2,14 +2,14 @@
 // crash in the package (Visual.ts imports ThemeService before defining COLORS, and the
 // theme chain reads COLORS at module-load). Entering the import cycle via ThemeService
 // lets Visual.ts finish defining COLORS first. Must remain the FIRST import.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService"
-import { RectangleButton } from 'SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton';
+import "UIKit.lspkg/Scripts/Themes/ThemeService"
+import { RectangleButton } from 'UIKit.lspkg/Scripts/Components/Button/RectangleButton';
 import {
   RoundedRectangleVisual,
   RoundedRectangleVisualState,
-} from 'SpectaclesUIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangleVisual';
-import { StateName } from 'SpectaclesUIKit.lspkg/Scripts/Components/Element';
-import { GradientParameters } from 'SpectaclesUIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangle';
+} from 'UIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangleVisual';
+import { StateName } from 'UIKit.lspkg/Scripts/Components/Element';
+import { GradientParameters } from 'UIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangle';
 
 // Same palette as UIKitCustomVisualsFrame
 const PINK  = new vec4(1.00, 0.42, 0.71, 1.0);

@@ -26,6 +26,8 @@ const REMOTE_MEDIA_MODULE =
 const REPEAT_SUBMIT_TIME = 0.25; // seconds
 
 const INTERNET_MODULE = require("LensStudio:InternetModule") as InternetModule;
+const ARTIFACT_LOAD_ATTEMPTS = 6;
+const ARTIFACT_RETRY_MS = 1500;
 
 export class Snap3D {
   private static script: ScriptComponent;
@@ -127,6 +129,40 @@ export class Snap3D {
       callback();
     });
   }
+  /**
+   * Loads a Snap3D artifact (preview image or GLB). An artifact URL can be listed a moment before
+   * its file is fully available, so a failed load is retried a few times with a short pause. Each
+   * attempt uses InternetModule.performHttpRequest(...).asResource() first and falls back to
+   * InternetModule.makeResourceFromUrl(url).
+   */
+  private static async loadArtifact<T>(
+    url: string,
+    load: (resource: DynamicResource) => Promise<T>
+  ): Promise<T> {
+    let lastError: unknown = "artifact could not be loaded";
+    for (let attempt = 0; attempt < ARTIFACT_LOAD_ATTEMPTS; attempt++) {
+      if (attempt > 0) {
+        await Snap3D.promiseSetTimeout(ARTIFACT_RETRY_MS);
+      }
+      try {
+        const httpRequest = RemoteServiceHttpRequest.create();
+        httpRequest.url = url;
+        const response = await Promisfy.InternetModule.performHttpRequest(
+          INTERNET_MODULE,
+          httpRequest
+        );
+        return await load(response.asResource());
+      } catch (error) {
+        lastError = error;
+      }
+      try {
+        return await load(INTERNET_MODULE.makeResourceFromUrl(url));
+      } catch (error) {
+        lastError = error;
+      }
+    }
+    throw lastError;
+  }
   private static promiseSetTimeout(time: number): Promise<void> {
     return new Promise((resolve) => {
       Snap3D.setTimeout(() => {
@@ -137,6 +173,8 @@ export class Snap3D {
   private static async repeatGetStatus(
     submitGetStatus: Snap3DTypes.SubmitGetStatusResults
   ) {
+    // The preview image is optional: if it can't be loaded, keep going to the meshes.
+    let previewImageSkipped = false;
     const apiToken = RemoteServiceGatewayCredentials.getApiToken(
       AvaliableApiTypes.Snap
     );
@@ -189,26 +227,19 @@ export class Snap3D {
 
         if (
           responseBody.stage === "base_mesh_gen" &&
-          !submitGetStatus.texture
+          !submitGetStatus.texture &&
+          !previewImageSkipped
         ) {
           for (const artifact of responseBody.artifacts) {
             if (artifact.artifact_type === "image") {
               const imgUrl = artifact.url;
-
-              const httpRequest = RemoteServiceHttpRequest.create();
-              httpRequest.url = imgUrl;
-              const dynamicImgResource =
-                await Promisfy.InternetModule.performHttpRequest(
-                  INTERNET_MODULE,
-                  httpRequest
-                );
+              const dynamicImgResourceUrl = imgUrl;
 
               let texture: Texture;
               try {
                 texture =
-                  await Promisfy.RemoteMediaModule.loadResourceAsImageTexture(
-                    REMOTE_MEDIA_MODULE,
-                    dynamicImgResource.asResource()
+                  await Snap3D.loadArtifact(dynamicImgResourceUrl, (resource) =>
+                    Promisfy.RemoteMediaModule.loadResourceAsImageTexture(REMOTE_MEDIA_MODULE, resource)
                   );
                 submitGetStatus.texture = texture;
                 submitGetStatus.status = "running";
@@ -223,16 +254,9 @@ export class Snap3D {
                 ]);
                 break;
               } catch (error) {
-                taskCompleted = true;
-                submitGetStatus.status = "failed";
-
-                submitGetStatus.event.invoke([
-                  "failed",
-                  {
-                    errorMsg: error,
-                    errorCode: -1,
-                  },
-                ]);
+                // Not fatal: the meshes are what the caller needs. Skip the preview and continue.
+                previewImageSkipped = true;
+                print("Snap3D: preview image could not be loaded (" + error + "); continuing to the meshes");
               }
             }
           }
@@ -243,18 +267,11 @@ export class Snap3D {
           for (const artifact of responseBody.artifacts) {
             if (artifact.artifact_type === "base_mesh") {
               const baseMeshUrl = artifact.url;
-              const httpRequest = RemoteServiceHttpRequest.create();
-              httpRequest.url = baseMeshUrl;
-              const dynamicGltfResource =
-                await Promisfy.InternetModule.performHttpRequest(
-                  INTERNET_MODULE,
-                  httpRequest
-                );
+              const dynamicGltfResourceUrl = baseMeshUrl;
               try {
                 const gltfAsset =
-                  await Promisfy.RemoteMediaModule.loadResourceAsGltfAsset(
-                    REMOTE_MEDIA_MODULE,
-                    dynamicGltfResource.asResource()
+                  await Snap3D.loadArtifact(dynamicGltfResourceUrl, (resource) =>
+                    Promisfy.RemoteMediaModule.loadResourceAsGltfAsset(REMOTE_MEDIA_MODULE, resource)
                   );
                 submitGetStatus.baseMeshGltf = gltfAsset;
                 submitGetStatus.status = "running";
@@ -293,19 +310,12 @@ export class Snap3D {
             for (const artifact of responseBody.artifacts) {
               if (artifact.artifact_type === "base_mesh") {
                 const baseMeshUrl = artifact.url;
-                const httpRequest = RemoteServiceHttpRequest.create();
-                httpRequest.url = baseMeshUrl;
-                const dynamicGltfResource =
-                  await Promisfy.InternetModule.performHttpRequest(
-                    INTERNET_MODULE,
-                    httpRequest
-                  );
+              const dynamicGltfResourceUrl = baseMeshUrl;
                 try {
                   const gltfAsset =
-                    await Promisfy.RemoteMediaModule.loadResourceAsGltfAsset(
-                      REMOTE_MEDIA_MODULE,
-                      dynamicGltfResource.asResource()
-                    );
+                    await Snap3D.loadArtifact(dynamicGltfResourceUrl, (resource) =>
+                    Promisfy.RemoteMediaModule.loadResourceAsGltfAsset(REMOTE_MEDIA_MODULE, resource)
+                  );
                   submitGetStatus.baseMeshGltf = gltfAsset;
                   submitGetStatus.status = "completed";
 
@@ -340,18 +350,11 @@ export class Snap3D {
               !submitGetStatus.refinedMeshGltf
             ) {
               const refinedMeshUrl = artifact.url;
-              const httpRequest = RemoteServiceHttpRequest.create();
-              httpRequest.url = refinedMeshUrl;
-              const dynamicGltfResource =
-                await Promisfy.InternetModule.performHttpRequest(
-                  INTERNET_MODULE,
-                  httpRequest
-                );
+              const dynamicGltfResourceUrl = refinedMeshUrl;
               try {
                 const gltfAsset =
-                  await Promisfy.RemoteMediaModule.loadResourceAsGltfAsset(
-                    REMOTE_MEDIA_MODULE,
-                    dynamicGltfResource.asResource()
+                  await Snap3D.loadArtifact(dynamicGltfResourceUrl, (resource) =>
+                    Promisfy.RemoteMediaModule.loadResourceAsGltfAsset(REMOTE_MEDIA_MODULE, resource)
                   );
                 taskCompleted = true;
                 submitGetStatus.refinedMeshGltf = gltfAsset;

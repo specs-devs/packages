@@ -6,7 +6,7 @@
 
 Check this file before choosing a controller or copying an older AuthKitExamples snippet. It is
 the compatibility index for the package revision that contains it (the version is in
-`package.native`; companions AuthKit, SpectaclesInteractionKit and SpectaclesUIKit are listed in
+`package.native`; companions AuthKit, InteractionKit and UIKit are listed in
 `package_dependencies.json`).
 
 ## Status meanings
@@ -23,7 +23,7 @@ the compatibility index for the package revision that contains it (the version i
 | Minimal Spotify sign-in + profile call | `SpotifyUIController` component (file `SpotifyControllerMinimum.ts`) | `AuthKitExamples.lspkg/SpotifyExample/SpotifyControllerMinimum` |
 | Provider-agnostic sign-in template | `UIController` component | `AuthKitExamples.lspkg/UIController` |
 | Drop-in UI | `AuthKitExamples__PLACE_IN_SCENE.prefab` (UIKit `Frame` + `RectangleButton`s, music controller enabled) | — |
-| Buttons | `RectangleButton` from SpectaclesUIKit, bound through `onTriggerUp.add(...)` | `SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton` |
+| Buttons | `RectangleButton` from UIKit, bound through `onTriggerUp.add(...)` | `UIKit.lspkg/Scripts/Components/Button/RectangleButton` |
 | HTTP | `InternetModule.fetch(new Request(url, init))` | `require("LensStudio:InternetModule")` |
 | Remote artwork / preview audio | `InternetModule.makeResourceFromUrl(url)` + `RemoteMediaModule.loadResourceAsImageTexture` / `loadResourceAsAudioTrackAsset` | `require("LensStudio:RemoteMediaModule")` |
 
@@ -41,7 +41,7 @@ Inputs, defaults and behaviour of each component are in [components.md](componen
 
 | Old surface | Replacement |
 |---|---|
-| SpectaclesUIKit 1.x `GridLayout` component on the prefab's button rows (`rows`, `columns`, `cellSize`, `cellPadding`, `layoutBy`) | Removed from the current SpectaclesUIKit; the rows are now plain objects with each button at a fixed local x (±4 cm for two buttons, −8 / 0 / +8 cm for three). The current UIKit grid lives in `Scripts/Components/Layout2D/Grid/GridLayout` and uses CSS-style tracks. |
+| UIKit 1.x `GridLayout` component on the prefab's button rows (`rows`, `columns`, `cellSize`, `cellPadding`, `layoutBy`) | Removed from the current UIKit; the rows are now plain objects with each button at a fixed local x (±4 cm for two buttons, −8 / 0 / +8 cm for three). The current UIKit grid lives in `Scripts/Components/Layout2D/Grid/GridLayout` and uses CSS-style tracks. |
 | `RemoteServiceModule.makeResourceFromUrl` | Deprecated in Lens Studio; the examples call `InternetModule.makeResourceFromUrl`. |
 | `new (Request as any)(...)` casts | `new Request(url, init)` type-checks directly. |
-| SIK `Interactable` + `onInteractorTriggerStart` on the buttons | SpectaclesUIKit `RectangleButton.onTriggerUp`. |
+| SIK `Interactable` + `onInteractorTriggerStart` on the buttons | UIKit `RectangleButton.onTriggerUp`. |

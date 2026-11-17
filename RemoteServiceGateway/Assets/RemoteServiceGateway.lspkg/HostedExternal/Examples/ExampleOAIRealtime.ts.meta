@@ -24,6 +24,7 @@
   VersionPatch: 0
   VersionPrerelease: ""
   UpdateOrder: 0
+  RunInEditor: false
   ComponentUid: 71c808ea-554c-4b07-9e63-0cda9584c8c0
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
@@ -32,7 +33,9 @@
     dynamicAudioOutput: false
     enableLogging: false
     enableLoggingLifecycle: false
+    greeting: false
     instructions: false
+    logPanelOffset: false
     microphoneRecorder: false
     textDisplay: false
     voice: false
@@ -55,6 +58,8 @@
       enableLogging: false
       enableLoggingLifecycle: false
       voice: coral
+      greeting: Greet the user in one short sentence and ask what they would like to talk about.
+      logPanelOffset: !<Vec3> {x: 0.000000, y: 12.000000, z: 0.000000}
   ScriptTypes:
     -
       {}
@@ -84,3 +89,7 @@
     - '// @input string voice = "coral" {"widget":"combobox", "values":[{"label":"alloy", "value":"alloy"}, {"label":"ash", "value":"ash"}, {"label":"ballad", "value":"ballad"}, {"label":"coral", "value":"coral"}, {"label":"echo", "value":"echo"}, {"label":"sage", "value":"sage"}, {"label":"shimmer", "value":"shimmer"}, {"label":"verse", "value":"verse"}], "showIf":"audioOutput", "showIfValue":true}'
     - '// @ui {"widget":"group_end"}'
     - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Demo"}'
+    - '// @input string greeting = "Greet the user in one short sentence and ask what they would like to talk about." {"hint":"Sent as the first response request once the session is ready, so the model speaks first. Empty: wait for the user.", "widget":"text_area"}'
+    - "// @input vec3 logPanelOffset = {0,12,0} {\"hint\":\"Where the demo's live log panel sits, relative to this object (cm)\"}"
+    - '// @ui {"widget":"group_end"}'

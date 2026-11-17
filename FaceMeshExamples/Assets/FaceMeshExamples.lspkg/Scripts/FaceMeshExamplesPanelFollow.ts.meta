@@ -1,0 +1,62 @@
+- !<AssetImportMetadata/5d54a068-a845-4ee1-a722-7119d42cf711>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 48ce0fe7-5371-456b-a960-7047250fccac
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 48ce0fe7-5371-456b-a960-7047250fccac
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 8681bc4a-2c9b-4757-9a56-1de7d3d15ad6
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/8681bc4a-2c9b-4757-9a56-1de7d3d15ad6>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 7ae98b31-0081-4a0a-89b0-762116384029
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    camera: false
+    distanceCm: false
+    followSpeed: false
+    heightCm: false
+    moveThresholdCm: false
+    turnThresholdDeg: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - camera: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      distanceCm: !<float> 45.000000
+      heightCm: !<float> -22.000000
+      followSpeed: !<float> 4.000000
+      turnThresholdDeg: !<float> 30.000000
+      moveThresholdCm: !<float> 20.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - "// @input SceneObject camera {\"hint\":\"Main Camera SceneObject (empty: SIK's world camera is used)\"}"
+    - '// @input float distanceCm = 45 {"hint":"Distance in front of the wearer (cm)", "widget":"slider", "min":25, "max":90, "step":1}'
+    - '// @input float heightCm = -30 {"hint":"Height relative to the eyes (cm, negative = below)", "widget":"slider", "min":-45, "max":10, "step":1}'
+    - '// @input float followSpeed = 3 {"hint":"How quickly the panel catches up (higher = snappier)", "widget":"slider", "min":0.5, "max":12, "step":0.5}'
+    - '// @input float turnThresholdDeg = 30 {"hint":"Turn the head this far (deg) before the panel re-centres", "widget":"slider", "min":5, "max":90, "step":1}'
+    - '// @input float moveThresholdCm = 20 {"hint":"Walk this far (cm) before the panel re-centres", "widget":"slider", "min":5, "max":100, "step":1}'

@@ -33,7 +33,7 @@ Final video: composite-videos/{sessionId}/final.mp4
 ### Created Service
 **Location:** `/composite-stitcher/`
 **Technology:** Node.js 20 + Express + FFmpeg
-**Repository:** https://github.com/YOUR_USERNAME/composite-stitcher
+**Repository:** Your GitHub repository (e.g., `https://github.com/YOUR_USERNAME/composite-stitcher`)
 
 ### Setup Steps
 
@@ -53,7 +53,7 @@ Final video: composite-videos/{sessionId}/final.mp4
 
 3. **Pushed to GitHub:**
    ```bash
-   git remote add origin https://github.com/YOUR_USERNAME/composite-stitcher.git
+   git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
    git branch -M main
    git push -u origin main
    ```
@@ -372,7 +372,7 @@ private async stopRecording() {
 
 ### Railway
 - **Service URL:** `https://your-composite-stitcher.example.com`
-- **GitHub Repo:** `https://github.com/YOUR_USERNAME/composite-stitcher`
+- **GitHub Repo:** Your GitHub repository URL
 - **Environment Variables:** Set in Railway Dashboard
 
 ### Supabase
@@ -482,7 +482,7 @@ supabase functions deploy trigger-composite-stitch --project-ref YOUR PROJECT RE
 - **Railway Docs:** https://docs.railway.app
 - **Supabase CLI:** https://supabase.com/docs/guides/cli
 - **FFmpeg Docs:** https://ffmpeg.org/documentation.html
-- **Repository:** https://github.com/YOUR_USERNAME/composite-stitcher
+- **Repository:** `https://github.com/YOUR_USERNAME/YOUR_REPO`
 
 ---
 

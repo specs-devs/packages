@@ -1,6 +1,6 @@
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
-import {SIK} from "SpectaclesInteractionKit.lspkg/SIK"
-import NativeLogger from "SpectaclesInteractionKit.lspkg/Utils/NativeLogger"
+import {IK} from "InteractionKit.lspkg/IK"
+import NativeLogger from "InteractionKit.lspkg/Utils/NativeLogger"
 import {GoogleSlideBridge} from "./GoogleSlideBridge"
 import {PresentationSwitcher} from "./PresentationSwitcher"
 
@@ -44,8 +44,8 @@ export class MobileController extends BaseScriptComponent {
   }
 
   onStart() {
-    // Retrieve MobileInputData from SIK's definitions.
-    const mobileInputData = SIK.MobileInputData
+    // Retrieve MobileInputData from IK's definitions.
+    const mobileInputData = IK.MobileInputData
     // Fetch the MotionController for the phone.
     const motionController = mobileInputData.motionController
     // Add touch event handler that uses the normalized position to decide next/previous.

@@ -5,7 +5,7 @@
 ## Use when
 
 Use this table for package-specific failures. Generic Lens scripting, networking and
-TypeScript issues belong to the relevant CLAD skill. The rows marked **QA** were found while
+TypeScript issues are outside this package's scope. The rows marked **QA** were found while
 making the package's demo project QA-ready (2026-09-30).
 
 ## Error messages

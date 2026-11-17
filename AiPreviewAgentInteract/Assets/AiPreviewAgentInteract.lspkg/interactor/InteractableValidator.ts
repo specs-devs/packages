@@ -1,5 +1,5 @@
-import {Interactable} from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
+import {Interactable} from "InteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
 
 // Reasons the validator itself can produce. Caller-initiated failures
 // (not_found, disabled, interactor_busy) are constructed separately by the
@@ -75,14 +75,16 @@ function checkObstruction(interactable: Interactable): Promise<ValidationResult>
 
       const hitObj = hit.collider.getSceneObject()
 
-      // Allow if the hit object is the target or an ancestor of the target
-      if (isAncestorOrSelf(hitObj, targetObj)) {
+      // Allow if the hit object is the target, an ancestor of the target,
+      // or a descendant of the target (e.g., UIKit keeps its collider on a
+      // child object named "Collider").
+      if (isAncestorOrSelf(hitObj, targetObj) || isAncestorOrSelf(targetObj, hitObj)) {
         resolve(VALID)
         return
       }
 
       // Allow if the hit object and target share a common interactable
-      // ancestor (e.g., SIK's InteractionPlaneColliderRoot is a sibling
+      // ancestor (e.g., IK's InteractionPlaneColliderRoot is a sibling
       // within the same UI container).
       let ancestor: SceneObject | null = targetObj.getParent()
       while (ancestor && !isNull(ancestor)) {

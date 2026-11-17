@@ -24,10 +24,12 @@
   VersionPatch: 0
   VersionPrerelease: ""
   UpdateOrder: 0
+  RunInEditor: false
   ComponentUid: 48a2a00e-8bfc-4a92-9c94-17c16c98e9ab
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
+    buttonText: false
     enableLogging: false
     enableLoggingLifecycle: false
     nameText: false
@@ -46,6 +48,7 @@
   DefaultScriptInputs:
     - productId: premium_upgrade
       purchaseButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      buttonText: !<reference.Text> 00000000-0000-0000-0000-000000000000
       nameText: !<reference.Text> 00000000-0000-0000-0000-000000000000
       priceText: !<reference.Text> 00000000-0000-0000-0000-000000000000
       statusText: !<reference.Text> 00000000-0000-0000-0000-000000000000
@@ -57,12 +60,13 @@
   InputLines:
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Product Configuration</span>"}'
-    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Specify the product ID from your commerce catalog that this controller manages</span>"}'
-    - '// @input string productId = "premium_upgrade"'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">ID of a product defined on the Specs developer portal at developers.specs.com/lenses</span>"}'
+    - // @input string productId
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">UI References</span>"}'
-    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Connect the UI elements for purchase button and product information display</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Connect the UI elements for the action button and product information display</span>"}'
     - // @input AssignableType_1 purchaseButton
+    - '// @input Component.Text buttonText {"hint":"Optional label of the action button"}'
     - // @input Component.Text nameText
     - // @input Component.Text priceText
     - // @input Component.Text statusText

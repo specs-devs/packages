@@ -1419,7 +1419,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Materials:
-    - !<reference> f2937562-a9a2-42f0-bf12-210ef47d5e21
+    - !<reference> c72f8b22-b510-4487-9fd2-7506cd1440ce
   Mesh: !<reference> 6b7bd000-e1eb-47e3-8f2d-4b011d98a192
   Skin: !<reference> c6a71617-bec5-4be9-ba30-ccd2320ff3e4
   BlendShapesEnabled: true
@@ -1866,7 +1866,7 @@
 - !<ScriptComponent/2153b6bf-a479-4099-aade-b47df58fc906>
   PrefabRemaps:
     []
-  Name: SIKLogLevelConfiguration
+  Name: IKLogLevelConfiguration
   Enabled: true
   ScriptAsset: !<reference> ff7d0aa1-32aa-4b47-84b7-340260da1ef0
   ScriptInputsDefault:
@@ -2070,21 +2070,6 @@
   ScriptTypes:
     "":
       {}
-- !<SceneObject/297c01a8-baed-435b-81f0-8f4a441cfd2e>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> 39633b78-c72a-4e44-b53f-32df3c6e9b26
 - !<SceneObject/298f274e-575f-40f7-a4f3-e4eaeaaecd67>
   PrefabRemaps:
     []
@@ -2677,22 +2662,6 @@
     - !<own> 8f584b00-e4c6-4e8d-8c99-fa83c4310325
   Components:
     []
-- !<ScriptComponent/39633b78-c72a-4e44-b53f-32df3c6e9b26>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
-  ScriptInputsDefault:
-    _theme: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      _theme: System3
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/39cd5ded-dd91-4319-b87f-c7e48c335264>
   PrefabRemaps:
     []
@@ -2791,6 +2760,21 @@
   ScriptTypes:
     "":
       {}
+- !<SceneObject/3c26e819-44c0-4611-b2b9-9d2f352edb79>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 936b14b6-37f0-4df6-af3e-b0a19761dce4
 - !<SceneObject/3c8928f2-1ec2-4c2d-80d7-520147af8e3d>
   PrefabRemaps:
     []
@@ -3835,7 +3819,7 @@
     - cb723e33-4a15-4f02-82d2-7e80299b1395: 70290c16-3e1e-4ebd-77be-11f99a7f536a
     - d068eba3-1e0b-4b40-aa4c-7096a22b2748: f24eade7-4784-4f7b-7076-ef3281b8ed81
     - d8ce2d41-6bdf-4d37-beb2-a693b7e1d24c: 99e6c117-7864-41d8-4c62-17acfe71bc53
-  Name: SpectaclesInteractionKit
+  Name: InteractionKit
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
@@ -5225,7 +5209,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Materials:
-    - !<reference> 64bdf844-8131-4c35-99e2-1c4a94e2cdc3
+    - !<reference> c72f8b22-b510-4487-9fd2-7506cd1440ce
   Mesh: !<reference> 15e33d09-bf02-4bd8-8863-09f13f29d338
   Skin: !<reference> d8e487e7-f06e-4df8-9d20-3d85a408de2b
   BlendShapesEnabled: true
@@ -6153,7 +6137,6 @@
     - 2592c6c4-3960-4361-8965-85498ac40916: f6a94938-21d3-449e-bf23-54f55e5e359c
     - 26c9d576-54e8-43bc-86fa-6856428ea8b7: 531d56aa-7aba-4367-9aab-f3909b498739
     - 276fa729-c2c7-4670-8679-8b3f065c89fe: 4a1b50e8-cc2c-4524-8eb5-373154cbe272
-    - 297c01a8-baed-435b-81f0-8f4a441cfd2e: f71f45dc-7112-4cf2-bf7f-5eeadc4d7fa7
     - 29920111-90ef-4235-9f4a-f567a2909c89: d2499467-5778-472b-9e72-c62dcfe251e4
     - 299d2949-5d33-4efd-8b25-982e2b7c84ea: 8a69f90c-8023-4eae-b6a0-286da458280c
     - 29c837d0-0332-42fb-87e8-a6501bc3ac8f: cfca85ef-65e3-4f4a-937c-a7a193d45322
@@ -6178,11 +6161,11 @@
     - 38049734-3e94-4d0e-a19d-cbf5fa003ca6: 0a6f8450-a636-4fdd-8fa0-7c50b396a649
     - 3856d400-0fb9-48e9-a2c7-bcb205912e54: 79d6f050-8e0d-4172-a33e-96913bee7261
     - 38bd2d28-9606-4a00-b279-2aa8f460a6e8: a74c5fd8-3fae-41a6-ab0b-1c257f96e673
-    - 39633b78-c72a-4e44-b53f-32df3c6e9b26: cdc2f94c-143c-4256-8729-ca31ed0beb80
     - 39cd5ded-dd91-4319-b87f-c7e48c335264: 363b4d61-0287-47e8-96f8-36cd7bd7fe28
     - 3a5a5aab-61aa-4266-9813-01d98fc9747f: a74b2901-6e81-4f04-821f-9e435aa06f9f
     - 3abaa367-7a40-4fa4-99fe-265a29c623f3: 4246effa-683a-4f95-98f4-25cc95fb7291
     - 3b29d8c1-e933-4a74-8426-fec29a176a78: 1a0d2af7-7274-46da-8f53-e880d1d0cd6a
+    - 3c26e819-44c0-4611-b2b9-9d2f352edb79: 3e6bd9fe-a72b-467e-9f4f-7f7b4284026b
     - 3c8928f2-1ec2-4c2d-80d7-520147af8e3d: c4e74a60-236f-4550-9cec-d998c772da0f
     - 3e1f7565-2a14-45a3-80ed-b13639801105: d5654f38-cce9-47c1-8ec3-6d47237bde0d
     - 3fe200ad-7af9-40dd-993a-af5d4e3b7669: cca02067-0548-4210-8e8b-84c351ab9344
@@ -6316,6 +6299,7 @@
     - 908e84dd-7337-42e4-a5fa-e67d144e690a: a5f0465e-947f-4eb0-8b14-09fe4ff029b2
     - 91f707b1-214e-4cd8-9f70-9d7c1fc0bea7: 9c011fb3-f9fa-4e7f-a544-387f577d8fe2
     - 92f35c39-dc2a-40dd-a40e-6fb5d257b6d4: d1bc6141-d9f7-468a-ade9-ebf3ea72ecab
+    - 936b14b6-37f0-4df6-af3e-b0a19761dce4: d0d6e501-6eb4-42a2-b88c-7e0a20897e7d
     - 93a3fee5-198a-42c5-82a4-0d6dd27663ff: a72a1048-23b1-4e79-8f6e-2d26cfe5ef2c
     - 93da87f1-34bf-49dd-8e30-7839390f250a: 147d5315-dd95-4798-a1f9-e8afc9b605f6
     - 94395ba2-a7eb-4977-a038-b74fd9830728: 712522d5-5920-4d1b-a6e6-b4e4c36083a2
@@ -6496,7 +6480,7 @@
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
-    - !<own> 297c01a8-baed-435b-81f0-8f4a441cfd2e
+    - !<own> 3c26e819-44c0-4611-b2b9-9d2f352edb79
     - !<own> c3c28ec7-4962-43f6-a6fa-5fd766abd1da
     - !<own> 492619a9-88d3-4174-9004-d1985a5d0778
     - !<own> 6fe2eef6-a339-46cc-a643-e5fd0443cb43
@@ -6683,6 +6667,22 @@
     []
   Components:
     []
+- !<ScriptComponent/936b14b6-37f0-4df6-af3e-b0a19761dce4>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/93a3fee5-198a-42c5-82a4-0d6dd27663ff>
   PrefabRemaps:
     []

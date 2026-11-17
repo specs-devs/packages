@@ -9,12 +9,12 @@ The **hand-interaction half** of the AI Preview Agent system. It lets an externa
 drag and rotate hand actions against SIK `Interactable` objects, so agent-driven verification
 can exercise UI and gestures end-to-end, not just observe them.
 
-This package is **SPECS only** (it builds on SpectaclesInteractionKit hand input) and
+This package is **SPECS only** (it builds on InteractionKit hand input) and
 **depends on `AiPreviewAgentInspect`**: it borrows that package's message broker rather
 than creating its own.
 
 > Normally you don't wire this up by hand. The editor-side agent tooling
-> (Core-ChatTools / the `verify-preview` and `specs-preview-interaction` skills) attaches this
+> (CLAD's preview tools) attaches this
 > script, alongside Inspect, to an **"AiPreviewAgent Handler"** object automatically. Import
 > it manually only when authoring or debugging the agent pipeline itself.
 
@@ -60,18 +60,17 @@ Successes return `CommandSuccess`. Failures return Inspect's `CommandError` with
 ## Dependencies
 
 The scripts import `AiPreviewAgentInspect` (broker, publisher, shared error and hand-state
-types), `SpectaclesInteractionKit` (hands, interactors, `Interactable`) and `Leaf` (hand
-rig, logger, frame timers). `package_dependencies.json` also lists SpectaclesUIKit, Motion
+types), `InteractionKit` (hands, interactors, `Interactable`) and `Leaf` (hand
+rig, logger, frame timers). `package_dependencies.json` also lists UIKit, Motion
 and Icons. The bridge scripts do not import them; the demo scaffolding does
-(`Example/ExampleCarousel` and `Example/GuideDismissPanel` import SpectaclesUIKit
+(`Example/ExampleCarousel` and `Example/GuideDismissPanel` import UIKit
 `RectangleButton`, `Button` and `Frame`).
 
 ## Usage
 
 This section ships with the package and describes the exact installed revision. Read it,
 then follow the links into `Docs/` for the topic you need. It is written for both people
-and coding agents; generic Lens scripting, scene construction and Specs spatial design live
-in the CLAD skills, not here.
+and coding agents; generic Lens scripting, scene construction and Specs spatial design are out of scope here.
 
 ### Package identity
 
@@ -93,7 +92,7 @@ in the CLAD skills, not here.
   `Normal.png` and `MaterialParams.png` textures); `Example/Meshes/Box.mesh` is the targets' mesh.
   They are not part of the hand-action bridge; see [components](Docs/components.md#demo-scaffolding-example).
 - Required companions (`package_dependencies.json`): AiPreviewAgentInspect,
-  SpectaclesInteractionKit, Leaf (plus SpectaclesUIKit, Motion and Icons for the demo).
+  InteractionKit, Leaf (plus UIKit, Motion and Icons for the demo).
 
 ### Version and API status
 
@@ -106,15 +105,6 @@ Use this package only to let editor-side agent tools drive SIK hands in the Prev
 SPECS project. Use `AiPreviewAgentInspect` alone for scene queries and captures (it also
 works for Snapchat lenses). Neither one is a runtime input API: both do nothing on device,
 so never build Lens logic on them or ship them in an experience.
-
-### Related CLAD skills
-
-- [specs-preview-interaction](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/specs-preview-interaction):
-  composing Pinch / Hover / Poke / Drag sequences through this package.
-- [verify-preview](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/verify-preview):
-  the end-to-end QA loop that uses it.
-- No CLAD? Setup: https://developers.specs.com/docs/clad/setup/setup-ai/ ·
-  source: `github.com/lens-studio-devs/ls-extensions`.
 
 ### Package Docs (ship in `Docs/`)
 

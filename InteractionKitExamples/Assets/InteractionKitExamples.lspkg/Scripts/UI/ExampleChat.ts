@@ -2,7 +2,7 @@
 // crash in the package (Visual.ts imports ThemeService before defining COLORS, and the
 // theme chain reads COLORS at module-load). Entering the import cycle via ThemeService
 // lets Visual.ts finish defining COLORS first. Must remain the FIRST import.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService"
+import "UIKit.lspkg/Scripts/Themes/ThemeService"
 /**
  * ExampleChat – programmatic chat UI with tunable inspector params.
  * No prefabs or scene object refs; cards are RectangleButtons with custom visuals.
@@ -10,9 +10,9 @@ import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService"
  */
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 require("LensStudio:TextInputModule")
-import { InteractableManipulation } from "SpectaclesInteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation";
-import { Slider } from "SpectaclesUIKit.lspkg/Scripts/Components/Slider/Slider";
-import { RectangleButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton";
+import { InteractableManipulation } from "InteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation";
+import { Slider } from "UIKit.lspkg/Scripts/Components/Slider/Slider";
+import { RectangleButton } from "UIKit.lspkg/Scripts/Components/Button/RectangleButton";
 import {
   buildRoundedRectangleOnto,
   getRoundedRectangleSizeFromText,

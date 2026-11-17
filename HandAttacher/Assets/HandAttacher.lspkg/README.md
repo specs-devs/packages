@@ -25,7 +25,7 @@ smoothing, and automatic hiding while the hand is not tracked.
 This section ships with the package and describes the exact installed revision.
 Read it, then follow the links into `Docs/` for the topic you need. It is
 written for both people and coding agents; generic Lens scripting, scene
-construction, and Specs spatial design live in the CLAD skills, not here.
+construction, and Specs spatial design are out of scope here.
 
 ### Package identity
 
@@ -41,8 +41,8 @@ construction, and Specs spatial design live in the CLAD skills, not here.
   `GuideDismissPanel`. The prefab uses them to present the demo; the
   HandAttacher script doesn't depend on them.
 - Required companion packages (`package_dependencies.json`):
-  `SpectaclesInteractionKit`, `Utilities` and `SnapDecorators`
-  (imported by the script), plus `SpectaclesUIKit`, `Motion` and
+  `InteractionKit`, `Utilities` and `SnapDecorators`
+  (imported by the script), plus `UIKit`, `Motion` and
   `Icons`. The scene needs the SIK prefab, since hand data comes from
   `SIK.HandInputData`.
 
@@ -59,14 +59,18 @@ rings, wrist displays, hand-held tools. It only moves a transform. It does not
 detect gestures (use SIK's hand events), make anything interactable (SIK
 `Interactable`), or place UI on the palm with a hand-menu layout (SIK / UIKit).
 
-### Related CLAD skills
+### Hand-tracking permission (upcoming)
 
-- [specs-interaction-recipes](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/specs-interaction-recipes):
-  pinch and other hand gestures, SIK init order.
-- [lens-api](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/lens-api):
-  generic component lifecycle and scripting.
-- No CLAD? Setup: https://developers.specs.com/docs/clad/setup/setup-ai/ ·
-  source: `github.com/lens-studio-devs/ls-extensions`.
+Hand Attacher reads raw hand-joint positions and rotations every frame
+(through `SIK.HandInputData`). An upcoming Specs OS release treats raw
+hand-joint data as sensitive and gates it behind an explicit user permission,
+so a Lens that uses Hand Attacher is expected to show a one-time permission
+prompt, and joint data (and so the attachment) is unavailable until the user
+allows it. Basic gestures (pinch, poke, grab) are not expected to need the
+prompt. The release and the exact behavior are not final yet; this package
+will be updated when they are. Until then, plan for the prompt: keep
+`hideWhenNotTracked` on, and if the Lens must stay usable when the user
+declines, don't make its core flow depend on hand-attached content.
 
 ### Package Docs (ship in `Docs/`)
 
@@ -97,9 +101,5 @@ here as supported API; never guess an import path.
 ---
 
 [See more packages](https://github.com/specs-devs/packages)
-
-
-
-
 
   

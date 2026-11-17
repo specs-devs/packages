@@ -4,7 +4,7 @@
 
 ## Use when
 
-A connector is missing, does not follow a change, or the board behaves differently than expected. The causes below are derived from source; rows marked *(Preview)* were observed in the Lens Studio Preview with the declared SpectaclesInteractionKit / SpectaclesUIKit dependencies.
+A connector is missing, does not follow a change, or the board behaves differently than expected. The causes below are derived from source; rows marked *(Preview)* were observed in the Lens Studio Preview with the declared InteractionKit / UIKit dependencies.
 
 | Symptom | Source cause | Action |
 |---|---|---|
@@ -23,12 +23,12 @@ A connector is missing, does not follow a change, or the board behaves different
 | Card recolor leaves anchors/lines unchanged | `setColor()` changes face material only | Own updates to the separately cloned anchor and connector materials, or rebuild your own board content. |
 | Panel does not control the board | `board` input is absent | Wire `BezierExamplesPanel.board`; check `[BezierExamplesPanel] Assign the 'board' input (BezierExamples component).` |
 | Stats seem too simple | `vertexCount` is calculated from connection count and configured segments | It is an estimate excluding the temporary line, not a query of generated buffers. |
-| *(Preview)* A switch turns a feature on but never off | SpectaclesUIKit `Switch.onFinished` passes the explicit-change flag (always `true` from a tap), not the on/off state | Read `sw.isOn` inside the handler, as the example panel does in this revision. |
+| *(Preview)* A switch turns a feature on but never off | UIKit `Switch.onFinished` passes the explicit-change flag (always `true` from a tap), not the on/off state | Read `sw.isOn` inside the handler, as the example panel does in this revision. |
 | *(Preview)* Ribbons disappear when Camera facing is off | Without a camera the side vector is `tangent × local up`; on a vertical (XY) board that points along Z, so the ribbon is seen edge-on | Expected. Keep `faceCamera` on for upright boards, or lay the board out horizontally. |
 | *(Preview)* Debug switch shows nothing | Debug drawing goes through `global.debugRenderSystem`; nothing appeared in the Lens Studio Preview | Treat debug drawing as a development aid; check on device or use `getPointAtT()` markers instead. |
 | *(Preview)* Added card overlaps the starter cards | `addCard()` spawns near the board center with a small jitter, 6–9 cm in front | Expected; pinch it and move it. |
 | *(Preview)* Top cards or the panel are out of view | Board (~60 × 34 cm) and panel (~26 × 30 cm) side by side or at ~130 cm overflow the portrait Specs view | Stack the panel under the board and place both ~150 cm away, slightly below eye level. |
-| *(Preview)* Agent preview tooling cannot pinch anything | Project uses an older SpectaclesInteractionKit than the preview tooling drives | Install the SpectaclesInteractionKit / SpectaclesUIKit builds declared in `package_dependencies.json`. |
+| *(Preview)* Agent preview tooling cannot pinch anything | Project uses an older InteractionKit than the preview tooling drives | Install the InteractionKit / UIKit builds declared in `package_dependencies.json`. |
 | Board and panel don't appear | The prefab's `Guide` hides `BezierDemo` and `ExampleCarousel` until it's dismissed | Press "Ok, I understood" on the guide, or delete `Guide` from the instance and enable `BezierDemo`. |
 
 ## Pending validation

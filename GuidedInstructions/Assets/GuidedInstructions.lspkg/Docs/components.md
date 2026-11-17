@@ -128,7 +128,7 @@ Follows the camera every frame (50 cm in front, 8 cm above). Starts in MANUAL mo
 | stepTitleText | Text | Step title |
 | stepDescText | Text | Description plus warning / time note |
 | modeText | Text | `MANUAL` or `AUTO` |
-| prevButton, nextButton, modeToggleButton | RectangleButton (SpectaclesUIKit) | Navigation |
+| prevButton, nextButton, modeToggleButton | RectangleButton (UIKit) | Navigation |
 
 Public:
 - `onStepChanged: Event<number>` (zero-based index)

@@ -19,7 +19,7 @@ tokens are issued, so that page is the source of truth.
 
 | Token type (`AvaliableApiTypes`) | Used by |
 |---|---|
-| `Snap` | `DeepSeek` (`HostedSnap/Deepseek.ts`), `Snap3D` (`HostedSnap/Snap3D.ts`) |
+| `Snap` | `Snap3D` (`HostedSnap/Snap3D.ts`) |
 | `OpenAI` | `OpenAI`, `OpenAIRealtimeWebsocket` (`HostedExternal/OpenAI.ts`) |
 | `Google` | `Gemini`, `GeminiLiveWebsocket`, `Imagen`, `Lyria` (`HostedExternal/Gemini.ts`, `Imagen.ts`, `Lyria.ts`) |
 
@@ -118,7 +118,6 @@ intact: moving or renaming these files breaks the module at import time.
 | `HostedExternal/Imagen.ts` | `RemoteServiceModules/Imagen_Sync` | none |
 | `HostedExternal/Lyria.ts` | `RemoteServiceModules/Lyria_Sync` | none |
 | `HostedExternal/GoogleGenAI.ts` | none itself, but it imports `Gemini`, `Lyria` and `Imagen`, so all four Google assets load | none |
-| `HostedSnap/Deepseek.ts` | `RemoteServiceModules/Deepseek_Completions` | none |
 | `HostedSnap/Snap3D.ts` | `RemoteServiceModules/Snap3D_Submit`, `Snap3D_GetStatus` | `LensStudio:RemoteMediaModule`, `LensStudio:InternetModule` |
 
 `HostedSnap/RemoteServiceModules/Remote Media Module.remoteMediaModule` ships
@@ -136,6 +135,6 @@ The scripts only `require` Lens Studio modules (Remote Service, Internet,
 Remote Media, Gesture, VoiceML for the mic, Camera for `VideoController`). They
 do not change project settings. The package source does not say which
 permission or publishing settings apply when internet is combined with the
-microphone or camera. Use the `specs-camera`, `specs-audio` and
-`specs-internet` CLAD skills, and the SPECS publishing docs for your Lens Studio
+microphone or camera. See the camera, audio and
+internet sections of the Specs documentation, and the SPECS publishing docs for your Lens Studio
 version.

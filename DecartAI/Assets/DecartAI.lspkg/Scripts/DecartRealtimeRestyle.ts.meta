@@ -1,0 +1,122 @@
+- !<AssetImportMetadata/16741d83-4237-4807-8bda-edda7a1eb552>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> ad1f5b95-ce63-4535-b281-42842debb1da
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> ad1f5b95-ce63-4535-b281-42842debb1da
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 75bedd19-84c3-4bfe-abbc-821d593d4bb2
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/75bedd19-84c3-4bfe-abbc-821d593d4bb2>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 9f7122fc-ac9f-4e1e-85e4-b8d1e09a4e59
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    apiKey: false
+    autoStart: false
+    bridgeSendFps: false
+    bridgeUrl: false
+    displayOffsetX: false
+    displayOffsetY: false
+    displayOffsetZ: false
+    displayZoom: false
+    editorWarmupSeconds: false
+    enhancePrompt: false
+    matchAspect: false
+    mode: false
+    nativeBitrateKbps: false
+    nativeDownlinkKbps: false
+    nativeEndpoint: false
+    nativeFps: false
+    nativeMaxWidth: false
+    nativeModel: false
+    nativeUseH265: false
+    prompt: false
+    resolution: false
+    seed: false
+    startDelaySeconds: false
+    statusText: false
+    target: false
+    targetImage: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - target: auto
+      mode: bridge
+      bridgeUrl: "ws://localhost:8765"
+      bridgeSendFps: !<float> 10.000000
+      nativeEndpoint: "wss://api3.decart.ai/v1/stream?model=lucy-2.5"
+      nativeModel: lucy-2.5
+      nativeUseH265: true
+      nativeFps: !<float> 30.000000
+      nativeBitrateKbps: !<float> 6000.000000
+      nativeMaxWidth: !<float> 1280.000000
+      nativeDownlinkKbps: !<float> 2500.000000
+      displayZoom: 1.600000
+      displayOffsetX: !<float> 0.000000
+      displayOffsetY: !<float> 0.000000
+      displayOffsetZ: !<float> 0.000000
+      matchAspect: true
+      apiKey: ""
+      prompt: turn the world into a vivid watercolor painting
+      resolution: 480p
+      seed: !<float> 1234.000000
+      enhancePrompt: true
+      autoStart: false
+      targetImage: !<reference.Image> 00000000-0000-0000-0000-000000000000
+      statusText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      startDelaySeconds: !<float> 3.000000
+      editorWarmupSeconds: !<float> 40.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input string target = "auto" {"hint":"Top-level switch. auto = pick by isEditor(): the editor runs the Mac path, a Glasses device runs the native NDK WebRTC path. The native path resolves ONLY on device — forcing \"device\" in the editor shows a load error.", "widget":"combobox", "values":[{"label":"Auto — editor→Mac path, device→native WebRTC", "value":"auto"}, {"label":"Editor / Mac — bridge or http (see mode)", "value":"editor"}, {"label":"Device — native on-device WebRTC (NDK)", "value":"device"}]}'
+    - '// @input string mode = "bridge" {"hint":"bridge = live video through DecartBridge/bridge.py (run it first). http = direct slow image API, no companion needed", "widget":"combobox", "values":[{"label":"Realtime via Mac bridge (fast)", "value":"bridge"}, {"label":"Cloud HTTP lucy-image-2 (~16s/frame)", "value":"http"}]}'
+    - '// @input string bridgeUrl = "ws://localhost:8765" {"hint":"WebSocket URL of the bridge. Editor: ws://localhost:8765 — Glasses device: ws://<your-mac-LAN-ip>:8765"}'
+    - '// @input number bridgeSendFps = "10" {"hint":"Camera frames per second sent to the bridge"}'
+    - '// @input string nativeEndpoint = "wss://api3.decart.ai/v1/stream" {"hint":"DEVICE path only: Decart realtime WebRTC signaling endpoint (native NDK module). api_key + model are appended."}'
+    - '// @input string nativeModel = "lucy-2.5" {"hint":"DEVICE path only: Decart realtime model requested by the native NDK module"}'
+    - '// @input boolean nativeUseH265 = "false" {"hint":"DEVICE path only: encode the camera with H.265 (HEVC). Off = H.264 (default — Decart realtime does not support H.265; VP8/H.264 only)"}'
+    - '// @input number nativeFps = "30" {"hint":"DEVICE path only: camera encode frame rate"}'
+    - '// @input number nativeBitrateKbps = "6000" {"hint":"DEVICE path only: target video bitrate (kbps)"}'
+    - '// @input number nativeMaxWidth = "1280" {"hint":"DEVICE path only: max camera capture width"}'
+    - '// @input number nativeDownlinkKbps = "2500" {"hint":"INACTIVE — this engine has no REMB/receiver-side bitrate control, so there is no way to cap Decart’s downlink from the device. Kept only so old scenes still deserialize; changing it does nothing."}'
+    - '// @input number displayZoom = "2.09" {"hint":"Display fill — UNIFORM zoom of the head-locked video quad. >1 overscans past the FOV so the feed fills the view and crops at the edges (no letterbox). Aspect is preserved, so no squish. Live-tunable via the in-app Scale slider."}'
+    - '// @input number displayOffsetX = "11" {"hint":"Horizontal offset of the video quad, cm (+ = right). Live-tunable via the in-app X slider."}'
+    - '// @input number displayOffsetY = "7" {"hint":"Vertical offset of the video quad, cm (+ = up). Live-tunable via the in-app Y slider."}'
+    - '// @input number displayOffsetZ = "0.15" {"hint":"Depth offset of the video quad, cm (+ = nearer/bigger, − = farther/smaller). 0 = the authored ~80cm distance. Default 0.15 keeps it at that comfortable focus distance (NOT the near clip, which sits on your eyes and causes strain). Live-tunable via the in-app Z slider."}'
+    - '// @input boolean matchAspect = "true" {"hint":"Size the quad to the DECODED frame aspect (e.g. 1280×704 → 1.82:1) so the video is never stretched. Off = keep the authored quad aspect."}'
+    - '// @input string apiKey = "PASTE_YOUR_DECART_API_KEY" {"hint":"Decart API key — x-api-key header (http mode / on-device WebRTC; the bridge has its own key). Falls back to the DecartRequirements script."}'
+    - '// @input string prompt {"hint":"Style prompt applied to the camera feed — editable at runtime via the UI text field"}'
+    - '// @input string resolution = "480p" {"hint":"Decart output resolution (http mode) — 480p is lower latency", "widget":"combobox", "values":[{"label":"480p", "value":"480p"}, {"label":"720p", "value":"720p"}]}'
+    - '// @input number seed = "1234" {"hint":"Fixed seed keeps frame-to-frame style coherent in http mode (0–4294967295)"}'
+    - '// @input boolean enhancePrompt = "true" {"hint":"Let Decart expand the prompt server-side"}'
+    - '// @input boolean autoStart = "false" {"hint":"Start automatically once the camera is ready. Off = wait for startLoop() (the UI Start button) — safest in the editor"}'
+    - '// @input Component.Image targetImage {"hint":"World-space quad that displays the Decart-transformed feed"}'
+    - '// @input Component.Text statusText {"hint":"Optional status readout (latency / errors)"}'
+    - '// @input number startDelaySeconds = "3" {"hint":"Seconds to wait after camera-ready before the first http request"}'
+    - '// @input number editorWarmupSeconds = "40" {"hint":"EDITOR ONLY extra first-request delay for http autoStart — dodges the launch-time reset storm that can crash LS 5.23 mid-request. Ignored on device and in bridge mode"}'

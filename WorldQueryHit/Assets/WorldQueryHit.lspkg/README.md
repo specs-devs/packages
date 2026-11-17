@@ -2,19 +2,19 @@
   <img src="Docs/media/WorldQueryHit.png" width="250px" alt="WorldQueryHit"/>
 </p>
 
-# WorldQueryHit
+# World Query Module
 
-WorldQueryHit combines WorldQueryModule hit testing and SpectaclesInteractionKit targeting to preview and copy SceneObjects onto detected surfaces. It includes semantic classification consumers, a billboard label and both TypeScript and JavaScript variants. Available categories and refined hits depend on the actual runtime.
+WorldQueryHit combines WorldQueryModule hit testing and InteractionKit targeting to preview and copy SceneObjects onto detected surfaces. It includes semantic classification consumers, a billboard label and both TypeScript and JavaScript variants. Available categories and refined hits depend on the actual runtime.
 
 ## Usage
 
-This section ships with the package and describes the exact installed revision. Generic Lens scripting, scene construction and SPECS spatial design live in the CLAD skills; package-specific inputs, lifecycle and behavior live here.
+This section ships with the package and describes the exact installed revision. Generic Lens scripting, scene construction and SPECS spatial design are out of scope here; package-specific inputs, lifecycle and behavior live here.
 
 ### Package identity
 
 - Descriptor: `package.native`.
 - Consumer import prefix: `WorldQueryHit.lspkg/Scripts/`.
-- Companion dependencies: SnapDecorators, SpectaclesInteractionKit, Utilities, SpectaclesUIKit, Motion and Icons (`package_dependencies.json`). The `Scripts/` placement and classification scripts import SnapDecorators, SpectaclesInteractionKit and Utilities; the `Example/` demo scaffolding (guide and carousel) imports SpectaclesInteractionKit and SpectaclesUIKit. Motion and Icons are not imported.
+- Companion dependencies: SnapDecorators, InteractionKit, Utilities, UIKit, Motion and Icons (`package_dependencies.json`). The `Scripts/` placement and classification scripts import SnapDecorators, InteractionKit and Utilities; the `Example/` demo scaffolding (guide and carousel) imports InteractionKit and UIKit. Motion and Icons are not imported.
 - Entry prefab: `WorldQueryHit__PLACE_IN_SCENE.prefab`. It is self-contained: a guide panel (`Guide`), an `ExampleCarousel` and the `World Query Hit` example group, so dropping it into an empty SPECS scene (Camera + SIK) gives the full demo. The carousel starts minimized; pinch **Ok, I understood** on the guide to show the example.
 - Demo scaffolding: `WorldQueryHit.lspkg/Example/` holds the guide and carousel scripts (`Example/GuideDismissPanel`, `Example/ExampleCarousel`) used only by the prefab. They are not WorldQueryHit API (see [components](Docs/components.md)); delete `Guide` / `ExampleCarousel` from your copy of the prefab if you only want the placement example.
 - Built-in module: `require("LensStudio:WorldQueryModule")`; this is not a separately shipped package class.
@@ -26,12 +26,6 @@ Read [API status](Docs/api-status.md) for exported names, TS/JS differences and 
 ### Applicability
 
 Use this example for hand/controller-ray surface placement and semantic labels; its content is world-anchored (cursor and copies sit on real surfaces), so don't re-anchor it to the head. Use HitTestClassification when only classification events are needed. Category filtering affects labels, not placement permission. Actual environmental hits require supported WorldQuery tracking data; static source checks cannot establish it.
-
-### Related CLAD skills
-
-[specs-world-query](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/specs-world-query/SKILL.md). These skills cover the surrounding Lens workflow.
-
-[Install CLAD](https://developers.specs.com/docs/clad/setup/setup-ai/) or browse its [source](https://github.com/lens-studio-devs/ls-extensions). Read the installed package docs for this revision’s APIs.
 
 ### Package Docs (ship in Docs/)
 
@@ -52,11 +46,4 @@ Use this example for hand/controller-ray surface placement and semantic labels; 
 5. Device: look away / lose the hand, then pinch. No copy is placed at the last position.
 
 ## Built with 👽 by the SPECS team
-
-
-
-
-
-
-
 

@@ -35,7 +35,7 @@ export interface HoverCommand extends BaseMessage {
 
 /**
  * Poke an interactable or world position with the index fingertip — extended
- * finger pushes into the collider without pinching. SIK fires onTriggerStart
+ * finger pushes into the collider without pinching. IK fires onTriggerStart
  * in poke trigger mode (distinct from the pinch trigger). Targets that gate on
  * `targetingMode = Poke` only become reachable through this action.
  *

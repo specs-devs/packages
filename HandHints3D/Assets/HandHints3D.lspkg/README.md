@@ -2,7 +2,7 @@
   <img src="Docs/media/HandHints3D.png" width="250px" alt="HandHints3D"/>
 </p>
 
-# HandHints3D
+# 3D Hints
 
 An animated 3D hand hint system for SPECS that teaches users hand gestures by showing them. Each hint is a `HandHint` object (an `InteractionHintController` plus an animated left and right hand rig) with 31 looping gesture clips (pinch, tap, swipe, rotate, grab and the system taps), an outline shader that fades each hint in and out, fingertip glow while a pinch is closed, and a cursor for the far pinch. Hints play from the Inspector (auto-play) or from your own script, one at a time or as a sequence, with a completion event.
 
@@ -19,7 +19,7 @@ An animated 3D hand hint system for SPECS that teaches users hand gestures by sh
 
 ## Usage
 
-This section ships with the package and describes the exact installed revision. Read it, then follow the links into `Docs/` for the topic you need. It is written for both people and coding agents; generic Lens scripting, scene construction and SPECS spatial design live in the CLAD skills, not here.
+This section ships with the package and describes the exact installed revision. Read it, then follow the links into `Docs/` for the topic you need. It is written for both people and coding agents; generic Lens scripting, scene construction and SPECS spatial design are out of scope here.
 
 ### Package identity
 
@@ -27,7 +27,7 @@ This section ships with the package and describes the exact installed revision. 
 - Consumer import prefix: `HandHints3D.lspkg/Scripts/`, e.g. `import {InteractionHintController, HandMode, HandAnimationsLibrary, HandAnimationClipInfo} from "HandHints3D.lspkg/Scripts/InteractionHintController"`. The package's own scripts import each other with relative paths (`./InteractionHintController`, `./NativeTween`).
 - Prefab: `HandHints3D.lspkg/HandHints3D__PLACE_IN_SCENE.prefab`. It is self-contained: dropping it into an empty SPECS scene gives the full demo, with the onboarding `Guide`, the `ExampleCarousel` and six example groups (Finger Tap Near, Pinch Near, Pinch Far, Two Hands Pinch Scale, System Tap Settings, Gesture Sequence). Each group holds one `HandHint` object, which is the controller plus the hand rig. The prefab (or a `HandHint` copied out of it) is the only supported way to get the rig: the controller resolves its parts by name under its own SceneObject, so don't rebuild it ([components](Docs/components.md#prefab-structure)).
 - Demo scaffolding: the guide and carousel scripts ship in `HandHints3D.lspkg/Example/` (`ExampleCarousel/`, `GuideDismissPanel/`). They aren't part of the package API. When you build your own Lens, delete `Guide`, `ExampleCarousel` and the example groups you don't need from your instance, and keep or copy the `HandHint` objects you want ([components](Docs/components.md#demo-scaffolding-example)).
-- Required companion packages (`package_dependencies.json`): `Utilities` (Logger) and `SnapDecorators` are imported by the scripts in `Scripts/`. `SpectaclesInteractionKit` and `SpectaclesUIKit` are imported only by the `Example/` demo scaffolding (guide and carousel). `Motion` and `Icons` are declared as well but no script imports them.
+- Required companion packages (`package_dependencies.json`): `Utilities` (Logger) and `SnapDecorators` are imported by the scripts in `Scripts/`. `InteractionKit` and `UIKit` are imported only by the `Example/` demo scaffolding (guide and carousel). `Motion` and `Icons` are declared as well but no script imports them.
 
 ### Version and API status
 
@@ -35,13 +35,7 @@ This README and `Docs/` ship in the package archive and describe that exact inst
 
 ### Applicability
 
-Use HandHints3D to *show* a gesture: onboarding, tutorials, "do this next" hints, or a reminder while an interaction is waiting for input. It does not read the user's real hands and fires no interaction events. For real hand input use SpectaclesInteractionKit and drive the hint from your own state, for example hide the hint once the user has performed the gesture.
-
-### Related CLAD skills
-
-[specs-interaction-recipes](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/specs-interaction-recipes/SKILL.md). These skills cover the surrounding Lens workflow.
-
-[Install CLAD](https://developers.specs.com/docs/clad/setup/setup-ai/) or browse its [source](https://github.com/lens-studio-devs/ls-extensions). Read the installed package docs for this revision’s APIs.
+Use HandHints3D to *show* a gesture: onboarding, tutorials, "do this next" hints, or a reminder while an interaction is waiting for input. It does not read the user's real hands and fires no interaction events. For real hand input use InteractionKit and drive the hint from your own state, for example hide the hint once the user has performed the gesture.
 
 ### Package Docs (ship in `Docs/`)
 

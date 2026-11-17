@@ -1,14 +1,18 @@
 /**
  * SPECS Inc. 2027
  * Example implementations of OpenAI API calls. Demonstrates chat completions with GPT models,
- * GPT Image generation and editing, TTS speech synthesis, and function calling with color
- * manipulation using tap/pinch gestures.
+ * function calling with color manipulation, GPT Image generation and editing, and TTS speech
+ * synthesis. In the demo carousel the calls run by themselves, one after the other, when the step
+ * is shown, and stop when it is left (see Example/DemoLog).
  */
 import { OpenAI } from "../OpenAI";
 import { OpenAITypes } from "../OpenAITypes";
 import { Promisfy } from "../../Utils/Promisfy";
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
+import { AvaliableApiTypes } from "../../RemoteServiceGatewayCredentials";
+import { DemoLogPanel, DemoRun, DemoStep } from "../../Example/DemoLog/DemoLog";
+import { DynamicAudioOutput } from "../../Helpers/DynamicAudioOutput";
 
 @component
 export class ExampleOAICalls extends BaseScriptComponent {
@@ -28,7 +32,7 @@ export class ExampleOAICalls extends BaseScriptComponent {
   @widget(new TextAreaWidget())
   private userPrompt: string = "Is a hotdog a sandwich";
   @input
-  @label("Run On Tap")
+  @label("Run in demo")
   private doChatCompletionsOnTap: boolean = false;
   @ui.group_end
   @ui.separator
@@ -40,7 +44,7 @@ export class ExampleOAICalls extends BaseScriptComponent {
   @widget(new TextAreaWidget())
   private imageGenerationPrompt: string = "The future of augmented reality";
   @input
-  @label("Run On Tap")
+  @label("Run in demo")
   private generateImageOnTap: boolean = false;
   @ui.group_end
   @ui.separator
@@ -58,7 +62,7 @@ export class ExampleOAICalls extends BaseScriptComponent {
   @widget(new TextAreaWidget())
   private imageEditPrompt: string = "Add a cat into the image";
   @input
-  @label("Run On Tap")
+  @label("Run in demo")
   private doEditImageOnTap: boolean = false;
   @ui.group_end
   @ui.separator
@@ -72,7 +76,7 @@ export class ExampleOAICalls extends BaseScriptComponent {
   private voiceGenerationInstructions: string =
     "Serious, movie trailer voice, insert pauses for dramatic effect";
   @input
-  @label("Run On Tap")
+  @label("Run in demo")
   private generateVoiceOnTap: boolean = false;
   @ui.group_end
   @ui.separator
@@ -81,7 +85,7 @@ export class ExampleOAICalls extends BaseScriptComponent {
   @widget(new TextAreaWidget())
   private functionCallingPrompt: string = "Make the text display yellow";
   @input
-  @label("Run On Tap")
+  @label("Run in demo")
   private doFunctionCallingOnTap: boolean = false;
 
   @ui.separator
@@ -96,13 +100,25 @@ export class ExampleOAICalls extends BaseScriptComponent {
   @hint("Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)")
   enableLoggingLifecycle: boolean = false;
 
+  @ui.group_end
+  @ui.separator
+  @input
+  @hint("Where the demo's live log panel sits, relative to this object (cm)")
+  logPanelOffset: vec3 = new vec3(0, 14, 0);
+
   // Logger instance
-  private logger: Logger;  @ui.group_end
+  private logger: Logger;
   private rmm = require("LensStudio:RemoteMediaModule") as RemoteMediaModule;
   private internetModule =
     require("LensStudio:InternetModule") as InternetModule;
-  private gestureModule: GestureModule = require("LensStudio:GestureModule");
-  private loaderSpinnerImage: SceneObject;  /**
+  private loaderSpinnerImage: SceneObject;
+  private speechAudio: AudioComponent;
+  private finishSpeech: (() => void) | null = null;
+  private speechOutput: DynamicAudioOutput | null = null;
+  /** PNG bytes of the last generated image; the edit step edits this image. */
+  private lastGeneratedPng: Uint8Array | null = null;
+
+  /**
    * Called when component is initialized
    */
   onAwake(): void {
@@ -113,237 +129,247 @@ export class ExampleOAICalls extends BaseScriptComponent {
       this.logger.debug("LIFECYCLE: onAwake() - Component initializing");
     }
 
-
     this.initializeSpinner();
+    this.speechAudio = this.sceneObject.createComponent("AudioComponent");
+    this.speechAudio.setOnFinish(() => this.endSpeech());
 
-    if (global.deviceInfoSystem.isEditor()) {
-      this.createEvent("TapEvent").bind(() => {
-        this.onTap();
-      });
-    } else {
-      this.gestureModule
-        .getPinchDownEvent(1 /* GestureModule.HandType.Right — numeric literal because LS 5.21 runtime doesn't expose the namespace enum as a value */ as unknown as GestureModule.HandType)
-        .add(() => {
-          this.onTap();
-        });
-    }
+    // Runs by itself when the carousel shows this example, stops when it is left.
+    DemoStep.join({
+      owner: this,
+      name: "OpenAI",
+      order: 0,
+      tokens: [AvaliableApiTypes.OpenAI],
+      panel: new DemoLogPanel(this.sceneObject, this.logPanelOffset),
+      run: (run) => this.runDemo(run),
+      stop: () => this.stopDemo(),
+    });
   }
-  private onTap() {
-    // GestureModule pinches arrive even while this example is disabled.
-    if (!this.sceneObject.isEnabledInHierarchy) {
-      return;
+
+  /** The enabled calls, in order: chat, function calling, image, image edit, speech. */
+  async runDemo(run: DemoRun = DemoRun.detached("OpenAI")) {
+    this.textDisplay.textFill.color = new vec4(1, 1, 1, 1);
+    this.textDisplay.text = "";
+    if (this.doChatCompletionsOnTap) {
+      await this.doChatCompletions(run);
+    }
+    if (this.doFunctionCallingOnTap) {
+      await this.doFunctionCalling(run);
+    }
+    if (this.generateImageOnTap) {
+      await this.doImageGeneration(run);
+    }
+    if (this.doEditImageOnTap) {
+      await this.doImageEdit(run);
     }
     if (this.generateVoiceOnTap) {
-      this.doSpeechGeneration();
-    }
-
-    if (this.generateImageOnTap) {
-      this.doImageGeneration();
-    }
-
-    if (this.doChatCompletionsOnTap) {
-      this.doChatCompletions();
-    }
-
-    if (this.doFunctionCallingOnTap) {
-      this.doFunctionCalling();
-    }
-
-    if (this.doEditImageOnTap) {
-      this.doImageEdit();
+      await this.doSpeechGeneration(run);
     }
   }
-  doChatCompletions() {
+
+  /** Stops the speech and the spinner. Late responses are ignored by the run token. */
+  stopDemo() {
+    if (this.speechAudio && this.speechAudio.isPlaying()) {
+      this.speechAudio.stop(false);
+    }
+    this.endSpeech();
+    if (this.speechOutput) {
+      this.speechOutput.interruptAudioOutput();
+      this.speechOutput = null;
+    }
+    if (this.loaderSpinnerImage) {
+      this.loaderSpinnerImage.enabled = false;
+    }
+  }
+
+  async doChatCompletions(run: DemoRun = DemoRun.detached("OpenAI")) {
     this.textDisplay.sceneObject.enabled = true;
     this.textDisplay.text = "Generating...";
-    OpenAI.chatCompletions({
-      model: "gpt-5.6-luna",
-      messages: [
-        {
-          role: "system",
-          content: this.systemPrompt,
-        },
-        {
-          role: "user",
-          content: this.userPrompt,
-        },
-      ],
-    })
-      .then((response) => {
-        this.textDisplay.text = response.choices[0].message.content;
-      })
-      .catch((error) => {
-        this.textDisplay.text = "Error: " + error;
-      });
+    const response = await run.call(
+      "gpt-5.6-luna chat",
+      () =>
+        OpenAI.chatCompletions({
+          model: "gpt-5.6-luna",
+          messages: [
+            {
+              role: "system",
+              content: this.systemPrompt,
+            },
+            {
+              role: "user",
+              content: this.userPrompt,
+            },
+          ],
+        }),
+      (result) => result.choices[0].message.content ?? "(no text)"
+    );
+    if (response) {
+      this.textDisplay.text = response.choices[0].message.content ?? "";
+    } else {
+      this.textDisplay.text = "Error: see the log above";
+    }
   }
 
-
-  doImageGeneration() {
+  async doImageGeneration(run: DemoRun = DemoRun.detached("OpenAI")) {
     this.imgObject.enabled = true;
     this.loaderSpinnerImage.enabled = true;
-    OpenAI.imagesGenerate({
-      model: "gpt-image-2",
-      prompt: this.imageGenerationPrompt,
-      n: 1,
-      size: "1024x1024",
-    })
-      .then((response) => {
-        print("Image Generated");
-        const datum = response.data[0];
-        const url = datum.url;
-        const b64 = datum.b64_json;
-        if (url) {
-          print("Texture loaded as image URL");
-          const httpRequest = RemoteServiceHttpRequest.create();
-          httpRequest.url = url;
-          return Promisfy.InternetModule.performHttpRequest(
-            this.internetModule,
-            httpRequest
-          ).then((httpResponse) => {
-            const resource = httpResponse.asResource();
-            return Promisfy.RemoteMediaModule.loadResourceAsImageTexture(
-              this.rmm,
-              resource
-            );
-          });
-        } else if (b64) {
-          print("Decoding texture from base64");
-          return new Promise<Texture>((resolve, reject) => {
-            Base64.decodeTextureAsync(
-              b64,
-              (texture) => resolve(texture),
-              () => reject("Failure to decode texture from base64")
-            );
-          });
-        }
-      })
-      .then((texture) => {
-        if (texture) {
-          this.loaderSpinnerImage.enabled = false;
-          const imgComponent = this.imgObject.getComponent("Image");
-          const imageMaterial = imgComponent.mainMaterial.clone();
-          imgComponent.mainMaterial = imageMaterial;
-          imgComponent.mainPass.baseTex = texture;
-        }
-      })
-      .catch((error) => {
-        this.loaderSpinnerImage.enabled = false;
-        print("Error: " + error);
-        this.textDisplay.text = "Error: " + error;
-      });
-  }
-
-  doImageEdit() {
-    if (!this.editBaseImg || !this.editMaskImg) {
-      print("Error: Base image or mask image is missing");
-      return;
-    }
-
-    this.editResultObject.enabled = true;
-
-    // Convert textures to base64
-    Promise.all([
-      new Promise<Uint8Array>((resolve, reject) => {
-        Base64.encodeTextureAsync(
-          this.editBaseImg,
-          (base64) => resolve(Base64.decode(base64)),
-          reject,
-          CompressionQuality.LowQuality,
-          EncodingType.Png
-        );
-      }),
-      new Promise<Uint8Array>((resolve, reject) => {
-        Base64.encodeTextureAsync(
-          this.editMaskImg,
-          (base64) => resolve(Base64.decode(base64)),
-          reject,
-          CompressionQuality.LowQuality,
-          EncodingType.Png
-        );
-      }),
-    ])
-      .then(([baseImageData, maskImageData]) => {
-        // Call the OpenAI image edit API
-        const imageEditRequest: OpenAITypes.ImageEdits.Request = {
-          prompt: this.imageEditPrompt,
-          image: baseImageData,
-          mask: maskImageData,
+    const response = await run.call(
+      "gpt-image-2 generate",
+      () =>
+        OpenAI.imagesGenerate({
+          model: "gpt-image-2",
+          prompt: this.imageGenerationPrompt,
           n: 1,
           size: "1024x1024",
-          model: "gpt-image-2",
-        };
-        OpenAI.imagesEdit(imageEditRequest)
-          .then((response) => {
-            print("Image Edit Generated");
-            response.data.forEach(async (datum) => {
-              const url = datum.url;
-              const b64 = datum.b64_json;
-              if (url) {
-                print("Texture loaded as image URL");
-                const httpRequest = RemoteServiceHttpRequest.create();
-                httpRequest.url = url;
-                const resource = await Promisfy.InternetModule.performHttpRequest(
-                  this.internetModule,
-                  httpRequest
-                );
-                this.rmm.loadResourceAsImageTexture(
-                  resource,
-                  (texture) => {
-                    const imgComponent =
-                      this.editResultObject.getComponent("Image");
-                    const imageMaterial = imgComponent.mainMaterial.clone();
-                    imgComponent.mainMaterial = imageMaterial;
-                    imgComponent.mainPass.baseTex = texture;
-                  },
-                  () => {
-                    print("Failure to download texture from URL");
-                  }
-                );
-              } else if (b64) {
-                print("Decoding texture from base64");
-                Base64.decodeTextureAsync(
-                  b64,
-                  (texture) => {
-                    const imgComponent =
-                      this.editResultObject.getComponent("Image");
-                    imgComponent.mainPass.baseTex = texture;
-                  },
-                  () => {
-                    print("Failure to download texture from base64");
-                  }
-                );
-              }
-            });
-          })
-          .catch((error) => {
-            print("Error: " + error);
-            if (this.textDisplay) {
-              this.textDisplay.text = "Error: " + error;
-            }
-          });
-      })
-      .catch((error) => {
-        print("Error encoding textures: " + error);
-      });
+        }),
+      (result) => (result.data[0]?.url ? "image URL" : "base64 image")
+    );
+    if (!response) {
+      this.loaderSpinnerImage.enabled = false;
+      return;
+    }
+    this.lastGeneratedPng = response.data[0]?.b64_json
+      ? Base64.decode(response.data[0].b64_json)
+      : null;
+    const texture = await run.call("image decode", () =>
+      this.textureFromImageObject(response.data[0])
+    );
+    this.loaderSpinnerImage.enabled = false;
+    if (texture) {
+      this.setImage(this.imgObject, texture);
+    }
   }
 
-  doSpeechGeneration() {
-    OpenAI.speech({
-      model: "gpt-4o-mini-tts",
-      input: this.voiceGenerationPrompt,
-      voice: "coral",
-      instructions: this.voiceGenerationInstructions,
-    })
-      .then((response) => {
-        print("Got speech response");
-        const aud = this.sceneObject.createComponent("AudioComponent");
-        aud.audioTrack = response;
-        aud.play(1);
+  async doImageEdit(run: DemoRun = DemoRun.detached("OpenAI")) {
+    // Edit the image generated just before, from the PNG bytes the API returned. Encoding a scene
+    // texture with Base64.encodeTextureAsync aborts the Lens on Specs ("global command buffer
+    // disabled", device log 2026-11-10), so the demo never encodes textures.
+    if (!this.lastGeneratedPng) {
+      run.error("gpt-image-2 edit: no generated image to edit (image generation must succeed first)");
+      return;
+    }
+    this.editResultObject.enabled = true;
+    const imageEditRequest: OpenAITypes.ImageEdits.Request = {
+      prompt: this.imageEditPrompt,
+      image: this.lastGeneratedPng,
+      n: 1,
+      size: "1024x1024",
+      model: "gpt-image-2",
+    };
+    const response = await run.call(
+      "gpt-image-2 edit",
+      () => OpenAI.imagesEdit(imageEditRequest),
+      (result) => (result.data[0]?.url ? "image URL" : "base64 image")
+    );
+    if (!response) {
+      return;
+    }
+    const texture = await run.call("edited image decode", () =>
+      this.textureFromImageObject(response.data[0])
+    );
+    if (texture) {
+      this.setImage(this.editResultObject, texture);
+    }
+  }
+
+  async doSpeechGeneration(run: DemoRun = DemoRun.detached("OpenAI")) {
+    const track = await run.call(
+      "gpt-4o-mini-tts speech",
+      () =>
+        OpenAI.speech({
+          model: "gpt-4o-mini-tts",
+          input: this.voiceGenerationPrompt,
+          voice: "coral",
+          instructions: this.voiceGenerationInstructions,
+        }),
+      () => "audio track"
+    );
+    if (!track) {
+      // On Specs the audio_speech response can arrive with an empty resource. Fall back to a
+      // chat completion with audio output: the speech comes back as base64 PCM16 in the JSON.
+      await this.speakWithChatAudio(run);
+      return;
+    }
+    run.log("♪ speech playing");
+    await run.guard(
+      new Promise<void>((resolve) => {
+        this.endSpeech();
+        this.finishSpeech = resolve;
+        this.speechAudio.audioTrack = track;
+        this.speechAudio.play(1);
       })
-      .catch((error) => {
-        print("Error: " + error);
-        this.textDisplay.text = "Error: " + error;
-      });
+    );
+    run.log("♪ speech finished");
+  }
+
+  /** Speaks voiceGenerationPrompt with gpt-audio-mini (chat completion, audio output, PCM16 24 kHz). */
+  private async speakWithChatAudio(run: DemoRun) {
+    const output = this.findDynamicAudioOutput();
+    if (!output) {
+      run.error("speech fallback: no DynamicAudioOutput in the scene");
+      return;
+    }
+    const response = await run.call(
+      "gpt-audio-mini speech (chat audio)",
+      () =>
+        OpenAI.chatCompletions({
+          model: "gpt-audio-mini",
+          modalities: ["text", "audio"],
+          audio: { voice: "coral", format: "pcm16" },
+          messages: [
+            { role: "system", content: "Read the user's text aloud exactly as written. Say nothing else." },
+            { role: "user", content: this.voiceGenerationPrompt },
+          ],
+        } as OpenAITypes.ChatCompletions.Request),
+      (result: any) => (result?.choices?.[0]?.message?.audio?.transcript ?? "audio")
+    );
+    const audioData = (response as any)?.choices?.[0]?.message?.audio?.data;
+    if (!audioData) {
+      if (response) {
+        run.error("speech fallback: the response has no audio");
+      }
+      return;
+    }
+    const pcm = Base64.decode(audioData);
+    const seconds = pcm.length / (24000 * 2);
+    this.speechOutput = output;
+    output.initialize(24000);
+    output.addAudioFrame(pcm, 1);
+    run.log("♪ speech playing (" + seconds.toFixed(1) + " s)");
+    await run.wait(seconds + 0.3);
+    run.log("♪ speech finished");
+  }
+
+  /** The shared DynamicAudioOutput the realtime examples also use. */
+  private findDynamicAudioOutput(): DynamicAudioOutput | null {
+    const visit = (object: SceneObject): DynamicAudioOutput | null => {
+      for (const component of object.getComponents("Component.ScriptComponent")) {
+        if (component instanceof DynamicAudioOutput) {
+          return component;
+        }
+      }
+      for (let i = 0; i < object.getChildrenCount(); i++) {
+        const found = visit(object.getChild(i));
+        if (found) {
+          return found;
+        }
+      }
+      return null;
+    };
+    for (let i = 0; i < global.scene.getRootObjectsCount(); i++) {
+      const found = visit(global.scene.getRootObject(i));
+      if (found) {
+        return found;
+      }
+    }
+    return null;
+  }
+
+  private endSpeech() {
+    const finish = this.finishSpeech;
+    this.finishSpeech = null;
+    if (finish) {
+      finish();
+    }
   }
 
   private initializeSpinner() {
@@ -351,9 +377,51 @@ export class ExampleOAICalls extends BaseScriptComponent {
     this.loaderSpinnerImage.enabled = false;
   }
 
-  doFunctionCalling() {
+  private setImage(target: SceneObject, texture: Texture) {
+    const imgComponent = target.getComponent("Image");
+    const imageMaterial = imgComponent.mainMaterial.clone();
+    imgComponent.mainMaterial = imageMaterial;
+    imgComponent.mainPass.baseTex = texture;
+  }
+
+  private encodeTexture(texture: Texture): Promise<Uint8Array> {
+    return new Promise<Uint8Array>((resolve, reject) => {
+      Base64.encodeTextureAsync(
+        texture,
+        (base64) => resolve(Base64.decode(base64)),
+        () => reject("Failure to encode texture"),
+        CompressionQuality.LowQuality,
+        EncodingType.Png
+      );
+    });
+  }
+
+  /** Loads an image result, whether the API answered with a URL or with base64. */
+  private textureFromImageObject(
+    datum: OpenAITypes.ImageGenerate.ImageObject
+  ): Promise<Texture> {
+    if (datum?.url) {
+      // makeResourceFromUrl: on Specs (LS 5.25) performHttpRequest(...).asResource() comes back empty.
+      return Promisfy.RemoteMediaModule.loadResourceAsImageTexture(
+        this.rmm,
+        this.internetModule.makeResourceFromUrl(datum.url)
+      );
+    }
+    if (datum?.b64_json) {
+      const b64 = datum.b64_json;
+      return new Promise<Texture>((resolve, reject) => {
+        Base64.decodeTextureAsync(
+          b64,
+          (texture) => resolve(texture),
+          () => reject("Failure to decode texture from base64")
+        );
+      });
+    }
+    return Promise.reject("The response has neither url nor b64_json");
+  }
+
+  async doFunctionCalling(run: DemoRun = DemoRun.detached("OpenAI")) {
     this.textDisplay.sceneObject.enabled = true;
-    this.textDisplay.text = "Processing function call...";
 
     // Define available functions
     const tools: OpenAITypes.Common.Tool[] = [
@@ -384,39 +452,43 @@ export class ExampleOAICalls extends BaseScriptComponent {
       },
     ];
 
-    OpenAI.chatCompletions({
-      model: "gpt-5.6-luna",
-      messages: [
-        {
-          role: "user",
-          content: this.functionCallingPrompt,
-        },
-      ],
-      tools: tools,
-      tool_choice: "auto",
-      // gpt-5.6-luna rejects function tools on /v1/chat/completions unless reasoning is off.
-      reasoning_effort: "none",
-    })
-      .then((response) => {
-        const message = response.choices[0].message;
-
-        if (message.tool_calls && message.tool_calls.length > 0) {
-          const toolCall = message.tool_calls[0];
-
-          if (toolCall.function.name === "set-text-color") {
-            const args = JSON.parse(toolCall.function.arguments);
-            this.textDisplay.textFill.color = new vec4(
-              args.r / 255,
-              args.g / 255,
-              args.b / 255,
-              1
-            );
-            this.textDisplay.text = `Text color set to RGB(${args.r}, ${args.g}, ${args.b})`;
-          }
-        }
-      })
-      .catch((error) => {
-        this.textDisplay.text = "Error: " + error;
-      });
+    const response = await run.call(
+      "function calling",
+      () =>
+        OpenAI.chatCompletions({
+          model: "gpt-5.6-luna",
+          messages: [
+            {
+              role: "user",
+              content: this.functionCallingPrompt,
+            },
+          ],
+          tools: tools,
+          tool_choice: "auto",
+          // gpt-5.6-luna rejects function tools on /v1/chat/completions unless reasoning is off.
+          reasoning_effort: "none",
+        }),
+      (result) => {
+        const call = result.choices[0].message.tool_calls?.[0];
+        return call
+          ? call.function.name + " " + call.function.arguments
+          : "no tool call: " + (result.choices[0].message.content ?? "");
+      }
+    );
+    const toolCall = response?.choices[0].message.tool_calls?.[0];
+    if (toolCall && toolCall.function.name === "set-text-color") {
+      try {
+        const args = JSON.parse(toolCall.function.arguments);
+        this.textDisplay.textFill.color = new vec4(
+          args.r / 255,
+          args.g / 255,
+          args.b / 255,
+          1
+        );
+        this.textDisplay.text += `\n\nText color set to RGB(${args.r}, ${args.g}, ${args.b})`;
+      } catch (e) {
+        run.error("set-text-color: bad arguments " + toolCall.function.arguments);
+      }
+    }
   }
 }

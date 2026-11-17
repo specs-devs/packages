@@ -11,7 +11,7 @@ Read the original scanning/setup tutorial and example workflow. Use [Components]
 - **Proximity + camera-view activation**: `ActivateWhenInCameraView` waits for the location to be found, then calls `activate()` / `deactivate()` on its listeners based on 2D distance and whether the location sphere is in the camera frustum
 - **LocatedObject listeners**: `ScaleInLocatedObject` (scale in / out animation) and `AudioLocatedObject` (play / stop a sound); implement the `LocatedObject` interface for your own behaviours
 - **Scan meshes on device**: `DeactivateLocationMeshOnDevice` keeps the scan meshes visible in Lens Studio and hides them on SPECS (with a switch to show them again)
-- **Status panel**: `CustomLocationsExamplesPanel` (SpectaclesUIKit, built in code) lists the group SceneObject name and each Located At object with its tracking state and 3D distance, toggles the scan meshes and forces activation so the flow can be tested in Preview
+- **Status panel**: `CustomLocationsExamplesPanel` (UIKit, built in code) lists the group SceneObject name and each Located At object with its tracking state and 3D distance, toggles the scan meshes and forces activation so the flow can be tested in Preview
 - **Editor friendly**: locations count as localized in Lens Studio Preview so the activation flow can be tested by moving the Preview camera
 - **Dependency free location helpers**: activation, scale, audio, mesh visibility and logging modules import no companion packages. The example status panel imports UIKit
 
@@ -34,7 +34,7 @@ Read the original scanning/setup tutorial and example workflow. Use [Components]
 
 ## Design Guidelines
 
-Designing Lenses for SPECS offers all-new possibilities for immersive AR experiences. [View Design Guidelines](https://docs.snap.com/spectacles)
+Designing Lenses for SPECS offers all-new possibilities for immersive AR experiences. View Design Guidelines
 
 ## Original environment notes
 
@@ -44,7 +44,7 @@ The following device/app minima were listed in the original tutorial and were no
 - **SPECS OS Version**: v7.0+
 - **SPECS App iOS**: v1.7+
 - **SPECS App Android**: v1.7+
-- **Examples only**: SpectaclesInteractionKit and SpectaclesUIKit
+- **Examples only**: InteractionKit and UIKit
 
 ## Getting Started
 
@@ -153,11 +153,11 @@ Native members used by this source or preserved from its tutorial include: `Loca
 
 ## Support
 
-If you have any questions or need assistance, please don't hesitate to reach out to the [SPECS Developer Community](https://support.spectacles.com).
+If you have any questions or need assistance, please don't hesitate to reach out to the [SPECS Developer Community](https://developers.specs.com).
 
 ## Contributing
 
-This package is maintained by the SPECS team. For feature requests or bug reports, please contact your team lead.
+This package is maintained by the SPECS team. For feature requests or bug reports, visit https://developers.specs.com.
 
 ## Built with 👽 by the SPECS team <!-- -->
 

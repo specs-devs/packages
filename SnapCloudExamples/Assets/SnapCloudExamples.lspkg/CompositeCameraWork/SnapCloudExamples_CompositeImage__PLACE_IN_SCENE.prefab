@@ -127,21 +127,6 @@
   RotationAngle: 0
   Pivot: {x: 0.000000, y: 0.000000}
   ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
-- !<SceneObject/3fb6fa8d-6c06-4c0a-8113-65387a0b274d>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> a5cf7017-f29f-43c1-9413-e7f93651e3a4
 - !<ScreenTransform/434d5078-85b3-4c66-9a57-f729cc2de9df>
   PrefabRemaps:
     []
@@ -198,6 +183,22 @@
   Enabled: true
   ScreenRegionType: SafeRender
   ResizeWithKeyboard: false
+- !<ScriptComponent/4c31b992-bf8c-4a7b-aca9-ee1628e52892>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/4d88c972-0fdd-4b5f-b29c-223647b957af>
   PrefabRemaps:
     []
@@ -247,22 +248,6 @@
   MaskTexture: !<reference> 00000000-0000-0000-0000-000000000000
   RayTracing: !<reference> 00000000-0000-0000-0000-000000000000
   DevicePropertiesSource: !<reference> 00000000-0000-0000-0000-000000000000
-- !<ScriptComponent/a5cf7017-f29f-43c1-9413-e7f93651e3a4>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
-  ScriptInputsDefault:
-    _theme: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      _theme: System3
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/b3a9021d-382e-4ffd-a688-5a6fd1e22f1a>
   PrefabRemaps:
     []
@@ -294,6 +279,21 @@
   Components:
     - !<own> 3838df15-4272-4c5e-82a8-345606a445fd
     - !<own> 434d5078-85b3-4c66-9a57-f729cc2de9df
+- !<SceneObject/ce195cff-3ca5-48d3-9cbd-a33f13044da6>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 4c31b992-bf8c-4a7b-aca9-ee1628e52892
 - !<SceneObject/e1d45dcd-0fc4-4764-a5e0-a396c234463b>
   PrefabRemaps:
     - 094e19d4-4422-479d-baa9-3a6caa7be4ba: 094e19d4-4422-479d-4556-c59355841b45
@@ -301,15 +301,15 @@
     - 0bd72f04-3406-4ece-a7fe-4b6d02dd7ee2: 0bd72f04-3406-4ece-5801-b492fd22811d
     - 1c2578e9-0466-467f-9c17-d6f1ca165add: 1c2578e9-0466-467f-63e8-290e35e9a522
     - 3838df15-4272-4c5e-82a8-345606a445fd: 3838df15-4272-4c5e-7d57-cba9f95bba02
-    - 3fb6fa8d-6c06-4c0a-8113-65387a0b274d: 7fab491c-f26e-4d0a-b63f-ccf78b84a957
     - 434d5078-85b3-4c66-9a57-f729cc2de9df: 434d5078-85b3-4c66-65a8-08d633d21620
     - 466fa751-250a-462c-9e5e-efe3f6de036e: 466fa751-250a-462c-61a1-101c0921fc91
     - 49d622ea-57aa-4fb7-bbc1-ced010994590: 49d622ea-57aa-4fb7-443e-312fef66ba6f
+    - 4c31b992-bf8c-4a7b-aca9-ee1628e52892: 527532ef-17e0-40b6-8383-079a2a617f31
     - 4d88c972-0fdd-4b5f-b29c-223647b957af: 4d88c972-0fdd-4b5f-4d63-ddc9b846a850
     - 9e79e45e-6f87-45ef-8875-9418eb1722c3: 9e79e45e-6f87-45ef-778a-6be714e8dd3c
-    - a5cf7017-f29f-43c1-9413-e7f93651e3a4: 596430d1-ca3e-424b-b801-3c678407e6cf
     - b3a9021d-382e-4ffd-a688-5a6fd1e22f1a: b3a9021d-382e-4ffd-5977-a5902e1dd0e5
     - c5057d1f-da2b-4931-a0ab-f6070da99025: c5057d1f-da2b-4931-5f54-09f8f2566fda
+    - ce195cff-3ca5-48d3-9cbd-a33f13044da6: c45da792-aa7f-4f8f-a7f5-e343981cf70f
     - e1d45dcd-0fc4-4764-a5e0-a396c234463b: e1d45dcd-0fc4-4764-5a1f-5c693dcbb9c4
     - e36cee87-ec2a-454d-ba95-b7a4b9461590: e36cee87-ec2a-454d-456a-485b46b9ea6f
     - ebe7914b-4f89-47e8-bcca-a1d21c420d41: ebe7914b-4f89-47e8-4335-5e2de3bdf2be
@@ -324,7 +324,7 @@
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
-    - !<own> 3fb6fa8d-6c06-4c0a-8113-65387a0b274d
+    - !<own> ce195cff-3ca5-48d3-9cbd-a33f13044da6
     - !<own> b3a9021d-382e-4ffd-a688-5a6fd1e22f1a
     - !<own> 466fa751-250a-462c-9e5e-efe3f6de036e
   Components:

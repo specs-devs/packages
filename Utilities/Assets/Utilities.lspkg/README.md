@@ -19,7 +19,7 @@ This section ships with the package and describes the exact installed revision.
 Read it, then follow the links
 into `Docs/` for the topic you need. It is written for both people and coding
 agents; generic Lens scripting, scene construction, and Specs spatial design
-live in the CLAD skills, not here.
+are out of scope here.
 
 ### Package identity
 
@@ -40,11 +40,11 @@ live in the CLAD skills, not here.
   Older docs call the package `UtilitiesKit` (`UtilitiesKit.lspkg/...`); that
   path does not exist in this revision.
 - Declared companion packages (`package_dependencies.json`):
-  `SpectaclesInteractionKit`, `SpectaclesUIKit`, `Motion`, `Icons`; they come in
+  `InteractionKit`, `UIKit`, `Motion`, `Icons`; they come in
   with the package from the Asset Library. In the library (`Scripts/Utils/`) only
-  `AnimationUtils` imports one of them (`SpectaclesInteractionKit.lspkg/Utils/animate`).
-  The guide and carousel in `Example/` import `SpectaclesInteractionKit` and
-  `SpectaclesUIKit`. `Motion` and `Icons` are not imported.
+  `AnimationUtils` imports one of them (`InteractionKit.lspkg/Utils/animate`).
+  The guide and carousel in `Example/` import `InteractionKit` and
+  `UIKit`. `Motion` and `Icons` are not imported.
 
 ### Version and API status
 
@@ -59,14 +59,8 @@ scripts: null checks and required-input validation, hierarchy walks and
 component lookups, lerp/angle/quaternion/Haversine math, frame tweens, flat
 circle and line-strip meshes, ScreenTransform sizes, and locale-tolerant number
 parsing. It adds no interaction or UI: hand interaction is
-SpectaclesInteractionKit, spatial UI is SpectaclesUIKit, and richer animation
+InteractionKit, spatial UI is UIKit, and richer animation
 is the Motion package or SIK's `animate`.
-
-### Related CLAD skills
-
-[lens-api](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/lens-api/SKILL.md), [mesh-builder-scripting](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/mesh-builder-scripting/SKILL.md). These skills cover the surrounding Lens workflow.
-
-[Install CLAD](https://developers.specs.com/docs/clad/setup/setup-ai/) or browse its [source](https://github.com/lens-studio-devs/ls-extensions). Read the installed package docs for this revision’s APIs.
 
 ### Package Docs (ship in `Docs/`)
 

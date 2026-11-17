@@ -1,0 +1,938 @@
+- !<ObjectPrefab/ff747a57-a19a-40a7-8c49-3c3f0c36420a>
+  PackagePath: ""
+  objects:
+    - !<own> 964f3c8c-88cc-424e-ac5f-5e18ee2c04bf
+  LazyLoading: false
+  RetainAssets: true
+  PreviewEnvironment: !<reference> 00000000-0000-0000-0000-000000000000
+- !<ScriptComponent/11834ed7-80aa-45c1-b011-6b3725643604>
+  PrefabRemaps:
+    []
+  Name: Button
+  Enabled: true
+  ScriptAsset: !<reference> 44823634-5893-49f9-a805-2295f5c33abb
+  ScriptInputsDefault:
+    _inactive: true
+    _playAudio: true
+    _hasShadow: true
+    _shadowPositionOffset: true
+    _toggleable: true
+    _defaultToOn: true
+    addCallbacks: true
+    triggerUpCallbacks: true
+    triggerDownCallbacks: true
+    onValueChangeCallbacks: true
+    onFinishedCallbacks: true
+    _shapeSystem3: true
+    _styleSystem3: true
+    _opacity: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _renderOrder: 10
+      _inactive: false
+      _playAudio: false
+      _hasShadow: false
+      _shadowPositionOffset: !<Vec3> {x: 0.050000, y: -0.050000, z: -0.010000}
+      _themeOverride: System3
+      _toggleable: false
+      _defaultToOn: false
+      addCallbacks: false
+      triggerUpCallbacks:
+        []
+      triggerDownCallbacks:
+        []
+      onValueChangeCallbacks:
+        []
+      onFinishedCallbacks:
+        []
+      _size: !<Vec3> {x: 20.000000, y: 5.000000, z: 1.000000}
+      _shapeSystem3: Rectangle
+      _styleSystem3: Primary
+      _opacity: !<float> 1.000000
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/125cd5ea-ba8e-45fe-b5b8-fa93286942bf>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 6b07ee5b-12c5-4e08-aa6d-eb018b232b2f
+- !<SceneObject/16df16ff-1775-4eb8-b522-2a7225a73f2d>
+  PrefabRemaps:
+    []
+  Name: Navigation
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 44cd1fd7-22f1-4337-bc35-1dbf428b2dcf
+  Components:
+    []
+- !<ScriptComponent/17e5318b-fc16-43ae-bc47-abfcf121a179>
+  PrefabRemaps:
+    []
+  Name: CredentialsWarning
+  Enabled: true
+  ScriptAsset: !<reference> 020f362a-320c-4802-aa7a-998919a178ff
+  ScriptInputsDefault:
+    rsgCredentials: true
+    requireSnapToken: true
+    requireOpenAIToken: true
+    requireGoogleToken: true
+    buttonLabel: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      guide: !<reference.SceneObject> 79d86574-a2a1-4558-8aaa-2fefc018f3e4
+      snapCloudRequirements: !<reference.ScriptComponent> 2dafd20b-beb7-4e22-8e87-bfbb8910009f
+      rsgCredentials: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      requireSnapToken: false
+      requireOpenAIToken: false
+      requireGoogleToken: false
+      buttonLabel: Continue without credentials
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/1b6ed660-16e7-4aba-b5dc-efb4a26ddc88>
+  PrefabRemaps:
+    []
+  Name: MobileKitModule
+  Enabled: true
+  ScriptAsset: !<reference> 8142fadc-8779-4218-b294-def4f5451cd7
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/1c72b37e-8e47-44f6-82d3-ddf31a88c366>
+  PrefabRemaps:
+    []
+  Name: SnapCloudRequirements
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 2dafd20b-beb7-4e22-8e87-bfbb8910009f
+    - !<own> d1e0c040-8964-46b6-8349-7a3ace41f902
+- !<SceneObject/1d9116a3-af03-40e5-9d76-db461cb141eb>
+  PrefabRemaps:
+    []
+  Name: ExampleCarousel
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> cf9f7f43-9c91-42c8-a659-262bb3b90bdd
+- !<ScriptComponent/1e040e45-804c-4e34-98d6-a54dd642d294>
+  PrefabRemaps:
+    []
+  Name: FriendMarkerUI
+  Enabled: true
+  ScriptAsset: !<reference> be32409c-cf32-47ea-9f87-5d486d889e89
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/2aada5e6-c1f7-4544-a01e-9353db65e897>
+  PrefabRemaps:
+    []
+  Name: APITested
+  Enabled: true
+  ScriptAsset: !<reference> eb7d7bb7-a522-4f9f-a6e6-f63083769f6e
+  ScriptInputsDefault:
+    runOnAwake: true
+    summaryText: true
+    supabaseProject: true
+    timeout: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      runOnAwake: true
+      summaryText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      supabaseProject: !<reference.SupabaseProject> 00000000-0000-0000-0000-000000000000
+      timeout: !<float> 20.000000
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/2dafd20b-beb7-4e22-8e87-bfbb8910009f>
+  PrefabRemaps:
+    []
+  Name: SnapCloudRequirements
+  Enabled: true
+  ScriptAsset: !<reference> 4f38b9dd-2991-43ab-b37d-ef73eae2836d
+  ScriptInputsDefault:
+    supabaseProject: true
+    text: true
+    disableWarningsWhenConfigured: true
+    showSetupInstructions: true
+    enableDebugLogs: true
+    enableLogging: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      supabaseProject: !<reference.SupabaseProject> 00000000-0000-0000-0000-000000000000
+      text: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      disableWarningsWhenConfigured: true
+      showSetupInstructions: true
+      enableDebugLogs: true
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/3d11fae4-8ec1-43af-af9e-22f2539e57ba>
+  PrefabRemaps:
+    []
+  Name: GuideText
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 3.250000, z: 0.500000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> fffd13fb-d15b-4a29-b67b-9a378b4d3e2f
+- !<SceneObject/44cd1fd7-22f1-4337-bc35-1dbf428b2dcf>
+  PrefabRemaps:
+    []
+  Name: FriendMarkerUI
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -110.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 1e040e45-804c-4e34-98d6-a54dd642d294
+- !<ScriptComponent/4edf10f5-60df-476f-a732-b150095d9b66>
+  PrefabRemaps:
+    []
+  Name: ElementContent
+  Enabled: true
+  ScriptAsset: !<reference> c74eb6f4-6231-44ee-8336-d4d1f802da42
+  ScriptInputsDefault:
+    _useLeadingIcon: true
+    _leadingIcon: true
+    _useTrailingIcon: true
+    _trailingIcon: true
+    _iconLayout: true
+    _textAlignment: true
+    _textSizing: true
+    _font: true
+    _leadingIconSize: true
+    _trailingIconSize: true
+    _underline: true
+    _underlineThickness: true
+    _underlineOffset: true
+    _customSpacing: true
+    _spacing: true
+    _paddingTop: true
+    _paddingRight: true
+    _paddingBottom: true
+    _paddingLeft: true
+    _autoResizeParent: true
+    _minWidth: true
+    _minHeight: true
+    _sizeOverride: true
+    _useThemeColors: true
+    _defaultTextColor: true
+    _hoveredTextColor: true
+    _triggeredTextColor: true
+    _inactiveTextColor: true
+    _defaultIconTint: true
+    _hoveredIconTint: true
+    _triggeredIconTint: true
+    _inactiveIconTint: true
+    _useTextColorOverride: true
+    _textColorOverride: true
+    _debug: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _text: "Ok, I understood"
+      _useLeadingIcon: false
+      _leadingIcon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      _useTrailingIcon: false
+      _trailingIcon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      _iconLayout: left
+      _textAlignment: center
+      _textSizing: hug
+      _font: !<reference.Font> 00000000-0000-0000-0000-000000000000
+      _textSize: !<float> 64.000000
+      _leadingIconSize: 1.250000
+      _trailingIconSize: 1.250000
+      _underline: false
+      _underlineThickness: 0.120000
+      _underlineOffset: 0.040000
+      _customSpacing: false
+      _spacing: 0.500000
+      _paddingTop: 0.500000
+      _paddingRight: 0.800000
+      _paddingBottom: 0.500000
+      _paddingLeft: 0.800000
+      _autoResizeParent: false
+      _minWidth: !<float> 0.000000
+      _minHeight: !<float> 0.000000
+      _sizeOverride: !<Vec2> {x: 0.000000, y: 0.000000}
+      _useThemeColors: true
+      _defaultTextColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      _hoveredTextColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      _triggeredTextColor: !<Vec4> {x: 0.080000, y: 0.080000, z: 0.080000, w: 1.000000}
+      _inactiveTextColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 0.400000}
+      _defaultIconTint: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      _hoveredIconTint: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      _triggeredIconTint: !<Vec4> {x: 0.080000, y: 0.080000, z: 0.080000, w: 1.000000}
+      _inactiveIconTint: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 0.400000}
+      _useTextColorOverride: false
+      _textColorOverride: !<Vec4> {x: 0.000000, y: 0.000000, z: 0.000000, w: 0.000000}
+      _debug: false
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/52a57a98-4fc5-4155-b294-3a44ba4dd935>
+  PrefabRemaps:
+    []
+  Name: APITested
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 2aada5e6-c1f7-4544-a01e-9353db65e897
+- !<SceneObject/569e01ac-0eea-4cfe-8053-9c8d238b17d3>
+  PrefabRemaps:
+    []
+  Name: WebRTC · NDK
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> d26b34b9-b541-4a5b-9f3e-f7a574b85421
+    - !<own> 9e97bc41-0555-4b68-87e3-3314ab793a1c
+  Components:
+    []
+- !<ScriptComponent/6b07ee5b-12c5-4e08-aa6d-eb018b232b2f>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/74b5e285-4720-4090-90b5-8d02412ebc56>
+  PrefabRemaps:
+    []
+  Name: PhoneLink · Mobile Kit
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 1b6ed660-16e7-4aba-b5dc-efb4a26ddc88
+- !<SceneObject/79d86574-a2a1-4558-8aaa-2fefc018f3e4>
+  PrefabRemaps:
+    []
+  Name: Guide
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -100.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 3d11fae4-8ec1-43af-af9e-22f2539e57ba
+    - !<own> bfe1a2bf-c066-4a97-86d6-61a9ee369d1a
+  Components:
+    - !<own> f918fa1f-d733-4126-8739-04a1e95d465a
+    - !<own> e5ec5738-9fe6-442c-aa82-f40d9285953b
+- !<SceneObject/7c34071d-67d0-4774-9526-6c2860166afd>
+  PrefabRemaps:
+    []
+  Name: Core
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 85bd2a3a-0088-4ec2-be66-2463b5774de1
+  Components:
+    []
+- !<SceneObject/85bd2a3a-0088-4ec2-be66-2463b5774de1>
+  PrefabRemaps:
+    []
+  Name: VideoCallS2MManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 90e03016-4029-4fdf-8c13-414082d78795
+- !<ScriptComponent/8e1dc6e0-ee5d-427c-b3d4-69e9334c66e8>
+  PrefabRemaps:
+    []
+  Name: StreamController
+  Enabled: true
+  ScriptAsset: !<reference> fc347ab9-71c7-4aeb-863c-ee098925c047
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/90e03016-4029-4fdf-8c13-414082d78795>
+  PrefabRemaps:
+    []
+  Name: VideoCallS2MManager
+  Enabled: true
+  ScriptAsset: !<reference> 0292ed7b-82b1-46ab-a96b-5a90426a0e85
+  ScriptInputsDefault:
+    simulateInPreview: true
+    showMiniMap: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      uiLabel: !<MappingBased.AssignableType_1> 1e040e45-804c-4e34-98d6-a54dd642d294
+      simulateInPreview: true
+      usePhoneLocation: true
+      showMiniMap: true
+      mobileKit: !<MappingBased.AssignableType_2> 1b6ed660-16e7-4aba-b5dc-efb4a26ddc88
+      snapCloud: !<MappingBased.AssignableType_3> b377f949-134a-4497-9d2a-085ef0031b72
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/964f3c8c-88cc-424e-ac5f-5e18ee2c04bf>
+  PrefabRemaps:
+    - 11834ed7-80aa-45c1-b011-6b3725643604: 043b6039-704d-4f43-9f7c-1e67eec31368
+    - 125cd5ea-ba8e-45fe-b5b8-fa93286942bf: f847c0ac-e513-422c-b447-74968cbb3f55
+    - 16df16ff-1775-4eb8-b522-2a7225a73f2d: 16df16ff-1775-4eb8-4add-d58dda58c0d2
+    - 17e5318b-fc16-43ae-bc47-abfcf121a179: 74ddd448-5511-420f-9a0a-a2fe483be6d8
+    - 1b6ed660-16e7-4aba-b5dc-efb4a26ddc88: 1b6ed660-16e7-4aba-4a23-104b5d922377
+    - 1c72b37e-8e47-44f6-82d3-ddf31a88c366: 37320b34-6e49-4948-b3a5-257d05517756
+    - 1d9116a3-af03-40e5-9d76-db461cb141eb: f3b3c90b-c5f1-4fda-b603-f6f1ac2e36d2
+    - 1e040e45-804c-4e34-98d6-a54dd642d294: 1e040e45-804c-4e34-6729-5ab229bd2d6b
+    - 2dafd20b-beb7-4e22-8e87-bfbb8910009f: 9044676e-2397-4a37-80ac-126e31af0778
+    - 3d11fae4-8ec1-43af-af9e-22f2539e57ba: 010d596c-de23-4298-81af-72f344ba1b66
+    - 44cd1fd7-22f1-4337-bc35-1dbf428b2dcf: 44cd1fd7-22f1-4337-43ca-e240bd74d230
+    - 4edf10f5-60df-476f-a732-b150095d9b66: 6a3ee0a0-5e3b-47d5-a965-5cca69708ab5
+    - 569e01ac-0eea-4cfe-8053-9c8d238b17d3: 569e01ac-0eea-4cfe-7fac-6372dc74e82c
+    - 6b07ee5b-12c5-4e08-aa6d-eb018b232b2f: 2418089a-4a10-4cb1-a9e6-4b34c83ad0c2
+    - 74b5e285-4720-4090-90b5-8d02412ebc56: 74b5e285-4720-4090-6f4a-72fdbed143a9
+    - 79d86574-a2a1-4558-8aaa-2fefc018f3e4: 26b4ec8a-d6fe-483e-abac-128674c51ada
+    - 7c34071d-67d0-4774-9526-6c2860166afd: 7c34071d-67d0-4774-6ad9-93d79fe99502
+    - 85bd2a3a-0088-4ec2-be66-2463b5774de1: 85bd2a3a-0088-4ec2-4199-db9c4a88b21e
+    - 8e1dc6e0-ee5d-427c-b3d4-69e9334c66e8: 8e1dc6e0-ee5d-427c-4c2b-9616ccb39917
+    - 90e03016-4029-4fdf-8c13-414082d78795: 90e03016-4029-4fdf-73ec-bebf7d28786a
+    - 964f3c8c-88cc-424e-ac5f-5e18ee2c04bf: 964f3c8c-88cc-424e-53a0-a1e711d3fb40
+    - 9e97bc41-0555-4b68-87e3-3314ab793a1c: 9e97bc41-0555-4b68-781c-cceb5486c5e3
+    - b377f949-134a-4497-9d2a-085ef0031b72: b377f949-134a-4497-62d5-f7a10ffce48d
+    - b432da09-7da0-419d-ae2f-d6d9b6ffa93c: 4f4271c6-02d2-471b-ac9a-6aefb09e0c37
+    - bfe1a2bf-c066-4a97-86d6-61a9ee369d1a: ac68c9e8-2a66-478b-87e3-67c71543de4f
+    - ce1ba5ec-fadc-42d1-af90-44e1b04dcf24: ce1ba5ec-fadc-42d1-506f-bb1e4fb230db
+    - cef17b11-fb7c-4e50-8415-eabe6cd0629c: cef17b11-fb7c-4e50-7bea-1541932f9d63
+    - cf9f7f43-9c91-42c8-a659-262bb3b90bdd: 8262a474-8c1a-4c34-bb1f-7cd90a41f79b
+    - d1e0c040-8964-46b6-8349-7a3ace41f902: d93ade0c-35f9-4c9f-aa8e-836f319ecc8a
+    - d26b34b9-b541-4a5b-9f3e-f7a574b85421: d26b34b9-b541-4a5b-60c1-085a8b47abde
+    - dc9f83d4-50d0-43c0-917d-559a3f163da7: cdb22b98-b4c2-46ab-b2fb-5884ff75f3e2
+    - e5ec5738-9fe6-442c-aa82-f40d9285953b: 137c501c-12b2-4826-8005-f337e05e6629
+    - f918fa1f-d733-4126-8739-04a1e95d465a: d840b9a8-96fe-4e92-bad1-cc382ae14313
+    - fffd13fb-d15b-4a29-b67b-9a378b4d3e2f: 480b7a69-b3ef-4e5e-83e2-7b840a665616
+  Name: VideoCallS2M__PLACE_IN_SCENE
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 125cd5ea-ba8e-45fe-b5b8-fa93286942bf
+    - !<own> 1c72b37e-8e47-44f6-82d3-ddf31a88c366
+    - !<own> dc9f83d4-50d0-43c0-917d-559a3f163da7
+    - !<own> 79d86574-a2a1-4558-8aaa-2fefc018f3e4
+    - !<own> 1d9116a3-af03-40e5-9d76-db461cb141eb
+    - !<own> b432da09-7da0-419d-ae2f-d6d9b6ffa93c
+    - !<own> 52a57a98-4fc5-4155-b294-3a44ba4dd935
+  Components:
+    []
+- !<SceneObject/9e97bc41-0555-4b68-87e3-3314ab793a1c>
+  PrefabRemaps:
+    []
+  Name: StreamController
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 8e1dc6e0-ee5d-427c-b3d4-69e9334c66e8
+- !<ScriptComponent/b377f949-134a-4497-9d2a-085ef0031b72>
+  PrefabRemaps:
+    []
+  Name: SnapCloudModule
+  Enabled: true
+  ScriptAsset: !<reference> 25b05d22-daea-4462-b6d8-340d3c204dcf
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/b432da09-7da0-419d-ae2f-d6d9b6ffa93c>
+  PrefabRemaps:
+    []
+  Name: Video Call S2M
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 7c34071d-67d0-4774-9526-6c2860166afd
+    - !<own> 569e01ac-0eea-4cfe-8053-9c8d238b17d3
+    - !<own> cef17b11-fb7c-4e50-8415-eabe6cd0629c
+    - !<own> 16df16ff-1775-4eb8-b522-2a7225a73f2d
+    - !<own> 74b5e285-4720-4090-90b5-8d02412ebc56
+  Components:
+    []
+- !<SceneObject/bfe1a2bf-c066-4a97-86d6-61a9ee369d1a>
+  PrefabRemaps:
+    []
+  Name: OkButton
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: -8.500000, z: 0.500000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 11834ed7-80aa-45c1-b011-6b3725643604
+    - !<own> 4edf10f5-60df-476f-a732-b150095d9b66
+- !<ScriptComponent/ce1ba5ec-fadc-42d1-af90-44e1b04dcf24>
+  PrefabRemaps:
+    []
+  Name: WebRTCController
+  Enabled: true
+  ScriptAsset: !<reference> 2cea6b39-6d49-48a6-a761-edb9170843bc
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/cef17b11-fb7c-4e50-8415-eabe6cd0629c>
+  PrefabRemaps:
+    []
+  Name: Snap Cloud
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> b377f949-134a-4497-9d2a-085ef0031b72
+- !<ScriptComponent/cf9f7f43-9c91-42c8-a659-262bb3b90bdd>
+  PrefabRemaps:
+    []
+  Name: ExampleCarousel
+  Enabled: true
+  ScriptAsset: !<reference> e61f174b-82bd-415c-94cf-d720045fc3ff
+  ScriptInputsDefault:
+    steps: true
+    stepInfo: true
+    startIndex: true
+    previousLabel: true
+    nextLabel: true
+    examplesPushBack: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      examples: !<reference.SceneObject[]>
+        - !<reference> b432da09-7da0-419d-ae2f-d6d9b6ffa93c
+      exampleInfo: !<string[]>
+        - "Flip on Call Friend (or Watch Your Back / Find Your Friend) and press Start. The Preview simulates GPS and a synthetic video feed; real calls need the iPhone app, Snap Cloud and a Specs device."
+      steps: !<reference.SceneObject[]>
+        []
+      stepInfo: !<string[]>
+        []
+      startIndex: !<float> 0.000000
+      previousLabel: Previous
+      nextLabel: Next
+      examplesPushBack: !<float> 20.000000
+      anchorExamples: false
+      startMinimized: true
+      extraPanelDrop: !<float> -31.000000
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/d1e0c040-8964-46b6-8349-7a3ace41f902>
+  PrefabRemaps:
+    []
+  Name: SupabaseRequirements
+  Enabled: true
+  ScriptAsset: !<reference> ec1246e4-68a2-4544-989e-1213673d5aa7
+  ScriptInputsDefault:
+    supabaseProject: true
+    text: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      snapCloudRequirements: !<MappingBased.AssignableType_1> 2dafd20b-beb7-4e22-8e87-bfbb8910009f
+      supabaseProject: !<reference.SupabaseProject> 00000000-0000-0000-0000-000000000000
+      text: !<reference.Text> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/d26b34b9-b541-4a5b-9f3e-f7a574b85421>
+  PrefabRemaps:
+    []
+  Name: WebRTCController
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> ce1ba5ec-fadc-42d1-af90-44e1b04dcf24
+- !<SceneObject/dc9f83d4-50d0-43c0-917d-559a3f163da7>
+  PrefabRemaps:
+    []
+  Name: CredentialsWarning
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 17e5318b-fc16-43ae-bc47-abfcf121a179
+- !<ScriptComponent/e5ec5738-9fe6-442c-aa82-f40d9285953b>
+  PrefabRemaps:
+    []
+  Name: GuideDismissPanel
+  Enabled: true
+  ScriptAsset: !<reference> 01f2d17d-20cb-4533-ba76-670de6de95ed
+  ScriptInputsDefault:
+    buttonLabel: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      buttonLabel: "Ok, I understood"
+      hideUntilDismissed: !<reference.SceneObject[]>
+        - !<reference> 1d9116a3-af03-40e5-9d76-db461cb141eb
+        - !<reference> b432da09-7da0-419d-ae2f-d6d9b6ffa93c
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/f918fa1f-d733-4126-8739-04a1e95d465a>
+  PrefabRemaps:
+    []
+  Name: Frame
+  Enabled: true
+  ScriptAsset: !<reference> 3b46d829-f6db-432a-914c-3551904d3994
+  ScriptInputsDefault:
+    _spawnOnStart: true
+    _padding: true
+    _allowScaling: true
+    allowNonUniformScaling: true
+    autoScaleContent: true
+    relativeZ: true
+    _onlyInteractOnMargin: true
+    allowTranslation: true
+    _cutOutCenter: true
+    _cutOutFeather: true
+    _hasShadow: true
+    _minimumSize: true
+    _maximumSize: true
+    useBillboarding: true
+    xOnTranslate: true
+    xAlways: true
+    xBufferDegrees: true
+    yOnTranslate: true
+    yAlways: true
+    yBufferDegrees: true
+    useSnapping: true
+    itemSnapping: true
+    worldSnapping: true
+    _useTagAlong: true
+    _tagAlongDistance: true
+    _showFollowButton: true
+    _useFocusFrame: true
+    useFollowBehavior: true
+    _useTiltMode: true
+    _tiltUpThreshold: true
+    _tiltDownThreshold: true
+    _following: true
+    _useDepthClamping: true
+    _minimumDepth: true
+    _maximumDepth: true
+    _useDepthScaling: true
+    _depthScalingMinimumDepth: true
+    _depthScalingMaximumDepth: true
+    _depthScalingMinimumScale: true
+    _depthScalingMaximumScale: true
+    _showCloseButton: true
+    _enableInteractionPlane: true
+    _interactionPlaneOffset: true
+    _interactionPlanePadding: true
+    _targetingVisual: true
+    _interactablePadding: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _themeOverride: System3
+      _spawnOnStart: false
+      _innerSize: !<Vec2> {x: 44.000000, y: 26.000000}
+      _padding: !<Vec2> {x: 0.000000, y: 0.000000}
+      _allowScaling: true
+      allowNonUniformScaling: false
+      autoScaleContent: true
+      relativeZ: true
+      _onlyInteractOnMargin: false
+      allowTranslation: true
+      _cutOutCenter: false
+      _cutOutFeather: 0.100000
+      _hasShadow: false
+      _minimumSize: !<Vec2> {x: 10.000000, y: 10.000000}
+      _maximumSize: !<Vec2> {x: 150.000000, y: 150.000000}
+      useBillboarding: true
+      xOnTranslate: true
+      xAlways: false
+      xBufferDegrees: !<float> 0.000000
+      yOnTranslate: true
+      yAlways: false
+      yBufferDegrees: !<float> 0.000000
+      useSnapping: false
+      itemSnapping: false
+      worldSnapping: false
+      _useTagAlong: false
+      _tagAlongDistance: !<float> 110.000000
+      _showFollowButton: false
+      _useFocusFrame: true
+      useFollowBehavior: false
+      _useTiltMode: false
+      _tiltUpThreshold: !<float> 25.000000
+      _tiltDownThreshold: !<float> 35.000000
+      _following: false
+      _useDepthClamping: false
+      _minimumDepth: !<float> 35.000000
+      _maximumDepth: !<float> 110.000000
+      _useDepthScaling: false
+      _depthScalingMinimumDepth: !<float> 35.000000
+      _depthScalingMaximumDepth: !<float> 110.000000
+      _depthScalingMinimumScale: 0.500000
+      _depthScalingMaximumScale: !<float> 1.000000
+      _showCloseButton: false
+      _enableInteractionPlane: true
+      _interactionPlaneOffset: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
+      _interactionPlanePadding: !<Vec2> {x: 0.000000, y: 0.000000}
+      _targetingVisual: !<float> 1.000000
+      _interactablePadding: !<Vec2> {x: 1.000000, y: 1.000000}
+  ScriptTypes:
+    "":
+      {}
+- !<Text/fffd13fb-d15b-4a29-b67b-9a378b4d3e2f>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 11
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Left
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: |-
+    Video Call S2M connects you on Specs with a friend on an iPhone: your POV video and voice go to their phone, and their camera comes back onto a panel in front of you.
+    Pick the modes and the GPS source on the start menu, then press Start.
+    Live calls need the iPhone companion app, your own Snap Cloud project and a Specs device.
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableRichText: false
+  SizeToFit: false
+  FontSize: 60.000000
+  FontSource: !<reference> 00000000-0000-0000-0000-000000000000
+  PreferredStyle: Regular
+  LayoutRect:
+    left: -20.000000
+    bottom: -9.000000
+    right: 20.000000
+    top: 9.000000
+  DebugRenderLayoutRect: false
+  OverflowVertical: Overflow
+  OverflowHorizontal: Wrap
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlphaAuto
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.000000
+      bottom: 0.000000
+      right: 0.000000
+      top: 0.000000
+    CornerRadius: 0.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false

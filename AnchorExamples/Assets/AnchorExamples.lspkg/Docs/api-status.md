@@ -11,6 +11,8 @@ The descriptor is `package.native`; its current Version field is the source of t
 | Status | Surface | Notes |
 |---|---|---|
 | Current | AnchorController sessions, create/save/resolve/delete, tracking and uncertainty events | Native AnchorModule wrapper |
+| Current | AnchorController `getGeoPosition`, `typeName`, `isCustom` | Native AnchorLocationModule; Custom Location anchors only, gated on the user's location permission; null in Preview |
+| Current | `PersistentAnchorExample` component | Minimal create / save / restore / discover / delete flow with tracking-state and uncertainty visibility |
 | Current | Area storage, Note/Watch/Photo widgets, recall and surface snapping | Demo app; UIKit and SIK required |
 | Current | Preview remembered pose | Local simulation, never proof of persistent native anchors |
 | Removed migration APIs | `anchor.toWorldFromAnchor`, `anchor.state`, `anchor.onFound`, `updateAnchor`, `AnchorSession.reset()` | Use AnchorComponent pose/state and create-save-delete / clearArea / clearAllAnchors |

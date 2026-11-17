@@ -5,13 +5,13 @@
  * drawing, buttons to add a card, clear connectors or reset the board, plus a live readout of
  * connector and vertex counts. Wire `board` to the BezierExamples component in the Inspector.
  */
-import {FlexLayout} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexLayout"
-import {FlexItem} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexItem"
-import {FlexAlign, FlexDirection, FlexJustify} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexTypes"
-import {BackPlate} from "SpectaclesUIKit.lspkg/Scripts/BackPlate"
-import {Button} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/Button"
-import {Switch} from "SpectaclesUIKit.lspkg/Scripts/Components/Switch/Switch"
-import {Slider} from "SpectaclesUIKit.lspkg/Scripts/Components/Slider/Slider"
+import {FlexLayout} from "UIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexLayout"
+import {FlexItem} from "UIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexItem"
+import {FlexAlign, FlexDirection, FlexJustify} from "UIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexTypes"
+import {BackPlate} from "UIKit.lspkg/Scripts/BackPlate"
+import {Button} from "UIKit.lspkg/Scripts/Components/Button/Button"
+import {Switch} from "UIKit.lspkg/Scripts/Components/Switch/Switch"
+import {Slider} from "UIKit.lspkg/Scripts/Components/Slider/Slider"
 import {BezierExamples} from "./BezierExamples"
 
 // ── Typography: the single source of truth for text size + weight ────────────

@@ -28,8 +28,8 @@ Create a comprehensive debug panel with many functions:
 
 ```typescript
 import { ButtonClickEvent, TriggerableFunction } from "FunctionCallHelper.lspkg/FunctionCallHelper";
-import { ScrollWindow } from "SpectaclesUIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow";
-import { GridLayout } from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Grid/GridLayout";
+import { ScrollWindow } from "UIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow";
+import { GridLayout } from "UIKit.lspkg/Scripts/Components/Layout2D/Grid/GridLayout";
 
 @component
 export class DebugPanel extends BaseScriptComponent {

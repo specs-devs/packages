@@ -47,7 +47,7 @@ A missing initializer means no source default: assign the required reference; on
 | Input declaration / default | Meaning |
 |---|---|
 | `public snapCloudRequirements: SnapCloudRequirements` | Reference to SnapCloudRequirements for centralized Supabase configuration |
-| `public dataRetrievalButton: RectangleButton` | Optional: RectangleButton to trigger data retrieval (SpectaclesUIKit) |
+| `public dataRetrievalButton: RectangleButton` | Optional: RectangleButton to trigger data retrieval (UIKit) |
 | `public logText: Text` | Optional: Text component to display logs on device |
 | `enableLogging: boolean = false;` | Enable general logging (animation cycles, events, etc.) |
 | `enableLoggingLifecycle: boolean = false;` | Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.) |
@@ -98,7 +98,7 @@ A missing initializer means no source default: assign the required reference; on
 |---|---|
 | `public snapCloudRequirements: SnapCloudRequirements` | Reference to SnapCloudRequirements for centralized Supabase configuration |
 | `public channelName: string = "[Insert your channel name]"` | Channel name for cursor synchronization |
-| `public toggleModeButton: RectangleButton` | RectangleButton to toggle between broadcast and follow modes (SpectaclesUIKit) |
+| `public toggleModeButton: RectangleButton` | RectangleButton to toggle between broadcast and follow modes (UIKit) |
 | `public cursorObject: SceneObject` | The cursor object to track (broadcast) or move (follow) |
 | `public modeText: Text` | Text component to display current mode |
 | `public statusText: SceneObject` | Text component to display detailed status and logs |
@@ -153,7 +153,7 @@ A missing initializer means no source default: assign the required reference; on
 | `public imageDisplay: Image` | Image component to display the loaded texture |
 | `public audioPlayer: SceneObject` | Scene object with AudioComponent to play the loaded audio |
 | `public defaultMaterial: Material` | Material to use for instantiated 3D models |
-| `public loadButton: RectangleButton` | RectangleButton to trigger asset loading (SpectaclesUIKit) |
+| `public loadButton: RectangleButton` | RectangleButton to trigger asset loading (UIKit) |
 | `public enableProgressLogs: boolean = true` | Show loading progress in console |
 | `public enableDebugLogs: boolean = true` | Enable detailed debug logging |
 | `@widget(new SliderWidget(50, 300, 10)) public modelDistance: number = 100` | Distance in front of camera to place model (in cm) |
@@ -194,7 +194,7 @@ A missing initializer means no source default: assign the required reference; on
 | `public functionName: string = "[your-function-name]"` | Edge Function name (will use SnapCloudRequirements to build full URL) |
 | `public imageUrl: string = "[Insert your Supabase storage URL]/storage/v1/object/public/[bucket-name]/[path-to-image]"` | Image URL from your Supabase Storage to process |
 | `public outputImage: Image` | Output image component to display processed result |
-| `public processButton: RectangleButton` | RectangleButton to trigger Edge Function call (SpectaclesUIKit) |
+| `public processButton: RectangleButton` | RectangleButton to trigger Edge Function call (UIKit) |
 | `public enableDebugLogs: boolean = true` | Enable debug logging |
 | `enableLogging: boolean = false;` | Enable general logging (animation cycles, events, etc.) |
 | `enableLoggingLifecycle: boolean = false;` | Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.) |

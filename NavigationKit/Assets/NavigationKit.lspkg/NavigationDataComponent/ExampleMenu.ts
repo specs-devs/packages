@@ -2,12 +2,12 @@
 // crash in the package (importing a UIKit button pulls the theme→visual chain, which
 // reads COLORS / the Visual class at module-load). Loading ThemeService first lets
 // Visual.ts finish initializing before the visual chain reads it.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService"
-import {Interactable} from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
+import "UIKit.lspkg/Scripts/Themes/ThemeService"
+import {Interactable} from "InteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
 // SIK no longer ships PinchButton; UIKit's RectangleButton is the replacement. Its trigger
 // events (`onTriggerUp`) exist before the button initializes, so the menu can subscribe from
 // its own OnStart; Interactable.onTriggerEnd stays as a fallback for other button types.
-import {RectangleButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton"
+import {RectangleButton} from "UIKit.lspkg/Scripts/Components/Button/RectangleButton"
 import {NavigationDataComponent} from "./NavigationDataComponent"
 import {Place} from "./Place"
 

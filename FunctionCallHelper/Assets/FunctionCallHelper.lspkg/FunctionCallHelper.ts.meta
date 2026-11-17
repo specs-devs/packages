@@ -24,12 +24,14 @@
   VersionPatch: 0
   VersionPrerelease: ""
   UpdateOrder: 0
+  RunInEditor: false
   ComponentUid: 1ea90be2-85e9-4b92-9dda-d9dd2cdf6f89
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
     buttonPrefab: false
     buttonSize: false
+    buttonSpacing: false
     enableLogging: false
     enableLoggingLifecycle: false
     gridLayout: false
@@ -56,6 +58,7 @@
       overrideButtonSize: false
       buttonSize: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
       topPadding: !<float> 3.000000
+      buttonSpacing: 0.800000
       enableLogging: false
       enableLoggingLifecycle: false
   ScriptTypes:
@@ -78,6 +81,7 @@
     - "// @input bool overrideButtonSize {\"hint\":\"Enable to stamp a custom size on every button. Leave off to use the prefab's native size.\"}"
     - '// @input vec3 buttonSize = {10,4,0.5} {"hint":"Width (X), height (Y), depth (Z) in centimeters. Applied to each button after instantiation.", "showIf":"overrideButtonSize", "showIfValue":true}'
     - "// @input float topPadding = 3 {\"hint\":\"Top padding inside the grid container (cm). Increase to clear the Frame's title bar so the first button isn't clipped at the top.\", \"showIf\":\"overrideButtonSize\", \"showIfValue\":true}"
+    - '// @input float buttonSpacing = 0.8 {"hint":"Vertical gap between buttons (cm). Keeps neighbouring buttons from touching so each one is easy to pinch.", "showIf":"overrideButtonSize", "showIfValue":true}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'

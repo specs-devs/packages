@@ -10,11 +10,11 @@
  * (Ground, Wall, Ceiling, Table, ...) for context-aware AR experiences.
  */
 // import required modules
-const Interactor = require("SpectaclesInteractionKit.lspkg/Core/Interactor/Interactor");
+const Interactor = require("InteractionKit.lspkg/Core/Interactor/Interactor");
 const InteractorTriggerType = Interactor.InteractorTriggerType;
 const InteractorInputType = Interactor.InteractorInputType;
-const {SIK} = require("SpectaclesInteractionKit.lspkg/SIK");
-const Event = require("SpectaclesInteractionKit.lspkg/Utils/Event").default;
+const {IK} = require("InteractionKit.lspkg/IK");
+const Event = require("InteractionKit.lspkg/Utils/Event").default;
 
 const WorldQueryModule = require("LensStudio:WorldQueryModule");
 
@@ -139,7 +139,7 @@ function HitTestClassification() {
   }
 
   function onUpdate() {
-    primaryInteractor = SIK.InteractionManager.getTargetingInteractors().shift();
+    primaryInteractor = IK.InteractionManager.getTargetingInteractors().shift();
     if (primaryInteractor &&
         primaryInteractor.isActive() &&
         primaryInteractor.isTargeting()

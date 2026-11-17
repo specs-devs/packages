@@ -2,7 +2,7 @@
   <img src="Docs/media/SnapDecorators.png" width="250px" alt="SnapDecorators"/>
 </p>
 
-# SnapDecorators 
+# Decorators
 
 A powerful TypeScript decorator library for SPECS development that simplifies component lifecycle management, dependency injection, and memoization. SnapDecorators leverages modern JavaScript decorator syntax to eliminate boilerplate code, automatically wire up event handlers, inject component dependencies, and optimize getter performance. This package transforms verbose Lens Studio component patterns into clean, declarative code using the Stage 3 TC39 decorator proposal, making your scripts more readable, maintainable, and less error-prone.
 
@@ -89,7 +89,7 @@ This section ships with the package and describes the exact installed revision
 (the version is recorded in `package.native`). Read it, then follow the
 links into `Docs/` for the topic you need. It is written for both people and
 coding agents; generic Lens scripting, scene construction, and Specs spatial
-design live in the CLAD skills, not here.
+design are out of scope here.
 
 ### Package identity
 
@@ -101,11 +101,11 @@ design live in the CLAD skills, not here.
   relative form `./SnapDecorators.lspkg/...` only resolves from a script that
   sits next to the package folder.
 - Declared companion packages (`package_dependencies.json`):
-  `SpectaclesInteractionKit`, `SpectaclesUIKit`, `Motion`, `Icons`. The
+  `InteractionKit`, `UIKit`, `Motion`, `Icons`. The
   decorator modules (`decorators`, `assert`, `debug`, `guards`) import none of
   them; the demo scaffolding in `Example/` (`ExampleCarousel`,
-  `GuideDismissPanel`) imports `SpectaclesUIKit.lspkg/...` and
-  `SpectaclesInteractionKit.lspkg/...`. See
+  `GuideDismissPanel`) imports `UIKit.lspkg/...` and
+  `InteractionKit.lspkg/...`. See
   [API status](Docs/api-status.md#known-gaps).
 - Demo prefab: `SnapDecorators.lspkg/SnapDecorators__PLACE_IN_SCENE.prefab`. It is
   self-contained: it includes the guide (dismissed with "Ok, I understood"),
@@ -127,15 +127,9 @@ that differ from external listings.
 Use SnapDecorators when a TypeScript component should declare its lifecycle
 handlers, component dependencies and cached getters instead of wiring them by
 hand in `onAwake`. It adds no scene content, UI or interaction: hand interaction
-is SpectaclesInteractionKit, spatial UI is SpectaclesUIKit. Plain
+is InteractionKit, spatial UI is UIKit. Plain
 `createEvent(...).bind(...)` remains the right tool for events you create
 conditionally or at runtime.
-
-### Related CLAD skills
-
-[lens-api](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/lens-api/SKILL.md). These skills cover the surrounding Lens workflow.
-
-[Install CLAD](https://developers.specs.com/docs/clad/setup/setup-ai/) or browse its [source](https://github.com/lens-studio-devs/ls-extensions). Read the installed package docs for this revision’s APIs.
 
 ### Package Docs (ship in `Docs/`)
 

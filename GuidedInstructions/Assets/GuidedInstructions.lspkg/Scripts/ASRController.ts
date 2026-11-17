@@ -6,8 +6,8 @@
 // crash in the package (Visual.ts imports ThemeService before defining the Visual class +
 // COLORS, and the theme chain reads them at module-load). Loading ThemeService first lets
 // Visual.ts finish before any UIKit component (incl. scene-authored buttons) loads.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService";
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event"
+import "UIKit.lspkg/Scripts/Themes/ThemeService";
+import Event from "InteractionKit.lspkg/Utils/Event"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 
 @component

@@ -1,0 +1,11 @@
+{
+  "name": "webcapture-portal",
+  "private": true,
+  "version": "4.0.0",
+  "description": "Web Capture portal: static files, no build step. Serve this folder; tests run with Node.",
+  "type": "module",
+  "scripts": {
+    "serve": "python3 -m http.server 47790 --bind 127.0.0.1",
+    "test": "node --test tests/model.test.mjs tests/scheduler.test.mjs tests/uikit.test.mjs"
+  }
+}

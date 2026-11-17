@@ -6,7 +6,7 @@
 
 Copy a minimal, compile-correct starting point for sign-in, authenticated API calls or
 session checks. All snippets use this package's import paths (`AuthKit.lspkg/Core/…`) and were
-compiled against this package with SpectaclesUIKit for the buttons. Replace the
+compiled against this package with UIKit for the buttons. Replace the
 `<…>` placeholders with your provider's values ([setup](setup.md)).
 
 ## Setup in a scene
@@ -20,7 +20,7 @@ session with Sign in / Get token / Test token / Sign out buttons.
 
 ```typescript
 import { OAuth2 } from "AuthKit.lspkg/Core/OAuth2";
-import { RectangleButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton";
+import { RectangleButton } from "UIKit.lspkg/Scripts/Components/Button/RectangleButton";
 
 @component
 export class AuthenticationManager extends BaseScriptComponent {

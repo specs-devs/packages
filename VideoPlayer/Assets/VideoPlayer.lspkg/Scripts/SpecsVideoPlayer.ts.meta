@@ -1,0 +1,99 @@
+- !<AssetImportMetadata/929aff01-8938-47bf-89f9-67664d903e21>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 0f8b69ca-4a78-4238-a23f-966794293e39
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 0f8b69ca-4a78-4238-a23f-966794293e39
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 9ead9717-268d-4c80-a11e-eb29063259aa
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/9ead9717-268d-4c80-a11e-eb29063259aa>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: be7e9487-e6da-4d38-bc4f-f081bb83b978
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    autoPlay: false
+    backend: false
+    displayMaterial: false
+    displayVisual: false
+    enableLogging: false
+    internetModule: false
+    loop: false
+    maxFrameHeight: false
+    maxFrameWidth: false
+    remoteMediaModule: false
+    source: false
+    textureParameter: false
+    url: false
+    videoTexture: false
+    volume: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - source: url
+      url: ""
+      videoTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      autoPlay: true
+      loop: false
+      volume: !<float> 1.000000
+      displayVisual: !<reference.MaterialMeshVisual> 00000000-0000-0000-0000-000000000000
+      displayMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      textureParameter: baseTex
+      maxFrameWidth: 1280
+      maxFrameHeight: 720
+      backend: auto
+      remoteMediaModule: !<reference.RemoteMediaModule> 00000000-0000-0000-0000-000000000000
+      internetModule: !<reference.InternetModule> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">SpecsVideoPlayer – SpecsNDK video player</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">URL playback runs natively on Specs (file:// or http(s)://). In Lens Studio Preview the VideoTexture fallback plays instead.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Source"}'
+    - '// @input string source = "url" {"hint":"url: play the URL (native on device). bundled: play the VideoTexture everywhere.", "widget":"combobox", "values":[{"label":"URL", "value":"url"}, {"label":"Bundled VideoTexture", "value":"bundled"}]}'
+    - '// @input string url {"hint":"Media URL: file:///absolute/path.mp4, http:// or https://. Needs the INTERNET permission (embedded in the module)."}'
+    - '// @input Asset.Texture videoTexture {"hint":"Bundled VideoTexture. Played when source = bundled, and used as the editor fallback for a URL source."}'
+    - '// @input bool autoPlay = true {"hint":"Start playing as soon as the media is ready"}'
+    - '// @input bool loop {"hint":"Loop at end of stream"}'
+    - '// @input number volume = "1.0" {"hint":"Initial volume (0 – 1)", "widget":"slider", "min":0, "max":1, "step":0.05}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Display"}'
+    - '// @input Component.MaterialMeshVisual displayVisual {"hint":"Optional Image / RenderMeshVisual whose main material receives the video texture"}'
+    - '// @input Asset.Material displayMaterial {"hint":"Optional material that receives the video texture (in addition to displayVisual)"}'
+    - '// @input string textureParameter = "baseTex" {"hint":"Material texture parameter to write (Unlit / Image materials use baseTex)"}'
+    - '// @input int maxFrameWidth = "1280" {"hint":"Max width of the RGBA frames copied from native (larger videos are scaled down, aspect kept)"}'
+    - '// @input int maxFrameHeight = "720" {"hint":"Max height of the RGBA frames copied from native"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Backend"}'
+    - '// @input string backend = "auto" {"hint":"auto: native on device, VideoTexture in the editor. native / videoTexture force one backend.", "widget":"combobox", "values":[{"label":"Auto", "value":"auto"}, {"label":"Native (device)", "value":"native"}, {"label":"VideoTexture", "value":"videoTexture"}]}'
+    - '// @input Asset.RemoteMediaModule remoteMediaModule {"hint":"Optional: lets the VideoTexture backend stream a URL source (editor Preview) via RemoteMediaModule"}'
+    - '// @input Asset.InternetModule internetModule {"hint":"Optional: InternetModule used with remoteMediaModule to make the URL resource"}'
+    - '// @input bool enableLogging {"hint":"Print state changes and errors"}'
+    - '// @ui {"widget":"group_end"}'

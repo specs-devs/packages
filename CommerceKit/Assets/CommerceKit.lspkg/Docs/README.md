@@ -1,52 +1,52 @@
 # Commerce Kit
 
 ## What it is
-A package you drop into a Specs project to sell non-consumable in-Lens products. It manages a product catalog, the
-purchase flow and cached ownership behind one singleton, and ships an example purchase panel built with UI Kit. It is
-for developers adding paid unlocks to a Lens; the commerce service is labelled Closed Beta in the `ProductCatalog`
-Inspector, which links to its access requirements.
+A package you drop into a Specs project to sell in-Lens products: non-consumables, consumables and auto-renewing
+subscriptions. Products are defined on the Specs developer portal
+([developers.specs.com/lenses](https://developers.specs.com/lenses)); the Lens refers to them by product ID. One
+singleton owns the connection to the commerce service, restores and finalizes purchases and delivers consumables, and
+the package ships three example panels built with UI Kit.
 
 ## What it does
-1. Add a `ProductCatalog` component (or the place-in-scene prefab) and configure `CommerceProduct` entries: unique `id`,
-   `NonConsumable` type, display name, decimal USD `CommercePrice` and optional icon URI / JSON extras.
-2. On awake, `ProductCatalog` calls `CommerceKit.getInstance().initializeCatalog(...)`, which validates and rounds
-   prices and sends integer cents to the device commerce client. A nonempty catalog is not replaced by later calls.
-3. Your UI calls `getProductInfo`, `isProductOwned` (cached state), `checkPurchaseStatus` (device purchase history) and
-   `purchaseProduct(id)` to launch the purchase flow; successful purchases are acknowledged and cached as owned.
-4. In Lens Studio an in-memory mock path is used instead: `client()` rejects on purpose, known products are marked
-   Purchased locally, and ownership resets with the Lens session.
-5. `ExamplePurchaseController` fills a panel's name, price and status texts, binds the UI Kit button's `onTriggerUp`,
-   guards repeat presses and disables the button once the product is owned.
+1. Create your products on the developer portal and note their IDs.
+2. Add a `ProductCatalog` component (or the place-in-scene prefab): on awake it calls
+   `CommerceKit.getInstance().initialize()`, which connects, restores purchases and finalizes pending ones.
+3. Your UI calls `getProductInfo` (portal details, localized `nativeProduct.price.displayPrice`), `purchaseProduct(id,
+   offerId?)`, `isProductOwned`, `getPurchase` and listens to `onPurchasesChanged`.
+4. Consumables are granted in a `registerConsumable` handler before CommerceKit consumes them; every other completed
+   purchase is acknowledged automatically, so it is not refunded.
+5. In Lens Studio Preview the commerce service is simulated: every product ID is a $0.99 product, checkouts succeed at
+   once, subscriptions are not simulated.
 
 ## Highlights
-- Singleton access (`CommerceKit.getInstance()`) to catalog, product info and ownership; no SceneObject required.
-- Prices are authored in decimal USD (`1.99`, not `199`); other currencies throw.
-- Editor mock purchases let you test the UI flow without a payment.
-- The demo prefab shows a valid product (`glow_up_hoodie`) and an intentionally missing one (`suss_purchase`) to
-  exercise both paths.
-- No public purchase events: handle the returned promises and guard a possibly undefined purchase result.
+- Products, prices and subscription plans live in the cloud: change them without republishing the Lens.
+- Safe lifecycle: interrupted purchases are finalized on the next launch, and nobody is charged twice.
+- 3.x calls keep their signatures; `initializeCatalog` is deprecated and the in-Lens product list is gone.
+- Failures reject with a typed `CommerceKitError` carrying a `Commerce.ResponseCode`.
+- The demo prefab shows a non-consumable (`glow_up_hoodie`), a consumable (`coins_100`) and a subscription
+  (`premium_pass`).
 
 ## Core scripts
 | Script | What it does |
 |---|---|
-| `CommerceKit.ts` | Singleton: catalog initialization, native client, purchase flow, ownership and status queries. |
-| `ProductCatalog.ts` | Component holding the product list; initializes the catalog on awake. |
-| `Helper/CommerceProduct.ts` | Typedef for a catalog product (id, type, name, description, price, icon, extras). |
-| `Helper/CommercePrice.ts` | Typedef for a decimal price and currency (USD). |
-| `Examples/ExamplePurchaseController.ts` | Purchase panel: shows product details, runs the purchase and updates status. |
-| `Utils/Singleton.ts` | Singleton decorator used by `CommerceKit`. |
-| `Utils/Event.ts` | Generic typed callback helper (not a commerce event API). |
+| `CommerceKit.ts` | Singleton: connection, restore, purchase, delivery, acknowledgement, recovery, ownership and subscription state; `CommerceKitError`. |
+| `ProductCatalog.ts` | Component that starts CommerceKit on awake; links to the developer portal. |
+| `Helper/CommerceProduct.ts`, `Helper/CommercePrice.ts` | Result of `getProductInfo()`: 3.x fields plus `nativeProduct`. |
+| `Helper/SubscriptionOffers.ts` | `describeOffer()` and `getFreeTrialPhase()`. |
+| `Helper/PreviewCommerceClient.ts` | The simulated commerce service used in Lens Studio Preview. |
+| `Examples/ExampleProductPanel.ts` | Base class of the example panels. |
+| `Examples/ExamplePurchaseController.ts`, `ExampleConsumableController.ts`, `ExampleSubscriptionController.ts` | The non-consumable, consumable and subscription panels. |
+| `Utils/Singleton.ts`, `Utils/Event.ts` | Singleton decorator and the typed event behind `onPurchasesChanged`. |
 
 ## Extra info
-- **Requires:** InteractionKit, UIKit, Utilities, SnapDecorators, Motion, Icons. Real purchases, cancellation, history
-  and acknowledgement only happen on Specs and need authorized commerce QA; the Lens Studio Preview runs the mock
-  path only. Device acknowledgement gaps are listed in api-status.md.
-- **Get started:** `CommerceKit__PLACE_IN_SCENE.prefab` (guide, example carousel, product catalog and two purchase
-  panels). In your own Lens you only need `ProductCatalog` plus your own controller calling `CommerceKit`.
+- **Requires:** InteractionKit, UIKit, Utilities, SnapDecorators, Motion, Icons, and a product catalog on the developer
+  portal. Real purchases, failed payments and subscriptions only happen on Specs and need authorized commerce QA.
+- **Get started:** `CommerceKit__PLACE_IN_SCENE.prefab` (guide, example carousel, product catalog and three product
+  panels). In your own Lens you only need `ProductCatalog` plus your own UI calling `CommerceKit`.
 - **More docs:**
-  - [cheat-sheet.md](cheat-sheet.md) - catalog, price units and mock rules, read first.
+  - [cheat-sheet.md](cheat-sheet.md) - portal products, product types and Preview rules, read first.
   - [components.md](components.md) - inputs, defaults and public methods.
-  - [examples.md](examples.md) - product queries and guarded purchase calls.
-  - [guide.md](guide.md) - catalog, multi-product and ownership workflows.
-  - [api-status.md](api-status.md) - service status, compatibility and known device gaps.
+  - [examples.md](examples.md) - the three product types, events and errors.
+  - [guide.md](guide.md) - full workflow, purchase lifecycle, API reference and 3.x migration.
+  - [api-status.md](api-status.md) - what changed in 4.0, deprecations and device-only behavior.
   - [troubleshooting.md](troubleshooting.md) - initialization, UI and transaction symptoms.

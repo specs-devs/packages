@@ -10,14 +10,14 @@ ReachyReceiver connects a Specs Lens to a Reachy Mini WebSocket bridge, offers I
 
 ## Usage
 
-This section ships with the package and describes what it contains. Generic Lens scripting, scene construction and Specs spatial design live in CLAD skills; package wiring, API, protocol and limitations live here.
+This section ships with the package and describes what it contains. Generic Lens scripting, scene construction and Specs spatial design are out of scope here; package wiring, API, protocol and limitations live here.
 
 ### Package identity
 
 - [package.native](package.native): existing ReadMe preserved, SetupScript empty and no instantiable root.
 - Consumer/editable prefix: `ReachyReceiver.lspkg/` / `Assets/ReachyReceiver.lspkg/`; e.g. `ReachyReceiver.lspkg/Scripts/DaemonInterface`.
 - Demo scaffolding: `ReachyReceiver.lspkg/Example/` holds `ExampleCarousel` and `GuideDismissPanel` (see [Components](Docs/components.md#demo-scaffolding-example)). They only present the demo; the Reachy scripts don't import them.
-- [Manifest](package_dependencies.json): SpectaclesInteractionKit, SpectaclesUIKit, Utilities, SnapDecorators, Motion, Icons.
+- [Manifest](package_dependencies.json): InteractionKit, UIKit, Utilities, SnapDecorators, Motion, Icons.
 - Prefab wiring: the PLACE_IN_SCENE prefab uses DaemonInterface (with `Module/Internet Module.internetModule`), ReachyMiniController, ReachyUIController, ReachyUIManager and the `Example/` scaffolding. `UIFrameAnimator` and `ControllerLookAtTarget` ship but no shipped prefab uses them.
 - Bridge: `ReachyReceiver.lspkg/WebsocketExamples/websocket_bridge.py` (Python bridge to the Reachy Mini daemon) and `test_websocket.py` (test client). See [Guide](Docs/guide.md#websocket-bridge-setup).
 - Demo [ReachyReceiver__PLACE_IN_SCENE.prefab](ReachyReceiver__PLACE_IN_SCENE.prefab): drop it into a Specs scene (Camera + SIK/UIKit) for the full demo — it includes the guide panel, the example carousel and the `ReachyController` group (controller, daemon interface, robot reference, UI panel); target [GrabThisReachyWillFollow.prefab](Prefabs/GrabThisReachyWillFollow.prefab). The manifest and bridge instructions are not live compatibility or connectivity proof.
@@ -29,12 +29,6 @@ Read [API status](Docs/api-status.md). Daemon request transport and Mini state i
 ### Applicability
 
 Use when a Reachy Mini daemon is reachable through an explicitly configured external bridge and the AR robot/target locations are authored. This package supplies UI and control messages, not a local simulated robot or bridge deployment. UI inspection while disconnected is not physical motion proof.
-
-### Related CLAD skills
-
-[specs-websocket](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/specs-websocket/SKILL.md). These skills cover the surrounding Lens workflow.
-
-[Install CLAD](https://developers.specs.com/docs/clad/setup/setup-ai/) or browse its [source](https://github.com/lens-studio-devs/ls-extensions). Read the installed package docs for this package's APIs.
 
 ### Package Docs (ship in Docs/)
 

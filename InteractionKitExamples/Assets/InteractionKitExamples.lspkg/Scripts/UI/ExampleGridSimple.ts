@@ -2,30 +2,27 @@
 // crash in the package (Visual.ts imports ThemeService before defining COLORS, and the
 // theme chain reads COLORS at module-load). Entering the import cycle via ThemeService
 // lets Visual.ts finish defining COLORS first. Must remain the FIRST import.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService"
+import "UIKit.lspkg/Scripts/Themes/ThemeService"
 /**
  * ExampleGridSimple – adaptable grid of tappable buttons.
  * No pagination, no drag. Rows × columns laid out at runtime and auto-sized.
  * API: populate items[] before Play, or call addItem() / updateButtonText() etc. at any time.
  */
-import { Frame } from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame";
-import { RectangleButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton";
+import { Frame } from "UIKit.lspkg/Scripts/Components/Frame/Frame";
+import { RectangleButton } from "UIKit.lspkg/Scripts/Components/Button/RectangleButton";
 import {
   RoundedRectangleVisual,
   RoundedRectangleVisualState,
-} from "SpectaclesUIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangleVisual";
+} from "UIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangleVisual";
 import {
   RoundedRectangle,
   GradientParameters,
-} from "SpectaclesUIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangle";
-import { StateName } from "SpectaclesUIKit.lspkg/Scripts/Components/Element";
-import { IMAGE_MATERIAL_ASSET } from "SpectaclesUIKit.lspkg/Scripts/Utility/Assets";
+} from "UIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangle";
+import { StateName } from "UIKit.lspkg/Scripts/Components/Element";
+import { IMAGE_MATERIAL_ASSET } from "UIKit.lspkg/Scripts/Utility/Assets";
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent } from "SnapDecorators.lspkg/decorators";
 
-// Scenes saved with the System 2.0 style names keep them in their inputs; map them to System 3.0.
-const SYSTEM3_STYLE: {[name: string]: string} = {PrimaryNeutral: "Primary", Primary: "Primary", Special: "Prism"}
-const toSystem3Style = (style: string): string => SYSTEM3_STYLE[style] ?? style
 
 const FONT_LIGHT: Font   = requireAsset("../../Fonts/SpecsSans-Light.otf")   as Font
 const FONT_REGULAR: Font = requireAsset("../../Fonts/SpecsSans-Regular.otf") as Font
@@ -290,7 +287,7 @@ export class ExampleGridSimple extends BaseScriptComponent {
     (this.frame as any)._following        = false
     this.frame.autoShowHide    = false
     // Frame self-initializes on its OnStartEvent (no public initialize() in the
-    // current SpectaclesUIKit). Apply post-init config once ready.
+    // current UIKit). Apply post-init config once ready.
     this.frame.onInitialized.add(() => {
       // Unchecked (scaling): corner-grab uniformly zooms the panel and its content.
       // Checked (flex): corner-grab resizes the inner area per axis, content keeps its
@@ -326,7 +323,7 @@ export class ExampleGridSimple extends BaseScriptComponent {
       if (spec) {
         btn.visual = new RoundedRectangleVisual({sceneObject: btnObj, style: spec.button})
       } else {
-        (btn as any)._styleSystem3 = toSystem3Style(this.buttonStyle)
+        (btn as any)._styleSystem3 = this.buttonStyle
       }
       btn.size = new vec3(this.buttonWidth, this.buttonHeight, 1)
       btn.initialize()
@@ -350,10 +347,10 @@ export class ExampleGridSimple extends BaseScriptComponent {
     if (this.frame.initialized) applyFrameSize()
     else this.frame.onInitialized.add(applyFrameSize)
 
-    // Frame theme overlay (applied once roundedRectangle is available)
+    // Frame theme overlay (applied once the frame is initialized)
     if (spec && spec.frame) {
       const applyFrameTheme = () => this.applyFrameOverlay(spec.frame!)
-      if (this.frame.roundedRectangle) applyFrameTheme()
+      if (this.frame.initialized) applyFrameTheme()
       else this.frame.onInitialized.add(applyFrameTheme)
     }
 
@@ -361,8 +358,8 @@ export class ExampleGridSimple extends BaseScriptComponent {
   }
 
   private applyFrameOverlay(frameDef: {gradient: GradientParameters; border: vec4}): void {
-    const baseRR = this.frame.roundedRectangle
-    if (!baseRR) return
+    const baseVisual = this.frame.frameVisual
+    if (!baseVisual) return
 
     const overlayObj = global.scene.createSceneObject("ThemeOverlay")
     overlayObj.setParent(this.frame.sceneObject)
@@ -370,14 +367,14 @@ export class ExampleGridSimple extends BaseScriptComponent {
     overlayObj.getTransform().setLocalPosition(vec3.zero())
 
     const rr = overlayObj.createComponent(RoundedRectangle.getTypeName()) as RoundedRectangle
-    rr.cornerRadius = baseRR.cornerRadius
+    rr.cornerRadius = baseVisual.cornerRadius
     rr.initialize()
     rr.size        = this.frame.totalSize
     rr.setBackgroundGradient(frameDef.gradient)
     rr.border      = true
     rr.borderColor = frameDef.border
 
-    const baseOrder = baseRR.renderMeshVisual.getRenderOrder()
+    const baseOrder = baseVisual.getRenderOrder()
     rr.renderMeshVisual.setRenderOrder(baseOrder + 1)
 
     // Keep overlay sized if the frame is ever resized

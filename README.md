@@ -6,8 +6,8 @@
 
 **Asset packages and utilities for building Lenses on SPECS.**
 
-[![Release](https://img.shields.io/badge/Release-5.24.1-1a1a1a?style=flat&labelColor=1a1a1a)](https://github.com/specs-devs/packages/releases/tag/5.24.1)
-[![Lens Studio](https://img.shields.io/badge/Lens%20Studio-5.24.1-FFFC00?style=flat&labelColor=FFFC00&logo=snapchat&logoColor=black)](https://ar.snap.com/lens-studio)
+[![Release](https://img.shields.io/badge/Release-5.25.0-1a1a1a?style=flat&labelColor=1a1a1a)](https://github.com/specs-devs/packages/releases/tag/5.25.0)
+[![Lens Studio](https://img.shields.io/badge/Lens%20Studio-5.25.0-FFFC00?style=flat&labelColor=FFFC00&logo=snapchat&logoColor=black)](https://ar.snap.com/lens-studio)
 [![Developers](https://img.shields.io/badge/-Developers-1a1a1a?style=flat&labelColor=1a1a1a&logo=readthedocs&logoColor=white)](https://developers.specs.com/)
 [![Reddit](https://img.shields.io/badge/-Reddit-ff4500?style=flat&labelColor=ff4500&logo=reddit&logoColor=white)](https://www.reddit.com/r/Spectacles/)
 [![YouTube](https://img.shields.io/badge/YouTube-ff0000?style=flat&logo=youtube&logoColor=white)](https://www.youtube.com/@specsfordevs)
@@ -22,8 +22,8 @@ Each folder is a Lens Studio project that contains one package. The same package
 
 | Branch | Lens Studio | Device | Release |
 |:--|:--|:--|:--|
-| [`main`](https://github.com/specs-devs/packages/tree/main) | 5.25.0 | SPECS 27 | [5.25.0](https://github.com/specs-devs/packages/releases/tag/5.25.0) |
-| [`5.24.1`](https://github.com/specs-devs/packages/tree/5.24.1) | 5.24.1 | SPECS 27 | [5.24.1](https://github.com/specs-devs/packages/releases/tag/5.24.1) ← you are here |
+| [`main`](https://github.com/specs-devs/packages/tree/main) | 5.25.0 | SPECS 27 | [5.25.0](https://github.com/specs-devs/packages/releases/tag/5.25.0) ← you are here |
+| [`5.24.1`](https://github.com/specs-devs/packages/tree/5.24.1) | 5.24.1 | SPECS 27 | [5.24.1](https://github.com/specs-devs/packages/releases/tag/5.24.1) |
 | [`5.24`](https://github.com/specs-devs/packages/tree/5.24) | 5.24.0 | SPECS 27 | [5.24.0](https://github.com/specs-devs/packages/releases/tag/5.24.0) |
 | [`5.22`](https://github.com/specs-devs/packages/tree/5.22) | 5.22.0 | SPECS 27 | [5.22.0](https://github.com/specs-devs/packages/releases/tag/5.22.0) |
 | [`5.15.4`](https://github.com/specs-devs/packages/tree/5.15.4) | 5.15.4 | Spectacles (2024) | [5.15.4](https://github.com/specs-devs/packages/releases/tag/5.15.4) |
@@ -37,13 +37,13 @@ Each folder is a Lens Studio project that contains one package. The same package
 Clone everything:
 
 ```bash
-git clone --branch 5.24.1 https://github.com/specs-devs/packages.git
+git clone https://github.com/specs-devs/packages.git
 ```
 
 Or clone a single project with sparse checkout:
 
 ```bash
-git clone --branch 5.24.1 --filter=blob:none --sparse https://github.com/specs-devs/packages.git
+git clone --filter=blob:none --sparse https://github.com/specs-devs/packages.git
 cd packages && git sparse-checkout add "Utilities"
 ```
 
@@ -56,17 +56,22 @@ Then open the project folder in Lens Studio.
 | [AccessComponents](./AccessComponents/) | [AiPreviewAgentInspect](./AiPreviewAgentInspect/) | [AiPreviewAgentInteract](./AiPreviewAgentInteract/) |
 | [AnimationExamples](./AnimationExamples/) | [AutoFloorFinder](./AutoFloorFinder/) | [BodyMesh](./BodyMesh/) |
 | [CommerceKit](./CommerceKit/) | [CompositeCameraTexture](./CompositeCameraTexture/) | [CropCameraTexture](./CropCameraTexture/) |
-| [EasyTeleprompter](./EasyTeleprompter/) | [FaceMesh](./FaceMesh/) | [FunctionCallHelper](./FunctionCallHelper/) |
-| [GuidedInstructions](./GuidedInstructions/) | [HandAttacher](./HandAttacher/) | [Instantiation](./Instantiation/) |
-| [InteractableHelper](./InteractableHelper/) | [MarkerTrackingHelper](./MarkerTrackingHelper/) | [Midi](./Midi/) |
-| [MocopiReceiver](./MocopiReceiver/) | [ReachyReceiver](./ReachyReceiver/) | [RemoteServiceGateway](./RemoteServiceGateway/) |
+| [DecartAI](./DecartAI/) | [EasyTeleprompter](./EasyTeleprompter/) | [FaceMesh](./FaceMesh/) |
+| [FriendFinder](./FriendFinder/) | [FunctionCallHelper](./FunctionCallHelper/) | [GuidedInstructions](./GuidedInstructions/) |
+| [HandAttacher](./HandAttacher/) | [Instantiation](./Instantiation/) | [InteractableHelper](./InteractableHelper/) |
+| [MarkerTrackingHelper](./MarkerTrackingHelper/) | [Midi](./Midi/) | [MocopiReceiver](./MocopiReceiver/) |
+| [ReachyReceiver](./ReachyReceiver/) | [RemoteAssistance](./RemoteAssistance/) | [RemoteServiceGateway](./RemoteServiceGateway/) |
 | [RuntimeGizmos](./RuntimeGizmos/) | [SnapCloudExamples](./SnapCloudExamples/) | [SnapDecorators](./SnapDecorators/) |
 | [Solvers](./Solvers/) | [HandHints3D](./HandHints3D/) | [InteractionKitExamples](./InteractionKitExamples/) |
 | [NavigationKit](./NavigationKit/) | [ShaderLibrary](./ShaderLibrary/) | [SupabaseClient](./SupabaseClient/) |
-| [SurfacePlacement](./SurfacePlacement/) | [Utilities](./Utilities/) | [VolumetricLine](./VolumetricLine/) |
-| [WebSocketExamples](./WebSocketExamples/) | [WorldQueryHit](./WorldQueryHit/) | [BezierLine](./BezierLine/) |
-| [CustomLocations](./CustomLocations/) | [AnchorExamples](./AnchorExamples/) | [AuthKit](./AuthKit/) |
-| [AuthKitExamples](./AuthKitExamples/) | | |
+| [SurfacePlacement](./SurfacePlacement/) | [Utilities](./Utilities/) | [VideoCallS2M](./VideoCallS2M/) |
+| [VideoCallS2S](./VideoCallS2S/) | [VolumetricLine](./VolumetricLine/) | [WebSocketExamples](./WebSocketExamples/) |
+| [WorldQueryHit](./WorldQueryHit/) | [BezierLine](./BezierLine/) | [CustomLocations](./CustomLocations/) |
+| [SnapCloudSocialMedia](./SnapCloudSocialMedia/) | [AnchorExamples](./AnchorExamples/) | [ARKitSpectator](./ARKitSpectator/) |
+| [SnapCloudConnected](./SnapCloudConnected/) | [AuthKit](./AuthKit/) | [AuthKitExamples](./AuthKitExamples/) |
+| [Agnostic3DButton](./Agnostic3DButton/) | [Raymarching](./Raymarching/) | [FaceMeshExamples](./FaceMeshExamples/) |
+| [WebCapture](./WebCapture/) | [NDKCapture](./NDKCapture/) | [VideoPlayer](./VideoPlayer/) |
+| [SpatialImage](./SpatialImage/) | | |
 
 ## Core Frameworks
 
@@ -104,7 +109,7 @@ The frameworks at the heart of building for SPECS
         <a href="https://developers.snap.com/lens-studio/features/scripting/scripting-overview"><img src="https://img.shields.io/badge/Scripting-blue?color=2853AF" /></a>
       </p>
       <!-- /tags:InteractionKitExamples -->
-      <p>Example scenes and prefabs for SpectaclesInteractionKit and SpectaclesUIKit, including Rocket Workshop and UI starter patterns.</p>
+      <p>Example scenes and prefabs for InteractionKit and UIKit, led by an Interaction Showcase (direct, indirect, poke and pinch interaction) plus UI starter patterns.</p>
     </td>
     <td align="center" valign="top" width="33%">
       <a href="./CommerceKit/">
@@ -120,7 +125,7 @@ The frameworks at the heart of building for SPECS
         <a href="https://developers.snap.com/spectacles/spectacles-frameworks/commerce-kit/getting-started"><img src="https://img.shields.io/badge/Commerce-blue?color=224499" /></a>
       </p>
       <!-- /tags:CommerceKit -->
-      <p>Framework for handling in-app purchases for non-consumable items in SPECS.</p>
+      <p>In-app purchases for SPECS Lenses: non-consumables, consumables and subscriptions defined on the Specs developer portal.</p>
     </td>
   </tr>
   <tr>
@@ -225,8 +230,44 @@ Backend, storage, and realtime data
       <!-- /tags:SnapCloudExamples -->
       <p>Collection of examples demonstrating Supabase integration for authentication, real-time data, and cloud storage.</p>
     </td>
+    <td align="center" valign="top" width="33%">
+      <a href="./SnapCloudSocialMedia/">
+        <img src="./SnapCloudSocialMedia/Assets/AssetImage/SnapCloudSocialMedia.png" alt="snap-cloud-social-media" width="250px" />
+      </a>
+      <h3>Snap Cloud Social Media</h3>
+      <!-- tags:SnapCloudSocialMedia -->
+      <p>
+        <a href="https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview"><img src="https://img.shields.io/badge/SIK-blue?color=7DD3FC" /></a>
+        <a href="https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview"><img src="https://img.shields.io/badge/Spatial%20UI-blue?color=6BBDFA" /></a>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/apis/camera-module"><img src="https://img.shields.io/badge/Camera%20Access-blue?color=4690F7" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/audio/playing-audio"><img src="https://img.shields.io/badge/Audio%20%26%20Microphone-blue?color=428AF7" /></a>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/apis/fetch"><img src="https://img.shields.io/badge/Fetch%20%26%20HTTP-blue?color=3676E3" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/lens-cloud/lens-cloud-overview"><img src="https://img.shields.io/badge/Snap%20Cloud-blue?color=3471DC" /></a>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/apis/authorization"><img src="https://img.shields.io/badge/Auth-blue?color=326CD4" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/objects-and-assets/prefabs"><img src="https://img.shields.io/badge/Prefabs%20%26%20Instantiation-blue?color=2A58B7" /></a>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/apis/fetch"><img src="https://img.shields.io/badge/External%20API-blue?color=203F91" /></a>
+      </p>
+      <!-- /tags:SnapCloudSocialMedia -->
+      <p>Prototype prefab and editor plugin for recording and sharing through official social APIs, with JSON presets, captions and destination controls.</p>
+    </td>
   </tr>
   <tr>
+    <td align="center" valign="top" width="33%">
+      <a href="./SnapCloudConnected/">
+        <img src="./SnapCloudConnected/Assets/AssetImage/SnapCloudConnected.png" alt="snap-cloud-connected" width="250px" />
+      </a>
+      <h3>Snap Cloud Connected</h3>
+      <!-- tags:SnapCloudConnected -->
+      <p>
+        <a href="https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview"><img src="https://img.shields.io/badge/SIK-blue?color=7DD3FC" /></a>
+        <a href="https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview"><img src="https://img.shields.io/badge/Spatial%20UI-blue?color=6BBDFA" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/ar-tracking/world/surface-detection"><img src="https://img.shields.io/badge/World%20%26%20Surfaces-blue?color=66B7FA" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/lens-cloud/lens-cloud-overview"><img src="https://img.shields.io/badge/Snap%20Cloud-blue?color=3471DC" /></a>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/apis/authorization"><img src="https://img.shields.io/badge/Auth-blue?color=326CD4" /></a>
+      </p>
+      <!-- /tags:SnapCloudConnected -->
+      <p>Multiplayer starting point: pair players with a 4-digit code, place content on a surface per player, and sync object transforms through Snap Cloud.</p>
+    </td>
     <td align="center" valign="top" width="33%">
       <a href="./AuthKit/">
         <img src="./AuthKit/Assets/AssetImage/AuthKit.png" alt="auth-kit" width="250px" />
@@ -257,6 +298,42 @@ Backend, storage, and realtime data
       <!-- /tags:AuthKitExamples -->
       <p>Ready-to-run OAuth2 sign-in examples (Spotify and generic providers) built on Auth Kit.</p>
     </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top" width="33%">
+      <a href="./ARKitSpectator/">
+        <img src="./ARKitSpectator/Assets/AssetImage/ARKitSpectator.png" alt="arkit-spectator" width="250px" />
+      </a>
+      <h3>ARKit Spectator</h3>
+      <!-- tags:ARKitSpectator -->
+      <p>
+        <a href="https://developers.snap.com/lens-studio/features/lens-cloud/lens-cloud-overview"><img src="https://img.shields.io/badge/Snap%20Cloud-blue?color=3471DC" /></a>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/apis/authorization"><img src="https://img.shields.io/badge/Auth-blue?color=326CD4" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/graphics/rendering-overview"><img src="https://img.shields.io/badge/3D%20Rendering%20%26%20Meshes-blue?color=2E62C6" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/objects-and-assets/prefabs"><img src="https://img.shields.io/badge/Prefabs%20%26%20Instantiation-blue?color=2A58B7" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/scripting/scripting-overview"><img src="https://img.shields.io/badge/Scripting-blue?color=2853AF" /></a>
+      </p>
+      <!-- /tags:ARKitSpectator -->
+      <p>Drag-and-drop prefab that streams Lens objects through Snap Cloud to an iPhone app (zipped in the package) so others can watch the scene in AR.</p>
+    </td>
+    <td align="center" valign="top" width="33%">
+      <a href="./WebCapture/">
+        <img src="./WebCapture/Assets/AssetImage/WebCapture.png" alt="web-capture" width="250px" />
+      </a>
+      <h3>Web Capture</h3>
+      <!-- tags:WebCapture -->
+      <p>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/apis/experimental-apis"><img src="https://img.shields.io/badge/Video%20%26%20WebRTC-blue?color=3D85F6" /></a>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/apis/web-socket"><img src="https://img.shields.io/badge/WebSocket-blue?color=387BEB" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/lens-cloud/lens-cloud-overview"><img src="https://img.shields.io/badge/Snap%20Cloud-blue?color=3471DC" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/graphics/rendering-overview"><img src="https://img.shields.io/badge/3D%20Rendering%20%26%20Meshes-blue?color=2E62C6" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/scripting/scripting-overview"><img src="https://img.shields.io/badge/Scripting-blue?color=2853AF" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/scripting/scripting-overview"><img src="https://img.shields.io/badge/Debugging%20%26%20Dev%20Tools-blue?color=264EA8" /></a>
+      </p>
+      <!-- /tags:WebCapture -->
+      <p>Mirror a Lens in your browser, record it while it plays and edit the recording into a video (Lens Studio plugin + web portal, Snap Cloud for Specs).</p>
+    </td>
+    <td width="33%"></td>
   </tr>
 </table>
 
@@ -296,7 +373,7 @@ Hands, gestures, and input affordances
         <a href="https://developers.snap.com/lens-studio/features/scripting/scripting-overview"><img src="https://img.shields.io/badge/Scripting-blue?color=2853AF" /></a>
       </p>
       <!-- /tags:InteractableHelper -->
-      <p>Low to medium fidelity prototyping tool for SPECS Interaction Kit components without code.</p>
+      <p>Low to medium fidelity prototyping tool for Interaction Kit components without code.</p>
     </td>
     <td align="center" valign="top" width="33%">
       <a href="./FunctionCallHelper/">
@@ -468,6 +545,54 @@ Small building blocks most projects want
       <!-- /tags:AccessComponents -->
       <p>Collection of scripts to showcase how to reference and access classes.</p>
     </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top" width="33%">
+      <a href="./Agnostic3DButton/">
+        <img src="./Agnostic3DButton/Assets/AssetImage/Agnostic3DButton.png" alt="agnostic3-d-button" width="250px" />
+      </a>
+      <h3>Agnostic 3D Button</h3>
+      <!-- tags:Agnostic3DButton -->
+      <p>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/apis/gesture-module"><img src="https://img.shields.io/badge/Gesture%20%26%20Hands-blue?color=6FC2FB" /></a>
+        <a href="https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview"><img src="https://img.shields.io/badge/Spatial%20UI-blue?color=6BBDFA" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/graphics/materials/overview"><img src="https://img.shields.io/badge/Materials%20%26%20Shaders-blue?color=3067CD" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/graphics/rendering-overview"><img src="https://img.shields.io/badge/3D%20Rendering%20%26%20Meshes-blue?color=2E62C6" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/scripting/scripting-overview"><img src="https://img.shields.io/badge/Scripting-blue?color=2853AF" /></a>
+      </p>
+      <!-- /tags:Agnostic3DButton -->
+      <p>One soft-press 3D button for any finger with no physics: hover, press, click, toggle and pressure events, in themed and UIKit looks.</p>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top" width="33%">
+      <a href="./VideoPlayer/">
+        <img src="./VideoPlayer/Assets/AssetImage/VideoPlayer.png" alt="video-player" width="250px" />
+      </a>
+      <h3>Video Player</h3>
+      <!-- tags:VideoPlayer -->
+      <p>
+        <a href="https://developers.snap.com/lens-studio/features/audio/playing-audio"><img src="https://img.shields.io/badge/Audio%20%26%20Microphone-blue?color=428AF7" /></a>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/apis/experimental-apis"><img src="https://img.shields.io/badge/Video%20%26%20WebRTC-blue?color=3D85F6" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/scripting/scripting-overview"><img src="https://img.shields.io/badge/Scripting-blue?color=2853AF" /></a>
+      </p>
+      <!-- /tags:VideoPlayer -->
+      <p>Hardware-decoded video on Specs with the SpecsNDK SpecsPlayer library: files and http(s) streams, audio on the speakers, a ready-made UIKit player panel; VideoTexture fallback in the editor.</p>
+    </td>
+    <td align="center" valign="top" width="33%">
+      <a href="./SpatialImage/">
+        <img src="./SpatialImage/Assets/AssetImage/SpatialImage.png" alt="spatial-image" width="250px" />
+      </a>
+      <h3>Spatial Image</h3>
+      <!-- tags:SpatialImage -->
+      <p>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/overview"><img src="https://img.shields.io/badge/Remote%20Service%20Gateway-blue?color=78CDFC" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/scripting/scripting-overview"><img src="https://img.shields.io/badge/Scripting-blue?color=2853AF" /></a>
+      </p>
+      <!-- /tags:SpatialImage -->
+      <p>Turns flat photos into 3D spatial images with the Snap Spatial Image API (Remote Service Gateway): flat placeholder, depth ease-in, angle-based flattening and a gallery.</p>
+    </td>
+    <td width="33%"></td>
   </tr>
 </table>
 
@@ -802,6 +927,153 @@ Utilities and effects
       <p>Camera-facing cubic Bézier ribbon between two scene objects with runtime mesh generation.</p>
     </td>
     <td width="33%"></td>
+  </tr>
+  <tr>
+    <td align="center" valign="top" width="33%">
+      <a href="./Raymarching/">
+        <img src="./Raymarching/Assets/AssetImage/Raymarching.png" alt="raymarching" width="250px" />
+      </a>
+      <h3>Raymarching</h3>
+      <!-- tags:Raymarching -->
+      <p>
+        <a href="https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview"><img src="https://img.shields.io/badge/SIK-blue?color=7DD3FC" /></a>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/apis/gesture-module"><img src="https://img.shields.io/badge/Gesture%20%26%20Hands-blue?color=6FC2FB" /></a>
+        <a href="https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview"><img src="https://img.shields.io/badge/Spatial%20UI-blue?color=6BBDFA" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/graphics/materials/overview"><img src="https://img.shields.io/badge/Materials%20%26%20Shaders-blue?color=3067CD" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/graphics/rendering-overview"><img src="https://img.shields.io/badge/3D%20Rendering%20%26%20Meshes-blue?color=2E62C6" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/scripting/scripting-overview"><img src="https://img.shields.io/badge/Scripting-blue?color=2853AF" /></a>
+      </p>
+      <!-- /tags:Raymarching -->
+      <p>Meshless, gooey metaballs drawn with a raymarched signed-distance-field shader: up to 8 sources merge into one glossy, stereo-correct surface.</p>
+    </td>
+    <td align="center" valign="top" width="33%">
+      <a href="./FaceMeshExamples/">
+        <img src="./FaceMeshExamples/Assets/AssetImage/FaceMeshExamples.png" alt="face-mesh-examples" width="250px" />
+      </a>
+      <h3>Face Mesh Examples</h3>
+      <!-- tags:FaceMeshExamples -->
+      <p>
+        <a href="https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview"><img src="https://img.shields.io/badge/SIK-blue?color=7DD3FC" /></a>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/apis/gesture-module"><img src="https://img.shields.io/badge/Gesture%20%26%20Hands-blue?color=6FC2FB" /></a>
+        <a href="https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview"><img src="https://img.shields.io/badge/Spatial%20UI-blue?color=6BBDFA" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/ar-tracking/face/overview"><img src="https://img.shields.io/badge/Face%20Tracking-blue?color=59A6F9" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/graphics/materials/overview"><img src="https://img.shields.io/badge/Materials%20%26%20Shaders-blue?color=3067CD" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/graphics/rendering-overview"><img src="https://img.shields.io/badge/3D%20Rendering%20%26%20Meshes-blue?color=2E62C6" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/scripting/scripting-overview"><img src="https://img.shields.io/badge/Scripting-blue?color=2853AF" /></a>
+      </p>
+      <!-- /tags:FaceMeshExamples -->
+      <p>Character heads on the faces you look at, following the head and copying expressions from the tracked Face Mesh.</p>
+    </td>
+    <td width="33%"></td>
+  </tr>
+</table>
+
+## NDK
+
+Native (C++) powered experiences — WebRTC calls, generative video and layered streaming / capture
+
+<table>
+  <tr>
+    <td align="center" valign="top" width="33%">
+      <a href="./VideoCallS2S/">
+        <img src="./VideoCallS2S/Assets/AssetImage/VideoCallS2S.png" alt="video-call-s-2-s" width="250px" />
+      </a>
+      <h3>Video Call S2S</h3>
+      <!-- tags:VideoCallS2S -->
+      <p>
+        <a href="https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview"><img src="https://img.shields.io/badge/SIK-blue?color=7DD3FC" /></a>
+        <a href="https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview"><img src="https://img.shields.io/badge/Spatial%20UI-blue?color=6BBDFA" /></a>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/apis/camera-module"><img src="https://img.shields.io/badge/Camera%20Access-blue?color=4690F7" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/audio/playing-audio"><img src="https://img.shields.io/badge/Audio%20%26%20Microphone-blue?color=428AF7" /></a>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/apis/experimental-apis"><img src="https://img.shields.io/badge/Video%20%26%20WebRTC-blue?color=3D85F6" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/lens-cloud/lens-cloud-overview"><img src="https://img.shields.io/badge/Snap%20Cloud-blue?color=3471DC" /></a>
+      </p>
+      <!-- /tags:VideoCallS2S -->
+      <p>SPECS-to-SPECS video call: two SPECS wearers share POV video and voice.</p>
+    </td>
+    <td align="center" valign="top" width="33%">
+      <a href="./VideoCallS2M/">
+        <img src="./VideoCallS2M/Assets/AssetImage/VideoCallS2M.png" alt="video-call-s-2-m" width="250px" />
+      </a>
+      <h3>Video Call S2M</h3>
+      <!-- tags:VideoCallS2M -->
+      <p>
+        <a href="https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview"><img src="https://img.shields.io/badge/SIK-blue?color=7DD3FC" /></a>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/apis/camera-module"><img src="https://img.shields.io/badge/Camera%20Access-blue?color=4690F7" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/audio/playing-audio"><img src="https://img.shields.io/badge/Audio%20%26%20Microphone-blue?color=428AF7" /></a>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/apis/experimental-apis"><img src="https://img.shields.io/badge/Video%20%26%20WebRTC-blue?color=3D85F6" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/lens-cloud/lens-cloud-overview"><img src="https://img.shields.io/badge/Snap%20Cloud-blue?color=3471DC" /></a>
+      </p>
+      <!-- /tags:VideoCallS2M -->
+      <p>SPECS-to-Mobile video call between a SPECS wearer and a friend's phone, peer-to-peer over WebRTC.</p>
+    </td>
+    <td align="center" valign="top" width="33%">
+      <a href="./FriendFinder/">
+        <img src="./FriendFinder/Assets/AssetImage/FriendFinder.png" alt="friend-finder" width="250px" />
+      </a>
+      <h3>Friend Finder</h3>
+      <!-- tags:FriendFinder -->
+      <p>
+        <a href="https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview"><img src="https://img.shields.io/badge/SIK-blue?color=7DD3FC" /></a>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/apis/location"><img src="https://img.shields.io/badge/Location%20%26%20GPS-blue?color=4F9BF8" /></a>
+        <a href="https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-navigation-kit/getting-started"><img src="https://img.shields.io/badge/Navigation-blue?color=4B96F7" /></a>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/apis/experimental-apis"><img src="https://img.shields.io/badge/Video%20%26%20WebRTC-blue?color=3D85F6" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/lens-cloud/lens-cloud-overview"><img src="https://img.shields.io/badge/Snap%20Cloud-blue?color=3471DC" /></a>
+      </p>
+      <!-- /tags:FriendFinder -->
+      <p>Find a friend in a crowd, watch your own back, or video-call a friend — a SPECS + iPhone companion experience.</p>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top" width="33%">
+      <a href="./RemoteAssistance/">
+        <img src="./RemoteAssistance/Assets/AssetImage/RemoteAssistance.png" alt="remote-assistance" width="250px" />
+      </a>
+      <h3>Remote Assistance</h3>
+      <!-- tags:RemoteAssistance -->
+      <p>
+        <a href="https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview"><img src="https://img.shields.io/badge/SIK-blue?color=7DD3FC" /></a>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/apis/camera-module"><img src="https://img.shields.io/badge/Camera%20Access-blue?color=4690F7" /></a>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/apis/experimental-apis"><img src="https://img.shields.io/badge/Video%20%26%20WebRTC-blue?color=3D85F6" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/lens-cloud/lens-cloud-overview"><img src="https://img.shields.io/badge/Snap%20Cloud-blue?color=3471DC" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/graphics/rendering-overview"><img src="https://img.shields.io/badge/3D%20Rendering%20%26%20Meshes-blue?color=2E62C6" /></a>
+      </p>
+      <!-- /tags:RemoteAssistance -->
+      <p>A helper in a web browser sees your POV, talks you through the task, and draws guidance that lands as 3D lines in your world.</p>
+    </td>
+    <td align="center" valign="top" width="33%">
+      <a href="./DecartAI/">
+        <img src="./DecartAI/Assets/AssetImage/DecartAI.png" alt="decart-a-i" width="250px" />
+      </a>
+      <h3>Decart AI</h3>
+      <!-- tags:DecartAI -->
+      <p>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/compatibility-list"><img src="https://img.shields.io/badge/AI%20%26%20LLM-blue?color=74C8FB" /></a>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/apis/camera-module"><img src="https://img.shields.io/badge/Camera%20Access-blue?color=4690F7" /></a>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/apis/experimental-apis"><img src="https://img.shields.io/badge/Video%20%26%20WebRTC-blue?color=3D85F6" /></a>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/apis/web-socket"><img src="https://img.shields.io/badge/WebSocket-blue?color=387BEB" /></a>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/apis/fetch"><img src="https://img.shields.io/badge/Fetch%20%26%20HTTP-blue?color=3676E3" /></a>
+      </p>
+      <!-- /tags:DecartAI -->
+      <p>Decart reality distortion on SPECS: the live camera feed runs through Decart's generative video models onto a floating screen.</p>
+    </td>
+    <td align="center" valign="top" width="33%">
+      <a href="./NDKCapture/">
+        <img src="./NDKCapture/Assets/AssetImage/NDKCapture.png" alt="ndk-capture" width="250px" />
+      </a>
+      <h3>NDK Capture</h3>
+      <!-- tags:NDKCapture -->
+      <p>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/apis/camera-module"><img src="https://img.shields.io/badge/Camera%20Access-blue?color=4690F7" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/audio/playing-audio"><img src="https://img.shields.io/badge/Audio%20%26%20Microphone-blue?color=428AF7" /></a>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/apis/experimental-apis"><img src="https://img.shields.io/badge/Video%20%26%20WebRTC-blue?color=3D85F6" /></a>
+        <a href="https://developers.snap.com/spectacles/about-spectacles-features/apis/web-socket"><img src="https://img.shields.io/badge/WebSocket-blue?color=387BEB" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/scripting/scripting-overview"><img src="https://img.shields.io/badge/Scripting-blue?color=2853AF" /></a>
+        <a href="https://developers.snap.com/lens-studio/features/scripting/scripting-overview"><img src="https://img.shields.io/badge/Debugging%20%26%20Dev%20Tools-blue?color=264EA8" /></a>
+      </p>
+      <!-- /tags:NDKCapture -->
+      <p>Streaming and capture in one asset (SpecsNDK 1.1.0): stream camera, AR, UI and mic as separate layers, edit each one live, record them as separate tracks and re-edit the composite later.</p>
+    </td>
   </tr>
 </table>
 

@@ -4,45 +4,62 @@
 
 ## Use when
 
-Read this for the longer explanation of the placement modes, how head-pose
-confirmation decides when to place, and how to migrate from pinch/tap. API
-details are in [components](components.md); ordering in [lifecycle](lifecycle.md).
+Read this for the longer explanation of the placement modes, how dwell and palm
+placement decide when to place, how placed content is moved, and how to migrate
+from the previous revision. API details are in [components](components.md);
+ordering in [lifecycle](lifecycle.md).
 
 ## Try the example
 
-1. Open the SurfacePlacement project, or install the package and add `SurfacePlacement__PLACE_IN_SCENE` to your scene.
-2. Keep **Placement Setting Mode → Horizontal** and **Placement Interaction → Head Pose (hold still)** for the default experience. Select **Vertical** for walls.
-3. Look at a real surface. After about half a second of steady aim, the ring fills over 1.5 seconds and confirms placement. Moving your head or losing the surface restarts the timer.
-4. Call the example's `resetPlacement()` to place again. To use the previous confirmation behavior, select **Pinch or Tap**.
+1. Open the SurfacePlacement project, or install the package and add `SurfacePlacement__PLACE_IN_SCENE` to your scene, then pinch **Ok, I understood** on the guide.
+2. The carousel shows one example at a time: **Tabletop**, **Ground** and **Wall** (Placement Setting Mode 0, 1 and 2 on each group's `Example`).
+3. Tabletop: lay a palm flat on a table and hold it flat and still until the ring round your hand fills. Ground and Wall: look at the floor or a wall; after about half a second of steady aim, the ring fills over one second and places. Moving your head or losing the surface restarts the timer.
+4. Drag the menu beside the cube to move the cube across the surface, or pinch **Reset Placement** (`resetPlacement()`) to place again.
 
-Head pose uses the world camera's position and forward direction; it does not require eye tracking or a hand gesture. Keep the project's world-tracked camera and SIK setup. On device, World Query needs a scanned, trackable surface. Preview placement depends on the selected environment containing suitable surface geometry.
+Ground and Wall use the world camera's position and forward direction; they do not require eye tracking or a hand gesture. Keep the project's world-tracked camera and InteractionKit setup. On device, World Query needs a scanned, trackable surface. Preview placement depends on the selected environment containing suitable surface geometry.
 
 ## Quick start
 
-Starting another placement automatically cancels the previous session. Call `SurfacePlacementController.getInstance().stopSurfacePlacement()` to cancel without starting another. The completion callback receives world position in centimeters and a world rotation quaternion after the confirmation ring animation, before the reticle scales away. Code: [examples](examples.md).
+Create settings with a mode, `new PlacementSettings(PlacementMode.GROUND)`, and pass them to `SurfacePlacementController.getInstance().startSurfacePlacement(settings, callback)`. Starting another placement automatically stops the previous one. Call `stopSurfacePlacement()` to stop without starting another; neither calls the callback. The callback receives the world position in centimeters and a world rotation quaternion after the ring closes, before the placement visual scales away. Code: [examples](examples.md).
 
-## Placement options
+## Placement modes
 
-| Mode | Default confirmation | Behavior |
+| Mode | Confirmation | Behavior |
 | --- | --- | --- |
-| `PlacementMode.HORIZONTAL` | Head pose | Finds floors and other upward-facing surfaces, 20–500 cm away. |
-| `PlacementMode.VERTICAL` | Head pose | Finds walls, 50–1000 cm away; averages recent normals to stabilize orientation. |
-| `PlacementMode.NEAR_SURFACE` | Palms | Keeps the existing near-surface workflow and optional height-adjustment widget. In Preview, use tap confirmation. |
+| `PlacementMode.GROUND` | Dwell | Finds floors and other upward-facing surfaces 20–350 cm along the gaze. Delivers a yaw-only rotation facing the user. |
+| `PlacementMode.WALL` | Dwell | Finds walls 50–1000 cm along the gaze; averages recent wall normals to steady the facing. Delivers local +Y out of the wall. |
+| `PlacementMode.TABLETOP` | Flat, still palm | Fits a ring round one hand lying flat on a table and measures the table height with depth. In the editor a click stands in for the hand. |
 
-The constructor is `PlacementSettings(mode = HORIZONTAL, useWidget = true, widgetOffset = new vec3(2, 2, 0), onSliderUpdated = null, interaction = HEAD_POSE)`. The first four arguments and existing `PlacementMode` values are unchanged. Widget settings apply only to `NEAR_SURFACE`; its palm workflow ignores `interaction`.
+The constructor is `PlacementSettings(mode, showDebug = false)`. `showDebug` prints how placement goes and, in Tabletop, marks with a "+" where the depth pass aims round the hand (yellow) and where its hits land: green for hits that set the table height, blue for hits taken but outside that band, red for hits rejected as not the table. In the example it comes from the `SHOW_DEBUG` constant at the top of `Example.ts`.
 
-**Pinch or Tap (Horizontal / Vertical):** the reticle follows your view; pinch with either hand, tap the paired phone, or pinch the ring while looking at it to confirm. Pinching the ring and dragging more than 11 cm moves it along the surface plane before you release. Releasing while the ring is out of view cancels that attempt.
+**Ground and Wall (dwell):** the reticle follows your view across the surface. Hold the view steady and the ring fills; the text on it reads "Find an empty spot.", then "Placing...", then "Complete". Ground also shows "Look below to place." at eye level. Wall dims the ring and shows "Find an empty space on the wall." until it has hit a wall for more than 15 consecutive results. There is no pinch or tap.
 
-**Near Surface:** rest one or both hands palm-down and still on a surface; the ring fills over about 60 stable frames. With a paired phone, move the phone onto the surface and tap. In the Lens Studio editor, any tap confirms immediately.
+**Tabletop (palm):** without a hand in view the ring stands in front of you as a full circle with "Place palm flat down on a surface". Once a tracked hand is in view the ring opens into a half circle fitted round the fingers, its opening toward the wrist. Lay the palm flat on the table and hold it flat and still: the ring fills over 0.85 s and holds full briefly before placing. Moving, curling or turning the hand more than 15°, or taking it out of view, restarts it. If a tracked hand stays out of view for 2 s, the prompt becomes "Look at your hand on the surface". The placed content stands upright, facing back along the hand toward the wrist.
+
+In the Lens Studio editor, a click in the Preview stands in for the hand and places at once: 50 cm in front of the camera along its heading, 20 cm below its height, facing the camera.
+
+## Moving placed content
+
+`SurfaceMove` goes on a UIKit Frame placed beside the content (the example's `TestMenu`). Dragging the Frame moves the content across the surface it was placed on, keeping the layout they had before the first drag. On floors and tables the content turns to face the wearer as the Frame does while dragged; on walls neither turns. When you let go, the Frame eases back beside the content. The content stays on the plane of the placed surface; there is no hit testing while dragging. Setup: [examples](examples.md).
 
 ## Migration
 
-Horizontal and vertical calls that omit the new fifth argument now confirm by head pose. Pass `PlacementInteraction.PINCH_OR_TAP` to retain the previous interaction. Existing serialized example mode values stay unchanged: Near Surface = 0, Horizontal = 1, Vertical = 2 (these are the `Example` combo values, not `PlacementMode` values).
+Code written for the previous revision needs these changes:
+
+- Rename the modes: `HORIZONTAL` → `GROUND`, `VERTICAL` → `WALL`, `NEAR_SURFACE` → `TABLETOP`. The numeric values (0, 1, 2) are unchanged, as are the `Example` combo values (Tabletop = 0, Ground = 1, Wall = 2, which are not `PlacementMode` values).
+- Construct settings as `new PlacementSettings(mode, showDebug?)`. The mode is required; the widget arguments and the `PlacementInteraction` argument are gone.
+- Every mode confirms by dwell; remove pinch / tap prompts. Phone (mobile controller) input is no longer supported.
+- Drop the third `onCancelled` argument; track your own "placing" flag ([lifecycle](lifecycle.md)).
+- The height slider is gone: Tabletop measures the table height, and `SurfaceMove` lets users slide content across the surface.
+- Wall content: the delivered rotation now has local +Y out of the wall and local −Z up it; pitch upright content −90° about X.
+- `Example`: `placementInteraction`, `autoStart`, `enableLogging` and `enableLoggingLifecycle` are gone; assign the new `menuObj` input.
 
 ## Tracking and feedback
 
-Stillness is measured at a point 100 cm along the camera's view, so noisy hit depths do not continually restart the timer. Aim may move up to 4 cm over a half-second window and up to 10 cm from the start of the fill. These are aim-point distances, not physical head translation limits.
+Stillness is measured at a point 100 cm along the camera's view, so noisy hit depths do not continually restart the timer. Aim may move up to 4 cm across a half-second window before the fill starts and, while it fills, up to 10 cm from where it started (Ground allows half as much again once filling). These are aim-point distances, not physical head translation limits.
 
-Placement also requires an accepted surface hit within the last half second. A fallback reticle position alone cannot trigger automatic placement. The reticle scales with distance to stay readable, and wall placement preserves its last valid pose through brief misses. The package uses public World Query hit testing; it does not depend on experimental refinement APIs.
+Placement also requires an accepted surface hit within the last half second. A fallback reticle position alone cannot trigger placement. When no floor is hit, the Ground reticle glides along the last known floor height (or 100 cm below the camera) under your gaze, no further than 350 cm; Wall keeps its last wall pose through brief misses and otherwise floats 200 cm in front of you.
 
-When no floor is hit, the horizontal reticle is projected onto the last known floor height (or 100 cm below the camera) along a slightly tilted view ray, so it stays near where you are looking; it still cannot place until a real hit arrives.
+On device, the package uses high-accuracy World Query hit testing whenever the runtime supports it: it starts with the fill, refines the pose while the ring fills, and never delays placement. In Tabletop the same pass measures the table at points around the hand and tells a hand resting on the table from one held flat in the air; if the hand sits more than 7 cm above the surface found, or no upward-facing surface is found near it, calibration stops and can start again after 1.5 s.
+
+The Ground and Wall reticle is scaled with its distance so it keeps a constant size on screen. The Tabletop ring is sized to the hand instead.

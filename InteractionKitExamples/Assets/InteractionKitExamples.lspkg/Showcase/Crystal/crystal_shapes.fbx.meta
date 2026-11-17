@@ -1,0 +1,204 @@
+- !<AssetImportMetadata/b24ec292-2556-6bf3-b47b-06212e27170f>
+  ImportedAssetIds:
+    .hidden/dispersion_mat: !<reference> f5769826-898f-4fea-b593-edb88beae475
+    .hidden/white: !<reference> 62eb2900-bff6-46d2-bcc5-96a53e69de54
+    32b5928e38fcb08f: !<reference> 4c201331-69f0-48e1-ac68-c96a36e9b188
+    425bca1feead6e4a: !<reference> a50e6f47-0b83-4716-b5ac-952402a17d64
+    66780cf3a4dcb2b8: !<reference> 36d50cfd-bd25-4ec5-8d6e-5b42bf16e874
+    7fa289acb1026c46: !<reference> aed8d3e7-cfd3-4b95-b344-87d07c28a743
+    Materials/dispersion_mat: !<reference> 605cb92e-5817-4a4b-b6f0-7ed0f5c923f3
+    Materials/dispersion_mat1: !<reference> 8906308a-d68f-481b-b135-6e2b4840a45b
+    Materials/dispersion_mat1|dispersion_mat1|GraphPassInfo: !<reference> 5233ecd7-6d1c-424f-a2fa-bfb973e359e9
+    Materials/dispersion_mat|dispersion_mat|GraphPassInfo: !<reference> 3570fb05-ce22-4f76-9e83-b0aec6386374
+    Materials/standardSurface1: !<reference> d34fe14c-ca18-4914-b7de-8cec9ab687d6
+    Materials/standardSurface1|standardSurface1|GraphPassInfo: !<reference> 53b8b6e7-46a7-41eb-a291-c1b9b12055a1
+    Meshes/diamond: !<reference> 3df9255a-1f5c-46f9-afff-412a82c6379d
+    Meshes/diamond_2: !<reference> 70bcbdcf-f16c-4cf7-9a40-2e3f17a9266d
+    Meshes/icosahedron: !<reference> ad870b70-ee6b-476f-9d60-46756c5efa85
+    Meshes/irregular_crystal: !<reference> b41d7185-0071-484b-885d-09c4cf4f8222
+    Scene: !<reference> 12e03b14-41ea-4cf3-b8c2-f61b50dbc51f
+    c5cb15b2d478712e: !<reference> 87337b62-a10b-4099-b138-994ba519207b
+    d8d8bf36522d71e5: !<reference> 0f1c5ebd-bf7d-486e-843f-51c8786ee624
+    e802a0c3889b9c08: !<reference> 106848e5-6bad-43a9-b33e-f837e9c6041b
+    ec71616d84ec758b: !<reference> 95fb2b18-ded2-498f-ab12-72f98c645cbb
+    fe4edb8115b74464: !<reference> 0e400d82-d85d-4c55-a124-578c02654106
+  ImporterName: FbxImporter
+  PrimaryAsset: !<reference> 12e03b14-41ea-4cf3-b8c2-f61b50dbc51f
+  PackageType: LegacyPackage
+  LegacyPackagePolicy: CanBeUnpackedTransparent
+  ExtraData:
+    {}
+  AssetDataMap:
+    Scene: !<own> 615d9629-a611-427e-9f57-894f44901b37
+  DependentFiles:
+    []
+  ImporterSettings: !<FbxImporterSettings>
+    UseLegacyImporter: false
+    WithMaterials: true
+    NamingConvention: ByCategorySanitizeV2
+    PersistentIdGenerationAlgorithm: DescriptorBased
+    AnimationCurveOptimization: true
+    CustomAnimationSamplingRate: 30.000000
+    ImportVertexColor: true
+    ImportTangentsAndBinormals: true
+    RegenerateTangentsAndBinormals: false
+    RegenerateNormalsForSkinnedMeshes: true
+    ImportBlendShapeAnimation: true
+    ImportVertexAnimation: true
+    GeneratePivots: true
+    TriangulateNURBS: true
+    UseLegacyFbxLoader: false
+  CompressionSettings: !<ComplexCompressionSettings>
+    Presets:
+      None Compression: !<FileCompressionSettings>
+        {}
+      Performance Compression: !<PerformanceCompressionSettings>
+        Level: Medium
+        Mipmap: false
+    ExtensionMappings:
+      mesh: None Compression
+      jpg: Performance Compression
+    Overrides:
+      {}
+- !<SceneObject/36d50cfd-bd25-4ec5-7291-a4bd40e9178b>
+  PrefabRemaps:
+    []
+  Name: crystal_shapes
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> b622997c-9ff6-40aa-74c7-6d641d732ef9
+  Components:
+    []
+- !<SceneObject/38f07787-4d92-408e-7a0b-a0eb3a3d8ebd>
+  PrefabRemaps:
+    []
+  Name: irregular_crystal
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> d04963ae-8058-48ef-4f59-f1bc41b5a0c2
+- !<ObjectPrefabAssetData/615d9629-a611-427e-9f57-894f44901b37>
+  Prototype: !<ObjectOwner/1cd28623-ddd9-4c62-9bd0-7148e2a6a57a>
+    PackagePath: ""
+    objects:
+      - !<own> 36d50cfd-bd25-4ec5-7291-a4bd40e9178b
+- !<RenderMeshVisual/6726da4d-84d3-4b1c-75b8-340699bf8766>
+  PrefabRemaps:
+    []
+  Name: component_2
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 8906308a-d68f-481b-b135-6e2b4840a45b
+  Mesh: !<reference> ad870b70-ee6b-476f-9d60-46756c5efa85
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<SceneObject/9df44441-b620-41db-4d6d-2d06c1cac46f>
+  PrefabRemaps:
+    []
+  Name: icosahedron
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 6726da4d-84d3-4b1c-75b8-340699bf8766
+- !<SceneObject/b622997c-9ff6-40aa-74c7-6d641d732ef9>
+  PrefabRemaps:
+    []
+  Name: crystal_shapes_geo
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 38f07787-4d92-408e-7a0b-a0eb3a3d8ebd
+    - !<own> c895c21a-ac6e-43bc-68bf-c5b5d525cec0
+    - !<own> 9df44441-b620-41db-4d6d-2d06c1cac46f
+  Components:
+    []
+- !<SceneObject/c895c21a-ac6e-43bc-68bf-c5b5d525cec0>
+  PrefabRemaps:
+    []
+  Name: diamond
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> e419d8c7-094f-450c-439e-f08dd1e148ea
+- !<RenderMeshVisual/d04963ae-8058-48ef-4f59-f1bc41b5a0c2>
+  PrefabRemaps:
+    []
+  Name: component_0
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> d34fe14c-ca18-4914-b7de-8cec9ab687d6
+  Mesh: !<reference> b41d7185-0071-484b-885d-09c4cf4f8222
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<RenderMeshVisual/e419d8c7-094f-450c-439e-f08dd1e148ea>
+  PrefabRemaps:
+    []
+  Name: component_1
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 605cb92e-5817-4a4b-b6f0-7ed0f5c923f3
+  Mesh: !<reference> 3df9255a-1f5c-46f9-afff-412a82c6379d
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}

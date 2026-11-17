@@ -1,0 +1,123 @@
+- !<AssetImportMetadata/81c19dea-ad63-4d8f-92fd-c43190e51287>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> f697148e-603e-458b-81bc-574f6d378e06
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> f697148e-603e-458b-81bc-574f6d378e06
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> e026cd52-0443-45b2-976b-6e8488b5c8cf
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/e026cd52-0443-45b2-976b-6e8488b5c8cf>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 4c0be326-15fc-46ea-9e46-2c1f8a8c8a41
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    bevel: false
+    bezelWidth: false
+    button: false
+    capHeight: false
+    capMaterial: false
+    clearance: false
+    clickAudio: false
+    cornerRadius: false
+    glowMaterial: false
+    icon: false
+    iconSize: false
+    label: false
+    labelSize: false
+    pill: false
+    plateMargin: false
+    shadowDarkness: false
+    shadowMaxOpacity: false
+    shadowMaxRadius: false
+    shadowMinRadius: false
+    shadowRange: false
+    showShadow: false
+    squash: false
+    style: false
+    theme: false
+    wellDepth: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - button: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      theme: !<float> 0.000000
+      style: !<float> 0.000000
+      capMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      glowMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      capHeight: 1.200000
+      bevel: 0.500000
+      cornerRadius: 1.500000
+      plateMargin: 0.900000
+      clearance: 0.150000
+      bezelWidth: 0.750000
+      wellDepth: !<float> 0.000000
+      squash: 0.120000
+      label: ""
+      labelSize: !<float> 48.000000
+      clickAudio: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
+      pill: false
+      icon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      iconSize: 1.250000
+      showShadow: true
+      shadowRange: !<float> 6.000000
+      shadowMinRadius: 0.800000
+      shadowMaxRadius: 2.500000
+      shadowMaxOpacity: 0.600000
+      shadowDarkness: 0.550000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input AssignableType_1 button {"hint":"The button to visualize (usually on the same SceneObject)"}'
+    - '// @input float theme {"widget":"combobox", "values":[{"label":"Specs Glass", "value":0}, {"label":"Neon", "value":1}, {"label":"Candy", "value":2}, {"label":"Metal", "value":3}, {"label":"UIKit Primary", "value":4}, {"label":"UIKit Secondary", "value":5}, {"label":"UIKit Ghost", "value":6}]}'
+    - '// @input float style {"hint":"Classic: bevelled cap on a plate with a glow ring. UIKit: a thin slab with a border and gradient, like the UIKit System 3.0 buttons (use a UIKit theme)", "widget":"combobox", "values":[{"label":"Classic", "value":0}, {"label":"UIKit", "value":1}]}'
+    - '// @input Asset.Material capMaterial {"hint":"Lit material for the cap and the plate (Example/Materials/ButtonCap.mat)"}'
+    - '// @input Asset.Material glowMaterial {"hint":"Unlit material for the glow ring (Example/Materials/ButtonGlow.mat)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input float capHeight = 1.2 {"hint":"Cap height above the plate (local units)"}'
+    - '// @input float bevel = 0.5 {"hint":"Rounded top edge radius"}'
+    - '// @input float cornerRadius = 1.5 {"hint":"Box shapes: footprint corner radius"}'
+    - '// @input float plateMargin = 0.9 {"hint":"Deprecated, unused: the base is now a bezel, see bezelWidth (kept so existing scenes load)"}'
+    - '// @input float clearance = 0.15 {"hint":"Gap between the cap and the edge of the hole in the base", "widget":"slider", "min":0, "max":1, "step":0.01}'
+    - '// @input float bezelWidth = 0.75 {"hint":"Width of the bezel (the frame of the base around the hole)"}'
+    - '// @input float wellDepth {"hint":"Depth of the well below the bezel. 0 = auto (travel × 1.2, deeper if the cap needs it); never shallower than the pressed cap"}'
+    - '// @input float squash = 0.12 {"hint":"Vertical squash of the cap at full press", "widget":"slider", "min":0, "max":0.4, "step":0.01}'
+    - '// @ui {"widget":"separator"}'
+    - // @input string label
+    - // @input float labelSize = 48
+    - '// @input Component.AudioComponent clickAudio {"hint":"Plays on every click"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input bool pill {"hint":"UIKit style, box shape: capsule ends (corner radius = half the short side)"}'
+    - '// @input Asset.Texture icon {"hint":"Optional icon on the cap (left of the label, or centred without one), tinted like the label"}'
+    - '// @input float iconSize = 1.25 {"hint":"Icon size (local units)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input bool showShadow = true {"hint":"Flat circular shadow of the nearest finger, projected on the cap along the press direction"}'
+    - '// @input float shadowRange = 6 {"hint":"Height above the top face (local units) where the shadow appears"}'
+    - '// @input float shadowMinRadius = 0.8 {"hint":"Shadow radius when the finger touches the cap"}'
+    - '// @input float shadowMaxRadius = 2.5 {"hint":"Shadow radius at the top of the range"}'
+    - '// @input float shadowMaxOpacity = 0.9 {"hint":"Shadow opacity (it fades in at the top of the range)", "widget":"slider", "min":0, "max":1, "step":0.01}'
+    - "// @input float shadowDarkness = 0.55 {\"hint\":\"Shadow colour = the cap's current colour times this (0 = black, 1 = same colour). Black is transparent on SPECS, so keep it above ~0.3\", \"widget\":\"slider\", \"min\":0, \"max\":1, \"step\":0.01}"

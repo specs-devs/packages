@@ -24,6 +24,7 @@
   VersionPatch: 0
   VersionPrerelease: ""
   UpdateOrder: 0
+  RunInEditor: false
   ComponentUid: cd41d8b8-0f80-4da2-907f-3b0aa5f475af
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
@@ -31,9 +32,13 @@
     center: false
     enableLogging: false
     enableLoggingLifecycle: false
+    holdTime: false
+    loop: false
     numberOfPrefabs: false
+    popDuration: false
     prefab: false
     radius: false
+    spawnInterval: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -47,6 +52,10 @@
       prefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
       numberOfPrefabs: !<float> 10.000000
       radius: !<float> 5.000000
+      spawnInterval: 0.120000
+      popDuration: 0.300000
+      loop: true
+      holdTime: 1.500000
       enableLogging: false
       enableLoggingLifecycle: false
   ScriptTypes:
@@ -63,6 +72,13 @@
     - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Configure the number of objects and radius of the circle</span>"}'
     - '// @input float numberOfPrefabs = 10 {"hint":"Number of prefabs to instantiate"}'
     - '// @input float radius = 5 {"hint":"Radius of the circle"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Animation</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Spawn the ring one prefab at a time so the order around the circle is visible</span>"}'
+    - '// @input float spawnInterval = 0.12 {"hint":"Seconds between two spawns (0 = all at once)"}'
+    - '// @input float popDuration = 0.3 {"hint":"Seconds each prefab takes to pop in from zero scale"}'
+    - '// @input bool loop = true {"hint":"When the ring is complete, wait, clear it and spawn it again"}'
+    - '// @input float holdTime = 1.5 {"hint":"Seconds the complete ring stays before it is cleared (when looping)"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'

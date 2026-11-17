@@ -8,7 +8,7 @@
 import {
   withAlpha,
   withoutAlpha,
-} from "SpectaclesInteractionKit.lspkg/Utils/color";
+} from "InteractionKit.lspkg/Utils/color";
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent } from "SnapDecorators.lspkg/decorators";
 

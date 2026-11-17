@@ -4,7 +4,7 @@
  * Provides cancelable animation helpers and common animation patterns used across packages.
  */
 
-import animate, {CancelSet} from "SpectaclesInteractionKit.lspkg/Utils/animate";
+import animate, {CancelSet} from "InteractionKit.lspkg/Utils/animate";
 
 /**
  * Utility class for animation operations
@@ -18,7 +18,7 @@ export class AnimationUtils {
    * @returns Cancel function to stop animation
    */
   static makeTween(callback: (time: number) => void, duration: number): () => void {
-    // Driven by SpectaclesInteractionKit's animate(): it calls back every frame with the normalized
+    // Driven by InteractionKit's animate(): it calls back every frame with the normalized
     // time and finishes with callback(1). (A TypeScript module has no global `script` to create an
     // UpdateEvent on.)
     return animate({

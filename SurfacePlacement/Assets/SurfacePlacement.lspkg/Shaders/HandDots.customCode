@@ -1,0 +1,112 @@
+// The table-top reticle's dot field: HandRing's ring sits inside it on a mesh of
+// its own, turned the same way. Around a hand the field opens at the bottom with
+// the ring, so the wrist passes through it, and draws in closer to the ring.
+
+input_vec4 dotsColor;
+
+// 0 = a full field, 1 = the wrist opening fully open and the field drawn in,
+// eased alongside HandRing's opening
+input_float opening;
+
+// Scan wave
+input_bool animate;     // false freezes the scan wave
+input_float waveSpeed;
+input_float switchSize; // 0..2, scales the wave's travel and the field's extent
+
+output_vec4 FinalColor;
+
+#define TAU 6.28318530717959
+#define PI  3.14159265358979
+
+const mediump vec2 CENTRE = vec2(0.5, 0.5);
+const mediump float FIELD_INNER = 0.2; // dots start here, just outside the ring
+// Where turn zero sits, which is the middle of the opening: the UV's natural
+// start, at its top. The reticle mesh shows its UV upside down, so that is the
+// bottom of the field on screen, and the field's -Y side in the reticle's frame.
+const mediump float ARC_START = 0.0;
+
+// Opening, centred on turn zero, all in turns, at its widest: the field is
+// opaque from GAP_HALF out either side, fading to clear GAP_FADE further in.
+// HandRing's half circle ends a quarter turn either side, so the dots run on 10
+// degrees past each end, covering 200 degrees, then fade out. Both shrink to
+// nothing as opening goes to 0, along with the ring's ends.
+const mediump float GAP_HALF = 80.0 / 360.0; // a 160 degree opening
+const mediump float GAP_FADE = 10.0 / 360.0; // how far in from each edge the fade reaches clear
+// The field's scale when fully open: the dots, their spacing and the field's
+// reach past the ring all shrink to this, so round a hand it sits tighter.
+const mediump float OPEN_FIELD_SCALE = 0.64;
+// And the dots alone shrink by this on top, leaving the spacing and the reach.
+const mediump float OPEN_DOT_SCALE = 0.75;
+
+// GRID_SPACING is the pitch of the grid in both axes. DOT_BASE is how bright a
+// dot sits when the wave is nowhere near it.
+const mediump float GRID_SPACING = 0.075;
+const mediump float DOT_RADIUS = 0.007;
+const mediump float DOT_BASE = 0.35;
+const mediump float WAVE_SIGMA = 0.05; // width of the sweeping highlight
+
+void main()
+{
+    vec2 uv = system.getSurfaceUVCoord0();
+    mediump float r = distance(uv, CENTRE);
+    mediump float half_switch = switchSize * 0.5; // the graph remapped 0..2
+
+    mediump vec2 d = uv - CENTRE;
+    mediump float fieldOuter = mix(0.39, 0.34, half_switch);
+    mediump float openK = clamp(opening, 0.0, 1.0);
+    mediump float fieldK = mix(1.0, OPEN_FIELD_SCALE, openK);
+    // Radius in the field's own units: the inner edge stays just outside the
+    // ring, and everything past it is measured at the field's scale.
+    mediump float rf = FIELD_INNER + (r - FIELD_INNER) / fieldK;
+
+    // Angle around the centre as 0..1 turns. atan(0, 0) is undefined in GLSL, so
+    // it is sampled a hair off the centre; 0.0001 rather than smaller, since a
+    // mediump float can flush anything much smaller to zero.
+    mediump vec2 ds = d + vec2(0.0001, 0.0);
+    mediump float theta = fract(atan(-ds.x, ds.y) / TAU + ARC_START);
+    mediump float fromGap = min(theta, 1.0 - theta); // turns either way from the middle
+    // Ramped by hand rather than with smoothstep, whose edges meet when the
+    // opening is closed, and smoothstep is undefined there.
+    mediump float gapHalf = GAP_HALF * openK;
+    mediump float gapFade = GAP_FADE * openK;
+    mediump float open = clamp(
+        (fromGap - (gapHalf - gapFade)) / max(gapFade, 0.0001), 0.0, 1.0);
+    open = open * open * (3.0 - 2.0 * open);
+
+    // ── Scan wave ──────────────────────────────────────────────────────
+    // A single ring of highlight sweeping outward. w eases so it accelerates on
+    // its way out, and the envelope goes to zero at both ends of the cycle, so
+    // the loop has no seam to hide.
+    mediump float t = animate ? system.getTimeElapsed() * waveSpeed : 0.0;
+    mediump float cycle = fract(t);
+    mediump float w = pow(cycle, 1.4);
+    mediump float wavePos = mix(FIELD_INNER, fieldOuter + WAVE_SIGMA, w);
+    mediump float fromWave = (rf - wavePos) / WAVE_SIGMA;
+    mediump float wave = exp(-0.5 * fromWave * fromWave) * sin(cycle * PI);
+
+    // ── Dots ───────────────────────────────────────────────────────────
+    // A uniform grid, axis aligned and centred on the quad: each fragment snaps
+    // to its nearest cell centre and shades one round dot there.
+    mediump float pitch = GRID_SPACING * fieldK;
+    mediump vec2 dotCentre = floor(d / pitch + 0.5) * pitch;
+
+    // The wave swells each dot slightly as it passes, which reads as a pulse.
+    mediump float dotK = fieldK * mix(1.0, OPEN_DOT_SCALE, openK);
+    mediump float dotR = DOT_RADIUS * dotK * (1.0 + 0.45 * wave);
+    mediump float dots =
+        1.0 - smoothstep(dotR * 0.55, dotR, distance(d, dotCentre));
+
+    // Annulus the dots live in: a hole in the middle for the ring, and a soft
+    // circular outer edge that switchSize pulls in.
+    mediump float fieldMask =
+        smoothstep(FIELD_INNER, FIELD_INNER + 0.02, r) *
+        (1.0 - smoothstep(fieldOuter, fieldOuter + 0.1, rf));
+
+    // Dots also dim towards the outside, and brighten where the wave is; the
+    // wave brightens them through alpha, so their colour stays constant.
+    mediump float dim = 1.0 - 0.6 * smoothstep(0.3, mix(0.6, 0.4, half_switch), rf);
+    mediump float dotsAlpha =
+        dots * fieldMask * dim * (DOT_BASE + (1.0 - DOT_BASE) * wave);
+
+    FinalColor = vec4(dotsColor.rgb, dotsAlpha * open);
+}

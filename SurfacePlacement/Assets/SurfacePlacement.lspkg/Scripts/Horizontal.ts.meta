@@ -1,4 +1,4 @@
-- !<AssetImportMetadata/8ed364bb-fc30-bc84-c0c9-2218f6fb6d5c>
+- !<AssetImportMetadata/da6a9985-3752-48e8-8224-eccd0485ee8c>
   ImportedAssetIds:
     TypeScriptAsset: !<reference> 724e4a33-75c0-45f8-87d4-254a15006d83
   ImporterName: TypeScriptAssetImporter
@@ -28,15 +28,13 @@
   VersionPatch: 0
   VersionPrerelease: ""
   UpdateOrder: 0
+  RunInEditor: false
   ComponentUid: 77107c17-fd35-4620-8da4-d71444530cce
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
     circleAnim: false
     confirmText: false
-    enableLogging: false
-    enableLoggingLifecycle: false
-    hintAnchor: false
     screenTextObj: false
   ScriptTypesHidden:
     {}
@@ -48,27 +46,12 @@
     []
   DefaultScriptInputs:
     - circleAnim: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
-      hintAnchor: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       confirmText: !<reference.Text> 00000000-0000-0000-0000-000000000000
-      enableLogging: false
-      enableLoggingLifecycle: false
       screenTextObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
   InputLines:
-    - '// @ui {"widget":"separator"}'
-    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Visual Feedback</span>"}'
-    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Circle animation and hint components</span>"}'
     - // @input AssignableType_1 circleAnim
-    - // @input SceneObject hintAnchor
     - // @input Component.Text confirmText
-    - '// @ui {"widget":"separator"}'
-    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
-    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'
-    - '// @input bool enableLogging {"hint":"Enable general logging (animation cycles, events, etc.)"}'
-    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)"}'
-    - '// @ui {"widget":"separator"}'
-    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">UI Configuration</span>"}'
-    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Instruction text for user guidance</span>"}'
     - // @input SceneObject screenTextObj

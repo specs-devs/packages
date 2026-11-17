@@ -2,7 +2,7 @@
 // crash in the package (Visual.ts imports ThemeService before defining COLORS, and the
 // theme chain reads COLORS at module-load). Loading ThemeService first lets Visual.ts
 // finish initializing COLORS before the visual chain reads it.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService";
+import "UIKit.lspkg/Scripts/Themes/ThemeService";
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent } from "SnapDecorators.lspkg/decorators";
 
@@ -14,10 +14,10 @@ import { bindStartEvent, bindUpdateEvent } from "SnapDecorators.lspkg/decorators
  * Assigns UI elements to the UIController for value management.
  */
 
-import { Switch } from "SpectaclesUIKit.lspkg/Scripts/Components/Switch/Switch"
-import { Slider } from "SpectaclesUIKit.lspkg/Scripts/Components/Slider/Slider"
-import { BaseButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/BaseButton"
-import { SwitchToggleGroup } from "SpectaclesUIKit.lspkg/Scripts/Components/Toggle/SwitchToggleGroup"
+import { Switch } from "UIKit.lspkg/Scripts/Components/Switch/Switch"
+import { Slider } from "UIKit.lspkg/Scripts/Components/Slider/Slider"
+import { BaseButton } from "UIKit.lspkg/Scripts/Components/Button/BaseButton"
+import { SwitchToggleGroup } from "UIKit.lspkg/Scripts/Components/Toggle/SwitchToggleGroup"
 
 @component
 export class ReachyUIManager extends BaseScriptComponent {

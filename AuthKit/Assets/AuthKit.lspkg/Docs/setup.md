@@ -15,12 +15,23 @@ In the provider's developer console (Google Cloud, Spotify, GitHub, your own ser
 1. Create an OAuth2 / OIDC client. Prefer a **public** client type (mobile / installed app /
    "no client secret") so the Lens can use the code flow with PKCE and no secret.
 2. Add the redirect URI exactly:
-   `https://www.spectacles.com/deeplink/specslink/oauth2redirect/unsecure`
+   `https://lenses.specs.com/deeplink/specslink/oauth2redirect/unsecure`
    (the `redirectUri` default). A different value must still come back to the Lens through
    the deep link module.
 3. Enable the scopes you will request (space-separated in `authorize(scope)`); add `openid`
    if you need `getIdToken()`.
 4. Note the authorization endpoint, token endpoint and client ID.
+
+## Package ID
+
+On SPECS, your Lens is identified by the **Package ID** you define in Lens Studio (this is
+the lensId used by deep links). Set it before deploying:
+
+**Project Settings → Platform Settings → SPECS → SPK Configuration → Package ID**
+
+<img src="../README-ref/LS-PackageID.png" alt="Package ID in Project Settings" width="700" />
+
+Choose a stable Package ID before shipping; changing it later breaks deep link routing.
 
 ## 2. Fill in the options
 

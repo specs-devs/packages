@@ -4,41 +4,39 @@
 
 ## Use when
 
-Read before adapting older catalog/purchase code. Facts below describe the CommerceKit source that ships in this package.
+Read before adapting 3.x catalog or purchase code. Facts below describe the CommerceKit 4.0.0 source that ships in this package.
 
 ## Current
 
 | Consumer path | Surface |
 |---|---|
-| `CommerceKit.lspkg/CommerceKit` | `CommerceKit.getInstance`, `initializeCatalog`, `client()`, `purchaseProduct`, `isProductOwned`, `getProductInfo`, `checkPurchaseStatus` |
-| `CommerceKit.lspkg/ProductCatalog` | `ProductCatalog` component with catalog and logging inputs |
-| `CommerceKit.lspkg/Helper/CommerceProduct` | `CommerceProduct` typedef |
-| `CommerceKit.lspkg/Helper/CommercePrice` | `CommercePrice` typedef, decimal USD amount |
-| `CommerceKit.lspkg/Examples/ExamplePurchaseController` | Configured purchase panel component |
+| `CommerceKit.lspkg/CommerceKit` | `CommerceKit.getInstance`, `initialize`, `getProductInfo`, `purchaseProduct(productId, offerId?)`, `registerConsumable`, `isProductOwned`, `getPurchase`, `checkPurchaseStatus`, `refresh`, `onPurchasesChanged`, `client()`; types `PurchaseOutcome`, `PurchaseStatus`, `ConsumableDeliveryHandler`; class `CommerceKitError` |
+| `CommerceKit.lspkg/ProductCatalog` | `ProductCatalog` component: `initializeOnAwake` and logging inputs, no product list |
+| `CommerceKit.lspkg/Helper/CommerceProduct` | `CommerceProduct`: the 3.x fields mapped from the Lens API product, plus `nativeProduct` |
+| `CommerceKit.lspkg/Helper/CommercePrice` | `CommercePrice`: decimal `price` and ISO 4217 `currency` |
+| `CommerceKit.lspkg/Helper/SubscriptionOffers` | `describeOffer(offer)`, `getFreeTrialPhase(offer)` |
+| `CommerceKit.lspkg/Helper/PreviewCommerceClient` | The simulated commerce service used in Lens Studio Preview (internal; selected automatically) |
+| `CommerceKit.lspkg/Examples/*` | `ExampleProductPanel` base and the non-consumable, consumable and subscription panels |
 
-## Experimental / service status
+## Changed in 4.0.0
 
-ProductCatalog's inspector text says Closed Beta, with draft testing and publish-access requirements linked to <https://developers.snap.com/spectacles/spectacles-frameworks/commerce-kit/get-started>. This is the shipped label; current access and availability need the service's own documentation.
+- Products are defined on the Specs developer portal ([developers.specs.com/lenses](https://developers.specs.com/lenses)), not in the Lens. `ProductCatalog` has no product entries; product entries saved in existing scenes are ignored.
+- Consumables (`registerConsumable`) and auto-renewing subscriptions (`purchaseProduct(productId, offerId)`, `getPurchase`) are supported.
+- `purchaseProduct` resolves a `PurchaseOutcome` with `status` and `purchase` in addition to the 3.x `success` / `cancelled`, and failures reject with `CommerceKitError` instead of resolving undefined.
+- `client()` resolves to the simulated client in Lens Studio Preview instead of rejecting.
+- Prices and currencies come from the service; the 3.x USD-only formatter is gone.
+- `CommerceProduct` and `CommercePrice` are no longer Inspector `@typedef` types.
+- A listener of `onPurchasesChanged` (or any `Utils/Event` subscriber) that throws is logged with its stack and does not block the others.
 
 ## Deprecated
 
-No public member is explicitly marked deprecated in the source. Old snippets that await `kit.client` await a function object; use the method and respect the editor mock branch.
+`initializeCatalog(productCatalog)` still works: it calls `initialize()`, never rejects (failures are logged) and ignores the products, with a warning when the list is not empty. Call `initialize()` in new code.
 
 ## Removed
 
-No commerce API is removed. The in-package demo `Scripts/GuideDismissPanel/GuideDismissPanel.ts` and the GuideDismissPanel component on the prefab were removed in this revision; the overview guide and example carousel now ship as demo scaffolding in `Example/` and are part of the prefab. Scenes that still reference the old script show a missing-script component — remove it.
+- The product list of `ProductCatalog` and the USD-only price formatter.
+- The demo's "missing product" panel: Preview now simulates every product ID, so the prefab shows a consumable and a subscription panel instead.
 
-## Known gaps
+## Device-only behavior
 
-- Only USD is formatted; the single product-type input is NonConsumable.
-- The editor's `client()` promise rejects intentionally; `initializeCatalog` catches and prints that mock-mode message.
-- `purchaseProduct` catches a device launch failure, prints and returns undefined despite its declared result type.
-- Pending ownership acknowledgement passes productId rather than a transaction token. Do not describe that recovery path as verified.
-- In `onSuccessfulPurchase`, a caught acknowledgement/history failure is only printed; pending callers may never settle.
-- An empty purchase list returns before success/cancel/error handlers, so those outcomes may leave pending callers.
-- The pending context is registered after `launchPurchaseFlow` resolves; transaction callback timing has not been verified on device.
-- `getProductInfo` on device rebuilds id/type/name/price but does not copy description/icon/extras.
-- Price validation rejects negative/non-numeric values but has no finite-number check; validate NaN/Infinity in your catalog authoring.
-- Duplicate IDs and empty initialization are not rejected as a full catalog validation step.
-
-Device billing behavior remains unverified. These gaps are documented rather than changed without a device transaction harness.
+Real product names and prices, failed and cancelled payments, unknown product IDs, subscriptions and the recovery of interrupted purchases only happen on Specs. Preview simulation does not exercise them; keep them in device QA with an authorized commerce setup.

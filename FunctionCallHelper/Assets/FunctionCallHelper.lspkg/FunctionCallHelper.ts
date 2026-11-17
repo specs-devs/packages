@@ -7,14 +7,14 @@
 // crash in the package (Visual.ts imports ThemeService before defining COLORS, and the
 // theme chain reads COLORS at module-load). Loading ThemeService first lets Visual.ts
 // finish initializing COLORS before the visual chain reads it.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService";
-import { Button } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/Button"
-import { CapsuleButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/CapsuleButton"
-import { RectangleButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton"
-import { RoundButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton"
-import { ScrollWindow } from "SpectaclesUIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow"
-import { GridLayout } from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Grid/GridLayout"
-import { GridItem } from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Grid/GridItem"
+import "UIKit.lspkg/Scripts/Themes/ThemeService";
+import { Button } from "UIKit.lspkg/Scripts/Components/Button/Button"
+import { CapsuleButton } from "UIKit.lspkg/Scripts/Components/Button/CapsuleButton"
+import { RectangleButton } from "UIKit.lspkg/Scripts/Components/Button/RectangleButton"
+import { RoundButton } from "UIKit.lspkg/Scripts/Components/Button/RoundButton"
+import { ScrollWindow } from "UIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow"
+import { GridLayout } from "UIKit.lspkg/Scripts/Components/Layout2D/Grid/GridLayout"
+import { GridItem } from "UIKit.lspkg/Scripts/Components/Layout2D/Grid/GridItem"
 import { ValidationUtils } from "Utilities.lspkg/Scripts/Utils/ValidationUtils"
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
@@ -71,6 +71,11 @@ export class ButtonClickEvent extends BaseScriptComponent
     @showIf("overrideButtonSize", true)
     @hint("Top padding inside the grid container (cm). Increase to clear the Frame's title bar so the first button isn't clipped at the top.")
     topPadding: number = 3
+
+    @input
+    @showIf("overrideButtonSize", true)
+    @hint("Vertical gap between buttons (cm). Keeps neighbouring buttons from touching so each one is easy to pinch.")
+    buttonSpacing: number = 0.8
 
     private scrollWindowInitialized: boolean = false
 
@@ -332,7 +337,8 @@ export class ButtonClickEvent extends BaseScriptComponent
             // rows beyond the existing container height overflow into / out of
             // the Frame. Include the row gap between cells and both paddings so
             // nothing is clipped. Width tracks the single column we just set.
-            const rowGap = this.gridLayout.rowGap ?? 0
+            const rowGap = Math.max(0, this.buttonSpacing ?? 0)
+            this.gridLayout.rowGap = rowGap
             const bottomPad = this.gridLayout.paddingBottom ?? 0
             const neededHeight = buttonCount > 0
                 ? (buttonCount * size.y) + Math.max(0, buttonCount - 1) * rowGap + topPad + bottomPad

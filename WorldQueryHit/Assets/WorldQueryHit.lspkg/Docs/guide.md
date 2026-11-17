@@ -14,12 +14,12 @@ The original long tutorial is retained below, with historical snippets treated a
 
 # WorldQueryHit
 
-A comprehensive surface detection and interaction system for SPECS that integrates with the SPECS Interaction Kit to enable real-world surface placement and spatial awareness. This package provides ray-casting hit testing against detected surfaces in the physical environment, allowing users to place virtual objects on tables, walls, floors, and other real-world surfaces. With support for semantic surface classification (Ground, Wall, Table, ...), filtering, refined hit results, and continuous tracking — plus a legible color-coded label UI that names the detected surface at the raycast hit point — WorldQueryHit transforms SPECS into a powerful spatial computing platform.
+A comprehensive surface detection and interaction system for SPECS that integrates with the Interaction Kit to enable real-world surface placement and spatial awareness. This package provides ray-casting hit testing against detected surfaces in the physical environment, allowing users to place virtual objects on tables, walls, floors, and other real-world surfaces. With support for semantic surface classification (Ground, Wall, Table, ...), filtering, refined hit results, and continuous tracking — plus a legible color-coded label UI that names the detected surface at the raycast hit point — WorldQueryHit transforms SPECS into a powerful spatial computing platform.
 
 ## Features
 
 - **Real-World Surface Detection** - Ray-cast against detected environmental surfaces
-- **SIK Integration** - Seamless integration with SPECS Interaction Kit for hand/controller input
+- **SIK Integration** - Seamless integration with Interaction Kit for hand/controller input
 - **Semantic Surface Classification** - Identify what the user is aiming at (Ground, Wall, Ceiling, Table, ...) via `options.classification`
 - **Semantic Surface Label UI** - Legible, color-coded billboard label at the hit point that names the detected surface in real time
 - **Per-Category Color Inputs** - Inspector color fields for every category (Ground, Wall, Ceiling, Table, None/Unknown) drive the label styling — retheme without touching code
@@ -38,8 +38,8 @@ A comprehensive surface detection and interaction system for SPECS that integrat
 ## Quick Start
 
 ```text
-import { InteractorTriggerType, InteractorInputType } from "SpectaclesInteractionKit.lspkg/Core/Interactor/Interactor";
-import { SIK } from "SpectaclesInteractionKit.lspkg/SIK";
+import { InteractorTriggerType, InteractorInputType } from "InteractionKit.lspkg/Core/Interactor/Interactor";
+import { SIK } from "InteractionKit.lspkg/IK";
 
 const WorldQueryModule = require("LensStudio:WorldQueryModule");
 
@@ -136,7 +136,7 @@ export class WorldQueryExample extends BaseScriptComponent {
 
 ### WorldQueryHitExampleTS
 
-The WorldQueryHitExample script demonstrates the complete workflow for surface-aware object placement using ray-casting and the SPECS Interaction Kit. It creates a HitTestSession with configurable filtering, classification, and (where supported) refine options, sets up interactor callbacks for trigger events, and continuously updates the hit test based on the user's targeting ray. The script maintains a preview object that follows the hit point in real-time, showing users where their placement will occur, and — when `Show Surface Label` is enabled — renders a billboarded, color-coded text label at the hit point that names the detected surface (GROUND, WALL, CEILING, TABLE, ...). The label is built for legibility on SPECS: solid dark background fill, black outline, and a per-category fill color driven by the Inspector's "Surface Category Colors" inputs (Ground, Wall, Ceiling, Table, None/Unknown), always turned toward the camera. When the user releases the trigger, the script instantiates a copy of the selected prefab at the preview location with the correct orientation. The implementation includes sophisticated surface normal handling to ensure objects are properly aligned even on angled surfaces like walls or slopes.
+The WorldQueryHitExample script demonstrates the complete workflow for surface-aware object placement using ray-casting and the Interaction Kit. It creates a HitTestSession with configurable filtering, classification, and (where supported) refine options, sets up interactor callbacks for trigger events, and continuously updates the hit test based on the user's targeting ray. The script maintains a preview object that follows the hit point in real-time, showing users where their placement will occur, and — when `Show Surface Label` is enabled — renders a billboarded, color-coded text label at the hit point that names the detected surface (GROUND, WALL, CEILING, TABLE, ...). The label is built for legibility on SPECS: solid dark background fill, black outline, and a per-category fill color driven by the Inspector's "Surface Category Colors" inputs (Ground, Wall, Ceiling, Table, None/Unknown), always turned toward the camera. When the user releases the trigger, the script instantiates a copy of the selected prefab at the preview location with the correct orientation. The implementation includes sophisticated surface normal handling to ensure objects are properly aligned even on angled surfaces like walls or slopes.
 
 ### HitTestClassificationTS
 
@@ -259,7 +259,7 @@ Create a simple placement system with real-time preview:
 
 ```text
 const WorldQueryModule = require("LensStudio:WorldQueryModule");
-import { SIK } from "SpectaclesInteractionKit.lspkg/SIK";
+import { SIK } from "InteractionKit.lspkg/IK";
 
 @component
 export class SimplePlacement extends BaseScriptComponent {
@@ -366,7 +366,7 @@ Allow users to choose between multiple objects to place:
 
 ```text
 const WorldQueryModule = require("LensStudio:WorldQueryModule");
-import { SIK } from "SpectaclesInteractionKit.lspkg/SIK";
+import { SIK } from "InteractionKit.lspkg/IK";
 
 @component
 export class MultiObjectPlacement extends BaseScriptComponent {
@@ -506,7 +506,7 @@ Only allow placement on specific surface types:
 
 ```text
 const WorldQueryModule = require("LensStudio:WorldQueryModule");
-import { SIK } from "SpectaclesInteractionKit.lspkg/SIK";
+import { SIK } from "InteractionKit.lspkg/IK";
 
 @component
 export class ClassificationPlacement extends BaseScriptComponent {
@@ -643,7 +643,7 @@ Track placed objects and support undo functionality:
 
 ```text
 const WorldQueryModule = require("LensStudio:WorldQueryModule");
-import { SIK } from "SpectaclesInteractionKit.lspkg/SIK";
+import { SIK } from "InteractionKit.lspkg/IK";
 
 @component
 export class PlacementWithUndo extends BaseScriptComponent {

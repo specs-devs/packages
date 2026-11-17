@@ -24,13 +24,14 @@
   VersionPatch: 0
   VersionPrerelease: ""
   UpdateOrder: 0
+  RunInEditor: false
   ComponentUid: 9c101430-6c08-49ce-8e1d-777583280ef9
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
     enableLogging: false
     enableLoggingLifecycle: false
-    productCatalog: false
+    initializeOnAwake: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -40,35 +41,19 @@
   Attachments:
     []
   DefaultScriptInputs:
-    - productCatalog:
-        []
+    - initializeOnAwake: true
       enableLogging: false
       enableLoggingLifecycle: false
   ScriptTypes:
     -
       {}
   InputLines:
-    - /*
-    - "@typedef CommercePrice"
-    - '@property {float} price = 1.99 {"label":"Price ($1.99 - $99.99)", "hint":"Set the price for the product.", "widget":"spinbox", "min":1.99, "max":99.99, "step":0.01}'
-    - '@property {string} currency = "USD" {"label":"Currency", "hint":"Currency code for this price. Currently supports USD.", "widget":"combobox", "values":[{"label":"USD", "value":"USD"}]}'
-    - "*/"
-    - '// @ui {"widget":"label", "label":"<div>⚠️ <span style=\"color: #FFCC80; font-weight: bold;\">CommerceKit is currently in Closed Beta.</span></div>"}'
-    - '// @ui {"widget":"label", "label":"<div style=\"color: #e2e2e2ff;\">You can test CommerceKit in a draft environment, but will need to request access to publish your Lens. For more details please visit our <a href=\"https://developers.snap.com/spectacles/spectacles-frameworks/commerce-kit/get-started\" target=\"_blank\" style=\"color: #00D4FF; text-decoration: underline;\">docs</a>.</div>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Products</span>"}'
+    - '// @ui {"widget":"label", "label":"<div style=\"color: #e2e2e2ff;\">Configure your product catalog (IDs, names, prices, types and subscription plans) on the Specs developer portal at <a href=\"https://developers.specs.com/lenses\" target=\"_blank\" style=\"color: #00D4FF; text-decoration: underline;\">developers.specs.com/lenses</a>, not in the Lens, then use its product IDs in your scripts. To get started, visit our <a href=\"https://developers.snap.com/spectacles/spectacles-frameworks/commerce-kit/get-started\" target=\"_blank\" style=\"color: #00D4FF; text-decoration: underline;\">docs</a>.</div>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Lens Studio Preview cannot reach the commerce service, so purchases are simulated there: every product costs $0.99 and every checkout succeeds.</span>"}'
     - '// @ui {"widget":"separator"}'
-    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Product Catalog</span>"}'
-    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Define your products here including IDs, prices, and metadata</span>"}'
-    - /*
-    - "@typedef CommerceProduct"
-    - '@property {string} id {"label":"ID", "hint":"Unique product identifier. This ID is used in commerce operations."}'
-    - '@property {string} type = "NonConsumable" {"label":"Type", "hint":"Type of product (e.g., consumable, non-consumable). Determines how the product behaves after purchase.", "widget":"combobox", "values":[{"label":"Non Consumable", "value":"NonConsumable"}]}'
-    - '@property {string} displayName {"label":"Display Name", "hint":"Human-readable name for the product."}'
-    - '@property {string} description {"label":"Category", "hint":"Category description of the product for users."}'
-    - '@property {CommercePrice} price {"label":"Price", "hint":"Pricing information for this product."}'
-    - "@property {string} iconUri {\"label\":\"Icon URI [Optional]\", \"hint\":\"URI pointing to the product's icon image.\"}"
-    - '@property {string} extras {"label":"Extras [Optional]", "hint":"Additional metadata or configuration for the product in JSON format."}'
-    - "*/"
-    - "// @input CommerceProduct[] productCatalog"
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Connection</span>"}'
+    - '// @input bool initializeOnAwake = true {"hint":"Connect and restore purchases when the Lens starts. When off, CommerceKit connects the first time it is used."}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'

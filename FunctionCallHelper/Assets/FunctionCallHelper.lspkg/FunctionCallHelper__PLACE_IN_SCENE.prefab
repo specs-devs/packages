@@ -218,7 +218,6 @@
     - 2076f7ae-9671-4d37-aad3-783f8805ec11: 44d4f8fc-2da4-4af2-acd3-d29854b8da59
     - 23a3a2f2-e0e7-42b1-9b81-f670b8fd3a0d: 23a3a2f2-e0e7-42b1-647e-098f4702c5f2
     - 25409d5c-3afa-405f-8af0-d89cd90e2975: 25409d5c-3afa-405f-750f-276326f1d68a
-    - 275db20e-ca28-4e57-b5cc-ac864e049dfb: 18951b0e-2db8-4f8e-98cd-86fef65c6931
     - 3726089f-0cbc-470e-b4db-85c65e4c0cf3: 3726089f-0cbc-470e-4b24-7a39a1b3f30c
     - 3774f580-3f3a-4954-902e-af8a8ddb2889: 3774f580-3f3a-4954-6fd1-50757224d776
     - 39d7ed72-10e2-45db-a21b-46a716f1b0fb: 422593c1-9fee-4479-99b8-cde3d1cb209d
@@ -236,7 +235,6 @@
     - 63523b26-cb92-4c9f-b156-f3acba7dc244: 63523b26-cb92-4c9f-4ea9-0c5345823dbb
     - 6a4b4064-ce87-4586-9c04-be81479ad133: ac0c57fe-16b3-4b68-8197-9e10ad803d5d
     - 7013e228-7bc4-42e8-8ac4-53dd97fef018: 7013e228-7bc4-42e8-753b-ac2268010fe7
-    - 8018cb55-cc23-45d3-a641-9624733bd431: 080f56d5-b75a-4100-8d5a-402b26679a76
     - 80373ee6-a4ae-46df-ac64-10c636faee85: 7c88e0c6-e61a-48cc-b721-b66173df930f
     - 82a4cfa8-f184-4765-8f08-9a782341faa4: 82a4cfa8-f184-4765-70f7-6587dcbe055b
     - 8fdc77d0-e45e-4ebd-8088-dca6a6887ffb: 8fdc77d0-e45e-4ebd-7f77-235959778004
@@ -251,7 +249,9 @@
     - c0ebc38a-2c32-4863-aa1a-cf7560db1505: c0ebc38a-2c32-4863-55e5-308a9f24eafa
     - c1d0980f-e0e7-42ec-a53d-ba106da19706: e4504b56-69fd-4be3-a2cd-30bf580e3f9d
     - d34e2346-6d38-4487-8f99-397dbb4b70c9: 1e6c2e80-7963-4d0f-922b-18171f7bf510
+    - d35b197f-eb08-45a1-8473-d7feec373bd2: 9bee9e6b-1f85-4ab3-9849-0abcbedfbf89
     - e4b966c2-37c0-42ec-9a48-918f4ef0b7d6: e4b966c2-37c0-42ec-65b7-6e70b10f4829
+    - f0c2338b-3786-4fcc-8a1e-a3c509219301: 7180eee5-6fc9-46ac-a86d-e15a6d173805
     - fb87294e-b18b-4e6c-87d5-4d2af7cd93ca: fb87294e-b18b-4e6c-782a-b2d508326c35
   Name: FunctionCallHelper__PLACE_IN_SCENE
   Enabled: true
@@ -262,29 +262,13 @@
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
-    - !<own> 8018cb55-cc23-45d3-a641-9624733bd431
+    - !<own> f0c2338b-3786-4fcc-8a1e-a3c509219301
     - !<own> 555a12c3-d9c2-4e81-860e-99fa72da8af6
     - !<own> d34e2346-6d38-4487-8f99-397dbb4b70c9
     - !<own> 3774f580-3f3a-4954-902e-af8a8ddb2889
     - !<own> 42e77e50-5dd4-4b85-803e-75a750cf205b
   Components:
     - !<own> b2dafc89-bd71-48fd-844e-1c82d6ea03aa
-- !<ScriptComponent/275db20e-ca28-4e57-b5cc-ac864e049dfb>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
-  ScriptInputsDefault:
-    _theme: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      _theme: System3
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/3726089f-0cbc-470e-b4db-85c65e4c0cf3>
   PrefabRemaps:
     []
@@ -744,21 +728,6 @@
   ScriptTypes:
     "":
       {}
-- !<SceneObject/8018cb55-cc23-45d3-a641-9624733bd431>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> 275db20e-ca28-4e57-b5cc-ac864e049dfb
 - !<Text/80373ee6-a4ae-46df-ac64-10c636faee85>
   PrefabRemaps:
     []
@@ -1211,6 +1180,22 @@
     []
   Components:
     - !<own> 42e6865c-26b8-4c1f-b520-2baf0e27b63d
+- !<ScriptComponent/d35b197f-eb08-45a1-8473-d7feec373bd2>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
+  ScriptTypes:
+    "":
+      {}
 - !<ScriptComponent/e4b966c2-37c0-42ec-9a48-918f4ef0b7d6>
   PrefabRemaps:
     []
@@ -1227,6 +1212,21 @@
   ScriptTypes:
     "":
       {}
+- !<SceneObject/f0c2338b-3786-4fcc-8a1e-a3c509219301>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> d35b197f-eb08-45a1-8473-d7feec373bd2
 - !<ScriptComponent/fb87294e-b18b-4e6c-87d5-4d2af7cd93ca>
   PrefabRemaps:
     []

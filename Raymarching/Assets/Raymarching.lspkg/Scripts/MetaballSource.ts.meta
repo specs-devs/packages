@@ -1,0 +1,53 @@
+- !<AssetImportMetadata/44561874-2116-4d18-8828-de0945ba3a6d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 0ca3a9cc-cb9e-46b3-956a-19a4c2e554bb
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 0ca3a9cc-cb9e-46b3-956a-19a4c2e554bb
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> ed1fdc5f-e8ff-4f02-88bc-36115e73e8c7
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/ed1fdc5f-e8ff-4f02-88bc-36115e73e8c7>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 2217aa32-b3f8-4895-9abe-9470266f58ae
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    field: false
+    radius: false
+    scaleWithObject: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - field: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      radius: !<float> 3.000000
+      scaleWithObject: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input AssignableType_1 field {"hint":"Field this ball belongs to. Empty: the nearest MetaballField up the hierarchy, else the first field in the scene"}'
+    - '// @input float radius = 3 {"hint":"Ball radius in cm", "widget":"slider", "min":0, "max":30, "step":0.1}'
+    - "// @input bool scaleWithObject {\"hint\":\"Multiply the radius by this object's world scale (x)\"}"

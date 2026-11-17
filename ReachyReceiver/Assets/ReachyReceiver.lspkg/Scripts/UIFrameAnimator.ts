@@ -2,12 +2,12 @@
 // crash in the package (Visual.ts imports ThemeService before defining COLORS, and the
 // theme chain reads COLORS at module-load). Loading ThemeService first lets Visual.ts
 // finish initializing COLORS before the visual chain reads it.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService";
+import "UIKit.lspkg/Scripts/Themes/ThemeService";
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent } from "SnapDecorators.lspkg/decorators";
-import animate, {CancelFunction}  from "SpectaclesInteractionKit.lspkg/Utils/animate"
-import Event, { PublicApi } from "SpectaclesInteractionKit.lspkg/Utils/Event"
-import { Frame } from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame";
+import animate, {CancelFunction}  from "InteractionKit.lspkg/Utils/animate"
+import Event, { PublicApi } from "InteractionKit.lspkg/Utils/Event"
+import { Frame } from "UIKit.lspkg/Scripts/Components/Frame/Frame";
 
 /**
  * SPECS Inc. 2027

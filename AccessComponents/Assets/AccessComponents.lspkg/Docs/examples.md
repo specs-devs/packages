@@ -5,7 +5,7 @@
 ## Use when
 
 Copy the smallest snippet that matches the access pattern you need. Generic
-component lookup and lifecycle rules live in the lens-api skill; these
+component lookup and lifecycle rules are covered by the Lens Studio documentation; these
 snippets only show the package's example classes and paths.
 
 ## Prefab path (no code)

@@ -21,4 +21,4 @@ A part of the guided flow doesn't react, stalls, or overlaps other UI.
 | Labels missing although the bubble shows text | Pixel falls outside the depth frame, or no valid depth samples | Check the log for `Point is outside of depth frame`; verify on Specs |
 | Speech button stays disabled | A transcript arrived while a request was running; the collider is disabled before the guard returns | Wait for the running request to finish (its callback re-enables the button) |
 | Authored children under ResponseUI disappear | `clearLabels()` destroys every child of the ResponseUI object | Keep that object dedicated to spawned labels |
-| UIKit buttons fail to initialize | ThemeService preload import removed | Keep `import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService"` first in the scripts that have it |
+| UIKit buttons fail to initialize | ThemeService preload import removed | Keep `import "UIKit.lspkg/Scripts/Themes/ThemeService"` first in the scripts that have it |

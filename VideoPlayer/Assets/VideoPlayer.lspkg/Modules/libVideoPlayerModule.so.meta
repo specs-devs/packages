@@ -1,0 +1,32 @@
+- !<AssetImportMetadata/a129ef7d-2b5c-465f-a446-0b64fc9d4b5d>
+  ImportedAssetIds:
+    NativeLibraryAsset: !<reference> 4abb5087-00a6-4f66-94e6-485c90d2459e
+  ImporterName: NativeLibraryAssetImporter
+  PrimaryAsset: !<reference> 4abb5087-00a6-4f66-94e6-485c90d2459e
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    NativeLibraryAsset: !<own> 520e9a2f-2b60-4ba6-b668-c778260b5a31
+  DependentFiles:
+    []
+  ImporterSettings: !<NativeLibraryImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<NativeLibraryAssetData/520e9a2f-2b60-4ba6-b668-c778260b5a31>
+  Info: !<NativeLibraryInfo>
+    BinaryFormat: Elf
+    Architecture: Bit64
+    Environment: Spectacles
+    GroupName: libVideoPlayerModule
+    DependentLibraryNames:
+      - libspecs_player.so.1
+      - libpthread.so.0
+      - libc++.so.1
+      - libm.so.6
+      - libc.so.6
+    DependentLibraries:
+      []
+    Permissions:
+      - INTERNET

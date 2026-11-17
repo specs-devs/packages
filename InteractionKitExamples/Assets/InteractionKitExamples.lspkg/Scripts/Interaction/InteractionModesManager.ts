@@ -2,7 +2,7 @@
 // crash in the package (Visual.ts imports ThemeService before defining COLORS, and the
 // theme chain reads COLORS at module-load). Entering the import cycle via ThemeService
 // lets Visual.ts finish defining COLORS first. Must remain the FIRST import.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService"
+import "UIKit.lspkg/Scripts/Themes/ThemeService"
 /**
  * InteractionModesManager
  *
@@ -18,14 +18,14 @@ import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService"
  * INPUT CHANNELS
  * ─────────────
  * Pinch channel  (0 = open, 1 = closed):
- *   Production → thumb-tip to index-tip distance on the selected hand (via SIK).
+ *   Production → thumb-tip to index-tip distance on the selected hand (via IK).
  *                Normalised with distancePinchMin / distancePinchMax:
  *                  distance ≤ min → 1 (fully pinched)
  *                  distance ≥ max → 0 (fully open)
  *   Test       → Y-axis separation of mockPinchA / mockPinchB, same normalisation.
  *
  * Hand-distance channel (0 = close, 1 = far):
- *   Production → wrist-to-wrist distance of both tracked hands (via SIK).
+ *   Production → wrist-to-wrist distance of both tracked hands (via IK).
  *                Normalised with distanceHandMin / distanceHandMax.
  *   Test       → X-axis separation of mockHandA / mockHandB, same normalisation.
  *
@@ -40,11 +40,11 @@ import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService"
  *                              Input = raw 0-1 wave. Mock movement is visual only.
  *                              Objects spread when pinch = 0 (open), together when pinch = 1.
  *
- * testMode only applies in the Lens Studio editor: on device real hands are always used (SIK).
+ * testMode only applies in the Lens Studio editor: on device real hands are always used (IK).
  */
 
-import { SIK } from "SpectaclesInteractionKit.lspkg/SIK"
-import { RectangleButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton"
+import { IK } from "InteractionKit.lspkg/IK"
+import { RectangleButton } from "UIKit.lspkg/Scripts/Components/Button/RectangleButton"
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
 import { bindStartEvent, bindUpdateEvent } from "SnapDecorators.lspkg/decorators"
 
@@ -86,7 +86,7 @@ function avg(values: number[]): number {
 @component
 export class InteractionModesManager extends BaseScriptComponent {
 
-  @ui.label('<span style="color: #60A5FA;">InteractionModesManager</span><br/><span style="color: #94A3B8; font-size: 11px;">Buttons toggle modes — any combination is allowed. Cubes appear only when a mode is active. On device hands are always resolved via SIK; testMode only applies in the editor.</span>')
+  @ui.label('<span style="color: #60A5FA;">InteractionModesManager</span><br/><span style="color: #94A3B8; font-size: 11px;">Buttons toggle modes — any combination is allowed. Cubes appear only when a mode is active. On device hands are always resolved via IK; testMode only applies in the editor.</span>')
   @ui.separator
 
   // ── Status text ───────────────────────────────────────────────────────────
@@ -284,7 +284,7 @@ export class InteractionModesManager extends BaseScriptComponent {
   private restPinchA: vec3 = vec3.zero()
   private restPinchB: vec3 = vec3.zero()
 
-  // SIK hand references (set once on start)
+  // IK hand references (set once on start)
   private leftTrackedHand:  any = null
   private rightTrackedHand: any = null
 
@@ -372,12 +372,12 @@ export class InteractionModesManager extends BaseScriptComponent {
 
   private setupHandTracking(): void {
     try {
-      const handInputData = SIK.HandInputData
+      const handInputData = IK.HandInputData
       this.leftTrackedHand  = handInputData.getHand("left")
       this.rightTrackedHand = handInputData.getHand("right")
-      this.logger.debug("SIK.HandInputData wired")
+      this.logger.debug("IK.HandInputData wired")
     } catch (e) {
-      this.logger.debug("SIK.HandInputData unavailable: " + e)
+      this.logger.debug("IK.HandInputData unavailable: " + e)
     }
   }
 

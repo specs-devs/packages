@@ -4,7 +4,7 @@
 
 ## Use when
 
-Copy only the smallest example that establishes the package lifecycle. Compose the rest of the experience with CLAD's planning, scripting, scene and spatial-design skills.
+Copy only the smallest example that establishes the package lifecycle.
 
 ## Drop the prefab
 

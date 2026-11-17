@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDisplayName</key>
+	<string>Friend Finder</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleName</key>
+	<string>FriendFinder</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>CFBundleURLName</key>
+			<string>com.example.friendfinder</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>friendfinderapp</string>
+			</array>
+		</dict>
+	</array>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>glasses</string>
+	</array>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Friend Finder uses Bluetooth to bond with your GLASSES and exchange location data with nearby phones.</string>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_pf-p2p._tcp</string>
+		<string>_pf-p2p._udp</string>
+	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Friend Finder streams your camera view to your friend's GLASSES in Watch Your Back and Call Friend modes.</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Friend Finder uses the local network to discover and share locations with the Friend phone.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Friend Finder needs your location to keep guiding you to your friend even when the app is in the background.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Friend Finder needs your location to show the direction to your friend.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Friend Finder sends your voice to your friend's GLASSES during Call Friend mode.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Friend Finder uses the barometer to measure the height difference between you and your friend.</string>
+	<key>NSNearbyInteractionUsageDescription</key>
+	<string>Friend Finder uses Ultra Wideband to measure the precise distance to your friend's phone when you are close together.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+		<string>bluetooth-central</string>
+	</array>
+	<key>UILaunchScreen</key>
+	<dict/>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+</dict>
+</plist>

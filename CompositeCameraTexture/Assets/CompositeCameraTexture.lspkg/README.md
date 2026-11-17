@@ -2,7 +2,7 @@
   <img src="Docs/media/CompositeCameraTexture.png" width="250px" alt="CompositeCameraTexture"/>
 </p>
 
-# Composite Camera Texture 
+# Composite View
 
 A camera-feed and render-texture example for SPECS. CameraService requests one camera feed and connects it to a CropTextureProvider; the prefab draws that feed and the Lens's rendered output into one composite texture and shows it on a panel 100 cm in front of the user. The longer guide includes native camera recipes that are not additional package components.
 
@@ -14,7 +14,7 @@ A camera-feed and render-texture example for SPECS. CameraService requests one c
 
 ## Usage
 
-This section ships with the package and describes the exact installed revision. Generic Lens scripting, scene construction and SPECS spatial design live in the CLAD skills; this package owns its wiring and limitations.
+This section ships with the package and describes the exact installed revision. Generic Lens scripting, scene construction and SPECS spatial design are out of scope here; this package owns its wiring and limitations.
 
 ### Package identity
 
@@ -22,7 +22,7 @@ This section ships with the package and describes the exact installed revision. 
 - Consumer import: `CompositeCameraTexture.lspkg/Scripts/CameraService`.
 - Drop-in prefab: `CompositeCameraTexture.lspkg/CompositeCameraTexture__PLACE_IN_SCENE.prefab`.
 - The `__PLACE_IN_SCENE` prefab is self-contained: besides the composite pipeline (`CompositeDemo`) it includes the onboarding `Guide` and the `ExampleCarousel`, so dropping it into an empty Specs scene gives the full demo. Their demo-only scripts ship in `CompositeCameraTexture.lspkg/Example/` (`ExampleCarousel/`, `GuideDismissPanel/`). Delete `Guide` and `ExampleCarousel` from your instance when you build your own Lens ([components](Docs/components.md#demo-scaffolding-example)).
-- Declared companions: Utilities, SnapDecorators, SpectaclesInteractionKit, SpectaclesUIKit, Motion and Icons. See `package_dependencies.json`.
+- Declared companions: Utilities, SnapDecorators, InteractionKit, UIKit, Motion and Icons. See `package_dependencies.json`.
 
 ### Version and API status
 
@@ -31,12 +31,6 @@ Read [API status](Docs/api-status.md) for the source contract and verification g
 ### Applicability
 
 Use this example to connect a device camera to an authored crop/composite texture pipeline. Use CropCameraTexture for its separate crop example. Dual cameras, recording and adaptive resolution in the guide are native API recipes, not services implemented by this package.
-
-### Related CLAD skills
-
-[specs-camera](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/specs-camera/SKILL.md), [camera-and-rendering](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/camera-and-rendering/SKILL.md). These skills cover the surrounding Lens workflow.
-
-[Install CLAD](https://developers.specs.com/docs/clad/setup/setup-ai/) or browse its [source](https://github.com/lens-studio-devs/ls-extensions). Read the installed package docs for this revision’s APIs.
 
 ### Package Docs (ship in Docs/)
 

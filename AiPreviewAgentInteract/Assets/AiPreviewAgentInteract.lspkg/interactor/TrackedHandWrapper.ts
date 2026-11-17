@@ -1,9 +1,9 @@
 import {UpdateDispatcher} from "Leaf.lspkg/Utils/common/UpdateDispatcher"
-import {HandMeshType} from "SpectaclesInteractionKit.lspkg/Components/Interaction/HandVisual/HandVisual"
-import {PinchEventType} from "SpectaclesInteractionKit.lspkg/Providers/HandInputData/GestureProvider/PinchEventType"
-import {HandType} from "SpectaclesInteractionKit.lspkg/Providers/HandInputData/HandType"
-import {Keypoint} from "SpectaclesInteractionKit.lspkg/Providers/HandInputData/Keypoint"
-import TrackedHand from "SpectaclesInteractionKit.lspkg/Providers/HandInputData/TrackedHand"
+import {HandMeshType} from "InteractionKit.lspkg/Components/Interaction/HandVisual/HandVisual"
+import {PinchEventType} from "InteractionKit.lspkg/Providers/HandInputData/GestureProvider/PinchEventType"
+import {HandType} from "InteractionKit.lspkg/Providers/HandInputData/HandType"
+import {Keypoint} from "InteractionKit.lspkg/Providers/HandInputData/Keypoint"
+import TrackedHand from "InteractionKit.lspkg/Providers/HandInputData/TrackedHand"
 import {Hand} from "./Hand"
 
 const DEBUG_SHOW_HAND_MODEL = false
@@ -29,8 +29,8 @@ type TrackedHandPrivate = {
 }
 
 /**
- * Programmatic control of a SIK TrackedHand for AI preview interaction, driven without hand-tracking data.
- * Pinch events and strength flow through SIK's PinchDetector; geometry comes from the lazily-loaded hand rig.
+ * Programmatic control of an IK TrackedHand for AI preview interaction, driven without hand-tracking data.
+ * Pinch events and strength flow through IK's PinchDetector; geometry comes from the lazily-loaded hand rig.
  */
 export class TrackedHandWrapper {
   readonly hand: Hand
@@ -55,7 +55,7 @@ export class TrackedHandWrapper {
     const handVisualsRoot = handVisuals?.root
     if (!handVisuals || !handVisualsRoot) {
       throw new Error(
-        `SIK ${handType} hand rig not loaded yet (HandVisuals.root is undefined) — retry on next frame.`
+        `IK ${handType} hand rig not loaded yet (HandVisuals.root is undefined) — retry on next frame.`
       )
     }
     this.handVisualsRef = handVisuals

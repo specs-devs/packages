@@ -10,7 +10,7 @@ for the data modules).
 
 ## Prefab setup (no code)
 
-1. Install `SpectaclesInteractionKit`, `SpectaclesUIKit`, `Motion` and `Icons` (the package's
+1. Install `InteractionKit`, `UIKit`, `Motion` and `Icons` (the package's
    declared dependencies) and add the SIK prefab to the scene.
 2. Drag `NavigationKit.lspkg/NavigationKit__PLACE_IN_SCENE.prefab` into the scene. It brings
    the place registry (`Navigation Kit Menu`), the demo menu and the head-locked arrow, plus a
@@ -27,7 +27,7 @@ for the data modules).
 ## Select a place from your own UIKit button
 
 ```ts
-import {RectangleButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton"
+import {RectangleButton} from "UIKit.lspkg/Scripts/Components/Button/RectangleButton"
 import {NavigationDataComponent} from "NavigationKit.lspkg/NavigationDataComponent/NavigationDataComponent"
 
 @component

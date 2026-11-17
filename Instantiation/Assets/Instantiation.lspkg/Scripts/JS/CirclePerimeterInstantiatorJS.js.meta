@@ -24,14 +24,19 @@
   VersionPatch: 0
   VersionPrerelease: ""
   UpdateOrder: 0
+  RunInEditor: false
   ComponentUid: 991f8458-eee5-4117-8ead-2f1905a7af4d
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
     center: false
+    holdTime: false
+    loop: false
     numberOfPrefabs: false
+    popDuration: false
     prefab: false
     radius: false
+    spawnInterval: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -45,6 +50,10 @@
       prefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
       numberOfPrefabs: !<float> 10.000000
       radius: !<float> 5.000000
+      spawnInterval: 0.120000
+      popDuration: 0.300000
+      loop: true
+      holdTime: 1.500000
   ScriptTypes:
     -
       {}

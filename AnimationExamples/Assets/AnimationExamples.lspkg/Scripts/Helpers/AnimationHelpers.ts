@@ -4,7 +4,7 @@
  * Two utilities:
  *   - playFirstClip: wire the AnimationPlayer's first clip to either the
  *     Inspector-assigned AnimationAsset or a script-built fallback.
- *   - buildFrameUI: spawn a SpectaclesUIKit Frame's contents (Text label +
+ *   - buildFrameUI: spawn a UIKit Frame's contents (Text label +
  *     Button with its own Text) as children of a SceneObject whose Frame
  *     ScriptComponent is already attached.
  */
@@ -13,9 +13,9 @@
 // crash in the package (Visual.ts imports ThemeService before defining COLORS, and the
 // theme chain reads COLORS at module-load). Loading ThemeService first lets Visual.ts
 // finish initializing COLORS before the visual chain reads it.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService";
-import { Button } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/Button";
-import { Frame } from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame";
+import "UIKit.lspkg/Scripts/Themes/ThemeService";
+import { Button } from "UIKit.lspkg/Scripts/Components/Button/Button";
+import { Frame } from "UIKit.lspkg/Scripts/Components/Frame/Frame";
 
 // ─── Frame UI spawn ──────────────────────────────────────────────────────────
 

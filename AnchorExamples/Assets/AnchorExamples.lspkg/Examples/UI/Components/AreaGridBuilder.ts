@@ -23,7 +23,7 @@ const DEFAULT_CELL_SIZE = new vec2(6.2, 4)
 const GAP = 0.8
 
 /**
- * Grid of area buttons for the My Areas screen (SpectaclesUIKit 2.0 GridLayout, itself a FlexItem).
+ * Grid of area buttons for the My Areas screen (UIKit 2.0 GridLayout, itself a FlexItem).
  * Occupied slots show the area name; the next slot is always "New Area"; the rest are hidden.
  * A single neutral style is used for every cell — the label ("Area N" vs "New Area") carries the
  * meaning, which avoids the UIKit runtime-restyle gap. Emits "areaSelected" with AreaInfo on tap.

@@ -1,9 +1,9 @@
 require("LensStudio:RawLocationModule")
 
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event"
-import {LensConfig} from "SpectaclesInteractionKit.lspkg/Utils/LensConfig"
-import NativeLogger from "SpectaclesInteractionKit.lspkg/Utils/NativeLogger"
-import {UpdateDispatcher} from "SpectaclesInteractionKit.lspkg/Utils/UpdateDispatcher"
+import Event from "InteractionKit.lspkg/Utils/Event"
+import {LensConfig} from "InteractionKit.lspkg/Utils/LensConfig"
+import NativeLogger from "InteractionKit.lspkg/Utils/NativeLogger"
+import {UpdateDispatcher} from "InteractionKit.lspkg/Utils/UpdateDispatcher"
 import {EditableUserPosition} from "./EditableUserPosition"
 import {Place} from "./Place"
 import {UserPosition} from "./UserPosition"

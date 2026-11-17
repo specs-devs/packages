@@ -4,9 +4,8 @@
 
 ## Use when
 
-Copy the smallest example that establishes the package wiring. Compose larger
-experiences with CLAD's planning, scripting and scene skills, not from this
-file.
+Copy the smallest example that establishes the package wiring. Do not treat this
+file as an application template.
 
 ## Prefab (no code)
 

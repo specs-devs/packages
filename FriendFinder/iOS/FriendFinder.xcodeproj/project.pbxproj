@@ -1,0 +1,453 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2A69922473A76F7219DD6592 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589BD73C61FE7156F150F96E /* LocationModel.swift */; };
+		2FFA71F8916CCAC53415AD80 /* AudioChunkEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7199885449415A8FA25EE5 /* AudioChunkEngine.swift */; };
+		435E0AE94689E86A64E0CA45 /* NearbyInteractionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88026BF02C7412D8A725CF9A /* NearbyInteractionModel.swift */; };
+		4F352F87F4AFBA50117268D0 /* StreamConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CCCD12927796C95F852B92 /* StreamConfig.swift */; };
+		537B6418DEDA3B4D0C95549E /* RealtimeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6CFA9149A52CBBB6FA8FF0 /* RealtimeClient.swift */; };
+		5FDBA481A824AE029A649BD5 /* SpectaclesKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6AD860AB5C9908E4F50F4F8F /* SpectaclesKit */; };
+		74EFDDFA3472B218F82909DC /* MultipeerSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7EC3B9D2696E7AA27FCE7 /* MultipeerSession.swift */; };
+		7BBB4D9A0D23F3D408DF8D29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07BF08CAF7DC55C78A16A5FD /* Assets.xcassets */; };
+		817C30657A480A1F63E1CC89 /* RemotePovView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC89EF164C73A548D03A268 /* RemotePovView.swift */; };
+		872EF8EA8BFFFA062ED9C410 /* MobileKitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E3FAF2E7BBB73D371BF61A /* MobileKitModel.swift */; };
+		A51432B87E2CEE3A4CE19EAE /* RadarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A62645DB383F5BE0179741 /* RadarView.swift */; };
+		AF60EB3DCC55C65D1CEC0709 /* CheckpointStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70969873CF95E8B414FC2C6D /* CheckpointStore.swift */; };
+		BB2BE973DF705EA04D8C13D5 /* WebRTCCallManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D70A54A7264C5E7BAB57345 /* WebRTCCallManager.swift */; };
+		C2F1196083CB18F56B0FDC40 /* RtcSignalMailbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A7B91DB20D8530545CE2EE /* RtcSignalMailbox.swift */; };
+		A1C0B10BB70000000000CL01 /* ControlLobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F0F1F0F1E0000000000CL1 /* ControlLobby.swift */; };
+		C6D9D48BC1889B00732A8497 /* WebRTC in Frameworks */ = {isa = PBXBuildFile; productRef = 31A75076A8BC7EF463D12376 /* WebRTC */; };
+		E5B0E0EF5CFBAE6C3464F3DA /* FrameStreamer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8B194053353A97EE362F90 /* FrameStreamer.swift */; };
+		E76C0087CE36D4AEEFC8FA85 /* FriendFinderModeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E185F4295F8FA83652A4B0 /* FriendFinderModeModel.swift */; };
+		F12F67CA2D0B654A3F7FDAC2 /* FriendFinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F67E087E9C7A37F2302E6A9 /* FriendFinderApp.swift */; };
+		FA600B4EB963BA9274B00AA4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D21D99BF44FDCF201BEE36 /* ContentView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		07BF08CAF7DC55C78A16A5FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		16A7B91DB20D8530545CE2EE /* RtcSignalMailbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RtcSignalMailbox.swift; sourceTree = "<group>"; };
+		A1F0F1F0F1E0000000000CL1 /* ControlLobby.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlLobby.swift; sourceTree = "<group>"; };
+		18E185F4295F8FA83652A4B0 /* FriendFinderModeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendFinderModeModel.swift; sourceTree = "<group>"; };
+		2F67E087E9C7A37F2302E6A9 /* FriendFinderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendFinderApp.swift; sourceTree = "<group>"; };
+		4E6CFA9149A52CBBB6FA8FF0 /* RealtimeClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeClient.swift; sourceTree = "<group>"; };
+		589BD73C61FE7156F150F96E /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		59A62645DB383F5BE0179741 /* RadarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarView.swift; sourceTree = "<group>"; };
+		6D70A54A7264C5E7BAB57345 /* WebRTCCallManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRTCCallManager.swift; sourceTree = "<group>"; };
+		70969873CF95E8B414FC2C6D /* CheckpointStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckpointStore.swift; sourceTree = "<group>"; };
+		729137A803606C723F5060DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7D7199885449415A8FA25EE5 /* AudioChunkEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioChunkEngine.swift; sourceTree = "<group>"; };
+		88026BF02C7412D8A725CF9A /* NearbyInteractionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyInteractionModel.swift; sourceTree = "<group>"; };
+		89E3FAF2E7BBB73D371BF61A /* MobileKitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileKitModel.swift; sourceTree = "<group>"; };
+		8AD7EC3B9D2696E7AA27FCE7 /* MultipeerSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerSession.swift; sourceTree = "<group>"; };
+		8E2077A38A4320CC814DF063 /* SpectaclesKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SpectaclesKit; sourceTree = SOURCE_ROOT; };
+		96CCCD12927796C95F852B92 /* StreamConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamConfig.swift; sourceTree = "<group>"; };
+		9CC89EF164C73A548D03A268 /* RemotePovView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePovView.swift; sourceTree = "<group>"; };
+		C18470B67BBB94EB12AA5445 /* FriendFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FriendFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6D21D99BF44FDCF201BEE36 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E44981C628465E58362845FF /* FriendFinder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FriendFinder.entitlements; sourceTree = "<group>"; };
+		FE8B194053353A97EE362F90 /* FrameStreamer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameStreamer.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F35CC1132B9311BAC23E1136 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FDBA481A824AE029A649BD5 /* SpectaclesKit in Frameworks */,
+				C6D9D48BC1889B00732A8497 /* WebRTC in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		210EF57EB2BEAD16B3EAFCF4 = {
+			isa = PBXGroup;
+			children = (
+				CF6486B051A3F4DD72A55946 /* Packages */,
+				3BE29C30433135F855D6627F /* FriendFinder */,
+				738798A12F25B66AA0B94B8F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3BE29C30433135F855D6627F /* FriendFinder */ = {
+			isa = PBXGroup;
+			children = (
+				07BF08CAF7DC55C78A16A5FD /* Assets.xcassets */,
+				7D7199885449415A8FA25EE5 /* AudioChunkEngine.swift */,
+				70969873CF95E8B414FC2C6D /* CheckpointStore.swift */,
+				D6D21D99BF44FDCF201BEE36 /* ContentView.swift */,
+				FE8B194053353A97EE362F90 /* FrameStreamer.swift */,
+				729137A803606C723F5060DD /* Info.plist */,
+				589BD73C61FE7156F150F96E /* LocationModel.swift */,
+				89E3FAF2E7BBB73D371BF61A /* MobileKitModel.swift */,
+				8AD7EC3B9D2696E7AA27FCE7 /* MultipeerSession.swift */,
+				88026BF02C7412D8A725CF9A /* NearbyInteractionModel.swift */,
+				E44981C628465E58362845FF /* FriendFinder.entitlements */,
+				2F67E087E9C7A37F2302E6A9 /* FriendFinderApp.swift */,
+				18E185F4295F8FA83652A4B0 /* FriendFinderModeModel.swift */,
+				59A62645DB383F5BE0179741 /* RadarView.swift */,
+				4E6CFA9149A52CBBB6FA8FF0 /* RealtimeClient.swift */,
+				9CC89EF164C73A548D03A268 /* RemotePovView.swift */,
+				16A7B91DB20D8530545CE2EE /* RtcSignalMailbox.swift */,
+				A1F0F1F0F1E0000000000CL1 /* ControlLobby.swift */,
+				96CCCD12927796C95F852B92 /* StreamConfig.swift */,
+				6D70A54A7264C5E7BAB57345 /* WebRTCCallManager.swift */,
+			);
+			path = FriendFinder;
+			sourceTree = "<group>";
+		};
+		738798A12F25B66AA0B94B8F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C18470B67BBB94EB12AA5445 /* FriendFinder.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CF6486B051A3F4DD72A55946 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				8E2077A38A4320CC814DF063 /* SpectaclesKit */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9B8DCE5B257ABD1E840B3E00 /* FriendFinder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F47E44F445CB43630C49E09 /* Build configuration list for PBXNativeTarget "FriendFinder" */;
+			buildPhases = (
+				CA2A98B4DBF9AEA2FFFEB09F /* Sources */,
+				CAFC183B55C66A2657FEFB2B /* Resources */,
+				F35CC1132B9311BAC23E1136 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FriendFinder;
+			packageProductDependencies = (
+				6AD860AB5C9908E4F50F4F8F /* SpectaclesKit */,
+				31A75076A8BC7EF463D12376 /* WebRTC */,
+			);
+			productName = FriendFinder;
+			productReference = C18470B67BBB94EB12AA5445 /* FriendFinder.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		50EAC3DD08310CAC9AB29630 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					9B8DCE5B257ABD1E840B3E00 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 746DF1F844A9B0B3825822D1 /* Build configuration list for PBXProject "FriendFinder" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 210EF57EB2BEAD16B3EAFCF4;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				7ECE259B39E11ECDB00D524F /* XCRemoteSwiftPackageReference "WebRTC" */,
+				CA246040A5658A1A40FCF08F /* XCLocalSwiftPackageReference "SpectaclesKit" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 738798A12F25B66AA0B94B8F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9B8DCE5B257ABD1E840B3E00 /* FriendFinder */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CAFC183B55C66A2657FEFB2B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7BBB4D9A0D23F3D408DF8D29 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CA2A98B4DBF9AEA2FFFEB09F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FFA71F8916CCAC53415AD80 /* AudioChunkEngine.swift in Sources */,
+				AF60EB3DCC55C65D1CEC0709 /* CheckpointStore.swift in Sources */,
+				FA600B4EB963BA9274B00AA4 /* ContentView.swift in Sources */,
+				E5B0E0EF5CFBAE6C3464F3DA /* FrameStreamer.swift in Sources */,
+				2A69922473A76F7219DD6592 /* LocationModel.swift in Sources */,
+				872EF8EA8BFFFA062ED9C410 /* MobileKitModel.swift in Sources */,
+				74EFDDFA3472B218F82909DC /* MultipeerSession.swift in Sources */,
+				435E0AE94689E86A64E0CA45 /* NearbyInteractionModel.swift in Sources */,
+				F12F67CA2D0B654A3F7FDAC2 /* FriendFinderApp.swift in Sources */,
+				E76C0087CE36D4AEEFC8FA85 /* FriendFinderModeModel.swift in Sources */,
+				A51432B87E2CEE3A4CE19EAE /* RadarView.swift in Sources */,
+				537B6418DEDA3B4D0C95549E /* RealtimeClient.swift in Sources */,
+				817C30657A480A1F63E1CC89 /* RemotePovView.swift in Sources */,
+				C2F1196083CB18F56B0FDC40 /* RtcSignalMailbox.swift in Sources */,
+				A1C0B10BB70000000000CL01 /* ControlLobby.swift in Sources */,
+				4F352F87F4AFBA50117268D0 /* StreamConfig.swift in Sources */,
+				BB2BE973DF705EA04D8C13D5 /* WebRTCCallManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1FEC8636A526F336D80E9D90 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = FriendFinder/FriendFinder.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = FriendFinder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.friendfinder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		283778FD50F51C9D792DBB81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = FriendFinder/FriendFinder.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = FriendFinder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.friendfinder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		57DD388E935B92DEDE2BB700 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 362KP9DCJ9;
+				INFOPLIST_FILE = FriendFinder/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.friendfinder;
+				PRODUCT_NAME = FriendFinder;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EBF11078E23CABC1E9CA588D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 362KP9DCJ9;
+				INFOPLIST_FILE = FriendFinder/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.friendfinder;
+				PRODUCT_NAME = FriendFinder;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1F47E44F445CB43630C49E09 /* Build configuration list for PBXNativeTarget "FriendFinder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				57DD388E935B92DEDE2BB700 /* Debug */,
+				EBF11078E23CABC1E9CA588D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		746DF1F844A9B0B3825822D1 /* Build configuration list for PBXProject "FriendFinder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				283778FD50F51C9D792DBB81 /* Debug */,
+				1FEC8636A526F336D80E9D90 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		CA246040A5658A1A40FCF08F /* XCLocalSwiftPackageReference "SpectaclesKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = SpectaclesKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7ECE259B39E11ECDB00D524F /* XCRemoteSwiftPackageReference "WebRTC" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stasel/WebRTC";
+			requirement = {
+				kind = exactVersion;
+				version = 150.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		31A75076A8BC7EF463D12376 /* WebRTC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7ECE259B39E11ECDB00D524F /* XCRemoteSwiftPackageReference "WebRTC" */;
+			productName = WebRTC;
+		};
+		6AD860AB5C9908E4F50F4F8F /* SpectaclesKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SpectaclesKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 50EAC3DD08310CAC9AB29630 /* Project object */;
+}

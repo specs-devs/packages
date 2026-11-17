@@ -363,21 +363,6 @@
     - !<own> 2d0953ac-f431-47f0-6be2-d2a24c400c6e
   Components:
     []
-- !<SceneObject/0dc55374-5f50-4321-b9c5-fcd6ccb80c09>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> 129cca6b-0fcc-4642-81a8-745669e70669
 - !<SceneObject/0dffe3c6-e4d6-4b22-7e81-91f5330410b6>
   PrefabRemaps:
     []
@@ -468,22 +453,6 @@
     - !<own> 4a7c6726-90c3-4334-4cb1-7aaea5ae4eb0
   Components:
     []
-- !<ScriptComponent/129cca6b-0fcc-4642-81a8-745669e70669>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
-  ScriptInputsDefault:
-    _theme: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      _theme: System3
-  ScriptTypes:
-    "":
-      {}
 - !<RenderMeshVisual/13106916-93a0-4dc0-7381-3e5421019ae1>
   PrefabRemaps:
     []
@@ -832,7 +801,7 @@
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
-    - !<own> 0dc55374-5f50-4321-b9c5-fcd6ccb80c09
+    - !<own> 2e840b84-1893-449b-ad3a-51b8460b1635
     - !<own> f6e22471-cbd1-4cd2-641a-9a30b4d1702d
     - !<own> 83343d95-5457-4a94-47b8-5d29e75b3559
     - !<own> 08980a27-2f15-49c6-7ca1-c6aad87841c0
@@ -1004,6 +973,21 @@
     - !<own> 09df8d58-bb80-4b02-63fd-712a3cec7548
   Components:
     []
+- !<SceneObject/2e840b84-1893-449b-ad3a-51b8460b1635>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> d0571dd0-1764-4e44-8bdc-ce85707b13a3
 - !<RenderMeshVisual/2edc0811-9539-4a35-79b2-5054922c3965>
   PrefabRemaps:
     []
@@ -4125,6 +4109,22 @@
   MaxDistance: 100.000000
   EnableDirectivityEffect: false
   EnablePositionEffect: false
+- !<ScriptComponent/d0571dd0-1764-4e44-8bdc-ce85707b13a3>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/d1fdc005-c9d0-4652-5dac-0c22b8d5e3d4>
   PrefabRemaps:
     []

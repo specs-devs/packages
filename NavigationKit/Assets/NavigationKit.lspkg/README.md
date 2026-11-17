@@ -2,22 +2,22 @@
   <img src="Docs/media/NavigationKit.png" width="250px" alt="NavigationKit"/>
 </p>
 
-# SPECS Navigation Kit (SNK)
+# Navigation Kit
 
-The SPECS Navigation Kit (SNK) is a set of components designed to simplify the development of navigation experiences for the SPECS platform in Lens Studio. SNK provides functionality for storing a set of places that can be navigated to, as well as visual assets that direct the user to those locations.
+The Navigation Kit (SNK) is a set of components designed to simplify the development of navigation experiences for the SPECS platform in Lens Studio. SNK provides functionality for storing a set of places that can be navigated to, as well as visual assets that direct the user to those locations.
 
 ## Documentation and API Reference
 
 - **Getting Started**: Learn how to use SNK by following the [Get Started Guide](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-navigation-kit/getting-started).
 - **API Reference**: Explore the full API documentation for SNK [here](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-navigation-kit/component-list).
-- A template of a complex navigation experience: [Navigation Kit Template](https://github.com/Snapchat/Spectacles-Sample/tree/main/Navigation%20Template).
+- A template of a complex navigation experience: [Navigation Kit Template](https://github.com/specs-devs/samples/tree/main/Navigation%20Template).
 
 ## Usage
 
 This section ships with the package and describes the exact installed revision.
 Read it, then follow the links into `Docs/` for the topic
 you need. It is written for both people and coding agents; generic Lens scripting,
-scene construction and Specs spatial design live in the CLAD skills, not here.
+scene construction and Specs spatial design are out of scope here.
 
 ### Package identity
 
@@ -26,8 +26,8 @@ scene construction and Specs spatial design live in the CLAD skills, not here.
   layer (e.g. `NavigationKit.lspkg/NavigationDataComponent/NavigationDataComponent`) and
   `NavigationKit.lspkg/ARNavigationComponent/Scripts/ARNavigation` for the arrow. There is no
   `Scripts/` root for the data modules. Exact paths: [components](Docs/components.md).
-- Required companion packages (package_dependencies.json): `SpectaclesInteractionKit`,
-  `SpectaclesUIKit`, `Motion`, `Icons`. The data layer only needs SIK
+- Required companion packages (package_dependencies.json): `InteractionKit`,
+  `UIKit`, `Motion`, `Icons`. The data layer only needs SIK
   (`Utils/Event`, `Utils/LensConfig`, `Utils/NativeLogger`, `Utils/UpdateDispatcher`,
   `Utils/FunctionTimingUtils`); the example menu needs UIKit (`RectangleButton`, `Frame`).
 - Runtime capabilities: `require("LensStudio:RawLocationModule")` (Location permission) for GPS,
@@ -52,12 +52,6 @@ Custom Location scans, Custom Location groups or plain scene objects — and sho
 arrow with a distance readout. Use SIK/UIKit directly for the surrounding UI; use the
 Navigation Kit Template for map tiles, place carousels and full wayfinding flows (those are
 not part of this package).
-
-### Related CLAD skills
-
-[specs-location](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/specs-location/SKILL.md), [specs-build-ui](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/specs-build-ui/SKILL.md). These skills cover the surrounding Lens workflow.
-
-[Install CLAD](https://developers.specs.com/docs/clad/setup/setup-ai/) or browse its [source](https://github.com/lens-studio-devs/ls-extensions). Read the installed package docs for this revision’s APIs.
 
 ### Package Docs (ship in `Docs/`)
 

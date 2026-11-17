@@ -1,0 +1,75 @@
+- !<AssetImportMetadata/af1176ee-610a-4623-9a3c-15c1485f35c8>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 6acde2d0-8fab-4be7-95e9-da48353b158f
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 6acde2d0-8fab-4be7-95e9-da48353b158f
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 69810179-370f-43e1-9954-63f436965e32
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/69810179-370f-43e1-9954-63f436965e32>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 0dfa8fcd-76ee-4834-bf66-2c378ae7e037
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    followFace: false
+    headAnchor: false
+    headBinding: false
+    headStage: false
+    jawDriveEnabled: false
+    jawScaleAmount: false
+    lostGraceSec: false
+    minCutoff: false
+    slots: false
+    speedResponse: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - headAnchor: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      headBinding: !<reference.Head> 00000000-0000-0000-0000-000000000000
+      headStage: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      slots: !<reference.SceneObject[]>
+        []
+      followFace: true
+      jawDriveEnabled: false
+      jawScaleAmount: 0.200000
+      minCutoff: 0.800000
+      speedResponse: 0.020000
+      lostGraceSec: 0.400000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject headAnchor {"hint":"HeadAnchor under Camera, carries the Head Binding"}'
+    - '// @input Component.Head headBinding {"hint":"Head Binding component (faceIndex 0, Candide Center)"}'
+    - '// @input SceneObject headStage {"hint":"World-anchored fallback stage, default parent of HeadSlots"}'
+    - '// @input SceneObject[] slots = {} {"hint":"Slot_Capybara, Slot_EggWithEyes, Slot_Frog, Slot_PirateShark in order"}'
+    - // @input bool followFace = true
+    - // @input bool jawDriveEnabled
+    - '// @input float jawScaleAmount = 0.2 {"widget":"slider", "min":0, "max":0.5, "step":0.01}'
+    - '// @input float minCutoff = 0.8 {"hint":"Stabilization: lower = steadier when the person is still (Hz)", "widget":"slider", "min":0.1, "max":5, "step":0.1}'
+    - '// @input float speedResponse = 0.02 {"hint":"Stabilization: higher = less lag when the person moves fast", "widget":"slider", "min":0, "max":0.1, "step":0.002}'
+    - '// @input float lostGraceSec = 0.4 {"hint":"Keep the head in place this long after tracking drops (s)", "widget":"slider", "min":0, "max":1.5, "step":0.05}'

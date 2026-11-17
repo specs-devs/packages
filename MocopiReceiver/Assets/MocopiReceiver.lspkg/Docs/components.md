@@ -91,18 +91,18 @@ Import `MocopiReceiver.lspkg/Scripts/PrefabPlacement`.
 |---|---|---|---|
 | objectVisuals | SceneObject | Unassigned, allowUndefined | Required runtime parent; dereferenced on Start/startPlacement. |
 | prefabToPlace | ObjectPrefab | Unassigned, allowUndefined | Instantiate after surface found, if assigned. |
-| placementSettingMode | number, input int | 0 | 0 Near Surface, 1 Horizontal, 2 Vertical; invalid value falls back Near Surface. Example sets 1. |
+| placementSettingMode | number, input int | 0 | 0 Tabletop, 1 Ground, 2 Wall; invalid value falls back Tabletop. Example sets 1. |
 | autoStart | boolean | true | Begin placement on Start. |
 | enableLogging | boolean | false | General Logger. |
 | enableLoggingLifecycle | boolean | false | Lifecycle Logger. |
 
 `mocopiMainController` is private/autodetected, not an input. SurfacePlacement singleton is acquired by field initializer. Public `onAwake()` caches transform/logger. Private decorated Start disables visuals and optionally starts placement.
 
-- `startPlacement()`: destroy prior prefab, reset retained Main's avatar controller, hide visuals, start SurfacePlacement with chosen settings. Near Surface uses adjustment widget offset (10,10,0) and private slider callback.
+- `startPlacement()`: destroy prior prefab, reset retained Main's avatar controller, hide visuals, start SurfacePlacement with chosen settings.
 - `resetPlacement()`: guard singleton, stop placement then call startPlacement.
 - `onDestroy()`: destroy current instantiated prefab; source has no decorator or explicit destroy-event binding here, so verify whether this hook runs under installed lifecycle handling.
 
-Private surface callback enables visuals, places owning transform, instantiates child at local (0,0,0), identity rotation, unit scale, detects Main once and assigns avatar.prefabPlacement. Height slider moves owning world position. No public placed-instance getter or event; Avatar reads private instance via existing source cast. Main reference is retained across replacements.
+Private surface callback enables visuals, places owning transform, instantiates child at local (0,0,0), identity rotation, unit scale, detects Main once and assigns avatar.prefabPlacement. No public placed-instance getter or event; Avatar reads private instance via existing source cast. Main reference is retained across replacements.
 
 ## ResetButton
 

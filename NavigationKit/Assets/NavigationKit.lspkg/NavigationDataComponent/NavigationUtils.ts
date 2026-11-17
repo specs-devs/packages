@@ -1,6 +1,6 @@
-import {CancelFunction} from "SpectaclesInteractionKit.lspkg/Utils/animate"
-import {LensConfig} from "SpectaclesInteractionKit.lspkg/Utils/LensConfig"
-import {mapValue} from "SpectaclesInteractionKit.lspkg/Utils/mathUtils"
+import {CancelFunction} from "InteractionKit.lspkg/Utils/animate"
+import {LensConfig} from "InteractionKit.lspkg/Utils/LensConfig"
+import {mapValue} from "InteractionKit.lspkg/Utils/mathUtils"
 
 export const EPSILON = 0.000001
 

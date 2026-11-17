@@ -4,7 +4,7 @@
  * and avatar controller components. Handles event routing and status updates.
  */
 
-import NativeLogger from "SpectaclesInteractionKit.lspkg/Utils/NativeLogger"
+import NativeLogger from "InteractionKit.lspkg/Utils/NativeLogger"
 import { MocopiWebSocketClient } from "./MocopiWebSocketClient"
 import { MocopiAvatarController } from "./MocopiAvatarController"
 import { SkeletonDefinition, FrameData } from "./MocopiDataTypes"

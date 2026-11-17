@@ -1,5 +1,5 @@
 import { OAuth2 } from 'AuthKit.lspkg/Core/OAuth2';
-import { RectangleButton } from 'SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton';
+import { RectangleButton } from 'UIKit.lspkg/Scripts/Components/Button/RectangleButton';
 
 
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";

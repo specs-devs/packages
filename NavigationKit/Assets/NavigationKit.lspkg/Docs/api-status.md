@@ -6,7 +6,7 @@
 
 Check this file before choosing a class or copying an older Navigation Kit example. It is
 the compatibility index for the package revision that contains it (dependencies:
-SpectaclesInteractionKit, SpectaclesUIKit, Motion, Icons).
+InteractionKit, UIKit, Motion, Icons).
 
 ## Status meanings
 

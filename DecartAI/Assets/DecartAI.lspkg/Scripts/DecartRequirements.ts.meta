@@ -1,0 +1,50 @@
+- !<AssetImportMetadata/19f72d4e-83fe-4cd6-a19f-69e864abf049>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 9a8315d9-efd8-4a17-8d91-094b099215f0
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 9a8315d9-efd8-4a17-8d91-094b099215f0
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 89ee3c38-e6f5-438a-9a51-f9c149f8c5a6
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/89ee3c38-e6f5-438a-9a51-f9c149f8c5a6>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 2a6b5558-8412-4fa3-90fb-a3bd030d34e8
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    apiKey: false
+    text: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - apiKey: PASTE_YOUR_DECART_API_KEY
+      text: !<reference.Text> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input string apiKey = "PASTE_YOUR_DECART_API_KEY" {"hint":"Decart API key from https://platform.decart.ai — used when the DecartRestyle object has none"}'
+    - '// @input Component.Text text {"hint":"Optional Text that shows the reminder until a key is provided"}'

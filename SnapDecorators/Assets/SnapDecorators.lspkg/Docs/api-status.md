@@ -58,14 +58,14 @@ form is not used and not needed.
 
 ## Known gaps
 
-- `package_dependencies.json` declares `SpectaclesInteractionKit`,
-  `SpectaclesUIKit`, `Motion` and `Icons`. The decorator modules
+- `package_dependencies.json` declares `InteractionKit`,
+  `UIKit`, `Motion` and `Icons`. The decorator modules
   (`decorators`, `assert`, `debug`, `guards`) import none of them and need
   nothing beyond Lens Studio's scripting API. The demo scaffolding does use
   them: `Example/ExampleCarousel/ExampleCarousel.ts` and
   `Example/GuideDismissPanel/GuideDismissPanel.ts` import
-  `SpectaclesUIKit.lspkg/...` (`Frame`, `RectangleButton`, `Button`) and
-  `SpectaclesInteractionKit.lspkg/...` (`WorldCameraFinderProvider`), so the
+  `UIKit.lspkg/...` (`Frame`, `RectangleButton`, `Button`) and
+  `InteractionKit.lspkg/...` (`WorldCameraFinderProvider`), so the
   demo prefab needs them installed.
 - `@depends` / `@provider` accept only built-in `ComponentNameMap` names.
   There is no `"Component.Transform"` (Transform is not a component; use

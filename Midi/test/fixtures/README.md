@@ -1,12 +1,12 @@
 # BLE-MIDI replay fixtures
 
 Frozen real captures that lock the shared BLE de-framer (`../../BleMidiTransport.ts`)
-against a real Specs BLE stack, replayed with no hardware in CI.
+against a real Spectacles BLE stack, replayed with no hardware in CI.
 
 ## op1f-notes.ts
 
 - **Source device:** Teenage Engineering OP-1 Field (Phase 1 Q7 instrument), BLE-MIDI peripheral, addr `D8 E8 B1 88 8D 21`.
-- **Host:** Specs, SpecsXMPC lens, on-device (`dumpRawPackets` on).
+- **Host:** Spectacles, SpecsXMPC lens, on-device (`dumpRawPackets` on).
 - **Captured:** 2026-08-05, from `lens/captures/op1f-notes-2026-08-05.raw.txt`.
 - **Content:** 139 GATT characteristic notifications of free playing: single notes, ascending/descending runs, and overlapping notes (up to 3 voices at once). Channel 0, notes 53-76, note-on velocity 127 / note-off velocity 0. 70 note-ons, 69 note-offs (one note was still held when the capture ended).
 

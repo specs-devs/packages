@@ -28,7 +28,7 @@ git commit -m "Initial commit: Composite stitcher service with FFmpeg"
 
 ### 3. Push to GitHub
 ```bash
-git remote add origin https://github.com/YOUR_USERNAME/composite-stitcher.git
+git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
 git branch -M main
 git push -u origin main
 ```

@@ -13,7 +13,7 @@ facts come from `Scripts/HandAttacher.ts` in this package revision.
 import {HandAttacher, HandSide, HandJoint} from "HandAttacher.lspkg/Scripts/HandAttacher";
 ```
 
-Script dependencies: `SpectaclesInteractionKit.lspkg/SIK`,
+Script dependencies: `InteractionKit.lspkg/IK`,
 `Utilities.lspkg/Scripts/Utils/MathUtils`, `Utilities.lspkg/Scripts/Utils/Logger`,
 `SnapDecorators.lspkg/decorators`.
 

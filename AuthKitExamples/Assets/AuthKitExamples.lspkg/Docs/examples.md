@@ -5,11 +5,11 @@
 ## Use when
 
 Read this when you build your own sign-in panel from these examples. The snippets are
-compile-checked against this revision and its companions AuthKit, SpectaclesUIKit and Utilities.
+compile-checked against this revision and its companions AuthKit, UIKit and Utilities.
 
 ## Drop-in prefab
 
-1. Make sure the scene has the Spectacles Interaction Kit prefab (UIKit buttons need it).
+1. Make sure the scene has the Interaction Kit prefab (UIKit buttons need it).
 2. Drag `AuthKitExamples.lspkg/AuthKitExamples__PLACE_IN_SCENE.prefab` into the scene.
 3. Set `clientId` on `SpotifyLoginExample/SpotifyMusicController` and
    `SpotifyMinimumExample/SpotifyControllerMinimum` (see [setup](setup.md)).
@@ -22,7 +22,7 @@ A minimal sign-in + API panel for any OAuth2 provider, the pattern `UIController
 
 ```typescript
 import { OAuth2 } from "AuthKit.lspkg/Core/OAuth2";
-import { RectangleButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton";
+import { RectangleButton } from "UIKit.lspkg/Scripts/Components/Button/RectangleButton";
 
 @component
 export class MyProviderController extends BaseScriptComponent {

@@ -9,7 +9,7 @@ Read before calling `AnimationUtils` tweens, chaining them, or cancelling them.
 ## Runtime
 
 `AnimationUtils` imports `animate` and `CancelSet` from
-`SpectaclesInteractionKit.lspkg/Utils/animate`, so SpectaclesInteractionKit must
+`InteractionKit.lspkg/Utils/animate`, so InteractionKit must
 be installed (it is a declared dependency). Animations advance once per frame
 with `getDeltaTime()` and keep running while their object is disabled; nothing
 is tied to a component's lifetime.

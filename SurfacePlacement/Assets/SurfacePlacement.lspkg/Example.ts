@@ -1,130 +1,181 @@
 /**
  * SPECS Inc. 2027
- * Surface placement example demonstrating three placement modes: Near Surface (tabletop with height
- * adjustment widget), Horizontal (ground plane detection), and Vertical (wall detection). Integrates
- * SurfacePlacementController singleton for AR object positioning, provides slider callback for height
- * adjustment, auto-start option for immediate placement, and reset functionality for re-calibration.
+ * Example of driving surface placement: starts it in the mode picked in the Inspector, places the
+ * content and its menu on the surface found, sizes them for near or far placement, and starts
+ * placement again from the menu's Reset button.
  */
-import { PlacementInteraction, PlacementMode, PlacementSettings } from "./Scripts/PlacementSettings";
+import { PlacementMode, PlacementSettings } from "./Scripts/PlacementSettings";
 
 import { SurfacePlacementController } from "./Scripts/SurfacePlacementController";
-import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
-import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider";
+
+// Far placement lands the object metres away, so the visuals have to be larger
+// there than for a surface within arm's reach.
+const FAR_PLACEMENT_SCALE = 2;
+const NEAR_PLACEMENT_SCALE = 1;
+
+// A wall placement stands the object out of the wall, so the menu has to pitch
+// back out of the wall plane to stay facing the wearer. It is also raised up the
+// wall, along the object's -Z there, to sit behind the object's head as seen.
+const WALL_MENU_PITCH = -90; // degrees about X
+const DEFAULT_MENU_PITCH = 0;
+const WALL_MENU_RAISE = 20; // cm
+
+// Logs how placement goes, and near a surface marks where the depth pass aims
+// round the hand and where its hits land.
+const SHOW_DEBUG = false;
+
+// The first time the visuals are drawn on device, the GPU compiles their
+// shaders, uploads their textures and sets up any shadow pass. For heavier
+// content, such as a skinned PBR character, that can be around a second of work
+// in a single frame. Later reveals reuse all of it. Drawing the visuals once,
+// unseen, while the wearer is still placing moves that freeze away from the
+// moment the content appears. The warm-up waits out the first second after lens
+// start: on device, textures on a material first drawn that early have
+// rendered wrongly.
+const WARMUP_DELAY_SECONDS = 1.5;
+const WARMUP_FRAMES = 3; // frames the visuals stay up, so the render thread draws them
+const WARMUP_SCALE = 0.001; // shrinks 30cm of content to a third of a millimetre
+const WARMUP_DISTANCE = 100; // cm in front of the camera, inside the view
 
 @component
 export class Example extends BaseScriptComponent {
-  @ui.separator
-  @ui.label('<span style="color: #60A5FA;">Placement Configuration</span>')
-  @ui.label('<span style="color: #94A3B8; font-size: 11px;">Object and placement mode selection</span>')
-
   @input
-  @allowUndefined
-  objectVisuals: SceneObject;
+  objectVisuals!: SceneObject;
+
+  //the menu holding the reset button, which turns to face the wearer on a wall
+  //and is put back above the object each time placement starts
+  @input
+  menuObj!: SceneObject;
 
   @input("int")
   @widget(
     new ComboBoxWidget([
-      new ComboBoxItem("Near Surface", 0),
-      new ComboBoxItem("Horizontal", 1),
-      new ComboBoxItem("Vertical", 2),
-    ])
+      new ComboBoxItem("Tabletop", 0),
+      new ComboBoxItem("Ground", 1),
+      new ComboBoxItem("Wall", 2),
+    ]),
   )
-  placementSettingMode: number = 1;
+  placementSettingMode: number = 0;
 
-  @input("int")
-  @widget(new ComboBoxWidget([
-    new ComboBoxItem("Head Pose (hold still)", 0),
-    new ComboBoxItem("Pinch or Tap", 1),
-  ]))
-  @hint("Confirmation for Horizontal and Vertical. Near Surface uses palms.")
-  placementInteraction: number = PlacementInteraction.HEAD_POSE;
-
-  @ui.separator
-  @ui.label('<span style="color: #60A5FA;">Behavior Settings</span>')
-  @ui.label('<span style="color: #94A3B8; font-size: 11px;">Auto-start and initialization options</span>')
-
-  @input
-  autoStart: boolean = true;
-
-  @ui.separator
-  @ui.label('<span style="color: #60A5FA;">Logging Configuration</span>')
-  @ui.label('<span style="color: #94A3B8; font-size: 11px;">Control logging output for this script instance</span>')
-
-  @input
-  @hint("Enable general logging (animation cycles, events, etc.)")
-  enableLogging: boolean = false;
-
-  @input
-  @hint("Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)")
-  enableLoggingLifecycle: boolean = false;
-
-  // Logger instance
-  private logger: Logger;  private transform: Transform = null;
+  private transform!: Transform;
+  //where the menu was authored, which dragging it moves away from
+  private menuHome!: vec3;
+  //true from a placement result until the next placement starts
+  private placed = false;
+  //true while this example's placement runs, from its start to its result
+  private active = false;
   private started = false;
 
   private surfacePlacement: SurfacePlacementController =
-    SurfacePlacementController.getInstance();  /**
-   * Called when component is initialized
-   */
-  onAwake(): void {
-    // Initialize logger
-    this.logger = new Logger("Example", this.enableLogging || this.enableLoggingLifecycle, true);
+    SurfacePlacementController.getInstance();
 
-    if (this.enableLoggingLifecycle) {
-      this.logger.debug("LIFECYCLE: onAwake() - Component initializing");
-    }
-
-
+  onAwake() {
     this.transform = this.getSceneObject().getTransform();
+    this.menuHome = this.menuObj.getTransform().getLocalPosition();
     this.createEvent("OnStartEvent").bind(this.onStart.bind(this));
-    // The placement UI lives under the controller singleton, outside this object, so stop it when
-    // the example is disabled and pick it up again when it comes back.
-    this.createEvent("OnDisableEvent").bind(() => this.surfacePlacement.stopSurfacePlacement());
+    // Placement is one at a time, so with several examples in a scene (a
+    // carousel showing one at a time) each stops a placement still running
+    // when hidden and places again when shown, as whatever showed it may have
+    // moved it.
     this.createEvent("OnEnableEvent").bind(() => {
-      // The first enable is handled by onStart.
-      if (this.started && this.autoStart) {
+      if (this.started && !this.active) {
         this.startPlacement();
+      }
+    });
+    this.createEvent("OnDisableEvent").bind(() => {
+      if (this.active) {
+        this.active = false;
+        this.surfacePlacement.stopSurfacePlacement();
       }
     });
   }
 
   private onStart() {
     this.started = true;
-    this.setVisualsEnabled(false);
+    this.objectVisuals.enabled = false;
+    this.startPlacement();
+    const warmup = this.createEvent("DelayedCallbackEvent");
+    warmup.bind(() => this.warmUpVisuals());
+    warmup.reset(WARMUP_DELAY_SECONDS);
+  }
 
-    if (this.autoStart) {
-      this.startPlacement();
+  // Draws the visuals for a few frames, shrunk to nothing just in front of the
+  // camera, then puts them away at their real size. The root is free to move:
+  // every placement sets its pose.
+  private warmUpVisuals() {
+    if (this.placed) {
+      return; //already placed, so the first draw has happened
     }
+    const camTrans = WorldCameraFinderProvider.getInstance().getTransform();
+    const visualsTrans = this.objectVisuals.getTransform();
+    //the size startPlacement chose for this mode
+    const realScale = visualsTrans.getLocalScale();
+    this.transform.setWorldPosition(
+      camTrans
+        .getWorldPosition()
+        .add(camTrans.forward.uniformScale(-WARMUP_DISTANCE)),
+    );
+    visualsTrans.setLocalScale(vec3.one().uniformScale(WARMUP_SCALE));
+    this.objectVisuals.enabled = true;
+    let frames = 0;
+    const tick = this.createEvent("UpdateEvent");
+    tick.bind(() => {
+      if (this.placed) {
+        //placed for real meanwhile: leave them shown, back at their real size
+        visualsTrans.setLocalScale(realScale);
+        this.removeEvent(tick);
+        return;
+      }
+      if (++frames < WARMUP_FRAMES) {
+        return;
+      }
+      this.removeEvent(tick);
+      this.objectVisuals.enabled = false;
+      visualsTrans.setLocalScale(realScale);
+    });
   }
 
   startPlacement() {
-    this.setVisualsEnabled(false);
+    this.placed = false;
+    this.active = true;
+    this.objectVisuals.enabled = false;
 
-    let placementSettings: PlacementSettings;
+    let mode = PlacementMode.TABLETOP;
+    let visualScale = NEAR_PLACEMENT_SCALE;
+    let menuPitch = DEFAULT_MENU_PITCH;
+    let menuRaise = 0;
     switch (this.placementSettingMode) {
-      case 0: // Near Surface
-        placementSettings = new PlacementSettings(
-          PlacementMode.NEAR_SURFACE,
-          true, // use surface adjustment widget
-          new vec3(10, 10, 0), // offset in cm of widget from surface center
-          this.onSliderUpdated.bind(this) // callback from widget height changes
-        );
+      case 1:
+        mode = PlacementMode.GROUND;
+        visualScale = FAR_PLACEMENT_SCALE;
         break;
-      case 1: // Horizontal
-        placementSettings = new PlacementSettings(PlacementMode.HORIZONTAL, true, undefined, null, this.placementInteraction);
+      case 2:
+        mode = PlacementMode.WALL;
+        visualScale = FAR_PLACEMENT_SCALE;
+        menuPitch = WALL_MENU_PITCH;
+        menuRaise = WALL_MENU_RAISE;
         break;
-      case 2: // Vertical
-        placementSettings = new PlacementSettings(PlacementMode.VERTICAL, true, undefined, null, this.placementInteraction);
-        break;
-      default:
-        placementSettings = new PlacementSettings();
+      //0, Tabletop, is the default
     }
+    const placementSettings = new PlacementSettings(mode, SHOW_DEBUG);
+    this.objectVisuals
+      .getTransform()
+      .setLocalScale(vec3.one().uniformScale(visualScale));
+    const menuTrans = this.menuObj.getTransform();
+    //the visuals' scale applies to the menu's position, and the raise is in cm
+    menuTrans.setLocalPosition(
+      this.menuHome.add(new vec3(0, 0, -menuRaise / visualScale)),
+    );
+    menuTrans.setLocalRotation(
+      quat.fromEulerVec(new vec3(menuPitch * MathUtils.DegToRad, 0, 0)),
+    );
 
     this.surfacePlacement.startSurfacePlacement(
       placementSettings,
       (pos, rot) => {
         this.onSurfaceDetected(pos, rot);
-      }
+      },
     );
   }
 
@@ -133,18 +184,10 @@ export class Example extends BaseScriptComponent {
     this.startPlacement();
   }
 
-  private onSliderUpdated(pos: vec3) {
-    this.transform.setWorldPosition(pos);
-  }
-
-  private setVisualsEnabled(enabled: boolean) {
-    if (this.objectVisuals) {
-      this.objectVisuals.enabled = enabled;
-    }
-  }
-
   private onSurfaceDetected(pos: vec3, rot: quat) {
-    this.setVisualsEnabled(true);
+    this.placed = true;
+    this.active = false;
+    this.objectVisuals.enabled = true;
     this.transform.setWorldPosition(pos);
     this.transform.setWorldRotation(rot);
   }

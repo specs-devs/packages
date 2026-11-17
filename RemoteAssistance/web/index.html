@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Remote Assistance — Helper Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg: #101418; --panel: #1a2027; --edge: #2a323c;
+    --text: #e8edf2; --dim: #9aa7b4; --accent: #73e6da; --warn: #ffbf66;
+    --go: #8cffbf; --bad: #ff8c8c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 15px/1.45 -apple-system, "Segoe UI", Roboto, sans-serif;
+    display: flex; flex-direction: column; min-height: 100vh;
+  }
+  header {
+    padding: 14px 20px; border-bottom: 1px solid var(--edge);
+    display: flex; align-items: baseline; gap: 14px;
+  }
+  header h1 { margin: 0; font-size: 18px; letter-spacing: 2px; color: var(--accent); }
+  header .sub { color: var(--dim); font-size: 13px; }
+  main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 18px; }
+
+  /* ── Join panel ── */
+  #join {
+    background: var(--panel); border: 1px solid var(--edge); border-radius: 12px;
+    padding: 26px 28px; width: 430px; max-width: 94vw;
+  }
+  #join h2 { margin: 0 0 6px; font-size: 16px; }
+  #join p.hint { color: var(--dim); font-size: 13px; margin: 0 0 18px; }
+  #join label { display: block; font-size: 12px; color: var(--dim); margin: 12px 0 4px; letter-spacing: 1px; }
+  #join input {
+    width: 100%; padding: 9px 11px; border-radius: 7px; border: 1px solid var(--edge);
+    background: #0c1013; color: var(--text); font-size: 14px;
+  }
+  #join input:focus { outline: 1px solid var(--accent); }
+  #join .row { display: flex; align-items: center; gap: 8px; margin-top: 14px; color: var(--dim); font-size: 13px; }
+  #join button {
+    margin-top: 20px; width: 100%; padding: 12px; border: 0; border-radius: 8px;
+    background: var(--accent); color: #08211e; font-size: 15px; font-weight: 700;
+    cursor: pointer; letter-spacing: 1px;
+  }
+  #join button:hover { filter: brightness(1.1); }
+  #join .err { color: var(--bad); font-size: 13px; margin-top: 10px; min-height: 18px; }
+
+  /* ── Call view ── */
+  #call { display: none; flex-direction: column; gap: 10px; width: min(1080px, 96vw); }
+  #stage { position: relative; background: #000; border-radius: 10px; overflow: hidden;
+           border: 1px solid var(--edge); aspect-ratio: 4 / 3; }
+  #pov { width: 100%; height: 100%; object-fit: contain; display: block; background: #000; }
+  #overlay { position: absolute; inset: 0; cursor: crosshair; touch-action: none; }
+  #waiting {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    color: var(--dim); font-size: 15px; letter-spacing: 1px; pointer-events: none;
+  }
+  #bar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  #bar .status { flex: 1; color: var(--dim); font-size: 13px; font-family: ui-monospace, monospace; }
+  #bar button {
+    padding: 8px 14px; border: 1px solid var(--edge); border-radius: 7px;
+    background: var(--panel); color: var(--text); cursor: pointer; font-size: 13px;
+  }
+  #bar button:hover { border-color: var(--accent); }
+  #bar button.end { border-color: #5c2b2b; color: var(--bad); }
+  .swatch {
+    width: 26px; height: 26px; border-radius: 50%; border: 2px solid transparent;
+    cursor: pointer; padding: 0;
+  }
+  .swatch.active { border-color: #fff; }
+</style>
+</head>
+<body>
+<header>
+  <h1>REMOTE ASSISTANCE</h1>
+  <span class="sub">helper portal — you see the wearer's POV; what you draw lands in their world as 3D lines</span>
+</header>
+<main>
+  <!-- ── Join ── -->
+  <section id="join">
+    <h2>Join a session</h2>
+    <p class="hint">Ask the Glasses wearer for the session code on their start menu.
+       The Snap Cloud URL + anon key come from the same Supabase project the Lens uses
+       (Window &gt; Supabase in Lens Studio → project settings).</p>
+    <label>SNAP CLOUD URL</label>
+    <input id="sbUrl" placeholder="https://xyz.snapcloud.dev" autocomplete="off">
+    <label>ANON KEY</label>
+    <input id="sbKey" placeholder="eyJhbGciOi…" autocomplete="off">
+    <label>SESSION CODE</label>
+    <input id="sessCode" placeholder="wrp-…" autocomplete="off">
+    <div class="row">
+      <input type="checkbox" id="sendCam" style="width:auto">
+      <label for="sendCam" style="margin:0">Send my camera back to the Glasses (shown on the wearer's panel)</label>
+    </div>
+    <button id="joinBtn">JOIN CALL</button>
+    <div class="err" id="joinErr"></div>
+  </section>
+
+  <!-- ── Call ── -->
+  <section id="call">
+    <div id="stage">
+      <video id="pov" autoplay playsinline></video>
+      <canvas id="overlay"></canvas>
+      <div id="waiting">waiting for the Glasses video…</div>
+    </div>
+    <div id="bar">
+      <span class="status" id="status">connecting…</span>
+      <span id="palette"></span>
+      <button id="undoBtn" title="Remove your last stroke">Undo</button>
+      <button id="clearBtn" title="Clear all drawings on both ends">Clear all</button>
+      <button id="muteBtn" title="Mute/unmute your microphone">Mute</button>
+      <button id="endBtn" class="end">End call</button>
+    </div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,5 +1,5 @@
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event"
-import {CancelToken, setTimeout} from "SpectaclesInteractionKit.lspkg/Utils/FunctionTimingUtils"
+import Event from "InteractionKit.lspkg/Utils/Event"
+import {CancelToken, setTimeout} from "InteractionKit.lspkg/Utils/FunctionTimingUtils"
 import {GeoLocationPlace} from "./GeoLocationPlace"
 import {normalizeAngle} from "./NavigationUtils"
 import {UserPosition} from "./UserPosition"

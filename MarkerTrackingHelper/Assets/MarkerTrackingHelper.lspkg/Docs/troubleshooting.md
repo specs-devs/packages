@@ -5,8 +5,8 @@
 ## Use when
 
 Marker content doesn't appear, appears at the wrong size, or a script throws.
-Generic camera, tracking and rendering issues belong to the relevant CLAD
-skill (`specs-debug`, `camera-and-rendering`).
+Generic camera, tracking and rendering issues are outside this package's
+scope.
 
 ## Known issues
 

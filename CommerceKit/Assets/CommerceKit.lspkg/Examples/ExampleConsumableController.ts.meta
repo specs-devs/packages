@@ -1,0 +1,82 @@
+- !<AssetImportMetadata/e618df48-ba58-412b-9afe-72a6926d957c>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 996c28d3-be33-4cac-847d-748a6fef3120
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 996c28d3-be33-4cac-847d-748a6fef3120
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> a1df12e1-0c1c-49f7-9838-f676df9b22e1
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/a1df12e1-0c1c-49f7-9838-f676df9b22e1>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 11815e27-945e-4359-b832-edf50c85184d
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    amountPerPurchase: false
+    buttonText: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    nameText: false
+    priceText: false
+    productId: false
+    purchaseButton: false
+    statusText: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - productId: ""
+      purchaseButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      buttonText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      nameText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      priceText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      statusText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+      amountPerPurchase: !<float> 100.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Product Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">ID of a product defined on the Specs developer portal at developers.specs.com/lenses</span>"}'
+    - // @input string productId
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">UI References</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Connect the UI elements for the action button and product information display</span>"}'
+    - // @input AssignableType_1 purchaseButton
+    - '// @input Component.Text buttonText {"hint":"Optional label of the action button"}'
+    - // @input Component.Text nameText
+    - // @input Component.Text priceText
+    - // @input Component.Text statusText
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging (animation cycles, events, etc.)"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Delivery</span>"}'
+    - '// @input float amountPerPurchase = 100 {"hint":"Coins credited for each purchase. The balance is saved with persistentStorageSystem."}'

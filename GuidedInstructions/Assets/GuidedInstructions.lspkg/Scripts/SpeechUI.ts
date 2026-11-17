@@ -6,15 +6,16 @@
 // crash in the package (Visual.ts imports ThemeService before defining the Visual class +
 // COLORS, and the theme chain reads them at module-load). Loading ThemeService first lets
 // Visual.ts finish before any UIKit component (incl. scene-authored buttons) loads.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService";
-import animate, {CancelSet} from "SpectaclesInteractionKit.lspkg/Utils/animate"
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event"
+import "UIKit.lspkg/Scripts/Themes/ThemeService";
+import animate, {CancelSet} from "InteractionKit.lspkg/Utils/animate"
+import Event from "InteractionKit.lspkg/Utils/Event"
 import {ASRController} from "./ASRController"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {bindStartEvent, bindUpdateEvent} from "SnapDecorators.lspkg/decorators"
 
-const UI_CAM_DISTANCE = 50
-const UI_CAM_HEIGHT = -9
+const UI_CAM_DISTANCE = 110 // cm in front of camera (Specs far-field guideline)
+const UI_CAM_HEIGHT = -19.8 // cm, same angle as the authored -9 cm at 50 cm
+const AUTHORED_DISTANCE = 50 // cm the UI was sized for; scaled up so it keeps its angular size
 
 @component
 export class SpeechUI extends BaseScriptComponent {
@@ -69,6 +70,7 @@ export class SpeechUI extends BaseScriptComponent {
     this.speechBubbleTrans = this.speecBocAnchor.getTransform()
     this.speechBubbleTrans.setLocalScale(vec3.zero())
     this.trans = this.getSceneObject().getTransform()
+    this.trans.setLocalScale(this.trans.getLocalScale().uniformScale(UI_CAM_DISTANCE / AUTHORED_DISTANCE))
     this.mainCamTrans = this.mainCamObj.getTransform()
     this.animateSpeechIcon(false)
     this.speechText.text = ""

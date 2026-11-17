@@ -1,0 +1,69 @@
+- !<AssetImportMetadata/b063ff08-72ae-4ea4-ac5d-30a38790ddd7>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 49d4384d-3aad-4684-ab86-7eb669c9b532
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 49d4384d-3aad-4684-ab86-7eb669c9b532
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> c5b26ba4-0e2f-4012-9531-6e55e731d5c9
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/c5b26ba4-0e2f-4012-9531-6e55e731d5c9>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: d320132c-ce9f-4480-ae88-e04faebb1dfc
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    color: false
+    primitive: false
+    recordText: false
+    recordVisibility: false
+    targetId: false
+    useMaterialColor: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - targetId: ""
+      primitive: auto
+      color: !<Vec4> {x: 0.550000, y: 0.820000, z: 0.780000, w: 1.000000}
+      useMaterialColor: true
+      recordVisibility: true
+      recordText: true
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Identity</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">How this object is named in the portal. Leave empty to use the SceneObject name.</span>"}'
+    - '// @input string targetId {"hint":"Stable id, unique in the capture (max 80 characters). Empty = SceneObject name"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Appearance in the portal</span>"}'
+    - '// @input string primitive = "auto" {"hint":"Shape the portal draws. Auto: the mesh bounds, a text label or an empty marker", "widget":"combobox", "values":[{"label":"Auto", "value":"auto"}, {"label":"Box", "value":"box"}, {"label":"Sphere", "value":"sphere"}, {"label":"Cylinder", "value":"cylinder"}, {"label":"Plane", "value":"plane"}, {"label":"Text", "value":"text"}, {"label":"Empty", "value":"empty"}]}'
+    - '// @input vec4 color = {0.55,0.82,0.78,1} {"hint":"Colour in the portal. Read from the material when Use Material Color is on", "widget":"color"}'
+    - "// @input bool useMaterialColor = true {\"hint\":\"Read the colour from this object's material (mainPass.baseColor) every sample\"}"
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">What to record</span>"}'
+    - '// @input bool recordVisibility = true {"hint":"Record when the object is enabled or disabled"}'
+    - '// @input bool recordText = true {"hint":"Record Text changes (when the object has a Text component)"}'

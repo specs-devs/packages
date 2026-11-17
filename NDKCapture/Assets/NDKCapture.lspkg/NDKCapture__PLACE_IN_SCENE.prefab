@@ -1,0 +1,207 @@
+- !<ObjectPrefab/86a74242-c48b-49a6-bb0e-9317ab3645b2>
+  PackagePath: ""
+  objects:
+    - !<own> 71e7c369-53c5-4c92-aaa1-90b1335d627b
+  LazyLoading: false
+  RetainAssets: true
+  PreviewEnvironment: !<reference> 00000000-0000-0000-0000-000000000000
+- !<SceneObject/1bd6e09e-f811-40a5-aa8c-47ee0facca74>
+  PrefabRemaps:
+    []
+  Name: APITested
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 69b72098-ca0e-4148-8474-aa7f14deb949
+- !<SceneObject/30e8b0ad-ef69-4b94-b9d2-de9b2d6239b6>
+  PrefabRemaps:
+    []
+  Name: Status
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: -14.000000, z: -80.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 4a25bc8b-c318-4426-ae1a-5992193e2646
+- !<Text/4a25bc8b-c318-4426-ae1a-5992193e2646>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: NDK Capture
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableRichText: false
+  SizeToFit: false
+  FontSize: 40.000000
+  FontSource: !<reference> 00000000-0000-0000-0000-000000000000
+  PreferredStyle: Regular
+  LayoutRect:
+    left: -7.500000
+    bottom: -2.250000
+    right: 7.500000
+    top: 2.250000
+  DebugRenderLayoutRect: false
+  OverflowVertical: Overflow
+  OverflowHorizontal: Overflow
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlphaAuto
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.000000
+      bottom: 0.000000
+      right: 0.000000
+      top: 0.000000
+    CornerRadius: 0.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false
+- !<ScriptComponent/69b72098-ca0e-4148-8474-aa7f14deb949>
+  PrefabRemaps:
+    []
+  Name: APITested
+  Enabled: true
+  ScriptAsset: !<reference> 4dc1b78a-56ad-436b-ba32-aafa318840c5
+  ScriptInputsDefault:
+    runOnAwake: true
+    summaryText: true
+    timeout: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      runOnAwake: true
+      summaryText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      timeout: !<float> 20.000000
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/71e7c369-53c5-4c92-aaa1-90b1335d627b>
+  PrefabRemaps:
+    - 30e8b0ad-ef69-4b94-b9d2-de9b2d6239b6: 30e8b0ad-ef69-4b94-462d-2164d29dc649
+    - 4a25bc8b-c318-4426-ae1a-5992193e2646: 4a25bc8b-c318-4426-51e5-a66de6c1d9b9
+    - 71e7c369-53c5-4c92-aaa1-90b1335d627b: 71e7c369-53c5-4c92-555e-6f4ecca29d84
+    - 79def6d8-e159-42b9-8008-7dd3ac1ee9b9: 79def6d8-e159-42b9-7ff7-822c53e11646
+  Name: NDKCapture__PLACE_IN_SCENE
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 30e8b0ad-ef69-4b94-b9d2-de9b2d6239b6
+    - !<own> 1bd6e09e-f811-40a5-aa8c-47ee0facca74
+  Components:
+    - !<own> 79def6d8-e159-42b9-8008-7dd3ac1ee9b9
+- !<ScriptComponent/79def6d8-e159-42b9-8008-7dd3ac1ee9b9>
+  PrefabRemaps:
+    []
+  Name: NDKCapture
+  Enabled: true
+  ScriptAsset: !<reference> 6dd39939-1f47-489a-a036-1d59a05ed32b
+  ScriptInputsDefault:
+    connectOnStart: true
+    streamOnStart: true
+    cameraLayer: true
+    arLayer: true
+    arTexture: true
+    uiLayer: true
+    uiTexture: true
+    micLayer: true
+    proxyWidth: true
+    proxyQuality: true
+    deviceFolder: true
+    recordComposite: true
+    compositeAlpha: true
+    compositeBlend: true
+    verbose: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      studioUrl: "ws://127.0.0.1:47793"
+      connectOnStart: true
+      streamOnStart: true
+      cameraLayer: true
+      arLayer: true
+      arTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      uiLayer: false
+      uiTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      micLayer: true
+      proxyWidth: !<float> 480.000000
+      proxyQuality: !<float> 50.000000
+      deviceFolder: ""
+      recordComposite: false
+      compositeAlpha: !<float> 1.000000
+      compositeBlend: alpha
+      statusText: !<reference.Text> 4a25bc8b-c318-4426-ae1a-5992193e2646
+      verbose: false
+  ScriptTypes:
+    "":
+      {}

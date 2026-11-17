@@ -6,13 +6,15 @@ AnchorExamples persists content in named real-world areas on Specs using native 
 
 - Open one anchor session per area; create, save, resolve and delete anchors.
 - Track a SceneObject through AnchorComponent state and uncertainty events.
+- Show content only while its anchor is tracking within an uncertainty budget, and restore it next launch by stored id or nearby discovery (`Examples/Native/PersistentAnchorExample.ts`).
+- Read the latitude / longitude of a Custom Location anchor through AnchorLocationModule.
 - Store widget transforms relative to the anchored parent.
 - Preview remembered-pose simulation, with real anchors verified on hardware.
 - UIKit demo screens, keyboard note fields, clocks, static photos and surface snapping.
 
 ## Usage
 
-This section ships with the package and describes the exact installed revision. Generic Lens scripting, scene construction and Specs spatial design live in the CLAD skills; this package owns its API, prefab wiring and limitations.
+This section ships with the package and describes the exact installed revision. Generic Lens scripting, scene construction and Specs spatial design are out of scope here; this package owns its API, prefab wiring and limitations.
 
 ### Package identity
 
@@ -20,7 +22,7 @@ This section ships with the package and describes the exact installed revision. 
 - Consumer import prefix: `AnchorExamples.lspkg/`; reusable controller: `AnchorExamples.lspkg/Scripts/AnchorController`.
 - Prefab entry point: `AnchorExamples__PLACE_IN_SCENE.prefab`. The prefab is self-contained: it carries the guide panel ("Ok, I understood"), the example carousel (minimize) and the `AnchorExample` group with the app, so dropping it into a Specs scene with a Camera and SIK gives the full demo.
 - Demo scaffolding: `AnchorExamples.lspkg/Example/` holds the scripts the prefab uses for the guide and carousel (`ExampleCarousel/`, `GuideDismissPanel/`). They are not part of the anchor API; see [components](Docs/components.md#demo-scaffolding-example).
-- Companion dependencies from `package_dependencies.json`: SpectaclesInteractionKit, SpectaclesUIKit, Motion and Icons.
+- Companion dependencies from `package_dependencies.json`: InteractionKit, UIKit, Motion and Icons.
 - Native API prerequisite: AnchorModule on Specs. Preview has no anchor service.
 
 ### Version and API status
@@ -30,12 +32,6 @@ Read [Docs/api-status.md](Docs/api-status.md) for current wrapper APIs, migratio
 ### Applicability
 
 Use this package for native persistent anchors and named widget areas. Use its controller alone for your own anchored target; use the full prefab for the app. Surface placement without persistence and location-locked sites are separate use cases.
-
-### Related CLAD skills
-
-[specs-author-scripts](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/specs-author-scripts/SKILL.md), [scene-construction](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/scene-construction/SKILL.md). These skills cover the surrounding Lens workflow.
-
-[Install CLAD](https://developers.specs.com/docs/clad/setup/setup-ai/) or browse its [source](https://github.com/lens-studio-devs/ls-extensions). Read the installed package docs for this revision’s APIs.
 
 ### Package Docs (ship in Docs/)
 
@@ -61,7 +57,7 @@ The prefab's `Guide` panel hides the carousel and the app until "Ok, I understoo
 
 ## Support
 
-[Specs Developer Community](https://support.spectacles.com). Maintained by the Specs team.
+[Specs Developer Community](https://developers.specs.com). Maintained by the Specs team.
 
 ## Built with 👽 by the SPECS team <!-- -->
 

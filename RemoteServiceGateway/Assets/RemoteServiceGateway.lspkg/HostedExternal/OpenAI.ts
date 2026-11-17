@@ -13,6 +13,9 @@ import { OpenAITypes } from "./OpenAITypes";
 
 import Event from "../Utils/Event";
 
+const SPEECH_LOAD_ROUNDS = 3;
+const SPEECH_RETRY_SECONDS = 0.5;
+
 const RSM_CHATCOMPLETIONS = requireAsset(
   "./RemoteServiceModules/OpenAi_Completions.remoteServiceModule"
 ) as RemoteServiceModule;
@@ -177,6 +180,19 @@ export class OpenAI {
     );
   }
 
+  private static timerScript: ScriptComponent | null = null;
+  /** Runs `callback` after `seconds`, from a lazily created script (used for load retries). */
+  private static delay(seconds: number, callback: () => void) {
+    if (isNull(OpenAI.timerScript)) {
+      OpenAI.timerScript = global.scene
+        .createSceneObject("OpenAI")
+        .createComponent("ScriptComponent");
+    }
+    const event = OpenAI.timerScript.createEvent("DelayedCallbackEvent");
+    event.bind(() => callback());
+    event.reset(seconds);
+  }
+
   /**
    * Performs a speech synthesis request to the OpenAI API.
    * @param speechRequest The request object containing the speech synthesis parameters.
@@ -198,16 +214,31 @@ export class OpenAI {
 
       RSM_SPEECH.performApiRequest(submitApiRequest, function (resp) {
         if (resp.statusCode == 1) {
-          const resource = resp.asResource();
-          RMM.loadResourceAsAudioTrackAsset(
-            resource,
-            (aud) => {
-              resolve(aud);
-            },
-            (error) => {
-              reject(error);
+          // On Specs the response resource can come back empty on the first load, so try
+          // asResource() and every uriResources entry, a few rounds 0.5 s apart.
+          const candidates = (): DynamicResource[] =>
+            [resp.asResource()].concat(resp.uriResources || []);
+          let lastError = "RemoteMediaModule: resource is empty";
+          const attempt = (round: number, index: number) => {
+            const list = candidates();
+            if (index >= list.length) {
+              if (round + 1 >= SPEECH_LOAD_ROUNDS) {
+                reject(lastError);
+                return;
+              }
+              OpenAI.delay(SPEECH_RETRY_SECONDS, () => attempt(round + 1, 0));
+              return;
             }
-          );
+            RMM.loadResourceAsAudioTrackAsset(
+              list[index],
+              (aud) => resolve(aud),
+              (error) => {
+                lastError = error;
+                attempt(round, index + 1);
+              }
+            );
+          };
+          attempt(0, 0);
         } else {
           reject(resp.body);
         }

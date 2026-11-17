@@ -8,9 +8,9 @@
 // crash in the package (Visual.ts imports ThemeService before defining COLORS, and the
 // theme chain reads COLORS at module-load). Loading ThemeService first lets Visual.ts
 // finish initializing COLORS before the visual chain reads it.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService";
-import {RectangleButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton"
-import {Switch} from "SpectaclesUIKit.lspkg/Scripts/Components/Switch/Switch"
+import "UIKit.lspkg/Scripts/Themes/ThemeService";
+import {RectangleButton} from "UIKit.lspkg/Scripts/Components/Button/RectangleButton"
+import {Switch} from "UIKit.lspkg/Scripts/Components/Switch/Switch"
 import {CameraService} from "../../CompositeCameraWork/Scripts/CameraService"
 import {AudioCaptureUtility, SessionUtility, SupabaseAuthUtility, VideoCaptureUtility} from "./CaptureUtilities"
 import {SnapCloudRequirements} from "../../SnapCloudRequirements"

@@ -13,14 +13,14 @@ revision supports and what changed.
 |---|---|
 | `Logger` (instance) | Plain `time \| tag \| LEVEL \| message` lines. |
 | `ValidationUtils`, `SceneObjectUtils`, `ComponentUtils`, `MathUtils` + `GeoCoordinate`, `MeshUtils`, `ScreenTransformUtils`, `TypeConversionUtils` (static) | Signatures in [components](components.md). |
-| `AnimationUtils` (static) | Runs on SpectaclesInteractionKit's `animate()`; returns SIK cancel functions / `CancelSet`s. |
+| `AnimationUtils` (static) | Runs on InteractionKit's `animate()`; returns SIK cancel functions / `CancelSet`s. |
 
 ## Changed in this revision
 
 | Surface | Before | Now |
 |---|---|---|
 | `AnimationUtils.makeTween` | Used an undeclared global `script` → `TypeError: Cannot read property 'createEvent' of undefined` on the first call from any TypeScript component. | Same signature and callbacks (per-frame `t`, final `callback(1)`, returned cancel function), driven by SIK `animate()`. |
-| `AnimationUtils.animateScale`, `animateVisualFeedback` | Called undeclared globals `animate` / `CancelSet`. | Import them from `SpectaclesInteractionKit.lspkg/Utils/animate`; the returned `CancelSet` has `.cancel()`. |
+| `AnimationUtils.animateScale`, `animateVisualFeedback` | Called undeclared globals `animate` / `CancelSet`. | Import them from `InteractionKit.lspkg/Utils/animate`; the returned `CancelSet` has `.cancel()`. |
 | `MeshUtils.makeLineStrip2DMeshWithJoints` | Joint circles were indexed 2 vertices short per point: wrong triangles, square corners, broken end caps from the 2nd point on. | Every joint and end is a round cap. |
 
 ## Deprecated

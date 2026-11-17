@@ -5,8 +5,8 @@
 ## Use when
 
 A layout spawns nothing, too much, in the wrong place or at the wrong size.
-Generic prefab, scene and rendering issues belong to the relevant CLAD skill
-(`lens-debug`, `lens-api`).
+Generic prefab, scene and rendering issues are outside this package's
+scope.
 
 ## Known issues
 

@@ -2,19 +2,16 @@
 // crash in the package (Visual.ts imports ThemeService before defining COLORS, and the
 // theme chain reads COLORS at module-load). Entering the import cycle via ThemeService
 // lets Visual.ts finish defining COLORS first. Must remain the FIRST import.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService"
-import {Button} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/Button"
-import {ElementContent} from "SpectaclesUIKit.lspkg/Scripts/Components/Content/ElementContent"
-import {IMAGE_MATERIAL_ASSET} from "SpectaclesUIKit.lspkg/Scripts/Utility/Assets"
-import {Frame} from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame"
-import {FlexItem} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexItem"
-import {FlexLayout} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexLayout"
-import {FlexAlign, FlexDirection, FlexJustify} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexTypes"
-import {ScrollWindow} from "SpectaclesUIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow"
+import "UIKit.lspkg/Scripts/Themes/ThemeService"
+import {Button} from "UIKit.lspkg/Scripts/Components/Button/Button"
+import {ElementContent} from "UIKit.lspkg/Scripts/Components/Content/ElementContent"
+import {IMAGE_MATERIAL_ASSET} from "UIKit.lspkg/Scripts/Utility/Assets"
+import {Frame} from "UIKit.lspkg/Scripts/Components/Frame/Frame"
+import {FlexItem} from "UIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexItem"
+import {FlexLayout} from "UIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexLayout"
+import {FlexAlign, FlexDirection, FlexJustify} from "UIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexTypes"
+import {ScrollWindow} from "UIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow"
 
-// Scenes saved with the System 2.0 style names keep them in their inputs; map them to System 3.0.
-const SYSTEM3_STYLE: {[name: string]: string} = {PrimaryNeutral: "Primary", Primary: "Primary", Special: "Prism"}
-const toSystem3Style = (style: string): string => SYSTEM3_STYLE[style] ?? style
 
 const FONT_LIGHT: Font   = requireAsset("../../Fonts/SpecsSans-Light.otf")   as Font
 const FONT_REGULAR: Font = requireAsset("../../Fonts/SpecsSans-Regular.otf") as Font
@@ -25,9 +22,9 @@ type FontWeight = "light" | "regular" | "medium" | "bold"
 
 const CONTENT_Z_OFFSET           = 0.08
 const CONTENT_RENDER_ORDER_OFFSET = 8
-const LAYOUT_Z_LIFT              = 0.005
+const LAYOUT_Z_LIFT              = 0.02
 const LABEL_EDGE_INSET           = 0.75
-const PANEL_CONTENT_Z_LIFT       = 0.005
+const PANEL_CONTENT_Z_LIFT       = 0.05
 const TITLE_H                    = 3
 const SECTION_H                  = 2
 // Reflow floor — the frame can shrink to its 10 cm minimum, which would drive a
@@ -330,7 +327,7 @@ export class ExampleCarouselLayout extends BaseScriptComponent {
     this.flexChild(outer, {w: CAROUSEL_W, h: CAROUSEL_H}, (slot) => {
       this.carouselSlots.push(slot.getComponent(FlexItem.getTypeName()) as FlexItem)
       const sc = this.obj(slot, "ScrollContainer")
-      const built = this.buildCarousel(sc, this.row1Items, toSystem3Style(this.row1CardStyle), this.row1CardShape, CAROUSEL_W, CAROUSEL_H, cardW, cardH)
+      const built = this.buildCarousel(sc, this.row1Items, this.row1CardStyle, this.row1CardShape, CAROUSEL_W, CAROUSEL_H, cardW, cardH)
       if (built) this.carouselStrips.push(built)
     })
 
@@ -346,7 +343,7 @@ export class ExampleCarouselLayout extends BaseScriptComponent {
     this.flexChild(outer, {w: CAROUSEL_W, h: CAROUSEL_H}, (slot) => {
       this.carouselSlots.push(slot.getComponent(FlexItem.getTypeName()) as FlexItem)
       const sc = this.obj(slot, "ScrollContainer")
-      const built = this.buildCarousel(sc, this.row2Items, toSystem3Style(this.row2CardStyle), this.row2CardShape, CAROUSEL_W, CAROUSEL_H, cardW, cardH)
+      const built = this.buildCarousel(sc, this.row2Items, this.row2CardStyle, this.row2CardShape, CAROUSEL_W, CAROUSEL_H, cardW, cardH)
       if (built) this.carouselStrips.push(built)
     })
 
@@ -431,7 +428,7 @@ export class ExampleCarouselLayout extends BaseScriptComponent {
       this.flexChild(row, {w: cardW, h: cardH}, (cardObj) => {
         const btn = this.btn(cardObj, cardStyle, cardShape, cardW, cardH)
         if (tex) {
-          this.buildImageCard(cardObj, label, tex, cardW, cardH)
+          this.buildImageCard(cardObj, label, tex, cardW, cardH, btn)
         } else {
           this.content(cardObj, {
             text: label, textSize: this.cardTextSize,
@@ -446,14 +443,18 @@ export class ExampleCarouselLayout extends BaseScriptComponent {
   }
 
   private buildImageCard(
-    cardObj: SceneObject, label: string, tex: Texture, cardW: number, cardH: number
+    cardObj: SceneObject, label: string, tex: Texture, cardW: number, cardH: number, button: Button
   ): void {
     const lblH    = 2.2
     const gap     = 0.4
     const imgSize = Math.min(this.cardImageSize, cardH - lblH - gap - 0.6)
 
     const inner = this.obj(cardObj, "CardContent")
-    this.liftInZ(inner, CONTENT_Z_OFFSET)
+    // In front of the button's face (its contentZOffset: half its depth plus the bevel), like UIKit's
+    // own ElementContent; at CONTENT_Z_OFFSET alone the image and label sat inside the 1 cm button
+    // and the card looked hollow / see-through from an angle.
+    const face = (button as any).contentZOffset ?? 0.5
+    this.liftInZ(inner, face + CONTENT_Z_OFFSET)
 
     const flex = inner.createComponent(FlexLayout.getTypeName()) as FlexLayout
     // Items are added manually via addItems() before init; disable

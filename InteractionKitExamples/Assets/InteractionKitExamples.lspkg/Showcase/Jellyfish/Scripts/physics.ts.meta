@@ -1,0 +1,177 @@
+- !<AssetImportMetadata/6472a8ec-7a93-b2a3-f084-6460da4c0c0d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> cb4530d0-31b8-4816-a2b8-b9fb6573e4f5
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> cb4530d0-31b8-4816-a2b8-b9fb6573e4f5
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 2aeab695-964d-4b76-8f07-2fdba793ba01
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/2aeab695-964d-4b76-8f07-2fdba793ba01>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 5efa97fb-b2a2-40f6-8473-5b8819e5003d
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    Colliders: false
+    colliderRadiusScale: false
+    dampingCoef: false
+    disableSetPosition: false
+    disableSetRotation: false
+    enableColliders: false
+    enableWind: false
+    forceFadeCoef: false
+    gravityScale: false
+    gravityVec: false
+    lerpPositionsCoef: false
+    lockX: false
+    lockY: false
+    lockZ: false
+    mainObject: false
+    maxSpeed: false
+    physicsStep: false
+    presetType: false
+    presets: false
+    randomDamping: false
+    randomFade: false
+    randomLength: false
+    randomRangeDamping: false
+    randomRangeFade: false
+    randomRangeLength: false
+    randomRangeStep: false
+    randomRangeTension: false
+    randomStep: false
+    randomTension: false
+    scaleLength: false
+    tension: false
+    updateInterval: false
+    useDirectRotation: false
+    windDirection: false
+    windFrequency: false
+    windStrength: false
+    windTurbulence: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - mainObject: !<reference.SceneObject[]>
+        []
+      gravityVec: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
+      scaleLength: !<float> 1.000000
+      randomLength: false
+      randomRangeLength: !<float> 0.000000
+      presets: false
+      presetType: 4
+      dampingCoef: !<float> 1.000000
+      randomDamping: false
+      randomRangeDamping: !<float> 0.000000
+      physicsStep: !<float> 1.000000
+      randomStep: false
+      randomRangeStep: !<float> 0.000000
+      forceFadeCoef: 0.900000
+      randomFade: false
+      randomRangeFade: !<float> 0.000000
+      tension: !<float> 1.000000
+      randomTension: false
+      randomRangeTension: !<float> 0.000000
+      lerpPositionsCoef: 0.600000
+      lockX: !<float> 0.000000
+      lockY: !<float> 0.000000
+      lockZ: !<float> 0.000000
+      disableSetPosition: false
+      disableSetRotation: false
+      Colliders: !<reference.SceneObject[]>
+        []
+      colliderRadiusScale: 6.500000
+      enableColliders: false
+      gravityScale: !<float> 1.000000
+      maxSpeed: !<float> 0.000000
+      enableWind: false
+      windDirection: !<Vec3> {x: 0.100000, y: 0.000000, z: 0.100000}
+      windStrength: 6.150000
+      windTurbulence: 0.673000
+      windFrequency: 3.260000
+      updateInterval: 1
+      useDirectRotation: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - "// @input SceneObject[] mainObject"
+    - '// @ui {"widget":"separator"}'
+    - // @input vec3 gravityVec
+    - // @input float scaleLength = 1
+    - // @input bool randomLength
+    - '// @input float randomRangeLength {"widget":"slider", "min":0, "max":5, "step":0.001, "showIf":"randomLength"}'
+    - '// @ui {"widget":"separator"}'
+    - // @input bool presets
+    - '// @input int presetType = 1 {"widget":"combobox", "values":[{"label":"one", "value":1}, {"label":"two", "value":2}, {"label":"three", "value":3}, {"label":"four", "value":4}], "showIf":"presets"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Force_controll"}'
+    - '// @input float dampingCoef = 1 {"widget":"slider", "min":0, "max":10, "step":0.001}'
+    - // @input bool randomDamping
+    - '// @input float randomRangeDamping {"widget":"slider", "min":0, "max":2, "step":0.001, "showIf":"randomDamping"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input float physicsStep = 1 {"widget":"slider", "min":0, "max":2, "step":0.001}'
+    - // @input bool randomStep
+    - '// @input float randomRangeStep {"widget":"slider", "min":0, "max":2, "step":0.001, "showIf":"randomStep"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input float forceFadeCoef = 0.9 {"widget":"slider", "min":0, "max":1, "step":0.001}'
+    - // @input bool randomFade
+    - '// @input float randomRangeFade {"widget":"slider", "min":0, "max":1, "step":0.001, "showIf":"randomFade"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input float tension = 1 {"widget":"slider", "min":0, "max":1, "step":0.001}'
+    - // @input bool randomTension
+    - '// @input float randomRangeTension {"widget":"slider", "min":0, "max":1, "step":0.001, "showIf":"randomTension"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Lock_controll"}'
+    - '// @input float lerpPositionsCoef = 0.7 {"widget":"slider", "min":0, "max":1, "step":0.001}'
+    - '// @input float lockX {"widget":"slider", "min":0, "max":1, "step":0.001}'
+    - '// @input float lockY {"widget":"slider", "min":0, "max":1, "step":0.001}'
+    - '// @input float lockZ {"widget":"slider", "min":0, "max":1, "step":0.001}'
+    - // @input bool disableSetPosition
+    - // @input bool disableSetRotation
+    - '// @ui {"widget":"group_end"}'
+    - "// @input SceneObject[] Colliders"
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Advanced"}'
+    - "// @input float colliderRadiusScale = 6.5 {\"hint\":\"Multiplier applied to a collider's world X scale to get its radius (original hard-coded value was 6.5).\", \"widget\":\"slider\", \"min\":0, \"max\":20, \"step\":0.01}"
+    - '// @input bool enableColliders = true {"hint":"Turn collider response on/off without clearing the Colliders list."}'
+    - '// @input float gravityScale = 1 {"hint":"Scales the gravity vector (1 = unchanged).", "widget":"slider", "min":0, "max":5, "step":0.001}'
+    - '// @input float maxSpeed {"hint":"Clamp per-step velocity for stability. 0 = unlimited (original behaviour).", "widget":"slider", "min":0, "max":100, "step":0.01}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Wind"}'
+    - // @input bool enableWind
+    - '// @input vec3 windDirection {"showIf":"enableWind"}'
+    - '// @input float windStrength {"widget":"slider", "min":0, "max":50, "step":0.01, "showIf":"enableWind"}'
+    - '// @input float windTurbulence {"hint":"0 = steady wind. Higher values add sinusoidal gusts over time.", "widget":"slider", "min":0, "max":5, "step":0.001, "showIf":"enableWind"}'
+    - '// @input float windFrequency = 3 {"widget":"slider", "min":0.1, "max":10, "step":0.01, "showIf":"enableWind"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Performance"}'
+    - '// @input int updateInterval = 1 {"hint":"Run the simulation every N frames (1 = every frame). Higher = cheaper but choppier.", "widget":"slider", "min":1, "max":10, "step":1}'
+    - '// @input bool useDirectRotation {"hint":"Use direct quaternion rotation instead of the euler round-trip. Faster; may slightly change the look."}'
+    - '// @ui {"widget":"group_end"}'

@@ -14,7 +14,7 @@ The historical README-ref/banner.png was not included in this source revision; t
 
 # Animation Player Tween Examples
 
-[![SnapDecorators](https://img.shields.io/badge/SnapDecorators-Light%20Gray?color=D3D3D3)](#) [![SpectaclesUIKit](https://img.shields.io/badge/SpectaclesUIKit-Light%20Gray?color=D3D3D3)](#) [![TypeScript](https://img.shields.io/badge/TypeScript-Light%20Gray?color=D3D3D3)](#)
+[![SnapDecorators](https://img.shields.io/badge/SnapDecorators-Light%20Gray?color=D3D3D3)](#) [![UIKit](https://img.shields.io/badge/UIKit-Light%20Gray?color=D3D3D3)](#) [![TypeScript](https://img.shields.io/badge/TypeScript-Light%20Gray?color=D3D3D3)](#)
 
 A collection of focused TypeScript examples demonstrating how to drive `AnimationPlayer` at runtime on SPECS — runtime-built tween curves, keyframed motion, callback-driven material animation, finish events, custom timestamp events, and pre-authored AnimationAsset playback.
 
@@ -51,7 +51,7 @@ Clone the repository and open `AnimationExamples.esproj` in Lens Studio.
 2. The manager's `animationPrefabs` array is already wired to the eight prefabs in `AnimationExamples.lspkg/Prefabs/`; reassign it only for a custom list.
 3. Press Preview and press "Ok, I understood" on the guide. The manager spawns:
    - An `Animations` container with the eight prefab instances (one enabled).
-   - A `UI` container with two SpectaclesUIKit arrow buttons, a title `AnimationName`, and a `Pivot`-wrapped `AnimationDescription`. In the shipped prefab `AnimationExamplesCarouselSource` hides this `UI`.
+   - A `UI` container with two UIKit arrow buttons, a title `AnimationName`, and a `Pivot`-wrapped `AnimationDescription`. In the shipped prefab `AnimationExamplesCarouselSource` hides this `UI`.
 4. Use the carousel's Previous / Next buttons to cycle through the examples. Without the carousel, the manager's left/right arrows do the same; their labels come from the matching entry in the manager's `ENTRIES` array.
 5. Tap an example's TAP button to replay its configured clip.
 6. Toggle `enableLogging` on the manager (and on each example script) to see per-step and per-cycle logs.
@@ -89,8 +89,8 @@ Drop an `AnimationPlayer` component on a SceneObject in the Inspector, then play
 - **CustomTimestampEventExample.ts** — firing events mid-clip.
 - **FromAnimationAssetExample.ts** — playing pre-authored `.animationAsset` files.
 - **ExistingPlayerExample.ts** — playing the first clip (`player.clips[0]`) of an Inspector-placed `AnimationPlayer`.
-- **AnimationExamplesManager.ts** — single place-in-scene manager. Takes one `animationPrefabs: ObjectPrefab[]` input (eight prefabs in the shipped prefab) and, in code, spawns an `Animations` container plus a `UI` container with two SpectaclesUIKit arrow buttons, a title label, and a `Pivot`-wrapped description label. Exposes `next() / previous() / setActive(index)` so a custom UI can drive it without modification. Layout values + entry titles live in the `LAYOUT` object and the `ENTRIES` array at the top of the file.
-- **Helpers/AnimationHelpers.ts** — `playFirstClip()`, `flatCurve()`, and `buildFrameUI()` shared utilities. `buildFrameUI` spawns the SpectaclesUIKit Frame contents (Text label + Button with its own Text) at runtime, so each example prefab is just `Frame + AnimationPlayer + ExampleScript` in the editor.
+- **AnimationExamplesManager.ts** — single place-in-scene manager. Takes one `animationPrefabs: ObjectPrefab[]` input (eight prefabs in the shipped prefab) and, in code, spawns an `Animations` container plus a `UI` container with two UIKit arrow buttons, a title label, and a `Pivot`-wrapped description label. Exposes `next() / previous() / setActive(index)` so a custom UI can drive it without modification. Layout values + entry titles live in the `LAYOUT` object and the `ENTRIES` array at the top of the file.
+- **Helpers/AnimationHelpers.ts** — `playFirstClip()`, `flatCurve()`, and `buildFrameUI()` shared utilities. `buildFrameUI` spawns the UIKit Frame contents (Text label + Button with its own Text) at runtime, so each example prefab is just `Frame + AnimationPlayer + ExampleScript` in the editor.
 
 ## Component Configuration
 

@@ -8,7 +8,7 @@ Check what belongs to the installed revision before selecting an asset or interp
 
 ## Revision evidence
 
-`package.native` carries the package version and retains its README reference. `package_dependencies.json` declares SpectaclesInteractionKit, SpectaclesUIKit, Motion, and Icons. No Utilities or SnapDecorators dependency is declared here.
+`package.native` carries the package version and retains its README reference. `package_dependencies.json` declares InteractionKit, UIKit, Motion, and Icons. No Utilities or SnapDecorators dependency is declared here.
 
 Body tracking is provided through native assets/components serialized in the prefab, not a custom package TypeScript manager. Native methods used in the [examples](examples.md) are Lens runtime APIs, verified against the declarations generated for the open project; they are not new BodyMesh exports.
 

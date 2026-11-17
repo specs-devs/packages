@@ -6,8 +6,8 @@
  * Move the card (pinch + drag) and every BezierLine attached to its anchors follows, because the
  * lines track the anchors' transforms.
  */
-import {Interactable} from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
-import {InteractableManipulation} from "SpectaclesInteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation"
+import {Interactable} from "InteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
+import {InteractableManipulation} from "InteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation"
 import {ANCHOR_SIDES, AnchorSide, BezierAnchor} from "./BezierAnchor"
 
 export interface BezierCardOptions {

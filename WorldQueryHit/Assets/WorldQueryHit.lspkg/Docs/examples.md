@@ -6,7 +6,7 @@
 
 Place the installed prefab or use the classification API.
 
-Drag `WorldQueryHit__PLACE_IN_SCENE.prefab` from the package root. It brings its own guide and example carousel, and its `World Query Hit` group uses the TS NewScript component, a target preview and four source objects. Wire the camera/SIK/tracking environment according to the CLAD skills. Preserve valid source parents. Do not assume a preview with no environment data can prove surface acquisition.
+Drag `WorldQueryHit__PLACE_IN_SCENE.prefab` from the package root. It brings its own guide and example carousel, and its `World Query Hit` group uses the TS NewScript component, a target preview and four source objects. Wire the camera/SIK/tracking environment according to the Lens Studio documentation. Preserve valid source parents. Do not assume a preview with no environment data can prove surface acquisition.
 
 ## Observe classification changes
 

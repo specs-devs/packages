@@ -1,0 +1,53 @@
+- !<AssetImportMetadata/8a2682b7-35f3-4c07-a115-79419c0a5786>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> a0589ed5-b4b1-42ba-a86a-a05888eb4c92
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> a0589ed5-b4b1-42ba-a86a-a05888eb4c92
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 10fc71fa-ecca-4aca-bf54-09c652d4da69
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/10fc71fa-ecca-4aca-bf54-09c652d4da69>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: ba8dfc17-9a60-4be6-89fc-b0cbe9e432df
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    capMaterial: false
+    glowMaterial: false
+    theme: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - capMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      glowMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      theme: !<float> 1.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Asset.Material capMaterial
+    - // @input Asset.Material glowMaterial
+    - '// @input float theme = 1 {"widget":"combobox", "values":[{"label":"Specs Glass", "value":0}, {"label":"Neon", "value":1}, {"label":"Candy", "value":2}, {"label":"Metal", "value":3}]}'

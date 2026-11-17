@@ -31,8 +31,8 @@ All distances are world centimeters. The center's scale doesn't shrink a
 layout. A layout about 40–60 cm across at 1–1.5 m stays inside the display's
 field of view. The QA pass had to move the larger demo layouts back to 1–2 m
 (and shrink the 2D grid and circle radius) so they were fully visible. For
-where to place content relative to the user, follow the CLAD spatial-design
-guidance.
+where to place content relative to the user, follow the Specs
+spatial design guidelines.
 
 ## Orientation
 

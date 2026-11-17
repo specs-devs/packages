@@ -17,7 +17,7 @@ import {WidgetController} from "../Widgets/WidgetController"
 import {WidgetType} from "../Widgets/WidgetTypes"
 import {SnapToSurface} from "../Widgets/Actions/SnapToSurface"
 import {AreaInfo} from "../UI/Components/AreaGridBuilder"
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
 import {MAX_AREAS, CAMERA_GAZE_OFFSET, CAPTURE_ANCHOR_FORWARD_DISTANCE, LOCALIZATION_TIMEOUT_MS} from "../Shared/Constants"
 
 @component
@@ -38,7 +38,7 @@ export class AppController extends BaseScriptComponent {
 
   @input
   @allowUndefined
-  @hint("World camera reference. Optional: falls back to the SIK world camera when unset (drop-in prefab).")
+  @hint("World camera reference. Optional: falls back to the IK world camera when unset (drop-in prefab).")
   camera: Camera
 
   @input
@@ -347,7 +347,7 @@ export class AppController extends BaseScriptComponent {
     return null
   }
 
-  /** Camera transform: the wired `camera` input if present, else the SIK world camera (prefab drop-in). */
+  /** Camera transform: the wired `camera` input if present, else the IK world camera (prefab drop-in). */
   private getCameraTransform(): Transform {
     if (this.camera) {
       return this.camera.getSceneObject().getTransform()

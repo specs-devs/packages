@@ -24,7 +24,7 @@ comes as a TypeScript/JavaScript pair and prints what it finds.
 This section ships with the package and describes the exact installed revision.
 Read it, then follow the links into `Docs/` for the topic you need. It is
 written for both people and coding agents; generic Lens scripting, scene
-construction, and Specs spatial design live in the CLAD skills, not here.
+construction, and Specs spatial design are out of scope here.
 
 ### Package identity
 
@@ -46,7 +46,7 @@ construction, and Specs spatial design live in the CLAD skills, not here.
   part of the examples; see [components](Docs/components.md#demo-scaffolding-example).
 - Required companion packages (`package_dependencies.json`): `Utilities`
   and `SnapDecorators` (imported by the TS scripts), plus
-  `SpectaclesInteractionKit`, `SpectaclesUIKit`, `Motion` and `Icons` (used by
+  `InteractionKit`, `UIKit`, `Motion` and `Icons` (used by
   the demo scaffolding). The examples themselves need no SIK prefab.
 
 ### Version and API status
@@ -61,16 +61,7 @@ Use these examples to see a working, wired pattern for script-to-script and
 script-to-component access, or as a starting point to copy. The package adds
 no runtime API: there is nothing to call from your own code except the example
 classes. The general rules for component lookup, `@input`, `requireType` and
-lifecycle belong to the lens-api skill and the engine's `StudioLib.d.ts`.
-
-### Related CLAD skills
-
-- [lens-api](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/lens-api):
-  component lifecycle, `getComponent`, `@input`, scene queries.
-- [lens-debug](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/lens-debug):
-  null-reference and "handler not firing" bugs.
-- No CLAD? Setup: https://developers.specs.com/docs/clad/setup/setup-ai/ ·
-  source: `github.com/lens-studio-devs/ls-extensions`.
+lifecycle are covered by the Lens Studio documentation and the engine's `StudioLib.d.ts`.
 
 ### Package Docs (ship in `Docs/`)
 
@@ -98,7 +89,4 @@ here as supported; never guess an import path.
    prints nothing new.
 
 ## Built with 👽 by the SPECS team <!-- --> <!-- --> <!-- --> <!-- -->
-
-
-
 

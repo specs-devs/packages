@@ -11,7 +11,7 @@ export const CAMERA_GAZE_OFFSET: number = 100
 
 /**
  * Forward offset (camera local -Z) when creating a capture-time anchor, per
- * Spatial Anchors docs / `spatial-anchors.md` skill: `worldTransform.mult(mat4.fromTranslation(new vec3(0, 0, -distance)))`.
+ * Spatial Anchors docs: `worldTransform.mult(mat4.fromTranslation(new vec3(0, 0, -distance)))`.
  * Do not use world-space `back * 60` — on device that often lands tens of units away and stalls mapping.
  */
 export const CAPTURE_ANCHOR_FORWARD_DISTANCE: number = 5

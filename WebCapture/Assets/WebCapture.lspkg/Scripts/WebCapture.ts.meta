@@ -1,0 +1,161 @@
+- !<AssetImportMetadata/94c55ca4-334a-4fc5-ab7b-ecb701e9e690>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 9ddb6ec3-703f-40a8-af76-083b58249be0
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 9ddb6ec3-703f-40a8-af76-083b58249be0
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 1202e676-aa15-4ea7-a8ec-3a10926e2e76
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/1202e676-aa15-4ea7-a8ec-3a10926e2e76>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: ab3cb2bf-7b96-4c80-9195-94d02a6b6c81
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    authMode: false
+    backgroundFps: false
+    backgroundQuality: false
+    backgroundTexture: false
+    camera: false
+    captureBackground: false
+    captureGeometry: false
+    captureOrigin: false
+    captureRoot: false
+    debugLogs: false
+    includeTargets: false
+    keepCameraWarm: false
+    liveRate: false
+    liveSync: false
+    localPortalUrl: false
+    mode: false
+    ndkCameraFps: false
+    ndkCameraQuality: false
+    ndkCameraWidth: false
+    ndkVideo: false
+    positionTolerance: false
+    recordOnStart: false
+    recordRate: false
+    recordReference: false
+    recordSeconds: false
+    recordingName: false
+    rotationTolerance: false
+    showButtonWhenEnabled: false
+    snapCloudRequirements: false
+    startButton: false
+    statusText: false
+    trackedObjects: false
+    useNdkCamera: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - mode: auto
+      localPortalUrl: "ws://127.0.0.1:47791"
+      snapCloudRequirements: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      authMode: snapchat-then-anonymous
+      captureOrigin: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      includeTargets: true
+      trackedObjects: !<reference.SceneObject[]>
+        []
+      captureRoot: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      camera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      liveSync: true
+      liveRate: !<float> 10.000000
+      recordOnStart: true
+      recordSeconds: !<float> 10.000000
+      recordRate: !<float> 30.000000
+      positionTolerance: 0.100000
+      rotationTolerance: 0.001000
+      recordingName: ""
+      captureGeometry: true
+      captureBackground: true
+      backgroundTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      useNdkCamera: true
+      recordReference: true
+      ndkVideo: false
+      keepCameraWarm: true
+      ndkCameraWidth: !<float> 1280.000000
+      ndkCameraFps: !<float> 15.000000
+      ndkCameraQuality: !<float> 80.000000
+      backgroundFps: !<float> 6.000000
+      backgroundQuality: low
+      startButton: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      showButtonWhenEnabled: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      statusText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      debugLogs: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Where the capture goes</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Local: the WebCapture plugin in this Lens Studio (needs Experimental APIs). Snap Cloud: your Supabase project (works on Specs). Auto: local when the plugin answers, else Snap Cloud.</span>"}'
+    - '// @input string mode = "auto" {"widget":"combobox", "values":[{"label":"Auto (local, else Snap Cloud)", "value":"auto"}, {"label":"Local portal (Lens Studio plugin)", "value":"local"}, {"label":"Snap Cloud", "value":"snapcloud"}, {"label":"Local and Snap Cloud", "value":"both"}, {"label":"Offline (keep in memory)", "value":"offline"}]}'
+    - '// @input string localPortalUrl = "ws://127.0.0.1:47791" {"hint":"WebSocket of the WebCapture Lens Studio plugin"}'
+    - '// @input AssignableType_1 snapCloudRequirements {"hint":"SnapCloudRequirements holding the SupabaseProject asset. Only needed for Snap Cloud"}'
+    - '// @input string authMode = "snapchat-then-anonymous" {"hint":"How the Lens signs in to Snap Cloud", "widget":"combobox", "values":[{"label":"Snapchat, then anonymous", "value":"snapchat-then-anonymous"}, {"label":"Snapchat only", "value":"snapchat"}, {"label":"Anonymous only", "value":"anonymous"}]}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">What to capture</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Poses are relative to the Capture Origin, in cm. Objects come from WebCaptureTarget components, Tracked Objects and the descendants of Capture Root.</span>"}'
+    - '// @input SceneObject captureOrigin {"hint":"Reference frame for every pose (e.g. your stage root). Empty = this SceneObject"}'
+    - '// @input bool includeTargets = true {"hint":"Capture every SceneObject that has a WebCaptureTarget component"}'
+    - '// @input SceneObject[] trackedObjects = {} {"hint":"Extra SceneObjects to capture (shape guessed from their mesh or Text)"}'
+    - '// @input SceneObject captureRoot {"hint":"Also capture every descendant of this object that has a mesh or a Text (optional)"}'
+    - "// @input Component.Camera camera {\"hint\":\"Camera to record (the viewer's head on Specs). Empty = the first Camera in the scene\"}"
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Step 1 · Live scene sync</span>"}'
+    - '// @input bool liveSync = true {"hint":"Send the scene to the portal while the Lens runs"}'
+    - '// @input float liveRate = 10 {"hint":"Live updates per second (only sent when something changed)", "widget":"slider", "min":1, "max":30, "step":1}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Step 2 · Record</span>"}'
+    - '// @input bool recordOnStart {"hint":"Start recording as soon as the Lens starts. Off: press the Start Button (or Record in the portal)"}'
+    - "// @input float recordSeconds = 30 {\"hint\":\"Stop and save after this many seconds (max 90). The panel's length button sets 30, 60 or 90. 0 = 90, or until Stop\"}"
+    - '// @input float recordRate = 30 {"hint":"Samples per second while recording", "widget":"slider", "min":5, "max":60, "step":1}'
+    - '// @input float positionTolerance = 0.1 {"hint":"Movement (cm) below which no keyframe is stored"}'
+    - '// @input float rotationTolerance = 0.001 {"hint":"Rotation change (quaternion component) below which no keyframe is stored"}'
+    - '// @input string recordingName {"hint":"Recording name. Empty = Lens name + date"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Look · what the portal rebuilds</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Geometry and textures are captured once per recording. The background is a texture recorded as small JPEG frames: the Preview background in Lens Studio, the camera on Specs.</span>"}'
+    - '// @input bool captureGeometry = true {"hint":"Capture real mesh geometry, base colour textures and culling instead of boxes"}'
+    - '// @input bool captureBackground = true {"hint":"Record a background texture track"}'
+    - '// @input Asset.Texture backgroundTexture {"hint":"Texture to record as the background (Device Camera Texture, or the camera / Preview background texture)"}'
+    - "// @input bool useNdkCamera = true {\"hint\":\"On Specs, record the real camera through the NDK (NDKCapture module) at the camera's own resolution and aspect ratio. In Lens Studio the texture above is used\"}"
+    - "// @input bool recordReference {\"hint\":\"Debug: with the NDK camera video, also record the system's AR layer rendered from the camera's viewpoint (same clock) as a ground truth for checking the alignment. Needs a recent SPECS OS build; adds a few MB\"}"
+    - "// @input bool ndkVideo {\"hint\":\"Experimental: record the camera as hardware-encoded H.265 video through the NDK (smooth, small) instead of JPEG frames. The portal can't play it yet; use it to check the data with ffmpeg\"}"
+    - "// @input bool keepCameraWarm = true {\"hint\":\"Start the NDK camera when the Lens opens and keep it running, so pressing Start Capture doesn't wait for the camera to open (uses a little more power while the Lens is open)\"}"
+    - "// @input float ndkCameraWidth = 640 {\"hint\":\"NDK camera frame width in pixels (height follows the camera's aspect ratio)\"}"
+    - '// @input float ndkCameraFps = 12 {"hint":"NDK camera frames per second. Higher is smoother and bigger: ~35 KB a frame at 640 px. A 30 s capture is ~13 MB at 12 fps", "widget":"slider", "min":5, "max":30, "step":1}'
+    - '// @input float ndkCameraQuality = 60 {"hint":"NDK camera JPEG quality", "widget":"slider", "min":30, "max":100, "step":5}'
+    - '// @input float backgroundFps = 6 {"hint":"Background frames per second (each frame is a JPEG: more frames, bigger recording)", "widget":"slider", "min":1, "max":15, "step":1}'
+    - '// @input string backgroundQuality = "high" {"hint":"Background JPEG quality", "widget":"combobox", "values":[{"label":"Low", "value":"low"}, {"label":"Medium", "value":"medium"}, {"label":"High", "value":"high"}]}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Start / stop button</span>"}'
+    - '// @input SceneObject startButton {"hint":"Optional button object. Pinch it (Specs, needs an Interactable on it) or tap it (Lens Studio) to start capturing; again to stop and save"}'
+    - '// @input SceneObject showButtonWhenEnabled {"hint":"Optional: keep the Start Button hidden until this object is enabled (e.g. the demo stage a guide panel reveals)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Status</span>"}'
+    - '// @input Component.Text statusText {"hint":"Text that shows the connection and recording status (optional)"}'
+    - '// @input bool debugLogs {"hint":"Print details to the Logger"}'

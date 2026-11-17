@@ -24,6 +24,7 @@
   VersionPatch: 0
   VersionPrerelease: ""
   UpdateOrder: 0
+  RunInEditor: false
   ComponentUid: 795d7a04-cf4a-40cf-b92d-b3b401588a82
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
@@ -64,7 +65,7 @@
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Scene References</span>"}'
     - '// @input SceneObject rootContainer {"hint":"Parent SceneObject for all programmatic UI"}'
     - '// @input SceneObject widgetParent {"hint":"Parent SceneObject for spawned widgets. Tracked by a native AnchorComponent once an area anchor exists"}'
-    - '// @input Component.Camera camera {"hint":"World camera reference. Optional: falls back to the SIK world camera when unset (drop-in prefab)."}'
+    - '// @input Component.Camera camera {"hint":"World camera reference. Optional: falls back to the IK world camera when unset (drop-in prefab)."}'
     - '// @input Asset.WorldQueryModule worldQueryModule {"hint":"WorldQueryModule for surface snapping"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Widget Prefabs</span>"}'

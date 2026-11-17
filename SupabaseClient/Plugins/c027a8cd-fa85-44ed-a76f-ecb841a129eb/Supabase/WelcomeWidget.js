@@ -1,7 +1,7 @@
 import * as Ui from "LensStudio:Ui";
 
 // Shown on non-SPECS projects (Snap Cloud is SPECS-only). Shared with the dashboard's disabled state.
-export const SPECS_ONLY_MESSAGE = "Snap Cloud is available on SPECS projects only. Switch Target Platform to SPECS to continue.";
+export const GLASSES_ONLY_MESSAGE = "Snap Cloud is available on SPECS projects only. Switch Target Platform to SPECS to continue.";
 
 // Welcome widget shown when user is not logged in
 export class WelcomeWidget {
@@ -37,7 +37,7 @@ export class WelcomeWidget {
     this.loginButton.primary = true;
     this.loginButton.onClick.connect(() => {
       // Backstop: re-check the platform at click time.
-      if (!this.dataService.isSpecsPlatform()) {
+      if (!this.dataService.isGlassesProject()) {
         this.updateUI(false);
         return;
       }
@@ -69,7 +69,7 @@ export class WelcomeWidget {
     this.layout.setWidgetAlignment(this.loginButton, Ui.Alignment.AlignCenter);
 
     // Auto-login on SPECS if already authorized; otherwise render the initial state.
-    if (this.dataService.isSpecsPlatform() && this.dataService.getAgreeToTerms() === true && this.dataService.getIdToken() !== "") {
+    if (this.dataService.isGlassesProject() && this.dataService.getAgreeToTerms() === true && this.dataService.getIdToken() !== "") {
       this.updateUI(true);
       this.dataService.requestSupabaseAuthorization();
     } else {
@@ -110,9 +110,9 @@ export class WelcomeWidget {
 
   updateUI(ready, message="") {
     // SPECS-only: disable Login and explain on non-SPECS projects.
-    if (!this.dataService.isSpecsPlatform()) {
+    if (!this.dataService.isGlassesProject()) {
       this.loginButton.enabled = false;
-      this.statusLabel.text = SPECS_ONLY_MESSAGE;
+      this.statusLabel.text = GLASSES_ONLY_MESSAGE;
       return;
     }
     if (ready) {

@@ -1,12 +1,12 @@
-import {RectangleButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton"
-import {Frame} from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame"
+import {RectangleButton} from "UIKit.lspkg/Scripts/Components/Button/RectangleButton"
+import {Frame} from "UIKit.lspkg/Scripts/Components/Frame/Frame"
 
 const FRAME_PADDING = 2
 const BUTTON_WIDTH = 16
 const BUTTON_HEIGHT = 4
 const BUTTON_GAP = 1.5
 const CONTENT_Z = 0.5
-const LABEL_Z = 0.3
+const LABEL_Z = 0.65 // button labels sit in front of the 1 cm deep button face (+0.5 cm), never inside it
 const LABEL_SIZE = 44
 const CONTENT_RENDER_ORDER = 10
 

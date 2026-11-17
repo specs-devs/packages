@@ -2,7 +2,7 @@ import {AgentInspectScript} from "AiPreviewAgentInspect.lspkg/AgentInspectScript
 import {MessagePublisher} from "AiPreviewAgentInspect.lspkg/messaging/MessagePublisher"
 import {Logger} from "Leaf.lspkg/Utils/common/Logger"
 import {BaseMessage} from "Leaf.lspkg/Utils/common/MessagingSystem/MessageTypes/BaseMessage"
-import {SIK} from "SpectaclesInteractionKit.lspkg/SIK"
+import {IK} from "InteractionKit.lspkg/IK"
 import {InteractionCommand, InteractionResponse} from "./AgentMessages"
 import {InteractionHandler} from "./InteractionHandler"
 import {requestHandRig} from "./interactor/TrackedHandWrapper"
@@ -45,7 +45,7 @@ export class AgentInteractScript extends BaseScriptComponent {
 
     // Warm SIK 3's lazy hand-rig load at boot so it overlaps idle time (see requestHandRig).
     for (const handType of ["left", "right"] as const) {
-      requestHandRig(SIK.HandInputData.getHand(handType))
+      requestHandRig(IK.HandInputData.getHand(handType))
     }
 
     // Walk up the scene-object chain looking for the sibling/ancestor that

@@ -1,0 +1,97 @@
+- !<AssetImportMetadata/b7652322-d10a-429b-aea6-17ef9ab59096>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 1365a36f-f237-47c2-a01b-95fa79ab45fd
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 1365a36f-f237-47c2-a01b-95fa79ab45fd
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> e94757b7-73f3-45bb-ae16-7385471b9c4e
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/e94757b7-73f3-45bb-ae16-7385471b9c4e>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: b54faf4a-e159-42e4-8847-1962f45ce2ff
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    authMode: false
+    autoCreateRoom: false
+    debugLogs: false
+    includeSpectatorEntities: false
+    positionTolerance: false
+    publishRate: false
+    roomCodeFormat: false
+    roomCodeText: false
+    roomJson: false
+    snapCloudRequirements: false
+    stageOrigin: false
+    statusText: false
+    supabaseProject: false
+    trackedObjects: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - snapCloudRequirements: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      supabaseProject: !<reference.SupabaseProject> 00000000-0000-0000-0000-000000000000
+      authMode: snapchat-then-anonymous
+      autoCreateRoom: true
+      stageOrigin: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      includeSpectatorEntities: true
+      trackedObjects: !<reference.SceneObject[]>
+        []
+      roomJson: ""
+      publishRate: !<float> 5.000000
+      positionTolerance: 0.200000
+      roomCodeText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      roomCodeFormat: "Spectator coden{code}"
+      statusText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      debugLogs: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Snap Cloud</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Assign your SupabaseProject asset (Window → Supabase → Import Credentials) on SnapCloudRequirements and run supabase/setup.sql on that project once.</span>"}'
+    - '// @input AssignableType_1 snapCloudRequirements {"hint":"SnapCloudRequirements holding the SupabaseProject asset with your Snap Cloud URL and public key. Never paste keys into scripts"}'
+    - "// @input Asset.SupabaseProject supabaseProject {\"hint\":\"Deprecated: use snapCloudRequirements. Only read when snapCloudRequirements isn't wired\"}"
+    - '// @input string authMode = "snapchat-then-anonymous" {"hint":"How the Lens signs in. The iPhone app always signs in anonymously", "widget":"combobox", "values":[{"label":"Snapchat, then anonymous", "value":"snapchat-then-anonymous"}, {"label":"Snapchat only", "value":"snapchat"}, {"label":"Anonymous only", "value":"anonymous"}]}'
+    - '// @input bool autoCreateRoom = true {"hint":"Create a room as soon as the Lens starts. Off: call createRoom() yourself"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">What to stream</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Poses are sent relative to the Stage Origin, in cm. The phone puts the Stage Origin on the surface the viewer taps.</span>"}'
+    - '// @input SceneObject stageOrigin {"hint":"Reference frame for every pose (e.g. your table or play-area root). Empty = this SceneObject"}'
+    - '// @input bool includeSpectatorEntities = true {"hint":"Also stream every SceneObject that has a SpectatorEntity component"}'
+    - '// @input SceneObject[] trackedObjects = {} {"hint":"Extra SceneObjects to stream without a SpectatorEntity (drawn as boxes on the phone)"}'
+    - '// @input string roomJson {"hint":"Optional room-level JSON sent with every update (max 8 KB). Change it at runtime with setRoomData()"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Publishing</span>"}'
+    - '// @input float publishRate = 5 {"hint":"Maximum updates per second. Updates are only sent when something changed", "widget":"slider", "min":1, "max":15, "step":1}'
+    - '// @input float positionTolerance = 0.2 {"hint":"Position change (cm) below which an object counts as unchanged"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Room code display</span>"}'
+    - '// @input Component.Text roomCodeText {"hint":"Text that shows the room code for the phone (optional)"}'
+    - '// @input string roomCodeFormat = "Spectator code\n{code}" {"hint":"Room code format; {code} is replaced by the 4 digits"}'
+    - '// @input Component.Text statusText {"hint":"Text that shows connection status (optional)"}'
+    - '// @input bool debugLogs {"hint":"Print connection details to the Logger"}'

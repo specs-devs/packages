@@ -33,7 +33,10 @@ or hand-held tools. It only moves a transform; it does not detect gestures or ma
 
 ## Extra info
 - **Requires:** InteractionKit, Utilities and SnapDecorators (imported by the script), plus UIKit, Motion and
-  Icons for the demo. The scene needs the InteractionKit prefab, since hand data comes from `SIK.HandInputData`.- **Get started:** `HandAttacher__PLACE_IN_SCENE.prefab` in a Specs scene with a Camera and the InteractionKit
+  Icons for the demo. The scene needs the InteractionKit prefab, since hand data comes from `SIK.HandInputData`.
+- **Permissions (upcoming):** Hand Attacher reads raw hand-joint data, which a future Specs OS release
+  gates behind a one-time user permission prompt. See the [package README](../README.md#hand-tracking-permission-upcoming).
+- **Get started:** `HandAttacher__PLACE_IN_SCENE.prefab` in a Specs scene with a Camera and the InteractionKit
   prefab. Import the component from `HandAttacher.lspkg/Scripts/HandAttacher`.
 - **More docs:**
   - [cheat-sheet.md](cheat-sheet.md) - load-bearing rules; read first

@@ -1,11 +1,11 @@
 import {SECS_TO_MS} from "Leaf.lspkg/Utils/common/Constants"
 import {nextFrame, sleep} from "Leaf.lspkg/Utils/common/Utils"
-import {Interactable} from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
-import {HandInteractor} from "SpectaclesInteractionKit.lspkg/Core/HandInteractor/HandInteractor"
-import {InteractorInputType} from "SpectaclesInteractionKit.lspkg/Core/Interactor/Interactor"
-import {HandType} from "SpectaclesInteractionKit.lspkg/Providers/HandInputData/HandType"
-import TrackedHand from "SpectaclesInteractionKit.lspkg/Providers/HandInputData/TrackedHand"
-import {SIK} from "SpectaclesInteractionKit.lspkg/SIK"
+import {Interactable} from "InteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
+import {HandInteractor} from "InteractionKit.lspkg/Core/HandInteractor/HandInteractor"
+import {InteractorInputType} from "InteractionKit.lspkg/Core/Interactor/Interactor"
+import {HandType} from "InteractionKit.lspkg/Providers/HandInputData/HandType"
+import TrackedHand from "InteractionKit.lspkg/Providers/HandInputData/TrackedHand"
+import {IK} from "InteractionKit.lspkg/IK"
 import {AiBaseInteractor} from "./BaseInteractor"
 import {Hand} from "./Hand"
 import {TrackedHandWrapper} from "./TrackedHandWrapper"
@@ -18,36 +18,36 @@ const GESTURE_SETTLE_MS = 80
  * Hand puppet for AI preview testing.
  *
  * Controls the visible rig (position, rotation, gesture pose) and drives
- * SIK's `PinchDetector` pipeline at every real pinch boundary. SIK then
+ * IK's `PinchDetector` pipeline at every real pinch boundary. IK then
  * handles targeting, triggers, hover, drag, and manipulation natively — the
  * pinch event stream is identical to device input, so `hand.onPinchDown`,
  * `hand.onPinchUp`, `hand.isPinching()`, and `hand.getPinchStrength()` all
- * report puppet activity through the same code paths SIK uses for real hands.
+ * report puppet activity through the same code paths IK uses for real hands.
  */
 export class AiHandInteractor extends AiBaseInteractor {
   private handWrapper: TrackedHandWrapper
   private trackedHand: TrackedHand
 
   constructor(protected handType: HandType) {
-    const sikHandInteractor = SIK.InteractionManager.getInteractorsByType(
+    const sikHandInteractor = IK.InteractionManager.getInteractorsByType(
       handType === "right" ? InteractorInputType.RightHand : InteractorInputType.LeftHand
     )[0] as HandInteractor
 
     if (!sikHandInteractor) {
-      // SIK's InteractionManager registers interactors during the
+      // IK's InteractionManager registers interactors during the
       // ScriptComponent boot cycle (HandInteractor.onAwake → register).
       // First interactions immediately after a lens reset can land before
       // that cycle completes. Throw a recognizable error here so the
       // caller can retry on the next frame instead of crashing inside
       // BaseInteractor with `Cannot set property 'isActive' of undefined`.
       throw new Error(
-        `SIK ${handType} HandInteractor not yet registered with InteractionManager — retry on next frame.`
+        `IK ${handType} HandInteractor not yet registered with InteractionManager — retry on next frame.`
       )
     }
 
     super(sikHandInteractor)
 
-    this.trackedHand = SIK.HandInputData.getHand(handType)
+    this.trackedHand = IK.HandInputData.getHand(handType)
     if (!this.trackedHand) {
       throw new Error(`Hand of type ${handType} not found`)
     }
@@ -71,7 +71,7 @@ export class AiHandInteractor extends AiBaseInteractor {
   /**
    * Finish the visual pinch before approaching UI, without sending pinch-down.
    * The hand stays in this pose so the measured handRoot-to-tip offset remains
-   * valid during translation. SIK acquires the target before the gesture signal.
+   * valid during translation. IK acquires the target before the gesture signal.
    */
   private async preparePinchOffset(): Promise<vec3> {
     await this.hand.makeGesture("pinch", undefined, GESTURE_SETTLE_MS)
@@ -81,7 +81,7 @@ export class AiHandInteractor extends AiBaseInteractor {
   /**
    * Walk up the parent chain collecting every Interactable above `target`.
    * Empty when the target lives at the scene root or under non-interactable
-   * ancestors (e.g. a classic SIK cube). Non-empty when the target is nested
+   * ancestors (e.g. a classic IK cube). Non-empty when the target is nested
    * under a UIKit container that has its own Interactable, like a ScrollWindow
    * (`Interactable.isScrollable === true`).
    */
@@ -104,16 +104,16 @@ export class AiHandInteractor extends AiBaseInteractor {
    * every collider on the target Interactable. Returns a restore closure that
    * puts each collider back to its prior enabled state.
    *
-   * Why: SIK's `PhysicalInteractionProvider.checkForNewInteraction` picks the
+   * Why: IK's `PhysicalInteractionProvider.checkForNewInteraction` picks the
    * first entry of `currentInteractableSet`, which is the first hit from the
    * fingertip spherecast. When a UIKit leaf widget sits inside a ScrollWindow,
    * both the ScrollWindow's own front-face collider and the widget's child
    * collider are at almost the same depth and both get hit. The parent often
-   * wins the order race, so SIK fires `onTriggerStart` on the ScrollWindow
+   * wins the order race, so IK fires `onTriggerStart` on the ScrollWindow
    * instead of the leaf widget — and our per-target `awaitEventOnce` times
    * out forever. Removing the ancestor colliders from the physics world for
    * the duration of the pinch leaves the widget's collider as the only
-   * candidate, and SIK fires the trigger on the right Interactable.
+   * candidate, and IK fires the trigger on the right Interactable.
    *
    * The target's own colliders are force-enabled because ScrollWindow's
    * hover-driven `enableChildColliders(false)` can leave a leaf widget's
@@ -146,16 +146,16 @@ export class AiHandInteractor extends AiBaseInteractor {
   // ─── Interaction methods ───────────────────────────────────────────────
 
   /**
-   * Pinch at a world position. SIK's DirectTargetProvider detects
+   * Pinch at a world position. IK's DirectTargetProvider detects
    * any interactable at that position via collider overlap.
    */
   async pinch(position: vec3, hold: boolean = false, durationMs?: number): Promise<void> {
     const offset: vec3 = await this.preparePinchOffset()
     await this.hand.setPosition(position.add(offset))
     await nextFrame()
-    // Drive SIK's PinchDetector pipeline. Both `hand.onPinchDown` event
+    // Drive IK's PinchDetector pipeline. Both `hand.onPinchDown` event
     // subscribers and `hand.isPinching()` polling consumers downstream see
-    // the pinch through SIK's natural plumbing (state machine → events).
+    // the pinch through IK's natural plumbing (state machine → events).
     this.handWrapper.firePinchDown()
     await nextFrame()
 
@@ -174,7 +174,7 @@ export class AiHandInteractor extends AiBaseInteractor {
   }
 
   /**
-   * Pinch at an interactable's position and wait for SIK to confirm
+   * Pinch at an interactable's position and wait for IK to confirm
    * it targeted the interactable (onTriggerStart fires).
    */
   async pinchInteractable(interactable: Interactable, hold: boolean = false, durationMs?: number): Promise<void> {
@@ -182,7 +182,7 @@ export class AiHandInteractor extends AiBaseInteractor {
     const name = interactable.getSceneObject().name
 
     // See silenceAncestorColliders() for why this is needed. Skip the work
-    // when the target has no Interactable ancestors — classic SIK targets
+    // when the target has no Interactable ancestors — classic IK targets
     // don't need it, and silencing only the empty ancestor list is a no-op.
     const ancestors = this.getInteractableAncestors(interactable)
     const restoreColliders = ancestors.length > 0 ? this.silenceAncestorColliders(interactable, ancestors) : null
@@ -223,7 +223,7 @@ export class AiHandInteractor extends AiBaseInteractor {
         // onTriggerEnd, and won't dispatch unless the hand actually leaves).
         const triggerEnded: Promise<void> = this.awaitEventOnce(interactable.onTriggerEnd, 5000, `onTriggerEnd for "${name}"`)
         triggerEnded.catch(() => {})
-        // Fire Up BEFORE retraction so SIK sees `isPinching()` false the
+        // Fire Up BEFORE retraction so IK sees `isPinching()` false the
         // moment the trigger should end — the gesture/hide animation that
         // follows handles the visual rig retract.
         this.handWrapper.firePinchUp()
@@ -244,7 +244,7 @@ export class AiHandInteractor extends AiBaseInteractor {
       } catch {
         actualTarget = "unavailable"
       }
-      let message: string = `${error instanceof Error ? error.message : String(error)} SIK target at failure: "${actualTarget}".`
+      let message: string = `${error instanceof Error ? error.message : String(error)} IK target at failure: "${actualTarget}".`
       // A timed-out command must not leave the physical hand pinching while
       // InteractionHandler reports it as free. Restore a usable retry state.
       try {
@@ -263,7 +263,7 @@ export class AiHandInteractor extends AiBaseInteractor {
 
   /**
    * Poke at a world position with the index fingertip — relaxed/extended
-   * pose, no pinch. SIK's PhysicalInteractionProvider distinguishes poke
+   * pose, no pinch. IK's PhysicalInteractionProvider distinguishes poke
    * from pinch by gesture state: with `isPinching` returning false, the
    * fingertip pushing into a collider fires the poke trigger. Targets
    * gated on `targetingMode = Poke` only fire through this path.
@@ -280,10 +280,10 @@ export class AiHandInteractor extends AiBaseInteractor {
   }
 
   /**
-   * Poke an interactable with the index fingertip and wait for SIK to fire
+   * Poke an interactable with the index fingertip and wait for IK to fire
    * `onTriggerStart` in poke mode.
    *
-   * Why the approach motion exists: SIK 0.18's PhysicalInteractionProvider
+   * Why the approach motion exists: IK 0.18's PhysicalInteractionProvider
    * runs its fingertip spherecast from `indexUpperJoint` to slightly behind
    * `indexTip` — the cast volume never extends past the fingertip itself.
    * If the puppet teleports the indexTip onto the button's collider centre,
@@ -305,13 +305,13 @@ export class AiHandInteractor extends AiBaseInteractor {
    * during the gesture, and the spherecast catches the entry somewhere
    * along that motion regardless of the starting offset.
    *
-   * We only wait for `onTriggerStart` here. In SIK 0.18, the puppet's
+   * We only wait for `onTriggerStart` here. In IK 0.18, the puppet's
    * instant hide() retract doesn't produce a corresponding end event
    * (`onTriggerEnd` / `onTriggerEndOutside` / `onTriggerCanceled` all
    * stay silent; only `onHoverExit` fires). The button's click handler
    * runs on TriggerStart — which is what users see — so the test reports
    * success the moment the trigger started. One frame after hide() lets
-   * SIK settle internal hover state before the next call.
+   * IK settle internal hover state before the next call.
    */
   async pokeInteractable(interactable: Interactable, durationMs: number = 200): Promise<void> {
     const targetTransform = interactable.getSceneObject().getTransform()
@@ -322,7 +322,7 @@ export class AiHandInteractor extends AiBaseInteractor {
     const restoreColliders = ancestors.length > 0 ? this.silenceAncestorColliders(interactable, ancestors) : null
 
     try {
-      // Subscribe BEFORE motion — SIK can fire start on the same tick the
+      // Subscribe BEFORE motion — IK can fire start on the same tick the
       // moving fingertip crosses the collider.
       const triggerStarted = this.awaitEventOnce(
         interactable.onTriggerStart,
@@ -370,11 +370,11 @@ export class AiHandInteractor extends AiBaseInteractor {
 
       // Retract along the approach direction first, then hide. A real user
       // poke retract pulls the finger straight back out of the front face;
-      // SIK's spherecast sees that motion and naturally transitions the
+      // IK's spherecast sees that motion and naturally transitions the
       // Poke trigger to None, which both fires the end events and clears
       // `_currentTrigger` / `_currentInteractableHitInfo`. Skipping the
       // intermediate retract (e.g. teleporting straight to the hidden
-      // position) leaves SIK stuck in Poke — the spherecast jumps over
+      // position) leaves IK stuck in Poke — the spherecast jumps over
       // the boundary too fast for the end edge to register — and blocks
       // the next interaction's trigger from acquiring this Interactable.
       await this.hand.makeGesture("neutral")
@@ -403,7 +403,7 @@ export class AiHandInteractor extends AiBaseInteractor {
   }
 
   /**
-   * Hover at an interactable's position and wait for SIK to confirm hover.
+   * Hover at an interactable's position and wait for IK to confirm hover.
    */
   async hoverInteractable(interactable: Interactable, durationMs: number = 200): Promise<void> {
     const targetTransform = interactable.getSceneObject().getTransform()
@@ -431,7 +431,7 @@ export class AiHandInteractor extends AiBaseInteractor {
       }
 
       // Stage the fingertip in front of the target along its outward normal,
-      // then animate IN so SIK's proximity sensor sees the fingertip CROSS the
+      // then animate IN so IK's proximity sensor sees the fingertip CROSS the
       // hover shell. Teleporting straight onto the collider centre lands the
       // fingertip already inside the shell with no sampled boundary crossing,
       // so onHoverEnter never fires for small container UI buttons (large
@@ -441,7 +441,7 @@ export class AiHandInteractor extends AiBaseInteractor {
       const HOVER_APPROACH_CM = 4
       const approachStart = targetPos.add(targetTransform.forward.uniformScale(HOVER_APPROACH_CM))
 
-      // Subscribe BEFORE motion — SIK can fire enter on the same tick the
+      // Subscribe BEFORE motion — IK can fire enter on the same tick the
       // moving fingertip crosses the shell.
       const hoverEntered = this.awaitEventOnce(interactable.onHoverEnter, 5000, `onHoverEnter for "${hoverName}"`)
       await aimIndexTipAt(approachStart)
@@ -466,7 +466,7 @@ export class AiHandInteractor extends AiBaseInteractor {
 
   /**
    * Interpolate hand position to a target over durationMs.
-   * Just moves the hand — SIK's InteractableManipulation follows natively
+   * Just moves the hand — IK's InteractableManipulation follows natively
    * by reading the hand's startPoint each frame. No direct object writes.
    *
    * `releaseMidDrag` implements throw semantics: the pinch is released
@@ -503,7 +503,7 @@ export class AiHandInteractor extends AiBaseInteractor {
       this.hand.setWorldPosition(handPos)
 
       if (releaseMidDrag && !midReleased && t >= RELEASE_RATIO) {
-        // Fire pinch-up THROUGH SIK's PinchDetector so listeners see the
+        // Fire pinch-up THROUGH IK's PinchDetector so listeners see the
         // release boundary on the same frame the gesture flips. Without this,
         // a manipulation listening on `hand.onPinchUp` (or polling
         // `isPinching()`) would never see the drop. The remaining hand
@@ -533,7 +533,7 @@ export class AiHandInteractor extends AiBaseInteractor {
 
   /**
    * Rotate the hand by euler angle deltas over durationMs.
-   * SIK's InteractableManipulation applies rotation naturally.
+   * IK's InteractableManipulation applies rotation naturally.
    */
   async rotate(rotationDegrees: vec3, durationMs: number = 500): Promise<void> {
     const degToRad = Math.PI / 180
@@ -554,7 +554,7 @@ export class AiHandInteractor extends AiBaseInteractor {
   }
 
   /**
-   * Release — fire pinch-up through SIK's PinchDetector pipeline, then
+   * Release — fire pinch-up through IK's PinchDetector pipeline, then
    * neutralise the visible rig. `hand.isPinching()` reads false immediately
    * (state machine flips on the notify), and `hand.onPinchUp` listeners fire
    * before the rig animation kicks off.

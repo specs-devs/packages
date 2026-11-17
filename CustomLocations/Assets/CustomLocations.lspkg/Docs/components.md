@@ -129,7 +129,7 @@ Group display uses `locationGroup.name`, not GroupId. Scan label uses location a
 
 ## Demo scaffolding (`Example/`)
 
-These scripts ship in `CustomLocations.lspkg/Example/` and are wired inside `CustomLocations__PLACE_IN_SCENE.prefab`. They only present the example; they are not part of the CustomLocations API. Both import SpectaclesUIKit and SpectaclesInteractionKit.
+These scripts ship in `CustomLocations.lspkg/Example/` and are wired inside `CustomLocations__PLACE_IN_SCENE.prefab`. They only present the example; they are not part of the CustomLocations API. Both import UIKit and InteractionKit.
 
 | Object / script | Class | Key inputs |
 |---|---|---|

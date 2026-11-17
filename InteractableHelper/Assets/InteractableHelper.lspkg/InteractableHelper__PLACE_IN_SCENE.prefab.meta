@@ -732,7 +732,7 @@
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
-    - !<own> 5e6374af-f3b8-45c2-82e8-6f918de37c89
+    - !<own> 8d8486cc-7b68-49bd-b6e6-a3cbf646ffbb
     - !<own> ca42efad-f7af-45c6-857b-61fded616250
     - !<own> 73875128-52ba-4104-96db-cada39033348
     - !<own> 6f3443b3-5b22-44fe-7e74-680a03b6167a
@@ -1442,6 +1442,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: true
 - !<SceneObject/1ade4a73-4976-4b68-4e27-ad3900bb5998>
@@ -1509,6 +1510,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: true
 - !<Skin/1caa8982-ec37-4fce-6844-d085ee51e169>
@@ -2597,6 +2599,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: true
 - !<SceneObject/2ea4a201-e5c8-486f-7b9f-7cca3a4dcd78>
@@ -3153,6 +3156,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: true
 - !<SceneObject/40753a3d-bc92-4098-5e64-956ee437d85b>
@@ -4309,21 +4313,6 @@
     - !<own> 728846fd-210c-406e-70c0-d7ec73ebcf1b
   Components:
     []
-- !<SceneObject/5e6374af-f3b8-45c2-82e8-6f918de37c89>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> da8bade6-af78-44e9-b42b-320099dd932b
 - !<SceneObject/5ea613fe-ae48-4971-5184-89b73ba6f512>
   PrefabRemaps:
     []
@@ -4914,6 +4903,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: true
 - !<SceneObject/6d916981-e011-49e0-6fdd-5d010df9e5e1>
@@ -5398,6 +5388,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: true
 - !<SceneObject/81db5c15-c861-4e8b-641e-ea12f3aa0827>
@@ -5774,6 +5765,21 @@
     - !<own> 9da47c64-3e0c-4ae3-76c1-0f257509d1d9
   Components:
     []
+- !<SceneObject/8d8486cc-7b68-49bd-b6e6-a3cbf646ffbb>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> ae5e4274-3585-4cb5-a503-f12272c142be
 - !<SceneObject/8dd4795d-46b3-4c18-5733-8138e8457579>
   PrefabRemaps:
     []
@@ -5869,6 +5875,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: true
 - !<SceneObject/91a5ce0f-c0a7-4823-6590-9aceb9ba1128>
@@ -7106,6 +7113,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: true
 - !<Image/a349f297-6ad9-4b70-7691-fdd6b0a30490>
@@ -7158,6 +7166,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: true
 - !<SceneObject/a61b3567-8d46-4877-af8d-dc626fc55fae>
@@ -7310,6 +7319,22 @@
     - !<own> 8909c2f8-b5d4-4ac4-796d-59a860a53ddb
   Components:
     []
+- !<ScriptComponent/ae5e4274-3585-4cb5-a503-f12272c142be>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
+  ScriptTypes:
+    "":
+      {}
 - !<Image/ae85e339-1c4b-4bb4-78ed-c9ba0793ffa6>
   PrefabRemaps:
     []
@@ -8115,6 +8140,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: true
 - !<SceneObject/c4b053d4-6b3c-4542-7a80-c68e168675a1>
@@ -8199,7 +8225,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 11.000000, z: 0.000000}
+    Position: {x: 0.000000, y: 11.000000, z: 0.100000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 5.000000, y: 5.000000, z: 5.000000}
     HasSegmentScaleCompensation: false
@@ -8550,22 +8576,6 @@
     - !<own> ffd65681-d664-483f-4b84-e063bf02e95f
   Components:
     []
-- !<ScriptComponent/da8bade6-af78-44e9-b42b-320099dd932b>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
-  ScriptInputsDefault:
-    _theme: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      _theme: System3
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/da8d6f52-fabe-485f-7370-d417f1907295>
   PrefabRemaps:
     []
@@ -8698,6 +8708,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: true
 - !<Text/de514564-1fc1-4038-6589-70d07b0253a3>
@@ -9488,6 +9499,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: true
 - !<SceneObject/f02640de-fe65-4947-5298-20d3f7ae2d83>

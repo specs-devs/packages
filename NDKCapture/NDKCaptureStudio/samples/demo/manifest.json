@@ -1,0 +1,146 @@
+{
+ "format": "ndkcapture/1",
+ "version": "4.0.0",
+ "id": "rec-demo0001",
+ "name": "Demo capture",
+ "createdAt": "2026-10-19T12:00:00.000Z",
+ "lens": "NDK Capture",
+ "durationMs": 4000,
+ "device": "editor",
+ "ndk": "sample",
+ "layers": [
+  {
+   "id": "camera",
+   "kind": "video",
+   "codec": "jpeg",
+   "source": "proxy",
+   "file": "camera.proxy.ndjson"
+  },
+  {
+   "id": "camera",
+   "kind": "video",
+   "codec": "hevc",
+   "source": "native",
+   "file": "camera.nkc"
+  },
+  {
+   "id": "ar",
+   "kind": "video",
+   "codec": "jpeg",
+   "source": "proxy",
+   "file": "ar.proxy.ndjson"
+  },
+  {
+   "id": "ui",
+   "kind": "video",
+   "codec": "jpeg",
+   "source": "proxy",
+   "file": "ui.proxy.ndjson"
+  }
+ ],
+ "initial": {
+  "camera": {
+   "enabled": true,
+   "opacity": 1,
+   "blend": "normal",
+   "transform": {
+    "x": 0,
+    "y": 0,
+    "scale": 1,
+    "rotation": 0
+   },
+   "z": 0,
+   "fps": 30,
+   "bitrate": 0,
+   "keyFrameInterval": 30,
+   "proxyFps": 6
+  },
+  "ar": {
+   "enabled": true,
+   "opacity": 1,
+   "blend": "screen",
+   "transform": {
+    "x": 0,
+    "y": 0,
+    "scale": 1,
+    "rotation": 0
+   },
+   "z": 1,
+   "fps": 30,
+   "bitrate": 0,
+   "keyFrameInterval": 30,
+   "proxyFps": 6
+  },
+  "ui": {
+   "enabled": true,
+   "opacity": 1,
+   "blend": "screen",
+   "transform": {
+    "x": 0,
+    "y": 0,
+    "scale": 1,
+    "rotation": 0
+   },
+   "z": 2,
+   "fps": 30,
+   "bitrate": 0,
+   "keyFrameInterval": 30,
+   "proxyFps": 6
+  },
+  "mic": {
+   "enabled": true,
+   "opacity": 1,
+   "blend": "screen",
+   "transform": {
+    "x": 0,
+    "y": 0,
+    "scale": 1,
+    "rotation": 0
+   },
+   "z": 3,
+   "fps": 30,
+   "bitrate": 0,
+   "keyFrameInterval": 30,
+   "proxyFps": 6
+  }
+ },
+ "timeline": [
+  {
+   "t": 1500,
+   "layer": "ar",
+   "set": {
+    "opacity": 0.5
+   }
+  },
+  {
+   "t": 2500,
+   "layer": "ui",
+   "set": {
+    "transform": {
+     "scale": 0.6
+    }
+   }
+  }
+ ],
+ "markers": [
+  {
+   "t": 1000,
+   "label": "Good part",
+   "color": "#F5A524"
+  },
+  {
+   "t": 3000,
+   "label": "Take 2",
+   "color": "#F5A524"
+  }
+ ],
+ "clock": {
+  "nativeStartNs": 1000000000
+ },
+ "chunks": {
+  "camera.proxy": 2,
+  "ar.proxy": 2,
+  "ui.proxy": 2,
+  "camera.nkc": 1
+ }
+}

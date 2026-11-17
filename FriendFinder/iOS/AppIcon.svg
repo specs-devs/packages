@@ -1,0 +1,38 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1024" y2="1024" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1C2733"/>
+      <stop offset="0.55" stop-color="#111823"/>
+      <stop offset="1" stop-color="#080B10"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="512" cy="650" r="440" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2CE0C7" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#2CE0C7" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="pin" x1="512" y1="176" x2="512" y2="860" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#48F5DA"/>
+      <stop offset="1" stop-color="#0FB59D"/>
+    </linearGradient>
+  </defs>
+
+  <!-- full-bleed opaque background (iOS masks the corners itself) -->
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+  <rect width="1024" height="1024" fill="url(#glow)"/>
+
+  <!-- radar rings, centered on the pin tip -->
+  <g fill="none" stroke="#2CE0C7" stroke-linecap="round">
+    <circle cx="512" cy="650" r="332" stroke-opacity="0.08" stroke-width="16"/>
+    <circle cx="512" cy="650" r="232" stroke-opacity="0.15" stroke-width="16"/>
+    <circle cx="512" cy="650" r="138" stroke-opacity="0.26" stroke-width="16"/>
+    <circle cx="512" cy="650" r="12"  fill="#2CE0C7" fill-opacity="0.6" stroke="none"/>
+  </g>
+
+  <!-- primary location pin -->
+  <path d="M512 176c-134 0-242 108-242 242 0 170 242 430 242 430s242-260 242-430c0-134-108-242-242-242z"
+        fill="url(#pin)"/>
+  <circle cx="512" cy="418" r="92" fill="#0A0E13"/>
+
+  <!-- friend blip -->
+  <circle cx="744" cy="742" r="44" fill="#6C5CE7"/>
+  <circle cx="744" cy="742" r="44" fill="none" stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="8"/>
+</svg>

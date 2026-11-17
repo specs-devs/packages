@@ -19,7 +19,7 @@ The **example scenario uses Nespresso Vertuo**-style content (copy, manuals, and
 
 ## Usage
 
-This section ships with the package and describes the installed package. Generic Lens scripting, scene construction and Specs spatial design live in the CLAD skills; this package owns its speech/depth/Gemini wiring and limits.
+This section ships with the package and describes the installed package. Generic Lens scripting, scene construction and Specs spatial design are out of scope here; this package owns its speech/depth/Gemini wiring and limits.
 
 ### Package identity
 
@@ -34,7 +34,7 @@ This section ships with the package and describes the installed package. Generic
   `CredentialsWarning`, `Guide` and `ExampleCarousel` from your instance when you build your own Lens ([components](Docs/components.md#demo-scaffolding-example)).
 - Credentials: set the **Google** token (Gemini) on `RemoteServiceGatewayCredentials`; no other token and no Snap Cloud project is
   needed. Until it's set, a red-framed "Credentials needed" panel shows before the guide ([setup](Docs/setup.md)).
-- Declared companions: SpectaclesInteractionKit, SpectaclesUIKit, RemoteServiceGateway, SnapDecorators, Utilities, Motion and Icons. See `package_dependencies.json`.
+- Declared companions: InteractionKit, UIKit, RemoteServiceGateway, SnapDecorators, Utilities, Motion and Icons. See `package_dependencies.json`.
 
 ### Version and API status
 
@@ -43,12 +43,6 @@ Read [API status](Docs/api-status.md) before assuming Preview depth, credentials
 ### Applicability
 
 Use this example for voice-triggered image understanding with depth-projected labels and optional step guidance. A manual GuidancePanel is usable without an AI request; the full orchestrator still initializes native ASR, camera and depth components. Replace the scenario knowledge/assets when adapting it.
-
-### Related CLAD skills
-
-[specs-build-ui](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/specs-build-ui/SKILL.md). These skills cover the surrounding Lens workflow.
-
-[Install CLAD](https://developers.specs.com/docs/clad/setup/setup-ai/) or browse its [source](https://github.com/lens-studio-devs/ls-extensions). Read the installed package docs for this revision’s APIs.
 
 ### Package Docs (ship in Docs/)
 

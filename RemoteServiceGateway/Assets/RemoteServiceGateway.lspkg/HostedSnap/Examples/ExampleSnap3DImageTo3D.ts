@@ -2,13 +2,17 @@
  * SPECS Inc. 2027
  * Example implementation of Snap3D image-to-3D generation. Demonstrates using an existing image
  * URL to generate 3D models, bypassing the text-to-image stage. This example shows how to
- * submit an image directly for mesh generation and handle the resulting 3D assets.
+ * submit an image directly for mesh generation and handle the resulting 3D assets. In the demo
+ * carousel the generation starts by itself when the step is shown; results of a step that was left
+ * are ignored (see Example/DemoLog).
  */
 import { Snap3D } from "../Snap3D";
 import { Snap3DTypes } from "../Snap3DTypes";
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
 import { Promisfy } from "../../Utils/Promisfy";
+import { AvaliableApiTypes } from "../../RemoteServiceGatewayCredentials";
+import { DemoLogPanel, DemoRun, DemoStep } from "../../Example/DemoLog/DemoLog";
 
 @component
 export class ExampleSnap3DImageTo3D extends BaseScriptComponent {
@@ -66,7 +70,8 @@ export class ExampleSnap3DImageTo3D extends BaseScriptComponent {
   hintText: Text;
 
   @input
-  @hint("Enable generation on tap/pinch")
+  @label("Run in demo")
+  @hint("Generate when the demo carousel shows this example (formerly: on tap)")
   runOnTap: boolean = false;
 
   @ui.separator
@@ -81,15 +86,19 @@ export class ExampleSnap3DImageTo3D extends BaseScriptComponent {
   @hint("Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)")
   enableLoggingLifecycle: boolean = false;
 
+  @input
+  @hint("Where the demo's live log panel sits, relative to this object (cm)")
+  logPanelOffset: vec3 = new vec3(0, 10, 0);
+
   // Logger instance
-  private logger: Logger;  private baseMeshSpinner: SceneObject;
+  private logger: Logger;
+  private baseMeshSpinner: SceneObject;
   private refinedMeshSpinner: SceneObject;
 
   private baseMeshSceneObject: SceneObject = null;
   private refinedMeshSceneObject: SceneObject = null;
 
-  private isRequestInProgress: boolean = false;
-  private gestureModule: GestureModule = require("LensStudio:GestureModule");  /**
+  /**
    * Called when component is initialized
    */
   onAwake(): void {
@@ -100,136 +109,115 @@ export class ExampleSnap3DImageTo3D extends BaseScriptComponent {
       this.logger.debug("LIFECYCLE: onAwake() - Component initializing");
     }
 
-
     this.initializeSpinners();
 
-    if (global.deviceInfoSystem.isEditor()) {
-      this.createEvent("TapEvent").bind(() => {
-        this.onTap();
-      });
-    } else {
-      this.gestureModule
-        .getPinchDownEvent(1 /* GestureModule.HandType.Right — numeric literal because LS 5.21 runtime doesn't expose the namespace enum as a value */ as unknown as GestureModule.HandType)
-        .add(() => {
-          this.onTap();
-        });
-    }
-
-    this.hintText.text = "Tap or Pinch to generate 3D from image";
+    // Runs by itself when the carousel shows this example.
+    DemoStep.join({
+      owner: this,
+      name: "Image to 3D",
+      order: 0,
+      tokens: [AvaliableApiTypes.Snap],
+      panel: new DemoLogPanel(this.sceneObject, this.logPanelOffset),
+      run: (run) => this.runDemo(run),
+      stop: () => this.enableSpinners(false),
+    });
   }
 
-  private onTap() {
-    // GestureModule pinches arrive even while this example is disabled.
-    if (!this.sceneObject.isEnabledInHierarchy) {
-      return;
-    }
+  async runDemo(run: DemoRun = DemoRun.detached("Image to 3D")) {
     if (!this.runOnTap) {
       return;
     }
-    if (this.isRequestInProgress) {
-      this.hintText.text = "Request already in progress...";
-      return;
-    }
     if (!this.imageUrl || this.imageUrl.trim() === "") {
-      this.hintText.text = "Please provide a valid image URL";
+      run.error("imageUrl is empty: set a public image URL");
       return;
     }
-
-    this.startImageTo3DGeneration();
+    await this.startImageTo3DGeneration(run);
   }
 
   /**
-   * Starts the image-to-3D generation process using the provided image URL.
-   * This bypasses the text-to-image stage and goes directly to mesh generation.
+   * Shows the source image, then generates a 3D model from it (the text-to-image stage is skipped).
+   * Resolves when the task ends.
    */
-  private startImageTo3DGeneration() {
-    this.isRequestInProgress = true;
+  async startImageTo3DGeneration(run: DemoRun = DemoRun.detached("Image to 3D")) {
     this.resetAssets();
     this.hintText.text = "Converting image to 3D. Please wait...";
-    this.enableSpinners(true);
 
     // Load and display the source image first
-    this.loadSourceImage(this.imageUrl);
+    const texture = await run.call("source image fetch", () => this.loadSourceImage(this.imageUrl));
+    if (texture) {
+      this.sourceImage.mainPass.baseTex = texture;
+      this.sourceImage.enabled = true;
+    }
 
+    this.enableSpinners(true);
     // Submit with image_url to skip text-to-image generation
-    Snap3D.submitAndGetStatus({
-      prompt: this.prompt,
-      format: "glb",
-      refine: this.refineMesh,
-      use_vertex_color: this.useVertexColor,
-      image_url: this.imageUrl, // This tells the API to use the provided image
-    })
-      .then((submitGetStatusResults) => {
-        this.hintText.text = "Generating 3D model from image...";
-
-        submitGetStatusResults.event.add(([artifactType, assetOrError]) => {
+    const results = await run.call(
+      "Snap3D submit (image_url)",
+      () =>
+        Snap3D.submitAndGetStatus({
+          prompt: this.prompt,
+          format: "glb",
+          refine: this.refineMesh,
+          use_vertex_color: this.useVertexColor,
+          image_url: this.imageUrl, // This tells the API to use the provided image
+        }),
+      (result) => "task " + result.task_id
+    );
+    if (!results) {
+      this.enableSpinners(false);
+      this.hintText.text = "Generation failed: see the log above";
+      return;
+    }
+    this.hintText.text = "Generating 3D model from image...";
+    run.log("polling status…");
+    await run.guard(
+      new Promise<void>((resolve) => {
+        results.event.add(([artifactType, assetOrError]) => {
+          // Results of a step that was left are ignored.
+          if (!run.alive) {
+            resolve();
+            return;
+          }
           if (artifactType === "image") {
-            // Image already exists (we provided it), so this stage is skipped
-            // or confirms the image was received
-            print("Image artifact confirmed");
+            run.log("← image confirmed");
           } else if (artifactType === "base_mesh") {
-            this.generateBaseMeshAsset(
-              assetOrError as Snap3DTypes.GltfAssetData
-            );
+            run.log("← base mesh");
+            this.generateBaseMeshAsset(assetOrError as Snap3DTypes.GltfAssetData);
             this.hintText.text = "Base mesh generated. Refining...";
+            if (!this.refineMesh) {
+              resolve();
+            }
           } else if (artifactType === "refined_mesh") {
-            this.generateRefinedMeshAsset(
-              assetOrError as Snap3DTypes.GltfAssetData
-            );
-            this.hintText.text =
-              "Generation complete! Tap or Pinch to try another image.";
+            run.log("← refined mesh: done");
+            this.generateRefinedMeshAsset(assetOrError as Snap3DTypes.GltfAssetData);
+            this.hintText.text = "Generation complete!";
+            resolve();
           } else if (artifactType === "failed") {
-            this.handleError(assetOrError as Snap3DTypes.ErrorData);
+            const error = assetOrError as Snap3DTypes.ErrorData;
+            this.enableSpinners(false);
+            run.error("✗ task failed: " + error.errorCode + " " + error.errorMsg);
+            this.hintText.text = "Generation failed: see the log above";
+            resolve();
           }
         });
       })
-      .catch((error) => {
-        this.handleError({
-          errorMsg: error,
-          errorCode: -1,
-        });
-      });
+    );
   }
 
   /**
-   * Loads and displays the source image from URL
+   * Fetches the source image from its URL
    */
-  private async loadSourceImage(url: string) {
-    try {
-      const internetModule = require("LensStudio:InternetModule") as InternetModule;
-      const remoteMediaModule =
-        require("LensStudio:RemoteMediaModule") as RemoteMediaModule;
-
-      const httpRequest = RemoteServiceHttpRequest.create();
-      httpRequest.url = url;
-
-      internetModule.performHttpRequest(httpRequest, async (response) => {
-        if (response.statusCode === 1) {
-          try {
-            const texture =
-              await Promisfy.RemoteMediaModule.loadResourceAsImageTexture(
-                remoteMediaModule,
-                response.asResource()
-              );
-            this.sourceImage.mainPass.baseTex = texture;
-            this.sourceImage.enabled = true;
-            print("Source image loaded successfully");
-          } catch (error) {
-            print("Failed to load source image: " + error);
-          }
-        } else {
-          print(
-            "Failed to fetch image: " +
-              response.statusCode +
-              " - " +
-              response.body
-          );
-        }
-      });
-    } catch (error) {
-      print("Error loading source image: " + error);
-    }
+  private loadSourceImage(url: string): Promise<Texture> {
+    const internetModule = require("LensStudio:InternetModule") as InternetModule;
+    const remoteMediaModule =
+      require("LensStudio:RemoteMediaModule") as RemoteMediaModule;
+    // makeResourceFromUrl: on Specs (LS 5.25) performHttpRequest(...).asResource() comes back empty.
+    return Promisfy.RemoteMediaModule.loadResourceAsImageTexture(
+      remoteMediaModule,
+      internetModule.makeResourceFromUrl(url)
+    );
   }
+
 
   private generateBaseMeshAsset(gltfAssetData: Snap3DTypes.GltfAssetData) {
     this.baseMeshSceneObject = gltfAssetData.gltfAsset.tryInstantiate(
@@ -237,7 +225,6 @@ export class ExampleSnap3DImageTo3D extends BaseScriptComponent {
       this.modelMat
     );
     this.baseMeshSpinner.enabled = false;
-    print("Base mesh instantiated from: " + gltfAssetData.url);
   }
 
   private generateRefinedMeshAsset(gltfAssetData: Snap3DTypes.GltfAssetData) {
@@ -246,21 +233,6 @@ export class ExampleSnap3DImageTo3D extends BaseScriptComponent {
       this.modelMat
     );
     this.refinedMeshSpinner.enabled = false;
-    this.isRequestInProgress = false;
-    print("Refined mesh instantiated from: " + gltfAssetData.url);
-  }
-
-  private handleError(error: Snap3DTypes.ErrorData) {
-    this.enableSpinners(false);
-    print(
-      "Generation failed: " +
-        error.errorMsg +
-        " (Code: " +
-        error.errorCode +
-        ")"
-    );
-    this.hintText.text = "Generation failed. Tap or Pinch to try again.";
-    this.isRequestInProgress = false;
   }
 
   private resetAssets() {

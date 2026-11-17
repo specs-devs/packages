@@ -14,7 +14,7 @@ export interface SideNavConfig {
  * Reusable left-side vertical navigation with three buttons:
  * Get Started | New Area | My Areas
  *
- * Built as a FlexLayout column (SpectaclesUIKit 2.0) that is itself a FlexItem, so a screen can
+ * Built as a FlexLayout column (UIKit 2.0) that is itself a FlexItem, so a screen can
  * drop it straight into a FlexLayout row. The active screen's button is styled "Prism" at build
  * time; the others "Primary". The active item is fixed per screen instance, so there is no
  * runtime restyle.

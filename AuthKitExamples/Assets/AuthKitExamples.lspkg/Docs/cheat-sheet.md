@@ -15,12 +15,12 @@ a pointer to the detail. Everything here is derived from the package source.
    Preview path signed out. → [troubleshooting](troubleshooting.md)
 2. **Set your own `clientId`.** The prefab ships `YOUR-CLIENT-ID`, the script defaults are
    `your-spotify-client-id`. The Spotify app must list the redirect URI
-   `https://www.spectacles.com/deeplink/specslink/oauth2redirect/unsecure`. → [setup](setup.md)
+   `https://lenses.specs.com/deeplink/specslink/oauth2redirect/unsecure`. → [setup](setup.md)
 3. **One controller per set of buttons.** `SpotifyMusicController` and `SpotifyControllerMinimum`
    both bind the prefab's SignIn / SignOut buttons in their `OnStartEvent`; enabling both makes one
    press run both handlers. Keep exactly one enabled (the prefab enables the music controller). → [components](components.md)
 4. **Buttons are wired by `@input`, bound in `OnStartEvent`.** Inputs are `RectangleButton`
-   (SpectaclesUIKit); the controllers subscribe to `onTriggerUp`. Don't call the private
+   (UIKit); the controllers subscribe to `onTriggerUp`. Don't call the private
    `onSignIn()` etc. from outside — there is no public action API. → [components](components.md)
 5. **Required inputs differ per controller.** `SpotifyMusicController` marks every UI input
    `@allowUndefined` (missing ones are skipped, except `statusText` in Pause/Stop); `SpotifyUIController`

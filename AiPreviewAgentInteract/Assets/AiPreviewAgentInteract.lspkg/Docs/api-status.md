@@ -25,7 +25,7 @@ Read when you check whether a command, field or class is supported in this revis
 `Hand` (extends Leaf's `Hand`), `TrackedHandWrapper`, `requestHandRig` and
 `validateInteractable` (with its exported `ValidationReason` / `ValidationResult` types). Their names and signatures can change between revisions. They also
 reach into SIK internals (`TrackedHand.keypoints`, `pinchDetector`, `_enabled`), so they are
-tied to the SpectaclesInteractionKit revision listed in `package_dependencies.json`.
+tied to the InteractionKit revision listed in `package_dependencies.json`.
 
 ## Limitations of this revision
 

@@ -1,72 +1,53 @@
 /**
  * SPECS Inc. 2027
- * Represents a complete product definition for commerce catalogs. Contains all necessary
- * information to display and process product purchases including pricing, metadata, and display info.
+ * Details of a product, as returned by CommerceKit.getProductInfo(). Products are defined on the Specs
+ * developer portal (https://developers.specs.com/lenses). The fields keep their CommerceKit 3.x
+ * meaning; everything the Lens API provides, such as the formatted price and subscription offers, is
+ * in {@link CommerceProduct.nativeProduct}.
  */
 import { CommercePrice } from "./CommercePrice";
 
-@typedef
 export class CommerceProduct {
   /**
-   * Unique identifier for the product.
-   * This ID will be used to reference the product in commerce operations.
+   * Product ID from the developer portal.
    */
-  @input("string")
-  @label("ID")
-  @hint("Unique product identifier. This ID is used in commerce operations.")
-  id: string;
+  id: string = "";
 
   /**
-   * The type of product (e.g., consumable, non-consumable).
-   * Determines how the product behaves after purchase.
+   * "NonConsumable", "Consumable", "Subscription" or "Unknown". The enum is `nativeProduct.type`.
    */
-  @input("string")
-  @label("Type")
-  @hint(
-    "Type of product (e.g., consumable, non-consumable). Determines how the product behaves after purchase."
-  )
-  @widget(
-    new ComboBoxWidget([new ComboBoxItem("Non Consumable", "NonConsumable")])
-  )
-  type: string = "NonConsumable";
+  type: string = "Unknown";
 
   /**
-   * The human-readable name displayed to users.
+   * Name shown to users.
    */
-  @input("string")
-  @label("Display Name")
-  @hint("Human-readable name for the product.")
-  displayName: string;
+  displayName: string = "";
 
   /**
-   * Category description of the product for users.
+   * Description shown to users.
    */
-  @input("string")
-  @label("Category")
-  @hint("Category description of the product for users.")
-  description: string;
+  description: string = "";
 
   /**
-   * Pricing information for this product.
+   * Price as a decimal amount. For subscriptions, the price of the base plan.
    */
-  @input
-  @label("Price")
-  @hint("Pricing information for this product.")
-  price: CommercePrice;
+  price: CommercePrice = new CommercePrice();
 
   /**
-   * URI pointing to the product's icon image.
+   * URI of the product's icon, or an empty string.
    */
-  @input("string")
-  @label("Icon URI [Optional]")
-  @hint("URI pointing to the product's icon image.")
-  iconUri: string;
+  iconUri: string = "";
 
   /**
-   * Additional metadata or configuration for the product in JSON format.
+   * Custom metadata configured for the product (usually JSON), or an empty string.
    */
-  @input("string")
-  @label("Extras [Optional]")
-  @hint("Additional metadata or configuration for the product in JSON format.")
-  extras: string;
+  extras: string = "";
+
+  /**
+   * The product as returned by the Lens API, with everything it provides: `price.displayPrice` (the
+   * price formatted for the user), `price.price` in the smallest currency unit, `type` as a
+   * {@link Commerce.ProductType}, and `subscriptionOfferDetails` for subscriptions. Set on every
+   * product CommerceKit returns; in Lens Studio Preview it is a simulated object with the same fields.
+   */
+  nativeProduct!: Commerce.Product;
 }

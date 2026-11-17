@@ -1,0 +1,104 @@
+- !<AssetImportMetadata/9518c1af-5c0a-42e8-9918-d53c49ffa42c>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 1548e272-34b8-44b7-92bb-d600171324d6
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 1548e272-34b8-44b7-92bb-d600171324d6
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 586326db-0e11-49c4-8169-79dd22d4116b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/586326db-0e11-49c4-8169-79dd22d4116b>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: fe95d9ca-5f5d-4832-b5fc-334f10ad516a
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    debugDraw: false
+    debugMaterial: false
+    enterFromTopOnly: false
+    fingers: false
+    holdMargin: false
+    hoverHeight: false
+    interactable: false
+    maxHoldWithoutFinger: false
+    pressThreshold: false
+    releaseDelay: false
+    releaseHeight: false
+    releaseThreshold: false
+    returnSpeed: false
+    shape: false
+    size: false
+    toggle: false
+    travel: false
+    useSIKIndexTips: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - fingers: !<reference.SceneObject[]>
+        []
+      useSIKIndexTips: true
+      shape: !<float> 0.000000
+      size: !<Vec2> {x: 8.000000, y: 8.000000}
+      travel: 1.500000
+      hoverHeight: !<float> 3.000000
+      enterFromTopOnly: true
+      pressThreshold: 0.700000
+      releaseThreshold: 0.400000
+      returnSpeed: !<float> 12.000000
+      holdMargin: 1.500000
+      releaseDelay: 0.250000
+      releaseHeight: 0.300000
+      maxHoldWithoutFinger: 0.500000
+      toggle: false
+      interactable: true
+      debugDraw: false
+      debugMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #77CBC2;\">Agnostic3DButton – soft press for any finger</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Top face = local y 0, press direction = local -Y. Sizes in local units (cm at scale 1).</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input SceneObject[] fingers = {} {"hint":"Objects that can press the button (fingertips, a grabbed ball, a controller tip, …)"}'
+    - '// @input bool useSIKIndexTips = true {"hint":"Also use both SIK index fingertips (added at OnStart)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input float shape {"hint":"Shape of the made-up volume", "widget":"combobox", "values":[{"label":"Box", "value":0}, {"label":"Cylinder", "value":1}]}'
+    - '// @input vec2 size = {8,8} {"hint":"Box: width (x) and depth (z). Cylinder: x = diameter"}'
+    - '// @input float travel = 1.5 {"hint":"How far the top can be pushed in (local -Y)"}'
+    - '// @input float hoverHeight = 3 {"hint":"Height above the top face where a finger counts as hovering"}'
+    - '// @input bool enterFromTopOnly = true {"hint":"Only start a press when the finger came in from above (no pressing from the side or below)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input float pressThreshold = 0.7 {"hint":"Press value that fires onPressed", "widget":"slider", "min":0.05, "max":1, "step":0.01}'
+    - '// @input float releaseThreshold = 0.4 {"hint":"Press value that fires onReleased / onClick (lower than pressThreshold = hysteresis)", "widget":"slider", "min":0, "max":0.95, "step":0.01}'
+    - '// @input float returnSpeed = 28 {"hint":"How fast the button springs back when the finger leaves (1/s)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input float holdMargin = 1 {"hint":"While a pressing finger is below the top plane it stays engaged up to this far outside the footprint (and down to travel × 3)", "widget":"slider", "min":0, "max":5, "step":0.1}'
+    - '// @input float releaseDelay = 0.12 {"hint":"After the pressing finger lifts off (comes back above releaseHeight), the press value holds this long (s) before it springs back. A lost or slid-off finger releases at once", "widget":"slider", "min":0, "max":1, "step":0.01}'
+    - '// @input float releaseHeight = 0.3 {"hint":"How far above the top plane a pressing finger must come back to count as gone (local units)", "widget":"slider", "min":0, "max":2, "step":0.05}'
+    - '// @input float maxHoldWithoutFinger = 0.5 {"hint":"Failsafe: with no finger driving the press for this long (s), the button springs back whatever else happens", "widget":"slider", "min":0.1, "max":2, "step":0.05}'
+    - '// @input bool toggle {"hint":"Latching toggle: every click flips isOn"}'
+    - '// @input bool interactable = true {"hint":"Disable to ignore every finger (the button springs back)"}'
+    - '// @input bool debugDraw {"hint":"Draw the volume as a wireframe (debug)"}'
+    - '// @input Asset.Material debugMaterial {"hint":"Material for the debug wireframe (unlit)"}'

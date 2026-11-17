@@ -5,7 +5,7 @@
 ## Use when
 
 Copy the smallest example that gets a working panel. Compose larger
-experiences with the CLAD UI and scripting skills rather than treating this
+experiences with UIKit and your own scripts rather than treating this
 file as an application template.
 
 ## Prefab path (no code)

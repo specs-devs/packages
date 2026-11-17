@@ -1,140 +1,53 @@
 /**
  * SPECS Inc. 2027
- * Example controller demonstrating CommerceKit integration for in-app purchases.
- * Shows how to handle purchase flows, check ownership status, and update UI based on purchase state.
+ * Example panel for a non-consumable: bought once with purchaseProduct() and owned from then on
+ * (isProductOwned). Consumables and subscriptions use different calls; see ExampleConsumableController
+ * and ExampleSubscriptionController. The shared panel logic is in ExampleProductPanel.
  */
-// Preload ThemeService before any UIKit visual to break a circular-import init-order
-// crash in the package (Visual.ts imports ThemeService before defining COLORS, and the
-// theme chain reads COLORS at module-load). Loading ThemeService first lets Visual.ts
-// finish initializing COLORS before the visual chain reads it.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService";
-import { BaseButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/BaseButton";
-import { CommerceKit } from "CommerceKit.lspkg/CommerceKit";
-import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
-import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
+import { ExampleProductPanel } from "./ExampleProductPanel";
+import type { PanelView } from "./ExampleProductPanel";
 
 @component
-export class ExamplePurchaseController extends BaseScriptComponent {
-  @ui.separator
-  @ui.label('<span style="color: #60A5FA;">Product Configuration</span>')
-  @ui.label('<span style="color: #94A3B8; font-size: 11px;">Specify the product ID from your commerce catalog that this controller manages</span>')
+export class ExamplePurchaseController extends ExampleProductPanel {
+  protected readonly logName = "ExamplePurchaseController";
+  protected readonly idleButtonLabel = "Buy";
 
-  @input
-  productId: string = "premium_upgrade"; // Set your product ID here
-
-  @ui.separator
-  @ui.label('<span style="color: #60A5FA;">UI References</span>')
-  @ui.label('<span style="color: #94A3B8; font-size: 11px;">Connect the UI elements for purchase button and product information display</span>')
-
-  @input
-  purchaseButton: BaseButton;
-  @input
-  nameText: Text;
-  @input
-  priceText: Text;
-  @input
-  statusText: Text;
-
-  @ui.separator
-  @ui.label('<span style="color: #60A5FA;">Logging Configuration</span>')
-  @ui.label('<span style="color: #94A3B8; font-size: 11px;">Control logging output for this script instance</span>')
-
-  @input
-  @hint("Enable general logging (animation cycles, events, etc.)")
-  enableLogging: boolean = false;
-
-  @input
-  @hint("Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)")
-  enableLoggingLifecycle: boolean = false;
-
-  // Logger instance
-  private logger: Logger;
-
-  private commerceKit: CommerceKit = CommerceKit.getInstance();
-
-  private pendingPurchase: boolean = false;
-
-  /**
-   * Called when component is initialized
-   */
-  onAwake(): void {
-    // Initialize logger
-    this.logger = new Logger("ExamplePurchaseController", this.enableLogging || this.enableLoggingLifecycle, true);
-
-    if (this.enableLoggingLifecycle) {
-      this.logger.debug("LIFECYCLE: onAwake() - Component initializing");
-    }
-
-    // Setup start event
-    this.createEvent("OnStartEvent").bind(() => {
-      this.onStart();
-    });
-  }
-
-  private async onStart() {
-    // Setup UI
-    this.setupPurchaseButton();
-    this.updateUI();
-  }
-  private setupPurchaseButton() {
-    this.purchaseButton.onTriggerUp.add(() => {
-      this.onPurchaseButtonPressed();
-    });
-  }
-  private async updateUI() {
-    try {
-      // Preview uses the local mock catalog; a native client deliberately rejects there.
-      if (!global.deviceInfoSystem.isEditor()) await this.commerceKit.client();
-      const isOwned = this.commerceKit.isProductOwned(this.productId);
-
-      this.purchaseButton.enabled = !isOwned;
-      this.statusText.text = isOwned ? "Premium Owned" : "Tap to Purchase";
-
-      const product = await this.commerceKit.getProductInfo(this.productId);
-      if (isNull(product)) {
-        this.statusText.text = "Product not found";
-      } else {
-        this.nameText.text = product.displayName;
-        this.priceText.text = `${product.price.price} ${product.price.currency}`;
-      }
-    } catch (error) {
-      this.purchaseButton.enabled = false;
-      this.statusText.text = `Commerce unavailable: ${error.message ?? error}`;
-      this.logger.error(`Commerce initialization failed: ${error}`);
+  protected prepare(product: Commerce.Product): string | null {
+    switch (product.type) {
+      case Commerce.ProductType.Consumable:
+        return "Use ExampleConsumableController";
+      case Commerce.ProductType.Subscription:
+        return "Use ExampleSubscriptionController";
+      default:
+        return null;
     }
   }
-  private async onPurchaseButtonPressed() {
-    if (this.commerceKit.isProductOwned(this.productId)) {
-      this.statusText.text = "Already owned!";
-      return;
-    }
-    if (this.pendingPurchase) {
-      return;
-    }
 
-    try {
-      this.pendingPurchase = true;
-      this.statusText.text = "Processing purchase...";
-
-      const result = await this.commerceKit.purchaseProduct(this.productId);
-      if (result.success) {
-        this.statusText.text = "Purchase successful!";
-        this.enablePremiumFeatures();
-        this.purchaseButton.enabled = false;
-      } else if (result.cancelled) {
-        this.statusText.text = "Purchase cancelled";
-      } else if (!result.success) {
-        this.statusText.text = "Purchase failed";
-      }
-      this.pendingPurchase = false;
-    } catch (error) {
-      this.statusText.text = `Purchase failed: ${error.message}`;
-      print(`Purchase error: ${error}`);
-      this.pendingPurchase = false;
-    }
+  protected describe(product: Commerce.Product): PanelView {
+    const owned = this.commerceKit.isProductOwned(this.productId);
+    const purchase = this.commerceKit.getPurchase(this.productId);
+    // Paid but not finalized yet; tapping Buy finishes it without charging again.
+    const pending = !!purchase && purchase.purchaseState === Commerce.PurchaseState.Pending;
+    return {
+      price: product.price.displayPrice,
+      status: owned ? "Owned" : pending ? "Pending, tap to finish" : "Not owned",
+      button: owned ? "Owned" : "Buy",
+      buttonEnabled: !owned,
+    };
   }
-  private enablePremiumFeatures() {
-    // Enable your premium features here
-    print("Premium features unlocked!");
+
+  protected async runAction(): Promise<string> {
+    this.render("Processing purchase...");
+    const outcome = await this.commerceKit.purchaseProduct(this.productId);
+    switch (outcome.status) {
+      case "purchased":
+        return "Purchase successful!";
+      case "alreadyOwned":
+        return "Already owned";
+      case "cancelled":
+        return "Purchase cancelled";
+      default:
+        return "Payment received, finishing up...";
+    }
   }
 }

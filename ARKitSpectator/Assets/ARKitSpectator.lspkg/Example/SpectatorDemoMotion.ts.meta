@@ -1,0 +1,53 @@
+- !<AssetImportMetadata/f42ef3cc-6339-4b00-a1d0-577dff0e2550>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> bc7b009e-4f27-49af-94c3-67c9b11dca0e
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> bc7b009e-4f27-49af-94c3-67c9b11dca0e
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 31897e4f-feee-4f13-bb3d-02a27d40a200
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/31897e4f-feee-4f13-bb3d-02a27d40a200>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 78a54654-980b-4036-ae5d-c48c1947d2aa
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    amplitude: false
+    motion: false
+    speed: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - motion: spin
+      speed: 0.250000
+      amplitude: !<float> 10.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input string motion = "spin" {"hint":"Motion applied to this object", "widget":"combobox", "values":[{"label":"Spin", "value":"spin"}, {"label":"Bob", "value":"bob"}, {"label":"Orbit", "value":"orbit"}]}'
+    - '// @input float speed = 0.25 {"hint":"Cycles per second"}'
+    - '// @input float amplitude = 10 {"hint":"Bob height or orbit radius in cm"}'

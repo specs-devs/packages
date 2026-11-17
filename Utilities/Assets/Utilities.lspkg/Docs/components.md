@@ -90,7 +90,7 @@ Each call prints one line with `print()`: `HH:MM:SS | <tag> | <LEVEL> | <message
 
 ## AnimationUtils
 
-Driven by `animate()` from `SpectaclesInteractionKit.lspkg/Utils/animate`
+Driven by `animate()` from `InteractionKit.lspkg/Utils/animate`
 (see [animation](animation.md)).
 
 | Method | Behavior |

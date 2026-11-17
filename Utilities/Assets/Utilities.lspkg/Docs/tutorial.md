@@ -15,7 +15,7 @@ Utilities centralizes common utility functions used across SPECS packages, elimi
 
 ### Key Benefits
 
-- **Few Dependencies**: only AnimationUtils imports SpectaclesInteractionKit (`animate`)
+- **Few Dependencies**: only AnimationUtils imports InteractionKit (`animate`)
 - **TypeScript-First**: Fully typed for excellent IDE support
 - **Battle-Tested**: Extracted from production packages
 - **Comprehensive**: 50+ utility functions covering common use cases
@@ -25,7 +25,7 @@ Utilities centralizes common utility functions used across SPECS packages, elimi
 
 ## Design Guidelines
 
-Designing Lenses for SPECS offers all-new possibilities for immersive AR experiences. [View Design Guidelines](https://docs.snap.com/spectacles)
+Designing Lenses for SPECS offers all-new possibilities for immersive AR experiences. View Design Guidelines
 
 ## Prerequisites
 
@@ -33,15 +33,15 @@ Designing Lenses for SPECS offers all-new possibilities for immersive AR experie
 - **SPECS App iOS**: v1.7+
 - **SPECS App Android**: v1.7+
 
-To update your SPECS device and mobile app, please refer to this [guide](https://support.spectacles.com).
+To update your SPECS device and mobile app, please refer to this [guide](https://developers.specs.com).
 
-You can download the latest version of Lens Studio from [here](https://ar.snap.com/download).
+You can download the latest version of Lens Studio from [here](https://lensstudio.com).
 
 ## Getting Started
 
 ### Installation
 
-1. Install Utilities from the Asset Library. Its declared dependencies (`package_dependencies.json`: SpectaclesInteractionKit, SpectaclesUIKit, Motion, Icons) come with it; `AnimationUtils` needs SpectaclesInteractionKit.
+1. Install Utilities from the Asset Library. Its declared dependencies (`package_dependencies.json`: InteractionKit, UIKit, Motion, Icons) come with it; `AnimationUtils` needs InteractionKit.
 
 2. Import utilities in your TypeScript scripts:
 
@@ -456,9 +456,9 @@ graph TD
 
 ## Support
 
-If you have any questions or need assistance, please don't hesitate to reach out to the [SPECS Developer Community](https://support.spectacles.com).
+If you have any questions or need assistance, please don't hesitate to reach out to the [SPECS Developer Community](https://developers.specs.com).
 
 ## Contributing
 
-This package is maintained by the SPECS team. For feature requests or bug reports, please contact your team lead.
+This package is maintained by the SPECS team. For feature requests or bug reports, visit https://developers.specs.com.
 

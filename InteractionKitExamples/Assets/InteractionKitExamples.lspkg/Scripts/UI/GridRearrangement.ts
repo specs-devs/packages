@@ -2,15 +2,15 @@
 // crash in the package (Visual.ts imports ThemeService before defining COLORS, and the
 // theme chain reads COLORS at module-load). Entering the import cycle via ThemeService
 // lets Visual.ts finish defining COLORS first. Must remain the FIRST import.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService"
+import "UIKit.lspkg/Scripts/Themes/ThemeService"
 /**
  * SPECS Inc. 2027
  * Grid rearrangement utility class that adds drag-and-rearrange functionality to grid layouts.
  * Helper class for enabling interactive grid item reordering with smooth animations.
  */
-import { InteractableManipulation } from "SpectaclesInteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation";
-import { GridLayout } from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Grid/GridLayout";
-import { RectangleButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton";
+import { InteractableManipulation } from "InteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation";
+import { GridLayout } from "UIKit.lspkg/Scripts/Components/Layout2D/Grid/GridLayout";
+import { RectangleButton } from "UIKit.lspkg/Scripts/Components/Button/RectangleButton";
 
 /** How many cm to push the dragged item toward the camera so it passes depth test over siblings. */
 const DRAG_Z_BOOST = 2.0;
@@ -33,7 +33,7 @@ class DragState {
 const TAP_SLOP_CM = 1.5;
 
 /**
- * Grid geometry supplied by the owner. The current SpectaclesUIKit GridLayout is a
+ * Grid geometry supplied by the owner. The current UIKit GridLayout is a
  * CSS-grid engine and no longer exposes cell-size / column-count properties, so the
  * values needed for manual positioning are passed in directly.
  */

@@ -1,8 +1,8 @@
 import {OAuth2} from "AuthKit.lspkg/Core/OAuth2"
 import {Token} from "AuthKit.lspkg/Core/Token"
 import {TokenManager} from "AuthKit.lspkg/Core/TokenManager"
-import {RectangleButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton"
-import {Frame} from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame"
+import {RectangleButton} from "UIKit.lspkg/Scripts/Components/Button/RectangleButton"
+import {Frame} from "UIKit.lspkg/Scripts/Components/Frame/Frame"
 
 const FRAME_WIDTH = 38
 const FRAME_HEIGHT = 20

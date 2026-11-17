@@ -9,7 +9,7 @@ import { TokenManager } from "./TokenManager";
 
 // Constants
 const DEFAULT_MOBILE_REDIRECT_URI =
-  "https://www.spectacles.com/deeplink/specslink/oauth2redirect/unsecure";
+  "https://lenses.specs.com/deeplink/specslink/oauth2redirect/unsecure";
 const AUTHENTICATION_TYPES = {
   CODE_FLOW: "code",
   IMPLICIT_FLOW: "implicit",

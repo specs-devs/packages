@@ -16,7 +16,7 @@ scripts and the two prefabs in this revision.
 | `TriggerableFunction` (`@typedef`) | `import {TriggerableFunction} from "FunctionCallHelper.lspkg/FunctionCallHelper"` |
 | `TestScript1` … `TestScript9` (samples) | `import {TestScript1} from "FunctionCallHelper.lspkg/Examples/TestScript1"` (same pattern for 2–9) |
 
-The module imports `SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService` first
+The module imports `UIKit.lspkg/Scripts/Themes/ThemeService` first
 (a side-effect import that avoids a UIKit circular-import crash), then UIKit
 `Button`, `CapsuleButton`, `RectangleButton`, `RoundButton`, `ScrollWindow`, `GridLayout`, `GridItem`,
 `Utilities.lspkg` `ValidationUtils`/`Logger`, and the
@@ -52,6 +52,7 @@ is named `FunctionCallHelper`.
 | `overrideButtonSize` | `boolean` | `false` | Stamp `buttonSize` on every button and size the grid to fit |
 | `buttonSize` | `vec3` | `(10, 4, 0.5)` cm | Shown when `overrideButtonSize`; button width/height/depth |
 | `topPadding` | `number` | `3` cm | Shown when `overrideButtonSize`; grid `paddingTop` (clears the Frame title bar) |
+| `buttonSpacing` | `number` | `0.8` cm | Shown when `overrideButtonSize`; grid `rowGap` between buttons |
 | `enableLogging` | `boolean` | `false` | Logger output |
 | `enableLoggingLifecycle` | `boolean` | `false` | Lifecycle log lines |
 
@@ -95,7 +96,7 @@ function called) are unconditional: they print regardless of the logging flags.
      label is the method name split into words (`activateSystem` → "Activate System").
 5. After all buttons: with `overrideButtonSize` and a grid, sets the grid's
    `templateColumns = "<x>cm"`, `autoRows = "<y>cm"`, `width = x`,
-   `height = n·y + (n−1)·rowGap + topPadding + paddingBottom`, `paddingTop = topPadding`.
+   `height = n·y + (n−1)·rowGap + topPadding + paddingBottom`, `paddingTop = topPadding`, `rowGap = buttonSpacing`.
 6. With a ScrollWindow: sets its public `scrollDimensions` to the grid's
    `width × height` (no grid: `n × 4` cm tall, window width), moves the grid so
    its top aligns with the window top, and sets `scrollPositionNormalized = (0, 0)`

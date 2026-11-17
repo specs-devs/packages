@@ -36,9 +36,9 @@ Check names, supported entry points and compatibility before changing a consumer
 
 ## Compatibility and verification
 
-`package_dependencies.json` declares SpectaclesInteractionKit, SpectaclesUIKit, Motion and Icons (the last two are required by SpectaclesUIKit). The package and its examples compile without casts against the declared dependencies (the panel's `Button`/`Slider`/`Switch` imports and the anchor's `InteractableManipulation.setManipulateRoot()` included), and the demo was exercised in the Lens Studio Preview; device behavior was not checked. The original tutorial's OS/app minimum versions are preserved in [Guide](guide.md#original-environment-notes), but were not revalidated.
+`package_dependencies.json` declares InteractionKit, UIKit, Motion and Icons (the last two are required by UIKit). The package and its examples compile without casts against the declared dependencies (the panel's `Button`/`Slider`/`Switch` imports and the anchor's `InteractableManipulation.setManipulateRoot()` included), and the demo was exercised in the Lens Studio Preview; device behavior was not checked. The original tutorial's OS/app minimum versions are preserved in [Guide](guide.md#original-environment-notes), but were not revalidated.
 
-The example panel reads `Switch.isOn` inside `onFinished`: in SpectaclesUIKit that event's argument says whether the change was explicit (user-initiated), not the new state. Earlier code that forwarded the argument could only ever switch Camera / Flow / Debug on.
+The example panel reads `Switch.isOn` inside `onFinished`: in UIKit that event's argument says whether the change was explicit (user-initiated), not the new state. Earlier code that forwarded the argument could only ever switch Camera / Flow / Debug on.
 
 ## Known source gaps
 

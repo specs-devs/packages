@@ -18,11 +18,11 @@ picked up on the next update), and SIK's
 
 ```typescript
 import {HandAttacher} from "HandAttacher.lspkg/Scripts/HandAttacher";
-import {SIK} from "SpectaclesInteractionKit.lspkg/SIK";
+import {SIK} from "InteractionKit.lspkg/IK";
 ```
 
-Generic scripting (events, timers, `@input` patterns) is covered by the CLAD
-`lens-api` skill; hand gestures such as pinch by `specs-interaction-recipes`.
+Generic scripting (events, timers, `@input` patterns) is covered by
+the Lens Studio documentation; hand gestures such as pinch by InteractionKit.
 
 ## Recipes
 
@@ -31,7 +31,7 @@ Generic scripting (events, timers, `@input` patterns) is covered by the CLAD
 Create a weapon that attaches near the palm (index knuckle) with gesture activation:
 
 ```typescript
-import {SIK} from "SpectaclesInteractionKit.lspkg/SIK";
+import {SIK} from "InteractionKit.lspkg/IK";
 
 @component
 export class HandWeapon extends BaseScriptComponent {

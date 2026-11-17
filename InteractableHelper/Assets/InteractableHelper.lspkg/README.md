@@ -25,7 +25,7 @@ textures.
 This section ships with the package and describes the exact installed revision.
 Read it, then follow the links into `Docs/` for the topic you need. It is
 written for both people and coding agents; generic Lens scripting, scene
-construction, and Specs spatial design live in the CLAD skills, not here.
+construction, and Specs spatial design are out of scope here.
 
 ### Package identity
 
@@ -45,8 +45,8 @@ construction, and Specs spatial design live in the CLAD skills, not here.
   `InteractableHelper.lspkg/Examples/VisResources/`
   ([components](Docs/components.md#demo-assets-examplesvisresources)).
 - Required companion packages (`package_dependencies.json`):
-  `SpectaclesInteractionKit` (`Interactable`), `Utilities` and
-  `SnapDecorators` (imported by the component), plus `SpectaclesUIKit`,
+  `InteractionKit` (`Interactable`), `Utilities` and
+  `SnapDecorators` (imported by the component), plus `UIKit`,
   `Motion` and `Icons`. The scene needs the SIK prefab, or no
   hover/pinch event ever fires.
 
@@ -60,20 +60,9 @@ exist in this package. Configuration happens in the Inspector.
 
 Use Interactable Helper for simple, designer-configured reactions to hover and
 pinch on a single object. For real controls (buttons, toggles, sliders, panels)
-use SpectaclesUIKit. For grabbing and moving objects use SIK
+use UIKit. For grabbing and moving objects use SIK
 `InteractableManipulation`. For custom logic, subscribe to the SIK
 `Interactable` events in your own script.
-
-### Related CLAD skills
-
-- [specs-interaction-recipes](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/specs-interaction-recipes):
-  SIK interaction patterns and init order.
-- [specs-build-ui](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/specs-build-ui):
-  when the object is really a UI control.
-- [specs-audio](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/specs-audio):
-  AudioComponent setup for the audio response.
-- No CLAD? Setup: https://developers.specs.com/docs/clad/setup/setup-ai/ ·
-  source: `github.com/lens-studio-devs/ls-extensions`.
 
 ### Package Docs (ship in `Docs/`)
 

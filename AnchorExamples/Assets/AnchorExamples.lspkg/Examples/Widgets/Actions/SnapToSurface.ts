@@ -1,6 +1,6 @@
-import {InteractionManager} from "SpectaclesInteractionKit.lspkg/Core/InteractionManager/InteractionManager"
-import {InteractorInputType} from "SpectaclesInteractionKit.lspkg/Core/Interactor/Interactor"
-import {SIK} from "SpectaclesInteractionKit.lspkg/SIK"
+import {InteractionManager} from "InteractionKit.lspkg/Core/InteractionManager/InteractionManager"
+import {InteractorInputType} from "InteractionKit.lspkg/Core/Interactor/Interactor"
+import {IK} from "InteractionKit.lspkg/IK"
 import {Logger} from "../../../Scripts/Logger"
 
 const EPSILON = 0.001
@@ -61,7 +61,7 @@ export class SnapToSurface {
 
   /**
    * Raycast from the primary hand interactor toward the surface.
-   * Uses SIK InteractionManager (same pattern as WorldQueryHitExample).
+   * Uses IK InteractionManager (same pattern as WorldQueryHitExample).
    */
   private raycastFromHand(
     onHit: (position: vec3, rotation: quat) => void
@@ -150,7 +150,7 @@ export class SnapToSurface {
     })
 
     // Right hand pinch release → place all tracked widgets at current position
-    const rightHand = SIK.HandInputData.getHand("right")
+    const rightHand = IK.HandInputData.getHand("right")
     this.pinchUpUnsub = rightHand.onPinchUp.add(() => {
       if (this.trackedObjects.length > 0) {
         this.logger.info(

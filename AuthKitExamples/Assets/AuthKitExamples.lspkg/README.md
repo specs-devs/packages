@@ -13,10 +13,11 @@ Complete working examples demonstrating OAuth2 authentication integration with r
 ## Quick Start
 
 1. Drag `AuthKitExamples__PLACE_IN_SCENE.prefab` into a scene that already has the
-   Spectacles Interaction Kit prefab.
+   Interaction Kit prefab.
 2. Register an app in the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard)
-   with the redirect URI `https://www.spectacles.com/deeplink/specslink/oauth2redirect/unsecure`,
-   and paste its Client ID into the `clientId` input of the controller you use.
+   with the redirect URI `https://lenses.specs.com/deeplink/specslink/oauth2redirect/unsecure`,
+   set a **Package ID** under **Project Settings → Platform Settings → SPECS → SPK Configuration**,
+   and paste the Client ID into the `clientId` input of the controller you use.
 3. Sign in on a SPECS device — OAuth2 sign-in does not run in the Lens Studio editor.
 
 ```typescript
@@ -35,7 +36,7 @@ Step-by-step setup is in [Docs/setup.md](Docs/setup.md); a template for your own
 
 This section ships with the package and describes the exact installed revision. Read it, then follow the links into `Docs/` for the topic you
 need. It is written for both people and coding agents; generic Lens scripting, scene
-construction and Specs spatial design live in the CLAD skills, not here.
+construction and Specs spatial design are out of scope here.
 
 ### Package identity
 
@@ -44,7 +45,7 @@ construction and Specs spatial design live in the CLAD skills, not here.
   `AuthKitExamples.lspkg/SpotifyExample/SpotifymusicController` (class `SpotifyMusicController`),
   `AuthKitExamples.lspkg/SpotifyExample/SpotifyControllerMinimum` (class `SpotifyUIController`).
 - Required companion packages (package_dependencies.json): AuthKit (the OAuth2 engine),
-  SpectaclesInteractionKit, SpectaclesUIKit (`RectangleButton`), SnapDecorators
+  InteractionKit, UIKit (`RectangleButton`), SnapDecorators
   (`@bindStartEvent`), Utilities (`Logger`), Motion and Icons (UIKit dependencies).
 - `AuthKitExamples__PLACE_IN_SCENE.prefab`: self-contained demo. It carries the guide panel
   ("Ok, I understood"), the example carousel (Previous / Next / minimize) and two example groups,
@@ -71,12 +72,6 @@ Use AuthKitExamples as a starting point when a Lens needs a sign-in panel for a 
 OAuth2 service — Spotify as shipped, or any provider through `UIController`. The OAuth2 logic
 itself lives in AuthKit (read its README for the `OAuth2` API); this package only adds UI wiring
 and Spotify Web API calls. For Lens backends on Snap Cloud use Snap Cloud (Supabase) auth instead.
-
-### Related CLAD skills
-
-[specs-snap-cloud](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/specs-snap-cloud/SKILL.md). These skills cover the surrounding Lens workflow.
-
-[Install CLAD](https://developers.specs.com/docs/clad/setup/setup-ai/) or browse its [source](https://github.com/lens-studio-devs/ls-extensions). Read the installed package docs for this revision’s APIs.
 
 ### Package Docs (ship in `Docs/`)
 

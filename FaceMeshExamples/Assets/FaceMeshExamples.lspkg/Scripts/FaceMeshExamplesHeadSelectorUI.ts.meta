@@ -1,0 +1,65 @@
+- !<AssetImportMetadata/2551b18b-79c2-4aab-aa28-908e621824e2>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 4471a346-fba0-4063-8746-a971936405fd
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 4471a346-fba0-4063-8746-a971936405fd
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> e2bab38a-4f9f-4bab-a197-c51f9c6532ed
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/e2bab38a-4f9f-4bab-a197-c51f9c6532ed>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: f0ce7bf2-d1a2-4da7-9fce-a0f3d98c3d59
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    buttonSizeCm: false
+    indexColor: false
+    initialName: false
+    innerHeightCm: false
+    innerWidthCm: false
+    sourceColor: false
+    viewDistanceCm: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - viewDistanceCm: !<float> 55.000000
+      innerWidthCm: !<float> 16.000000
+      innerHeightCm: 4.500000
+      buttonSizeCm: 3.500000
+      indexColor: !<Vec4> {x: 0.720000, y: 0.740000, z: 0.780000, w: 1.000000}
+      initialName: Pirate Shark
+      sourceColor: !<Vec4> {x: 0.550000, y: 0.780000, z: 1.000000, w: 1.000000}
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input float viewDistanceCm = 55 {"hint":"Distance from the viewer in cm; scales text to stay legible"}'
+    - '// @input float innerWidthCm = 16 {"hint":"Inner (content) width of the frame in cm"}'
+    - '// @input float innerHeightCm = 4.5 {"hint":"Inner (content) height of the frame in cm"}'
+    - '// @input float buttonSizeCm = 3.5 {"hint":"Prev/Next button diameter in cm"}'
+    - '// @input vec4 indexColor = {0.72,0.74,0.78,1} {"widget":"color"}'
+    - '// @input string initialName = "Pirate Shark"'
+    - '// @input vec4 sourceColor = {0.55,0.78,1,1} {"widget":"color"}'

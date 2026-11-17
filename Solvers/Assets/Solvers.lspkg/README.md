@@ -25,7 +25,7 @@ solver ships as a TypeScript component and a JavaScript twin, and the
 This section ships with the package and describes the exact installed revision.
 Read it, then follow the links into `Docs/` for the topic you need. It is
 written for both people and coding agents; generic Lens scripting, scene
-construction, and Specs spatial design live in the CLAD skills, not here.
+construction, and Specs spatial design are out of scope here.
 
 ### Package identity
 
@@ -46,8 +46,8 @@ construction, and Specs spatial design live in the CLAD skills, not here.
   demo code, not solver API. See [components](Docs/components.md#demo-scaffolding-example).
 - Required companion packages (`package_dependencies.json`): `SnapDecorators`
   and `Utilities` (imported by every TS solver), and
-  `SpectaclesInteractionKit` (imported by `SolversShowcase`), and
-  `SpectaclesUIKit` (imported by the guide panel and carousel in `Example/`). Also listed:
+  `InteractionKit` (imported by `SolversShowcase`), and
+  `UIKit` (imported by the guide panel and carousel in `Example/`). Also listed:
   `Motion` and `Icons`.
 
 ### Version and API status
@@ -62,17 +62,6 @@ Use Solvers for script-driven follow, face, match and proximity behavior on any
 SceneObject. Use the engine `LookAtComponent` for a full 3-axis look-at (the
 prefab's `[LookAt]` group shows it). Use SIK for grabbing and manipulation, and
 UIKit `Frame` follow for panels that are already UIKit Frames.
-
-### Related CLAD skills
-
-- [lens-api](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/lens-api):
-  component lifecycle, `createComponent`, update loops.
-- [specs-interaction-recipes](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/specs-interaction-recipes):
-  making the solved object grabbable or interactive.
-- [specs-build-ui](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/specs-build-ui):
-  world-space UI that a solver keeps in view.
-- No CLAD? Setup: https://developers.specs.com/docs/clad/setup/setup-ai/ ·
-  source: `github.com/lens-studio-devs/ls-extensions`.
 
 ### Package Docs (ship in `Docs/`)
 
@@ -101,9 +90,4 @@ here as supported API; never guess an import path.
    of 100.
 
 ## Built with 👽 by the SPECS team
-
-
-
-
-
 

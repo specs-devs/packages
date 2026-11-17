@@ -5,8 +5,8 @@
 ## Use when
 
 A configured response doesn't play, plays wrongly, or throws. Generic SIK,
-scene and scripting issues belong to the relevant CLAD skill (`specs-debug`,
-`specs-interaction-recipes`).
+scene and scripting issues are outside this package's
+scope.
 
 ## Known issues
 

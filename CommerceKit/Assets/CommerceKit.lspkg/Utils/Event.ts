@@ -51,7 +51,12 @@ export default class Event<Arg = void> {
    */
   public invoke(arg: Arg) {
     this.subscribers.forEach((handler) => {
-      handler(arg)
+      // One failing handler must not keep the others from being notified.
+      try {
+        handler(arg)
+      } catch (error) {
+        print(`[Event] A handler threw: ${error instanceof Error ? error.stack || error.message : error}`)
+      }
     })
   }
 

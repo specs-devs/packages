@@ -1,0 +1,228 @@
+- !<AssetImportMetadata/5c413111-75aa-9a31-fc3c-0092933ca060>
+  ImportedAssetIds:
+    .hidden/blinn5: !<reference> f625e0c7-ae32-415b-9f50-f9fd4b86e3e4
+    .hidden/white: !<reference> 40fca11d-482b-4fa4-9f4a-04ddca055a87
+    17d95f7cdd9b9575: !<reference> 0da5c8a8-f822-443f-8795-84db31301a81
+    1ad0d40b3b51fc03: !<reference> 632e0abc-411e-41f3-93e2-96bc23e4db9c
+    26ba073d67b9d0dd: !<reference> 67d54e3b-f746-4498-865b-895c10f0abfa
+    7a5102d39e85869d: !<reference> 15581ba5-d4c5-43da-9d30-8e6b7583ac5d
+    88abc00e0f54d2b4: !<reference> 73bc89d4-aab2-4d47-aeb0-6d930f4f468e
+    Animations/BaseLayer: !<reference> b4139c8c-4bc9-4e82-b91e-d1efe1a16499
+    Materials/blinn5: !<reference> f59afc70-d7f8-45e6-80aa-09b444b56194
+    Materials/blinn5|blinn5|GraphPassInfo: !<reference> c5bd9b47-cd2b-4255-964b-8dce8b8aa1ba
+    Meshes/Jelly_Flow_Mesh_v1: !<reference> 6a95454e-1c3d-4476-aca5-2d5eac10c719
+    Scene: !<reference> 9e3debdc-f0fb-432d-ab00-e08c6d7575c0
+    a2082415e7d7469b: !<reference> 235a0dcb-984b-4349-b3d9-eb994d2c7ff5
+    a502785cb5c4e2e5: !<reference> 5c04922d-402c-4e4e-9c79-846fff0485f6
+    b2b21d75af9d9f78: !<reference> 0970cb4d-a84c-4f8f-a1a9-78dddcd69695
+    b6c07368dab51b08: !<reference> 771ea942-af95-4a3c-b233-00d701b0559c
+    f51f06e9c1a5a2e1: !<reference> f02548fc-ccf6-4937-9ba2-ac8c63bad3a8
+  ImporterName: FbxImporter
+  PrimaryAsset: !<reference> 9e3debdc-f0fb-432d-ab00-e08c6d7575c0
+  PackageType: LegacyPackage
+  LegacyPackagePolicy: CanBeUnpackedTransparent
+  ExtraData:
+    {}
+  AssetDataMap:
+    Scene: !<own> 7cb71a1b-3125-4030-b8ba-0bbd1db48d18
+  DependentFiles:
+    []
+  ImporterSettings: !<FbxImporterSettings>
+    UseLegacyImporter: false
+    WithMaterials: true
+    NamingConvention: ByCategorySanitizeV2
+    PersistentIdGenerationAlgorithm: DescriptorBasedV2
+    AnimationCurveOptimization: true
+    CustomAnimationSamplingRate: 30.000000
+    ImportVertexColor: true
+    ImportTangentsAndBinormals: true
+    RegenerateTangentsAndBinormals: false
+    RegenerateNormalsForSkinnedMeshes: true
+    ImportBlendShapeAnimation: true
+    ImportVertexAnimation: true
+    GeneratePivots: true
+    TriangulateNURBS: true
+    UseLegacyFbxLoader: false
+  CompressionSettings: !<ComplexCompressionSettings>
+    Presets:
+      None Compression: !<FileCompressionSettings>
+        {}
+      Performance Compression: !<PerformanceCompressionSettings>
+        Level: Medium
+        Mipmap: false
+    ExtensionMappings:
+      mesh: None Compression
+      jpg: Performance Compression
+    Overrides:
+      {}
+- !<SceneObject/0970cb4d-a84c-4f8f-5e56-87222329696a>
+  PrefabRemaps:
+    []
+  Name: Jelly_Joint_2
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: -6.057724, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 73bc89d4-aab2-4d47-514f-926cf0b0b971
+  Components:
+    []
+- !<SceneObject/0da5c8a8-f822-443f-786a-7b24cecfe57e>
+  PrefabRemaps:
+    []
+  Name: Jelly_Flow_Root
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: -0.344399, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 235a0dcb-984b-4349-4c26-1466b2d3800a
+  Components:
+    []
+- !<SceneObject/15581ba5-d4c5-43da-62cf-71948a7c53a2>
+  PrefabRemaps:
+    []
+  Name: Jelly_Animation
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 771ea942-af95-4a3c-4dcc-ff28fe4faa63
+    - !<own> 0da5c8a8-f822-443f-786a-7b24cecfe57e
+  Components:
+    []
+- !<SceneObject/235a0dcb-984b-4349-4c26-1466b2d3800a>
+  PrefabRemaps:
+    []
+  Name: Jelly_Joint_1
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: -7.274106, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 0970cb4d-a84c-4f8f-5e56-87222329696a
+  Components:
+    []
+- !<RenderMeshVisual/5c04922d-402c-4e4e-6386-7b9000fb7a09>
+  PrefabRemaps:
+    []
+  Name: component_0
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> f59afc70-d7f8-45e6-80aa-09b444b56194
+  Mesh: !<reference> 6a95454e-1c3d-4476-aca5-2d5eac10c719
+  Skin: !<reference> 632e0abc-411e-41f3-6c1d-6943dc1b2463
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    Jelly_Squish_Top: 0.329152
+    Jelly_Tentacles_Close: 0.205847
+    Jelly_Tentacles_Correction: 1.000000
+    Jelly_Tentacles_Open: 0.000000
+    Jelly_Tentacles_Open1: 0.000000
+    Jelly_Tentacles_Rotate: -0.400000
+- !<Skin/632e0abc-411e-41f3-6c1d-6943dc1b2463>
+  PrefabRemaps:
+    []
+  Name: component_2
+  Enabled: true
+  skinBones:
+    Jelly_Animation: !<reference> 15581ba5-d4c5-43da-62cf-71948a7c53a2
+    Jelly_Flow_Mesh_v1: !<reference> 771ea942-af95-4a3c-4dcc-ff28fe4faa63
+    Jelly_Flow_Root: !<reference> 0da5c8a8-f822-443f-786a-7b24cecfe57e
+    Jelly_Flow_v1: !<reference> 67d54e3b-f746-4498-79a4-76a3ef0f5405
+    Jelly_Joint_1: !<reference> 235a0dcb-984b-4349-4c26-1466b2d3800a
+    Jelly_Joint_2: !<reference> 0970cb4d-a84c-4f8f-5e56-87222329696a
+    Jelly_Joint_3: !<reference> 73bc89d4-aab2-4d47-514f-926cf0b0b971
+- !<SceneObject/67d54e3b-f746-4498-79a4-76a3ef0f5405>
+  PrefabRemaps:
+    []
+  Name: Jelly_Flow_v1
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 15581ba5-d4c5-43da-62cf-71948a7c53a2
+  Components:
+    - !<own> 632e0abc-411e-41f3-6c1d-6943dc1b2463
+    - !<own> f02548fc-ccf6-4937-645d-53739c452c57
+- !<SceneObject/73bc89d4-aab2-4d47-514f-926cf0b0b971>
+  PrefabRemaps:
+    []
+  Name: Jelly_Joint_3
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: -6.195174, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    []
+- !<SceneObject/771ea942-af95-4a3c-4dcc-ff28fe4faa63>
+  PrefabRemaps:
+    []
+  Name: Jelly_Flow_Mesh_v1
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 5c04922d-402c-4e4e-6386-7b9000fb7a09
+- !<ObjectPrefabAssetData/7cb71a1b-3125-4030-b8ba-0bbd1db48d18>
+  Prototype: !<ObjectOwner/006e2688-9481-44c8-971b-fbd0afe515b3>
+    PackagePath: ""
+    objects:
+      - !<own> 67d54e3b-f746-4498-79a4-76a3ef0f5405
+- !<AnimationPlayer/f02548fc-ccf6-4937-645d-53739c452c57>
+  PrefabRemaps:
+    []
+  Name: component_3
+  Enabled: true
+  Autoplay: true
+  ClipRangeType: Frames
+  AnimationClips:
+    - !<AnimationClip>
+      AnimationAsset: !<reference> b4139c8c-4bc9-4e82-b91e-d1efe1a16499
+      Name: BaseLayer
+      Weight: 1.000000
+      PlaybackSpeed: 1.000000
+      Begin: 0.000000
+      End: 3.960000
+      Offset: 0.000000
+      Reversed: false
+      Disabled: false
+      BlendMode: Default
+      ScaleMode: Multiply
+      PlaybackMode: Loop

@@ -13,8 +13,8 @@ and then the public `rebuild()` (see [cheat sheet](cheat-sheet.md) rule 1 and
 [examples](examples.md)). The recipes below author the gizmos in the Inspector
 or instantiate them from a prefab that has its references already wired.
 
-Generic scripting (prefab instantiation, update events, taps) is covered by the
-CLAD `lens-api` skill.
+Generic scripting (prefab instantiation, update events, taps) is covered by
+the Lens Studio documentation.
 
 ## Gizmo descriptions
 

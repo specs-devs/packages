@@ -1,15 +1,10 @@
 /**
  * SPECS Inc. 2027
- * Animated circle shader controller for surface placement visual feedback. Controls loading amount,
- * scan animation toggle, circle color, and thickness via shader parameters, provides smooth in/out
- * animations with cubic easing, manages cancellation for interrupted animations, and displays progress
- * indicators during surface detection and calibration phases.
+ * Animates the placement circle in and out, and sets its loading fill and color.
  */
 import animate, {
   CancelSet,
-} from "SpectaclesInteractionKit.lspkg/Utils/animate";
-import {AnimationUtils} from "Utilities.lspkg/Scripts/Utils/AnimationUtils";
-import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
+} from "InteractionKit.lspkg/Utils/animate";
 
 const START_SIZE = 0;
 const END_SIZE = 1;
@@ -17,43 +12,33 @@ const END_SIZE = 1;
 @component
 export class CircleAnimation extends BaseScriptComponent {
   private rend = this.getSceneObject().getComponent(
-    "Component.RenderMeshVisual"
+    "Component.RenderMeshVisual",
   );
   private completeCancel: CancelSet = new CancelSet();
 
-  setLoadingAmount(amount: number) {
-    this.rend.mainPass.InnerCircleMask = amount;
-    if (amount > 0.1) {
-      this.rend.mainPass.AnimationSwitch = false;
-    }
-  }
-
-  enableScanAnimation(enabled: boolean) {
-    this.rend.mainPass.AnimationSwitch = enabled;
-  }
-
-  setCircleColor(color: vec4) {
-    this.rend.mainPass.dotsColor = color;
-    this.rend.mainPass.circleColor = color;
-  }
-
-  setLoadingColor(isWhite: boolean) {
-    this.rend.mainPass.whiteColor = isWhite
-      ? new vec4(1, 1, 1, 1)
-      : new vec4(1, 1, 0, 1);
+  onAwake() {
+    //animate() runs off a shared update that outlives this component, so a
+    //detector stopped mid-animation must not leave it writing to the material
+    this.createEvent("OnDestroyEvent").bind(() => this.cancelAnimations());
   }
 
   cancelAnimations() {
     this.completeCancel.cancel();
   }
 
-  onDestroy() {
-    this.cancelAnimations();
+  //amount is progress: 0 is an empty loader, 1 is a full one, matching the shader
+  setLoadingAmount(amount: number) {
+    this.rend.mainPass.InnerCircleMask = amount;
+  }
+
+  setCircleColor(color: vec4) {
+    this.rend.mainPass.dotsColor = color;
   }
 
   reset() {
-    this.rend.mainPass.AnimationSwitch = true;
     this.rend.mainPass.Thickness = START_SIZE;
+    //start empty rather than inheriting whatever the last run left on the material
+    this.setLoadingAmount(0);
   }
 
   animateCircleOut(callback: () => void) {
@@ -62,7 +47,6 @@ export class CircleAnimation extends BaseScriptComponent {
       easing: "ease-out-cubic",
       duration: 0.5,
       update: (t: number) => {
-        this.rend.mainPass.Amount = 1;
         this.rend.mainPass.Thickness = MathUtils.lerp(START_SIZE, END_SIZE, t);
       },
       ended: callback,
@@ -76,22 +60,7 @@ export class CircleAnimation extends BaseScriptComponent {
       easing: "ease-in-cubic",
       duration: 0.5,
       update: (t: number) => {
-        this.rend.mainPass.Amount = 1;
         this.rend.mainPass.Thickness = MathUtils.lerp(END_SIZE, START_SIZE, t);
-      },
-      ended: callback,
-      cancelSet: this.completeCancel,
-    });
-  }
-
-  animateCircleFull(callback: () => void) {
-    if (this.completeCancel) this.completeCancel.cancel();
-    animate({
-      easing: "linear",
-      duration: 0.5,
-      update: (t: number) => {
-        this.rend.mainPass.Amount = 1;
-        this.rend.mainPass.Thickness = AnimationUtils.pingPong(START_SIZE, END_SIZE, t);
       },
       ended: callback,
       cancelSet: this.completeCancel,

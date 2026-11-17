@@ -23,7 +23,7 @@ been seen.
 This section ships with the package and describes the exact installed revision.
 Read it, then follow the links into `Docs/` for the topic you need. It is
 written for both people and coding agents; generic Lens scripting, scene
-construction, and Specs spatial design live in the CLAD skills, not here.
+construction, and Specs spatial design are out of scope here.
 
 ### Package identity
 
@@ -45,7 +45,7 @@ construction, and Specs spatial design live in the CLAD skills, not here.
   marker API. See [components](Docs/components.md#demo-scaffolding-example).
 - Required companion packages (see `package_dependencies.json`): `Utilities`
   (`ComponentUtils`, `Logger`) and `SnapDecorators` (imported by the
-  scripts), plus `SpectaclesInteractionKit`, `SpectaclesUIKit`, `Motion` and
+  scripts), plus `InteractionKit`, `UIKit`, `Motion` and
   `Icons` (used by the demo scaffolding). The scene needs a root Camera. The
   Extended prefab also needs `DeviceTracking` in **World** mode on that camera.
 
@@ -62,17 +62,6 @@ Use Marker Tracking Helper when content must appear on a known printed or
 displayed image. For content placed on real-world surfaces without a marker,
 use surface placement / world query. For a fixed location that is known in
 advance, use Custom Locations.
-
-### Related CLAD skills
-
-- [specs-world-query](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/specs-world-query):
-  surface hits when no marker is involved.
-- [specs-custom-locations](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/specs-custom-locations):
-  location-anchored content.
-- [lens-api](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/lens-api):
-  generic scripting and the callback scripts.
-- No CLAD? Setup: https://developers.specs.com/docs/clad/setup/setup-ai/ ·
-  source: `github.com/lens-studio-devs/ls-extensions`.
 
 ### Package Docs (ship in `Docs/`)
 

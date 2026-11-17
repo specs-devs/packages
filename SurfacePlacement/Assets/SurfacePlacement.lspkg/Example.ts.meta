@@ -1,4 +1,4 @@
-- !<AssetImportMetadata/cda75b9d-9830-6557-b3a3-cfb4d4ad75e5>
+- !<AssetImportMetadata/b0565449-e021-412a-9936-5bdd55fe194b>
   ImportedAssetIds:
     TypeScriptAsset: !<reference> 5ea0171b-d801-473a-b686-acf039623294
   ImporterName: TypeScriptAssetImporter
@@ -24,15 +24,13 @@
   VersionPatch: 0
   VersionPrerelease: ""
   UpdateOrder: 0
+  RunInEditor: false
   ComponentUid: 39c4e8af-cd69-4d2b-943f-0b1870d2e765
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
-    autoStart: false
-    enableLogging: false
-    enableLoggingLifecycle: false
+    menuObj: false
     objectVisuals: false
-    placementInteraction: false
     placementSettingMode: false
   ScriptTypesHidden:
     {}
@@ -44,27 +42,12 @@
     []
   DefaultScriptInputs:
     - objectVisuals: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      menuObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       placementSettingMode: 0
-      placementInteraction: 0
-      autoStart: true
-      enableLogging: false
-      enableLoggingLifecycle: false
   ScriptTypes:
     -
       {}
   InputLines:
-    - '// @ui {"widget":"separator"}'
-    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Placement Configuration</span>"}'
-    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Object and placement mode selection</span>"}'
     - // @input SceneObject objectVisuals
-    - '// @input int placementSettingMode = 1 {"widget":"combobox", "values":[{"label":"Near Surface", "value":0}, {"label":"Horizontal", "value":1}, {"label":"Vertical", "value":2}]}'
-    - '// @input int placementInteraction {"hint":"Confirmation for Horizontal and Vertical. Near Surface uses palms.", "widget":"combobox", "values":[{"label":"Head Pose (hold still)", "value":0}, {"label":"Pinch or Tap", "value":1}]}'
-    - '// @ui {"widget":"separator"}'
-    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Behavior Settings</span>"}'
-    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Auto-start and initialization options</span>"}'
-    - // @input bool autoStart = true
-    - '// @ui {"widget":"separator"}'
-    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
-    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'
-    - '// @input bool enableLogging {"hint":"Enable general logging (animation cycles, events, etc.)"}'
-    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)"}'
+    - // @input SceneObject menuObj
+    - '// @input int placementSettingMode {"widget":"combobox", "values":[{"label":"Tabletop", "value":0}, {"label":"Ground", "value":1}, {"label":"Wall", "value":2}]}'

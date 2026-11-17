@@ -4,13 +4,13 @@
 
 ## Use when
 
-Read before adding a catalog or wiring purchase UI.
+Read before selling a product or wiring purchase UI.
 
-1. **Initialize one catalog first.** ProductCatalog starts `initializeCatalog` in awake. A nonempty existing catalog is not replaced by later calls. → [Catalog lifecycle](guide.md#catalog-and-lifecycle)
-2. **Use decimal USD prices.** `CommercePrice.price` defaults to 1.99, currency USD. Initialization rounds to two decimals, then sends integer cents; other currencies throw. → [Price type](components.md#commerceprice)
-3. **Treat editor purchases as local mocks.** No device purchase flow is launched by the editor branch; ownership resets with the Lens session. `client()` rejects deliberately in the editor. → [Mock workflow](guide.md#editor-testing)
-4. **Await the method, not its function object.** `client` is a method: `await kit.client()` on device. Guard the editor branch before using it. → [Core API](components.md#commercekit)
-5. **Guard every purchase result.** The device error catch can return undefined despite the public signature. Catch exceptions and check the result before reading success/cancelled. → [Examples](examples.md)
-6. **Wire UIKit trigger-up.** ExamplePurchaseController binds `purchaseButton.onTriggerUp`; scene inputs must point at the button component, not the SceneObject. → [Example controller](components.md#examplepurchasecontroller)
-7. **Do not equate cached ownership with a fresh device receipt.** `isProductOwned` reads cached state; `checkPurchaseStatus` queries history on device. → [Ownership](guide.md#ownership-and-purchase-state)
-8. **Keep device acknowledgement gaps visible.** Pending-state acknowledgement currently passes productId instead of a purchase token, and acknowledgement failures can leave a promise pending. → [Known gaps](api-status.md#known-gaps)
+1. **Products live on the Specs developer portal.** Create them at [developers.specs.com/lenses](https://developers.specs.com/lenses) and use their product IDs in scripts. `ProductCatalog` no longer lists products; entries saved by 3.x scenes are ignored. → [Guide](guide.md#how-it-works)
+2. **Start once, from anywhere.** `ProductCatalog` (Initialize On Awake) or `CommerceKit.getInstance().initialize()` connects, restores purchases and finalizes pending ones. Concurrent calls share one attempt. → [Components](components.md#commercekit)
+3. **Register consumables before selling them.** `registerConsumable(productId, handler)` in `onAwake`; without it `purchaseProduct()` rejects before checkout. Grant the item in the handler: it runs before the purchase is consumed. → [Consumables](guide.md#consumables)
+4. **Show `nativeProduct.price.displayPrice`.** It is the localized string from the service; `price.price` keeps the 3.x decimal amount. → [Product info](guide.md#getproductinfoproductid-string-promisecommerceproduct)
+5. **Read `outcome.status`.** `purchased`, `alreadyOwned`, `cancelled` or `pending` (paid, finalized later). Failures reject with `CommerceKitError`. → [Examples](examples.md)
+6. **Re-render on `onPurchasesChanged`.** It fires on restore, completed and finalized purchases, refunds and subscription changes. → [Components](components.md#commercekit)
+7. **Preview simulates, the device sells.** In Preview every product ID is a $0.99 product named after its ID; a product with a handler registered before first use is a consumable. Subscriptions are not simulated. → [Testing in Preview](guide.md#testing-in-lens-studio-preview)
+8. **Use one client.** Never call `CommerceKitModule.createClient()` next to CommerceKit; use `client()` for native calls, then `refresh()`. → [client()](guide.md#client-promisecommerceclient)

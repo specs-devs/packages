@@ -1,0 +1,91 @@
+// The table-top reticle's ring: CircleGrid's ring sweep, as an arc that opens
+// from a full circle to a half circle across the bottom, so that around a hand
+// the wrist passes through it. Nothing fills the inside of the ring, which is
+// where the hand is. HandDots draws the dot field round it on a mesh of its own,
+// so the two can turn separately.
+
+// Colours
+input_vec4 circleColor; // ring, unfilled part
+input_vec4 loadedColor; // ring, filled part
+
+// Loader
+input_float progress;   // 0 = empty, 1 = full  (was InnerCircleMask)
+input_float thickness;  // 0 = hairline ring, 1 = thick ring
+input_float opening;    // 0 = a full circle, 1 = a half circle open across the bottom
+
+output_vec4 FinalColor;
+
+#define TAU 6.28318530717959
+
+const mediump vec2 CENTRE = vec2(0.5, 0.5);
+const mediump float RING_EDGE = 0.19;  // outer edge of the ring
+// Where turn zero sits, which is the middle of the opening: the UV's natural
+// start, at its top. The reticle mesh shows its UV upside down, so that is the
+// bottom of the ring on screen, and the ring's -Y side in the reticle's frame.
+const mediump float ARC_START = 0.0;
+// How far the arc's ends sit either side of turn zero when fully open, in turns:
+// a quarter turn each way leaves a half circle with its ends level.
+const mediump float OPEN_HALF = 0.25;
+
+// Ring. The outer edge stays pinned at RING_EDGE and thickness grows inward, so
+// the band is centred on RING_EDGE - thickness/2.
+const mediump float RING_THICKNESS_MIN = 0.008; // at thickness 0
+const mediump float RING_THICKNESS_MAX = 0.01125; // at thickness 1, the completion pop
+const mediump float RING_FEATHER = 0.004; // softness of the band's two edges
+
+// The filled span: one solid colour, no glow, its two ends fading into the
+// band over this much of a whole turn each, or half the span while it is
+// shorter.
+const mediump float ARC_FADE = 0.03;
+
+void main()
+{
+    vec2 uv = system.getSurfaceUVCoord0();
+    mediump float r = distance(uv, CENTRE);
+    mediump vec2 d = uv - CENTRE;
+
+    // Angle around the centre as 0..1 turns. Negating x runs it clockwise on
+    // screen. atan(0, 0) is undefined in GLSL, so it is sampled a hair off the
+    // centre; 0.0001 rather than smaller, since a mediump float can flush
+    // anything much smaller to zero.
+    mediump vec2 ds = d + vec2(0.0001, 0.0);
+    mediump float theta = fract(atan(-ds.x, ds.y) / TAU + ARC_START);
+    mediump float fromGap = min(theta, 1.0 - theta); // turns either way from the middle
+    //where the arc ends either side of turn zero, at the centre of each cap
+    mediump float arcFrom = OPEN_HALF * clamp(opening, 0.0, 1.0);
+
+    // ── Ring ───────────────────────────────────────────────────────────
+    // An arc with round caps, drawn from each fragment's distance to its
+    // centreline: straight across the band along the arc, and to the nearer end
+    // point inside the opening. The caps keep the ends round however thick the
+    // band gets; fading it out by angle instead smeared them into wedges as the
+    // completion pop thickened it. thickness grows the band inward from a fixed
+    // outer edge, so the centreline sits midway between the two.
+    mediump float ringThick = mix(RING_THICKNESS_MIN, RING_THICKNESS_MAX, thickness);
+    mediump float ringHalf = ringThick * 0.5;
+    mediump float ringMid = RING_EDGE - ringHalf;
+    //the end points, arcFrom either side of turn zero; theta is atan(-x, y), so turn zero points up the UV
+    mediump vec2 capDir = vec2(sin(arcFrom * TAU), cos(arcFrom * TAU));
+    mediump float toCap = min(
+        distance(d, vec2(-capDir.x, capDir.y) * ringMid),
+        distance(d, capDir * ringMid));
+    mediump float fromLine = fromGap >= arcFrom ? abs(r - ringMid) : toCap;
+    mediump float ringBand =
+        1.0 - smoothstep(ringHalf - RING_FEATHER, ringHalf + RING_FEATHER, fromLine);
+
+    // Position along the sweep, 0 at one end point and 1 at the other; each cap
+    // takes the value of the end it rounds off.
+    mediump float sweep = 1.0 - 2.0 * arcFrom; // the sweep's length in turns
+    mediump float along = clamp((theta - arcFrom) / sweep, 0.0, 1.0);
+
+    //solid between its two faded ends, see ARC_FADE
+    mediump float fade = max(min(ARC_FADE / sweep, progress * 0.5), 0.0001);
+    mediump float filled = smoothstep(0.0, fade, along) *
+        (1.0 - smoothstep(progress - fade, progress, along));
+    filled *= step(0.0001, progress); // nothing showing at 0
+    //ease into a fully lit arc over the last of the sweep rather than popping to it
+    filled = max(filled, smoothstep(0.97, 1.0, progress));
+
+    lowp vec3 ringRgb = mix(circleColor.rgb, loadedColor.rgb, filled);
+    FinalColor = vec4(ringRgb, ringBand);
+}

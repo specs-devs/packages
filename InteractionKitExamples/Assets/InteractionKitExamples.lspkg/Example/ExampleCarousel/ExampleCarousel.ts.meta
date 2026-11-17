@@ -24,6 +24,7 @@
   VersionPatch: 0
   VersionPrerelease: ""
   UpdateOrder: 0
+  RunInEditor: false
   ComponentUid: 182e824f-2205-5515-874e-d7840df7018a
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
@@ -33,6 +34,7 @@
     examples: false
     examplesPushBack: false
     extraPanelDrop: false
+    fixedExamples: false
     nextLabel: false
     previousLabel: false
     startIndex: false
@@ -61,6 +63,8 @@
       nextLabel: Next
       examplesPushBack: !<float> 20.000000
       anchorExamples: true
+      fixedExamples: !<reference.SceneObject[]>
+        []
       startMinimized: false
       extraPanelDrop: !<float> 0.000000
   ScriptTypes:
@@ -76,5 +80,6 @@
     - '// @input string nextLabel = "Next" {"hint":"Label of the button that shows the next example"}'
     - '// @input float examplesPushBack = 20 {"hint":"Extra distance (cm) the examples are pushed away from the user, behind the carousel"}'
     - "// @input bool anchorExamples = true {\"hint\":\"Move the examples in front of the user's head pose. Turn off for world-anchored experiences (surface placement, navigation) that must stay where they are.\"}"
+    - "// @input SceneObject[] fixedExamples = {} {\"hint\":\"Examples that stay exactly where they are authored (near-field content meant to be poked or pinched within arm's reach). They are not moved to the head pose or pushed behind the carousel.\"}"
     - '// @input bool startMinimized {"hint":"Start with the panel collapsed to its title bar (useful when it only carries guidance for a single experience)"}'
     - '// @input float extraPanelDrop {"hint":"Extra drop (cm) of the panel below its usual spot. Increase it when the examples show their own hints at eye level (e.g. surface placement)."}'

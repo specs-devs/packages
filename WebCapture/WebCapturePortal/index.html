@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Web Capture</title>
+  <link rel="icon" href="assets/icon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <script type="importmap">
+    { "imports": { "three": "./vendor/three/three.module.min.js", "three/addons/": "./vendor/three/addons/" } }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><img src="assets/icon.svg" alt=""><span>Web Capture</span></div>
+    <nav class="tabs" role="tablist">
+      <button data-view="library" class="tab active" role="tab">Recordings</button>
+      <button data-view="editor" class="tab" role="tab">Edit</button>
+      <button data-view="schedule" class="tab" role="tab">Schedule</button>
+    </nav>
+    <div class="conn" id="conn" title="Connection"><span class="dot"></span><span id="connText">Not connected</span></div>
+    <button class="ghost" id="themeBtn" type="button">Light</button>
+    <button class="ghost" id="settingsBtn" title="Sources and Snap Cloud settings">Settings</button>
+  </header>
+
+  <main>
+    <!-- Library: recordings from Lens Studio, Snap Cloud or a file -->
+    <section class="view active" id="view-library">
+      <div class="library">
+        <div class="lib-head">
+          <h2>Recordings</h2>
+          <div class="row">
+            <button id="libRefresh">Refresh</button>
+            <label class="button"><input type="file" id="libFile" accept=".json,application/json" hidden>Open file…</label>
+            <button id="libSample">Open sample</button>
+          </div>
+        </div>
+        <p class="hint">Recordings saved by the Lens appear here: from Lens Studio (<code>WebCaptureRecordings/</code> in the project) and from your Snap Cloud project (add its URL and public key in Settings once). Nothing else to type. Drop a <code>.webcapture.json</code> file anywhere to open it.</p>
+        <table class="table"><thead><tr><th>Name</th><th>Source</th><th>Length</th><th>Objects</th><th>Created</th><th></th></tr></thead><tbody id="libRows"></tbody></table>
+        <p class="empty" id="libEmpty" hidden>No recordings yet. Go to Capture and press Start capture (or press the Start Capture button inside your Lens).</p>
+      </div>
+    </section>
+
+    <!-- Editor: replay, re-frame, trim/cut, look, titles, music, export -->
+    <section class="view" id="view-schedule"><div class="schedule" id="schedRoot"></div></section>
+
+    <section class="view" id="view-editor">
+      <aside class="side">
+        <h3 id="edName">No recording open</h3>
+        <p class="hint" id="edMeta"></p>
+        <h3>Objects</h3>
+        <ul class="list" id="edObjects"></ul>
+      </aside>
+      <div class="stage">
+        <div class="viewport" id="edViewport"></div>
+        <div class="prep" id="prepOverlay" hidden>
+          <div class="prep-card">
+            <div class="spinner"></div>
+            <div class="prep-title" id="prepTitle">Preparing the video</div>
+            <ul class="prep-steps" id="prepSteps"></ul>
+            <div class="prep-bar"><div id="prepBar"></div></div>
+            <p class="hint">Playback unlocks when the camera is locked to the scene. Playing earlier looks scattered.</p>
+          </div>
+        </div>
+        <div class="overlay-tools">
+          <select id="edCamera" title="Camera">
+            <option value="recorded">Lens point of view</option>
+            <option value="orbit">Free camera</option>
+            <option value="shots">Camera shots</option>
+          </select>
+          <button id="edShotAdd" title="Add the current free-camera view as a shot at the playhead">+ Shot</button>
+          <button id="edShotClear" title="Remove every shot">Clear shots</button>
+          <button id="edFrame">Frame</button>
+          <label class="check"><input type="checkbox" id="edLabels"> Labels</label>
+        </div>
+        <div class="timeline">
+          <div class="transport">
+            <button id="edPlay" class="primary" title="Play / pause (Space)">▶</button>
+            <span class="time" id="edTime">0:00.0 / 0:00.0</span>
+            <select id="edSpeed" title="Speed"></select>
+            <span class="sep"></span>
+            <button id="edIn" title="Set the start of the clip (I)">Set in</button>
+            <button id="edOut" title="Set the end of the clip (O)">Set out</button>
+            <button id="edCut" title="Cut start / cut end (C)">Cut start</button>
+            <button id="edUncut" title="Remove every cut and the trim">Reset trim &amp; cuts</button>
+            <span class="clip" id="edClip"></span>
+          </div>
+          <canvas id="edTimeline" height="74"></canvas>
+        </div>
+      </div>
+      <aside class="side right">
+        <section data-acc="presets" data-open>
+          <h3>Presets</h3>
+          <div class="presets" id="edPresets"></div>
+          <p class="hint" id="presetHint">One click sets the composite and the grade. Tune any slider afterwards.</p>
+        </section>
+        <section id="edSelected" data-acc="selected" data-open hidden>
+          <h3>Selected · <span id="selName"></span></h3>
+          <div class="grid3">
+            <label>X <input type="number" step="0.5" id="offX"></label>
+            <label>Y <input type="number" step="0.5" id="offY"></label>
+            <label>Z <input type="number" step="0.5" id="offZ"></label>
+            <label>Rot Y° <input type="number" step="1" id="offR"></label>
+            <label>Scale <input type="number" step="0.05" min="0.01" id="offS"></label>
+            <label>Colour <input type="color" id="selColor"></label>
+          </div>
+          <label class="full">Label <input id="selLabel"></label>
+          <div class="row"><button id="selReset">Reset object</button><button id="selHide">Hide</button></div>
+          <p class="hint">Drag the gizmo in Free camera to move the object; offsets apply to the whole recording.</p>
+        </section>
+        <section data-acc="look" data-open>
+          <h3>Display</h3>
+          <div id="styleRow">
+            <label class="full">Scene style <select id="edLook"></select></label>
+            <label class="full">Background colour <input type="color" id="edBg"></label>
+            <p class="hint">Lighting, grid and backdrop for recordings without a camera picture.</p>
+          </div>
+          <label class="full" id="compRow">Composite
+            <select id="edComposite"><option value="device">Glasses display (additive, like the glasses)</option><option value="natural">Solid (virtual over the picture)</option></select></label>
+          <label class="full">Virtual opacity <span id="vopVal">100%</span>
+            <input type="range" id="edOpacity" min="0" max="100" step="1" value="100"></label>
+          <p class="hint">Opacity fades the whole virtual layer. Solidity keeps the additive look but hides the real world behind the objects: 0 = fully see-through, 100 = nothing shows through. Camera tint dims the picture.</p>
+          <label class="full" id="solidRow">Solidity <span id="solidVal">35%</span>
+            <input type="range" id="edSolid" min="0" max="100" step="1" value="35"></label>
+          <label class="full" id="tintRow">Camera tint <span id="tintVal">60%</span>
+            <input type="range" id="edTint" min="15" max="100" step="1" value="60"></label>
+        </section>
+        <section data-acc="picture" data-open>
+          <h3>Colour &amp; grade</h3>
+          <label class="full">Cold ↔ Warm <span id="warmVal">0</span>
+            <input type="range" id="fxWarmth" min="-1" max="1" step="0.05" value="0"></label>
+          <p class="hint">Tints the camera picture only (left = cooler, right = warmer). The virtual objects keep their colours.</p>
+          <div class="grid2">
+            <label>Exposure <input type="range" id="fxExposure" min="0.5" max="1.8" step="0.05"></label>
+            <label>Contrast <input type="range" id="fxContrast" min="0.6" max="1.6" step="0.05"></label>
+            <label>Saturation <input type="range" id="fxSaturation" min="0" max="2" step="0.05"></label>
+            <label>Glow <input type="range" id="fxGlow" min="0" max="1" step="0.05"></label>
+            <label>Vignette <input type="range" id="fxVignette" min="0" max="1" step="0.05"></label>
+          </div>
+          <div class="row"><button id="fxReset">Reset shadows &amp; grade</button></div>
+        </section>
+        <section data-acc="light">
+          <h3>Lighting</h3>
+          <label class="check"><input type="checkbox" id="dlOn"> Directional light</label>
+          <label class="full">Intensity <span id="dlIntVal">1.8</span>
+            <input type="range" id="dlIntensity" min="0" max="5" step="0.1" value="1.8"></label>
+          <label class="full">Softness <span id="dlSoftVal">50%</span>
+            <input type="range" id="dlSoft" min="0" max="1" step="0.05" value="0.5"></label>
+          <label class="full">Rotation <span id="dlRotVal">30°</span>
+            <input type="range" id="dlRot" min="-180" max="180" step="5" value="30"></label>
+          <label class="full">Height <span id="dlHeightVal">50°</span>
+            <input type="range" id="dlHeight" min="5" max="90" step="5" value="50"></label>
+          <label class="full">Colour <input type="color" id="dlColor" value="#ffffff"></label>
+          <div class="row"><button id="dlReset" type="button">Reset light</button></div>
+          <p class="hint">Lights the 3D objects (meshes). UIKit panels and text are unlit, as in the Lens, so they don't change. Rotation 0 is from the front, 90 from the right; soft adds fill light. With the shadow plane on, this light also sets the shadow's direction and softness.</p>
+        </section>
+        <section data-acc="hands">
+          <h3>Hands</h3>
+          <label class="check" id="handsRow"><input type="checkbox" id="edHands" checked> Hands in front of virtual objects</label>
+          <label class="check"><input type="checkbox" id="edHandsShow"> Show hand outline (check detection)</label>
+          <p class="hint" id="handsResult"></p>
+        </section>
+        <section data-acc="align">
+          <h3>Camera alignment</h3>
+          <label class="full" id="syncRow">Camera sync <span id="syncVal">0 ms</span>
+            <input type="range" id="edSync" min="-800" max="800" step="5" value="0"></label>
+          <div class="row" id="syncAuto"><button id="edAutoSync" title="Match the camera's motion to the head-pose motion">Auto-sync</button><span class="hint" id="syncResult"></span></div>
+          <div class="row" id="lockRow"><button id="edLock" title="Track the camera video and make the virtual objects follow it">Lock to environment</button><label class="check"><input type="checkbox" id="edLockOn" disabled> On</label></div>
+          <label class="full" id="lockStrengthRow" hidden>Lock strength <span id="lockVal">100%</span>
+            <input type="range" id="edLockStrength" min="0" max="100" step="5" value="100"></label>
+          <p class="hint" id="lockResult"></p>
+          <details id="profileRow"><summary>Camera zoom and pan</summary>
+            <label class="full">Zoom <span id="pfZoomVal">1.33</span><input type="range" id="pfZoom" min="0.9" max="1.7" step="0.005" value="1.325"></label>
+            <label class="full">Pan X <span id="pfPanXVal">0.164</span><input type="range" id="pfPanX" min="-0.4" max="0.4" step="0.002" value="0.1638"></label>
+            <label class="full">Pan Y <span id="pfPanYVal">0.010</span><input type="range" id="pfPanY" min="-0.4" max="0.4" step="0.002" value="0.0099"></label>
+            <div class="row"><button id="pfReset">Reset</button></div>
+            <p class="hint">How the virtual camera is zoomed to match the glasses' camera video. If objects slide against the real world when you turn, nudge Zoom until they stay put.</p>
+          </details>
+          <p class="hint" id="syncHint">Moves the camera video against the virtual objects. Nudge it until they stay put on the real world when you move.</p>
+        </section>
+        <section data-acc="logo">
+          <h3>Logo</h3>
+          <div class="cropbox" id="logoBox">
+            <label class="check"><input type="checkbox" id="edLogo" checked> SPECS logo</label>
+            <div class="row">
+              <label>Colour <select id="edLogoColor"><option value="white">White</option><option value="black">Black</option></select></label>
+              <label>Place <select id="edLogoPlace">
+                <option value="top-left">Top left</option><option value="top-center">Top</option><option value="top-right">Top right</option>
+                <option value="middle-left">Left</option><option value="center">Center</option><option value="middle-right">Right</option>
+                <option value="bottom-left">Bottom left</option><option value="bottom-center">Bottom</option><option value="bottom-right">Bottom right</option>
+              </select></label>
+            </div>
+            <label class="full">Size <input type="range" id="edLogoSize" min="4" max="60" step="1" value="18"></label>
+          </div>
+        </section>
+        <section data-acc="shadows">
+          <h3>Shadows</h3>
+          <h4>Shadow plane</h4>
+          <label class="check"><input type="checkbox" id="fxShadows"> Cast shadows onto the plane</label>
+          <div class="row">
+            <button id="planeAlign" title="Show the plane over the video and move it by hand">Align plane</button>
+            <span class="seg" id="planeMode" hidden>
+              <button data-mode="translate" class="on">Move</button><button data-mode="rotate">Rotate</button><button data-mode="scale">Size</button>
+            </span>
+            <button id="planeReset" title="Back to a flat plane at the lowest point">Reset</button>
+          </div>
+          <p class="hint" id="planeHint">Pause on a frame, press Align plane, then move, rotate and size the yellow plane until it sits on the real floor or table. The shadows fall on it.</p>
+          <div class="grid2">
+            <label>Strength <input type="range" id="fxShStrength" min="0" max="1" step="0.05"></label>
+            <label>Softness <input type="range" id="fxShSoft" min="0" max="1" step="0.05"></label>
+            <label>Light direction <input type="range" id="fxShAz" min="-180" max="180" step="5"></label>
+            <label>Light height <input type="range" id="fxShEl" min="15" max="90" step="5"></label>
+          </div>
+          <h4>Object shadow</h4>
+          <label class="check"><input type="checkbox" id="osOn"> Shadow around the virtual objects</label>
+          <div class="grid2">
+            <label>Angle <input type="range" id="osAngle" min="0" max="360" step="5"></label>
+            <label>Distance <input type="range" id="osDistance" min="0" max="120" step="1"></label>
+            <label>Softness <input type="range" id="osSoft" min="0" max="60" step="1"></label>
+            <label>Strength <input type="range" id="osStrength" min="0" max="0.95" step="0.05"></label>
+            <label>Contact <input type="range" id="osContact" min="0" max="1" step="0.05"></label>
+            <label>Pop plate <input type="range" id="popOpacity" min="0" max="1" step="0.05"></label>
+            <label>Pop spread <input type="range" id="popSpread" min="0" max="30" step="1"></label>
+            <label>Pop feather <input type="range" id="popFeather" min="0" max="30" step="1"></label>
+          </div>
+          <p class="hint">Drawn from the objects' own outline, like the Specs camera tool: angle 90 is straight down. Pop is a dark plate hugging the objects so they stand out.</p>
+        </section>
+        <section id="aiSection" data-acc="ai">
+          <h3>AI background</h3>
+          <p class="hint">Improve every camera frame with an image model and increase its resolution. Frames are sent to Google with <b>your</b> key, from this browser only.</p>
+          <label class="full">Model
+            <select id="aiModel"></select></label>
+          <label class="full">API key <input type="password" id="aiKey" placeholder="Gemini API key" autocomplete="off"></label>
+          <label class="full">Prompt <textarea id="aiPrompt" rows="5"></textarea></label>
+          <div class="grid2">
+            <label>Size <select id="aiSize"><option>1K</option><option>2K</option><option>4K</option></select></label>
+            <label>Every Nth frame <input type="number" id="aiEvery" min="1" max="30" step="1"></label>
+          </div>
+          <div class="row">
+            <button id="aiRun" class="primary">Improve background</button>
+            <button id="aiCancel" hidden>Cancel</button>
+            <label class="check"><input type="checkbox" id="aiUse" checked> Use improved</label>
+          </div>
+          <div class="progress" id="aiProgress" hidden><div class="bar" id="aiBar"></div></div>
+          <p class="hint" id="aiStatus"></p>
+          <div class="row"><button id="aiReset" title="Forget the improved frames of this recording">Remove improved frames</button><button id="aiPromptReset">Default prompt</button></div>
+        </section>
+        <section data-acc="titles">
+          <h3>Titles</h3>
+          <ul class="list" id="edTitles"></ul>
+          <div class="row"><input id="titleText" placeholder="Title text"><button id="titleAdd" title="Add a title for 3 s at the playhead">Add</button></div>
+        </section>
+        <section data-acc="music">
+          <h3>Music</h3>
+          <label class="button"><input type="file" id="musicFile" accept="audio/*" hidden>Choose audio…</label>
+          <span class="hint" id="musicName">No music</span>
+          <label class="full">Volume <input type="range" id="musicVol" min="0" max="1" step="0.05" value="0.8"></label>
+        </section>
+        <section data-acc="export" data-open>
+          <h3>Export</h3>
+          <select id="edOutput" title="Output format"></select>
+          <div class="cropbox">
+            <div class="row"><label>Frame <select id="edFit"><option value="fill">Fill (crop)</option><option value="fit">Fit (blurred bars)</option></select></label>
+              <span class="muted" id="edCropInfo"></span></div>
+            <label class="full">Zoom <input type="range" id="edZoom" min="100" max="300" step="1" value="100"></label>
+            <label class="full">Pan left–right <input type="range" id="edPanX" min="0" max="100" step="1" value="50"></label>
+            <label class="full">Pan up–down <input type="range" id="edPanY" min="0" max="100" step="1" value="50"></label>
+            <button id="edCropReset" class="ghost">Reset crop</button>
+          </div>
+          <select id="edFps"><option value="30">30 fps</option><option value="60">60 fps</option></select>
+          <button id="edExport" class="primary full">Export video</button>
+          <progress id="edProgress" max="1" value="0" hidden></progress>
+          <div class="row"><button id="edSave" title="Save edits back to where the recording came from">Save edits</button><button id="edDownload">Download JSON</button></div>
+          <p class="hint" id="edSaveState"></p>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <dialog id="settings">
+    <form method="dialog">
+      <h2>Settings</h2>
+      <label class="full">Lens Studio portal address <input id="setLocal" placeholder="http://127.0.0.1:47790"></label>
+      <p class="hint">The WebCapture plugin serves this portal and its API. Change it only if you run the portal from another server.</p>
+      <h3>Snap Cloud</h3>
+      <label class="full">Project URL <input id="setCloudUrl" placeholder="https://xxxx.snapcloud.dev"></label>
+      <label class="full">Public (anon) key <input id="setCloudKey" placeholder="public key"></label>
+      <p class="hint">Use the project's <b>public</b> key only (Lens Studio: Window → Supabase → the project). Never a service-role key. These settings stay in this browser.</p>
+      <div class="row end"><button value="cancel">Cancel</button><button id="setSave" value="save" class="primary">Save</button></div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" hidden></div>
+  <div class="drop" id="drop" hidden>Drop a .webcapture.json recording</div>
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>

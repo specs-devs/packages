@@ -1,0 +1,58 @@
+- !<AssetImportMetadata/03389f23-3b8b-48c9-baf9-65dd3a8aef73>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 75dadb45-3b9f-48c6-b03e-e2c6c1269f8e
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 75dadb45-3b9f-48c6-b03e-e2c6c1269f8e
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 21e99c8a-3e0e-4ff3-92a0-46a5fe33a52e
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/21e99c8a-3e0e-4ff3-92a0-46a5fe33a52e>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 78574e5f-57b4-4785-836a-1051b201bcd2
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    runOnAwake: false
+    summaryText: false
+    supabaseProject: false
+    timeout: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - runOnAwake: true
+      summaryText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      supabaseProject: !<reference.SupabaseProject> 00000000-0000-0000-0000-000000000000
+      timeout: !<float> 20.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">APITested – self-test of the API and web calls of this project</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Runs once on awake; results in the Logger (and the optional Text). Turn off runOnAwake to keep it quiet.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input bool runOnAwake = true {"hint":"Run the checks when the Lens starts"}'
+    - '// @input Component.Text summaryText {"hint":"Optional Text that shows the summary"}'
+    - '// @input Asset.SupabaseProject supabaseProject {"hint":"The Snap Cloud (Supabase) project this Lens uses (same asset as its credentials component)"}'
+    - "// @input float timeout = 20 {\"hint\":\"Seconds before a check that hasn't answered counts as failed\"}"

@@ -2,7 +2,7 @@
 
 ## What it is
 A package that connects Specs Lenses to AI services through Snap's Remote Service Gateway: OpenAI, Gemini,
-Imagen and Lyria (hosted externally), and DeepSeek and Snap3D (hosted by Snap). It ships typed request wrappers,
+Imagen and Lyria (hosted externally), and Snap3D (hosted by Snap). It ships typed request wrappers,
 realtime WebSocket sessions, microphone, audio and video helpers, and a demo prefab with one example per
 provider. It is for developers adding chat, image, speech, music, realtime voice or text-to-3D generation to a Lens.
 
@@ -11,19 +11,20 @@ provider. It is for developers adding chat, image, speech, music, realtime voice
   matching token per request (or when a realtime socket is created). Tokens can also be set at runtime with
   `setApiToken`.
 - Service modules are static classes returning Promises: `OpenAI` (chat, image generation and edits, speech),
-  `Gemini` (text and multimodal generation; `GoogleGenAI` groups Gemini, Imagen and Lyria), `Imagen` (images), `Lyria` (music), `DeepSeek` (chat) and `Snap3D` (text to
+  `Gemini` (text and multimodal generation; `GoogleGenAI` groups Gemini, Imagen and Lyria), `Imagen` (images), `Lyria` (music) and `Snap3D` (text to
   3D, submit and status).
 - `OpenAIRealtimeWebsocket` and `GeminiLiveWebsocket` run live voice sessions, fed by `MicrophoneRecorder` and
   `AudioProcessor` and played back through `DynamicAudioOutput`; `VideoController` streams encoded camera frames.
 - `RemoteServiceGateway__PLACE_IN_SCENE.prefab` shows a credentials warning (until real tokens are set), a guide
-  and an example carousel through the Snap-hosted and externally hosted examples. Each example runs when you turn
-  on its `...OnTap` / `runOnTap` flag and tap in the Preview or pinch with the right hand on Specs.
+  and an example carousel through the Snap-hosted and externally hosted examples. Each step runs its own demo as
+  soon as it is shown (calls one after the other, a live log panel above it) and stops when you leave it.
 
 ## Highlights
 - One credentials component for three token types, with a clear "Credentials needed" panel in the demo.
-- Typed wire types for every provider (`OpenAITypes`, `GoogleGenAITypes`, `DeepSeekTypes`, `Snap3DTypes`).
+- Typed wire types for every provider (`OpenAITypes`, `GoogleGenAITypes`, `Snap3DTypes`).
 - Realtime voice over WebSocket for both OpenAI and Gemini Live, with PCM16 audio helpers.
 - Snap3D returns a preview image, a base mesh and a refined mesh, shown side by side in the demo.
+- A self-running demo: one step per provider, sequential calls, a live log of every request, response and error.
 - A `LoadingSpinner` component and small `Event` / `Promisfy` utilities.
 
 ## Core scripts
@@ -34,7 +35,6 @@ provider. It is for developers adding chat, image, speech, music, realtime voice
 | `HostedExternal/Gemini.ts` | `Gemini` requests and the `GeminiLiveWebsocket` session. |
 | `HostedExternal/Imagen.ts` | Imagen image generation. |
 | `HostedExternal/Lyria.ts` | Lyria music generation. |
-| `HostedSnap/Deepseek.ts` | `DeepSeek` chat completions (Snap-hosted). |
 | `HostedSnap/Snap3D.ts` | Snap3D text-to-3D submit and status polling. |
 | `Helpers/MicrophoneRecorder.ts` | Records microphone frames for realtime sessions. |
 | `Helpers/DynamicAudioOutput.ts` | Plays streamed PCM16 audio through an `AudioComponent`. |
@@ -46,7 +46,7 @@ provider. It is for developers adding chat, image, speech, music, realtime voice
   the Lens Studio Preview you must be logged in to My Lenses. Realtime examples need the microphone. Keep the
   package folder layout intact: each module loads its `.remoteServiceModule` assets by relative path.
 - **Get started:** drag `RemoteServiceGateway__PLACE_IN_SCENE.prefab` into an empty Specs scene, put your tokens
-  on its `RemoteServiceGatewayCredentials` object, then enable one example flag at a time.
+  on its `RemoteServiceGatewayCredentials` object, then step through the carousel: every step starts by itself.
 - **More docs:**
   - [cheat-sheet.md](cheat-sheet.md): import, credentials and lifecycle rules; read first.
   - [setup.md](setup.md): tokens, service module assets and Preview prerequisites.

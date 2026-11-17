@@ -8,7 +8,7 @@ Automatic, self-calibrating floor-height estimation for SPECS. Batched WorldQuer
 
 ## Usage
 
-This section ships with the package and describes the exact installed revision. Generic Lens scripting, scene construction and SPECS spatial design live in the CLAD skills, not here.
+This section ships with the package and describes the exact installed revision. Generic Lens scripting, scene construction and SPECS spatial design are out of scope here.
 
 ### Package identity
 
@@ -16,7 +16,7 @@ This section ships with the package and describes the exact installed revision. 
 - Consumer import: `AutoFloorFinder.lspkg/Scripts/AutoFloorFinder`.
 - Example: `AutoFloorFinder__PLACE_IN_SCENE.prefab`. It's self-contained: dropped into an empty SPECS scene (Camera, lighting, SIK/UIKit), it brings the guide panel, the example carousel and the `Floor Marker` plate. Rewire `worldCamera` to your scene camera.
 - Demo scaffolding: `AutoFloorFinder.lspkg/Example/` holds the scripts only the demo uses (`ExampleCarousel/`, `GuideDismissPanel/`). Don't import them from your own code; delete `Guide` and `ExampleCarousel` from the prefab instance when you build your own Lens. See [components](Docs/components.md#demo-scaffolding-example).
-- Runtime imports: `Scripts/AutoFloorFinder.ts` imports SnapDecorators and Utilities; the `Example/` demo scaffolding imports SpectaclesInteractionKit and SpectaclesUIKit. Declared companions in `package_dependencies.json`: SnapDecorators, Utilities, SpectaclesInteractionKit, SpectaclesUIKit, Motion and Icons.
+- Runtime imports: `Scripts/AutoFloorFinder.ts` imports SnapDecorators and Utilities; the `Example/` demo scaffolding imports InteractionKit and UIKit. Declared companions in `package_dependencies.json`: SnapDecorators, Utilities, InteractionKit, UIKit, Motion and Icons.
 - Requires a SPECS runtime with WorldQuery and usable surface hits. The Lens Studio Preview returns no WorldQuery hits, so floor acquisition is device-only (see troubleshooting).
 
 ### Version and API status
@@ -26,12 +26,6 @@ This section ships with the package and describes the exact installed revision. 
 ### Applicability
 
 Use for automatic floor height and Y-pinned content. Use SurfacePlacement when the wearer should deliberately select and confirm a placement. This package does not choose X/Z, check occupancy or estimate arbitrary tabletop/wall anchors.
-
-### Related CLAD skills
-
-[specs-world-query](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/specs-world-query/SKILL.md). These skills cover the surrounding Lens workflow.
-
-[Install CLAD](https://developers.specs.com/docs/clad/setup/setup-ai/) or browse its [source](https://github.com/lens-studio-devs/ls-extensions). Read the installed package docs for this revision’s APIs.
 
 ### Package Docs (ship in Docs/)
 

@@ -89,6 +89,8 @@
     Hand Attacher keeps an object on a hand joint as the hand moves. In this demo a box follows the tip of your right index finger.
     
     Raise your right hand in front of you to see it. The box hides when the hand isn't tracked.
+    
+    This works on Spectacles: it needs real hand tracking, so push the Lens to your device to try it.
   CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
@@ -251,6 +253,22 @@
   Components:
     - !<own> 049d98cb-5a06-4a22-85f3-8b1c672b585a
     - !<own> 8c0a2b62-72e7-4b48-94fd-ef61e9505221
+- !<ScriptComponent/86da7211-2b40-428e-a265-f16b3ddca1ff>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
+  ScriptTypes:
+    "":
+      {}
 - !<ScriptComponent/8c0a2b62-72e7-4b48-94fd-ef61e9505221>
   PrefabRemaps:
     []
@@ -354,22 +372,6 @@
   Components:
     - !<own> f4103743-59a8-4231-8325-1f4f74454805
     - !<own> 3772fc76-2fd9-439c-ba4f-2d98958c0b91
-- !<ScriptComponent/aea22cec-c24a-46a7-9a6f-073b9a592758>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
-  ScriptInputsDefault:
-    _theme: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      _theme: System3
-  ScriptTypes:
-    "":
-      {}
 - !<ScriptComponent/c2f92d65-6969-4fdb-8ed4-d2255ef1d7e8>
   PrefabRemaps:
     []
@@ -392,7 +394,7 @@
       examples: !<reference.SceneObject[]>
         - !<reference> 02618416-1dfe-4dbd-a10a-38b62a4e1eaf
       exampleInfo: !<string[]>
-        - "A box follows your right index fingertip. Raise your right hand and move it around; the box hides when the hand isn't tracked."
+        - "A box follows your right index fingertip. Raise your right hand and move it around; the box hides when the hand isn't tracked. Works on device: push the Lens to Spectacles to try it."
       steps: !<reference.SceneObject[]>
         []
       stepInfo: !<string[]>
@@ -407,6 +409,21 @@
   ScriptTypes:
     "":
       {}
+- !<SceneObject/c3e12b70-fe9f-42d1-a075-a02fd0c2cdb4>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 86da7211-2b40-428e-a265-f16b3ddca1ff
 - !<SceneObject/ea49e69e-a74d-4ef4-92d6-51a53f6bbba1>
   PrefabRemaps:
     []
@@ -431,16 +448,16 @@
     - 3772fc76-2fd9-439c-ba4f-2d98958c0b91: 893ba331-4379-4168-bb8d-8cf1f5f0058e
     - 528e935e-2148-4f09-aaff-ad6210593c78: e3245917-e8fd-4191-8ea8-90a6c2c17854
     - 689e3ffd-898b-4d75-8e4e-09f124f6eb85: 20cf2470-e9fc-4846-8fbd-e351d88f05fa
+    - 86da7211-2b40-428e-a265-f16b3ddca1ff: d0ec68f5-8db9-464c-b6bb-5d1117f7e96e
     - 8c0a2b62-72e7-4b48-94fd-ef61e9505221: 2f90a2ca-3fe8-4c44-a2df-6c16c4d098bd
     - 8c8e8bbb-126e-44ef-8ff9-25d3def187c5: 2512a077-bd1a-42cf-8251-1a76c13a45bf
-    - aea22cec-c24a-46a7-9a6f-073b9a592758: 61fc3536-64eb-4bcd-a6da-136d10cf677d
     - c2f92d65-6969-4fdb-8ed4-d2255ef1d7e8: 9132d58c-b77a-4e47-b87c-f13b874c9aab
+    - c3e12b70-fe9f-42d1-a075-a02fd0c2cdb4: 737bc128-e6c9-4b45-86ef-f4621838a442
     - ea49e69e-a74d-4ef4-92d6-51a53f6bbba1: aa932e7d-08d6-443e-aa34-895c1aaaef43
     - f09a9b8f-c58d-4f96-8fe3-93ed16f45500: f09a9b8f-c58d-4f96-701c-6c12e90baaff
     - f4103743-59a8-4231-8325-1f4f74454805: 663dd8b9-dbb0-4424-ae94-3ae37262ad1d
     - f625be89-4a3b-428c-969d-deae1c605528: a9e0237a-6dc8-4b17-a8d5-d5048a7d8c38
     - f77bc06f-5ff7-4be4-bca3-600bd40cfd69: 9e64a1b6-1ef2-4374-8785-89cb5ecc07d1
-    - feb1c4c8-d71d-4208-a3bb-c30c9ceb3abc: 02fe6c96-b475-41c4-b4bd-bb8deca0543c
   Name: HandAttacher__PLACE_IN_SCENE
   Enabled: true
   Layers: 1
@@ -450,7 +467,7 @@
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
-    - !<own> feb1c4c8-d71d-4208-a3bb-c30c9ceb3abc
+    - !<own> c3e12b70-fe9f-42d1-a075-a02fd0c2cdb4
     - !<own> 8c8e8bbb-126e-44ef-8ff9-25d3def187c5
     - !<own> ea49e69e-a74d-4ef4-92d6-51a53f6bbba1
     - !<own> 02618416-1dfe-4dbd-a10a-38b62a4e1eaf
@@ -602,18 +619,3 @@
     []
   Components:
     - !<own> f625be89-4a3b-428c-969d-deae1c605528
-- !<SceneObject/feb1c4c8-d71d-4208-a3bb-c30c9ceb3abc>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> aea22cec-c24a-46a7-9a6f-073b9a592758

@@ -17,4 +17,4 @@ Check exact installed behavior and verification gaps before relying on the prefa
 
 No mainCamera fallback, landmark discovery or tracking-loss handler exists in MatchTransformTS. Position lerp factor is capped above at 1, rotation slerp factor is not capped, and scale lerp is capped above at 1. Negative speeds are not validated.
 
-Verified 2026-10-01 in the Lens Studio Preview (SPECS 27, SpectaclesInteractionKit): the prefab compiles and runs without errors, and over the `Idle/Facial Expressions` face video the mesh tracks the face and renders the white soft-edged mask. Not verified: on-device rendering, multiple faces, and the MatchTransformTS recipes in [guide.md](guide.md).
+Verified 2026-10-01 in the Lens Studio Preview (SPECS 27, InteractionKit): the prefab compiles and runs without errors, and over the `Idle/Facial Expressions` face video the mesh tracks the face and renders the white soft-edged mask. Not verified: on-device rendering, multiple faces, and the MatchTransformTS recipes in [guide.md](guide.md).

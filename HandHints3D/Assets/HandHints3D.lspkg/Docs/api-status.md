@@ -55,4 +55,4 @@ Exact modules and members are listed in [components.md](components.md).
 - Each prepared clip adds another `AnimationEnd` event to its animation asset (`animationAsset.createEvent`), so the end handler can run more than once per clip end after several passes; the tween cancellation in the handler keeps the visible result to one transition.
 - `@showIf("loop")` and `@showIf("sequence")` reference inputs that do not exist (both fields still render in the Inspector).
 - `HandAnimationsLibrary.*.FingerScrollMirco` keeps its misspelled key; the Inspector label reads "Finger Scroll Micro".
-- `package_dependencies.json` declares SpectaclesInteractionKit, SpectaclesUIKit, Motion and Icons. `Scripts/` imports none of them; only the `Example/` demo scaffolding (`GuideDismissPanel.ts`, `ExampleCarousel.ts`) imports SpectaclesInteractionKit and SpectaclesUIKit. Motion and Icons are not imported.
+- `package_dependencies.json` declares InteractionKit, UIKit, Motion and Icons. `Scripts/` imports none of them; only the `Example/` demo scaffolding (`GuideDismissPanel.ts`, `ExampleCarousel.ts`) imports InteractionKit and UIKit. Motion and Icons are not imported.

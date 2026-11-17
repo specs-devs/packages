@@ -8,11 +8,11 @@
  * TABLE, ...) at the raycast hit point, and trigger end callback for object spawning.
  */
 // import required modules
-const Interactor = require("SpectaclesInteractionKit.lspkg/Core/Interactor/Interactor");
+const Interactor = require("InteractionKit.lspkg/Core/Interactor/Interactor");
 const InteractorTriggerType = Interactor.InteractorTriggerType;
 const InteractorInputType = Interactor.InteractorInputType;
-const {SIK} = require("SpectaclesInteractionKit.lspkg/SIK");
-const WorldCameraFinderProvider = require("SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider").default;
+const {IK} = require("InteractionKit.lspkg/IK");
+const WorldCameraFinderProvider = require("InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider").default;
 
 const WorldQueryModule = require("LensStudio:WorldQueryModule");
 const EPSILON = 0.01;
@@ -143,7 +143,7 @@ function WorldQueryHitExample() {
 
     function setupTriggerEndCallback() {
         // Get all interactors and set up trigger end callbacks
-        var allInteractors = SIK.InteractionManager.getInteractorsByType(
+        var allInteractors = IK.InteractionManager.getInteractorsByType(
             InteractorInputType.All
         );
 
@@ -408,7 +408,7 @@ function WorldQueryHitExample() {
     }
 
     function onUpdate() {
-        primaryInteractor = SIK.InteractionManager.getTargetingInteractors().shift();
+        primaryInteractor = IK.InteractionManager.getTargetingInteractors().shift();
         if (primaryInteractor &&
             primaryInteractor.isActive() &&
             primaryInteractor.isTargeting() &&

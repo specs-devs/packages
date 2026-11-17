@@ -2,7 +2,7 @@
   <img src="Docs/media/ShaderLibrary.png" width="250px" alt="ShaderLibrary"/>
 </p>
 
-# Specs Shader Library
+# Shader Library
 
 Seven shader graphs and fourteen material assets demonstrate Unlit, Simple,
 Uber, Toon, Matcap, Rim Highlight and Outer Glow rendering. This revision is an
@@ -11,8 +11,7 @@ asset library: it contains no TypeScript manager/controller implementation.
 ## Usage
 
 This section ships with the package and describes the exact installed revision.
-Generic Lens scripting, scene construction and Specs spatial design live in
-CLAD skills; graph parameters, materials and package-specific limitations live here.
+Generic Lens scripting, scene construction and Specs spatial design are out of scope here; graph parameters, materials and package-specific limitations live here.
 
 ### Package identity
 
@@ -26,9 +25,9 @@ CLAD skills; graph parameters, materials and package-specific limitations live h
   time, so an empty Specs scene with SIK + UIKit gets the full demo. Their scripts ship in the
   package's `Example/` folder (`Example/ExampleCarousel/`, `Example/GuideDismissPanel/`)
   ([components](Docs/components.md#demo-scaffolding-example)).
-- Declared companions (`package_dependencies.json`): SpectaclesInteractionKit,
-  SpectaclesUIKit, Motion, Icons. Only the demo scripts in `Example/` import
-  SpectaclesInteractionKit and SpectaclesUIKit; the shaders and materials need none of them.
+- Declared companions (`package_dependencies.json`): InteractionKit,
+  UIKit, Motion, Icons. Only the demo scripts in `Example/` import
+  InteractionKit and UIKit; the shaders and materials need none of them.
 
 ### Version and API status
 
@@ -52,14 +51,6 @@ transition controller or runtime pooling: this library does not provide those.
 - [Troubleshooting](Docs/troubleshooting.md): read when a look, label or layer doesn't come out as expected (includes the Preview QA results).
 - [Tutorial](Docs/tutorial.md): step-by-step use of the shipped prefab, materials and graph parameters.
 
-### Related CLAD skills
-
-Use [materials](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/materials),
-[shader graph](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/shader-graph)
-and [scene construction](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/scene-construction)
-for platform workflows. CLAD setup: https://developers.specs.com/docs/clad/setup/setup-ai/.
-Use installed Lens Studio declarations for Material/RenderMeshVisual signatures.
-
 ### Verification
 
 1. Compile application scripts against installed declarations; do not import nonexistent manager scripts.
@@ -73,11 +64,4 @@ Use installed Lens Studio declarations for Material/RenderMeshVisual signatures.
 ---
 
 [See more packages](https://github.com/specs-devs/packages)
-
-
-
-
-
-
-
 

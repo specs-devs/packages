@@ -39,7 +39,7 @@ async function check(mode) {
   }};
   await assert.rejects(ai.pinchInteractable(target), error=>{
     assert.match(error.message, mode==='endAbandoned'?/retraction failed/:/gesture failed/);
-    assert.match(error.message, mode==='diagnosticThrows'?/SIK target at failure: "unavailable"/:/SIK target at failure: "none"/);
+    assert.match(error.message, mode==='diagnosticThrows'?/IK target at failure: "unavailable"/:/IK target at failure: "none"/);
     return true;
   });
   assert.equal(calls.cancel,1,'failure must cancel pinch');

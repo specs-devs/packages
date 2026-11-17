@@ -2,18 +2,18 @@
 // crash in the package (Visual.ts imports ThemeService before defining COLORS, and the
 // theme chain reads COLORS at module-load). Entering the import cycle via ThemeService
 // lets Visual.ts finish defining COLORS first. Must remain the FIRST import.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService"
+import "UIKit.lspkg/Scripts/Themes/ThemeService"
 /**
  * ExampleRoundedRectangle – a single resizable button (rounded rectangle) driven by text content.
  * No prefabs. Builds RectangleButton + RoundedRectangleVisual + Text programmatically.
  * Use as a component on a scene object, or call ExampleRoundedRectangle.buildRoundedRectangleOnto() / createRoundedRectangle() from ExampleChat.
  */
-import { RectangleButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton";
+import { RectangleButton } from "UIKit.lspkg/Scripts/Components/Button/RectangleButton";
 import {
   RoundedRectangleVisual,
   RoundedRectangleVisualState,
-} from "SpectaclesUIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangleVisual";
-import { StateName } from "SpectaclesUIKit.lspkg/Scripts/Components/Element";
+} from "UIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangleVisual";
+import { StateName } from "UIKit.lspkg/Scripts/Components/Element";
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent } from "SnapDecorators.lspkg/decorators";
 

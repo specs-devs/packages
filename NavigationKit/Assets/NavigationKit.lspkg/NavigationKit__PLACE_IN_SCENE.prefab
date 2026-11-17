@@ -235,22 +235,6 @@
     CapitalizationOverride: None
   DepthTest: false
   TwoSided: false
-- !<ScriptComponent/165d97c4-f22f-4386-a63e-71bcfd3c5863>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
-  ScriptInputsDefault:
-    _theme: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      _theme: System3
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/25f1b9fb-6e15-44ff-b714-6fa3ee02f2ee>
   PrefabRemaps:
     []
@@ -267,6 +251,22 @@
   Components:
     - !<own> b3cfb79d-4d9c-4686-bbca-79a3f04e5b1b
     - !<own> 933a6b23-08a9-456a-8bba-26c81071bfaf
+- !<ScriptComponent/26f15039-5e72-4a3c-b6a3-165b43536c03>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/2734dca6-d098-424d-b45b-8c4606712fd7>
   PrefabRemaps:
     []
@@ -631,6 +631,21 @@
   ScriptTypes:
     "":
       {}
+- !<SceneObject/663c8148-6e9c-466f-9189-7f52887764e6>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 26f15039-5e72-4a3c-b6a3-165b43536c03
 - !<SceneObject/6aeda686-3d36-4ca9-92ba-ff16274b6dc1>
   PrefabRemaps:
     []
@@ -665,21 +680,6 @@
   Components:
     - !<own> 2ed70e92-1374-41cf-8ce4-01cc25904b32
     - !<own> 11f16e47-0c4b-486e-be9f-b0abe923df61
-- !<SceneObject/6c4ca571-ec05-4b27-af36-a739bb88d7cb>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> 165d97c4-f22f-4386-a63e-71bcfd3c5863
 - !<ScriptComponent/7368d088-1164-4686-b6e0-caec9020aa65>
   PrefabRemaps:
     []
@@ -737,8 +737,8 @@
     - 11f16e47-0c4b-486e-be9f-b0abe923df61: 11f16e47-0c4b-486e-4160-4f5416dc209e
     - 138d4e0b-effb-4152-9f0d-231d764ef050: 138d4e0b-effb-4152-60f2-dce289b10faf
     - 154b44f1-6dd9-4929-b044-6f27aa33812e: 154b44f1-6dd9-4929-4fbb-90d855cc7ed1
-    - 165d97c4-f22f-4386-a63e-71bcfd3c5863: c8288d93-5ade-4fc6-a2ea-200099d2dfc2
     - 25f1b9fb-6e15-44ff-b714-6fa3ee02f2ee: 4af77762-fce7-42a8-ac8a-d2932d15337e
+    - 26f15039-5e72-4a3c-b6a3-165b43536c03: 3f7f6540-5b58-4645-a72f-302102a8b2a2
     - 2734dca6-d098-424d-b45b-8c4606712fd7: 2734dca6-d098-424d-4ba4-73b9f98ed028
     - 2cb255dc-49ac-4346-a301-4a0a2c03abf3: 2cb255dc-49ac-4346-5cfe-b5f5d3fc540c
     - 2ed70e92-1374-41cf-8ce4-01cc25904b32: 2ed70e92-1374-41cf-731b-fe33da6fb4cd
@@ -749,9 +749,9 @@
     - 5613224f-75fe-4c76-bf20-14881572a652: 5613224f-75fe-4c76-40df-eb77ea8d59ad
     - 5875badc-dce5-4860-b6e6-36c8dc1dc053: 5875badc-dce5-4860-4919-c93723e23fac
     - 5b56567f-f472-414f-9b94-2720ab69efec: 7f209d97-417b-4dce-9419-0bf0256b2a18
+    - 663c8148-6e9c-466f-9189-7f52887764e6: 7fcd12bb-e27c-439c-ad05-f9aaea6c8821
     - 6aeda686-3d36-4ca9-92ba-ff16274b6dc1: 6aeda686-3d36-4ca9-6d45-00e9d8b4923e
     - 6c0cb1bf-02a5-4f7d-80ec-f04ae8c3799e: 6c0cb1bf-02a5-4f7d-7f13-0fb5173c8661
-    - 6c4ca571-ec05-4b27-af36-a739bb88d7cb: 7a133ed4-1152-46f0-83a3-bbff928a6293
     - 7368d088-1164-4686-b6e0-caec9020aa65: 7368d088-1164-4686-491f-35136fdf559a
     - 7a0d11e8-2126-4485-875a-ed33901e2c8b: 7a0d11e8-2126-4485-78a5-12cc6fe1d374
     - 818707bd-7b6c-42d6-a48c-2a77b19483d0: 443fbea9-795f-4d00-a83f-b322b2ee684a
@@ -791,7 +791,7 @@
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
-    - !<own> 6c4ca571-ec05-4b27-af36-a739bb88d7cb
+    - !<own> 663c8148-6e9c-466f-9189-7f52887764e6
     - !<own> a0a53e7b-21ca-4d60-8307-8d8a5a78211a
     - !<own> aa66813f-3ac8-4417-9fd2-c4e06110d8a4
     - !<own> 818707bd-7b6c-42d6-a48c-2a77b19483d0

@@ -27,8 +27,6 @@ the package folder.
 | `RemoteServiceGateway.lspkg/HostedExternal/GeminiTypes` | type re-export of `GeminiTypes` (deprecated) |
 | `RemoteServiceGateway.lspkg/HostedExternal/Imagen` | `class Imagen` |
 | `RemoteServiceGateway.lspkg/HostedExternal/Lyria` | `class Lyria` |
-| `RemoteServiceGateway.lspkg/HostedSnap/Deepseek` | `class DeepSeek` (the file name is `Deepseek.ts`, the class is `DeepSeek`) |
-| `RemoteServiceGateway.lspkg/HostedSnap/DeepSeekTypes` | `namespace DeepSeekTypes` |
 | `RemoteServiceGateway.lspkg/HostedSnap/Snap3D` | `class Snap3D` |
 | `RemoteServiceGateway.lspkg/HostedSnap/Snap3DTypes` | `namespace Snap3DTypes` |
 | `RemoteServiceGateway.lspkg/Helpers/MicrophoneRecorder` | `class MicrophoneRecorder` (`@component`) |
@@ -59,17 +57,16 @@ The `*Types` modules are type-only namespaces that mirror each provider's reques
 | `GeminiTypes.Common` | `HarmBlockThreshold`, `SchemaType`, `FunctionCallingMode`, `Part`, `Blob`, `FileData`, `FunctionCall`, `FunctionResponse`, `Content`, `SafetySetting`, `Candidate`, `SafetyRating`, `PromptFeedback`, `UsageMetadata`, `Schema`, `FunctionDeclaration`, `Tool`, `FunctionCallingConfig`, `ToolConfig`, `SpeechConfig`, `PrebuiltVoiceConfig`, `VoiceConfig`, `GenerationConfig`, `ThinkingConfig` |
 | `GeminiTypes.Models` | `GenerateContentRequestBody`, `GenerateContentRequest`, `GenerateContentResponse`, `GeminiGenerateContentRequestBody` |
 | `GeminiTypes.Live` | `ClientMessageBase`, `ServerMessageBase`, `SlidingWindow`, `ContextWindowCompression`, `Setup`, `MediaChunk`, `RealtimeInput`, `ClientContent`, `ToolResponse`, `SetupCompleteEvent`, `Transcription`, `ServerContentEvent`, `ContentServerMessageEvent`, `ToolCallEvent`, `ToolCallCancellationEvent`, `TranscriptionEvent`, `UsageMetadataEvent`, `GoAwayEvent`, `ClientMessage`, `ServerMessage` |
-| `DeepSeekTypes.ChatCompletions` | `Role`, `Model`, `ResponseFormat`, `Message`, `Tool`, `Request`, `Choice`, `Usage`, `Response`, `ChunkChoice`, `ChunkResponse` |
 | `Snap3DTypes` | `FileFormat`, `SubmitRequestBody`, `SubmitResponseBody`, `GetStatusRequestBody`, `GetStatusResponseBody`, `Artifact`, `ArtifactType`, `Status`, `Stage`, `TextureAssetData`, `GltfAssetData`, `ErrorData`, `SubmitGetStatusResults` |
 
 ## Common behavior of the service modules
 
 - Every method is `static`. You never instantiate `OpenAI`, `Gemini`, `Imagen`,
-  `Lyria`, `DeepSeek` or `Snap3D`.
+  `Lyria` or `Snap3D`.
 - A request succeeds when the Remote Service Module answers with
   `statusCode == 1`. Then the JSON body is parsed and the Promise resolves.
 - On failure the Promise **rejects**:
-  - `OpenAI`, `Gemini.models` and `DeepSeek` reject with the raw response body
+  - `OpenAI` and `Gemini.models` reject with the raw response body
     string. `Gemini.models` also prints `Error: <body>`.
   - `Imagen` and `Lyria` reject with `new Error(body)` (or `new Error("Failed to parse ...")`)
     and print `Imagen API Error: ...` / `Lyria API Error: ...` plus the status code.
@@ -189,15 +186,6 @@ turnComplete, interrupted, inputTranscription, outputTranscription }`,
   - Response: `predictions[i].bytesBase64Encoded` (a base64 WAV, per the type comment) and `mimeType`. The type comment says each clip is 32.8 s.
 - `GoogleGenAITypes.Lyria.GenerateMusicRequest` exists as a type, but no method takes it.
 
-## DeepSeek
-
-`RemoteServiceGateway.lspkg/HostedSnap/Deepseek` (class `DeepSeek`, token type `Snap`)
-
-- `DeepSeek.chatCompletions(req: DeepSeekTypes.ChatCompletions.Request): Promise<DeepSeekTypes.ChatCompletions.Response>`
-  - `req.model`: `DeepSeekTypes.ChatCompletions.Model = "DeepSeek-R1" | string`. The example uses `"DeepSeek-R1"`.
-  - `req.messages[i]`: `{ role, content: string, ... }`.
-  - Response: `choices[i].message.content` and `choices[i].message.reasoning_content` (R1 reasoning).
-
 ## Snap3D
 
 `RemoteServiceGateway.lspkg/HostedSnap/Snap3D` (token type `Snap`). There is **no** `generate` method.
@@ -301,16 +289,18 @@ index of their output objects.
 ## Demo scaffolding (`Example/`)
 
 These scripts ship in `RemoteServiceGateway.lspkg/Example/` and are wired inside
-`RemoteServiceGateway__PLACE_IN_SCENE.prefab`. They only present the demo;
-the RemoteServiceGateway scripts don't import them. Prefab children, in order:
-`RemoteServiceGatewayCredentials`, `CredentialsWarning`, `Guide`, `ExampleCarousel`,
-`Snap Hosted Examples` and `External Hosted Examples`.
+`RemoteServiceGateway__PLACE_IN_SCENE.prefab`. They only present the demo:
+the API, helper and utility modules don't import them. The example components
+(`HostedExternal/Examples/*`, `HostedSnap/Examples/*`) import `Example/DemoLog`.
+Prefab children, in order: `ThemeManager`, `RemoteServiceGatewayCredentials`,
+`CredentialsWarning`, `Guide`, `ExampleCarousel`, `Snap Hosted Examples` and
+`External Hosted Examples`.
 
 | Object / script | Class | Key inputs |
 |---|---|---|
 | `CredentialsWarning`: `Example/CredentialsWarning/CredentialsWarning.ts` | `CredentialsWarning` | `guide: SceneObject` (here `Guide`), `rsgCredentials: ScriptComponent` (here the `RemoteServiceGatewayCredentials` component), `snapCloudRequirements: ScriptComponent` (empty: no Snap Cloud), `requireSnapToken` / `requireOpenAIToken` / `requireGoogleToken: boolean = false` (all `true` here), `buttonLabel: string = "Continue without credentials"`. When a required token is empty or a `[INSERT …]` placeholder it prints one `CredentialsWarning: …` line per token, holds the guide and shows a red-framed "Credentials needed" panel; otherwise it disables itself. Public `findMissing(): string[]` |
 | `Guide`: `Example/GuideDismissPanel/GuideDismissPanel.ts` | `GuideDismissPanel` | `hideUntilDismissed: SceneObject[]` lists the objects hidden until "Ok, I understood" is pressed (here: `ExampleCarousel`, `Snap Hosted Examples` and `External Hosted Examples`). `buttonLabel: string = "Ok, I understood"` is only used when the panel is built at runtime |
-| `ExampleCarousel`: `Example/ExampleCarousel/ExampleCarousel.ts` | `ExampleCarousel` | `examples: SceneObject[]` (here the six provider views: Snap3D, DeepSeek, OpenAI, OpenAI Realtime, Gemini/Imagen/Lyria, Gemini Live), `exampleInfo: string[]` (one line per example), `steps: SceneObject[]` (empty here), `stepInfo: string[]` (one line per `steps` entry; empty entries fall back to the example's info; empty here), `startIndex: number = 0`, `previousLabel` / `nextLabel`, `examplesPushBack: number = 20`, `anchorExamples: boolean = true`, `startMinimized: boolean = false`, `extraPanelDrop: number = 0` |
+| `ExampleCarousel`: `Example/ExampleCarousel/ExampleCarousel.ts` | `ExampleCarousel` | `examples: SceneObject[]` (here the seven steps, in order: OpenAI, OpenAI Realtime, Gemini and Imagen, Gemini Live, Lyria, Snap3D, ImageTo3D), `exampleInfo: string[]` (one line per example), `steps: SceneObject[]` (empty here), `stepInfo: string[]` (one line per `steps` entry; empty entries fall back to the example's info; empty here), `startIndex: number = 0`, `previousLabel` / `nextLabel`, `examplesPushBack: number = 20`, `anchorExamples: boolean = true`, `startMinimized: boolean = false`, `extraPanelDrop: number = 0` |
 
 `hideUntilDismissed` points at the example groups rather than the prefab root,
 because hiding the root would also hide the guide and the carousel.
@@ -319,26 +309,33 @@ example runs. It sits above `CredentialsWarning`, which sits above `Guide`:
 the warning reads the token inputs on awake and has to hold the guide before it
 is shown.
 
+### DemoLog (`Example/DemoLog/DemoLog.ts`)
+
+Runs the example(s) of the carousel step being shown, one call at a time, and
+shows the live log panel. No inputs: the example components use it from code.
+
+| Export | Use |
+|---|---|
+| `DemoStep.join(participant: DemoParticipant)` | Called in an example's `onAwake`. Binds `OnEnableEvent` / `OnDisableEvent`. Every example enabled in the same frame (one carousel step) forms one run, started on the next frame and ordered by `order`. Disabling an example calls its `stop()` and increments `DemoStep.generation` |
+| `DemoParticipant` | `{ owner, name, order, tokens: AvaliableApiTypes[], panel?, run(run): Promise<void>, stop() }`. A missing or `[INSERT …]` token is logged and that example does nothing else. The first participant of the step that has a `panel` hosts the step's log |
+| `DemoRun` | Handle passed to `run`: `call(label, () => promise, summary?)` logs "→ request sent", then "← ok in N s: <summary>" or "✗ after N s: <error>", resolves with the result or `null`, and throws `DemoCancelled` once the step was left. Also `log`, `error`, `guard(promise)`, `wait(seconds)`, `check()`, `alive`. `DemoRun.detached(name)` logs to `print` only and is never cancelled |
+| `DemoLogPanel` | `new DemoLogPanel(parent, offset)`: a UIKit `RoundedRectangle` (44 × 14.3 cm) with a header and the last 8 lines, text 0.3 cm in front of the background. The border turns red when a visible line is an error |
+| `isTokenMissing(type)`, `errorText(error)`, `DemoCancelled` | Helpers. `errorText` turns `{error:{code,message}}` bodies into `"<code> <message>"` |
+
 ## Example components
 
-All examples follow the same pattern. In the editor they call `onTap` from a
-`TapEvent`. On device they call it from the **right-hand** `GestureModule`
-pinch-down. `onTap` returns at once when `!this.sceneObject.isEnabledInHierarchy`,
-and runs only the calls whose `...OnTap` / `runOnTap` input is `true`. On
-failure they write `Error: <error>` into their text output. Each also has
-`enableLogging` / `enableLoggingLifecycle` (`boolean`, `false`), except
-`ExampleImageTo3D.ts`.
-
-### ExampleDeepseekCalls (`HostedSnap/Examples/ExampleDeepseekCalls.ts`)
-
-| Input | Type | Default | Meaning |
-|---|---|---|---|
-| `textDisplay` | `Text` | undefined | Output text (reasoning + final answer) |
-| `systemPrompt` | `string` | `"Give your reasoning in no more than one sentence."` | System message (keeps R1 reasoning short) |
-| `userPrompt` | `string` | `"Is a hotdog a sandwich"` | User message |
-| `runOnTap` | `boolean` | `false` | Run `doChatCompletions()` on tap/pinch |
-
-Public method: `doChatCompletions()` (`DeepSeek-R1`, `max_tokens 2048`, `temperature 0.7`).
+All call examples follow the same pattern. They start their demo by themselves
+when the carousel shows their step (`DemoStep.join`), run their enabled calls one
+after the other, and stop when the step is left. The `...OnTap` / `runOnTap`
+inputs keep their names but are labelled **Run in demo**: they choose which calls
+take part. There is no tap or pinch trigger anymore. Results go to the example's
+outputs, every request, response and error goes to the step's log panel and to
+`print`, and failures also write `Error: see the log above` into the text output.
+The call methods are public, return a Promise and take an optional `DemoRun`.
+Each example has a `logPanelOffset: vec3` input (where its log panel sits, local
+cm) and `enableLogging` / `enableLoggingLifecycle` (`boolean`, `false`). The
+exception is `ExampleImageTo3D.ts`, which is not in the prefab and still runs on
+tap / right-hand pinch.
 
 ### ExampleSnap3D (`HostedSnap/Examples/ExampleSnap3D.ts`)
 
@@ -352,7 +349,8 @@ Public method: `doChatCompletions()` (`DeepSeek-R1`, `max_tokens 2048`, `tempera
 | `refinedMeshRoot` | `SceneObject` | undefined | Parent of the refined mesh. Child index 1 is the spinner |
 | `modelMat` | `Material` | undefined | Material for `tryInstantiate` |
 | `hintText` | `Text` | undefined | Status text |
-| `runOnTap` | `boolean` | `false` | Submit on tap/pinch. Ignored while a request is in flight |
+| `runOnTap` ("Run in demo") | `boolean` | `false` | Generate when the step is shown (`true` in the prefab) |
+| `logPanelOffset` | `vec3` | `(0, 10, 0)` | Log panel position |
 
 The roots are `@allowUndefined`, but `onAwake` dereferences them, so they are required in practice.
 
@@ -370,7 +368,8 @@ Image-to-3D: sends `image_url` and shows the image fetched from the URL.
 | `baseMeshRoot` / `refinedMeshRoot` | `SceneObject` | undefined | Mesh parents. Child **index 0** must be the spinner |
 | `modelMat` | `Material` | undefined | Mesh material |
 | `hintText` | `Text` | undefined | Status text (also written in `onAwake`) |
-| `runOnTap` | `boolean` | `false` | Generate on tap/pinch |
+| `runOnTap` ("Run in demo") | `boolean` | `false` | Generate when the step is shown (`true` in the prefab). An empty `imageUrl` is logged as an error |
+| `logPanelOffset` | `vec3` | `(0, 10, 0)` | Log panel position |
 
 ### ExampleImageTo3D (`HostedSnap/Examples/ExampleImageTo3D.ts`)
 
@@ -392,7 +391,7 @@ in the prefab.
 |---|---|---|---|
 | `textDisplay` | `Text` | undefined | Chat / function-calling / error output |
 | `systemPrompt`, `userPrompt` | `string` | witty-assistant prompt, `"Is a hotdog a sandwich"` | Chat messages |
-| `doChatCompletionsOnTap` ("Run On Tap") | `boolean` | `false` | `doChatCompletions()`: `gpt-5.6-luna` (no `temperature`: the GPT-5 family rejects non-default values) |
+| `doChatCompletionsOnTap` ("Run in demo") | `boolean` | `false` | `doChatCompletions()`: `gpt-5.6-luna` (no `temperature`: the GPT-5 family rejects non-default values) |
 | `imgObject` | `SceneObject` | undefined | Image output. Needs an `Image` component, and **child 0** must be the spinner |
 | `imageGenerationPrompt` | `string` | `"The future of augmented reality"` | GPT Image prompt |
 | `generateImageOnTap` | `boolean` | `false` | `doImageGeneration()`: `gpt-image-2`, `1024x1024`, base64 (URL handled too) |
@@ -404,8 +403,13 @@ in the prefab.
 | `generateVoiceOnTap` | `boolean` | `false` | `doSpeechGeneration()`: `gpt-4o-mini-tts`, voice `coral` |
 | `functionCallingPrompt` | `string` | `"Make the text display yellow"` | Prompt for the `set-text-color` tool |
 | `doFunctionCallingOnTap` | `boolean` | `false` | `doFunctionCalling()` |
+| `logPanelOffset` | `vec3` | `(0, 14, 0)` | Log panel position |
 
-`imgObject` is dereferenced in `onAwake`, so it is required in practice.
+Order in the demo: chat, function calling, image, image edit, speech (every flag
+is `true` in the prefab). The edit writes into the same `Image` as the generation
+in the prefab. The speech plays on an `AudioComponent` the example creates once
+and is awaited to the end. `imgObject` is dereferenced in `onAwake`, so it is
+required in practice. Public: `runDemo(run?)`, `stopDemo()`.
 
 ### ExampleGeminiCalls (`HostedExternal/Examples/ExampleGeminiCalls.ts`)
 
@@ -413,12 +417,16 @@ in the prefab.
 |---|---|---|---|
 | `textDisplay` | `Text` | undefined | Output |
 | `modelPrompt`, `textPrompt` | `string` | witty-assistant prompt, `"Is a hotdog a sandwich?"` | Text generation (`gemini-2.5-flash`) |
-| `doTextGenerationOnTap` ("Run On Tap") | `boolean` | `false` | `textToTextExample()` |
+| `doTextGenerationOnTap` ("Run in demo") | `boolean` | `false` | `textToTextExample()` (`true` in the prefab) |
 | `imgObject` | `SceneObject` | undefined | Image output. **Child 0** is the spinner, so it is required in practice |
 | `imageGenerationPrompt` | `string` | `"The future of augmented reality"` | `gemini-3.1-flash-image`, `responseModalities ["TEXT","IMAGE"]` |
 | `generateImageOnTap` | `boolean` | `false` | `generateImageExample()` |
 | `functionCallingPrompt` | `string` | `"Make the text display yellow"` | `set_text_color` tool |
-| `doFunctionCallingOnTap` | `boolean` | `false` | `functionCallingExample()` |
+| `doFunctionCallingOnTap` | `boolean` | `false` | `functionCallingExample()` (`true` in the prefab) |
+| `logPanelOffset` | `vec3` | `(0, 14, 0)` | Log panel position (hosts the Gemini and Imagen step's log) |
+
+Order in the demo: text, function calling, then the Gemini-route image when
+`generateImageOnTap` is on (off in the prefab: Imagen draws in that step).
 
 ### ExampleImagenCalls (`HostedExternal/Examples/ExampleImagenCalls.ts`)
 
@@ -426,9 +434,11 @@ in the prefab.
 |---|---|---|---|
 | `imgObject` | `SceneObject` | undefined | Output `Image` (prefab: the **Gemini** example's `ImageOutputExample`) |
 | `generatePrompt` | `string` | `"A futuristic cityscape at sunset"` | Prompt (`Imagen.generateContent`, `gemini-3.1-flash-image`, `responseModalities ["TEXT","IMAGE"]`) |
-| `doGenerateOnTap` ("Run On Tap") | `boolean` | `false` | Generate on tap/pinch (**`true` in the prefab**) |
+| `doGenerateOnTap` ("Run in demo") | `boolean` | `false` | Generate in the demo (**`true` in the prefab**) |
 
-Errors go only to `logger.debug` (visible when `enableLogging` is on) and to the module's own `Imagen API Error:` print. Nothing goes to a text output.
+It joins its step with `order: 10`, so it runs after `ExampleGeminiCalls`, and
+logs into that example's panel (it has none of its own). It shows `imgObject`'s
+first child as a spinner while it waits. Errors go to the log panel and `print`.
 
 ### ExampleLyriaCall (`HostedExternal/Examples/ExampleLyriaCall.ts`)
 
@@ -438,11 +448,16 @@ Errors go only to `logger.debug` (visible when `enableLogging` is on) and to the
 | `negativePrompt` | `string` | `"vocals, slow tempo"` | `negative_prompt` |
 | `seed` | `number` | `12345` | `seed` (`0` is sent as undefined) |
 | `sampleCount` | `number` | `1` | `sample_count` |
-| `generateMusicOnTap` ("Generate Music on tap") | `boolean` | `false` | Run `generateMusic()` on tap/pinch |
-| `dynamicAudioOutput` | `DynamicAudioOutput` | none, **required** | Playback (initialized at 48000 Hz, frames added as 2 channels) |
-| `playAudioOnTap` ("Play Generated Audio") | `boolean` | `false` | Binds `TapEvent` **and** the right-hand pinch only when `true` (`true` in the prefab) |
+| `generateMusicOnTap` ("Run in demo") | `boolean` | `false` | Run `generateMusic()` when the step is shown (`true` in the prefab) |
+| `dynamicAudioOutput` | `DynamicAudioOutput` | none, **required** | Playback |
+| `playAudioOnTap` ("Play generated audio") | `boolean` | `false` | Play the generated clip (`true` in the prefab) |
+| `logPanelOffset` | `vec3` | `(0, 0, 0)` | Log panel position |
 
-`onTap()` is public. One generation runs at a time, and the in-progress flag is reset on success and on failure.
+The returned WAV is split with the static `ExampleLyriaCall.readWav(bytes)`: the
+output is initialized at the file's sample rate and the PCM16 data (without the
+header) is added with the file's channel count. The step waits for the clip's
+length, and leaving it calls `interruptAudioOutput()`. Public: `runDemo(run?)`,
+`stopDemo()`, `generateMusic(run?)`.
 
 ### ExampleOAIRealtime (`HostedExternal/Examples/ExampleOAIRealtime.ts`)
 
@@ -456,9 +471,16 @@ Errors go only to `logger.debug` (visible when `enableLogging` is on) and to the
 | `audioOutput` | `boolean` | `false` | Answer with audio (`output_modalities: ["audio"]`, transcript included) instead of text |
 | `voice` | `string` (combo, shown when `audioOutput`) | `"coral"` (prefab: `ash`) | alloy, ash, ballad, coral, echo, sage, shimmer, verse |
 
-It opens the session (`gpt-realtime-mini`, server VAD) on
-`OnStartEvent`, streams the mic as `input_audio_buffer.append` and handles the
-`set-text-color` tool. Public method: `connectToWebsocket()`.
+| `greeting` | `string` | "Greet the user in one short sentence…" | Sent as `response.create` once the socket is open, so the model speaks first. Empty: wait for the user |
+| `logPanelOffset` | `vec3` | `(0, 12, 0)` | Log panel position |
+
+It opens the session (`gpt-realtime-mini`, server VAD) when its step is shown,
+streams the mic as `input_audio_buffer.append` and handles the `set-text-color`
+tool. Leaving the step stops the mic (and removes its frame handler), interrupts
+the audio output and closes the socket. Server `error` events, `response.done`
+with a non-`completed` status, socket errors and closes are logged as errors. The
+prefab sets `audioOutput` on (voice `ash`). Public: `runDemo(run?)`,
+`stopDemo()`, `connectToWebsocket(run?)`.
 
 ### ExampleGeminiLive (`HostedExternal/Examples/ExampleGeminiLive.ts`)
 
@@ -473,8 +495,13 @@ It opens the session (`gpt-realtime-mini`, server VAD) on
 | `haveAudioOutput` | `boolean` | `false` | `AUDIO` response with voice, else `TEXT` |
 | `voice` | `string` (combo, shown when `haveAudioOutput`) | `"Puck"` | Puck, Charon, Kore, Fenrir, Aoede, Leda, Orus, Zephyr |
 
-It opens the session (`models/gemini-live-2.5-flash`) on
-`OnStartEvent`, starts the mic after `setupComplete` and handles the
-`change_text_color` tool. Public method: `createGeminiLiveSession()`.
+| `greeting` | `string` | "Say hello in one short sentence…" | Sent as a `client_content` turn after `setupComplete`, so the model speaks first. Empty: wait for the user |
+| `logPanelOffset` | `vec3` | `(0, 12, 0)` | Log panel position |
+
+It opens the session (`models/gemini-live-2.5-flash`) when its step is shown,
+starts the mic (and the camera with `haveVideoInput`) after `setupComplete` and
+handles the `change_text_color` tool. Leaving the step stops the mic, the camera
+and the audio output and closes the socket. The prefab sets `haveAudioOutput` on.
+Public: `runDemo(run?)`, `stopDemo()`, `createGeminiLiveSession(run?)`.
 
 The example prefab and its hierarchy are in [examples](examples.md#example-prefab).

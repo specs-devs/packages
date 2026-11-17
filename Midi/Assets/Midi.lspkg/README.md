@@ -8,7 +8,7 @@ Transport-agnostic TypeScript MIDI parser, BLE-MIDI de-framer and source-clock r
 
 ## Usage
 
-This section ships with the package and describes the exact installed revision. Generic Lens scripting, scene construction and SPECS spatial design live in the CLAD skills; this package owns MIDI framing, events, timing and its consumer seam.
+This section ships with the package and describes the exact installed revision. Generic Lens scripting, scene construction and SPECS spatial design are out of scope here; this package owns MIDI framing, events, timing and its consumer seam.
 
 ### Package identity
 
@@ -16,7 +16,7 @@ This section ships with the package and describes the exact installed revision. 
 - Consumer imports: `Midi.lspkg/Core/`, `Midi.lspkg/Transports/`, `Midi.lspkg/Timing/`, and optional `Midi.lspkg/Examples/` and `Midi.lspkg/Testing/`.
 - Mock demo prefab: `Midi.lspkg/Midi__PLACE_IN_SCENE.prefab`. It is self-contained: drop it into a SPECS scene (Camera + SIK) and you get the guide, the example carousel and the mock instrument.
 - Demo scaffolding: `Midi.lspkg/Example/` holds `ExampleCarousel` and `GuideDismissPanel`. The prefab uses them to present the demo; Core, Transports, Timing and `Examples/` don't depend on them.
-- Declared example companions: SpectaclesInteractionKit, SpectaclesUIKit, Motion and Icons. See `package_dependencies.json`. `Examples/MidiExamplesPanel` imports SpectaclesUIKit; the `Example/` scaffolding imports SpectaclesInteractionKit and SpectaclesUIKit. Core parser/transports/timing do not import these UI packages.
+- Declared example companions: InteractionKit, UIKit, Motion and Icons. See `package_dependencies.json`. `Examples/MidiExamplesPanel` imports UIKit; the `Example/` scaffolding imports InteractionKit and UIKit. Core parser/transports/timing do not import these UI packages.
 - Declared test dependency: Leaf, imported only by `Testing/`. Core parser/transports/timing do not import LEAF.
 
 ### Version and API status
@@ -26,12 +26,6 @@ Read [API status](Docs/api-status.md) for supported exports, internal-only helpe
 ### Applicability
 
 Use the parser for a raw MIDI stream, BleMidiTransport for BLE-MIDI GATT payloads, MockMidiTransport for a hardware-free Preview, and `Testing/LeafMidiInteractor` to play exact notes, chords, pedal and clock into a lens from a LEAF scenario, with seeded jitter, drift, reorder and drop faults. Add a lens-side Bluetooth adapter for a real instrument; this package does not discover or connect to it.
-
-### Related CLAD skills
-
-[specs-audio](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/specs-audio/SKILL.md), [specs-author-scripts](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/specs-author-scripts/SKILL.md). These skills cover the surrounding Lens workflow.
-
-[Install CLAD](https://developers.specs.com/docs/clad/setup/setup-ai/) or browse its [source](https://github.com/lens-studio-devs/ls-extensions). Read the installed package docs for this revision’s APIs.
 
 ### Package Docs (ship in Docs/)
 

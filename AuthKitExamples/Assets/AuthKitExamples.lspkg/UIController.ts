@@ -4,7 +4,7 @@
  * manages sign-in/sign-out, and demonstrates making authenticated API requests.
  */
 import { OAuth2 } from "AuthKit.lspkg/Core/OAuth2";
-import { RectangleButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton";
+import { RectangleButton } from "UIKit.lspkg/Scripts/Components/Button/RectangleButton";
 
 @component
 export class UIController extends BaseScriptComponent {

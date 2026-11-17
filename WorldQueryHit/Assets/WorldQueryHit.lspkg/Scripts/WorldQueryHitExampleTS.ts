@@ -12,9 +12,9 @@ import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import {
     InteractorTriggerType,
     InteractorInputType
-  } from "SpectaclesInteractionKit.lspkg/Core/Interactor/Interactor"
-  import {SIK} from "SpectaclesInteractionKit.lspkg/SIK"
-  import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
+  } from "InteractionKit.lspkg/Core/Interactor/Interactor"
+  import {IK} from "InteractionKit.lspkg/IK"
+  import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
 
   const WorldQueryModule = require("LensStudio:WorldQueryModule")
   const EPSILON = 0.01;
@@ -259,7 +259,7 @@ import {
 
       setupTriggerEndCallback() {
           // Get all interactors and set up trigger end callbacks
-          const allInteractors = SIK.InteractionManager.getInteractorsByType(
+          const allInteractors = IK.InteractionManager.getInteractorsByType(
               InteractorInputType.All
           );
 
@@ -557,7 +557,7 @@ import {
               this.logger.debug("LIFECYCLE: onUpdate() - Update event");
           }
 
-          this.primaryInteractor = SIK.InteractionManager.getTargetingInteractors().shift();
+          this.primaryInteractor = IK.InteractionManager.getTargetingInteractors().shift();
           if (this.primaryInteractor &&
               this.primaryInteractor.isActive() &&
               this.primaryInteractor.isTargeting() &&

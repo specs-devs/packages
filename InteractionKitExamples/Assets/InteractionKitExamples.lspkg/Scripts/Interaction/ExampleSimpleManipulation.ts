@@ -7,7 +7,7 @@
  *   "Selected [object name]"
  *   "Release [object name]"
  */
-import { Interactable } from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
+import { Interactable } from "InteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"
 import { bindStartEvent } from "SnapDecorators.lspkg/decorators"
 

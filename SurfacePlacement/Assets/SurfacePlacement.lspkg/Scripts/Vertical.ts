@@ -1,12 +1,11 @@
 /**
  * SPECS Inc. 2027
- * Vertical surface detection and placement handler. Detects and tracks vertical surfaces like walls
- * for placing AR content with smooth transitions between surface detection states.
+ * Wall placement: hit-tests along the gaze for a wall, averages its normal to steady the
+ * indicator, and places once the view has held steady.
  */
-import { SurfaceDetector } from "../Scripts/SurfaceDetector";
+import { RefinePose, SurfaceDetector } from "../Scripts/SurfaceDetector";
 
 import { SingleSurface } from "../Scripts/SingleSurface";
-import { HandHintsController } from "./HandHintsController";
 
 // Set min and max hit distance to surfaces
 const MAX_HIT_DISTANCE = 1000;
@@ -15,7 +14,7 @@ const STATE_SWITCH_THRESHOLD = 15; // Number of frames to switch default pose an
 const DEFAULT_SCREEN_DISTANCE = 200; // Distance in cm from camera to visual when no surface is hit
 // Averaging the wall normal, because a single hit's yaw wobbles by degrees.
 const NORMAL_WINDOW_SECONDS = 2.5; // trailing window, long enough to span the whole fill
-const NORMAL_MAX_SAMPLES = 12; // keep the newest samples
+const NORMAL_MAX_SAMPLES = 12; // newest win, so stale yaw ages out even when hits come fast
 const NORMAL_OUTLIER_DEGREES = 25; // further off the mean than this is another surface, not noise
 const NORMAL_OUTLIER_RESET = 5; // consecutive disagreements before that surface is accepted
 
@@ -44,8 +43,8 @@ export class Vertical extends SurfaceDetector {
     ) as SingleSurface;
   }
 
-  init(handHints: HandHintsController) {
-    super.init(handHints);
+  init() {
+    super.init();
     this.singleSurface.init(
       this.cameraTransform,
       this.trans,
@@ -58,7 +57,7 @@ export class Vertical extends SurfaceDetector {
   // mean of unit vectors is the circular mean of their yaw. Returns null when a
   // normal carries no usable yaw at all.
   private getAveragedWallNormal(normal: vec3): vec3 {
-    let projected = new vec3(normal.x, 0.0, normal.z);
+    var projected = new vec3(normal.x, 0.0, normal.z);
     if (projected.length < 0.0001) {
       //pointing straight up or down, so there is no yaw in it
       return null;
@@ -66,14 +65,17 @@ export class Vertical extends SurfaceDetector {
     projected = projected.normalize();
 
     const now = getTime();
-    // A stalled hit-test stream must not leave an old wall biasing the next hit.
-    while (this.normalTimeHistory.length > 0 &&
-      now - this.normalTimeHistory[0] > NORMAL_WINDOW_SECONDS) {
+    //samples older than the window describe a wall looked at before, so they
+    //must not outvote this one as an outlier
+    while (
+      this.normalTimeHistory.length > 0 &&
+      now - this.normalTimeHistory[0] > NORMAL_WINDOW_SECONDS
+    ) {
       this.normalHistory.shift();
       this.normalTimeHistory.shift();
     }
-    if (this.normalHistory.length === 0) this.normalOutliers = 0;
-    let mean = this.getWallNormalMean();
+
+    var mean = this.getWallNormalMean();
     if (
       mean != null &&
       this.angleBetween(projected, mean) > NORMAL_OUTLIER_DEGREES
@@ -109,8 +111,8 @@ export class Vertical extends SurfaceDetector {
     if (this.normalHistory.length == 0) {
       return null;
     }
-    let sum = vec3.zero();
-    for (let i = 0; i < this.normalHistory.length; i++) {
+    var sum = vec3.zero();
+    for (var i = 0; i < this.normalHistory.length; i++) {
       sum = sum.add(this.normalHistory[i]);
     }
     if (sum.length < 0.0001) {
@@ -121,120 +123,55 @@ export class Vertical extends SurfaceDetector {
   }
 
   private angleBetween(a: vec3, b: vec3): number {
-    let dot = Math.min(1, Math.max(-1, a.dot(b)));
+    var dot = Math.min(1, Math.max(-1, a.dot(b)));
     return Math.acos(dot) * MathUtils.RadToDeg;
   }
 
-  onHoverEnter() {
-    if (!this.isCalibrationRunning || this.usesHeadPose) {
-      return;
+  //spread of the averaged samples, to judge whether averaging is enough
+  private getWallNormalSpread(averaged: vec3): number {
+    var maxAngle = 0;
+    for (var i = 0; i < this.normalHistory.length; i++) {
+      maxAngle = Math.max(
+        maxAngle,
+        this.angleBetween(this.normalHistory[i], averaged),
+      );
     }
-    super.onHoverEnter();
-    this.circleAnim.setLoadingColor(false);
-  }
-
-  onHoverExit() {
-    if (!this.isCalibrationRunning || this.usesHeadPose) {
-      return;
-    }
-    super.onHoverExit();
-    this.circleAnim.setLoadingColor(true);
-  }
-
-  onInteractionCanceled() {
-    if (!this.isCalibrationRunning || this.usesHeadPose) return;
-    super.onInteractionCanceled();
-    this.circleAnim.animateCircleIn(null);
-    this.circleAnim.setLoadingColor(true);
-    this.circleAnim.enableScanAnimation(true);
-  }
-
-  onInteractionStart() {
-    if (!this.isCalibrationRunning || this.usesHeadPose) {
-      return;
-    }
-
-    super.onInteractionStart();
-    if (this.step1.enabled) {
-      return;
-    }
-    this.circleAnim.animateCircleOut(null);
-    this.circleAnim.enableScanAnimation(false);
-    this.handHintController.disableHint();
-  }
-
-  onInteractionEnd() {
-    if (!this.isCalibrationRunning || this.usesHeadPose) {
-      return;
-    }
-
-    super.onInteractionEnd();
-    if (
-      this.hitTestSession != null &&
-      this.step2.enabled &&
-      super.isLookingAtCalibrationIcon()
-    ) {
-      this.startCalibrationComplete();
-    } else {
-      this.onInteractionCanceled();
-    }
-  }
-
-  private playHandHint(isMobile: boolean) {
-    if (this.usesHeadPose) return;
-    if (isMobile) {
-      this.handHintController.playMobileTap();
-      this.hintAnchor
-        .getTransform()
-        .setLocalRotation(
-          quat.fromEulerVec(new vec3(-30 * MathUtils.DegToRad, 0, 0))
-        );
-    } else {
-      this.handHintController.playFarPinch();
-      this.hintAnchor
-        .getTransform()
-        .setLocalRotation(quat.fromEulerVec(vec3.zero()));
-    }
-  }
-
-  protected onMobileConnnectionStateChange(isConnected: boolean) {
-    super.onMobileConnnectionStateChange(isConnected);
+    return maxAngle;
   }
 
   private setCircleColor(isTracking: boolean) {
-    let dotColor = isTracking ? vec4.one() : vec4.one().uniformScale(0.35);
+    var dotColor = isTracking ? vec4.one() : vec4.one().uniformScale(0.35);
     this.circleAnim.setCircleColor(dotColor);
-    if (!this.usesHeadPose) this.circleAnim.enableScanAnimation(isTracking);
   }
 
   private startCalibrationComplete() {
     this.isCalibrationRunning = false;
     //pop the circle full before delivering, same as the near-surface flow
-    if (this.usesHeadPose) {
-      this.circleAnim.animateCircleOut(() => {
-        super.onCalibrationComplete(this.invokeCalibrationComplete.bind(this));
-      });
-    } else {
-      super.onCalibrationComplete(this.invokeCalibrationComplete.bind(this));
-    }
+    this.circleAnim.animateCircleOut(() => {
+      super.onCalibrationComplete(() => this.invokeCalibrationComplete());
+    });
   }
 
   private invokeCalibrationComplete() {
-    // desiredRotation lays the reticle flat on the wall (+Y out of it). Undo that
-    // tilt so content stands upright on the wall: +Y up, +Z out toward the user.
+    var averaged = this.getWallNormalMean();
+    if (averaged != null) {
+      this.log(
+        "Wall facing from " +
+          this.normalHistory.length +
+          " normals, spread " +
+          this.getWallNormalSpread(averaged).toFixed(1) +
+          " deg",
+      );
+    }
     this.onCompleteCallback(
       this.singleSurface.desiredPosition,
-      this.singleSurface.desiredRotation.multiply(
-        quat.fromEulerVec(new vec3(-Math.PI / 2, 0, 0)),
-      ),
+      this.singleSurface.desiredRotation,
     );
   }
 
   startSurfaceCalibration(callback: (pos: vec3, rot: quat) => void): void {
-    this.handHintController.disableHint();
     this.enableStep1(true);
     this.currSurfaceDetected = false;
-    this.currStateCount = 0;
     this.hasLastSurfacePose = false;
     this.isCalibrationRunning = true;
     super.startSurfaceCalibration(callback);
@@ -242,14 +179,41 @@ export class Vertical extends SurfaceDetector {
     this.singleSurface.startCalibration();
   }
 
+  //the high-accuracy hit replaces both position and rotation here, rebuilding the
+  //rotation from its normal with this mode's existing projection convention
+  protected getRefineTarget(): vec3 {
+    return this.hasLastSurfacePose ? this.lastSurfacePosition : null;
+  }
+
+  protected applyRefinedPose(pose: RefinePose) {
+    this.lastSurfacePosition = new vec3(pose.x, pose.y, pose.z);
+    // One accurate normal against a window of coarse ones would be outvoted by the
+    // very wobble it is meant to fix, so it restarts the average instead: the
+    // facing is drawn from the accurate hit alone, and coarse hits stay paused for
+    // the rest of the dwell so nothing dilutes it.
+    this.normalHistory = [];
+    this.normalTimeHistory = [];
+    this.normalOutliers = 0;
+    var averagedNormal = this.getAveragedWallNormal(
+      new vec3(pose.nx, pose.ny, pose.nz),
+    );
+    if (averagedNormal != null) {
+      this.lastSurfaceRotation = quat.lookAt(averagedNormal, vec3.up());
+    }
+    this.singleSurface.desiredPosition = this.lastSurfacePosition;
+    //updateCalibration is paused while refining, so apply its trailing tilt here
+    this.singleSurface.desiredRotation = this.lastSurfaceRotation.multiply(
+      quat.fromEulerVec(new vec3(Math.PI / 2, 0, 0)),
+    );
+  }
+
   protected update() {
     super.update();
     if (!this.isCalibrationRunning) {
       return;
     }
-    if (!this.usesHeadPose && this.singleSurface.hasFoundPlane()) {
-      this.singleSurface.adjustPosition();
-    } else {
+    if (!this.isRefining()) {
+      //coarse results would fight the accurate pose, so pause them for the dwell
       this.singleSurface.runHitTest(
         this.hitTestSession,
         MIN_HIT_DISTANCE,
@@ -260,20 +224,19 @@ export class Vertical extends SurfaceDetector {
     }
     this.singleSurface.interpolatePositionVisuals();
     //after the lerp, so the scale matches where the reticle actually is
-    if (!this.usesHeadPose) return;
     this.updateReticleScale();
 
-    // Dwell requires a recently tracked wall, including during the fill.
+    //only allow dwell placement while a wall is actually tracked. While the
+    //high-accuracy test is out, the paused coarse hits would go stale, so it stands in
     if (
       this.step2.enabled &&
-      this.hasFreshSurfaceHit()
+      (this.isRefining() || this.hasFreshSurfaceHit())
     ) {
       if (this.hitTestSession != null && this.updateDwellPlacement()) {
         this.startCalibrationComplete();
       }
     } else {
-      //step1 keeps the scan dots off, so don't re-enable them on reset
-      this.resetDwellPlacement(false);
+      this.resetDwellPlacement();
     }
   }
 
@@ -287,18 +250,10 @@ export class Vertical extends SurfaceDetector {
     this.step1.enabled = enabled;
     this.step2.enabled = !enabled;
     this.setCircleColor(!enabled);
-    this.circleAnim.getSceneObject().getComponent("ColliderComponent").enabled =
-      !enabled && !this.usesHeadPose;
-    if (!enabled && !this.usesHeadPose) {
-      this.handHintController.enableHint(this.hintAnchor.getTransform());
-      this.playHandHint(this.isMobileConnected());
-    } else {
-      this.handHintController.disableHint();
-    }
   }
 
   private onHitTestResult(hitTestResult) {
-    if (!this.isCalibrationRunning || this.singleSurface.hasFoundPlane()) {
+    if (!this.isCalibrationRunning) {
       //late async result must not move the surface after the dwell completed
       return;
     }
@@ -317,7 +272,7 @@ export class Vertical extends SurfaceDetector {
     foundNormal: vec3,
     didHit: boolean,
   ) {
-    let camPos = this.cameraTransform.getWorldPosition();
+    var camPos = this.cameraTransform.getWorldPosition();
 
     this.singleSurface.desiredPosition = camPos.add(
       this.cameraTransform.forward.uniformScale(-DEFAULT_SCREEN_DISTANCE),
@@ -327,11 +282,17 @@ export class Vertical extends SurfaceDetector {
       vec3.up(),
     );
 
-    //check if vertical plane is being tracking. A miss is identified by didHit,
-    //never by a zero normal: a plumb wall reports normal.y of exactly 0, which
-    //the old zero test rejected outright (most visible in the editor, where
-    //preview geometry is perfectly axis aligned).
-    let foundVerticalPlane = didHit && foundNormal.length > 0.0001 && Math.abs(foundNormal.y) < 0.15;
+    //check if vertical plane is being tracked. A miss is identified by didHit,
+    //never by a zero normal: a plumb wall reports normal.y of exactly 0, which a
+    //zero test would reject outright (most visible in the editor, where preview
+    //geometry is perfectly axis aligned).
+    //A wall's normal is close to horizontal, so one with almost no horizontal
+    //part (a zero or near-zero normal) has no facing and is not a wall.
+    var horizontal = Math.sqrt(
+      foundNormal.x * foundNormal.x + foundNormal.z * foundNormal.z,
+    );
+    var foundVerticalPlane =
+      didHit && horizontal > 0.5 && Math.abs(foundNormal.y) < 0.15;
     if (foundVerticalPlane) {
       this.markSurfaceHit();
       // Cache the pose of the last real wall hit. The step2 state below outlives
@@ -339,7 +300,7 @@ export class Vertical extends SurfaceDetector {
       // miss frame would apply its zeroed position and normal: the surface would
       // snap to the world origin with a NaN rotation from normalizing (0,0,0).
       this.lastSurfacePosition = foundPosition;
-      let averagedNormal = this.getAveragedWallNormal(foundNormal);
+      var averagedNormal = this.getAveragedWallNormal(foundNormal);
       if (averagedNormal != null) {
         this.lastSurfaceRotation = quat.lookAt(averagedNormal, vec3.up());
       }

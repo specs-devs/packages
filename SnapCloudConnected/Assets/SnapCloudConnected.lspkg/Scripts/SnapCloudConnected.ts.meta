@@ -1,0 +1,92 @@
+- !<AssetImportMetadata/b80a6108-3ac2-4196-b52c-05a5efe7fc86>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 57a476b5-b8cc-4a61-bfe4-9d58744bfe7f
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 57a476b5-b8cc-4a61-bfe4-9d58744bfe7f
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> e5795767-73be-4e49-ac60-05214aa76fbc
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/e5795767-73be-4e49-ac60-05214aa76fbc>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: f66d0f96-9eb4-44d3-aca4-a11fe3c44d48
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    authMode: false
+    autoReadyAfterPlacement: false
+    enableLogging: false
+    faceToFace: false
+    hideOriginUntilPlaced: false
+    maxPlayers: false
+    origin: false
+    placementInteraction: false
+    placementMode: false
+    sendRate: false
+    smoothing: false
+    snapCloudRequirements: false
+    supabaseProject: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - snapCloudRequirements: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      supabaseProject: !<reference.SupabaseProject> 00000000-0000-0000-0000-000000000000
+      authMode: 0
+      maxPlayers: 2
+      origin: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      hideOriginUntilPlaced: true
+      placementMode: 0
+      placementInteraction: 0
+      autoReadyAfterPlacement: false
+      faceToFace: true
+      sendRate: !<float> 10.000000
+      smoothing: !<float> 12.000000
+      enableLogging: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Snap Cloud</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Assign your SupabaseProject asset (Window → Supabase → Import Credentials) on SnapCloudRequirements and run Supabase/snapcloud-connected-setup.sql on that project once.</span>"}'
+    - '// @input AssignableType_1 snapCloudRequirements {"hint":"SnapCloudRequirements holding the SupabaseProject (Snap Cloud URL and public key). Never paste keys into scripts"}'
+    - "// @input Asset.SupabaseProject supabaseProject {\"hint\":\"Deprecated: use snapCloudRequirements. Only used when snapCloudRequirements isn't wired\"}"
+    - "// @input int authMode {\"hint\":\"How players sign in. Anonymous sign-in must be enabled in your Snap Cloud project's Auth settings\", \"widget\":\"combobox\", \"values\":[{\"label\":\"Snapchat, then anonymous\", \"value\":0}, {\"label\":\"Snapchat only\", \"value\":1}, {\"label\":\"Anonymous only\", \"value\":2}]}"
+    - '// @input int maxPlayers = 2 {"hint":"Players per room. The session starts when every seat is taken and every player is ready", "widget":"slider", "min":2, "max":4, "step":1}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Surface Placement</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Each player places this origin on their own surface. Put synced content under it</span>"}'
+    - '// @input SceneObject origin {"hint":"Local origin that each player places on a surface. Synced poses are relative to it"}'
+    - '// @input bool hideOriginUntilPlaced = true {"hint":"Hide the origin and its children until this player has placed it"}'
+    - '// @input int placementMode {"widget":"combobox", "values":[{"label":"Horizontal (floor or table)", "value":0}, {"label":"Near Surface (tabletop)", "value":2}]}'
+    - '// @input int placementInteraction {"hint":"Confirmation for Horizontal placement. Near Surface uses palms", "widget":"combobox", "values":[{"label":"Head Pose (hold still)", "value":0}, {"label":"Pinch or Tap", "value":1}]}'
+    - '// @input bool autoReadyAfterPlacement {"hint":"Set ready automatically after placement instead of waiting for confirmReady()"}'
+    - '// @input bool faceToFace = true {"hint":"Players face each other around the origin: player 2 is turned 180°, players 3 and 4 ±90°. Off: everyone sees the same layout in front of them"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Sync</span>"}'
+    - "// @input float sendRate = 10 {\"hint\":\"Maximum publishes per second for this player's transforms\", \"widget\":\"slider\", \"min\":1, \"max\":20, \"step\":1}"
+    - '// @input float smoothing = 12 {"hint":"Smoothing for remote transforms (higher = snappier). 0 = no smoothing", "widget":"slider", "min":0, "max":30, "step":1}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'

@@ -1,0 +1,105 @@
+- !<AssetImportMetadata/1f633b86-30b6-4d17-9800-fca074990ad5>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 6dd39939-1f47-489a-a036-1d59a05ed32b
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 6dd39939-1f47-489a-a036-1d59a05ed32b
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 457ce964-70ff-4f80-b9c4-9601a569e46e
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/457ce964-70ff-4f80-b9c4-9601a569e46e>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 158fca24-1048-4777-8782-d0fcc1590a18
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    arLayer: false
+    arTexture: false
+    cameraLayer: false
+    compositeAlpha: false
+    compositeBlend: false
+    connectOnStart: false
+    deviceFolder: false
+    micLayer: false
+    proxyQuality: false
+    proxyWidth: false
+    recordComposite: false
+    statusText: false
+    streamOnStart: false
+    studioUrl: false
+    uiLayer: false
+    uiTexture: false
+    verbose: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - studioUrl: ""
+      connectOnStart: true
+      streamOnStart: true
+      cameraLayer: true
+      arLayer: true
+      arTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      uiLayer: false
+      uiTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      micLayer: true
+      proxyWidth: !<float> 480.000000
+      proxyQuality: !<float> 50.000000
+      deviceFolder: ""
+      recordComposite: false
+      compositeAlpha: !<float> 1.000000
+      compositeBlend: alpha
+      statusText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      verbose: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Studio</span>"}'
+    - "// @ui {\"widget\":\"label\", \"label\":\"<span style=\\\"color: #94A3B8; font-size: 11px;\\\">The NDK Capture plugin serves the Studio at http://127.0.0.1:47792 and listens for this Lens on the URL below. Local ws:// needs Experimental APIs; on Specs use your computer's LAN address.</span>\"}"
+    - '// @input string studioUrl {"hint":"WebSocket of the NDK Capture Studio"}'
+    - '// @input bool connectOnStart = true {"hint":"Connect to the Studio when the Lens starts"}'
+    - '// @input bool streamOnStart = true {"hint":"Start streaming the enabled layers as soon as the Lens starts"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Layers</span>"}'
+    - '// @input bool cameraLayer = true {"hint":"Natural camera video (native SpecsRecorder VIDEO on Specs, camera texture in the editor)"}'
+    - '// @input bool arLayer = true {"hint":"Rendered AR overlay (native SpecsRecorder AR_VIDEO on Specs)"}'
+    - "// @input Asset.Texture arTexture {\"hint\":\"Render target for the AR layer's proxy frames. Empty = the Lens's live target (what the main camera renders)\"}"
+    - "// @input bool uiLayer {\"hint\":\"Optional extra visual layer (for example a UI-only camera's render target)\"}"
+    - // @input Asset.Texture uiTexture
+    - '// @input bool micLayer = true {"hint":"Microphone audio (native SpecsRecorder AUDIO on Specs; not available in the editor)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Proxies</span>"}'
+    - '// @input float proxyWidth = 480 {"hint":"Width of the JPEG proxy frames (preview and editing proxy)", "widget":"slider", "min":160, "max":960, "step":16}'
+    - '// @input float proxyQuality = 50 {"hint":"JPEG quality of the proxy frames", "widget":"slider", "min":10, "max":95, "step":1}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">On-device files (Specs)</span>"}'
+    - '// @input string deviceFolder {"hint":"Folder on the device for native NKC1 track files and the composite MP4. Empty = Studio only."}'
+    - '// @input bool recordComposite {"hint":"Also record a finished SpecsCapture MP4 (camera + AR composited + audio) on the device"}'
+    - '// @input float compositeAlpha = 1 {"hint":"Composite AR opacity (SpecsCapture arAlpha)", "widget":"slider", "min":0, "max":1, "step":0.05}'
+    - '// @input string compositeBlend = "alpha" {"hint":"Composite AR blend: alpha (opaque) or additive", "widget":"combobox", "values":[{"label":"Alpha", "value":"alpha"}, {"label":"Additive", "value":"additive"}]}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input Component.Text statusText {"hint":"Optional Text that shows the capture status"}'
+    - '// @input bool verbose {"hint":"Print status to the log"}'

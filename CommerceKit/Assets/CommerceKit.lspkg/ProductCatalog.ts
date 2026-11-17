@@ -1,36 +1,33 @@
 /**
  * SPECS Inc. 2027
- * Product catalog component that initializes CommerceKit with your product definitions.
- * Add this component to your scene and configure your products to enable in-app purchases.
+ * Starts CommerceKit when the Lens starts. Products are no longer listed in the Lens: they are defined
+ * on the Specs developer portal (https://developers.specs.com/lenses), and scripts refer to them by
+ * product ID.
  */
 import { CommerceKit } from "./CommerceKit";
-import { CommerceProduct } from "./Helper/CommerceProduct";
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
-import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
 
 @component
 export class ProductCatalog extends BaseScriptComponent {
+  @ui.label('<span style="color: #60A5FA;">Products</span>')
   @ui.label(
-    '<div>⚠️ <span style="color: #FFCC80; font-weight: bold;">CommerceKit is currently in Closed Beta.</span></div>'
+    '<div style="color: #e2e2e2ff;">Configure your product catalog (IDs, names, prices, types and subscription plans) on the Specs developer portal at <a href="https://developers.specs.com/lenses" target="_blank" style="color: #00D4FF; text-decoration: underline;">developers.specs.com/lenses</a>, not in the Lens, then use its product IDs in your scripts. To get started, visit our <a href="https://developers.snap.com/spectacles/spectacles-frameworks/commerce-kit/get-started" target="_blank" style="color: #00D4FF; text-decoration: underline;">docs</a>.</div>'
   )
   @ui.label(
-    '<div style="color: #e2e2e2ff;">You can test CommerceKit in a draft environment, but will need to request access to publish your Lens. For more details please visit our <a href="https://developers.snap.com/spectacles/spectacles-frameworks/commerce-kit/get-started" target="_blank" style="color: #00D4FF; text-decoration: underline;">docs</a>.</div>'
+    '<span style="color: #94A3B8; font-size: 11px;">Lens Studio Preview cannot reach the commerce service, so purchases are simulated there: every product costs $0.99 and every checkout succeeds.</span>'
   )
-  @ui.separator
-  @ui.label('<span style="color: #60A5FA;">Product Catalog</span>')
-  @ui.label('<span style="color: #94A3B8; font-size: 11px;">Define your products here including IDs, prices, and metadata</span>')
 
-  /**
-   * Array of products that make up the commerce catalog.
-   * Configure these products through the Lens Studio component interface.
-   */
+  @ui.separator
+  @ui.label('<span style="color: #60A5FA;">Connection</span>')
   @input
-  readonly productCatalog: CommerceProduct[];
+  @hint(
+    "Connect and restore purchases when the Lens starts. When off, CommerceKit connects the first time it is used."
+  )
+  initializeOnAwake: boolean = true;
 
   @ui.separator
   @ui.label('<span style="color: #60A5FA;">Logging Configuration</span>')
   @ui.label('<span style="color: #94A3B8; font-size: 11px;">Control logging output for this script instance</span>')
-
   @input
   @hint("Enable general logging (animation cycles, events, etc.)")
   enableLogging: boolean = false;
@@ -39,21 +36,22 @@ export class ProductCatalog extends BaseScriptComponent {
   @hint("Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)")
   enableLoggingLifecycle: boolean = false;
 
-  // Logger instance
   private logger: Logger;
 
-  /**
-   * Called when component is initialized
-   */
   onAwake(): void {
-    // Initialize logger
     this.logger = new Logger("ProductCatalog", this.enableLogging || this.enableLoggingLifecycle, true);
 
     if (this.enableLoggingLifecycle) {
       this.logger.debug("LIFECYCLE: onAwake() - Component initializing");
     }
 
-    // Initialize catalog
-    CommerceKit.getInstance().initializeCatalog(this.productCatalog);
+    if (this.initializeOnAwake) {
+      CommerceKit.getInstance()
+        .initialize()
+        .then(
+          () => this.logger.info("CommerceKit is ready"),
+          (error: Error) => print(`[ProductCatalog] CommerceKit could not connect: ${error.message}`)
+        );
+    }
   }
 }

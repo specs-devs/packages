@@ -2,14 +2,14 @@
 // crash in the package (Visual.ts imports ThemeService before defining COLORS, and the
 // theme chain reads COLORS at module-load). Entering the import cycle via ThemeService
 // lets Visual.ts finish defining COLORS first. Must remain the FIRST import.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService"
-import {Button} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/Button"
-import {BackPlate, BackPlateStyle} from "SpectaclesUIKit.lspkg/Scripts/BackPlate"
-import {ElementContent} from "SpectaclesUIKit.lspkg/Scripts/Components/Content/ElementContent"
-import {Frame} from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame"
-import {FlexItem} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexItem"
-import {FlexLayout} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexLayout"
-import {FlexAlign, FlexDirection, FlexJustify} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexTypes"
+import "UIKit.lspkg/Scripts/Themes/ThemeService"
+import {Button} from "UIKit.lspkg/Scripts/Components/Button/Button"
+import {BackPlate, BackPlateStyle} from "UIKit.lspkg/Scripts/BackPlate"
+import {ElementContent} from "UIKit.lspkg/Scripts/Components/Content/ElementContent"
+import {Frame} from "UIKit.lspkg/Scripts/Components/Frame/Frame"
+import {FlexItem} from "UIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexItem"
+import {FlexLayout} from "UIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexLayout"
+import {FlexAlign, FlexDirection, FlexJustify} from "UIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexTypes"
 
 const FONT_LIGHT: Font = requireAsset("../../Fonts/SpecsSans-Light.otf") as Font
 const FONT_REGULAR: Font = requireAsset("../../Fonts/SpecsSans-Regular.otf") as Font
@@ -20,9 +20,9 @@ type FontWeight = "light" | "regular" | "medium" | "bold"
 
 const CONTENT_Z_OFFSET = 0.08
 const MODAL_CONTENT_Z_OFFSET = CONTENT_Z_OFFSET + 0.1
-const LAYOUT_Z_LIFT = 0.005
+const LAYOUT_Z_LIFT = 0.02
 const LABEL_EDGE_INSET = 0.75
-const PANEL_CONTENT_Z_LIFT = 0.005
+const PANEL_CONTENT_Z_LIFT = 0.05
 const MODAL_Z_OFFSET = 10
 
 // Primary panel content regions (cm). Shared by buildUI and the flex reflow so
@@ -33,7 +33,7 @@ const PRIMARY_TITLE_H = 3
 const PRIMARY_BODY_H = 2.5
 const PRIMARY_BTN_ROW_H = 4.2
 
-// Render order tiers — all must stay below the SIK cursor (DEFAULT_RENDER_ORDER = 100)
+// Render order tiers — all must stay below the IK cursor (DEFAULT_RENDER_ORDER = 100)
 const PRIMARY_CONTENT_RO  = 8
 const SCRIM_RENDER_ORDER   = 40
 const MODAL_RENDER_ORDER   = 45   // modal plate

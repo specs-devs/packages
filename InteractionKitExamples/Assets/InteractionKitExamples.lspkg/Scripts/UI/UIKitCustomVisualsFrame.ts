@@ -2,9 +2,9 @@
 // crash in the package (Visual.ts imports ThemeService before defining COLORS, and the
 // theme chain reads COLORS at module-load). Entering the import cycle via ThemeService
 // lets Visual.ts finish defining COLORS first. Must remain the FIRST import.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService"
-import { Frame } from 'SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame';
-import { RoundedRectangle, GradientParameters } from 'SpectaclesUIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangle';
+import "UIKit.lspkg/Scripts/Themes/ThemeService"
+import { Frame } from 'UIKit.lspkg/Scripts/Components/Frame/Frame';
+import { RoundedRectangle, GradientParameters } from 'UIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangle';
 
 // Same palette as UIKitCustomVisualsRectangleButton
 const PINK  = new vec4(1.00, 0.42, 0.71, 1.0);
@@ -61,7 +61,7 @@ export class UIKitCustomVisualsFrame extends BaseScriptComponent {
         });
       };
 
-      if (frame.roundedRectangle) {
+      if (frame.initialized) {
         apply();
       } else {
         frame.onInitialized.add(apply);
@@ -82,7 +82,7 @@ export class UIKitCustomVisualsFrame extends BaseScriptComponent {
       RoundedRectangle.getTypeName()
     ) as RoundedRectangle;
 
-    rr.cornerRadius = frame.roundedRectangle.cornerRadius;
+    rr.cornerRadius = frame.frameVisual.cornerRadius;
     rr.initialize();
     rr.size = frame.totalSize;
 
@@ -93,7 +93,7 @@ export class UIKitCustomVisualsFrame extends BaseScriptComponent {
 
     // Render one step above the Frame's glass so the gradient covers it cleanly,
     // while remaining below the Frame's child content (buttons, labels).
-    const frameOrder = frame.roundedRectangle.renderMeshVisual.getRenderOrder();
+    const frameOrder = frame.frameVisual.getRenderOrder();
     rr.renderMeshVisual.setRenderOrder(frameOrder + 1);
 
     return rr;

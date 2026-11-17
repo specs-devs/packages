@@ -4,64 +4,122 @@
 
 ## Use when
 
-Read for compile-correct consumer usage. Configure ProductCatalog and the example prefab's inputs before pressing Purchase.
+Read for compile-correct consumer usage. Product IDs refer to products defined on the Specs developer portal ([developers.specs.com/lenses](https://developers.specs.com/lenses)); in Lens Studio Preview every ID is simulated as a $0.99 product.
 
-## Query a configured product
-
-```typescript
-import { CommerceKit } from "CommerceKit.lspkg/CommerceKit";
-
-async function describeProduct(id: string): Promise<string> {
-  const kit = CommerceKit.getInstance();
-  const product = await kit.getProductInfo(id);
-  if (!product) return "Product not found";
-  return `${product.displayName}: ${product.price.price} ${product.price.currency}`;
-}
-```
-
-Run after ProductCatalog awake has initialized the local catalog. On device, product details come from the connected commerce client.
-
-## Purchase with guarded output
+## Start and show a product
 
 ```typescript
 import { CommerceKit } from "CommerceKit.lspkg/CommerceKit";
 
-async function purchaseConfiguredProduct(id: string): Promise<string> {
+async function showProduct(id: string, nameText: Text, priceText: Text): Promise<void> {
   const kit = CommerceKit.getInstance();
-  if (kit.isProductOwned(id)) return "Already owned";
   try {
-    const result = await kit.purchaseProduct(id);
-    if (!result) return "Purchase did not complete";
-    if (result.success) return "Purchased";
-    return result.cancelled ? "Cancelled" : "Purchase failed";
+    await kit.initialize();
+    const product = await kit.getProductInfo(id);
+    nameText.text = product.displayName;
+    priceText.text = product.nativeProduct.price.displayPrice;
   } catch (error) {
-    return `Purchase failed: ${error}`;
+    priceText.text = "Store unavailable";
   }
 }
 ```
 
-In Lens Studio this uses the mock branch. On a device this launches a real commerce flow; test it only as part of the appropriate billing QA.
-
-## Read fresh status
+## Sell a non-consumable
 
 ```typescript
 import { CommerceKit } from "CommerceKit.lspkg/CommerceKit";
 
-async function queryOwnership(id: string): Promise<boolean> {
-  return (await CommerceKit.getInstance().checkPurchaseStatus(id)) === Commerce.PurchaseState.Purchased;
+async function buyOnce(id: string): Promise<string> {
+  const kit = CommerceKit.getInstance();
+  if (kit.isProductOwned(id)) return "Owned";
+  try {
+    const outcome = await kit.purchaseProduct(id);
+    switch (outcome.status) {
+      case "purchased":
+      case "alreadyOwned":
+        return "Owned";
+      case "pending":
+        return "Payment received, finishing up...";
+      case "cancelled":
+        return "Cancelled";
+    }
+  } catch (error) {
+    return `Purchase failed: ${error.message}`;
+  }
 }
 ```
 
-`isProductOwned` reads the cache; `checkPurchaseStatus` queries device history. Neither emits an event: your UI needs to request an update.
+## Sell a consumable
 
-## Use the native client only on device
+Register the handler early (for example in `onAwake`) so purchases recovered at startup are delivered, and so Preview simulates the product as a consumable.
 
 ```typescript
 import { CommerceKit } from "CommerceKit.lspkg/CommerceKit";
 
-async function readDeviceHistory(): Promise<Commerce.Purchase[]> {
-  if (global.deviceInfoSystem.isEditor()) return [];
-  const client = await CommerceKit.getInstance().client();
-  return client.queryPurchaseHistory();
+const store = global.persistentStorageSystem.store;
+const kit = CommerceKit.getInstance();
+
+kit.registerConsumable("coins_100", (purchase) => {
+  store.putInt("coins", store.getInt("coins") + 100); // grant before CommerceKit consumes the purchase
+});
+
+async function buyCoins(): Promise<number> {
+  const outcome = await kit.purchaseProduct("coins_100");
+  return outcome.status === "purchased" ? store.getInt("coins") : -1;
+}
+```
+
+Return `false` from the handler to keep a purchase pending (for example when your server could not redeem `purchase.token` yet). See [Consumables](guide.md#consumables) for once-only delivery.
+
+## Subscribe and show renewal status
+
+```typescript
+import { CommerceKit } from "CommerceKit.lspkg/CommerceKit";
+import { describeOffer } from "CommerceKit.lspkg/Helper/SubscriptionOffers";
+
+async function subscribe(id: string, statusText: Text): Promise<void> {
+  const kit = CommerceKit.getInstance();
+  const product = await kit.getProductInfo(id);
+  const offers = product.nativeProduct.subscriptionOfferDetails || [];
+  if (offers.length > 0) statusText.text = describeOffer(offers[0]);
+
+  await kit.purchaseProduct(id, offers.length > 0 ? offers[0].offerId : null);
+
+  const purchase = kit.getPurchase(id);
+  if (kit.isProductOwned(id) && purchase && purchase.expiryTime) {
+    const date = new Date(purchase.expiryTime).toDateString();
+    statusText.text = purchase.isAutoRenewing ? `Renews ${date}` : `Active until ${date}`;
+  }
+}
+```
+
+Subscriptions are not simulated in Preview; test them on device.
+
+## React to purchase changes
+
+```typescript
+import { CommerceKit } from "CommerceKit.lspkg/CommerceKit";
+
+const kit = CommerceKit.getInstance();
+const unsubscribe = kit.onPurchasesChanged.add(() => {
+  premiumContent.enabled = kit.isProductOwned("premium_pass");
+});
+// later, for example in OnDestroyEvent: unsubscribe();
+```
+
+## Handle errors by code
+
+```typescript
+import { CommerceKit, CommerceKitError } from "CommerceKit.lspkg/CommerceKit";
+
+async function tryPurchase(id: string): Promise<string> {
+  try {
+    await CommerceKit.getInstance().purchaseProduct(id);
+    return "Done";
+  } catch (error) {
+    if (error instanceof CommerceKitError && error.code === Commerce.ResponseCode.NetworkError) return "You're offline";
+    if (error instanceof CommerceKitError && error.code === Commerce.ResponseCode.ItemUnavailable) return "Product not found";
+    return `Purchase failed: ${error.message}`;
+  }
 }
 ```

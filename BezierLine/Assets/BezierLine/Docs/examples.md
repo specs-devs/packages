@@ -74,7 +74,7 @@ Keep the mesh on a dedicated object: each rebuild moves its owner to the curve m
 
 ## Drop-in board
 
-Drag `BezierLine.lspkg/BezierLine__PLACE_IN_SCENE.prefab` into a Specs scene with the SpectaclesInteractionKit prefab. In this source project the editable asset is `Assets/BezierLine/BezierLine__PLACE_IN_SCENE.prefab`.
+Drag `BezierLine.lspkg/BezierLine__PLACE_IN_SCENE.prefab` into a Specs scene with the InteractionKit prefab. In this source project the editable asset is `Assets/BezierLine/BezierLine__PLACE_IN_SCENE.prefab`.
 
 The package prefab root is at `(0, 0, -130)` cm. Its children are `Guide` (local `(0, 0, 50)`), `ExampleCarousel` and `BezierDemo`, which holds the board `(0, 7, 0)` and the panel `(0, -33, 2)`. The sample scene moves the instance to `(0, 0, -150)`. These are source defaults, not a verified fit to every device field of view. The guide hides `BezierDemo` and the carousel until "Ok, I understood" is pressed; see [Demo scaffolding](components.md#demo-scaffolding-example).
 

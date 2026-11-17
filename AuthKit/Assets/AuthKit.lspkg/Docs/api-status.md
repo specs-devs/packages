@@ -6,7 +6,7 @@
 
 Check this file before choosing a class or copying an older AuthKit example. It is the
 compatibility index for the package that contains it. `Core/` imports no other package;
-the `Example/` demo scripts use SpectaclesUIKit and SpectaclesInteractionKit (both listed in
+the `Example/` demo scripts use UIKit and InteractionKit (both listed in
 `package_dependencies.json`).
 
 ## Status meanings

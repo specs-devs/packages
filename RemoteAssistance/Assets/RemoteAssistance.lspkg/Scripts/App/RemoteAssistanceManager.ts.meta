@@ -1,0 +1,60 @@
+- !<AssetImportMetadata/a329b427-648d-4769-a27e-6af2041d341d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 0292ed7b-82b1-46ab-a96b-5a90426a0e85
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 0292ed7b-82b1-46ab-a96b-5a90426a0e85
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 9c90d180-65f9-47a5-bfc4-1ee06ff4c696
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/9c90d180-65f9-47a5-bfc4-1ee06ff4c696>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 07b01526-f901-4e30-8ada-7e83512eb14d
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    annotations: false
+    simulateInPreview: false
+    snapCloud: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - snapCloud: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      annotations: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      simulateInPreview: true
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">RemoteAssistanceManager – call + drawing orchestrator</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"References"}'
+    - "// @input AssignableType_1 snapCloud {\"hint\":\"Snap Cloud block — the ▸ Snap Cloud object (SnapCloudModule). Needed for the call's signaling + the drawing channel; without it the call is skipped.\"}"
+    - "// @input AssignableType_2 annotations {\"hint\":\"AnnotationRenderer on the authored Annotations3D object — renders the helper's strokes as 3D lines\"}"
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Settings"}'
+    - '// @input bool simulateInPreview = true {"hint":"In the Lens Studio preview (no helper): stream demo strokes when a call starts, so the drawing pipeline is verifiable in-editor"}'
+    - '// @ui {"widget":"group_end"}'

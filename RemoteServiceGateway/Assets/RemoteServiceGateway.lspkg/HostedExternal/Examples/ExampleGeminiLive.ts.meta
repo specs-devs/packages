@@ -24,6 +24,7 @@
   VersionPatch: 0
   VersionPrerelease: ""
   UpdateOrder: 0
+  RunInEditor: false
   ComponentUid: be25359e-b6d8-4951-8e6c-c92f4253b028
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
@@ -31,9 +32,11 @@
     dynamicAudioOutput: false
     enableLogging: false
     enableLoggingLifecycle: false
+    greeting: false
     haveAudioOutput: false
     haveVideoInput: false
     instructions: false
+    logPanelOffset: false
     microphoneRecorder: false
     textDisplay: false
     voice: false
@@ -57,6 +60,8 @@
       enableLogging: false
       enableLoggingLifecycle: false
       voice: coral
+      greeting: Say hello in one short sentence and ask what I would like to talk about.
+      logPanelOffset: !<Vec3> {x: 0.000000, y: 12.000000, z: 0.000000}
   ScriptTypes:
     -
       {}
@@ -87,3 +92,7 @@
     - '// @input string voice = "Puck" {"widget":"combobox", "values":[{"label":"Puck", "value":"Puck"}, {"label":"Charon", "value":"Charon"}, {"label":"Kore", "value":"Kore"}, {"label":"Fenrir", "value":"Fenrir"}, {"label":"Aoede", "value":"Aoede"}, {"label":"Leda", "value":"Leda"}, {"label":"Orus", "value":"Orus"}, {"label":"Zephyr", "value":"Zephyr"}], "showIf":"haveAudioOutput", "showIfValue":true}'
     - '// @ui {"widget":"group_end"}'
     - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Demo"}'
+    - '// @input string greeting = "Say hello in one short sentence and ask what I would like to talk about." {"hint":"Sent as the first user turn once the session is ready, so the model speaks first. Empty: wait for the user.", "widget":"text_area"}'
+    - "// @input vec3 logPanelOffset = {0,12,0} {\"hint\":\"Where the demo's live log panel sits, relative to this object (cm)\"}"
+    - '// @ui {"widget":"group_end"}'

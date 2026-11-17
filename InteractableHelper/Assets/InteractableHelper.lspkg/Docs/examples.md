@@ -9,7 +9,7 @@ recipes, are in [guide](guide.md).
 
 ## Prefab (no code)
 
-1. Make sure the scene has the SpectaclesInteractionKit prefab.
+1. Make sure the scene has the InteractionKit prefab.
 2. Drag `InteractableHelper.lspkg/InteractableHelper__PLACE_IN_SCENE.prefab` into the
    scene. It brings its own guide and example carousel. Each of the 12 groups
    demonstrates one response type. Copy the group closest to what you need,
@@ -73,7 +73,7 @@ do). Toggle and Iterate responses replayed this way repeat the current step.
 ## Listen to the same Interactable from another script
 
 ```typescript
-import {Interactable} from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable";
+import {Interactable} from "InteractionKit.lspkg/Components/Interaction/Interactable/Interactable";
 
 @component
 export class PinchLogger extends BaseScriptComponent {

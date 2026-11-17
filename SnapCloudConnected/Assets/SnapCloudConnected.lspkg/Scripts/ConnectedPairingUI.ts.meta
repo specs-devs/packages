@@ -1,0 +1,99 @@
+- !<AssetImportMetadata/9a4e825c-a6c6-44f9-b021-cd0c00c3f000>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 2686cfce-3021-4f31-baef-57e1b9336b2b
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 2686cfce-3021-4f31-baef-57e1b9336b2b
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 5e1b8445-8980-4d13-8c22-8c700bf4beb3
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/5e1b8445-8980-4d13-8c22-8c700bf4beb3>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 9b965f91-563f-473a-a57e-0e2a63880da4
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    backButton: false
+    codeText: false
+    deleteButton: false
+    digitButtons: false
+    enableLogging: false
+    hostButton: false
+    joinButton: false
+    keypadPage: false
+    leaveButton: false
+    placeAgainButton: false
+    readyButton: false
+    roomPage: false
+    session: false
+    startPage: false
+    statusText: false
+    submitButton: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - session: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      statusText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      codeText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      startPage: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      keypadPage: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      roomPage: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      hostButton: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      joinButton: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      digitButtons: !<reference.SceneObject[]>
+        []
+      deleteButton: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
+      submitButton: !<MappingBased.AssignableType_5> 00000000-0000-0000-0000-000000000000
+      backButton: !<MappingBased.AssignableType_6> 00000000-0000-0000-0000-000000000000
+      readyButton: !<MappingBased.AssignableType_7> 00000000-0000-0000-0000-000000000000
+      placeAgainButton: !<MappingBased.AssignableType_8> 00000000-0000-0000-0000-000000000000
+      leaveButton: !<MappingBased.AssignableType_9> 00000000-0000-0000-0000-000000000000
+      enableLogging: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input AssignableType_1 session {"hint":"Session to drive. Empty: the first SnapCloudConnected in the scene"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Text</span>"}'
+    - '// @input Component.Text statusText {"hint":"Status line"}'
+    - "// @input Component.Text codeText {\"hint\":\"Room code: the host's code, or the digits a guest has typed\"}"
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Pages</span>"}'
+    - '// @input SceneObject startPage {"hint":"Shown when offline: Host and Join buttons"}'
+    - '// @input SceneObject keypadPage {"hint":"Shown while a guest types the code: digit keys, Delete, Submit, Back"}'
+    - '// @input SceneObject roomPage {"hint":"Shown in a room: Ready, Place Again, Leave"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Buttons</span>"}'
+    - // @input AssignableType_2 hostButton
+    - // @input AssignableType_3 joinButton
+    - '// @input SceneObject[] digitButtons = {} {"hint":"Ten keypad buttons in order 0, 1, 2 … 9 (any UI Kit button)"}'
+    - // @input AssignableType_4 deleteButton
+    - // @input AssignableType_5 submitButton
+    - // @input AssignableType_6 backButton
+    - // @input AssignableType_7 readyButton
+    - // @input AssignableType_8 placeAgainButton
+    - // @input AssignableType_9 leaveButton
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'

@@ -23,7 +23,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 40.000000}
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
@@ -408,7 +408,6 @@
   ScriptAsset: !<reference> 3b46d829-f6db-432a-914c-3551904d3994
   ScriptInputsDefault:
     _spawnOnStart: true
-    _appearance: true
     _padding: true
     _allowScaling: true
     allowNonUniformScaling: true
@@ -459,9 +458,7 @@
   ScriptInputs:
     "":
       _themeOverride: System3
-      autoShowHide: false
       _spawnOnStart: false
-      _appearance: Large
       _innerSize: !<Vec2> {x: 44.000000, y: 26.000000}
       _padding: !<Vec2> {x: 0.000000, y: 0.000000}
       _allowScaling: true
@@ -663,6 +660,21 @@
   ScriptTypes:
     "":
       {}
+- !<SceneObject/85876fb0-0d5f-4d4e-be39-6a921e49c0d5>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> b0c5989d-f2be-459b-98d0-93d4cd4bbf29
 - !<DeviceTracking/89b77d88-105b-49cf-bf9a-b5651cdefdfe>
   PrefabRemaps:
     []
@@ -689,21 +701,6 @@
   Components:
     - !<own> 1f8b55c9-7b27-4865-bed5-7c543455aa30
     - !<own> dc143735-4d88-4de0-95d7-838d2d43b487
-- !<SceneObject/9358581e-aa86-4fc6-99a5-02452255f867>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> 9661df90-f75c-41c3-8186-38f2cdd3f2fb
 - !<SceneObject/937b8fd8-cb17-41a4-acb4-9c804257fe12>
   PrefabRemaps:
     []
@@ -719,22 +716,6 @@
     []
   Components:
     - !<own> 0ddbb542-ed36-41c4-87dc-7d14f7af5482
-- !<ScriptComponent/9661df90-f75c-41c3-8186-38f2cdd3f2fb>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
-  ScriptInputsDefault:
-    _theme: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      _theme: System3
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/99094028-1ef9-4fe5-a655-4e84586cb001>
   PrefabRemaps:
     - 2039c3f6-62fb-4ec6-a2de-731a743feba5: 376e0ed1-8621-45f9-9b22-1d2b030a94db
@@ -745,10 +726,10 @@
     - 702a3b32-3b56-4795-9e83-f63065cfc04b: 48deaab4-c716-45b5-88d3-24e9965e2293
     - 73047a09-dd11-4851-a732-402fa852c9c7: 6fdd73e0-1e18-41c2-a659-26e0a067c821
     - 84603e1c-22c4-4461-ace4-924f5887dc8a: 95c861e7-fde3-4423-8524-9a3d11271d4a
-    - 9358581e-aa86-4fc6-99a5-02452255f867: 789da3b1-3cd4-43a7-95a5-5aee5f428325
-    - 9661df90-f75c-41c3-8186-38f2cdd3f2fb: 942b5764-9609-4522-8520-3c211a97f65b
+    - 85876fb0-0d5f-4d4e-be39-6a921e49c0d5: d1eb51f0-c107-47c7-92e0-72502e184554
     - 99094028-1ef9-4fe5-a655-4e84586cb001: d459b3b7-ed03-4768-55e8-b603fc19e49c
     - a2c08f61-e252-4803-a5c2-f68816a59a92: 24d1aa4c-e23c-4e33-9d65-a9a5a2dcbef3
+    - b0c5989d-f2be-459b-98d0-93d4cd4bbf29: cdda46e7-9f18-46f0-9219-4dbe90effad3
     - b85a8187-4ec6-4f8c-8531-bc2d718d204f: b50b1030-f03b-4141-a923-b7238c9ca1cd
     - e74513d0-4f5f-470d-9d79-8d48d12800cc: ecda066d-638b-4459-b2c8-9b2b00c28d4b
     - fe93aa86-4306-4ffb-970c-69e270cd5c3e: d2c7c568-b98d-422d-a3c4-757ade1686e7
@@ -761,7 +742,7 @@
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
-    - !<own> 9358581e-aa86-4fc6-99a5-02452255f867
+    - !<own> 85876fb0-0d5f-4d4e-be39-6a921e49c0d5
     - !<own> 73047a09-dd11-4851-a732-402fa852c9c7
     - !<own> 702a3b32-3b56-4795-9e83-f63065cfc04b
     - !<own> 4015e276-d05d-4cfd-9259-2f8dce1bb631
@@ -785,9 +766,7 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _shapeSystem2: true
     _shapeSystem3: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -812,9 +791,7 @@
       onFinishedCallbacks:
         []
       _size: !<Vec3> {x: 20.000000, y: 5.000000, z: 1.000000}
-      _shapeSystem2: Rectangle
       _shapeSystem3: Rectangle
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -860,6 +837,22 @@
       handType: left
       _meshType: None
       _fullHandMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/b0c5989d-f2be-459b-98d0-93d4cd4bbf29>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
   ScriptTypes:
     "":
       {}
@@ -953,7 +946,7 @@
 - !<ScriptComponent/dc143735-4d88-4de0-95d7-838d2d43b487>
   PrefabRemaps:
     []
-  Name: SIKLogLevelConfiguration
+  Name: IKLogLevelConfiguration
   Enabled: true
   ScriptAsset: !<reference> ff7d0aa1-32aa-4b47-84b7-340260da1ef0
   ScriptInputsDefault:
@@ -1004,7 +997,7 @@
     - f4d8f444-9f43-45d3-addd-b0a3777e340c: ac190d7f-8f8a-427c-4cd7-034d38e5ab1c
     - f5a41339-83b1-48e6-aaac-83d7c1f26514: 70290c16-3e1e-4ebd-77be-11f99a7f536a
     - f8020251-0b2e-4a59-8892-e2452f5dfb1f: 6167dd36-c853-49b0-4d51-842079d5473c
-  Name: SpectaclesInteractionKit
+  Name: InteractionKit
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>

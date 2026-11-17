@@ -19,7 +19,7 @@ has no `@component` scripts: you create the classes from your own component.
 1. Creates a `TokenManager` and restores the token stored for `options.clientId` (if any).
 2. If `clientSecret` is set, computes the HTTP Basic value `base64(clientId:clientSecret)`.
 3. Sets the redirect URI to `options.redirectUri` or the default
-   `https://www.spectacles.com/deeplink/specslink/oauth2redirect/unsecure`.
+   `https://lenses.specs.com/deeplink/specslink/oauth2redirect/unsecure`.
 4. Adds a listener to `DeepLinkModule.onUriReceived` (never removed).
 
 ### AuthenticatorOptions
@@ -96,7 +96,7 @@ AuthKitDemo under one root. Not needed to use AuthKit in your own Lens.
 
 ## Demo scaffolding (`Example/`)
 
-These scripts ship in `AuthKit.lspkg/Example/` and are wired inside `AuthKit__PLACE_IN_SCENE.prefab` (order: Guide, ExampleCarousel, then AuthKitDemo). They only present the example; they are not part of the AuthKit API. ExampleCarousel and GuideDismissPanel import SpectaclesUIKit and SpectaclesInteractionKit, and AuthKitDemo imports SpectaclesUIKit.
+These scripts ship in `AuthKit.lspkg/Example/` and are wired inside `AuthKit__PLACE_IN_SCENE.prefab` (order: Guide, ExampleCarousel, then AuthKitDemo). They only present the example; they are not part of the AuthKit API. ExampleCarousel and GuideDismissPanel import UIKit and InteractionKit, and AuthKitDemo imports UIKit.
 
 | Object / script | Class | Key inputs |
 |---|---|---|

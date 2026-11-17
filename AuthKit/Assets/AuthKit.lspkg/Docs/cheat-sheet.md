@@ -20,7 +20,7 @@ Everything here is derived from the installed package source.
    `Authorization not supported in editor mode` before opening anything. Design the Preview
    path around `isAuthorized === false` or a test token. → [troubleshooting](troubleshooting.md)
 4. **Register the redirect URI.** The default is
-   `https://www.spectacles.com/deeplink/specslink/oauth2redirect/unsecure`; it must be an
+   `https://lenses.specs.com/deeplink/specslink/oauth2redirect/unsecure`; it must be an
    allowed redirect URI of your provider's client, or the provider never calls back. → [setup](setup.md)
 5. **`authorize()` has no timeout.** It resolves only when a matching deep-link callback
    arrives (code, token or `error`). If the user closes the provider page, the promise stays

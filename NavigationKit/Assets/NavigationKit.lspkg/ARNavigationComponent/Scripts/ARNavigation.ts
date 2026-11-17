@@ -1,5 +1,5 @@
-import {unsubscribe} from "SpectaclesInteractionKit.lspkg/Utils/Event"
-import NativeLogger from "SpectaclesInteractionKit.lspkg/Utils/NativeLogger"
+import {unsubscribe} from "InteractionKit.lspkg/Utils/Event"
+import NativeLogger from "InteractionKit.lspkg/Utils/NativeLogger"
 import {NavigationDataComponent} from "../../NavigationDataComponent/NavigationDataComponent"
 import {Place} from "../../NavigationDataComponent/Place"
 import {UserPosition} from "../../NavigationDataComponent/UserPosition"

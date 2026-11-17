@@ -1,0 +1,65 @@
+- !<AssetImportMetadata/a329b427-648d-4769-a27e-6af2041d341d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 0292ed7b-82b1-46ab-a96b-5a90426a0e85
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 0292ed7b-82b1-46ab-a96b-5a90426a0e85
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 9c90d180-65f9-47a5-bfc4-1ee06ff4c696
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/9c90d180-65f9-47a5-bfc4-1ee06ff4c696>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 07b01526-f901-4e30-8ada-7e83512eb14d
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    menuDrop: false
+    mobileKit: false
+    showMiniMap: false
+    simulateInPreview: false
+    snapCloud: false
+    uiLabel: false
+    usePhoneLocation: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - uiLabel: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      simulateInPreview: true
+      usePhoneLocation: false
+      showMiniMap: true
+      mobileKit: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      snapCloud: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      menuDrop: !<float> 0.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input AssignableType_1 uiLabel {"hint":"Friend marker label UI (wired by scene bootstrap)"}'
+    - '// @input bool simulateInPreview = true {"hint":"Feed fake self+friend GPS in the Lens Studio preview (no phone connection exists there)"}'
+    - "// @input bool usePhoneLocation = true {\"hint\":\"Default GPS source before the menu picks one: ON = iPhone (Mobile application), OFF = Glasses GeoLocation. The start menu's GPS SOURCE switch overrides this at launch.\"}"
+    - "// @input bool showMiniMap = true {\"hint\":\"North-up debug minimap panel in Find Friend mode — compare against the phone app's map\"}"
+    - '// @input AssignableType_2 mobileKit {"hint":"PhoneLink block — the ▸ PhoneLink · Mobile Kit object (MobileKitModule). REQUIRED transport."}'
+    - '// @input AssignableType_3 snapCloud {"hint":"Snap Cloud block — the ▸ Snap Cloud object (SnapCloudModule). OPTIONAL: unwire or disable its object to run offline (no path logging / checkpoints / cloud call-signaling)."}'
+    - '// @input float menuDrop {"hint":"Lower the start menu by this much (cm) below eye level, e.g. to leave room for a panel above it"}'

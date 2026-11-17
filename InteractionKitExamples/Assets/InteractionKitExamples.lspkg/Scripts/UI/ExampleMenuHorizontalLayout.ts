@@ -2,19 +2,19 @@
 // crash in the package (Visual.ts imports ThemeService before defining COLORS, and the
 // theme chain reads COLORS at module-load). Loading ThemeService first lets Visual.ts
 // finish defining COLORS before RoundedRectangleVisual reads it. Must stay the FIRST import.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService"
-import {Button} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/Button"
-import {Switch} from "SpectaclesUIKit.lspkg/Scripts/Components/Switch/Switch"
-import {Slider} from "SpectaclesUIKit.lspkg/Scripts/Components/Slider/Slider"
-import {BackPlate, BackPlateStyle} from "SpectaclesUIKit.lspkg/Scripts/BackPlate"
-import {ElementContent} from "SpectaclesUIKit.lspkg/Scripts/Components/Content/ElementContent"
-import {Frame} from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame"
-import {FlexItem} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexItem"
-import {FlexLayout} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexLayout"
-import {FlexAlign, FlexDirection, FlexJustify} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexTypes"
-import {GridItem} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Grid/GridItem"
-import {GridLayout} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Grid/GridLayout"
-import {ScrollWindow} from "SpectaclesUIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow"
+import "UIKit.lspkg/Scripts/Themes/ThemeService"
+import {Button} from "UIKit.lspkg/Scripts/Components/Button/Button"
+import {Switch} from "UIKit.lspkg/Scripts/Components/Switch/Switch"
+import {Slider} from "UIKit.lspkg/Scripts/Components/Slider/Slider"
+import {BackPlate, BackPlateStyle} from "UIKit.lspkg/Scripts/BackPlate"
+import {ElementContent} from "UIKit.lspkg/Scripts/Components/Content/ElementContent"
+import {Frame} from "UIKit.lspkg/Scripts/Components/Frame/Frame"
+import {FlexItem} from "UIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexItem"
+import {FlexLayout} from "UIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexLayout"
+import {FlexAlign, FlexDirection, FlexJustify} from "UIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexTypes"
+import {GridItem} from "UIKit.lspkg/Scripts/Components/Layout2D/Grid/GridItem"
+import {GridLayout} from "UIKit.lspkg/Scripts/Components/Layout2D/Grid/GridLayout"
+import {ScrollWindow} from "UIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow"
 
 const FONT_LIGHT: Font = requireAsset("../../Fonts/SpecsSans-Light.otf") as Font
 const FONT_REGULAR: Font = requireAsset("../../Fonts/SpecsSans-Regular.otf") as Font
@@ -25,9 +25,9 @@ type FontWeight = "light" | "regular" | "medium" | "bold"
 
 const CONTENT_Z_OFFSET = 0.08
 const CONTENT_RENDER_ORDER_OFFSET = 8
-const LAYOUT_Z_LIFT = 0.005
+const LAYOUT_Z_LIFT = 0.02
 const LABEL_EDGE_INSET = 0.75
-const PANEL_CONTENT_Z_LIFT = 0.005
+const PANEL_CONTENT_Z_LIFT = 0.05
 const GRID_GAP = 0.5
 const TAB_GAP = 0.5
 const TITLE_H = 3

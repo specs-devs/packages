@@ -1,6 +1,6 @@
 import PanelPlugin from "LensStudio:PanelPlugin";
 import * as Ui from "LensStudio:Ui";
-import { WelcomeWidget, SPECS_ONLY_MESSAGE } from "./WelcomeWidget.ts";
+import { WelcomeWidget, GLASSES_ONLY_MESSAGE } from "./WelcomeWidget.ts";
 import { SupabaseDataService } from "./SupabaseDataService.ts";
 import { DashboardWidget } from "./DashboardWidget.ts";
 
@@ -92,10 +92,10 @@ export class SupabaseDashboard extends PanelPlugin {
     });
     // Snap Cloud is SPECS-only: enable/disable the dashboard on platform switch; session stays alive.
     // Off SPECS, also explain why the dashboard is inert (shown dimmed on the disabled widget).
-    this.dataService.addEventListener('PlatformChanged', ({ isSpecs }) => {
+    this.dataService.addEventListener('PlatformChanged', ({ isGlassesProject }) => {
       if (this.dashboardWidget) {
-        this.dashboardWidget.getWidget().enabled = isSpecs;
-        this.dataService.updateStatus(isSpecs ? "" : SPECS_ONLY_MESSAGE);
+        this.dashboardWidget.getWidget().enabled = isGlassesProject;
+        this.dataService.updateStatus(isGlassesProject ? "" : GLASSES_ONLY_MESSAGE);
       }
     });
   }

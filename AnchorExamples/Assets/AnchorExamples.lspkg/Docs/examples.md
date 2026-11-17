@@ -10,8 +10,8 @@ Build the full persistence demo or reuse AnchorController for your own target.
 
 ### Option A: drop the example into your scene
 
-1. Install the package, then drag **`AnchorExamples__PLACE_IN_SCENE`** into your scene. It carries the full example: the code-built SpectaclesUIKit screens, the widget prefabs, storage, and the anchor session flow.
-2. Make sure the scene has the **SpectaclesInteractionKit** prefab (the example uses SIK interactors). The camera is found automatically through SIK — wiring the `Camera` input on `AppController` is optional.
+1. Install the package, then drag **`AnchorExamples__PLACE_IN_SCENE`** into your scene. It carries the full example: the code-built UIKit screens, the widget prefabs, storage, and the anchor session flow.
+2. Make sure the scene has the **InteractionKit** prefab (the example uses SIK interactors). The camera is found automatically through SIK — wiring the `Camera` input on `AppController` is optional.
 3. Send the Lens to Specs and pinch **New Area**. Look around slowly while the area is mapped and saved, then place widgets from the panel. Exit the area, relaunch the Lens and select the area again: the widgets come back where you left them.
 
 > **NOTE:** In Lens Studio Preview there is no anchor service, so the flow runs against a remembered widget-parent pose (see the status line "Area ready (Lens Studio: anchors are simulated)"). Anchors are exercised on device.
@@ -52,6 +52,21 @@ export class AnchoredObject extends BaseScriptComponent {
     this.anchors.track(this.target, anchor)
   }
 }
+```
+
+### Option C: persistent content with one component
+
+Add **`Examples/Native/PersistentAnchorExample`** to any SceneObject and assign `content`. On Specs it opens the area session, restores last launch's anchor (stored id, then nearby discovery) or creates and saves a new one in front of the wearer, and shows `content` only while the anchor is `Tracking` with positional uncertainty under `maxUncertaintyCm`. Wire a button to `placeHere()` to move it, `forget()` to delete it.
+
+Custom Locations: anchors of type `Custom` give their real-world position through the controller.
+
+```typescript
+const anchors = AnchorController.getInstance()
+anchors.onAnchorNearby.add(async (anchor) => {
+  if (!AnchorController.isCustom(anchor)) return
+  const geo = await anchors.getGeoPosition(anchor) // null without the location permission or in Preview
+  if (geo) print(`${anchor.id}: ${geo.latitude}, ${geo.longitude}`)
+})
 ```
 
 ## Examples

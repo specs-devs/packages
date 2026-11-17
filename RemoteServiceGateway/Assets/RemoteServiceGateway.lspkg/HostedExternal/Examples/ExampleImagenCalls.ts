@@ -2,12 +2,15 @@
  * SPECS Inc. 2027
  * Example implementation of Google Imagen API for AI image generation. Demonstrates text-to-image
  * generation with generateContent requests
- * using the Gemini image models served by the Imagen route, with tap/pinch gesture triggers.
+ * using the Gemini image models served by the Imagen route. In the demo carousel it runs by itself
+ * after ExampleGeminiCalls on the same step (see Example/DemoLog).
  */
 import { Imagen } from "../Imagen";
 import { GoogleGenAITypes } from "../GoogleGenAITypes";
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
+import { AvaliableApiTypes } from "../../RemoteServiceGatewayCredentials";
+import { DemoRun, DemoStep } from "../../Example/DemoLog/DemoLog";
 
 @component
 export class ExampleImagenCalls extends BaseScriptComponent {
@@ -23,7 +26,7 @@ export class ExampleImagenCalls extends BaseScriptComponent {
   @widget(new TextAreaWidget())
   private generatePrompt: string = "A futuristic cityscape at sunset";
   @input
-  @label("Run On Tap")
+  @label("Run in demo")
   private doGenerateOnTap: boolean = false;
 
   @ui.separator
@@ -39,9 +42,10 @@ export class ExampleImagenCalls extends BaseScriptComponent {
   enableLoggingLifecycle: boolean = false;
 
   // Logger instance
-  private logger: Logger;  @ui.group_end
+  private logger: Logger;
   // Edit and Upscale are not supported by current proxy; removed from example
-  private gestureModule: GestureModule = require("LensStudio:GestureModule");  /**
+
+  /**
    * Called when component is initialized
    */
   onAwake(): void {
@@ -52,56 +56,50 @@ export class ExampleImagenCalls extends BaseScriptComponent {
       this.logger.debug("LIFECYCLE: onAwake() - Component initializing");
     }
 
-
-    if (global.deviceInfoSystem.isEditor()) {
-      this.createEvent("TapEvent").bind(() => {
-        this.onTap();
-      });
-    } else {
-      this.gestureModule
-        .getPinchDownEvent(1 /* GestureModule.HandType.Right — numeric literal because LS 5.21 runtime doesn't expose the namespace enum as a value */ as unknown as GestureModule.HandType)
-        .add(() => {
-          this.onTap();
-        });
-    }
+    // Runs by itself when the carousel shows this step, after the examples with a lower order.
+    // It logs into the step's panel (hosted by ExampleGeminiCalls in the prefab).
+    DemoStep.join({
+      owner: this,
+      name: "Imagen",
+      order: 10,
+      tokens: [AvaliableApiTypes.Google],
+      run: (run) => this.runDemo(run),
+      stop: () => this.showSpinner(false),
+    });
   }
 
-  private onTap() {
-    // GestureModule pinches arrive even while this example is disabled.
-    if (!this.sceneObject.isEnabledInHierarchy) {
-      return;
-    }
+  async runDemo(run: DemoRun = DemoRun.detached("Imagen")) {
     if (this.doGenerateOnTap) {
-      this.generateImageExample();
+      await this.generateImageExample(run);
     }
   }
 
-  private setImageTextureFromBase64(base64PngOrJpeg: string) {
-    if (!this.imgObject) {
-      this.logger.debug("ExampleImagenCalls: imgObject not assigned.");
+  /** The output's first child is its loading spinner (as in the prefab), if it has one. */
+  private showSpinner(show: boolean) {
+    if (this.imgObject && this.imgObject.getChildrenCount() > 0) {
+      this.imgObject.getChild(0).enabled = show;
+    }
+  }
+
+  private setImageTexture(texture: Texture) {
+    const imgComponent = this.imgObject.getComponent("Image");
+    if (!imgComponent) {
+      this.logger.debug("ExampleImagenCalls: SceneObject has no Image component.");
       return;
     }
-    this.imgObject.enabled = true;
-    Base64.decodeTextureAsync(
-      base64PngOrJpeg,
-      (texture) => {
-        const imgComponent = this.imgObject.getComponent("Image");
-        if (!imgComponent) {
-          this.logger.debug("ExampleImagenCalls: SceneObject has no Image component.");
-          return;
-        }
-        const imageMaterial = imgComponent.mainMaterial.clone();
-        imgComponent.mainMaterial = imageMaterial;
-        imgComponent.mainPass.baseTex = texture;
-      },
-      () => {
-        this.logger.debug("ExampleImagenCalls: Failed to decode texture from base64 data.");
-      }
-    );
+    const imageMaterial = imgComponent.mainMaterial.clone();
+    imgComponent.mainMaterial = imageMaterial;
+    imgComponent.mainPass.baseTex = texture;
   }
 
-  private generateImageExample() {
+  async generateImageExample(run: DemoRun = DemoRun.detached("Imagen")) {
+    if (!this.imgObject) {
+      run.error("imgObject not assigned");
+      return;
+    }
     this.logger.debug("Generating image with prompt: " + this.generatePrompt);
+    this.imgObject.enabled = true;
+    this.showSpinner(true);
     const request: GoogleGenAITypes.Imagen.GenerateContentRequest = {
       model: "gemini-3.1-flash-image",
       type: "generateContent",
@@ -122,18 +120,33 @@ export class ExampleImagenCalls extends BaseScriptComponent {
       },
     };
 
-    Imagen.generateContent(request)
-      .then((response) => {
-        const parts = response.candidates?.[0]?.content?.parts ?? [];
-        const imagePart = parts.find((part) => part?.inlineData?.data);
-        if (!imagePart) {
-          this.logger.debug("Imagen response has no image part: " + JSON.stringify(response));
-          return;
-        }
-        this.setImageTextureFromBase64(imagePart.inlineData.data);
-      })
-      .catch((error) => {
-        this.logger.debug("Imagen generate error: " + error);
-      });
+    const response = await run.call(
+      "Imagen.generateContent gemini-3.1-flash-image",
+      () => Imagen.generateContent(request),
+      (result) =>
+        (result.candidates?.[0]?.content?.parts ?? []).some((part) => part?.inlineData?.data)
+          ? "image received"
+          : "no image part: " + JSON.stringify(result)
+    );
+    const parts = response?.candidates?.[0]?.content?.parts ?? [];
+    const imagePart = parts.find((part) => part?.inlineData?.data);
+    if (!imagePart) {
+      this.showSpinner(false);
+      return;
+    }
+    const b64 = imagePart.inlineData.data;
+    const texture = await run.call(
+      "image decode",
+      () =>
+        new Promise<Texture>((resolve, reject) =>
+          Base64.decodeTextureAsync(b64, resolve, () =>
+            reject("Failed to decode texture from base64 data.")
+          )
+        )
+    );
+    this.showSpinner(false);
+    if (texture) {
+      this.setImageTexture(texture);
+    }
   }
 }

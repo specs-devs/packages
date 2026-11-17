@@ -546,22 +546,6 @@
     CapitalizationOverride: None
   DepthTest: false
   TwoSided: false
-- !<ScriptComponent/0c7cbe3a-a4fb-4664-8a62-ae40dce832d7>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
-  ScriptInputsDefault:
-    _theme: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      _theme: System3
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/0dcc235d-5e99-4f2c-a2fa-13ad714aea1d>
   PrefabRemaps:
     []
@@ -599,7 +583,6 @@
   Enabled: true
   ScriptAsset: !<reference> 0e884fa8-2cbb-5a25-b415-aeb2d34ffd3c
   ScriptInputsDefault:
-    stepInfo: true
     startIndex: true
     previousLabel: true
     nextLabel: true
@@ -615,10 +598,12 @@
         - !<reference> 3d6d39d3-9169-4bf0-bb34-331e95767a45
         - !<reference> 33240ea5-70cd-4dbb-8a68-119fd550d3db
         - !<reference> 0ff21924-1824-44a7-8ed6-3477aea381ff
+        - !<reference> 53d7d98e-19e5-4c52-9a24-9857d1b9c6eb
       exampleInfo: !<string[]>
         - "One basic per step, use its button on the panel: Table reads and writes rows, Realtime shares the arrow cursor (drag it), Storage downloads a model, image and audio, Edge Functions processes an image in the cloud. Setup: Window > Supabase > Import Credentials, then assign the project on [SnapCloudRequirements]."
         - "Pick a tab on the left: capture an image, video, audio or a composite and upload it to storage, or stream it live; Sharing records a Spotlight. The HD still capture works on device only."
         - "Press Start, then tap the button as fast as you can before the countdown ends: the score is submitted and the global leaderboard appears."
+        - "One action per user, one shared total: sign in, join once, everyone sees the same live count. The pattern behind pledge or vote Lenses; SQL setup in Docs/global-counter.md."
       steps: !<reference.SceneObject[]>
         - !<reference> 3298dbf2-5fba-4c0b-9ed0-b2279c00738d
         - !<reference> 0b023d17-0708-42e6-9354-454fda410b0c
@@ -626,8 +611,15 @@
         - !<reference> b9a8bfed-9117-407d-ac46-6bb71ac0f636
         - !<reference> 33240ea5-70cd-4dbb-8a68-119fd550d3db
         - !<reference> 0ff21924-1824-44a7-8ed6-3477aea381ff
+        - !<reference> 53d7d98e-19e5-4c52-9a24-9857d1b9c6eb
       stepInfo: !<string[]>
-        []
+        - ""
+        - ""
+        - ""
+        - ""
+        - ""
+        - ""
+        - "One action per user, one shared total: sign in, join once, everyone sees the same live count. The pattern behind pledge or vote Lenses; SQL setup in Docs/global-counter.md."
       startIndex: !<float> 0.000000
       previousLabel: Previous
       nextLabel: Next
@@ -946,7 +938,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -971,7 +962,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -1018,9 +1008,9 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: -0.400000, z: 0.000000}
+    Position: {x: 0.000000, y: -0.800000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 0.500000, y: 0.500000, z: 0.500000}
+    Scale: {x: 0.800000, y: 0.800000, z: 0.800000}
     HasSegmentScaleCompensation: false
   Children:
     []
@@ -1123,9 +1113,7 @@
   MeshShadowMode: None
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
-  Text: |
-    Storage
-
+  Text: Storage
   CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
@@ -1235,9 +1223,9 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.500000, z: 0.000000}
+    Position: {x: 0.000000, y: 0.850000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 0.500000, y: 0.500000, z: 0.500000}
+    Scale: {x: 0.800000, y: 0.800000, z: 0.800000}
     HasSegmentScaleCompensation: false
   Children:
     []
@@ -1250,7 +1238,7 @@
   Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: -26.109146, z: 1.000000}
+    Position: {x: 0.000000, y: -26.109146, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
@@ -1284,7 +1272,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 7.557373, z: 0.000000}
+    Position: {x: 0.000000, y: 7.557373, z: 0.500000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
@@ -1373,9 +1361,7 @@
   ScriptInputs:
     "":
       _themeOverride: Inherited
-      autoShowHide: false
       _spawnOnStart: false
-      _appearance: ""
       _innerSize: !<Vec2> {x: 20.000000, y: 28.000000}
       _padding: !<Vec2> {x: 0.000000, y: 0.000000}
       _allowScaling: true
@@ -1642,9 +1628,9 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: -0.400000, z: 0.000000}
+    Position: {x: 0.000000, y: -0.800000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 0.500000, y: 0.500000, z: 0.500000}
+    Scale: {x: 0.800000, y: 0.800000, z: 0.800000}
     HasSegmentScaleCompensation: false
   Children:
     []
@@ -1744,7 +1730,7 @@
   Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 30.299202, z: 1.000000}
+    Position: {x: 0.000000, y: 30.299202, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
@@ -1828,7 +1814,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: -12.385300, z: 0.000000}
+    Position: {x: 0.000000, y: -12.800000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
@@ -1919,7 +1905,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 12.146788, y: -10.980608, z: 0.000023}
+    Position: {x: 12.146788, y: -10.980608, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
@@ -1944,6 +1930,7 @@
   PositionTension: 30.000000
   RotationTension: 30.000000
   ForceCompound: false
+  ExcludeFromParentCompounding: false
   Intangible: false
   ShowCollider: false
   Dynamic: false
@@ -1969,7 +1956,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -1994,7 +1980,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -2120,7 +2105,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -2145,7 +2129,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -2327,7 +2310,7 @@
   Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 5.000000, z: 2.000000}
+    Position: {x: 0.000000, y: 5.000000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 13.000000, y: 13.000000, z: 13.000000}
     HasSegmentScaleCompensation: false
@@ -2364,7 +2347,6 @@
   ScriptAsset: !<reference> 3b46d829-f6db-432a-914c-3551904d3994
   ScriptInputsDefault:
     _spawnOnStart: true
-    _appearance: true
     _padding: true
     _allowScaling: true
     allowNonUniformScaling: true
@@ -2415,9 +2397,7 @@
   ScriptInputs:
     "":
       _themeOverride: System3
-      autoShowHide: false
       _spawnOnStart: false
-      _appearance: Large
       _innerSize: !<Vec2> {x: 44.000000, y: 26.000000}
       _padding: !<Vec2> {x: 0.000000, y: 0.000000}
       _allowScaling: true
@@ -2467,6 +2447,21 @@
   ScriptTypes:
     "":
       {}
+- !<SceneObject/31d2e4f9-fc07-495d-8d85-6c004084b0dc>
+  PrefabRemaps:
+    []
+  Name: APITested
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> b4255555-3f0b-4f9d-9342-40203d867b77
 - !<SceneObject/3298dbf2-5fba-4c0b-9ed0-b2279c00738d>
   PrefabRemaps:
     []
@@ -2522,9 +2517,7 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _shapeSystem2: true
     _shapeSystem3: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -2549,9 +2542,7 @@
       onFinishedCallbacks:
         []
       _size: !<Vec3> {x: 20.000000, y: 5.000000, z: 1.000000}
-      _shapeSystem2: Rectangle
       _shapeSystem3: Rectangle
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -2564,9 +2555,9 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: -0.450000, z: 0.000000}
+    Position: {x: 0.000000, y: -0.742500, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 0.500000, y: 0.500000, z: 0.500000}
+    Scale: {x: 0.825000, y: 0.825000, z: 0.825000}
     HasSegmentScaleCompensation: false
   Children:
     []
@@ -2716,7 +2707,7 @@
   Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 30.299202, z: 1.000000}
+    Position: {x: 0.000000, y: 30.299202, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
@@ -2731,7 +2722,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: -0.000004, y: 7.557372, z: 3.000000}
+    Position: {x: -0.000004, y: 7.557372, z: 0.500000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
@@ -2767,7 +2758,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: -0.341542, z: 1.000000}
+    Position: {x: 0.000000, y: -0.341542, z: 0.500000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
@@ -2788,9 +2779,9 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.500000, z: 0.000000}
+    Position: {x: 0.000000, y: 0.850000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 0.500000, y: 0.500000, z: 0.500000}
+    Scale: {x: 0.800000, y: 0.800000, z: 0.800000}
     HasSegmentScaleCompensation: false
   Children:
     []
@@ -2803,7 +2794,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 4.385339, z: 0.000000}
+    Position: {x: 0.000000, y: 4.400000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
@@ -2852,7 +2843,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -2877,7 +2867,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -2890,7 +2879,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: -11.999998, y: 2.158458, z: 1.000000}
+    Position: {x: -11.999998, y: 2.158458, z: 0.500000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
@@ -3040,9 +3029,9 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.600000, z: 0.000000}
+    Position: {x: 0.000000, y: 0.990000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 0.500000, y: 0.500000, z: 0.500000}
+    Scale: {x: 0.825000, y: 0.825000, z: 0.825000}
     HasSegmentScaleCompensation: false
   Children:
     []
@@ -3068,7 +3057,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -3093,7 +3081,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -3119,7 +3106,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -3144,7 +3130,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -3538,9 +3523,9 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 3.700000, y: -0.750000, z: 0.000000}
+    Position: {x: 5.550000, y: -1.125000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    Scale: {x: 1.500000, y: 1.500000, z: 1.500000}
     HasSegmentScaleCompensation: false
   Children:
     []
@@ -3720,9 +3705,9 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: -13.785339, z: 3.000000}
+    Position: {x: 0.000000, y: -13.400000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.500000, y: 1.500000, z: 1.500000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
     - !<own> 1c63bc1e-c36a-4cef-8a34-27b096b1f966
@@ -3771,9 +3756,7 @@
   MeshShadowMode: None
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
-  Text: |
-    Table
-
+  Text: Table
   CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
@@ -3865,7 +3848,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -3890,7 +3872,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -4104,7 +4085,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -4112,7 +4092,7 @@
   ScriptInputs:
     "":
       _renderOrder: 0
-      _size: !<Vec3> {x: 10.000000, y: 3.000000, z: 3.000000}
+      _size: !<Vec3> {x: 16.000000, y: 4.400000, z: 3.000000}
       _inactive: false
       _playAudio: false
       _hasShadow: false
@@ -4129,7 +4109,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -4169,7 +4148,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: -14.000000, z: 2.000004}
+    Position: {x: 0.000000, y: -14.000000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 0.750000, y: 0.750000, z: 0.750000}
     HasSegmentScaleCompensation: false
@@ -4194,7 +4173,6 @@
     - 0764d6c0-af0b-4607-9be8-1e0ef97f8fb3: 0764d6c0-af0b-4607-6417-e1f10680704c
     - 0b023d17-0708-42e6-9354-454fda410b0c: 0b023d17-0708-42e6-6cab-bab025bef4f3
     - 0bdb9787-6ae0-4ea7-a0db-75e0455ac4ce: 0bdb9787-6ae0-4ea7-5f24-8a1fbaa53b31
-    - 0c7cbe3a-a4fb-4664-8a62-ae40dce832d7: eb36233e-cef5-407b-ab78-a8dcb92a06ae
     - 0dcc235d-5e99-4f2c-a2fa-13ad714aea1d: 0dcc235d-5e99-4f2c-5d05-ec528eb515e2
     - 0e257971-0f60-491e-ae1f-60615e576ee1: 0e257971-0f60-491e-51e0-9f9ea1a8911e
     - 0fdfc69a-c464-4c5c-ac42-c609d3d2785c: 4a0d2b1f-dc54-4c05-9261-75a652e534fd
@@ -4320,7 +4298,6 @@
     - 6cb4f9de-707b-413a-a154-bb67d414e949: 6cb4f9de-707b-413a-5eab-44982beb16b6
     - 6d88a7c0-81c4-49de-959c-a0ab61cee9bf: 6d88a7c0-81c4-49de-6a63-5f549e311640
     - 7022133b-061a-451a-921d-1bfdaeffa18a: 3e72703f-1c6e-4681-b128-0d368899a385
-    - 70317f8a-f373-4935-a89f-5ad7265468ba: 783b0291-0f19-46f8-8b46-6e70a43eadae
     - 725f24d3-efc5-436b-9af6-f48ba1a931d0: 725f24d3-efc5-436b-6509-0b745e56ce2f
     - 735fa191-31df-430b-9a2e-22b1d2b1fd2a: 1c0832ae-d07e-47c1-b1ed-63670f299963
     - 74322b8f-6f9d-4876-be13-6d42d58552a4: 36cc0725-eb4d-48a9-8e4b-49663a0b32ac
@@ -4444,6 +4421,7 @@
     - dddbb53d-98f9-4cdf-988d-6c9dbe2944cd: dddbb53d-98f9-4cdf-6772-936241d6bb32
     - de64f27e-0c1d-4df4-8169-2aa9cc191ede: de64f27e-0c1d-4df4-7e96-d55633e6e121
     - df12f752-0e74-44b9-8cf0-ec64da9034ef: df12f752-0e74-44b9-730f-139b256fcb10
+    - e0fc5499-9b9f-4912-a8e6-616347053c20: 356f7d7f-270f-4315-9309-5a6bb15a0465
     - e11146b4-deeb-4e58-9198-814427765213: cc864a65-3651-4543-ae16-e8ee48777942
     - e21904f4-b8c9-4f01-b682-6da96e4bd4d2: e21904f4-b8c9-4f01-497d-925691b42b2d
     - eb2a1da7-d01f-4bf2-96cb-92f5cc369e2f: eb2a1da7-d01f-4bf2-6934-6d0a33c961d0
@@ -4473,6 +4451,7 @@
     - f85227d7-e9e0-4baa-b51c-85aee2f33a39: f85227d7-e9e0-4baa-4ae3-7a511d0cc5c6
     - f86bffc3-e107-4c73-84b0-44437c7cbd5b: f86bffc3-e107-4c73-7b4f-bbbc838342a4
     - f89d9fce-b588-4b76-b1e9-1c813bfe0beb: f89d9fce-b588-4b76-4e16-e37ec401f414
+    - f8b8d346-c9e8-4362-a03d-d3de8fee23b6: ab082d61-b688-4ab7-841e-5b53d0297c49
     - fa97e6f3-c6ef-475a-8d37-b095ad136856: fa97e6f3-c6ef-475a-72c8-4f6a52ec97a9
     - fc12b186-9423-4f36-a0d8-564c40187689: fc12b186-9423-4f36-5f27-a9b3bfe78976
     - fc90bda6-a5a5-4f50-be70-f7bdeb38ecb0: fc90bda6-a5a5-4f50-418f-084214c7134f
@@ -4489,7 +4468,7 @@
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
-    - !<own> 70317f8a-f373-4935-a89f-5ad7265468ba
+    - !<own> e0fc5499-9b9f-4912-a8e6-616347053c20
     - !<own> d6445034-d17f-4db7-a8f4-431fe6dbbcb5
     - !<own> ccb37df1-9236-4dce-8986-6b475f097bc2
     - !<own> ac8067fe-696e-4485-be72-7109d9fc9727
@@ -4498,6 +4477,8 @@
     - !<own> 3d6d39d3-9169-4bf0-bb34-331e95767a45
     - !<own> 33240ea5-70cd-4dbb-8a68-119fd550d3db
     - !<own> 0ff21924-1824-44a7-8ed6-3477aea381ff
+    - !<own> 53d7d98e-19e5-4c52-9a24-9857d1b9c6eb
+    - !<own> 31d2e4f9-fc07-495d-8d85-6c004084b0dc
   Components:
     []
 - !<Image/523afe70-c9f3-4382-abdb-1b226bb6abe7>
@@ -4519,6 +4500,21 @@
   RotationAngle: 0
   Pivot: {x: 0.000000, y: 0.000000}
   ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+- !<SceneObject/53d7d98e-19e5-4c52-9a24-9857d1b9c6eb>
+  PrefabRemaps:
+    []
+  Name: Global Counter
+  Enabled: false
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: -2.000000, z: -90.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> c0b71fd9-eb92-436e-ab89-5818f27051bd
 - !<Image/5506d3a0-c54b-401a-b508-591fe7a36b24>
   PrefabRemaps:
     []
@@ -4630,7 +4626,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.385300, z: 0.000000}
+    Position: {x: 0.000000, y: 0.100000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
@@ -4890,9 +4886,9 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: -8.785339, z: 3.000000}
+    Position: {x: 0.000000, y: -7.800000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.500000, y: 1.500000, z: 1.500000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
     - !<own> 3a030424-d218-4309-9cec-8c99f37b6197
@@ -4927,9 +4923,7 @@
   MeshShadowMode: None
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
-  Text: |+
-    Realtime
-    
+  Text: Realtime
   CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
@@ -5366,7 +5360,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: -0.341542, z: 1.000000}
+    Position: {x: 0.000000, y: -0.341542, z: 0.500000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
@@ -5437,30 +5431,15 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: -8.000000, z: 3.000000}
+    Position: {x: 0.000000, y: -8.000000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.500000, y: 1.500000, z: 1.500000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
     - !<own> 403248b0-4ae2-4374-b972-48c995fabdc9
     - !<own> 34b52417-56dc-43c9-ba5b-9430efb4d18e
   Components:
     - !<own> 8c4395dc-2f7d-484e-96d0-51c1f877ff45
-- !<SceneObject/70317f8a-f373-4935-a89f-5ad7265468ba>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> 0c7cbe3a-a4fb-4664-8a62-ae40dce832d7
 - !<SceneObject/725f24d3-efc5-436b-9af6-f48ba1a931d0>
   PrefabRemaps:
     []
@@ -5468,9 +5447,9 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.500000, z: 0.000000}
+    Position: {x: 0.000000, y: 0.850000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 0.500000, y: 0.500000, z: 0.500000}
+    Scale: {x: 0.800000, y: 0.800000, z: 0.800000}
     HasSegmentScaleCompensation: false
   Children:
     []
@@ -5509,9 +5488,9 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 3.700000, y: 1.000000, z: 0.000000}
+    Position: {x: 5.550000, y: 1.500000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    Scale: {x: 1.500000, y: 1.500000, z: 1.500000}
     HasSegmentScaleCompensation: false
   Children:
     []
@@ -5748,7 +5727,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -5773,7 +5751,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -6193,9 +6170,9 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.500000, z: 0.000000}
+    Position: {x: 0.000000, y: 0.850000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 0.500000, y: 0.500000, z: 0.500000}
+    Scale: {x: 0.800000, y: 0.800000, z: 0.800000}
     HasSegmentScaleCompensation: false
   Children:
     []
@@ -6355,7 +6332,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -6380,7 +6356,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -6708,7 +6683,7 @@
   MeshShadowMode: None
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
-  Text: "Take control or follow the cursor "
+  Text: Take control or follow the cursor
   CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
@@ -6829,7 +6804,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -6837,7 +6811,7 @@
   ScriptInputs:
     "":
       _renderOrder: 0
-      _size: !<Vec3> {x: 10.000000, y: 3.000000, z: 3.000000}
+      _size: !<Vec3> {x: 16.500000, y: 4.950000, z: 3.000000}
       _inactive: false
       _playAudio: false
       _hasShadow: false
@@ -6855,7 +6829,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -6967,7 +6940,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -6992,7 +6964,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -7224,7 +7195,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 3.000000, z: 3.000000}
+    Position: {x: 0.000000, y: 3.000000, z: 0.500000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
@@ -7352,7 +7323,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: -0.341542, z: 1.000000}
+    Position: {x: 0.000000, y: -0.341542, z: 0.500000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
@@ -7434,7 +7405,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -7459,7 +7429,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -7726,7 +7695,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -7751,7 +7719,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -8062,7 +8029,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: -0.341542, z: 1.000000}
+    Position: {x: 0.000000, y: -0.341542, z: 0.500000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
@@ -8333,6 +8300,28 @@
     CapitalizationOverride: None
   DepthTest: false
   TwoSided: false
+- !<ScriptComponent/b4255555-3f0b-4f9d-9342-40203d867b77>
+  PrefabRemaps:
+    []
+  Name: APITested
+  Enabled: true
+  ScriptAsset: !<reference> 8039abfc-acd6-4e58-be0a-c8601ee11c90
+  ScriptInputsDefault:
+    runOnAwake: true
+    summaryText: true
+    supabaseProject: true
+    timeout: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      runOnAwake: true
+      summaryText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      supabaseProject: !<reference.SupabaseProject> 00000000-0000-0000-0000-000000000000
+      timeout: !<float> 20.000000
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/b4259a4a-6270-483c-aaf4-d819bc25727a>
   PrefabRemaps:
     []
@@ -8453,7 +8442,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -8478,7 +8466,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -8576,7 +8563,7 @@
   Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: -26.109146, z: 1.000000}
+    Position: {x: 0.000000, y: -26.109146, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
@@ -8934,6 +8921,27 @@
     CapitalizationOverride: None
   DepthTest: false
   TwoSided: false
+- !<ScriptComponent/c0b71fd9-eb92-436e-ab89-5818f27051bd>
+  PrefabRemaps:
+    []
+  Name: GlobalCounter
+  Enabled: true
+  ScriptAsset: !<reference> 3100d3f1-0607-43bf-93cb-91db9216df9b
+  ScriptInputsDefault:
+    title: true
+    actionLabel: true
+    refreshInterval: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      snapCloudRequirements: !<MappingBased.AssignableType_1> 58febd3d-a9ed-457e-b152-f472bd8e2a7d
+      title: Global counter
+      actionLabel: Count me in
+      refreshInterval: !<float> 10.000000
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/c21117a8-ab72-4984-90e3-5a2a025d9eb5>
   PrefabRemaps:
     []
@@ -9042,7 +9050,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 5.000000, z: 1.000015}
+    Position: {x: 0.000000, y: 5.000000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 15.000000, y: 15.000000, z: 15.000000}
     HasSegmentScaleCompensation: false
@@ -9287,9 +9295,9 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: -18.785299, z: 3.000000}
+    Position: {x: 0.000000, y: -19.000000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.500000, y: 1.500000, z: 1.500000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
     - !<own> 725f24d3-efc5-436b-9af6-f48ba1a931d0
@@ -9403,9 +9411,9 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: -3.785339, z: 2.000000}
+    Position: {x: 0.000000, y: -2.200000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.500000, y: 1.500000, z: 1.500000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
     - !<own> 825a703d-8dbd-4e11-97cd-3134754f74c0
@@ -9511,7 +9519,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 2.000000, z: 2.000004}
+    Position: {x: 0.000000, y: 2.000000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 0.750000, y: 0.750000, z: 0.750000}
     HasSegmentScaleCompensation: false
@@ -9857,7 +9865,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -9865,7 +9872,7 @@
   ScriptInputs:
     "":
       _renderOrder: 0
-      _size: !<Vec3> {x: 10.000000, y: 5.000000, z: 3.000000}
+      _size: !<Vec3> {x: 15.000000, y: 7.500000, z: 3.000000}
       _inactive: false
       _playAudio: false
       _hasShadow: false
@@ -9883,7 +9890,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -9911,7 +9917,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: -8.385300, z: 0.000000}
+    Position: {x: 0.000000, y: -8.500000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
@@ -10167,9 +10173,7 @@
   MeshShadowMode: None
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
-  Text: |
-    Edge Functions 
-
+  Text: Edge Functions
   CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
@@ -10307,7 +10311,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -10315,7 +10318,7 @@
   ScriptInputs:
     "":
       _renderOrder: 0
-      _size: !<Vec3> {x: 10.000000, y: 3.000000, z: 3.000000}
+      _size: !<Vec3> {x: 16.000000, y: 4.400000, z: 3.000000}
       _inactive: false
       _playAudio: false
       _hasShadow: false
@@ -10332,12 +10335,26 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
     "":
       {}
+- !<SceneObject/e0fc5499-9b9f-4912-a8e6-616347053c20>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> f8b8d346-c9e8-4362-a03d-d3de8fee23b6
 - !<ScriptComponent/e11146b4-deeb-4e58-9198-814427765213>
   PrefabRemaps:
     []
@@ -10499,7 +10516,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 5.000000, z: 1.000015}
+    Position: {x: 0.000000, y: 5.000000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 15.000000, y: 15.000000, z: 15.000000}
     HasSegmentScaleCompensation: false
@@ -10514,9 +10531,9 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: -0.400000, z: 0.000000}
+    Position: {x: 0.000000, y: -0.800000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 0.500000, y: 0.500000, z: 0.500000}
+    Scale: {x: 0.800000, y: 0.800000, z: 0.800000}
     HasSegmentScaleCompensation: false
   Children:
     []
@@ -10529,9 +10546,9 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: -0.400000, z: 0.000000}
+    Position: {x: 0.000000, y: -0.800000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 0.500000, y: 0.500000, z: 0.500000}
+    Scale: {x: 0.800000, y: 0.800000, z: 0.800000}
     HasSegmentScaleCompensation: false
   Children:
     []
@@ -10557,7 +10574,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -10565,7 +10581,7 @@
   ScriptInputs:
     "":
       _renderOrder: 0
-      _size: !<Vec3> {x: 10.000000, y: 3.000000, z: 3.000000}
+      _size: !<Vec3> {x: 16.000000, y: 4.400000, z: 3.000000}
       _inactive: false
       _playAudio: false
       _hasShadow: false
@@ -10582,7 +10598,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -10595,7 +10610,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: -0.341542, z: 1.000000}
+    Position: {x: 0.000000, y: -0.341542, z: 0.500000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
@@ -10838,7 +10853,7 @@
   LocalTransform: !<TransformEntity>
     Position: {x: 0.000000, y: -5.000000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.500000, y: 1.500000, z: 1.500000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
     - !<own> 74322b8f-6f9d-4876-be13-6d42d58552a4
@@ -11260,7 +11275,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -11268,7 +11282,7 @@
   ScriptInputs:
     "":
       _renderOrder: 0
-      _size: !<Vec3> {x: 10.000000, y: 3.000000, z: 3.000000}
+      _size: !<Vec3> {x: 16.000000, y: 4.400000, z: 3.000000}
       _inactive: false
       _playAudio: false
       _hasShadow: false
@@ -11285,7 +11299,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
@@ -11504,9 +11517,7 @@
   ScriptInputs:
     "":
       _themeOverride: Inherited
-      autoShowHide: false
       _spawnOnStart: false
-      _appearance: ""
       _innerSize: !<Vec2> {x: 20.000000, y: 28.000000}
       _padding: !<Vec2> {x: 0.000000, y: 0.000000}
       _allowScaling: true
@@ -11678,6 +11689,22 @@
     CapitalizationOverride: None
   DepthTest: false
   TwoSided: false
+- !<ScriptComponent/f8b8d346-c9e8-4362-a03d-d3de8fee23b6>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/fa97e6f3-c6ef-475a-8d37-b095ad136856>
   PrefabRemaps:
     []
@@ -11685,7 +11712,7 @@
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: -4.385300, z: 0.000000}
+    Position: {x: 0.000000, y: -4.200000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
@@ -11817,9 +11844,7 @@
   ScriptInputs:
     "":
       _themeOverride: Inherited
-      autoShowHide: false
       _spawnOnStart: false
-      _appearance: ""
       _innerSize: !<Vec2> {x: 30.000000, y: 26.000000}
       _padding: !<Vec2> {x: 0.000000, y: 0.000000}
       _allowScaling: true
@@ -11903,7 +11928,6 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSystem2: true
     _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
@@ -11928,7 +11952,6 @@
         []
       onFinishedCallbacks:
         []
-      _styleSystem2: PrimaryNeutral
       _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:

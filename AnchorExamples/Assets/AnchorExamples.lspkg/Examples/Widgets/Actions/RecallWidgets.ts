@@ -1,4 +1,4 @@
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
 import {WidgetBase} from "../WidgetBase"
 import {CAMERA_GAZE_OFFSET} from "../../Shared/Constants"
 

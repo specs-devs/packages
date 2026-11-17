@@ -1,6 +1,6 @@
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent } from "SnapDecorators.lspkg/decorators";
-import animate, {CancelFunction} from "SpectaclesInteractionKit.lspkg/Utils/animate"
+import animate, {CancelFunction} from "InteractionKit.lspkg/Utils/animate"
 import {DaemonInterface, XYZRPYPose} from "./DaemonInterface"
 
 /**

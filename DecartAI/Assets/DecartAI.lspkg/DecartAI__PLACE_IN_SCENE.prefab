@@ -1,0 +1,929 @@
+- !<ObjectPrefab/03a75fd9-010d-416b-98d9-e05965143a1a>
+  PackagePath: ""
+  objects:
+    - !<own> 3bc4cb61-6b2d-4533-b8e8-946d66d157f2
+  LazyLoading: false
+  RetainAssets: true
+  PreviewEnvironment: !<reference> 00000000-0000-0000-0000-000000000000
+- !<SceneObject/03e57538-89cf-4e5c-822f-974de17afcfb>
+  PrefabRemaps:
+    []
+  Name: DecartRig
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -80.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> a0c42937-080e-43e0-b081-e6c112c75421
+    - !<own> ffcc89d5-021c-4fb5-9490-14dbd0e9d8fe
+  Components:
+    - !<own> 3efe8787-c4de-4fee-861d-3d2c253fe315
+- !<SceneObject/0c4f413a-a918-4f36-84a2-3cb84048e815>
+  PrefabRemaps:
+    []
+  Name: DecartDemo
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> f95d4678-f063-44c2-926a-a1ee3ae436fd
+    - !<own> 55f94b73-d46b-442d-be67-bef78dd0d973
+    - !<own> 6237b603-babd-429c-bbc6-6d227a4f638d
+    - !<own> 03e57538-89cf-4e5c-822f-974de17afcfb
+  Components:
+    []
+- !<ScriptComponent/0ee19a12-e857-4e83-90e4-3f677bb3ae30>
+  PrefabRemaps:
+    []
+  Name: HeadLockedDisplay
+  Enabled: true
+  ScriptAsset: !<reference> 63cd6e54-b7f6-4bf5-960d-1c26a355fb92
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
+- !<Text/15ab2f42-b5a5-4091-b058-14ae4509c7cf>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: "Decart: waiting for camera…"
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableRichText: false
+  SizeToFit: false
+  FontSize: 48.000000
+  FontSource: !<reference> 00000000-0000-0000-0000-000000000000
+  PreferredStyle: Regular
+  LayoutRect:
+    left: -7.500000
+    bottom: -2.250000
+    right: 7.500000
+    top: 2.250000
+  DebugRenderLayoutRect: false
+  OverflowVertical: Overflow
+  OverflowHorizontal: Overflow
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlphaAuto
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.000000
+      bottom: 0.000000
+      right: 0.000000
+      top: 0.000000
+    CornerRadius: 0.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false
+- !<ScriptComponent/19159db4-7d4e-4503-9fcb-4945aa881626>
+  PrefabRemaps:
+    []
+  Name: DecartRealtimeRestyle
+  Enabled: true
+  ScriptAsset: !<reference> ad1f5b95-ce63-4535-b281-42842debb1da
+  ScriptInputsDefault:
+    target: true
+    mode: true
+    bridgeUrl: true
+    bridgeSendFps: true
+    nativeEndpoint: true
+    nativeModel: true
+    nativeUseH265: true
+    nativeFps: true
+    nativeBitrateKbps: true
+    nativeMaxWidth: true
+    nativeDownlinkKbps: true
+    displayZoom: true
+    displayOffsetX: true
+    displayOffsetY: true
+    displayOffsetZ: true
+    matchAspect: true
+    prompt: true
+    seed: true
+    enhancePrompt: true
+    autoStart: true
+    startDelaySeconds: true
+    editorWarmupSeconds: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      target: auto
+      mode: bridge
+      bridgeUrl: "ws://localhost:8765"
+      bridgeSendFps: !<float> 10.000000
+      nativeEndpoint: "wss://api3.decart.ai/v1/stream?model=lucy-2.5"
+      nativeModel: lucy-2.5
+      nativeUseH265: true
+      nativeFps: !<float> 30.000000
+      nativeBitrateKbps: !<float> 6000.000000
+      nativeMaxWidth: !<float> 1280.000000
+      nativeDownlinkKbps: !<float> 2500.000000
+      displayZoom: 1.600000
+      displayOffsetX: !<float> 0.000000
+      displayOffsetY: !<float> 0.000000
+      displayOffsetZ: !<float> 0.000000
+      matchAspect: true
+      apiKey: PASTE_YOUR_DECART_API_KEY
+      prompt: turn the world into a vivid watercolor painting
+      resolution: 720p
+      seed: !<float> 1234.000000
+      enhancePrompt: true
+      autoStart: false
+      targetImage: !<reference.Image> b2d5371e-a1a0-48df-abdc-dbd4a6854049
+      statusText: !<reference.Text> 15ab2f42-b5a5-4091-b058-14ae4509c7cf
+      startDelaySeconds: !<float> 3.000000
+      editorWarmupSeconds: !<float> 40.000000
+  ScriptTypes:
+    "":
+      {}
+- !<Text/1b8880a1-981a-4ef8-baa7-45865711e0ad>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 11
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Left
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: "Decart AI restyles your camera view in real time. Pick a style preset or type your own prompt on the control panel, then press Start to see the restyled feed in front of you. The sliders fit the feed to your view, and Hide folds the panel away."
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableRichText: false
+  SizeToFit: false
+  FontSize: 60.000000
+  FontSource: !<reference> 00000000-0000-0000-0000-000000000000
+  PreferredStyle: Regular
+  LayoutRect:
+    left: -20.000000
+    bottom: -9.000000
+    right: 20.000000
+    top: 9.000000
+  DebugRenderLayoutRect: false
+  OverflowVertical: Overflow
+  OverflowHorizontal: Wrap
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlphaAuto
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.000000
+      bottom: 0.000000
+      right: 0.000000
+      top: 0.000000
+    CornerRadius: 0.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false
+- !<ScriptComponent/2ecd43d1-e224-44bf-b8b8-b1aea2d213f5>
+  PrefabRemaps:
+    []
+  Name: DecartRequirements
+  Enabled: true
+  ScriptAsset: !<reference> 9a8315d9-efd8-4a17-8d91-094b099215f0
+  ScriptInputsDefault:
+    apiKey: true
+    text: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      apiKey: PASTE_YOUR_DECART_API_KEY
+      text: !<reference.Text> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/3133a881-a356-47fb-bdad-65dc8d1de74e>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/3bc4cb61-6b2d-4533-b8e8-946d66d157f2>
+  PrefabRemaps:
+    - 03e57538-89cf-4e5c-822f-974de17afcfb: 03e57538-89cf-4e5c-7dd0-68b21e850304
+    - 0c4f413a-a918-4f36-84a2-3cb84048e815: 59b7caeb-e09c-48ba-bb75-cce4a7d504fc
+    - 0ee19a12-e857-4e83-90e4-3f677bb3ae30: 10e974ce-264a-4bb5-9044-e0243a169184
+    - 15ab2f42-b5a5-4091-b058-14ae4509c7cf: 15ab2f42-b5a5-4091-4fa7-eb51baf63830
+    - 19159db4-7d4e-4503-9fcb-4945aa881626: 19159db4-7d4e-4503-6034-b6ba5577e9d9
+    - 1b8880a1-981a-4ef8-baa7-45865711e0ad: 3b251ee2-4f39-462f-b910-e9e18f81d62d
+    - 2ecd43d1-e224-44bf-b8b8-b1aea2d213f5: 2ecd43d1-e224-44bf-4747-4e515d2dec0a
+    - 3133a881-a356-47fb-bdad-65dc8d1de74e: b7aa5859-518a-42f4-9127-6cd369de71ff
+    - 3bc4cb61-6b2d-4533-b8e8-946d66d157f2: 3bc4cb61-6b2d-4533-4717-6b92992ea80d
+    - 3efe8787-c4de-4fee-861d-3d2c253fe315: 3efe8787-c4de-4fee-79e2-c2d3dac01cea
+    - 44747966-03b2-4ce7-9cc1-a23003aff1b4: 90048047-f49f-42af-8e74-5f483eb103c5
+    - 46c05b79-9f8f-4e3c-8d09-3fd08e44c089: d9b0d7a8-8c95-483c-93a7-7bf25f4be9d0
+    - 55f94b73-d46b-442d-be67-bef78dd0d973: 55f94b73-d46b-442d-4198-4108722f268c
+    - 5b10bc40-6ade-407d-835a-14356c6e2265: 1732ec24-0c8c-4701-9c27-d06983f5b392
+    - 6237b603-babd-429c-bbc6-6d227a4f638d: 6237b603-babd-429c-4439-92dd85b09c72
+    - 739182cd-b291-4e72-8d5d-b124832f1dc9: 05855e8e-863a-424a-9fb5-ed937d0d3698
+    - 7dddc89a-0b72-47cd-9ae3-9fd42bb116cb: 4e226da2-6d1c-4002-9dde-8f75412e7358
+    - 8ceb74a8-9d07-4c06-a3e7-fa6c1c1d2fa8: 76114d47-367e-40ef-b0c5-8b45144589f4
+    - a0c42937-080e-43e0-b081-e6c112c75421: a0c42937-080e-43e0-4f7e-193eed38abde
+    - b2d5371e-a1a0-48df-abdc-dbd4a6854049: 7470d782-a9f2-42f3-9fdc-825290cad891
+    - c3ad73cb-64e4-4faf-a1da-5c6f61f741ed: 2dff04b1-a48d-4e3c-9930-4a4ad1ddd01f
+    - c6ece0e6-e17b-4776-a2e3-1356b1762c60: 880a9d5d-a50e-4cc1-a641-ca1876b29609
+    - e5bce0bb-02ad-4d0a-89d0-fc2fb78946ce: cef607df-b50d-4d95-a409-edf0eb9e97bf
+    - f04f5f6e-b9e4-4aed-842d-fb7f46274204: bb9a61c9-4565-4b2a-a43b-9d1e0200f6b7
+    - f66197d2-3b69-42d9-92cf-40b5cc4dd178: 2549488c-7d14-44e7-aee3-f6705ce16558
+    - f95d4678-f063-44c2-926a-a1ee3ae436fd: 867ea3fe-dc1b-4cb6-ac3a-86b24a1bc5f4
+    - f9629386-3e9f-4a5c-8ee1-d6984cf9df1f: f9629386-3e9f-4a5c-711e-2967b30620e0
+    - ffcc89d5-021c-4fb5-9490-14dbd0e9d8fe: ffcc89d5-021c-4fb5-6b6f-eb242f162701
+  Name: DecartAI__PLACE_IN_SCENE
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 739182cd-b291-4e72-8d5d-b124832f1dc9
+    - !<own> c3ad73cb-64e4-4faf-a1da-5c6f61f741ed
+    - !<own> f66197d2-3b69-42d9-92cf-40b5cc4dd178
+    - !<own> 0c4f413a-a918-4f36-84a2-3cb84048e815
+    - !<own> fa172ac6-023e-4c3a-9e2f-af14e2f1a763
+  Components:
+    []
+- !<ScriptComponent/3e1cc35d-6af1-4c5a-b14c-d2d3d2063249>
+  PrefabRemaps:
+    []
+  Name: APITested
+  Enabled: true
+  ScriptAsset: !<reference> be56ef48-9f5a-4e3b-b800-920f8e300542
+  ScriptInputsDefault:
+    runOnAwake: true
+    summaryText: true
+    timeout: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      runOnAwake: true
+      summaryText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      timeout: !<float> 20.000000
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/3efe8787-c4de-4fee-861d-3d2c253fe315>
+  PrefabRemaps:
+    []
+  Name: LazyTether
+  Enabled: true
+  ScriptAsset: !<reference> 9641d756-9736-4e41-8f71-a82c2cd07897
+  ScriptInputsDefault:
+    distanceCm: true
+    heightOffsetCm: true
+    deadzoneDegrees: true
+    distanceToleranceCm: true
+    smoothing: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cameraObject: !<reference.SceneObject> 00000000-0000-0065-0000-000000000064
+      distanceCm: !<float> 80.000000
+      heightOffsetCm: !<float> 0.000000
+      deadzoneDegrees: !<float> 12.000000
+      distanceToleranceCm: !<float> 30.000000
+      smoothing: !<float> 4.000000
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/44747966-03b2-4ce7-9cc1-a23003aff1b4>
+  PrefabRemaps:
+    []
+  Name: Frame
+  Enabled: true
+  ScriptAsset: !<reference> 3b46d829-f6db-432a-914c-3551904d3994
+  ScriptInputsDefault:
+    _spawnOnStart: true
+    _padding: true
+    _allowScaling: true
+    allowNonUniformScaling: true
+    autoScaleContent: true
+    relativeZ: true
+    _onlyInteractOnMargin: true
+    allowTranslation: true
+    _cutOutCenter: true
+    _cutOutFeather: true
+    _hasShadow: true
+    _minimumSize: true
+    _maximumSize: true
+    useBillboarding: true
+    xOnTranslate: true
+    xAlways: true
+    xBufferDegrees: true
+    yOnTranslate: true
+    yAlways: true
+    yBufferDegrees: true
+    useSnapping: true
+    itemSnapping: true
+    worldSnapping: true
+    _useTagAlong: true
+    _tagAlongDistance: true
+    _showFollowButton: true
+    _useFocusFrame: true
+    useFollowBehavior: true
+    _useTiltMode: true
+    _tiltUpThreshold: true
+    _tiltDownThreshold: true
+    _following: true
+    _useDepthClamping: true
+    _minimumDepth: true
+    _maximumDepth: true
+    _useDepthScaling: true
+    _depthScalingMinimumDepth: true
+    _depthScalingMaximumDepth: true
+    _depthScalingMinimumScale: true
+    _depthScalingMaximumScale: true
+    _showCloseButton: true
+    _enableInteractionPlane: true
+    _interactionPlaneOffset: true
+    _interactionPlanePadding: true
+    _targetingVisual: true
+    _interactablePadding: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _themeOverride: System3
+      _spawnOnStart: false
+      _innerSize: !<Vec2> {x: 44.000000, y: 26.000000}
+      _padding: !<Vec2> {x: 0.000000, y: 0.000000}
+      _allowScaling: true
+      allowNonUniformScaling: false
+      autoScaleContent: true
+      relativeZ: true
+      _onlyInteractOnMargin: false
+      allowTranslation: true
+      _cutOutCenter: false
+      _cutOutFeather: 0.100000
+      _hasShadow: false
+      _minimumSize: !<Vec2> {x: 10.000000, y: 10.000000}
+      _maximumSize: !<Vec2> {x: 150.000000, y: 150.000000}
+      useBillboarding: true
+      xOnTranslate: true
+      xAlways: false
+      xBufferDegrees: !<float> 0.000000
+      yOnTranslate: true
+      yAlways: false
+      yBufferDegrees: !<float> 0.000000
+      useSnapping: false
+      itemSnapping: false
+      worldSnapping: false
+      _useTagAlong: false
+      _tagAlongDistance: !<float> 110.000000
+      _showFollowButton: false
+      _useFocusFrame: true
+      useFollowBehavior: false
+      _useTiltMode: false
+      _tiltUpThreshold: !<float> 25.000000
+      _tiltDownThreshold: !<float> 35.000000
+      _following: false
+      _useDepthClamping: false
+      _minimumDepth: !<float> 35.000000
+      _maximumDepth: !<float> 110.000000
+      _useDepthScaling: false
+      _depthScalingMinimumDepth: !<float> 35.000000
+      _depthScalingMaximumDepth: !<float> 110.000000
+      _depthScalingMinimumScale: 0.500000
+      _depthScalingMaximumScale: !<float> 1.000000
+      _showCloseButton: false
+      _enableInteractionPlane: true
+      _interactionPlaneOffset: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
+      _interactionPlanePadding: !<Vec2> {x: 0.000000, y: 0.000000}
+      _targetingVisual: !<float> 1.000000
+      _interactablePadding: !<Vec2> {x: 1.000000, y: 1.000000}
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/46c05b79-9f8f-4e3c-8d09-3fd08e44c089>
+  PrefabRemaps:
+    []
+  Name: ElementContent
+  Enabled: true
+  ScriptAsset: !<reference> c74eb6f4-6231-44ee-8336-d4d1f802da42
+  ScriptInputsDefault:
+    _useLeadingIcon: true
+    _leadingIcon: true
+    _useTrailingIcon: true
+    _trailingIcon: true
+    _iconLayout: true
+    _textAlignment: true
+    _textSizing: true
+    _font: true
+    _leadingIconSize: true
+    _trailingIconSize: true
+    _underline: true
+    _underlineThickness: true
+    _underlineOffset: true
+    _customSpacing: true
+    _spacing: true
+    _paddingTop: true
+    _paddingRight: true
+    _paddingBottom: true
+    _paddingLeft: true
+    _autoResizeParent: true
+    _minWidth: true
+    _minHeight: true
+    _sizeOverride: true
+    _useThemeColors: true
+    _defaultTextColor: true
+    _hoveredTextColor: true
+    _triggeredTextColor: true
+    _inactiveTextColor: true
+    _defaultIconTint: true
+    _hoveredIconTint: true
+    _triggeredIconTint: true
+    _inactiveIconTint: true
+    _useTextColorOverride: true
+    _textColorOverride: true
+    _debug: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _text: "Ok, I understood"
+      _useLeadingIcon: false
+      _leadingIcon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      _useTrailingIcon: false
+      _trailingIcon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      _iconLayout: left
+      _textAlignment: center
+      _textSizing: hug
+      _font: !<reference.Font> 00000000-0000-0000-0000-000000000000
+      _textSize: !<float> 64.000000
+      _leadingIconSize: 1.250000
+      _trailingIconSize: 1.250000
+      _underline: false
+      _underlineThickness: 0.120000
+      _underlineOffset: 0.040000
+      _customSpacing: false
+      _spacing: 0.500000
+      _paddingTop: 0.500000
+      _paddingRight: 0.800000
+      _paddingBottom: 0.500000
+      _paddingLeft: 0.800000
+      _autoResizeParent: false
+      _minWidth: !<float> 0.000000
+      _minHeight: !<float> 0.000000
+      _sizeOverride: !<Vec2> {x: 0.000000, y: 0.000000}
+      _useThemeColors: true
+      _defaultTextColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      _hoveredTextColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      _triggeredTextColor: !<Vec4> {x: 0.080000, y: 0.080000, z: 0.080000, w: 1.000000}
+      _inactiveTextColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 0.400000}
+      _defaultIconTint: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      _hoveredIconTint: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      _triggeredIconTint: !<Vec4> {x: 0.080000, y: 0.080000, z: 0.080000, w: 1.000000}
+      _inactiveIconTint: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 0.400000}
+      _useTextColorOverride: false
+      _textColorOverride: !<Vec4> {x: 0.000000, y: 0.000000, z: 0.000000, w: 0.000000}
+      _debug: false
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/55f94b73-d46b-442d-be67-bef78dd0d973>
+  PrefabRemaps:
+    []
+  Name: DecartRequirements
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 2ecd43d1-e224-44bf-b8b8-b1aea2d213f5
+- !<SceneObject/5b10bc40-6ade-407d-835a-14356c6e2265>
+  PrefabRemaps:
+    []
+  Name: GuideText
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 3.250000, z: 0.500000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 1b8880a1-981a-4ef8-baa7-45865711e0ad
+- !<SceneObject/6237b603-babd-429c-bbc6-6d227a4f638d>
+  PrefabRemaps:
+    []
+  Name: DecartRestyle
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 19159db4-7d4e-4503-9fcb-4945aa881626
+- !<SceneObject/739182cd-b291-4e72-8d5d-b124832f1dc9>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 3133a881-a356-47fb-bdad-65dc8d1de74e
+- !<ScriptComponent/7dddc89a-0b72-47cd-9ae3-9fd42bb116cb>
+  PrefabRemaps:
+    []
+  Name: Button
+  Enabled: true
+  ScriptAsset: !<reference> 44823634-5893-49f9-a805-2295f5c33abb
+  ScriptInputsDefault:
+    _inactive: true
+    _playAudio: true
+    _hasShadow: true
+    _shadowPositionOffset: true
+    _toggleable: true
+    _defaultToOn: true
+    addCallbacks: true
+    triggerUpCallbacks: true
+    triggerDownCallbacks: true
+    onValueChangeCallbacks: true
+    onFinishedCallbacks: true
+    _shapeSystem3: true
+    _styleSystem3: true
+    _opacity: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _renderOrder: 10
+      _inactive: false
+      _playAudio: false
+      _hasShadow: false
+      _shadowPositionOffset: !<Vec3> {x: 0.050000, y: -0.050000, z: -0.010000}
+      _themeOverride: System3
+      _toggleable: false
+      _defaultToOn: false
+      addCallbacks: false
+      triggerUpCallbacks:
+        []
+      triggerDownCallbacks:
+        []
+      onValueChangeCallbacks:
+        []
+      onFinishedCallbacks:
+        []
+      _size: !<Vec3> {x: 20.000000, y: 5.000000, z: 1.000000}
+      _shapeSystem3: Rectangle
+      _styleSystem3: Primary
+      _opacity: !<float> 1.000000
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/8ceb74a8-9d07-4c06-a3e7-fa6c1c1d2fa8>
+  PrefabRemaps:
+    []
+  Name: ExampleCarousel
+  Enabled: true
+  ScriptAsset: !<reference> ce17d6c2-98d7-4866-9500-f6e913f28477
+  ScriptInputsDefault:
+    steps: true
+    stepInfo: true
+    startIndex: true
+    previousLabel: true
+    nextLabel: true
+    examplesPushBack: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      examples: !<reference.SceneObject[]>
+        - !<reference> 0c4f413a-a918-4f36-84a2-3cb84048e815
+      exampleInfo: !<string[]>
+        - "Press Start to restyle what you see, then tap a preset or type a prompt to change the style live. Needs the Mac bridge (DECART_API_KEY in bridge.py) or your platform.decart.ai key on the DecartRequirements apiKey."
+      steps: !<reference.SceneObject[]>
+        []
+      stepInfo: !<string[]>
+        []
+      startIndex: !<float> 0.000000
+      previousLabel: Previous
+      nextLabel: Next
+      examplesPushBack: !<float> 20.000000
+      anchorExamples: false
+      startMinimized: true
+      extraPanelDrop: !<float> 5.000000
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/a0c42937-080e-43e0-b081-e6c112c75421>
+  PrefabRemaps:
+    []
+  Name: DecartStatusText
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 16.500000, z: -26.500000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.375000, y: 1.375000, z: 1.375000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 15ab2f42-b5a5-4091-b058-14ae4509c7cf
+- !<Image/b2d5371e-a1a0-48df-abdc-dbd4a6854049>
+  PrefabRemaps:
+    []
+  Name: Image
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Fit
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> f9db91af-53e2-450b-869b-4c434a4edf6f
+  FlipX: false
+  FlipY: false
+  RotationAngle: 0
+  Pivot: {x: 0.000000, y: 0.000000}
+  ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+- !<SceneObject/c3ad73cb-64e4-4faf-a1da-5c6f61f741ed>
+  PrefabRemaps:
+    []
+  Name: Guide
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -100.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 5b10bc40-6ade-407d-835a-14356c6e2265
+    - !<own> f04f5f6e-b9e4-4aed-842d-fb7f46274204
+  Components:
+    - !<own> 44747966-03b2-4ce7-9cc1-a23003aff1b4
+    - !<own> c6ece0e6-e17b-4776-a2e3-1356b1762c60
+- !<ScriptComponent/c6ece0e6-e17b-4776-a2e3-1356b1762c60>
+  PrefabRemaps:
+    []
+  Name: GuideDismissPanel
+  Enabled: true
+  ScriptAsset: !<reference> 6f138f93-ff8f-416a-8113-3f67aadaeef5
+  ScriptInputsDefault:
+    buttonLabel: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      buttonLabel: "Ok, I understood"
+      hideUntilDismissed: !<reference.SceneObject[]>
+        - !<reference> 0c4f413a-a918-4f36-84a2-3cb84048e815
+        - !<reference> f66197d2-3b69-42d9-92cf-40b5cc4dd178
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/e5bce0bb-02ad-4d0a-89d0-fc2fb78946ce>
+  PrefabRemaps:
+    []
+  Name: DecartDisplayQuad
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -110.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 88.000000, y: 49.500000, z: 1.375000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> b2d5371e-a1a0-48df-abdc-dbd4a6854049
+- !<SceneObject/f04f5f6e-b9e4-4aed-842d-fb7f46274204>
+  PrefabRemaps:
+    []
+  Name: OkButton
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: -8.500000, z: 0.500000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 7dddc89a-0b72-47cd-9ae3-9fd42bb116cb
+    - !<own> 46c05b79-9f8f-4e3c-8d09-3fd08e44c089
+- !<SceneObject/f66197d2-3b69-42d9-92cf-40b5cc4dd178>
+  PrefabRemaps:
+    []
+  Name: ExampleCarousel
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 8ceb74a8-9d07-4c06-a3e7-fa6c1c1d2fa8
+- !<SceneObject/f95d4678-f063-44c2-926a-a1ee3ae436fd>
+  PrefabRemaps:
+    []
+  Name: DecartDisplay
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> e5bce0bb-02ad-4d0a-89d0-fc2fb78946ce
+  Components:
+    - !<own> 0ee19a12-e857-4e83-90e4-3f677bb3ae30
+- !<ScriptComponent/f9629386-3e9f-4a5c-8ee1-d6984cf9df1f>
+  PrefabRemaps:
+    []
+  Name: DecartControlsUI
+  Enabled: true
+  ScriptAsset: !<reference> 0cc3eb62-c0f3-4d3e-abdf-78b2808afc15
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      decartScript: !<MappingBased.AssignableType_1> 19159db4-7d4e-4503-9fcb-4945aa881626
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/fa172ac6-023e-4c3a-9e2f-af14e2f1a763>
+  PrefabRemaps:
+    []
+  Name: APITested
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 3e1cc35d-6af1-4c5a-b14c-d2d3d2063249
+- !<SceneObject/ffcc89d5-021c-4fb5-9490-14dbd0e9d8fe>
+  PrefabRemaps:
+    []
+  Name: DecartControls
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: -42.000000, z: 12.000000}
+    Rotation: {x: -30.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> f9629386-3e9f-4a5c-8ee1-d6984cf9df1f

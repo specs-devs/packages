@@ -4,7 +4,7 @@
 
 ## Use when
 
-Look up exact inputs, callable methods and events. All distances are centimeters unless specified. Object inputs have no source default unless one is listed. Inspector ranges do not enforce runtime assignments. The signatures below describe source. Documentation examples passed a separate static TypeScript check; the demo itself was exercised in the Lens Studio Preview against SpectaclesInteractionKit and SpectaclesUIKit.
+Look up exact inputs, callable methods and events. All distances are centimeters unless specified. Object inputs have no source default unless one is listed. Inspector ranges do not enforce runtime assignments. The signatures below describe source. Documentation examples passed a separate static TypeScript check; the demo itself was exercised in the Lens Studio Preview against InteractionKit and UIKit.
 
 ## BezierLine
 
@@ -174,4 +174,4 @@ Import: `BezierLine.lspkg/Examples/BezierExamplesPanel` (named `BezierExamplesPa
 | `focalDistanceCm` | `number` | `130` | Typography design distance; Inspector 60–200. Does not move panel automatically. |
 | `hintText` | `string` | `"Pinch a card to move it. Pinch a dot, drag to another card. Tap a dot to clear."` | Hint under title. |
 
-`onAwake(): void` builds the panel, then an OnStart callback validates `board`, subscribes to count changes and refreshes stats. Width slider uses 0.1–1.5, Curve 0–30 with 0.5 cm rounding, Segments 4–64 with integer rounding. Camera/Flow/Debug switches call board setters with the switch's `isOn` from `onFinished` (SpectaclesUIKit's `onFinished` argument is the explicit flag, not the state). Add card, Clear and Reset buttons act on `onTriggerUp`; sizes are set on UIKit initialization. The panel is about 26 × 30 cm.
+`onAwake(): void` builds the panel, then an OnStart callback validates `board`, subscribes to count changes and refreshes stats. Width slider uses 0.1–1.5, Curve 0–30 with 0.5 cm rounding, Segments 4–64 with integer rounding. Camera/Flow/Debug switches call board setters with the switch's `isOn` from `onFinished` (UIKit's `onFinished` argument is the explicit flag, not the state). Add card, Clear and Reset buttons act on `onTriggerUp`; sizes are set on UIKit initialization. The panel is about 26 × 30 cm.

@@ -57,6 +57,7 @@ particular cloud operations; it is not a reusable SDK (use the SupabaseClient pa
   - [components.md](components.md) - requirements, auth, tables, cursor, downloads and demo scaffolding.
   - [media.md](media.md) - capture and streaming components and shared utilities.
   - [leaderboard.md](leaderboard.md) - RPCs, rows, score ordering and the pinch game.
+  - [global-counter.md](global-counter.md) - one action per user, shared total, SQL setup.
   - [examples.md](examples.md) - small compile-checked integrations.
   - [api-status.md](api-status.md) - current versus historical APIs and verification limits.
   - [troubleshooting.md](troubleshooting.md) - known limitations and pending QA.

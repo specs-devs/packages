@@ -1,5 +1,5 @@
-import {PublicApi} from "SpectaclesInteractionKit.lspkg/Utils/Event"
-import NativeLogger from "SpectaclesInteractionKit.lspkg/Utils/NativeLogger"
+import {PublicApi} from "InteractionKit.lspkg/Utils/Event"
+import NativeLogger from "InteractionKit.lspkg/Utils/NativeLogger"
 import {Place} from "./Place"
 
 const TAG = "[User Position]"

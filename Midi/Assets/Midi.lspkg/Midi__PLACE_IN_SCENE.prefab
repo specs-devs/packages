@@ -111,6 +111,22 @@
   ScriptTypes:
     "":
       {}
+- !<ScriptComponent/1ad57201-b616-4119-8cbb-f0c89520aada>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/5d2020ce-43de-4fb3-b836-51f6e0faf1e4>
   PrefabRemaps:
     []
@@ -143,21 +159,6 @@
     []
   Components:
     - !<own> d635af7a-704e-46bc-8110-84611e292473
-- !<SceneObject/6becbb8d-46d7-42cb-b30a-6896bc0a9e21>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> 9226ad02-fc1d-4a08-a144-c114482a54a9
 - !<SceneObject/731ada7a-1b2c-4133-8189-64b8ed505f30>
   PrefabRemaps:
     []
@@ -300,22 +301,6 @@
   Components:
     - !<own> 9ddac45b-1bb5-4151-9673-66380044cc73
     - !<own> 04562a3c-8c8d-48c8-9b29-fe699fd56dc4
-- !<ScriptComponent/9226ad02-fc1d-4a08-a144-c114482a54a9>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
-  ScriptInputsDefault:
-    _theme: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      _theme: System3
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/95ea56ad-1c35-4e47-81b6-b020c79bfb69>
   PrefabRemaps:
     []
@@ -407,13 +392,12 @@
   PrefabRemaps:
     - 01fc461a-37b2-444f-bdc0-6a0860923554: 01fc461a-37b2-444f-423f-95f79f6dcaab
     - 04562a3c-8c8d-48c8-9b29-fe699fd56dc4: 122081fc-8f87-48f0-8af8-90aab86dfe3f
+    - 1ad57201-b616-4119-8cbb-f0c89520aada: a5303f7e-775d-4ea3-86ed-5821298ec48b
     - 5d2020ce-43de-4fb3-b836-51f6e0faf1e4: 6857ba17-1e74-4f13-9b5e-9cc8baa0c255
     - 5faf91c1-3235-460c-8689-a09e246a1f96: 94bb56b4-375c-4a47-9366-56b76c547988
-    - 6becbb8d-46d7-42cb-b30a-6896bc0a9e21: fb1f6509-4fad-40b6-9847-0e12cc104fff
     - 731ada7a-1b2c-4133-8189-64b8ed505f30: 731ada7a-1b2c-4133-7e76-9b4712afa0cf
     - 81c05ccc-3762-4e55-bbe9-4f3bf9fa0f0a: e6710674-efde-44e9-ad1f-9011eba8604b
     - 8bc08efa-925c-4a05-8fc8-746846241a7f: d813cdc2-5941-4a9c-b6b2-a5fe08e48373
-    - 9226ad02-fc1d-4a08-a144-c114482a54a9: 9ef289ef-46e5-4a25-a15b-cce43b40a1db
     - 95ea56ad-1c35-4e47-81b6-b020c79bfb69: 9724956e-a87a-4ba2-bd98-32b3d0802f3e
     - 98fe090e-e755-4910-9f85-c87938a109ce: 97580c81-8bbd-4c49-9106-3a115d680638
     - 9ddac45b-1bb5-4151-9673-66380044cc73: e6b3676a-1c1b-418a-bcd4-0c1b336543fa
@@ -421,6 +405,7 @@
     - d635af7a-704e-46bc-8110-84611e292473: 9de599ce-f5d3-4ac6-8c5d-5b921760c7ac
     - d96ade4f-8a35-4576-9997-8c22a01f3b97: 7a303b2a-b60d-4e8e-a877-4c5814044308
     - e4a2a587-b381-4057-b82e-952bde4055e2: 0c006969-8518-4f01-a626-251498385e4d
+    - e657c68d-fe3f-4b83-976b-4808ad69f8b1: 5249bfc8-ba83-4c44-bb5b-8da33ab69750
   Name: Midi__PLACE_IN_SCENE
   Enabled: true
   Layers: 1
@@ -430,7 +415,7 @@
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
-    - !<own> 6becbb8d-46d7-42cb-b30a-6896bc0a9e21
+    - !<own> e657c68d-fe3f-4b83-976b-4808ad69f8b1
     - !<own> 5d2020ce-43de-4fb3-b836-51f6e0faf1e4
     - !<own> 5faf91c1-3235-460c-8689-a09e246a1f96
     - !<own> 95ea56ad-1c35-4e47-81b6-b020c79bfb69
@@ -576,3 +561,18 @@
     []
   Components:
     - !<own> d96ade4f-8a35-4576-9997-8c22a01f3b97
+- !<SceneObject/e657c68d-fe3f-4b83-976b-4808ad69f8b1>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 1ad57201-b616-4119-8cbb-f0c89520aada

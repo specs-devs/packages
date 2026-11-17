@@ -438,7 +438,10 @@ readonly onTrackingStateChanged: PublicApi<TrackingStateChange> = this.onTrackin
 readonly onUncertaintyChanged: PublicApi<UncertaintyChange> = this.onUncertaintyChangedEvent.publicApi()
 static getInstance(): AnchorController
 static stateName(state: AnchorTrackingState | null | undefined): string
+static typeName(anchor: Anchor | null | undefined): string
+static isCustom(anchor: Anchor | null | undefined): boolean
 setModule(module: AnchorModule | null | undefined): void
+setLocationModule(module: AnchorLocationModule | null | undefined): void
 setLoggingEnabled(enabled: boolean): void
 get isEditor(): boolean
 get isSupported(): boolean
@@ -456,6 +459,7 @@ async resolveAnchor(anchorId: string): Promise<Anchor | null>
 async deleteAnchor(anchor: Anchor): Promise<boolean>
 async clearArea(): Promise<boolean>
 async clearAllAnchors(): Promise<boolean>
+async getGeoPosition(anchor: Anchor): Promise<GeoPosition | null>
 track(target: SceneObject, anchor: Anchor): AnchorComponent | null
 untrack(target: SceneObject): void
 untrackAll(): void
@@ -463,6 +467,28 @@ getTrackedAnchor(target: SceneObject): Anchor | null
 getTrackingState(target: SceneObject): AnchorTrackingState | null
 isTracking(target: SceneObject): boolean
 ```
+
+## PersistentAnchorExample
+
+Import suffix under `AnchorExamples.lspkg/`: `Examples/Native/PersistentAnchorExample`
+
+A script component that runs the whole native lifecycle on one piece of content. Inputs:
+
+| Input | Default | Purpose |
+|---|---|---|
+| `content` | — | SceneObject kept at the anchored spot (reparented under the anchored SceneObject) |
+| `area` | `example-area` | Session area; empty = every anchor of this Lens. Keep one area under ~250 m² |
+| `placeDistance` | `80` | cm in front of the wearer for a new anchor |
+| `maxUncertaintyCm` | `10` | Content hides while the positional uncertainty is above this |
+| `anchorModule` | optional | AnchorModule asset; otherwise `require("LensStudio:AnchorModule")` |
+
+```text
+async placeHere(): Promise<void>   // create + save in front of the wearer, then delete the previous anchor
+async forget(): Promise<void>      // delete the saved anchor, hide the content
+async clearArea(): Promise<void>   // delete every anchor this Lens saved in the area
+```
+
+Restore order on start: stored `Anchor.id` → `resolveAnchor`; otherwise the anchor with that id from `onAnchorNearby`; otherwise a new anchor. Custom Location anchors reported nearby log their latitude / longitude. In Preview the content is shown in front of the camera.
 
 ## Logger
 
@@ -487,7 +513,7 @@ Plain modules (no components) that the demo scripts import. Reuse them only if y
 
 ### Examples/Shared/UIKit
 
-Code-built SpectaclesUIKit helpers used by the screens. Re-exports `ElementContent` and `FlexAlign`, `FlexAlignSelf`, `FlexDirection`, `FlexJustify`.
+Code-built UIKit helpers used by the screens. Re-exports `ElementContent` and `FlexAlign`, `FlexAlignSelf`, `FlexDirection`, `FlexJustify`.
 
 ```text
 type TextRole = "Title1" | "Title2" | "HeadlineXL" | "Headline1" | "Headline2" | "Subheadline" | "Button" | "Callout" | "Body" | "Caption"

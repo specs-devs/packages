@@ -24,6 +24,7 @@
   VersionPatch: 0
   VersionPrerelease: ""
   UpdateOrder: 0
+  RunInEditor: false
   ComponentUid: d984dc9f-9595-4eb0-a145-5992f06c11c1
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
@@ -57,10 +58,9 @@
     - '// @ui {"widget":"group_start", "label":"Generate Image Example"}'
     - // @input SceneObject imgObject
     - '// @input string generatePrompt = "A futuristic cityscape at sunset" {"widget":"text_area"}'
-    - '// @input bool doGenerateOnTap {"label":"Run On Tap"}'
+    - '// @input bool doGenerateOnTap {"label":"Run in demo"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'
     - '// @input bool enableLogging {"hint":"Enable general logging (animation cycles, events, etc.)"}'
     - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)"}'
-    - '// @ui {"widget":"group_end"}'

@@ -5,7 +5,7 @@
  * hierarchies with configurable tracking and T-pose reset.
  */
 
-import NativeLogger from "SpectaclesInteractionKit.lspkg/Utils/NativeLogger"
+import NativeLogger from "InteractionKit.lspkg/Utils/NativeLogger"
 import { SkeletonDefinition, FrameData, MocopiBone, MOCOPI_BONE_NAMES } from "./MocopiDataTypes"
 import { PrefabPlacement } from "./PrefabPlacement"
 import { SceneObjectUtils } from "Utilities.lspkg/Scripts/Utils/SceneObjectUtils"

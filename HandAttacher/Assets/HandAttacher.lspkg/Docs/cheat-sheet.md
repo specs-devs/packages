@@ -37,6 +37,11 @@ points to the detail.
 7. **`handSide`/`handJoint` are strings.** The `HandSide` / `HandJoint` enums hold
    the same string values (`HandJoint.IndexTip === "indexTip"`). An unknown joint
    name silently does nothing unless `enableLogging` is on. → [api-status](api-status.md)
+8. **Expect a hand-tracking permission prompt.** Hand Attacher reads raw
+   hand-joint data, which an upcoming Specs OS release gates behind a one-time
+   user permission. Keep `hideWhenNotTracked` on so a pending or declined
+   permission leaves the target hidden, not at the origin. →
+   [README](../README.md#hand-tracking-permission-upcoming)
 
 ## Verify
 

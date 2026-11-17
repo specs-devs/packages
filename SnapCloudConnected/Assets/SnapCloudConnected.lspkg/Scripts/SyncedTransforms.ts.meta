@@ -1,0 +1,60 @@
+- !<AssetImportMetadata/8e26eca7-0594-4223-ae56-baa0ac2f320b>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> c1bed09b-30da-42d0-9363-03c47bbaa126
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> c1bed09b-30da-42d0-9363-03c47bbaa126
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> ae29d522-d6c4-4859-95aa-7dbe1529f7ab
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/ae29d522-d6c4-4859-95aa-7dbe1529f7ab>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 45180f51-dc6a-4b47-afb6-f9a6edf404d5
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    objects: false
+    owner: false
+    session: false
+    syncId: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - session: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      objects: !<reference.SceneObject[]>
+        []
+      owner: 0
+      syncId: ""
+      enableLogging: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input AssignableType_1 session {"hint":"Session to sync through. Empty: the first SnapCloudConnected in the scene"}'
+    - '// @input SceneObject[] objects = {} {"hint":"Objects whose transforms are synced. Keep the same order on every device"}'
+    - '// @input int owner {"hint":"Who publishes these transforms. Everyone else follows them", "widget":"combobox", "values":[{"label":"Anyone (last to move)", "value":-1}, {"label":"Player 1 (host)", "value":0}, {"label":"Player 2", "value":1}, {"label":"Player 3", "value":2}, {"label":"Player 4", "value":3}]}'
+    - "// @input string syncId {\"hint\":\"Unique id for this group, the same on every device. Empty: this SceneObject's name\"}"
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'

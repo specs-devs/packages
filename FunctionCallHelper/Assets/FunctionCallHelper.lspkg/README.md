@@ -25,7 +25,7 @@ button per function.
 This section ships with the package and describes the exact installed revision.
 Read it, then follow the links into `Docs/` for the topic you need. It is
 written for both people and coding agents; generic Lens scripting, scene
-construction, and Specs spatial design live in the CLAD skills, not here.
+construction, and Specs spatial design are out of scope here.
 
 ### Package identity
 
@@ -46,8 +46,8 @@ construction, and Specs spatial design live in the CLAD skills, not here.
   instance when you build your own Lens
   ([components](Docs/components.md#demo-scaffolding-example)).
 - Required companion packages (`package_dependencies.json`):
-  `SpectaclesUIKit`, `Utilities` and `SnapDecorators` (imported by the
-  script), plus `SpectaclesInteractionKit`, `Motion` and `Icons`. The scene
+  `UIKit`, `Utilities` and `SnapDecorators` (imported by the
+  script), plus `InteractionKit`, `Motion` and `Icons`. The scene
   needs the SIK prefab so the buttons can be pinched.
 
 ### Version and API status
@@ -61,17 +61,8 @@ revision.
 
 Use Function Call Helper when the buttons are a flat list of "call this
 method" actions, typically for debugging or testing. For a designed UI (custom
-layout, icons, toggles, sliders, per-button styling) build with SpectaclesUIKit
+layout, icons, toggles, sliders, per-button styling) build with UIKit
 directly. For a single button, wire UIKit `Button.onTriggerUp` yourself.
-
-### Related CLAD skills
-
-- [specs-build-ui](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/specs-build-ui):
-  choosing and building Specs UI with SpectaclesUIKit.
-- [lens-api](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/lens-api):
-  generic component lifecycle, `@input`, prefab instantiation.
-- No CLAD? Setup: https://developers.specs.com/docs/clad/setup/setup-ai/ ·
-  source: `github.com/lens-studio-devs/ls-extensions`.
 
 ### Package Docs (ship in `Docs/`)
 
@@ -103,8 +94,4 @@ here as supported API; never guess an import path.
 ---
 
 [See more packages](https://github.com/specs-devs/packages)
-
-
-
-
 

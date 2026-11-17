@@ -1,0 +1,33 @@
+- !<AssetImportMetadata/fd49dd99-7a81-461e-abc7-81a80e5cec28>
+  ImportedAssetIds:
+    NativeLibraryAsset: !<reference> 1e6c9ee2-b355-457d-8ff7-e29cce54c3aa
+  ImporterName: NativeLibraryAssetImporter
+  PrimaryAsset: !<reference> 1e6c9ee2-b355-457d-8ff7-e29cce54c3aa
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    NativeLibraryAsset: !<own> d385355e-056d-4b56-8c04-06c19ef41d21
+  DependentFiles:
+    []
+  ImporterSettings: !<NativeLibraryImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<NativeLibraryAssetData/d385355e-056d-4b56-8c04-06c19ef41d21>
+  Info: !<NativeLibraryInfo>
+    BinaryFormat: Elf
+    Architecture: Bit64
+    DependentLibraryNames:
+      - libSpecsWebRTC.so
+      - libspecs_media.so.1
+      - libspecs_camera.so.1
+      - libpthread.so.0
+      - libc++.so.1
+      - libm.so.6
+      - libc.so.6
+      - ld-linux-aarch64.so.1
+    DependentLibraries:
+      - !<reference> 99413590-e6e2-44e7-9921-cf66e842096b
+    Permissions:
+      []

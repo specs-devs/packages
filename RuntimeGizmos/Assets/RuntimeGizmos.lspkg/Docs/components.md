@@ -43,8 +43,8 @@ Each is a named export (no default export).
 - **Logging**: every gizmo has `enableLogging` and `enableLoggingLifecycle`
   (`false`). Setup errors such as a missing center or too few points go
   through `logger.debug`, so they only print when logging is on.
-- **Line material**: every gizmo in the prefab uses SpectaclesInteractionKit's
-  `SpectaclesInteractionKit.lspkg/Components/Interaction/InteractorLineVisual/InteractorLineMaterial.mat`
+- **Line material**: every gizmo in the prefab uses InteractionKit's
+  `InteractionKit.lspkg/Components/Interaction/InteractorLineVisual/InteractorLineMaterial.mat`
   (the material of SIK's interactor line), not a material from this package.
 
 ## `Line`

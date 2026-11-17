@@ -42,10 +42,10 @@ import { MidiKind, midiNoteName } from 'Midi.lspkg/Core/MidiTypes'
 
 Drop `Midi__PLACE_IN_SCENE.prefab` into the scene to get the guide, the example carousel and the demo panel; the panel builds its own UI (title, explanation text, pads, BPM / note readout, Start / Stop) at runtime. The panel runs entirely off `MockMidiTransport`, so it
 plays in Lens Studio Preview with no hardware. The **core modules (`Core/`, `Transports/`, `Timing/`) import no
-other package**. The optional `Examples/MidiExamplesPanel` imports SpectaclesUIKit, the
-`Example/` demo scaffolding (guide and carousel) imports SpectaclesInteractionKit and
-SpectaclesUIKit, and `Testing/` imports Leaf. The package itself still declares
-SpectaclesInteractionKit, SpectaclesUIKit, Motion, Icons and Leaf in `package_dependencies.json`,
+other package**. The optional `Examples/MidiExamplesPanel` imports UIKit, the
+`Example/` demo scaffolding (guide and carousel) imports InteractionKit and
+UIKit, and `Testing/` imports Leaf. The package itself still declares
+InteractionKit, UIKit, Motion, Icons and Leaf in `package_dependencies.json`,
 so they are installed with it.
 
 ## The transport seam
@@ -54,7 +54,7 @@ Every transport (Bluetooth today, a wired path later) implements the `MidiTransp
 
 ## Behavior contract
 
-The `test/` suite in this repo is the behavior contract. It runs on plain Node (>= 22, `node --experimental-strip-types`) with no build step and includes a frozen real-device capture fixture (`op1f-notes`, captured off a real OP-1 Field over BLE-MIDI on a Specs device). The de-framer's output must not change: if a change moves those fixture assertions, it is a regression, not a feature.
+The `test/` suite in this repo is the behavior contract. It runs on plain Node (>= 22, `node --experimental-strip-types`) with no build step and includes a frozen real-device capture fixture (`op1f-notes`, captured off a real OP-1 Field over BLE-MIDI on a Spectacles device). The de-framer's output must not change: if a change moves those fixture assertions, it is a regression, not a feature.
 
 ```bash
 bash test/run.sh
@@ -62,4 +62,4 @@ bash test/run.sh
 
 ## Versioning
 
-Semver, chosen explicitly at release time rather than derived from anything else; the installed version is the Version field in `package.native`. SpectaclesInteractionKit is a declared dependency (`package_dependencies.json`) used only by the `Example/` demo scaffolding; the MIDI modules don't import it. Exports are filed under `release/ls-<version>/` to record which Lens Studio build produced each archive, and the version you install from the Asset Library is the semver. Release tooling is outside the installed package.
+Semver, chosen explicitly at release time rather than derived from anything else; the installed version is the Version field in `package.native`. InteractionKit is a declared dependency (`package_dependencies.json`) used only by the `Example/` demo scaffolding; the MIDI modules don't import it. Exports are filed under `release/ls-<version>/` to record which Lens Studio build produced each archive, and the version you install from the Asset Library is the semver. Release tooling is outside the installed package.

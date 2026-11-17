@@ -24,6 +24,7 @@
   VersionPatch: 0
   VersionPrerelease: ""
   UpdateOrder: 0
+  RunInEditor: false
   ComponentUid: 44935598-dcf0-4c82-a1e9-58c7bd02c365
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
@@ -105,7 +106,7 @@
     -
       {}
   InputLines:
-    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">InteractionModesManager</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Buttons toggle modes — any combination is allowed. Cubes appear only when a mode is active. On device hands are always resolved via SIK; testMode only applies in the editor.</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">InteractionModesManager</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Buttons toggle modes — any combination is allowed. Cubes appear only when a mode is active. On device hands are always resolved via IK; testMode only applies in the editor.</span>"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"group_start", "label":"Status"}'
     - '// @input Component.Text statusText {"hint":"Text component that displays active modes and live channel values"}'

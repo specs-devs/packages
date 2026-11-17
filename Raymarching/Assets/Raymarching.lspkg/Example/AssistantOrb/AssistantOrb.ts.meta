@@ -1,0 +1,62 @@
+- !<AssetImportMetadata/8366aa43-d898-403d-90f3-4041389e8956>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 7d2ae647-262d-4d1e-8f0e-9db006b3316e
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 7d2ae647-262d-4d1e-8f0e-9db006b3316e
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 90b6ef68-a057-47ce-9556-4300acf57231
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/90b6ef68-a057-47ce-9556-4300acf57231>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 81c6eefa-4bc4-40c2-9a20-8fbe62a60e36
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    animationSpeed: false
+    field: false
+    intensity: false
+    orbSize: false
+    panelOffset: false
+    showPanel: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - field: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      orbSize: !<float> 90.000000
+      intensity: !<float> 1.000000
+      animationSpeed: 1.500000
+      showPanel: true
+      panelOffset: !<Vec3> {x: 24.000000, y: 0.000000, z: 0.000000}
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input AssignableType_1 field {"hint":"Field the orb belongs to"}'
+    - '// @input float orbSize = 90 {"hint":"Overall orb size (cm per orb unit; 90 gives a ~13 cm core)"}'
+    - '// @input float intensity = 1 {"hint":"1 = calm idle, higher = more chaotic", "widget":"slider", "min":0, "max":5, "step":0.01}'
+    - '// @input float animationSpeed = 1.5 {"hint":"Base animation speed"}'
+    - '// @input bool showPanel = true {"hint":"Show the control panel"}'
+    - '// @input vec3 panelOffset = {24,0,0} {"hint":"Panel position relative to this object (cm)"}'

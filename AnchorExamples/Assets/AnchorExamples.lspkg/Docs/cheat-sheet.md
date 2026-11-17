@@ -14,3 +14,5 @@ Read first before changing the installed package.
 6. The demo uses System 3.0 UIKit and awaits deferred startup. Note prefab must reference the installed TextInputField asset. → [Troubleshooting](troubleshooting.md)
 7. Surface snapping tracks newly spawned widgets, not all existing ones; only the active right-hand interactor supplies hits. → [Components](components.md)
 8. Minimize is temporary. Release restores the original local transforms; exit saves the current widget transforms. → [Examples](examples.md)
+9. Show anchored content only while `Tracking` and inside an uncertainty budget; `PersistentAnchorExample` is the minimal reference. Anchors are immutable: move = create + save + delete. → [Examples](examples.md)
+10. `getGeoPosition` answers for Custom Location anchors only, needs the user's location permission, and needs no tracker. → [API status](api-status.md)

@@ -1,4 +1,4 @@
-import NativeLogger from "SpectaclesInteractionKit.lspkg/Utils/NativeLogger"
+import NativeLogger from "InteractionKit.lspkg/Utils/NativeLogger"
 import {calculateBearing, getPhysicalDistanceBetweenLocations, normalizeAngle} from "./NavigationUtils"
 import {Place} from "./Place"
 import {UserPosition, UserPositionStatus} from "./UserPosition"

@@ -4,8 +4,8 @@
  * through control points with options for continuous or split segments, customizable colors,
  * and dynamic updates for path visualization.
  */
-import { withAlpha } from "SpectaclesInteractionKit.lspkg/Utils/color"
-import InteractorLineRenderer from "SpectaclesInteractionKit.lspkg/Components/Interaction/InteractorLineVisual/InteractorLineRenderer"
+import { withAlpha } from "InteractionKit.lspkg/Utils/color"
+import InteractorLineRenderer from "InteractionKit.lspkg/Components/Interaction/InteractorLineVisual/InteractorLineRenderer"
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
 

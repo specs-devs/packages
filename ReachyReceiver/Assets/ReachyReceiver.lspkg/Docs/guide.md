@@ -98,7 +98,7 @@ Reachy Mini Daemon (MuJoCo or Physical Robot)
 
 **ReachyUIManager Component:**
 - Assign all panel SceneObjects (panelTracking, panelSpeed, panelMovements, panelCharacter, panelPresets)
-- Assign all UI component references (sliders, switches, buttons from SpectaclesUIKit)
+- Assign all UI component references (sliders, switches, buttons from UIKit)
 - Assign uiController: ReachyUIController component
 - Assign reachyController: ReachyMiniController component
 
@@ -282,14 +282,14 @@ Declared in `package_dependencies.json` (names only; Motion and Icons are also d
 
 - **Utilities**: Logger system for debugging and monitoring
 - **SnapDecorators**: @bindStartEvent, @bindUpdateEvent decorators for lifecycle management
-- **SpectaclesInteractionKit**: animate() utility and Event for smooth transitions
-- **SpectaclesUIKit**: Switch, Slider, BaseButton, SwitchToggleGroup and Frame UI components
+- **InteractionKit**: animate() utility and Event for smooth transitions
+- **UIKit**: Switch, Slider, BaseButton, SwitchToggleGroup and Frame UI components
 
 ## Resources
 
 - [Reachy Mini Documentation](https://pollen-robotics-reachy-mini.hf.space/)
 - [Pollen Robotics GitHub](https://github.com/pollen-robotics/reachy_mini)
-- [Lens Studio Documentation](https://docs.snap.com/lens-studio)
-- [SPECS UI Kit](https://github.com/Snapchat/SpectaclesUIKit)
+- Lens Studio Documentation
+- UI Kit
 
 ## Built with 👽 by the SPECS team

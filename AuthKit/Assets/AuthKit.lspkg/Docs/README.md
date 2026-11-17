@@ -36,7 +36,7 @@ whose Specs Lens must call an external service on behalf of the user.
 ## Extra info
 - **Requires:** InteractionKit and UIKit, used only by the `Example/` scripts; `Core/` imports no package and uses
   `InternetModule`, `DeepLinkModule` and `persistentStorageSystem`. Register
-  `https://www.spectacles.com/deeplink/specslink/oauth2redirect/unsecure` (the default `redirectUri`) with your
+  `https://lenses.specs.com/deeplink/specslink/oauth2redirect/unsecure` (the default `redirectUri`) with your
   provider. `authorize()` works only on Specs: in the Lens Studio Preview it rejects with
   `Authorization not supported in editor mode`. `authorize()` has no timeout, and the demo's endpoints are
   placeholders you must replace with your provider's values.

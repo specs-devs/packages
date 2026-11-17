@@ -14,7 +14,7 @@ A native face-mesh/head-binding prefab plus a reusable MatchTransformTS componen
 
 ## Usage
 
-This section ships with the package and describes the exact installed revision. Generic Lens scripting, scene construction and Specs spatial design live in the CLAD skills; this package owns its API, prefab wiring and limitations.
+This section ships with the package and describes the exact installed revision. Generic Lens scripting, scene construction and Specs spatial design are out of scope here; this package owns its API, prefab wiring and limitations.
 
 ### Package identity
 
@@ -22,7 +22,7 @@ This section ships with the package and describes the exact installed revision. 
 - Consumer import: `FaceMesh.lspkg/Scripts/MatchTransform`; exported class `MatchTransformTS`.
 - Prefab: `FaceMesh.lspkg/FaceMesh__PLACE_IN_SCENE.prefab` (its `Camera` child is the scene camera; keep one camera).
 - The `__PLACE_IN_SCENE` prefab is self-contained: besides the Camera → Effects / AmbientLight setup it includes the onboarding `Guide` and the `ExampleCarousel`, so dropping it into an empty Specs scene gives the full demo. Their demo-only scripts ship in `FaceMesh.lspkg/Example/` (`ExampleCarousel/`, `GuideDismissPanel/`), and the Camera's render target ships in `FaceMesh.lspkg/Render/`. Delete `Guide` and `ExampleCarousel` from your instance when you build your own Lens ([components](Docs/components.md#demo-scaffolding-example)).
-- Declared companions: SnapDecorators, Utilities, SpectaclesInteractionKit, SpectaclesUIKit, Motion and Icons. See `package_dependencies.json`.
+- Declared companions: SnapDecorators, Utilities, InteractionKit, UIKit, Motion and Icons. See `package_dependencies.json`.
 
 ### Version and API status
 
@@ -31,12 +31,6 @@ Read [API status](Docs/api-status.md) for the current prefab contents, follower 
 ### Applicability
 
 Use the native prefab for its authored face geometry and HeadBinding; use MatchTransformTS for a separately assigned tracking target. Face detection and landmark acquisition come from native tracking, not the follower script. Use BodyMesh for its separate native body-tracking example.
-
-### Related CLAD skills
-
-[scene-construction](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/scene-construction/SKILL.md), [lens-api](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/lens-api/SKILL.md). These skills cover the surrounding Lens workflow.
-
-[Install CLAD](https://developers.specs.com/docs/clad/setup/setup-ai/) or browse its [source](https://github.com/lens-studio-devs/ls-extensions). Read the installed package docs for this revision’s APIs.
 
 ### Package Docs (ship in Docs/)
 

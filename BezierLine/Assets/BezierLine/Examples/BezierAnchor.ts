@@ -12,11 +12,11 @@
  * 3. Reports what happens through typed events (onDragStart / onDragUpdate / onDragEnd). The board
  *    (BezierExamples) owns the lines, so the anchor never has to know about connections.
  */
-import Event, {PublicApi} from "SpectaclesInteractionKit.lspkg/Utils/Event"
-import {Interactable} from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
-import {InteractableManipulation} from "SpectaclesInteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation"
-import {InteractorEvent} from "SpectaclesInteractionKit.lspkg/Core/Interactor/InteractorEvent"
-import {Interactor} from "SpectaclesInteractionKit.lspkg/Core/Interactor/Interactor"
+import Event, {PublicApi} from "InteractionKit.lspkg/Utils/Event"
+import {Interactable} from "InteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
+import {InteractableManipulation} from "InteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation"
+import {InteractorEvent} from "InteractionKit.lspkg/Core/Interactor/InteractorEvent"
+import {Interactor} from "InteractionKit.lspkg/Core/Interactor/Interactor"
 import {BezierLine} from "../Scripts/BezierLine"
 import type {BezierCard} from "./BezierCard"
 

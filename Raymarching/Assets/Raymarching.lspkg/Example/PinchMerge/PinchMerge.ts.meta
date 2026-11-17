@@ -1,0 +1,59 @@
+- !<AssetImportMetadata/2febc90d-3a5d-4096-b82d-5512c57c05a7>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 2b3d52b5-bb7b-47a2-a69f-fd1e475e0454
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 2b3d52b5-bb7b-47a2-a69f-fd1e475e0454
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> d8c30d93-63a1-46d8-aead-18a914725ee9
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/d8c30d93-63a1-46d8-aead-18a914725ee9>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 74960759-b9e3-46e0-8b3c-9b91203c341b
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    count: false
+    field: false
+    radius: false
+    returnDelay: false
+    ringRadius: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - field: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      count: !<float> 5.000000
+      radius: 3.200000
+      ringRadius: !<float> 9.000000
+      returnDelay: 2.500000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input AssignableType_1 field {"hint":"Field the orbs belong to"}'
+    - '// @input float count = 5 {"hint":"Number of orbs (max 8 per field)", "widget":"slider", "min":1, "max":8, "step":1}'
+    - '// @input float radius = 3.2 {"hint":"Orb radius (cm)"}'
+    - '// @input float ringRadius = 9 {"hint":"Radius of the ring the orbs start on (cm)"}'
+    - '// @input float returnDelay = 2.5 {"hint":"Seconds after release before an orb drifts back home (0 = never)"}'

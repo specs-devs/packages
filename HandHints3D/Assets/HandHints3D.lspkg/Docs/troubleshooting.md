@@ -4,7 +4,7 @@
 
 ## Use when
 
-Use this table for package-specific failures. Generic Lens scripting, scene placement, rendering and TypeScript issues belong to the relevant CLAD skill. Rows marked *QA 2026-09* were found while making the HandHints3D demo project QA-ready in Lens Studio.
+Use this table for package-specific failures. Generic Lens scripting, scene placement, rendering and TypeScript issues are outside this package's scope. Rows marked *QA 2026-09* were found while making the HandHints3D demo project QA-ready in Lens Studio.
 
 ## Known limitations
 

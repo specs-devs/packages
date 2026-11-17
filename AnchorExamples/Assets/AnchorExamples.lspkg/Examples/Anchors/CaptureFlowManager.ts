@@ -9,7 +9,7 @@
  * 3. On success `capturedAnchor` holds the saved anchor (persist its `id` to resolve it later) and
  *    `onCaptureComplete` fires. A fallback timer turns a hanging save into `onCaptureTimeout`.
  */
-import Event, {PublicApi} from "SpectaclesInteractionKit.lspkg/Utils/Event"
+import Event, {PublicApi} from "InteractionKit.lspkg/Utils/Event"
 import {Logger} from "../../Scripts/Logger"
 import {Anchor, AnchorController} from "../../Scripts/AnchorController"
 import {CaptureState} from "../App/AppState"

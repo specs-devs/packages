@@ -1,5 +1,5 @@
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event"
-import {LensConfig} from "SpectaclesInteractionKit.lspkg/Utils/LensConfig"
+import Event from "InteractionKit.lspkg/Utils/Event"
+import {LensConfig} from "InteractionKit.lspkg/Utils/LensConfig"
 
 /**
  * Represents a place in either the simulation space or in geo space with {@link GeoPosition}.

@@ -1,0 +1,68 @@
+- !<AssetImportMetadata/8f796d3d-b910-442d-9a17-aafce5397e08>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> f87897f4-2aca-47a8-acf9-383a7a2880bd
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> f87897f4-2aca-47a8-acf9-383a7a2880bd
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> ae67f6ae-7c0e-4dfc-8f02-d7ea1a4c71e3
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/ae67f6ae-7c0e-4dfc-8f02-d7ea1a4c71e3>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 77ed48e3-a140-4f28-b2d5-64893dafa33e
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    blobRadius: false
+    capMaterial: false
+    columnRadius: false
+    count: false
+    field: false
+    glassMaterial: false
+    height: false
+    speed: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - field: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      glassMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      capMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      count: !<float> 6.000000
+      height: !<float> 30.000000
+      columnRadius: 6.500000
+      blobRadius: 2.600000
+      speed: !<float> 1.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input AssignableType_1 field {"hint":"Field the blobs belong to (Lava preset)"}'
+    - '// @input Asset.Material glassMaterial {"hint":"Transparent material for the glass column (optional)"}'
+    - '// @input Asset.Material capMaterial {"hint":"Material for the base and the top cap (optional)"}'
+    - '// @input float count = 6 {"hint":"Number of blobs (max 8 per field)", "widget":"slider", "min":1, "max":8, "step":1}'
+    - '// @input float height = 30 {"hint":"Inner height of the column (cm)"}'
+    - '// @input float columnRadius = 6.5 {"hint":"Inner radius of the column (cm)"}'
+    - '// @input float blobRadius = 2.6 {"hint":"Base blob radius (cm)"}'
+    - '// @input float speed = 1 {"hint":"Speed multiplier"}'

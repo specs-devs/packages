@@ -5,8 +5,8 @@
 ## Use when
 
 Something attached with Hand Attacher misbehaves. Generic scripting, scene and
-rendering issues belong to the relevant CLAD skill (`lens-debug`,
-`specs-debug`).
+rendering issues are outside this package's
+scope.
 
 ## Known issues
 
@@ -23,6 +23,7 @@ rendering issues belong to the relevant CLAD skill (`lens-debug`,
 | The target stays hidden after its own object was hidden | The target is the host, so hiding it also stops the update loop. Re-showing depends on SIK `onHandFound`; older revisions also stayed hidden after `setHand()` onto an already-tracked hand | Fixed: `setHand()` re-shows it, and a re-shown target snaps to the joint. A host + child target (the prefab layout) keeps the loop running |
 | Nothing follows and nothing is logged | `handJoint` is not one of the `HandJoint` values (for example `"thumbUpperJoint"`) | Use a `HandJoint` member; turn on `enableLogging` to see `Joint '…' not found!` |
 | The console floods with joint positions | `enableLogging` logs every frame | Use `debugMode` for found/lost lines only |
+| (Upcoming Specs OS) A permission prompt appears when the Lens uses hand data, or the target never appears after the user declined it | Hand Attacher reads raw hand-joint data, which is being gated behind a user permission | Expected, not a package bug. The user must allow it; with `hideWhenNotTracked` the target stays hidden while joint data is unavailable. See the [README](../README.md#hand-tracking-permission-upcoming) |
 | Release in Preview does not hide the target | The simulated Preview hand can stay tracked after Release | Not a package bug; verify hide-on-lost on device |
 
 ## Verification

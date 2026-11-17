@@ -5,19 +5,20 @@
 ## Use when
 
 Read this to find your way around the package: which folder holds what, what
-the shipped prefab contains, and how the Rocket Workshop is put together. For
+the shipped prefab contains, and how the Interaction Showcase is put together. For
 exact members see [components](components.md). For what is safe to copy see
 [API status](api-status.md).
 
 ## Quick start
 
-1. Install **SpectaclesInteractionKit** and **SpectaclesUIKit** at the versions
+1. Use Lens Studio 5.25+. Install **InteractionKit** and **UIKit** at the versions
    declared in `package_dependencies.json` (via the Asset Library or local
    `Packages/`).
 2. Add this package to your Specs project from the Asset Library, or import the
    unpacked `.lspkg` folder.
-3. Place `InteractionKitExamples__PLACE_IN_SCENE.prefab` in the scene, next to the SIK prefab.
-4. Press Play in Preview or on device. Use the UI, Rocket Workshop and Interaction
+3. Place `InteractionKitExamples__PLACE_IN_SCENE.prefab` in the scene, next to the InteractionKit prefab.
+4. Press Play in Preview or on device. Close the guide: the Interaction Showcase
+   comes first. Then use the carousel to step through the UI and Interaction
    groups to see list scrolling, manipulation, and Specs UI conventions.
 
 ## Layout overview
@@ -25,12 +26,12 @@ exact members see [components](components.md). For what is safe to copy see
 | Area | Purpose |
 |------|--------|
 | `InteractionKitExamples__PLACE_IN_SCENE.prefab` | Root prefab users place in the scene |
-| `Scripts/UI/` | UIKit example scripts (frames, buttons, sliders, toggles, grids, scroll windows, menus, carousel, modal, video, deck, chat) |
-| `Scripts/Interaction/` | SIK interaction examples (manipulation, distance field, interaction modes, diamond grid) |
+| `Scripts/UI/` | UIKit example scripts (frames, buttons, sliders, toggles, grids, scroll windows, menus, carousel, modal, deck, chat) |
+| `Showcase/` | The Interaction Showcase: `Scripts/` (the showcase scripts), `Jellyfish/` (mesh, material, matcap and the soft-body `physics.ts` used for the tentacles), `Crystal/` (crystal meshes, shader, material, textures) and `Audio/` (grab, pinch and poke sounds) |
+| `Scripts/Interaction/` | InteractionKit interaction examples (manipulation, distance field, interaction modes, diamond grid) |
 | `Scripts/Utils/` | Shared helper scripts (`TextLimiter`, `TreeStructureUtils`) |
 | `Scripts/GuideDismissPanel/` | Guide-on-a-Frame helper (not used by the prefab) |
 | `Example/` | Demo scaffolding used by the prefab: `ExampleCarousel` (steps through the examples) and `GuideDismissPanel` (the intro guide) |
-| `RocketWorkshop/` | Self-contained, code-first rocket-builder demo (has its own [README](../RocketWorkshop/README.md)) |
 | `Fonts/` `Materials/` `Meshes/` `Prefabs/` `Shaders/` `Textures/` | Shared assets used by the `Scripts/UI` and `Scripts/Interaction` examples. `Fonts/` holds the SpecsSans weights the builders load when their font inputs are empty |
 
 ## Prefab map
@@ -38,64 +39,68 @@ exact members see [components](components.md). For what is safe to copy see
 `InteractionKitExamples__PLACE_IN_SCENE` holds the `Guide` panel, the `ExampleCarousel`
 panel and three example groups. The guide hides the carousel and the groups until
 it is closed; the carousel then enables one example at a time (15 steps across the
-three groups). Without the carousel, keep one group enabled at a time.
+three groups), starting with the Showcase. The Showcase is listed in the carousel's
+`fixedExamples`, so it stays where it is authored, within arm's reach, instead of
+being moved behind the carousel like the other examples. Without the carousel, keep one group enabled at a time.
 
 | Group | Navigator | Children (in `UIController` order) |
 |---|---|---|
-| `[EXAMPLES] UI` | `UIController` + `Menu` (◀ ▶, title, counter) | `ExampleMenuHorizontalLayout`, `ExampleMenuVerticalLayout`, `ExampleGridSimpleTheme` ×2 (`ExampleGridSimple`), `ExampleDynamicGrid` (`ExampleGrid`, draggable + scrollable), `ExampleCarouselLayout`, `ExampleAdaptableTextArea` (`ExampleRoundedRectangle`), `ExampleModalLayout`, `ExampleVideoPlayer`, `ExampleDeckParent/ExampleDeck`, `ExampleChatParent/ExampleChat` |
-| `[EXAMPLES] Rocket Workshop` | none | `RocketWorkshop` on the group root; `Objects/` holds `Manipulation Examples` (grabbable planet, satellite and meteor above the rocket), `Rocket Holder`, `Platform` (off until the switch shows it) |
-| `[EXAMPLES] Interaction` | `UIController` + `Menu` | `Manipulate` (`ExampleSimpleManipulation` + mesh/sphere/box with SIK `Interactable` + `InteractableManipulation`), `DistanceField` (grab the sphere to pilot the spaceship along the curve; the prefab has no in-scene instruction label, so give that hint in your own UI), `InteractiveTransform` (`InteractionModesManager` + hand/pinch mock-ups + Frame with the four mode buttons) |
+| `[EXAMPLES] Showcase` | `ShowcaseSelector` + the far panel's toggle group | `Showcases/` (`Showcase_Jellyfish`, `Showcase_Chain`, `Showcase_Poke`, `Showcase_Pinch`), `FarPanelPlacement/FarPanel` (title, the Color panel button, the Direct / Indirect / Poke / Pinch toggle group and one control section per showcase), `NearPanelPlacement/NearPanel` (color slider and hold-to-reset button; off until opened), `NearMenuController` (`NearMenuToggle`), `ShowcaseSelector` |
+| `[EXAMPLES] UI` | `UIController` + `Menu` (◀ ▶, title, counter) | `ExampleMenuHorizontalLayout`, `ExampleMenuVerticalLayout`, `ExampleGridWide` and `ExampleGridSquare` (`ExampleGridSimple`, 2×4 and 3×3), `ExampleDynamicGrid` (`ExampleGrid`, draggable + scrollable), `ExampleCarouselLayout`, `ExampleAdaptableTextArea` (`ExampleRoundedRectangle`), `ExampleModalLayout`, `ExampleDeckParent/ExampleDeck`, `ExampleChatParent/ExampleChat` |
+| `[EXAMPLES] Interaction` | `UIController` + `Menu` | `Manipulate` (`ExampleSimpleManipulation` + mesh/sphere/box with InteractionKit `Interactable` + `InteractableManipulation`), `DistanceField` (grab the sphere to pilot the spaceship along the curve; the prefab has no in-scene instruction label, so give that hint in your own UI), `InteractiveTransform` (`InteractionModesManager` + hand/pinch mock-ups + Frame with the four mode buttons) |
 
 The scripts that no prefab uses (`ExampleScrollWindowLayout`, `ExampleSlidersLayout`,
 `ExampleSwitchToggleGroupLayout`, `ExampleToggleGroupLayout`, `ExampleReactiveLayout`,
 `ExampleDynamicLayout`, `UIManager`, `UIKitCustomVisuals*`, `ExampleDiamondGrid`,
 `GuideDismissPanel`) are self-contained. Add one to an empty SceneObject to see it.
 
-## Rocket Workshop walkthrough
+## Interaction Showcase walkthrough
 
-The Rocket Workshop builds its UI and interaction **entirely in TypeScript**,
-with no `@input` wiring and no UI prefabs. The 3D diorama (rocket model,
-materials, VFX, animation clips) is authored art. The only coupling between art
-and code is a handful of lookups by name or component type in `RocketWorkshop.ts`.
+The Showcase is **authored in the hierarchy**: every panel, row, slider, switch
+and button is a UIKit component you can select and edit in the Inspector, and
+every script is wired with `@input`. Each script does one thing and subscribes
+to InteractionKit / UIKit events in `OnStartEvent`.
+
+| Showcase | Toggle | Objects | Behavior scripts | Controls (far panel) |
+|---|---|---|---|---|
+| Jellyfish | Direct | `Jellyfish` (`Interactable` in Direct targeting mode + `InteractableManipulation` + `InteractableAudioFeedback`) | `ThrowOnRelease`, `physics` (tentacles) | `JellyfishControls`: size slider, throwable switch, reset button |
+| Crystal chain | Indirect | `Crystal_1` … `Crystal_7` (`Interactable` in Indirect targeting mode + `InteractableManipulation`) | `CrystalChain` | `ChainControls`: follow speed and spacing sliders, depth pull switch, regroup button |
+| Poke crystal | Poke | `PokeCrystal` (`Interactable` in Poke targeting mode) | `PokeShrink` | `PokeControls`: shrink amount and speed sliders, front-only switch |
+| Pinch crystal | Pinch | `PinchCrystal` (`Interactable` in Direct targeting mode) | `PinchGrow`, `PinchSpin` | `PinchControls`: pinch spin slider, idle turn switch |
 
 Read in this order:
 
 | # | File | What it teaches |
 |---|------|-----------------|
-| 1 | `RocketWorkshop/Scripts/RocketWorkshop.ts` | The entry point on the diorama root: finds the authored objects, creates the configurator, builds both panels |
-| 2 | `RocketWorkshop/Scripts/RocketUI.ts` | A small UIKit toolkit (`frame`, `flexColumn/Row`, `button`, `toggleBtn`, `slider`, `switchControl`, `scrollWindow`, `label`, …) |
-| 3 | `RocketWorkshop/Scripts/LaunchControlPanel.ts` | Launch button + flight-path toggle group + speed slider + platform switch, plus the launch → takeoff → landing sequence |
-| 4 | `RocketWorkshop/Scripts/PartSelectorPanel.ts` | A `ScrollWindow` of part sections, each a `ToggleGroup` of thumbnail rows |
-| 5 | `RocketWorkshop/Scripts/RocketConfigurator.ts` | Assembles the rocket from interchangeable part prefabs loaded with `requireAsset` |
-| – | `RocketWorkshop/Scripts/ExhaustControls.ts` | Exhaust and smoke VFX/material control on the fins prefabs |
-
-```
-RocketWorkshop (entry, on the diorama root)
-├── finds authored art:  AnimationPlayer, "Rocket" holder, "Platform", "Rocket_sparks"
-├── creates RocketConfigurator ──── assembles rocket from Prefabs/Parts/*.prefab
-├── new LaunchControlPanel(...) ─── builds its UI with RocketUI.* (no @input)
-└── new PartSelectorPanel(...) ──── builds its UI with RocketUI.* (no @input)
-```
+| 1 | `Showcase/Scripts/ShowcaseSelector.ts` | Switching showcases from a UIKit `ToggleGroup`; lists matched by position |
+| 2 | `Showcase/Scripts/PokeShrink.ts`, `PinchGrow.ts`, `PinchSpin.ts` | Reacting to poke, hover and pinch on a single `Interactable`, with InteractionKit's `SpringAnimate1D` |
+| 3 | `Showcase/Scripts/CrystalChain.ts`, `ThrowOnRelease.ts` | Building on `InteractableManipulation` events (manipulation start / end) |
+| 4 | `Showcase/Scripts/*Controls.ts`, `ColorPanel.ts` | Driving behavior from UIKit `Slider`, `Switch`, `ColorSlider` and `Button` events |
+| 5 | `Showcase/Scripts/NearMenuToggle.ts` | Opening and closing a near panel from a UIKit `Button` (`onTriggerUp`) |
 
 Conventions worth copying:
 
-- Build UI on `OnStartEvent`, not in `onAwake` (UIKit/SIK finish their own setup first).
+- Subscribe to InteractionKit and UIKit events on `OnStartEvent`, not in
+  `onAwake` (InteractionKit and UIKit finish their own setup first).
 - The first import in any file that touches UIKit visuals is
-  `import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService"`.
-- `requireAsset(...)` paths are static string literals (see the explicit
-  `PART_PREFABS` / `THUMBNAILS` tables).
-- Register `onToggleSelected` handlers **after** setting the initial selection, so
-  they don't fire during the build.
-- Panel placement lives in tunable constants at the top of `RocketWorkshop.ts`:
-  `PART_SELECTOR_LOCAL_POS (-40, 2, -62)`, `LAUNCH_CONTROLS_LOCAL_POS (42, -3, -62)`.
+  `import "UIKit.lspkg/Scripts/Themes/ThemeService"`.
+- Follow sliders through `onKnobMoved` (every frame the knob moves) when the
+  change should show while dragging; `onValueChange` only fires on release.
+- Hierarchy order matters: `ShowcaseSelector` sits below the far panel, so the
+  toggles have started (and know which one is on) when it starts.
 
-Not worth copying as-is: the `RocketUI` builders still set some private UIKit
-fields (Frame size, Button style/shape/toggleable, `ElementContent`) through
-`as any`. Keep the structure and swap those writes for UIKit's public API
-([api-status](api-status.md#internal-do-not-copy-into-new-code)).
+Notes:
+
+- `NearMenuToggle` opens and closes the near panel when the **Color panel**
+  button (`FarPanel/Content/Header/ColorPanelButton`, a System 3.0 Primary
+  capsule `Button`) is tapped. Each open places the panel along your gaze. Its
+  optional `camera` input falls back to the scene's world camera.
+- `Showcase/Jellyfish/Scripts/physics.ts` is a vendored soft-body chain solver
+  (a TypeScript rewrite of a JavaScript physics script) kept as-is. It is the one
+  file in the Showcase that is not written as a minimal example.
 
 ## Customization
 
 Treat the prefabs as **reference implementations**. For shipping Lenses, strip
-unused meshes and VFX, trim the assets under `RocketWorkshop/`, and replace
+unused meshes and audio, trim the assets under `Showcase/`, and replace
 placeholder branding with your own art and copy.

@@ -44,9 +44,11 @@ const response = await internetModule.fetch("https://api.provider.com/user", {
 });
 ```
 
-Register `https://www.spectacles.com/deeplink/specslink/oauth2redirect/unsecure` (the default
-`redirectUri`) as an allowed redirect URI with your provider. Provider setup, the full UI flow,
-an authenticated API client and error handling are in [Docs/](Docs/examples.md).
+Register `https://lenses.specs.com/deeplink/specslink/oauth2redirect/unsecure` (the default
+`redirectUri`) as an allowed redirect URI with your provider. Also set a stable **Package ID**
+in **Project Settings → Platform Settings → SPECS → SPK Configuration** (the lensId used by
+deep links). Provider setup, Package ID, the full UI flow, an authenticated API client and
+error handling are in [Docs/setup.md](Docs/setup.md) and [Docs/examples.md](Docs/examples.md).
 
 ## Script Highlights
 
@@ -59,7 +61,7 @@ an authenticated API client and error handling are in [Docs/](Docs/examples.md).
 This section ships with the package and describes the installed package
 (the version lives in `package.native`). Read it, then follow the links into `Docs/` for the topic you
 need. It is written for both people and coding agents; generic Lens scripting, scene
-construction and Specs spatial design live in the CLAD skills, not here.
+construction and Specs spatial design are out of scope here.
 
 ### Package identity
 
@@ -67,12 +69,12 @@ construction and Specs spatial design live in the CLAD skills, not here.
 - Consumer import prefix: `AuthKit.lspkg/Core/<Module>` — `AuthKit.lspkg/Core/OAuth2`,
   `AuthKit.lspkg/Core/Token`, `AuthKit.lspkg/Core/TokenManager`. There is no `Scripts/` folder
   and no `@component`: AuthKit is plain TypeScript classes you create from your own script.
-- Companion packages (`package_dependencies.json`): SpectaclesInteractionKit and
-  SpectaclesUIKit. `Core/` itself imports no package: it only uses
+- Companion packages (`package_dependencies.json`): InteractionKit and
+  UIKit. `Core/` itself imports no package: it only uses
   `require("LensStudio:InternetModule")`, `require("LensStudio:DeepLinkModule")` and
   `global.persistentStorageSystem`. The two frameworks are needed by the `Example/` scripts:
-  `AuthKitDemo`, `ExampleCarousel` and `GuideDismissPanel` import `SpectaclesUIKit.lspkg/...`,
-  and `ExampleCarousel` / `GuideDismissPanel` also import `SpectaclesInteractionKit.lspkg/...`.
+  `AuthKitDemo`, `ExampleCarousel` and `GuideDismissPanel` import `UIKit.lspkg/...`,
+  and `ExampleCarousel` / `GuideDismissPanel` also import `InteractionKit.lspkg/...`.
 - Prefab entry point: `AuthKit__PLACE_IN_SCENE.prefab`. The prefab is self-contained:
   it carries the guide panel ("Ok, I understood"), the example carousel and the `AuthKitDemo`
   session panel (Sign in / Get token / Test token / Sign out), so dropping it into a Specs scene
@@ -93,12 +95,6 @@ Use AuthKit when a Lens must sign the wearer in to a third-party OAuth2 / OIDC p
 (Google, Spotify, GitHub, your own server …) and call that provider's API with a bearer
 token. Use Snap Cloud (Supabase) auth for Lens backends hosted on Snap Cloud, and
 `InternetModule` alone for public endpoints that need no user authorization.
-
-### Related CLAD skills
-
-[specs-snap-cloud](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/specs-snap-cloud/SKILL.md). These skills cover the surrounding Lens workflow.
-
-[Install CLAD](https://developers.specs.com/docs/clad/setup/setup-ai/) or browse its [source](https://github.com/lens-studio-devs/ls-extensions). Read the installed package docs for this revision’s APIs.
 
 ### Package Docs (ship in `Docs/`)
 

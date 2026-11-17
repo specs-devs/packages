@@ -7,7 +7,7 @@ import { EasingData } from "./Scripts/EasingData"
 import { EventResponseType } from "./Scripts/EventResponseType"
 // Native, self-contained tween (no LSTween / no package dependency).
 import { LSTween, Easing, type Tween } from "./Scripts/NativeTween"
-import { Interactable } from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
+import { Interactable } from "InteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
 import { SceneObjectUtils } from "Utilities.lspkg/Scripts/Utils/SceneObjectUtils"
 import { ValidationUtils } from "Utilities.lspkg/Scripts/Utils/ValidationUtils"
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";

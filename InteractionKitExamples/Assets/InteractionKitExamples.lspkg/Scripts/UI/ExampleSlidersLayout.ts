@@ -2,15 +2,15 @@
 // crash in the package (Visual.ts imports ThemeService before defining COLORS, and the
 // theme chain reads COLORS at module-load). Entering the import cycle via ThemeService
 // lets Visual.ts finish defining COLORS first. Must remain the FIRST import.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService"
-import {BackPlate, BackPlateStyle} from "SpectaclesUIKit.lspkg/Scripts/BackPlate"
-import {ElementContent} from "SpectaclesUIKit.lspkg/Scripts/Components/Content/ElementContent"
-import {Frame} from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame"
-import {FlexItem} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexItem"
-import {FlexLayout} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexLayout"
-import {FlexAlign, FlexDirection, FlexJustify} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexTypes"
-import {Slider} from "SpectaclesUIKit.lspkg/Scripts/Components/Slider/Slider"
-import {Billboard} from "SpectaclesInteractionKit.lspkg/Components/Interaction/Billboard/Billboard"
+import "UIKit.lspkg/Scripts/Themes/ThemeService"
+import {BackPlate, BackPlateStyle} from "UIKit.lspkg/Scripts/BackPlate"
+import {ElementContent} from "UIKit.lspkg/Scripts/Components/Content/ElementContent"
+import {Frame} from "UIKit.lspkg/Scripts/Components/Frame/Frame"
+import {FlexItem} from "UIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexItem"
+import {FlexLayout} from "UIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexLayout"
+import {FlexAlign, FlexDirection, FlexJustify} from "UIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexTypes"
+import {Slider} from "UIKit.lspkg/Scripts/Components/Slider/Slider"
+import {Billboard} from "InteractionKit.lspkg/Components/Interaction/Billboard/Billboard"
 
 const FONT_LIGHT: Font = requireAsset("../../Fonts/SpecsSans-Light.otf") as Font
 const FONT_REGULAR: Font = requireAsset("../../Fonts/SpecsSans-Regular.otf") as Font
@@ -24,7 +24,7 @@ const CONTENT_RENDER_ORDER_OFFSET = 8
 const LAYOUT_Z_LIFT = 0.02
 const DYNAMIC_TEXT_Z_OFFSET = 0.15
 const LABEL_EDGE_INSET = 0.75
-const PANEL_CONTENT_Z_LIFT = 0.01
+const PANEL_CONTENT_Z_LIFT = 0.05
 // Lift interactive controls clear of the panel backing: their internal visuals
 // depth-test against it and need a gap well above depth-buffer precision.
 const CONTROL_Z_LIFT = 0.05

@@ -2,10 +2,10 @@
 // crash in the package (Visual.ts imports ThemeService before defining COLORS, and the
 // theme chain reads COLORS at module-load). Entering the import cycle via ThemeService
 // lets Visual.ts finish defining COLORS first. Must remain the FIRST import.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService"
-import {Frame} from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame"
-import {RectangleButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton"
-import animate, {CancelSet} from "SpectaclesInteractionKit.lspkg/Utils/animate"
+import "UIKit.lspkg/Scripts/Themes/ThemeService"
+import {Frame} from "UIKit.lspkg/Scripts/Components/Frame/Frame"
+import {RectangleButton} from "UIKit.lspkg/Scripts/Components/Button/RectangleButton"
+import animate, {CancelSet} from "InteractionKit.lspkg/Utils/animate"
 
 /**
  * UI States for the application

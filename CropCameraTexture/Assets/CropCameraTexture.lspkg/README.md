@@ -15,7 +15,7 @@ CameraTexture requests a Default_Color camera feed, applies normalized crop boun
 
 ## Usage
 
-This section ships with the package and describes the exact installed revision. Generic Lens scripting, scene construction and Specs spatial design live in the CLAD skills; this package owns its API and wiring.
+This section ships with the package and describes the exact installed revision. Generic Lens scripting, scene construction and Specs spatial design are out of scope here; this package owns its API and wiring.
 
 ### Package identity
 
@@ -23,7 +23,7 @@ This section ships with the package and describes the exact installed revision. 
 - Consumer import: `CropCameraTexture.lspkg/Scripts/CameraTexture`.
 - Prefab: `CropCameraTexture.lspkg/CropCameraTexture__PLACE_IN_SCENE.prefab`. It's self-contained: it holds the guide panel ("Ok, I understood"), the example carousel and the `CropCameraTextureDemo` group, so dropping it into a Specs scene with Camera, lighting and SIK gives the full demo.
 - Demo scaffolding: `CropCameraTexture.lspkg/Example/` holds `ExampleCarousel` and `GuideDismissPanel`. The prefab uses them to present the demo; CameraTexture doesn't depend on them.
-- Declared companions: SnapDecorators, Utilities, SpectaclesInteractionKit, SpectaclesUIKit, Motion and Icons. See `package_dependencies.json`. `Scripts/CameraTexture.ts` imports SnapDecorators and Utilities; the `Example/` scaffolding imports SpectaclesInteractionKit and SpectaclesUIKit.
+- Declared companions: SnapDecorators, Utilities, InteractionKit, UIKit, Motion and Icons. See `package_dependencies.json`. `Scripts/CameraTexture.ts` imports SnapDecorators and Utilities; the `Example/` scaffolding imports InteractionKit and UIKit.
 
 ### Version and API status
 
@@ -32,12 +32,6 @@ Read [API status](Docs/api-status.md) for lifecycle, supported behavior and veri
 ### Applicability
 
 Use this package for a rectangular region of a camera feed. Use CompositeCameraTexture for its authored render-texture composition example. Zoom/pan/aspect recipes in the guide are consumer patterns, not additional components or automatic crop policies.
-
-### Related CLAD skills
-
-[specs-camera](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/specs-camera/SKILL.md). These skills cover the surrounding Lens workflow.
-
-[Install CLAD](https://developers.specs.com/docs/clad/setup/setup-ai/) or browse its [source](https://github.com/lens-studio-devs/ls-extensions). Read the installed package docs for this revision’s APIs.
 
 ### Package Docs (ship in Docs/)
 

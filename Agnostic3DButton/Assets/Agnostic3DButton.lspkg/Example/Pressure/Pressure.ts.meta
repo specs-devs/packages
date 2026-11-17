@@ -1,0 +1,53 @@
+- !<AssetImportMetadata/2beabd20-b611-4562-8284-7ab7f814a291>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 9c0c86e3-ede3-46ac-880f-6880183b5403
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 9c0c86e3-ede3-46ac-880f-6880183b5403
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> a1dbb7e4-c284-43d6-a2d8-339e0c8550c6
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/a1dbb7e4-c284-43d6-a2d8-339e0c8550c6>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: f2b1d7e3-1522-4958-bcc7-d4ebd6810555
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    capMaterial: false
+    glowMaterial: false
+    lampColor: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - capMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      glowMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      lampColor: !<Vec3> {x: 1.000000, y: 0.780000, z: 0.350000}
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Asset.Material capMaterial
+    - // @input Asset.Material glowMaterial
+    - '// @input vec3 lampColor = {1,0.78,0.35} {"hint":"Lamp colour at full pressure"}'

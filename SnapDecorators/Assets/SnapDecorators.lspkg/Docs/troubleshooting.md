@@ -6,7 +6,7 @@
 
 A decorated script fails to initialize, a handler fires wrongly, or the demo
 project behaves oddly. Generic Lens scripting, scene placement, rendering and
-TypeScript issues belong to the CLAD skills. The rows marked "QA 2026-09" were
+TypeScript issues are outside this package's scope. The rows marked "QA 2026-09" were
 observed while making the bundled packages QA-ready.
 
 ## Known limitations

@@ -6,7 +6,7 @@
 
 Read first before adapting the native face prefab or a transform follower.
 
-1. Keep exactly one main camera, and it needs a DeviceTracking component (World): the prefab's `Camera` child is that camera. If your scene already has a camera, unpack the prefab, move DeviceTracking, AmbientLight and Effects onto yours and delete the prefab's `Camera`. SpectaclesInteractionKit throws "Your main camera is currently missing a 'Device Tracking Component'" otherwise. → [Troubleshooting](troubleshooting.md)
+1. Keep exactly one main camera, and it needs a DeviceTracking component (World): the prefab's `Camera` child is that camera. If your scene already has a camera, unpack the prefab, move DeviceTracking, AmbientLight and Effects onto yours and delete the prefab's `Camera`. InteractionKit throws "Your main camera is currently missing a 'Device Tracking Component'" otherwise. → [Troubleshooting](troubleshooting.md)
 2. The face shader is lit PBR: keep the `AmbientLight` (or another light on the mesh's layer). Unlit, the mesh renders black, and black is invisible on Specs. → [Components](components.md)
 3. Never disable the prefab root or its `Camera` to hide the effect: that turns the camera off. Toggle `Effects` (or `Head Binding`) instead. → [Troubleshooting](troubleshooting.md)
 4. Import MatchTransformTS from `FaceMesh.lspkg/Scripts/MatchTransform`, not a class-named file; create it with `createComponent(MatchTransformTS.getTypeName())`. → [Components](components.md)

@@ -93,12 +93,14 @@ filterBreakdown, truncated`, `capabilities`), `CaptureViewResponse {imageBase64,
 `interactor_busy` (the last five are used by Interact), `unknown_command`, `invalid_params`,
 `unknown_component`, `unknown_property`, `internal_error`, `unsupported`.
 
-## Demo scaffolding (`Example/`)
+## Demo (sample project only)
 
-These scripts ship in `AiPreviewAgentInspect.lspkg/Example/` and are wired inside
-`AiPreviewAgentInspect__PLACE_IN_SCENE.prefab` (order: Guide, ExampleCarousel,
-then `AgentInspectDemo`). They only present the demo. They are not part of the
-bridge, and the agent tools don't need them.
+These scripts are **not in the package**. They live in the repository's sample
+project, `AiPreviewAgentInspect/Assets/Demo/Example/`, and are wired inside
+`Assets/Demo/AiPreviewAgentInspect__PLACE_IN_SCENE.prefab` (order: Guide,
+ExampleCarousel, then `AgentInspectDemo`). They need UIKit and InteractionKit,
+which the package itself must not depend on. They only present the demo, and
+the agent tools don't need them.
 
 | Object / script | Class | Key inputs |
 |---|---|---|

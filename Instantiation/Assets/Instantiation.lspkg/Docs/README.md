@@ -41,7 +41,7 @@ static, start-time layouts of many copies of one prefab without writing the plac
 
 ## Extra info
 - **Requires:** InteractionKit, Utilities, SnapDecorators, UIKit, Motion, Icons. Layouts work the same in the Lens
-  Studio Preview and on Specs; nothing is pooled, re-laid out or animated at runtime.
+  Studio Preview and on Specs; nothing is pooled or re-laid out at runtime; only the circle perimeter layout animates its spawn.
 - **Get started:** `Instantiation__PLACE_IN_SCENE.prefab` (15 example groups with TS hosts enabled and JS twins
   disabled, plus the guide and carousel). Sample spawn prefabs: `ExamplePrefabInstantiateSphere.prefab`,
   `ExamplePrefabInstantiateSphere2.prefab`, `ExamplePrefabInstantiateBox1.prefab`, `ExamplePrefabInstantiateBox2.prefab`.

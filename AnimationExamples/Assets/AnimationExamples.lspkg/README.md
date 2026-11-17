@@ -6,7 +6,7 @@ Read the [longer guide](Docs/guide.md) for the original tutorial and background.
 
 ## Usage
 
-This section ships with the package and describes the exact installed revision. Generic Lens scripting, scene construction, and Specs spatial design live in the CLAD skills, not here.
+This section ships with the package and describes the exact installed revision. Generic Lens scripting, scene construction, and Specs spatial design are out of scope here.
 
 ### Package identity
 
@@ -14,7 +14,7 @@ This section ships with the package and describes the exact installed revision. 
 - Consumer import prefix: `AnimationExamples.lspkg/Scripts/`.
 - Place-in-scene prefab: `AnimationExamples.lspkg/AnimationExamples__PLACE_IN_SCENE.prefab`. The prefab is self-contained: besides the `Examples` object (AnimationExamplesManager with the eight example prefabs) it carries the guide panel ("Ok, I understood") and the example carousel (Previous / Next / minimize), so dropping it into a Specs scene with a Camera and SIK gives the full demo.
 - Demo scaffolding: `AnimationExamples.lspkg/Example/` holds the scripts the prefab uses for the guide and the carousel (`ExampleCarousel/`, `GuideDismissPanel/`). They are not part of the animation examples; see [components](Docs/components.md#demo-scaffolding-example).
-- Declared companion packages: SnapDecorators, SpectaclesUIKit, SpectaclesInteractionKit, Motion, Icons (see `package_dependencies.json`). The examples import `SpectaclesUIKit.lspkg/...` (Frame, Button, ThemeService) and `SnapDecorators.lspkg/assert` (`ExistingPlayerExample`, `TweenExamples`); the `Example/` demo scripts also import `SpectaclesInteractionKit.lspkg/...`.
+- Declared companion packages: SnapDecorators, UIKit, InteractionKit, Motion, Icons (see `package_dependencies.json`). The examples import `UIKit.lspkg/...` (Frame, Button, ThemeService) and `SnapDecorators.lspkg/assert` (`ExistingPlayerExample`, `TweenExamples`); the `Example/` demo scripts also import `InteractionKit.lspkg/...`.
 
 ### Version and API status
 
@@ -23,12 +23,6 @@ This section ships with the package and describes the exact installed revision. 
 ### Applicability
 
 Use this package to learn or reuse AnimationPlayer curve, clip, and event patterns for UIKit content. Use a dedicated interaction or layout package for non-animation UI behavior. `TweenExamples` is a source walkthrough; the eight focused example prefabs are the runnable demonstrations.
-
-### Related CLAD skills
-
-[specs-author-scripts](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/specs-author-scripts/SKILL.md), [scene-construction](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/scene-construction/SKILL.md). These skills cover the surrounding Lens workflow.
-
-[Install CLAD](https://developers.specs.com/docs/clad/setup/setup-ai/) or browse its [source](https://github.com/lens-studio-devs/ls-extensions). Read the installed package docs for this revision’s APIs.
 
 ### Package Docs (ship in Docs/)
 
@@ -52,7 +46,4 @@ Built with 👽 by the SPECS team.
 ---
 
 [See more packages](https://github.com/specs-devs/packages)
-
-
-
 

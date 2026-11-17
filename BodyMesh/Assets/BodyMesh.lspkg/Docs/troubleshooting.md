@@ -36,7 +36,7 @@ Older revisions shipped a `GUIDE_ReadAndDisable` child. It is removed (see [API 
 
 ## Dependency names disagree with older notes
 
-Read `package_dependencies.json`: SpectaclesInteractionKit, SpectaclesUIKit, Motion, and Icons are declared in this source revision. The previous README's Utilities/SnapDecorators list did not match that file.
+Read `package_dependencies.json`: InteractionKit, UIKit, Motion, and Icons are declared in this source revision. The previous README's Utilities/SnapDecorators list did not match that file.
 
 ## Preview warns about depth format
 

@@ -1,0 +1,21 @@
+# Local development only (supabase start). Hosted Snap Cloud projects are configured in the dashboard.
+project_id = "arkit-spectator"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "graphql_public"]
+max_rows = 1000
+
+[db]
+port = 54322
+major_version = 17
+
+[realtime]
+enabled = true
+
+[auth]
+enabled = true
+site_url = "http://127.0.0.1:3000"
+# The iPhone spectator signs in anonymously; enable the same setting on the hosted project.
+enable_anonymous_sign_ins = true

@@ -1,0 +1,137 @@
+// Colours
+input_vec4 dotsColor;   // the dot field
+input_vec4 circleColor; // ring, unfilled part
+input_vec4 loadedColor; // ring, filled part
+input_vec4 bgColor;     // fills inside the ring; alpha 0 leaves the centre clear
+
+// Loader
+input_float progress;   // 0 = empty, 1 = full, the material's InnerCircleMask
+input_float thickness;  // 0 = hairline ring, 1 = thick ring
+
+// Scan wave
+input_bool animate;     // false freezes the scan wave
+input_float waveSpeed;
+input_float switchSize; // 0..2, scales the wave's travel and the field's extent
+
+output_vec4 FinalColor;
+
+#define TAU 6.28318530717959
+#define PI  3.14159265358979
+
+const mediump vec2 CENTRE = vec2(0.5, 0.5);
+const mediump float RING_EDGE = 0.19;  // outer edge of the ring
+const mediump float FIELD_INNER = 0.2; // dots start here
+// Where the arc begins, in turns: half a turn round from the UV's natural start.
+const mediump float ARC_START = 0.5;
+
+// Ring. The outer edge stays pinned at RING_EDGE and thickness grows inward, so
+// the band is centred on RING_EDGE - thickness/2.
+const mediump float RING_THICKNESS_MIN = 0.008; // at thickness 0
+const mediump float RING_THICKNESS_MAX = 0.03;  // at thickness 1
+const mediump float RING_FEATHER = 0.004; // softness of the band's two edges
+// Arc, in turns. The filled span is lit as HandRing lights the table-top half
+// ring: one solid colour, no glow, its two ends fading into the band over this
+// much of a turn each, or half the span while it is shorter.
+const mediump float ARC_FADE = 0.03; // ~11 degrees
+
+// Dot field. GRID_SPACING is the pitch of the grid in both axes, so the dots are
+// evenly spaced everywhere. DOT_BASE is how bright a dot sits when the wave is
+// nowhere near it.
+const mediump float GRID_SPACING = 0.075;
+const mediump float DOT_RADIUS = 0.007;
+const mediump float DOT_BASE = 0.35;
+const mediump float WAVE_SIGMA = 0.05; // width of the sweeping highlight
+
+// Standard source-over-destination blend, both sides straight (not premultiplied)
+// alpha. Guarding the divide keeps a fully transparent result from going NaN.
+lowp vec4 over(lowp vec4 src, lowp vec4 dst)
+{
+    mediump float a = src.a + dst.a * (1.0 - src.a);
+    lowp vec3 c = (src.rgb * src.a + dst.rgb * dst.a * (1.0 - src.a)) / max(a, 0.0001);
+    return vec4(c, a);
+}
+
+void main()
+{
+    vec2 uv = system.getSurfaceUVCoord0();
+    mediump float r = distance(uv, CENTRE);
+    mediump float half_switch = switchSize * 0.5; // the graph remapped 0..2
+
+    mediump vec2 d = uv - CENTRE;
+    mediump float fieldOuter = mix(0.39, 0.34, half_switch);
+
+    // ── Scan wave ──────────────────────────────────────────────────────
+    // A single ring of highlight sweeping outward. w eases so it accelerates on
+    // its way out, and the envelope goes to zero at both ends of the cycle, so
+    // the loop has no seam to hide.
+    mediump float t = animate ? system.getTimeElapsed() * waveSpeed : 0.0;
+    mediump float cycle = fract(t);
+    mediump float w = pow(cycle, 1.4);
+    mediump float wavePos = mix(FIELD_INNER, fieldOuter + WAVE_SIGMA, w);
+    mediump float fromWave = (r - wavePos) / WAVE_SIGMA;
+    mediump float wave = exp(-0.5 * fromWave * fromWave) * sin(cycle * PI);
+
+    // ── Dot field ──────────────────────────────────────────────────────
+    // A uniform grid, axis aligned and centred on the quad: each fragment snaps
+    // to its nearest cell centre and shades one round dot there. The circular
+    // look comes from the mask below, not from the arrangement -- the graph's
+    // grid was turned 45 degrees, which is what made its edge read as a diamond.
+    mediump vec2 dotCentre = floor(d / GRID_SPACING + 0.5) * GRID_SPACING;
+
+    // The wave swells each dot slightly as it passes, which reads as a pulse.
+    mediump float dotR = DOT_RADIUS * (1.0 + 0.45 * wave);
+    mediump float dots =
+        1.0 - smoothstep(dotR * 0.55, dotR, distance(d, dotCentre));
+
+    // Annulus the dots live in: a hole in the middle for the ring, and a soft
+    // circular outer edge that switchSize pulls in.
+    mediump float fieldMask =
+        smoothstep(FIELD_INNER, FIELD_INNER + 0.02, r) *
+        (1.0 - smoothstep(fieldOuter, fieldOuter + 0.1, r));
+
+    // Dots also dim towards the outside, and brighten where the wave is.
+    mediump float dim = 1.0 - 0.6 * smoothstep(0.3, mix(0.6, 0.4, half_switch), r);
+    mediump float dotsAlpha =
+        dots * fieldMask * dim * (DOT_BASE + (1.0 - DOT_BASE) * wave);
+
+    // ── Ring ───────────────────────────────────────────────────────────
+    // thickness grows the band inward from a fixed outer edge, so the band is
+    // centred midway between the two and both edges are feathered.
+    mediump float ringThick = mix(RING_THICKNESS_MIN, RING_THICKNESS_MAX, thickness);
+    mediump float ringHalf = ringThick * 0.5;
+    mediump float ringMid = RING_EDGE - ringHalf;
+    mediump float ringOn = ringMid - ringHalf;
+    mediump float ringOff = ringMid + ringHalf;
+    mediump float ringBand =
+        smoothstep(ringOn - RING_FEATHER, ringOn + RING_FEATHER, r) *
+        (1.0 - smoothstep(ringOff - RING_FEATHER, ringOff + RING_FEATHER, r));
+
+    // Angle around the centre as 0..1 turns, so the arc can be cut at progress.
+    // Negating x flips the sweep to run clockwise on screen; ARC_START rotates
+    // where turn zero sits, which is cheaper than rotating the coordinates first.
+    mediump float theta = fract(atan(-d.x, d.y) / TAU + ARC_START);
+
+    //solid between its two faded ends, see ARC_FADE
+    mediump float fade = max(min(ARC_FADE, progress * 0.5), 0.0001);
+    mediump float filled = smoothstep(0.0, fade, theta) *
+        (1.0 - smoothstep(progress - fade, progress, theta));
+    filled *= step(0.0001, progress); // nothing showing at 0
+    //ease into a closed ring over the last of the sweep rather than popping to it
+    filled = max(filled, smoothstep(0.97, 1.0, progress));
+
+    // ── Composite ──────────────────────────────────────────────────────
+    // Back to front: background disc, dot field, then the ring over both. Proper
+    // over compositing rather than adding, because their feathered edges overlap
+    // and adding would blow out where they meet.
+    mediump float insideRing =
+        1.0 - smoothstep(ringOn - RING_FEATHER, ringOn + RING_FEATHER, r);
+    lowp vec4 layer = vec4(bgColor.rgb, bgColor.a * insideRing);
+
+    //the wave brightens dots through alpha, so their colour stays constant
+    layer = over(vec4(dotsColor.rgb, dotsAlpha), layer);
+
+    lowp vec3 ringRgb = mix(circleColor.rgb, loadedColor.rgb, filled);
+    layer = over(vec4(ringRgb, ringBand), layer);
+
+    FinalColor = layer;
+}

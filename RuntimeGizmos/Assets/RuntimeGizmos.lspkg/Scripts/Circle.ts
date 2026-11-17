@@ -10,10 +10,10 @@ import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent 
 import {
   withAlpha,
   withoutAlpha,
-} from "SpectaclesInteractionKit.lspkg/Utils/color";
+} from "InteractionKit.lspkg/Utils/color";
 import InteractorLineRenderer, {
   VisualStyle,
-} from "SpectaclesInteractionKit.lspkg/Components/Interaction/InteractorLineVisual/InteractorLineRenderer";
+} from "InteractionKit.lspkg/Components/Interaction/InteractorLineVisual/InteractorLineRenderer";
 
 @component
 export class Circle extends BaseScriptComponent {

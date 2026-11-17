@@ -11,8 +11,8 @@ You need the smallest working setup. Longer compositions are in [guide](guide.md
 Drag `RuntimeGizmos.lspkg/RuntimeGizmos__PLACE_IN_SCENE.prefab` into the
 scene. Keep the gizmo group you need (`Line`, `ClosedPolyline`, `Circle`,
 `Spline` or `Spiral`), delete the others, and move the group where you want
-it. Every gizmo is already wired to SpectaclesInteractionKit's
-`SpectaclesInteractionKit.lspkg/Components/Interaction/InteractorLineVisual/InteractorLineMaterial.mat`.
+it. Every gizmo is already wired to InteractionKit's
+`InteractionKit.lspkg/Components/Interaction/InteractorLineVisual/InteractorLineMaterial.mat`.
 
 ## Add a gizmo in the Inspector
 
@@ -20,7 +20,7 @@ it. Every gizmo is already wired to SpectaclesInteractionKit's
    (identity transform), `Start` and `End`.
 2. Add the `Line` script to `Gizmo`. Set `Start Point Object` = `Start`,
    `End Point Object` = `End`, and `Line Material` = a line material, for
-   example SpectaclesInteractionKit's `InteractorLineMaterial.mat` (the one
+   example InteractionKit's `InteractorLineMaterial.mat` (the one
    the prefab uses).
 3. Move `Start` / `End`: the line follows every frame.
 
@@ -56,7 +56,7 @@ export class GizmoDriver extends BaseScriptComponent {
 
 ```typescript
 import {Line} from "RuntimeGizmos.lspkg/Scripts/Line";
-import {VisualStyle} from "SpectaclesInteractionKit.lspkg/Components/Interaction/InteractorLineVisual/InteractorLineRenderer";
+import {VisualStyle} from "InteractionKit.lspkg/Components/Interaction/InteractorLineVisual/InteractorLineRenderer";
 
 @component
 export class LineStyler extends BaseScriptComponent {

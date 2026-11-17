@@ -287,6 +287,22 @@
   ScriptTypes:
     "":
       {}
+- !<ScriptComponent/07dce04b-6f70-4e64-a3c9-8771186afbf5>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/0926494e-4af7-44e4-aa47-6be0968eef5b>
   PrefabRemaps:
     []
@@ -896,7 +912,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Materials:
-    - !<reference> 64bdf844-8131-4c35-99e2-1c4a94e2cdc3
+    - !<reference> c72f8b22-b510-4487-9fd2-7506cd1440ce
   Mesh: !<reference> 15e33d09-bf02-4bd8-8863-09f13f29d338
   Skin: !<reference> 9c2b82b2-4684-4fe4-8ee5-d352fc9172f1
   BlendShapesEnabled: true
@@ -1147,6 +1163,21 @@
     - !<own> c313d6df-9d22-466a-8f76-34a71252db22
   Components:
     []
+- !<SceneObject/436b301c-cf05-4701-b1b4-ea0bf7a2d045>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 07dce04b-6f70-4e64-a3c9-8771186afbf5
 - !<ScriptComponent/45201131-2e49-4f0d-a970-ee24c094a7b9>
   PrefabRemaps:
     []
@@ -2110,21 +2141,6 @@
   ScriptTypes:
     "":
       {}
-- !<SceneObject/7256a929-8c3f-479a-80bf-26d6cfda57f7>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> 840b4a9a-12f6-49e3-a918-6ae63e721945
 - !<SceneObject/7619e4e9-8f4f-4924-872b-d042ff1c3a71>
   PrefabRemaps:
     []
@@ -2492,7 +2508,7 @@
 - !<ScriptComponent/81a2e3bc-f654-442e-8d1d-91c00dbce2c6>
   PrefabRemaps:
     []
-  Name: SIKLogLevelConfiguration
+  Name: IKLogLevelConfiguration
   Enabled: true
   ScriptAsset: !<reference> ff7d0aa1-32aa-4b47-84b7-340260da1ef0
   ScriptInputsDefault:
@@ -2556,22 +2572,6 @@
   BlendNormals: false
   BlendShapes:
     {}
-- !<ScriptComponent/840b4a9a-12f6-49e3-a918-6ae63e721945>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
-  ScriptInputsDefault:
-    _theme: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      _theme: System3
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/863920c2-7073-4dbd-b20b-760e5833e051>
   PrefabRemaps:
     []
@@ -3765,6 +3765,7 @@
     []
 - !<SceneObject/c1d2447b-4611-4613-a546-056daff05390>
   PrefabRemaps:
+    - 07dce04b-6f70-4e64-a3c9-8771186afbf5: 3f7f6540-5b58-4645-a72f-302102a8b2a2
     - 14bb508d-e9d4-4b0c-9a95-419f8b8edf5f: e91434ba-eff4-408f-a8f9-60493b988925
     - 15010359-18c0-4bd3-938c-237c78631f43: f2d70627-d723-47df-4bb3-773507d546d2
     - 1863bf46-ec5a-4a86-818f-a797a0e178e9: 93f2b893-1aab-4968-5ff9-a91d15330a1f
@@ -3772,6 +3773,7 @@
     - 1f18d2c1-c9f7-4f00-8c72-1cbb99c2a28d: fa8e26ca-9226-417b-aa41-35bf7cf22801
     - 204b4c7a-e959-404c-a035-db880a00893d: 5875badc-dce5-4860-4919-c93723e23fac
     - 215e1a3a-c292-4ad1-a85e-f8261db89822: 2cb255dc-49ac-4346-5cfe-b5f5d3fc540c
+    - 436b301c-cf05-4701-b1b4-ea0bf7a2d045: 7fcd12bb-e27c-439c-ad05-f9aaea6c8821
     - 45201131-2e49-4f0d-a970-ee24c094a7b9: 7f209d97-417b-4dce-9419-0bf0256b2a18
     - 4bb01f94-cffb-44e7-bba5-752cbb4195a8: 8abf1281-bb56-453d-7e5b-f22c91edb675
     - 56e4db50-6fce-4fb0-a34f-2dfbb4806a11: cffff200-d023-4256-50dd-b4afecb6f50f
@@ -3782,13 +3784,11 @@
     - 63dd42e0-6107-4352-8a01-4314d826334c: 078b9474-cf46-44cb-7ced-e8643bbf52e4
     - 6f4f5cf6-080f-44bc-b5e8-7a4cb8e7e24a: 4af77762-fce7-42a8-ac8a-d2932d15337e
     - 72465833-d861-44a5-87fc-fc1831e1e72d: 76ac7555-bf63-47c8-ac8b-f2d289ea1aef
-    - 7256a929-8c3f-479a-80bf-26d6cfda57f7: 7a133ed4-1152-46f0-83a3-bbff928a6293
     - 76b2c246-9491-4c9c-8836-9d4bb4d64095: 380cded9-3df2-405f-6bab-7ed0e5f1ff03
     - 7cface11-9812-4cd1-91e1-58a5719c0284: e05b2896-b96a-430c-4138-ecefe568875e
     - 7de97e0f-73f5-40e7-9838-a7f8fa714f49: c3d5acb9-2658-4dc3-afc6-1546e0c3e69c
     - 80c93052-e607-46ff-82d7-a96562d33655: fbf9df38-7cfc-461e-5f7d-01eca4feaf73
     - 81d1008f-9783-4325-8217-e795f6d59eac: c33d59bc-5499-4b90-69f0-a8ef6c26beca
-    - 840b4a9a-12f6-49e3-a918-6ae63e721945: c8288d93-5ade-4fc6-a2ea-200099d2dfc2
     - 86f9d2dd-96b3-4ed7-8470-d8333fae92d3: 8ed7cb2e-5887-4077-5eb9-b02027a19521
     - 87dcd50e-07f0-402a-a5dc-55a3822d95f0: c514e8e9-b1f8-41f8-6f25-8777fa285298
     - 8e9fd3b4-9b55-4890-a1c2-148e43fc370b: c4ae2ff4-74ca-4e6b-4329-446542f7dcf7
@@ -3823,7 +3823,7 @@
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
-    - !<own> 7256a929-8c3f-479a-80bf-26d6cfda57f7
+    - !<own> 436b301c-cf05-4701-b1b4-ea0bf7a2d045
     - !<own> e55482db-76c5-4d59-a70e-8892af33490d
     - !<own> 983f93e7-411f-473c-9640-91610ce16f1f
     - !<own> 605f1ed7-a2fb-45d5-a1d5-78889e17f356
@@ -4568,7 +4568,7 @@
     - d5190bcd-0270-43be-a4c1-d2c5a5a9e51d: 93a82b13-f1ae-404a-490c-0905b3c2bab5
     - f2620a76-0cb3-4ddc-b580-3dbd26f99ab6: 31059286-43ff-450e-7b8c-b4195ca1dd8e
     - fb0312dd-f52f-408f-854e-95f9ba4cdba5: ac190d7f-8f8a-427c-4cd7-034d38e5ab1c
-  Name: SpectaclesInteractionKit
+  Name: InteractionKit
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
@@ -4655,7 +4655,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Materials:
-    - !<reference> f2937562-a9a2-42f0-bf12-210ef47d5e21
+    - !<reference> c72f8b22-b510-4487-9fd2-7506cd1440ce
   Mesh: !<reference> 6b7bd000-e1eb-47e3-8f2d-4b011d98a192
   Skin: !<reference> 7db38fa0-c479-4a4a-b7d5-fef39eab3bad
   BlendShapesEnabled: true

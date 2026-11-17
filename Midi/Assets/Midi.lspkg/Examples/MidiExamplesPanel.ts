@@ -13,16 +13,16 @@ import {ClockTracker} from "../Timing/ClockTracker"
 import {MidiKind, midiNoteName} from "../Core/MidiTypes"
 import type {MidiMessage} from "../Core/MidiTypes"
 
-import {FlexLayout} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexLayout"
-import {FlexItem} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexItem"
+import {FlexLayout} from "UIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexLayout"
+import {FlexItem} from "UIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexItem"
 import {
   FlexAlign,
   FlexAlignSelf,
   FlexDirection,
   FlexJustify,
-} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexTypes"
-import {BackPlate} from "SpectaclesUIKit.lspkg/Scripts/BackPlate"
-import {Button} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/Button"
+} from "UIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexTypes"
+import {BackPlate} from "UIKit.lspkg/Scripts/BackPlate"
+import {Button} from "UIKit.lspkg/Scripts/Components/Button/Button"
 
 const PANEL_W = 26
 const PAD = 1.8

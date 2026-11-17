@@ -2,7 +2,9 @@
  * SPECS Inc. 2027
  * Example implementation of OpenAI Realtime API with streaming audio conversations. Demonstrates
  * WebSocket-based real-time chat with voice selection, microphone input, audio output, function
- * calling, and bidirectional communication using GPT-4o-mini-realtime.
+ * calling, and bidirectional communication using gpt-realtime-mini. In the demo carousel the
+ * session opens by itself when the step is shown (the model greets you first) and closes, with the
+ * microphone and audio output, when the step is left (see Example/DemoLog).
  */
 import { AudioProcessor } from "../../Helpers/AudioProcessor";
 import { DynamicAudioOutput } from "../../Helpers/DynamicAudioOutput";
@@ -11,6 +13,8 @@ import { OpenAI } from "../OpenAI";
 import { OpenAITypes } from "../OpenAITypes";
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
+import { AvaliableApiTypes } from "../../RemoteServiceGatewayCredentials";
+import { DemoLogPanel, DemoRun, DemoStep } from "../../Example/DemoLog/DemoLog";
 
 @component
 export class ExampleOAIRealtime extends BaseScriptComponent {
@@ -77,7 +81,24 @@ export class ExampleOAIRealtime extends BaseScriptComponent {
   private voice: string = "coral";
   @ui.group_end
   @ui.separator
-  private audioProcessor: AudioProcessor = new AudioProcessor();  /**
+  @ui.group_start("Demo")
+  @input
+  @widget(new TextAreaWidget())
+  @hint("Sent as the first response request once the session is ready, so the model speaks first. Empty: wait for the user.")
+  private greeting: string =
+    "Greet the user in one short sentence and ask what they would like to talk about.";
+  @input
+  @hint("Where the demo's live log panel sits, relative to this object (cm)")
+  logPanelOffset: vec3 = new vec3(0, 12, 0);
+  @ui.group_end
+
+  private audioProcessor: AudioProcessor = new AudioProcessor();
+  private socket: ReturnType<typeof OpenAI.createRealtimeSession> | null = null;
+  private onMicFrame = (audioFrame: Float32Array) => this.audioProcessor.processFrame(audioFrame);
+  private onAudioChunk: ((chunk: string) => void) | null = null;
+  private endSession: (() => void) | null = null;
+
+  /**
    * Called when component is initialized
    */
   onAwake(): void {
@@ -88,32 +109,81 @@ export class ExampleOAIRealtime extends BaseScriptComponent {
       this.logger.debug("LIFECYCLE: onAwake() - Component initializing");
     }
 
-
     this.websocketRequirementsObj.enabled = true;
-    this.createEvent("OnStartEvent").bind(() => {
-      this.dynamicAudioOutput.initialize(24000);
-      this.connectToWebsocket();
-    });
-
-    // Display internet connection status
-    this.textDisplay.text = global.deviceInfoSystem.isInternetAvailable()
-      ? "Websocket connected"
-      : "No internet";
 
     global.deviceInfoSystem.onInternetStatusChanged.add((args) => {
-      this.textDisplay.text = args.isInternetAvailable
-        ? "Reconnected to internet"
-        : "No internet";
+      if (this.sceneObject.isEnabledInHierarchy) {
+        this.textDisplay.text = args.isInternetAvailable
+          ? "Reconnected to internet"
+          : "No internet";
+      }
+    });
+
+    // Opens the session when the carousel shows this example, closes it when the step is left.
+    DemoStep.join({
+      owner: this,
+      name: "OpenAI Realtime",
+      order: 0,
+      tokens: [AvaliableApiTypes.OpenAI],
+      panel: new DemoLogPanel(this.sceneObject, this.logPanelOffset),
+      run: (run) => this.runDemo(run),
+      stop: () => this.stopDemo(),
     });
   }
 
-  connectToWebsocket() {
+  /** Opens the session and keeps the step's run alive until the socket closes or the step is left. */
+  async runDemo(run: DemoRun = DemoRun.detached("OpenAI Realtime")) {
+    if (!global.deviceInfoSystem.isInternetAvailable()) {
+      run.error("no internet");
+    }
+    this.textDisplay.textFill.color = new vec4(1, 1, 1, 1);
+    this.textDisplay.text = "Connecting...";
+    this.dynamicAudioOutput.initialize(24000);
+    await run.guard(
+      new Promise<void>((resolve) => {
+        this.endSession = resolve;
+        this.connectToWebsocket(run);
+      })
+    );
+  }
+
+  /** Closes the socket and stops the microphone and the audio output. Safe to call anytime. */
+  stopDemo() {
+    this.microphoneRecorder.stopRecording();
+    this.microphoneRecorder.onAudioFrame.remove(this.onMicFrame);
+    if (this.onAudioChunk) {
+      this.audioProcessor.onAudioChunkReady.remove(this.onAudioChunk);
+      this.onAudioChunk = null;
+    }
+    this.dynamicAudioOutput.interruptAudioOutput();
+    const socket = this.socket;
+    this.socket = null;
+    if (socket) {
+      socket.close();
+    }
+    const end = this.endSession;
+    this.endSession = null;
+    if (end) {
+      end();
+    }
+  }
+
+  connectToWebsocket(run: DemoRun = DemoRun.detached("OpenAI Realtime")) {
+    const openedAt = getTime();
+    run.log("gpt-realtime-mini → opening socket");
     const OAIRealtime = OpenAI.createRealtimeSession({
       model: "gpt-realtime-mini",
     });
+    this.socket = OAIRealtime;
+    // Events of a socket from a step that was left are ignored.
+    const live = () => run.alive && this.socket === OAIRealtime;
 
     OAIRealtime.onOpen.add((event) => {
-      print("Connection opened");
+      if (!live()) {
+        return;
+      }
+      run.log("← socket open in " + (getTime() - openedAt).toFixed(1) + " s");
+      this.textDisplay.text = "Connected: say something";
 
       const setTextColor: OpenAITypes.Common.ToolDefinition = {
         type: "function",
@@ -168,28 +238,59 @@ export class ExampleOAIRealtime extends BaseScriptComponent {
         },
       };
       OAIRealtime.send(sessionUpdateMsg);
+      run.log("→ session.update (" + (this.audioOutput ? "audio, voice " + this.voice : "text") + ")");
 
       // Process microphone input to send to the server
-      this.audioProcessor.onAudioChunkReady.add((encodedAudioChunk) => {
+      if (this.onAudioChunk) {
+        this.audioProcessor.onAudioChunkReady.remove(this.onAudioChunk);
+      }
+      this.onAudioChunk = (encodedAudioChunk) => {
         const audioMsg: OpenAITypes.Realtime.ClientMessage = {
           type: "input_audio_buffer.append",
           audio: encodedAudioChunk,
         };
         OAIRealtime.send(audioMsg);
-      });
+      };
+      this.audioProcessor.onAudioChunkReady.add(this.onAudioChunk);
 
       // Configure the microphone
       this.microphoneRecorder.setSampleRate(24000);
-      this.microphoneRecorder.onAudioFrame.add((audioFrame) => {
-        this.audioProcessor.processFrame(audioFrame);
-      });
-
+      this.microphoneRecorder.onAudioFrame.remove(this.onMicFrame);
+      this.microphoneRecorder.onAudioFrame.add(this.onMicFrame);
       this.microphoneRecorder.startRecording();
+      run.log("🎤 microphone on, streaming");
+
+      // The model speaks first, so the step shows an answer without the user saying anything.
+      if (this.greeting.trim().length > 0) {
+        const greetingMsg: OpenAITypes.Realtime.ResponseCreateRequest = {
+          type: "response.create",
+          response: { instructions: this.greeting },
+        };
+        OAIRealtime.send(greetingMsg);
+        run.log("→ response.create (greeting)");
+      }
     });
 
     let completedTextDisplay = true;
+    let audioLogged = false;
 
     OAIRealtime.onMessage.add((message) => {
+      if (!live()) {
+        return;
+      }
+      if (message.type === "error") {
+        const details = (message as OpenAITypes.Realtime.ErrorEvent).error;
+        run.error("✗ server error: " + (details?.code ? details.code + " " : "") + (details?.message ?? JSON.stringify(message)));
+        return;
+      }
+      if (message.type === "session.updated") {
+        run.log("← session.updated");
+        return;
+      }
+      if (message.type === "input_audio_buffer.speech_started") {
+        run.log("← you are speaking…");
+        return;
+      }
       // Listen for text responses
       if (
         message.type === "response.output_text.delta" ||
@@ -205,6 +306,14 @@ export class ExampleOAIRealtime extends BaseScriptComponent {
         completedTextDisplay = false;
       } else if (message.type === "response.done") {
         completedTextDisplay = true;
+        audioLogged = false;
+        const status = (message as any).response?.status;
+        if (status && status !== "completed") {
+          const reason = (message as any).response?.status_details;
+          run.error("← response " + status + (reason ? ": " + JSON.stringify(reason) : ""));
+        } else {
+          run.log("← response done: " + this.textDisplay.text);
+        }
       }
 
       // Set up Audio Playback
@@ -212,6 +321,10 @@ export class ExampleOAIRealtime extends BaseScriptComponent {
         message.type === "response.output_audio.delta" ||
         message.type === "response.audio.delta"
       ) {
+        if (!audioLogged) {
+          audioLogged = true;
+          run.log("♪ model speaking");
+        }
         const delta = Base64.decode(message.delta);
         this.dynamicAudioOutput.addAudioFrame(delta);
       }
@@ -219,16 +332,18 @@ export class ExampleOAIRealtime extends BaseScriptComponent {
       else if (message.type === "response.output_item.done") {
         if (message.item && message.item.type === "function_call") {
           const functionCall = message.item;
-          print(`Function called: ${functionCall.name}`);
-          print(`Function args : ${functionCall.arguments}`);
-          print("call_id: " + functionCall.call_id);
-          const args = JSON.parse(functionCall.arguments);
-          this.textDisplay.textFill.color = new vec4(
-            args.r / 255,
-            args.g / 255,
-            args.b / 255,
-            1
-          );
+          run.log("← tool call " + functionCall.name + " " + functionCall.arguments);
+          try {
+            const args = JSON.parse(functionCall.arguments);
+            this.textDisplay.textFill.color = new vec4(
+              args.r / 255,
+              args.g / 255,
+              args.b / 255,
+              1
+            );
+          } catch (e) {
+            run.error("set-text-color: bad arguments " + functionCall.arguments);
+          }
 
           // Send a message back to the server indicating the function call was successful
           const messageToSend: OpenAITypes.Realtime.ConversationItemCreateRequest =
@@ -248,12 +363,19 @@ export class ExampleOAIRealtime extends BaseScriptComponent {
     });
 
     OAIRealtime.onError.add((event) => {
-      print("Websocket error: " + event);
+      if (!live()) {
+        return;
+      }
+      run.error("✗ socket error");
     });
 
     OAIRealtime.onClose.add((event) => {
+      if (!live()) {
+        return;
+      }
       this.textDisplay.text = "Websocket closed: " + event.reason;
-      print("Websocket closed: " + event.reason);
+      run.error("socket closed: " + event.code + " " + (event.reason || "(no reason)"));
+      this.stopDemo();
     });
   }
 }

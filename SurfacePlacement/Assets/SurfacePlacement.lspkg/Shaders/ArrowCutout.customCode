@@ -1,0 +1,70 @@
+// Fully procedural recreation of arrow-down.png. No textures and no shader time.
+//
+// Design rules for this material, from on-device testing: any texture
+// sampled by a placement material breaks ~1s after lens start on the session's
+// first instance (content swaps to a small corner-anchored version and never
+// recovers), and the engine's shader elapsed-time uniform freezes on the same
+// schedule. Pure math and script-driven parameters never failed once. If a
+// pulse is ever wanted, drive the quad's transform from a script tween --
+// script animation is reliable; shader time is not.
+//
+// Shape: a thin rounded stem into a large solid triangular head with rounded
+// corners, pointing down -- constants fitted against the texture's alpha and
+// verified side by side. The glyph fills the quad exactly as the texture did.
+
+// The material sets arrowColor to 0.99, not 1.0: a colour of exactly (1,1,1,1)
+// has rendered nothing on device.
+input_vec4 arrowColor; // tint; the texture was a white glyph
+input_float alpha;     // 0..1 whole-effect fade
+
+output_vec4 FinalColor;
+
+// Glyph geometry in a frame where the tip points toward v = 0. If the arrow
+// renders upside down on the quad, flip once in main(): p.y = 1.0 - p.y.
+const mediump float FEATHER = 0.008; // anti-aliased edge width
+
+const mediump vec2 STEM_TOP = vec2(0.5, 0.91);   // rounded tail cap
+const mediump vec2 STEM_BOTTOM = vec2(0.5, 0.42); // buried in the head, no seam
+const mediump float STEM_RADIUS = 0.034;
+
+const mediump vec2 HEAD_APEX = vec2(0.5, 0.10); // tip, before rounding dilates it
+const mediump float HEAD_TOP_V = 0.435;         // flat edge the stem meets
+const mediump float HEAD_HALF_WIDTH = 0.335;
+// Subtracting from the SDF DILATES the whole head by this much while rounding
+// its corners, so the sizes above are authored pre-dilation.
+const mediump float HEAD_ROUND = 0.02;
+
+//distance from p to the a-b segment, minus the stroke radius
+mediump float capsule(mediump vec2 p, mediump vec2 a, mediump vec2 b)
+{
+    mediump vec2 pa = p - a;
+    mediump vec2 ba = b - a;
+    mediump float h = clamp(dot(pa, ba) / dot(ba, ba), 0.0, 1.0);
+    return length(pa - ba * h) - STEM_RADIUS;
+}
+
+// Signed distance to the filled head: the intersection of the flat top edge and
+// the two slanted edges, negative inside, rounded/dilated by HEAD_ROUND.
+mediump float headSdf(mediump vec2 p)
+{
+    mediump vec2 l = vec2(0.5 - HEAD_HALF_WIDTH, HEAD_TOP_V);
+    mediump vec2 r = vec2(0.5 + HEAD_HALF_WIDTH, HEAD_TOP_V);
+    mediump vec2 el = HEAD_APEX - l;
+    mediump vec2 er = HEAD_APEX - r;
+    mediump vec2 nl = normalize(vec2(el.y, -el.x));
+    mediump vec2 nr = normalize(vec2(-er.y, er.x));
+    mediump float d = p.y - HEAD_TOP_V; //flat top edge
+    d = max(d, dot(p - l, nl));
+    d = max(d, dot(p - r, nr));
+    return d - HEAD_ROUND;
+}
+
+void main()
+{
+    vec2 p = system.getSurfaceUVCoord0();
+
+    mediump float d = min(capsule(p, STEM_TOP, STEM_BOTTOM), headSdf(p));
+    mediump float arrow = 1.0 - smoothstep(0.0, FEATHER, d);
+
+    FinalColor = vec4(arrowColor.rgb, arrow * arrowColor.a * alpha);
+}

@@ -1,7 +1,7 @@
-import {Interactable} from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
+import {Interactable} from "InteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
 
 /**
- * Demo target for AiPreviewAgentInteract: counts the SIK events that reach the
+ * Demo target for AiPreviewAgentInteract: counts the IK events that reach the
  * Interactable on this SceneObject and shows them on a label, so a Preview
  * agent's Pinch / Poke / Hover / Drag commands are visible in the scene.
  */
@@ -20,7 +20,7 @@ export class InteractDemoTarget extends BaseScriptComponent {
   private drags = 0
 
   onAwake() {
-    // SIK subscriptions bind in OnStartEvent, after the Interactable has awoken.
+    // IK subscriptions bind in OnStartEvent, after the Interactable has awoken.
     this.createEvent("OnStartEvent").bind(() => this.subscribe())
   }
 

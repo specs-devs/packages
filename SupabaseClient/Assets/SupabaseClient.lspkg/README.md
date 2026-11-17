@@ -12,8 +12,7 @@ database deployment or a backend project.
 ## Usage
 
 This section ships with the package and describes the exact installed revision.
-Generic Lens scripting, scene construction and SPECS spatial design live in
-CLAD skills; client factory behavior, declarations and Lens transport limits live here.
+Generic Lens scripting, scene construction and SPECS spatial design are out of scope here; client factory behavior, declarations and Lens transport limits live here.
 
 ### Package identity
 
@@ -21,10 +20,10 @@ CLAD skills; client factory behavior, declarations and Lens transport limits liv
   Existing ReadMe UUID retained; empty setup script and no Instantiable assignment.
 - Consumer module: `SupabaseClient.lspkg/supabase-snapcloud` (JS + matching `.d.ts`).
   `version.json` records upstream commit `5a6c9c2`; this is not the package version.
-- Declared companions (`package_dependencies.json`): SpectaclesInteractionKit, SpectaclesUIKit,
+- Declared companions (`package_dependencies.json`): InteractionKit, UIKit,
   Motion, Icons, Utilities and SnapDecorators. The client bundle imports none of them;
   `SnapCloudRequirements.ts` imports Utilities and SnapDecorators, and the `Example/` scripts
-  import SpectaclesUIKit and SpectaclesInteractionKit.
+  import UIKit and InteractionKit.
 - The client bundle has no @component/@input scripts; `SnapCloudRequirements` is the one
   reusable component (see [Components](Docs/components.md#snapcloudrequirements)). Polyfills are bundled into the
   main JS; their separate `.d.ts` files do not have corresponding loose JS modules.
@@ -67,13 +66,6 @@ SyncKit supplies shared object state/ownership rather than this backend SDK.
 - [Troubleshooting](Docs/troubleshooting.md): read for source limits and pending validation.
 - [Original tutorial](Docs/tutorial.md): preserved older examples and claims; illustrative fragments.
 
-### Related CLAD skills
-
-Use [Snap Cloud](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/specs-snap-cloud)
-and [Internet](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/specs-internet)
-for platform routing. CLAD setup: https://developers.specs.com/docs/clad/setup/setup-ai/.
-Use the installed SupabaseProject/SupabaseModule declarations for engine assets.
-
 ### Verification
 
 1. Compile clean against `SupabaseClient.lspkg/supabase-snapcloud` without `as any`; keep the `SupabaseProject` input `@allowUndefined` and guard it before `createClient`.
@@ -83,10 +75,4 @@ Use the installed SupabaseProject/SupabaseModule declarations for engine assets.
 5. Repeat on a paired SPECS device (auth, connection loss, cleanup). The package's demo prefab (`Client Tests` / `Realtime Test` carousel steps) runs exactly these checks and prints PASS / FAIL in the Logger.
 
 ## Built with 👽 by the SPECS team
-
-
-
-
-
-
 

@@ -29,7 +29,7 @@ This project is a fun teleprompter lens integrated into SPECS designed for both 
 ## Design Guidelines
 
 Designing Lenses for SPECS offers all-new possibilities to rethink user interaction with digital spaces and the physical world.
-[View Design Guidelines](https://docs.snap.com/spectacles)
+View Design Guidelines
 
 ## Prerequisites
 
@@ -38,9 +38,9 @@ Designing Lenses for SPECS offers all-new possibilities to rethink user interact
 - **SPECS App iOS**: v1.7+
 - **SPECS App Android**: v1.7+
 
-To update your SPECS device and mobile app, please refer to this [guide](https://support.spectacles.com/hc/en-us/articles/30214953982740-Updating).
+To update your SPECS device and mobile app, please refer to this [guide](https://developers.specs.com).
 
-You can download the latest version of Lens Studio from [here](https://ar.snap.com/download?lang=en-US).
+You can download the latest version of Lens Studio from [here](https://lensstudio.com).
 
 The camera feature requires you to use Experimental APIs. Please see Experimental APIs for more details [here](https://developers.snap.com/spectacles/about-spectacles-features/apis/experimental-apis).
 

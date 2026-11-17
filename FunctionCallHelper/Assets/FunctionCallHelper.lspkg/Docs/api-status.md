@@ -22,7 +22,7 @@ contains it.
 |---|---|
 | Panel component | `ButtonClickEvent` from `FunctionCallHelper.lspkg/FunctionCallHelper` |
 | Function entry | `TriggerableFunction` (`@typedef`: `script: ScriptComponent`, `functionName: string`) |
-| Configuration | `@input`s `triggerableFunctions`, `buttonPrefab`, `parentObject`, `scrollWindow`, `gridLayout`, `overrideButtonSize`, `buttonSize`, `topPadding`, `enableLogging`, `enableLoggingLifecycle` |
+| Configuration | `@input`s `triggerableFunctions`, `buttonPrefab`, `parentObject`, `scrollWindow`, `gridLayout`, `overrideButtonSize`, `buttonSize`, `topPadding`, `buttonSpacing`, `enableLogging`, `enableLoggingLifecycle` |
 | Display name hook | optional `getFunctionName(functionName?: string): string` on the target script; receives the function name. A no-argument version is used only when the script backs one entry |
 | Rebuild | `rebuild(): void` — destroys the created buttons and builds `triggerableFunctions` again |
 | Ready-made panel | `FunctionCallHelper__PLACE_IN_SCENE.prefab` |
@@ -35,7 +35,7 @@ Exact inputs, defaults and behavior are in [components.md](components.md).
 
 | Deprecated surface | Current replacement |
 |---|---|
-| `CapsuleButton.prefab` (built on UIKit `CapsuleButton`, which SpectaclesUIKit marks deprecated) | Still the shipped template. A prefab with the current UIKit `Button` is detected directly (root or direct child), like `CapsuleButton` / `RectangleButton` / `RoundButton`; check SpectaclesUIKit's own `Docs/api-status.md` |
+| `CapsuleButton.prefab` (built on UIKit `CapsuleButton`, which UIKit marks deprecated) | Still the shipped template. A prefab with the current UIKit `Button` is detected directly (root or direct child), like `CapsuleButton` / `RectangleButton` / `RoundButton`; check UIKit's own `Docs/api-status.md` |
 
 ## Experimental
 

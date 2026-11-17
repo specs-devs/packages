@@ -8,10 +8,10 @@ import { bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
 import {
     withAlpha,
     withoutAlpha,
-  } from "SpectaclesInteractionKit.lspkg/Utils/color";
+  } from "InteractionKit.lspkg/Utils/color";
   import InteractorLineRenderer, {
     VisualStyle,
-  } from "SpectaclesInteractionKit.lspkg/Components/Interaction/InteractorLineVisual/InteractorLineRenderer";
+  } from "InteractionKit.lspkg/Components/Interaction/InteractorLineVisual/InteractorLineRenderer";
   /**
  * This class provides visual representation for interactor lines. It allows customization of the line's material, colors, width, length, and visual style. The class integrates with the InteractionManager and WorldCameraFinderProvider to manage interactions and camera positioning.
  */

@@ -2,26 +2,22 @@
 // crash in the package (Visual.ts imports ThemeService before defining COLORS, and the
 // theme chain reads COLORS at module-load). Entering the import cycle via ThemeService
 // lets Visual.ts finish defining COLORS first. Must remain the FIRST import.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService"
+import "UIKit.lspkg/Scripts/Themes/ThemeService"
 /**
  * SPECS Inc. 2027
  * Example grid utility that creates a grid of RectangleButtons at runtime with programmatic control.
  * Supports drag-and-drop rearrangement, dynamic content updates, customizable button layouts,
  * and iPhone-style paged horizontal layout with left/right navigation, dot indicators, and masked clipping.
  */
-import { Frame } from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame";
-import { GridLayout } from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Grid/GridLayout";
-import { RectangleButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton";
-import { ScrollWindow } from "SpectaclesUIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow";
+import { Frame } from "UIKit.lspkg/Scripts/Components/Frame/Frame";
+import { GridLayout } from "UIKit.lspkg/Scripts/Components/Layout2D/Grid/GridLayout";
+import { RectangleButton } from "UIKit.lspkg/Scripts/Components/Button/RectangleButton";
+import { ScrollWindow } from "UIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow";
 import { ButtonContentLayout, ButtonContentLayoutConfig } from "./ButtonContentLayout";
 import { GridRearrangement } from "./GridRearrangement";
-import { InteractableManipulation } from "SpectaclesInteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation";
+import { InteractableManipulation } from "InteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation";
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
-
-// Scenes saved with the System 2.0 style names keep them in their inputs; map them to System 3.0.
-const SYSTEM3_STYLE: {[name: string]: string} = {PrimaryNeutral: "Primary", Primary: "Primary", Special: "Prism"}
-const toSystem3Style = (style: string): string => SYSTEM3_STYLE[style] ?? style
 
 const PANEL_TITLE_H = 3.0;
 const PANEL_TITLE_GAP = 0.5;
@@ -381,7 +377,7 @@ export class ExampleGrid extends BaseScriptComponent {
                 ));
 
                 const button = btnObj.createComponent(RectangleButton.getTypeName()) as RectangleButton;
-                (button as any)._styleSystem3 = toSystem3Style(this.buttonStyle);
+                (button as any)._styleSystem3 = this.buttonStyle;
                 button.size = this.buttonSize;
                 button.initialize();
                 button.renderOrder = this.renderOrder;
@@ -629,7 +625,7 @@ export class ExampleGrid extends BaseScriptComponent {
         (this.frame as any)._following = false;
         this.frame.autoShowHide = this.frameAutoShowHide;
         // Frame self-initializes on its OnStartEvent (no public initialize()
-        // in the current SpectaclesUIKit). Apply post-init config once ready.
+        // in the current UIKit). Apply post-init config once ready.
         this.frame.onInitialized.add(() => {
             this.frame.allowScaling = false;
             this.frame.autoScaleContent = false;
@@ -738,7 +734,7 @@ export class ExampleGrid extends BaseScriptComponent {
         const btnObj = global.scene.createSceneObject(`Button_${index}`);
         btnObj.setParent(this.gridContainer);
         const button = btnObj.createComponent(RectangleButton.getTypeName()) as RectangleButton;
-        (button as any)._styleSystem3 = toSystem3Style(this.buttonStyle);
+        (button as any)._styleSystem3 = this.buttonStyle;
         button.size = this.buttonSize;
         button.initialize();
         button.renderOrder = this.renderOrder;

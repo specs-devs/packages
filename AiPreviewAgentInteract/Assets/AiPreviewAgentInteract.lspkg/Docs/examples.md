@@ -13,7 +13,7 @@ README).
 1. Create a SceneObject (for example `AiPreviewAgent Handler`). Add a ScriptComponent with
    `AiPreviewAgentInspect.lspkg/AgentInspectScript.ts`, then a second one **below it** with
    `AiPreviewAgentInteract.lspkg/AgentInteractScript.ts`. There are no inputs to set.
-2. Make sure the scene has the SpectaclesInteractionKit prefab (its `HandInteractor`s and
+2. Make sure the scene has the InteractionKit prefab (its `HandInteractor`s and
    `HandVisuals`), and that the Preview runs the SPECS device in Interactive mode.
 3. Run the Preview and send a `Wait` with `durationMs: 0`. The reply is a `CommandSuccess`
    with the same `commandId` and `handState` both `free`.
@@ -55,7 +55,7 @@ the target, so the agent's actions are visible. Add it next to the `Interactable
 `label`, or copy it. The shipped file:
 
 ```ts
-import {Interactable} from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
+import {Interactable} from "InteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
 
 /**
  * Demo target for AiPreviewAgentInteract: counts the SIK events that reach the

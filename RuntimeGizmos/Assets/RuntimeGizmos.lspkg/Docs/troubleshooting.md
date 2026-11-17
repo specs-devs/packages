@@ -5,8 +5,8 @@
 ## Use when
 
 A gizmo doesn't draw, doesn't follow, or throws. Generic scene, rendering and
-scripting issues belong to the relevant CLAD skill (`lens-debug`,
-`camera-and-rendering`).
+scripting issues are outside this package's
+scope.
 
 ## Known issues
 

@@ -2,7 +2,7 @@
   <img src="Docs/media/RuntimeGizmos.png" width="250px" alt="RuntimeGizmos"/>
 </p>
 
-# Runtime Gizmos 
+# Gizmos
 
 Runtime Gizmos draws debug and visualization geometry while the Lens runs:
 lines, closed polylines, circles, splines and spirals that follow scene objects.
@@ -22,7 +22,7 @@ Every gizmo renders with SIK's `InteractorLineRenderer`.
 This section ships with the package and describes the exact installed revision.
 Read it, then follow the links into `Docs/` for the topic you need. It is
 written for both people and coding agents; generic Lens scripting, scene
-construction, and Specs spatial design live in the CLAD skills, not here.
+construction, and Specs spatial design are out of scope here.
 
 ### Package identity
 
@@ -37,9 +37,9 @@ construction, and Specs spatial design live in the CLAD skills, not here.
   [components](Docs/components.md#demo-scaffolding-example)). They only present
   the demo; the gizmo scripts don't import them.
 - Required companion packages (`package_dependencies.json`):
-  `SpectaclesInteractionKit` (line renderer, color utils, and the line
+  `InteractionKit` (line renderer, color utils, and the line
   material the prefab uses), `Utilities` (Logger) and `SnapDecorators`
-  (imported by every script), plus `SpectaclesUIKit`, `Motion` and `Icons`.
+  (imported by every script), plus `UIKit`, `Motion` and `Icons`.
 
 ### Version and API status
 
@@ -54,15 +54,6 @@ Use Runtime Gizmos for debug overlays and simple line art that tracks objects:
 connections, boundaries, paths, radii, decorative spirals. It is not a general
 mesh or line-drawing toolkit. For thick, styled or animated lines use a mesh /
 line package, and for interaction rays use SIK's own visuals.
-
-### Related CLAD skills
-
-- [lens-api](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/lens-api):
-  instantiating prefabs and generic component scripting.
-- [mesh-builder-scripting](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/mesh-builder-scripting):
-  when you need real geometry rather than gizmo lines.
-- No CLAD? Setup: https://developers.specs.com/docs/clad/setup/setup-ai/ ·
-  source: `github.com/lens-studio-devs/ls-extensions`.
 
 ### Package Docs (ship in `Docs/`)
 

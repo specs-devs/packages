@@ -1,0 +1,38 @@
+# Local development only (supabase start). Hosted Snap Cloud projects are configured in the dashboard.
+# Ports are moved off the defaults so this stack can run next to other local Supabase projects.
+project_id = "webcapture"
+
+[api]
+enabled = true
+port = 55421
+schemas = ["public", "graphql_public"]
+max_rows = 1000
+
+[db]
+port = 55422
+shadow_port = 55420
+major_version = 17
+
+[studio]
+enabled = false
+
+[inbucket]
+enabled = false
+
+[storage]
+enabled = false
+
+[edge_runtime]
+enabled = false
+
+[analytics]
+enabled = false
+
+[realtime]
+enabled = false
+
+[auth]
+enabled = true
+site_url = "http://127.0.0.1:47790"
+# The Lens falls back to anonymous sign-in when Snapchat sign-in isn't available.
+enable_anonymous_sign_ins = true

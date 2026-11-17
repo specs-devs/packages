@@ -1,8 +1,8 @@
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
-import {HandVisual} from "SpectaclesInteractionKit.lspkg/Components/Interaction/HandVisual/HandVisual"
-import {mix} from "SpectaclesInteractionKit.lspkg/Utils/animate"
-import {clamp} from "SpectaclesInteractionKit.lspkg/Utils/mathUtils"
-import NativeLogger from "SpectaclesInteractionKit.lspkg/Utils/NativeLogger"
+import {HandVisual} from "InteractionKit.lspkg/Components/Interaction/HandVisual/HandVisual"
+import {mix} from "InteractionKit.lspkg/Utils/animate"
+import {clamp} from "InteractionKit.lspkg/Utils/mathUtils"
+import NativeLogger from "InteractionKit.lspkg/Utils/NativeLogger"
 import {GoogleSlideBridge} from "./GoogleSlideBridge"
 import {PresentationSwitcher} from "./PresentationSwitcher"
 

@@ -2,20 +2,20 @@
 // crash in the package (Visual.ts imports ThemeService before defining COLORS, and the
 // theme chain reads COLORS at module-load). Entering the import cycle via ThemeService
 // lets Visual.ts finish defining COLORS first. Must remain the FIRST import.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService"
+import "UIKit.lspkg/Scripts/Themes/ThemeService"
 /**
  * ExampleDeck – swipeable card stack. Each card has Title, Image (optional), and Description.
  * No prefabs. Swipe center card left = next, right = previous.
  * API: addCard(title, description, image?) or populate deckCards[] before Play.
  */
-import { InteractableManipulation } from "SpectaclesInteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation";
+import { InteractableManipulation } from "InteractionKit.lspkg/Components/Interaction/InteractableManipulation/InteractableManipulation";
 import {
   RoundedRectangleVisual,
   RoundedRectangleVisualState,
-} from "SpectaclesUIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangleVisual";
-import { RectangleButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton";
-import { StateName } from "SpectaclesUIKit.lspkg/Scripts/Components/Element";
-import { IMAGE_MATERIAL_ASSET } from "SpectaclesUIKit.lspkg/Scripts/Utility/Assets";
+} from "UIKit.lspkg/Scripts/Visuals/RoundedRectangle/RoundedRectangleVisual";
+import { RectangleButton } from "UIKit.lspkg/Scripts/Components/Button/RectangleButton";
+import { StateName } from "UIKit.lspkg/Scripts/Components/Element";
+import { IMAGE_MATERIAL_ASSET } from "UIKit.lspkg/Scripts/Utility/Assets";
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent } from "SnapDecorators.lspkg/decorators";
 

@@ -47,11 +47,11 @@ or debugging agent tooling, not for shipping in an experience.
 | `messaging/LensMessageBroker.ts` | Receives Preview messages and posts replies to the editor. |
 
 ## Extra info
-- **Requires:** InteractionKit, UIKit, Motion, Icons (used by the demo prefab and `Example/` scripts; the bridge itself
-  needs none of them). Works only in the Lens Studio Preview; on device the component does nothing. Keep a single
+- **Requires:** nothing. The package has no dependencies, so installing it never adds InteractionKit, UIKit, Motion
+  or Icons to a project. Works only in the Lens Studio Preview; on device the component does nothing. Keep a single
   `AgentInspectScript` per scene and remove it before you publish.
-- **Get started:** `AiPreviewAgentInspect__PLACE_IN_SCENE.prefab` for the full demo (guide panel, example carousel and
-  the `AgentInspectScript` object), or add `AgentInspectScript.ts` to any SceneObject by hand.
+- **Get started:** add `AgentInspectScript.ts` to any SceneObject. The full demo (guide panel, example carousel) is in
+  the repository's sample project (`AiPreviewAgentInspect/Assets/Demo/`), not in the package.
 - **More docs:**
   - [cheat-sheet.md](cheat-sheet.md) – load-bearing rules, read first
   - [components.md](components.md) – `AgentInspectScript`, publisher, reader registry, wire types

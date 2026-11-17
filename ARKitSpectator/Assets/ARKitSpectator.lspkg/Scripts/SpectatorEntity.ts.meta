@@ -1,0 +1,70 @@
+- !<AssetImportMetadata/e81cd63a-4d60-4240-9bd8-20082759cc2a>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 6a632454-f47e-4d6b-aac3-fdecaf253aff
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 6a632454-f47e-4d6b-aac3-fdecaf253aff
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 4c3842ad-a578-4223-ab59-7750a94f77bd
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/4c3842ad-a578-4223-ab59-7750a94f77bd>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 28cce667-9209-4905-9788-57aaa9ddf941
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    assetUrl: false
+    color: false
+    customJson: false
+    entityId: false
+    loopClip: false
+    primitive: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - entityId: ""
+      assetUrl: ""
+      primitive: box
+      color: !<Vec4> {x: 0.550000, y: 0.820000, z: 0.780000, w: 1.000000}
+      loopClip: ""
+      customJson: ""
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Identity</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">How this object is named in the room. Leave empty to use the SceneObject name.</span>"}'
+    - '// @input string entityId {"hint":"Stable id, unique in the room (max 80 characters). Empty = SceneObject name"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Appearance on the phone</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">A glTF/GLB URL, or a Snap Cloud Storage path such as models/robot.glb (public bucket). Without a model the phone draws the primitive.</span>"}'
+    - '// @input string assetUrl {"hint":"https://… .glb/.gltf URL, or <public bucket>/<path> in your Snap Cloud Storage"}'
+    - '// @input string primitive = "box" {"hint":"Placeholder shape when there is no model", "widget":"combobox", "values":[{"label":"Box", "value":"box"}, {"label":"Sphere", "value":"sphere"}, {"label":"Cylinder", "value":"cylinder"}, {"label":"Plane", "value":"plane"}, {"label":"None", "value":"none"}]}'
+    - '// @input vec4 color = {0.55,0.82,0.78,1} {"hint":"Placeholder colour", "widget":"color"}'
+    - "// @input string loopClip {\"hint\":\"glTF animation clip to loop on the phone (empty = the model's default)\"}"
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Custom data</span>"}'
+    - '// @input string customJson {"hint":"Optional JSON object sent with this entity (max 2 KB). Change it at runtime with setData()"}'

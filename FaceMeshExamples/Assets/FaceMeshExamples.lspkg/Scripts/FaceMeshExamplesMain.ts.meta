@@ -1,0 +1,96 @@
+- !<AssetImportMetadata/e4e8821e-6ac5-4de7-b4dd-0263589515c8>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 90d3c37e-b83b-4784-8f6d-4b71ebce5b69
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 90d3c37e-b83b-4784-8f6d-4b71ebce5b69
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 0d08569d-05b9-4f91-9fbb-e09898deb05f
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/0d08569d-05b9-4f91-9fbb-e09898deb05f>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 2e748cfe-e826-49b2-92e3-9ca0c99e620a
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    camera: false
+    clickAudio: false
+    clickVolume: false
+    debugColliders: false
+    debugFaceMesh: false
+    fadeAmount: false
+    fadeHeads: false
+    headAnchor: false
+    headController: false
+    headStage: false
+    scaleStep: false
+    selectorUI: false
+    stageDistanceCm: false
+    stageHeightOffsetCm: false
+    startIndex: false
+    swapAudio: false
+    swapVolume: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - headController: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      selectorUI: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      headStage: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      headAnchor: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      camera: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      clickAudio: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
+      swapAudio: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
+      debugFaceMesh: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      fadeHeads: !<reference.RenderMeshVisual[]>
+        []
+      fadeAmount: 0.300000
+      startIndex: !<float> 0.000000
+      scaleStep: 0.100000
+      stageDistanceCm: !<float> 110.000000
+      stageHeightOffsetCm: !<float> 0.000000
+      clickVolume: 0.600000
+      swapVolume: 0.800000
+      debugColliders: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - "// @input AssignableType_1 headController {\"hint\":\"HeadSlots' FaceMeshExamplesHeadController\"}"
+    - "// @input AssignableType_2 selectorUI {\"hint\":\"HeadSelectorUI's FaceMeshExamplesHeadSelectorUI\"}"
+    - '// @input SceneObject headStage {"hint":"World-anchored fallback stage (scene root)"}'
+    - '// @input SceneObject headAnchor {"hint":"HeadAnchor (the Head binding). Face tracking needs it under the camera: if the prefab ships it elsewhere, it is moved under `camera` on awake, keeping its local transform"}'
+    - "// @input SceneObject camera {\"hint\":\"Main Camera SceneObject (empty: SIK's world camera is used)\"}"
+    - '// @input Component.AudioComponent clickAudio {"hint":"AudioComponent with ButtonClick.wav"}'
+    - '// @input Component.AudioComponent swapAudio {"hint":"AudioComponent with HeadSwap.wav"}'
+    - "// @input AssignableType_3 debugFaceMesh {\"hint\":\"ExpressionSource's FaceMeshExamplesDebugFaceMesh: the panel's Option button toggles it on face-mesh heads\"}"
+    - "// @input Component.RenderMeshVisual[] fadeHeads = {} {\"hint\":\"Head visuals using the HeadFade material: the panel's fade - / + sets how much of each head fades to black\"}"
+    - "// @input float fadeAmount = 0.3 {\"hint\":\"Fraction of each head's height (from the bottom) that fades out\", \"widget\":\"slider\", \"min\":0, \"max\":0.7, \"step\":0.01}"
+    - '// @input float startIndex {"widget":"slider", "min":0, "max":3, "step":1}'
+    - "// @input float scaleStep = 0.1 {\"hint\":\"Scale step for the panel's − / + buttons\", \"widget\":\"slider\", \"min\":0.02, \"max\":0.25, \"step\":0.01}"
+    - '// @input float stageDistanceCm = 110 {"widget":"slider", "min":40, "max":150, "step":1}'
+    - '// @input float stageHeightOffsetCm {"widget":"slider", "min":-30, "max":30, "step":1}'
+    - '// @input float clickVolume = 0.6 {"widget":"slider", "min":0, "max":1, "step":0.05}'
+    - '// @input float swapVolume = 0.8 {"widget":"slider", "min":0, "max":1, "step":0.05}'
+    - // @input bool debugColliders

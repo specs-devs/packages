@@ -24,6 +24,7 @@
   VersionPatch: 0
   VersionPrerelease: ""
   UpdateOrder: 0
+  RunInEditor: false
   ComponentUid: 3f4190e1-5ec6-40d4-9ef0-37a1de5f337e
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
@@ -42,6 +43,7 @@
     imageEditPrompt: false
     imageGenerationPrompt: false
     imgObject: false
+    logPanelOffset: false
     systemPrompt: false
     textDisplay: false
     userPrompt: false
@@ -75,6 +77,7 @@
       doFunctionCallingOnTap: false
       enableLogging: false
       enableLoggingLifecycle: false
+      logPanelOffset: !<Vec3> {x: 0.000000, y: 14.000000, z: 0.000000}
   ScriptTypes:
     -
       {}
@@ -86,13 +89,13 @@
     - // @input Component.Text textDisplay
     - "// @input string systemPrompt = \"You are an incredibly smart but witty AI assistant who likes to answer life's greatest mysteries in under two sentences\" {\"widget\":\"text_area\"}"
     - '// @input string userPrompt = "Is a hotdog a sandwich" {"widget":"text_area"}'
-    - '// @input bool doChatCompletionsOnTap {"label":"Run On Tap"}'
+    - '// @input bool doChatCompletionsOnTap {"label":"Run in demo"}'
     - '// @ui {"widget":"group_end"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"group_start", "label":"Image Generation Example"}'
     - // @input SceneObject imgObject
     - '// @input string imageGenerationPrompt = "The future of augmented reality" {"widget":"text_area"}'
-    - '// @input bool generateImageOnTap {"label":"Run On Tap"}'
+    - '// @input bool generateImageOnTap {"label":"Run in demo"}'
     - '// @ui {"widget":"group_end"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"group_start", "label":"Image Edit Example"}'
@@ -100,21 +103,23 @@
     - // @input Asset.Texture editMaskImg
     - // @input SceneObject editResultObject
     - '// @input string imageEditPrompt = "Add a cat into the image" {"widget":"text_area"}'
-    - '// @input bool doEditImageOnTap {"label":"Run On Tap"}'
+    - '// @input bool doEditImageOnTap {"label":"Run in demo"}'
     - '// @ui {"widget":"group_end"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"group_start", "label":"Voice Generation Example"}'
     - '// @input string voiceGenerationPrompt = "Get ready for the future of augmented reality with Lens Studio!" {"widget":"text_area"}'
     - '// @input string voiceGenerationInstructions = "Serious, movie trailer voice, insert pauses for dramatic effect" {"widget":"text_area"}'
-    - '// @input bool generateVoiceOnTap {"label":"Run On Tap"}'
+    - '// @input bool generateVoiceOnTap {"label":"Run in demo"}'
     - '// @ui {"widget":"group_end"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"group_start", "label":"Function Calling Example"}'
     - '// @input string functionCallingPrompt = "Make the text display yellow" {"widget":"text_area"}'
-    - '// @input bool doFunctionCallingOnTap {"label":"Run On Tap"}'
+    - '// @input bool doFunctionCallingOnTap {"label":"Run in demo"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'
     - '// @input bool enableLogging {"hint":"Enable general logging (animation cycles, events, etc.)"}'
     - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)"}'
     - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - "// @input vec3 logPanelOffset = {0,14,0} {\"hint\":\"Where the demo's live log panel sits, relative to this object (cm)\"}"

@@ -280,7 +280,7 @@ export class ProximityTint extends BaseScriptComponent {
 ```
 
 `baseColor` exists only on materials whose shader exposes it. Material
-parameters are engine and shader API: see the CLAD materials skill.
+parameters are engine and shader API: see the Lens Studio documentation.
 
 ### Constant apparent size
 

@@ -22,7 +22,7 @@ that most often break a generated Lens.
    objects only, and `getRootCamera` throws when no root has a Camera.
    `SceneObjectUtils.findComponentInHierarchy` only inspects ScriptComponents.
    → [components](components.md#componentutils)
-5. `AnimationUtils` runs on SpectaclesInteractionKit's `animate()`: `makeTween`
+5. `AnimationUtils` runs on InteractionKit's `animate()`: `makeTween`
    returns a cancel function, `animateScale` / `animateVisualFeedback` return a
    SIK `CancelSet` (call `.cancel()`). Nothing cancels itself when the object is
    disabled or destroyed - cancel in your own `OnDisableEvent` / `OnDestroyEvent`.

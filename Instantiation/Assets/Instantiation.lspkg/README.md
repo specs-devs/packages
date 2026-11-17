@@ -25,7 +25,7 @@ and an equivalent **JavaScript** script.
 This section ships with the package and describes the exact installed revision.
 Read it, then follow the links into `Docs/` for the topic you need. It is
 written for both people and coding agents; generic Lens scripting, scene
-construction, and Specs spatial design live in the CLAD skills, not here.
+construction, and Specs spatial design are out of scope here.
 
 ### Package identity
 
@@ -49,8 +49,8 @@ construction, and Specs spatial design live in the CLAD skills, not here.
   ([components](Docs/components.md#demo-scaffolding-example)).
 - Required companion packages (`package_dependencies.json`): `Utilities`
   (Logger), `SnapDecorators` (imported by the TS scripts), and
-  `SpectaclesInteractionKit` (used by the bundled demo `RuntimeGizmos/Line.ts`),
-  plus `SpectaclesUIKit`, `Motion` and `Icons`.
+  `InteractionKit` (used by the bundled demo `RuntimeGizmos/Line.ts`),
+  plus `UIKit`, `Motion` and `Icons`.
 
 ### Version and API status
 
@@ -61,18 +61,8 @@ inputs (`rows`, `columns`, `spacing`, `onInstantiated`) that don't exist.
 ### Applicability
 
 Use Instantiation for static, start-time layouts of many copies of one prefab.
-It doesn't pool objects, re-layout at runtime, or animate. For those, write
-your own spawner (see the CLAD `lens-api` skill). For physics-driven scattering,
-use the physics skill.
-
-### Related CLAD skills
-
-- [lens-api](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/lens-api):
-  `ObjectPrefab.instantiate`, lifecycle, runtime object creation.
-- [physics](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/physics):
-  when spawned objects need bodies/colliders.
-- No CLAD? Setup: https://developers.specs.com/docs/clad/setup/setup-ai/ ·
-  source: `github.com/lens-studio-devs/ls-extensions`.
+It doesn't pool objects or re-layout at runtime, and only the circle perimeter layout animates (one-by-one pop-in). For those, write
+your own spawner. For physics-driven scattering, use the Physics components.
 
 ### Package Docs (ship in `Docs/`)
 

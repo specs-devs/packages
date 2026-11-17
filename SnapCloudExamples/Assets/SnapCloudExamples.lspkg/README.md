@@ -11,8 +11,7 @@ and a global leaderboard. These are backend demonstrations with Inspector wiring
 ## Usage
 
 This section ships with the package and describes the exact installed revision.
-Generic Lens scripting, scene construction and SPECS spatial design live in
-CLAD skills; this package documents its own component wiring and backend contracts.
+Generic Lens scripting, scene construction and SPECS spatial design are out of scope here; this package documents its own component wiring and backend contracts.
 
 ### Package identity
 
@@ -29,7 +28,7 @@ CLAD skills; this package documents its own component wiring and backend contrac
   (Window > Supabase > Import Credentials). Until then a red-framed "Credentials needed"
   panel appears before the guide; "Continue without credentials" closes it. No example uses
   Remote Service Gateway tokens. See [Setup](Docs/setup.md).
-- Declared dependencies (see `package_dependencies.json`): SpectaclesInteractionKit, SpectaclesUIKit,
+- Declared dependencies (see `package_dependencies.json`): InteractionKit, UIKit,
   SupabaseClient, Utilities, SnapDecorators, Motion and Icons.
 - Backend and browser counterparts ship in `SnapCloudExamples.lspkg/ExternalServicesExamples/`:
   the leaderboard SQL, two Edge Function sources, mock table/storage data, three web viewers for the
@@ -59,18 +58,11 @@ package supplies no backend deployment automation or general SDK wrapper.
 - [Core components](Docs/components.md): read for requirements, authentication, tables, cursor and downloads.
 - [Media components](Docs/media.md): read for all capture/streaming inputs and shared utilities.
 - [Leaderboard](Docs/leaderboard.md): read for RPCs, rows, score ordering and game controller.
+- [Global counter](Docs/global-counter.md): one action per user and a shared total (pledge / vote pattern), with the SQL setup.
 - [Setup](Docs/setup.md): read for project, schema, storage/function and viewer contracts, and the shipped `ExternalServicesExamples/` files.
 - [Examples](Docs/examples.md): read for small offline compile-checked integrations.
 - [Troubleshooting](Docs/troubleshooting.md): read for source-observed limitations and pending QA.
 - [Tutorial](Docs/tutorial.md): end-to-end walkthrough, example by example, with the backend pieces each one needs.
-
-### Related CLAD skills
-
-Use [Snap Cloud](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/specs-snap-cloud),
-[camera](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/specs-camera),
-[audio](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/specs-audio)
-and [scene construction](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/scene-construction)
-for platform workflows. CLAD setup: https://developers.specs.com/docs/clad/setup/setup-ai/.
 
 ### Verification
 

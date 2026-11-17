@@ -2,9 +2,9 @@
 // crash in the package (Visual.ts imports ThemeService before defining COLORS, and the
 // theme chain reads COLORS at module-load). Loading ThemeService first lets Visual.ts
 // finish initializing COLORS before the visual chain reads it.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService";
-import {RectangleButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton"
-import {Switch} from "SpectaclesUIKit.lspkg/Scripts/Components/Switch/Switch"
+import "UIKit.lspkg/Scripts/Themes/ThemeService";
+import {RectangleButton} from "UIKit.lspkg/Scripts/Components/Button/RectangleButton"
+import {Switch} from "UIKit.lspkg/Scripts/Components/Switch/Switch"
 import {createClient} from "SupabaseClient.lspkg/supabase-snapcloud"
 import {CameraService} from "../../CompositeCameraWork/Scripts/CameraService"
 import {SnapCloudRequirements} from "../../SnapCloudRequirements"
@@ -20,6 +20,7 @@ import {bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent} 
 @component
 export class ImageCaptureUploader extends BaseScriptComponent {
   private cameraModule: CameraModule = require("LensStudio:CameraModule")
+  private captureSession: CameraModule.CaptureSession | null = null
 
   @ui.separator
   @ui.label('<span style="color: #60A5FA;">Storage Configuration</span>')
@@ -137,6 +138,9 @@ export class ImageCaptureUploader extends BaseScriptComponent {
     }
 
     // Initialize on start - button/switch initialization must happen after components are awake
+    // Release the camera when the component goes away.
+    this.createEvent("OnDestroyEvent").bind(() => this.captureSession?.stop())
+
     this.createEvent("OnStartEvent").bind(() => {
       this.setupUIHandlers()
       this.initializeSupabaseAuthentication()
@@ -660,6 +664,19 @@ export class ImageCaptureUploader extends BaseScriptComponent {
   /**
    * Capture high-quality still image using Camera Module API
    */
+  /** Starts the still-capture pipeline on the first camera stream that supports stills. */
+  private startCaptureSession(): boolean {
+    const stream = this.cameraModule
+      .getCameras()
+      .map((camera) => camera.getStreams().find((s) => s.operation === CameraModule.Operation.Capture))
+      .find((s) => s !== undefined)
+    if (!stream) return false
+    const config = new CameraModule.StreamConfig()
+    config.stream = stream
+    this.captureSession = this.cameraModule.createCaptureSession()
+    return this.captureSession.start(config) === CameraModule.Result.Success
+  }
+
   private async captureStillImage() {
     this.log("Starting high-quality still image capture...")
     this.isCapturing = true
@@ -673,30 +690,17 @@ export class ImageCaptureUploader extends BaseScriptComponent {
         throw new Error("Camera Module not initialized")
       }
 
-      // Create image request using Camera Module API
-      this.log("Creating image request...")
-      const imageRequest = CameraModule.createImageRequest()
-
-      // Set the camera ID (REQUIRED!)
-      // Note: Using type assertion because Lens Studio type definitions may be incomplete
-      ;(imageRequest as any).cameraId = this.cameraIdToUse
-      this.log(`Set camera ID to: ${this.cameraIdToUse}`)
-
+      // Capture a high-resolution still through a capture session on a camera stream
+      // that supports stills (CameraModule.Operation.Capture).
       this.log("Requesting still image from Camera Module...")
-
-      // Request the high-quality still image
-      const imageFrame = await this.cameraModule.requestImage(imageRequest)
-
-      // Log timestamp if available
-      const timestamp = (imageFrame as any).timestampMillis
-      if (timestamp !== undefined) {
-        this.log(`Still image captured successfully at timestamp: ${timestamp}ms`)
-      } else {
-        this.log("Still image captured successfully")
+      if (!this.captureSession && !this.startCaptureSession()) {
+        throw new Error("No camera stream supports still capture (device only)")
       }
+      const frame = await this.captureSession!.capture()
+      this.log(`Still image captured successfully (${frame.width}x${frame.height})`)
 
-      // Get the texture from the image frame
-      const stillTexture = imageFrame.texture
+      // Get the texture from the captured frame
+      const stillTexture = frame.texture
 
       if (!stillTexture) {
         throw new Error("Received null texture from image frame")

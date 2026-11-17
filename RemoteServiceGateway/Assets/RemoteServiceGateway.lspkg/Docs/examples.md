@@ -6,8 +6,7 @@
 
 You need a starting point for a call, or you want to know what the example
 prefab contains. Copy the smallest snippet that does the job, and build the
-rest of the experience (UI, interaction, placement) with the CLAD skills
-(`specs-build-ui`, `specs-interaction-recipes`, `lens-api`). The snippets use
+rest of the experience (UI, interaction, placement) yourself. The snippets use
 only names that exist in this revision ([components](components.md)). They
 assume the tokens are set ([setup](setup.md)).
 
@@ -26,58 +25,101 @@ cm, `OFF` = SceneObject disabled):
 
 ```text
 RemoteServiceGateway__PLACE_IN_SCENE        (0, 0, 0)
-├── Guide                                         GuideDismissPanel + UIKit Frame (0, 0, -100), see [components](components.md#demo-scaffolding-example)
-├── ExampleCarousel                               ExampleCarousel (0, -22, -100)
+├── ThemeManager                                    UIKit theme (System 3.0)
 ├── RemoteServiceGatewayCredentials                 RemoteServiceGatewayCredentials (placeholder tokens)
-├── Snap Hosted Examples                            (0, -10, -180)
-│   ├── Snap 3D Examples                            (20, -10, 0)
-│   │   └── ExampleSnap3D                           ExampleSnap3D (runOnTap false)
-│   │       ├── ImageRoot          Image            (-15, -13, 0)  children: Text (OFF), LoadingSpinner
-│   │       ├── BaseMeshRoot                        (0, -13, 0)    children: Text (OFF), LoadingSpinner
-│   │       ├── RefinedMeshRoot                     (15, -13, 0)   children: Text (OFF), LoadingSpinner
-│   │       └── Snap3D Title       Text             ExampleSnap3D hintText (status line)
-│   ├── DeepSeek Examples                           (-20, -10, 0)
-│   │   ├── ExampleDeepseekCalls                    ExampleDeepseekCalls (runOnTap false)
-│   │   │   └── TextOutput         Text             (0, -5, 0)
-│   │   └── Deepseek Title         Text  OFF
-│   ├── Title                      Text  OFF        "Snap Hosted APIs"
-│   └── Hint                       Text  OFF        "Check ExampleDeepseekCalls and ExampleSnap3D in inspector!"
-└── External Hosted Examples                        (0, 40, -180)
+├── CredentialsWarning                              CredentialsWarning (Snap, OpenAI and Google required)
+├── Guide                                           GuideDismissPanel + UIKit Frame (0, 0, -100)
+├── ExampleCarousel                                 ExampleCarousel (0, -22, -100), 7 steps (below)
+├── Snap Hosted Examples                            (0, 5, -110)
+│   ├── Snap3D                                      (0, -10, 0)     step 6
+│   │   └── ExampleSnap3D                           ExampleSnap3D (runOnTap = run in demo: true)
+│   │       ├── ImageRoot          Image            (-15, -13, 0)  children: Text, LoadingSpinner
+│   │       ├── BaseMeshRoot                        (0, -13, 0)    children: Text, LoadingSpinner
+│   │       ├── RefinedMeshRoot                     (15, -13, 0)   children: Text, LoadingSpinner
+│   │       └── Snap3D Title       Text             hintText (status line)
+│   ├── Title / Hint               Text  OFF
+│   └── ImageTo3D                                   (0, -10, 0)     step 7
+│       └── ExampleSnap3DImageTo3D                  ExampleSnap3DImageTo3D (public image URL, run in demo: true)
+└── External Hosted Examples                        (0, 5, -110)
     ├── Websocket requirements
     │   ├── MicrophoneRecorder                      MicrophoneRecorder (micAudioTrack = Resources/Microphone Audio)
-    │   └── DynamicAudioOutput                      DynamicAudioOutput + AudioComponent (Resources/Audio Output)
-    ├── OpenAI Examples                             (-20, -10, 0)
-    │   ├── ExampleOAICalls                         ExampleOAICalls (all ...OnTap false)
+    │   └── DynamicAudioOutput                      DynamicAudioOutput + AudioComponent (shared by Realtime, Live, Lyria)
+    ├── OpenAI                                      (0, -10, 0)     step 1
+    │   ├── ExampleOAICalls                         ExampleOAICalls (every call on)
     │   │   ├── TextOutput         Text             (-13, 0, 0)
     │   │   └── ImageOutputExample Image            (13, -5, 0)   child: LoadingSpinner
-    │   ├── Title                  Text  OFF        "OpenAI"
-    │   └── ExampleOpenAIRealtime  OFF              ExampleOAIRealtime (10, -20, 0)
+    │   ├── Title                  Text  OFF
+    │   └── OpenAI Realtime        OFF              ExampleOAIRealtime (13, -5, 0), audioOutput on, voice ash   step 2
     │       └── TextOutput         Text
-    ├── GoogleGenAI Examples                        (22, -10, 0)
-    │   ├── ExampleGeminiCalls                      ExampleGeminiCalls (all ...OnTap false)
+    ├── Gemini and Imagen                           (0, -10, 0)     step 3
+    │   ├── ExampleGeminiCalls                      ExampleGeminiCalls (text + function calling on)
     │   │   ├── TextOutput         Text             (-13, 0, 0)
     │   │   └── ImageOutputExample Image            (13, -5, 0)   child: LoadingSpinner
-    │   ├── Title                  Text  OFF        "Gemini"
-    │   ├── ExampleGeminiLive      OFF              ExampleGeminiLive (0, -20, 0)
+    │   ├── Title                  Text  OFF
+    │   ├── Gemini Live            OFF              ExampleGeminiLive (0, -5, 0), haveAudioOutput on   step 4
     │   │   └── TextOutput         Text
-    │   ├── ExampleLyriaCall                        ExampleLyriaCall (generateMusicOnTap false, playAudioOnTap true)
-    │   └── ExampleImagenCalls                      ExampleImagenCalls (doGenerateOnTap TRUE, imgObject = Gemini ImageOutputExample)
-    ├── Title                      Text  OFF        "External Hosted APIs"
-    └── Hint                       Text  OFF        "Check ExampleOAICalls and ExampleGeminiCalls in inspector!"
+    │   └── ExampleImagenCalls                      ExampleImagenCalls (imgObject = Gemini ImageOutputExample)
+    ├── Title / Hint               Text  OFF
+    └── Lyria                                       (0, -10, 0)     step 5
+        └── ExampleLyriaCall                        ExampleLyriaCall (generate + play on)
 ```
 
-To try an example: put real tokens on `RemoteServiceGatewayCredentials`, turn
-on **one** `...OnTap` / `runOnTap` flag, then tap in the Preview, or pinch with
-the right hand on device. For a realtime example, enable `ExampleOpenAIRealtime`
-**or** `ExampleGeminiLive` (one at a time). The **Image To 3D** step runs
-`ExampleSnap3DImageTo3D` on a public image URL. Placement and other surprises: [troubleshooting](troubleshooting.md).
+### Auto-run demo
 
-The prefab's title, caption and hint texts ship turned off, so no loose text floats in
-the scene. Their guidance lives here: each example's prompt and run flags are on its
-`Example...` script in the Inspector (`ExampleSnap3D`, `ExampleDeepseekCalls`,
-`ExampleOAICalls`, `ExampleGeminiCalls`, `ExampleOAIRealtime`, `ExampleGeminiLive`).
-Snap3D shows its results left to right: preview image, base mesh, refined mesh.
-`Snap3D Title` stays on because it is `ExampleSnap3D`'s status line.
+Each carousel step runs its own demo as soon as it is shown (on start for the
+first step, then on every Previous / Next). Nothing needs a tap. Inside a step
+the calls run one after the other, each awaited. Leaving a step stops it: open
+sockets are closed, the microphone and audio output are stopped, music and
+speech stop, and late responses from the old step are ignored.
+
+| Step | What runs, in order |
+|---|---|
+| 1 OpenAI | `gpt-5.6-luna` chat → function calling (`set-text-color`) → `gpt-image-2` generate (shown on the right) → `gpt-image-2` edit with the mask (replaces it) → `gpt-4o-mini-tts` speech, played to the end |
+| 2 OpenAI Realtime | `gpt-realtime-mini` socket opens → `session.update` (audio, voice `ash`) → mic streams → `response.create` with the greeting, so the model speaks first. Talk back, or ask it to change the text color |
+| 3 Gemini and Imagen | `gemini-2.5-flash` text → Gemini function calling (`set_text_color`) → `Imagen.generateContent` with `gemini-3.1-flash-image` (shown on the right) |
+| 4 Gemini Live | `models/gemini-live-2.5-flash` socket opens → `setup` (audio, voice `Puck`) → mic streams → a greeting turn, so the model speaks first |
+| 5 Lyria | `lyria-002` generates a clip (about 30 s, the request itself takes a while) → the WAV is played to the end |
+| 6 Snap3D | `Snap3D.submitAndGetStatus` → preview image → base mesh → refined mesh |
+| 7 Image to 3D | the source image is fetched and shown → `Snap3D.submitAndGetStatus` with `image_url` → base mesh → refined mesh |
+
+Each example's run flags (`...OnTap`, `runOnTap`; labelled "Run in demo") choose
+which of its calls take part. `ExampleGeminiCalls.generateImageOnTap` (the same
+image model through the Gemini route) is off, because Imagen draws in that step.
+
+### Live log panel
+
+A dark panel with a blue border sits just above each step's content and shows
+the last 8 lines of what is happening, stamped with seconds since the step
+started:
+
+```text
+OpenAI · live log
++0.0s   gpt-5.6-luna chat → request sent
++1.8s   gpt-5.6-luna chat ← ok in 1.8 s: Technically yes, emotionally no…
++1.8s   function calling → request sent
++5.2s   gpt-image-2 generate ✗ after 2.1 s: 404 model not found
+```
+
+Errors turn the border red. Every line is also printed (`[RSG demo +1.8s] ...`,
+errors as `ERROR`). When a token is missing or still a placeholder, the step logs
+`✗ OpenAI token missing: set openAIToken on RemoteServiceGatewayCredentials` and
+does nothing else. Responses are summarized, not their HTTP code: the wrappers
+resolve with the parsed body and reject with the error body
+([common behavior](components.md#common-behavior-of-the-service-modules)).
+
+The coordinator, the panel and the run handle are demo scaffolding in
+`Example/DemoLog/DemoLog.ts` ([components](components.md#demo-scaffolding-example)).
+Your own code can call the same methods (`doChatCompletions()`,
+`generateImageExample()`, ...). Without a run handle they log to `print` only.
+
+To try the demo: put real tokens on `RemoteServiceGatewayCredentials`, sign in to
+My Lenses for Preview calls, then step through the carousel. Use headphones in
+the editor for the realtime steps (mic and speaker feedback). Placement and
+other surprises: [troubleshooting](troubleshooting.md).
+
+The prefab's title and hint texts ship turned off, so no loose text floats in
+the scene. Snap3D shows its results left to right: preview image, base mesh,
+refined mesh. `Snap3D Title` stays on because it is the Snap3D examples' status line.
 
 ## Chat with context (OpenAI)
 
@@ -118,37 +160,6 @@ export class ChatWithHistory extends BaseScriptComponent {
 Function calling works the same way. Pass `tools: OpenAITypes.Common.Tool[]`
 and `tool_choice: "auto"`, then read `response.choices[0].message.tool_calls`.
 See `ExampleOAICalls.doFunctionCalling()`.
-
-## DeepSeek R1 (Snap-hosted)
-
-```typescript
-import { DeepSeek } from "RemoteServiceGateway.lspkg/HostedSnap/Deepseek";
-
-@component
-export class AskDeepSeek extends BaseScriptComponent {
-  @input output: Text;
-
-  ask(question: string) {
-    DeepSeek.chatCompletions({
-      model: "DeepSeek-R1",
-      messages: [
-        { role: "system", content: "Give your reasoning in no more than one sentence." },
-        { role: "user", content: question },
-      ],
-      max_tokens: 2048,
-      temperature: 0.7,
-    })
-      .then((response) => {
-        const message = response.choices[0].message;
-        this.output.text =
-          "Reasoning: " + message.reasoning_content + "\n\nAnswer: " + message.content;
-      })
-      .catch((error) => {
-        this.output.text = "Error: " + error;
-      });
-  }
-}
-```
 
 ## Gemini text generation
 
@@ -294,7 +305,9 @@ function textureToPng(texture: Texture): Promise<Uint8Array> {
 }
 
 export async function editImage(base: Texture, mask: Texture, prompt: string): Promise<string | undefined> {
-  const [image, maskBytes] = await Promise.all([textureToPng(base), textureToPng(mask)]);
+  // One encode at a time: concurrent Base64.encodeTextureAsync calls crash the Lens on Specs.
+  const image = await textureToPng(base);
+  const maskBytes = await textureToPng(mask);
   const response = await OpenAI.imagesEdit({
     model: "gpt-image-2",
     prompt: prompt,
@@ -494,7 +507,6 @@ GA `session.update` message on `onOpen` (`session.type: "realtime"`,
 ```typescript
 import { OpenAI } from "RemoteServiceGateway.lspkg/HostedExternal/OpenAI";
 import { Gemini } from "RemoteServiceGateway.lspkg/HostedExternal/Gemini";
-import { DeepSeek } from "RemoteServiceGateway.lspkg/HostedSnap/Deepseek";
 
 export function askAll(prompt: string): Promise<string[]> {
   const asText = (p: Promise<string>) => p.catch((error) => "Error: " + error);
@@ -510,15 +522,11 @@ export function askAll(prompt: string): Promise<string[]> {
         body: { contents: [{ role: "user", parts: [{ text: prompt }] }] },
       }).then((r) => r.candidates?.[0]?.content?.parts?.[0]?.text ?? "")
     ),
-    asText(
-      DeepSeek.chatCompletions({ model: "DeepSeek-R1", messages: [{ role: "user", content: prompt }] })
-        .then((r) => r.choices[0].message.content)
-    ),
   ]);
 }
 ```
 
-This needs all three token types (OpenAI, Google, Snap).
+This needs both token types (OpenAI and Google).
 
 ## Lyria music
 

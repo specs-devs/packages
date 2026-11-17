@@ -1,0 +1,53 @@
+- !<AssetImportMetadata/a1e321c1-e436-43b7-9c84-f9eec9e4746c>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> ec1246e4-68a2-4544-989e-1213673d5aa7
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> ec1246e4-68a2-4544-989e-1213673d5aa7
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 4c4f886f-91e4-4960-8524-311bc44c38d0
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/4c4f886f-91e4-4960-8524-311bc44c38d0>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 9a489774-7622-4ac1-a741-8804409799e1
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    snapCloudRequirements: false
+    supabaseProject: false
+    text: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - snapCloudRequirements: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      supabaseProject: !<reference.SupabaseProject> 00000000-0000-0000-0000-000000000000
+      text: !<reference.Text> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input AssignableType_1 snapCloudRequirements {"hint":"SnapCloudRequirements component holding the SupabaseProject"}'
+    - '// @input Asset.SupabaseProject supabaseProject {"hint":"Deprecated: use snapCloudRequirements"}'
+    - '// @input Component.Text text {"hint":"Optional Text that shows a setup warning until the asset is assigned"}'

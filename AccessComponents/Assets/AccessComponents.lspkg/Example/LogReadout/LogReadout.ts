@@ -1,19 +1,25 @@
-import {Frame} from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame"
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
+import {Frame} from "UIKit.lspkg/Scripts/Components/Frame/Frame"
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
 
-const FRAME_WIDTH = 30
-const FRAME_HEIGHT = 10
-const TITLE_HEIGHT = 2.5
+const FRAME_WIDTH = 34
+const FRAME_HEIGHT = 13
+const TITLE_HEIGHT = 3
+const SIDE_PADDING = 2
 const CONTENT_Z = 0.5
-const TITLE_SIZE = 40
-const LINE_SIZE = 32
+const TITLE_SIZE = 44
+const LINE_SIZE = 38
 const CONTENT_RENDER_ORDER = 100
-// Where the panel sits relative to the head pose when it starts (cm): just above the example
-// carousel (90 cm away, top edge near eye level) and below the examples.
-const PANEL_DISTANCE = 95
-const PANEL_LIFT = 11
+// Where the panel sits relative to the head pose when it starts (cm): at the 110 cm far-field
+// distance of the Specs guideline, lifted so it stays clear of the near-field example carousel.
+const PANEL_DISTANCE = 110
+const PANEL_LIFT = 13
 // Longest line shown; longer lines are cut with "…".
-const MAX_LINE_LENGTH = 90
+const MAX_LINE_LENGTH = 70
+// Framework start-up lines that say nothing about the example.
+const IGNORED_LINES = [/^IK Version/i, /^UIKit Version/i]
+// Prefix that marks the newest line.
+const NEWEST_MARK = "› "
+const OLDER_MARK = "· "
 
 /**
  * Shows the Lens's latest print() lines on a small UIKit panel, so what the examples log can be read
@@ -38,11 +44,17 @@ export class LogReadout extends BaseScriptComponent {
   @hint("How many of the latest lines are shown")
   lineCount: number = 6
 
-  private lines: string[] = []
+  // Lines per section (one section per example), so each example shows only its own output.
+  private sections: {[name: string]: string[]} = {}
+  private section = ""
+  private sectionChosen = false
   private text: Text | null = null
+  private titleText: Text | null = null
 
   onAwake(): void {
     const g = globalThis as any
+    // ExampleCarousel looks this up to switch the panel to the example it shows.
+    g.specsLogReadout = this
     const original = g.print
     g.print = (message: any) => {
       original(message)
@@ -51,17 +63,51 @@ export class LogReadout extends BaseScriptComponent {
     this.createEvent("OnStartEvent").bind(() => this.build())
   }
 
+  /**
+   * Switches the panel to another section (e.g. the example now shown): lines printed from now on go
+   * to it, and the panel shows only its lines. Called by ExampleCarousel (through `globalThis.specsLogReadout`) when the example changes.
+   */
+  setSection(name: string): void {
+    const next = name || ""
+    // Lines printed before the first section was chosen belong to the first example.
+    if (!this.sectionChosen && next !== this.section && this.sections[this.section]) {
+      this.sections[next] = (this.sections[next] || []).concat(this.sections[this.section])
+      delete this.sections[this.section]
+    }
+    this.sectionChosen = true
+    this.section = next
+    this.refresh()
+  }
+
+  private get lines(): string[] {
+    if (!this.sections[this.section]) {
+      this.sections[this.section] = []
+    }
+    return this.sections[this.section]
+  }
+
   private add(line: string): void {
     const clean = line.replace(/\s+/g, " ").trim()
-    if (clean.length === 0) {
+    if (clean.length === 0 || IGNORED_LINES.some((pattern) => pattern.test(clean))) {
       return
     }
-    this.lines.push(clean.length > MAX_LINE_LENGTH ? clean.substring(0, MAX_LINE_LENGTH - 1) + "…" : clean)
-    if (this.lines.length > this.lineCount) {
-      this.lines.splice(0, this.lines.length - this.lineCount)
+    const lines = this.lines
+    lines.push(clean.length > MAX_LINE_LENGTH ? clean.substring(0, MAX_LINE_LENGTH - 1) + "…" : clean)
+    if (lines.length > this.lineCount) {
+      lines.splice(0, lines.length - this.lineCount)
+    }
+    this.refresh()
+  }
+
+  private refresh(): void {
+    if (this.titleText) {
+      this.titleText.text = this.section.length > 0 ? this.title + "  ·  " + this.section : this.title
     }
     if (this.text) {
-      this.text.text = this.lines.join("\n")
+      const lines = this.lines
+      this.text.text = lines.length === 0
+        ? "Nothing printed yet"
+        : lines.map((line, i) => (i === lines.length - 1 ? NEWEST_MARK : OLDER_MARK) + line).join("\n")
     }
   }
 
@@ -77,14 +123,14 @@ export class LogReadout extends BaseScriptComponent {
     frame.onInitialized.add(() => {
       frame.renderOrder = CONTENT_RENDER_ORDER - 1
       const top = FRAME_HEIGHT / 2
-      const title = this.createText(frame.content, "Title", new vec3(0, top - TITLE_HEIGHT / 2, CONTENT_Z), TITLE_SIZE, TITLE_HEIGHT)
-      title.text = this.title
-      const bodyHeight = FRAME_HEIGHT - TITLE_HEIGHT
-      this.text = this.createText(frame.content, "Lines", new vec3(0, -TITLE_HEIGHT / 2, CONTENT_Z), LINE_SIZE, bodyHeight)
+      this.titleText = this.createText(frame.content, "Title", new vec3(0, top - TITLE_HEIGHT / 2, CONTENT_Z), TITLE_SIZE, TITLE_HEIGHT)
+      this.titleText.horizontalAlignment = HorizontalAlignment.Left
+      const bodyHeight = FRAME_HEIGHT - TITLE_HEIGHT - 1
+      this.text = this.createText(frame.content, "Lines", new vec3(0, -(TITLE_HEIGHT + 1) / 2, CONTENT_Z), LINE_SIZE, bodyHeight)
       this.text.horizontalAlignment = HorizontalAlignment.Left
-      this.text.verticalAlignment = VerticalAlignment.Bottom
+      this.text.verticalAlignment = VerticalAlignment.Top
       this.text.verticalOverflow = VerticalOverflow.Shrink
-      this.text.text = this.lines.join("\n")
+      this.refresh()
     })
   }
 
@@ -108,7 +154,7 @@ export class LogReadout extends BaseScriptComponent {
     text.horizontalAlignment = HorizontalAlignment.Center
     text.verticalAlignment = VerticalAlignment.Center
     text.horizontalOverflow = HorizontalOverflow.Truncate
-    const width = FRAME_WIDTH - 2
+    const width = FRAME_WIDTH - 2 * SIDE_PADDING
     text.layoutRect = Rect.create(-width / 2, width / 2, -height / 2, height / 2)
     text.depthTest = true
     text.renderOrder = CONTENT_RENDER_ORDER + 2

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "publicOrigin": "https://your-social-proxy.example.com",
+  "port": 8787,
+  "snapCloudUrl": "https://YOUR_PROJECT.snapcloud.dev",
+  "serviceRoleKey": "$SNAP_CLOUD_SERVICE_ROLE_KEY",
+  "tokenEncryptionKey": "$TOKEN_ENCRYPTION_KEY",
+  "apps": {
+    "snapchat": {"clientId": "$SNAPCHAT_CLIENT_ID", "clientSecret": "$SNAPCHAT_CLIENT_SECRET"},
+    "x": {"clientId": "$X_CLIENT_ID", "clientSecret": "$X_CLIENT_SECRET"},
+    "youtube": {"clientId": "$YOUTUBE_CLIENT_ID", "clientSecret": "$YOUTUBE_CLIENT_SECRET"},
+    "linkedin": {"clientId": "$LINKEDIN_CLIENT_ID", "clientSecret": "$LINKEDIN_CLIENT_SECRET"},
+    "instagram": {"clientId": "$INSTAGRAM_CLIENT_ID", "clientSecret": "$INSTAGRAM_CLIENT_SECRET"},
+    "threads": {"clientId": "$THREADS_CLIENT_ID", "clientSecret": "$THREADS_CLIENT_SECRET"},
+    "tiktok": {"clientId": "$TIKTOK_CLIENT_ID", "clientSecret": "$TIKTOK_CLIENT_SECRET", "scopes": "$TIKTOK_SCOPES"}
+  }
+}

@@ -1,23 +1,18 @@
 /**
  * SPECS Inc. 2027
- * Represents a price structure for commerce products. Handles pricing information including
- * amount and currency with automatic formatting capabilities.
+ * Price of a product returned by CommerceKit.getProductInfo(), with the CommerceKit 3.x fields. Prices
+ * are defined on the Specs developer portal (https://developers.specs.com/lenses). To show a price, use
+ * the formatted `nativeProduct.price.displayPrice` instead.
  */
-@typedef
 export class CommercePrice {
-  @input("float")
-  @label("Price ($1.99 - $99.99)")
-  @hint("Set the price for the product.")
-  @widget(new SpinBoxWidget(1.99, 99.99, 0.01))
-  price: number = 1.99;
+  /**
+   * Amount in major currency units, for example 1.99 (the Lens API price in the smallest currency unit,
+   * divided by 100).
+   */
+  price: number = 0;
 
   /**
-   * The currency code for this price.
-   * Currently supports USD with automatic formatting.
+   * ISO 4217 currency code, for example "USD".
    */
-  @input("string")
-  @label("Currency")
-  @hint("Currency code for this price. Currently supports USD.")
-  @widget(new ComboBoxWidget([new ComboBoxItem("USD", "USD")]))
   currency: string = "USD";
 }

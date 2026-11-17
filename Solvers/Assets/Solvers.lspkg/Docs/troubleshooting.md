@@ -5,7 +5,7 @@
 ## Use when
 
 Use this table for Solvers-specific failures. Generic Lens scripting, scene
-placement, rendering and TypeScript issues belong to the relevant CLAD skill.
+placement, rendering and TypeScript issues are outside this package's scope.
 
 ## Known limitations
 

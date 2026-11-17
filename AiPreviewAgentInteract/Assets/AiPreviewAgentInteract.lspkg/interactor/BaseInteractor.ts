@@ -1,13 +1,13 @@
 import {setTimeout} from "Leaf.lspkg/Utils/common/Utils"
-import BaseInteractor from "SpectaclesInteractionKit.lspkg/Core/Interactor/BaseInteractor"
-import {InteractorInputType} from "SpectaclesInteractionKit.lspkg/Core/Interactor/Interactor"
-import {InteractorEvent} from "SpectaclesInteractionKit.lspkg/Core/Interactor/InteractorEvent"
-import {PublicApi} from "SpectaclesInteractionKit.lspkg/Utils/Event"
+import BaseInteractor from "InteractionKit.lspkg/Core/Interactor/BaseInteractor"
+import {InteractorInputType} from "InteractionKit.lspkg/Core/Interactor/Interactor"
+import {InteractorEvent} from "InteractionKit.lspkg/Core/Interactor/InteractorEvent"
+import {PublicApi} from "InteractionKit.lspkg/Utils/Event"
 
 /**
- * Minimal wrapper around a SIK BaseInteractor.
- * Does NOT override any SIK properties — all targeting, triggers, hover,
- * drag, and manipulation are handled natively by SIK.
+ * Minimal wrapper around an IK BaseInteractor.
+ * Does NOT override any IK properties — all targeting, triggers, hover,
+ * drag, and manipulation are handled natively by IK.
  * Subclasses control the hand position and gesture only.
  */
 export abstract class AiBaseInteractor {
@@ -21,7 +21,7 @@ export abstract class AiBaseInteractor {
   protected async awaitEventOnce(
     event: PublicApi<InteractorEvent>,
     timeoutMs: number = 5000,
-    eventName: string = "SIK event"
+    eventName: string = "IK event"
   ): Promise<void> {
     let unsubscribe = () => {}
     const promise = new Promise<void>((resolve, reject) => {

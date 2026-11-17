@@ -367,7 +367,7 @@ This example ships with a **placeholder** IP address (`ws://YOUR-IP-ADDRESS/ws`)
 
 - **Included ESP32 Examples**: See `INO/` and `ESP-IDF/` folders for complete server implementations
 - [WebSocket Protocol (RFC 6455)](https://tools.ietf.org/html/rfc6455)
-- [Lens Studio Documentation](https://docs.snap.com/lens-studio/)
+- Lens Studio Documentation
 - [ESP32 Getting Started](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/)
 - [SnapDecorators Documentation](https://developers.snap.com/lens-studio/references/guides/lens-features/adding-interactivity/helper-scripts/snap-decorators)
 

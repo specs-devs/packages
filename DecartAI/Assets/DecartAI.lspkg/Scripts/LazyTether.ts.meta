@@ -1,0 +1,62 @@
+- !<AssetImportMetadata/d6213f34-f331-4093-8eb0-af309de1f5fb>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 9641d756-9736-4e41-8f71-a82c2cd07897
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 9641d756-9736-4e41-8f71-a82c2cd07897
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 60499336-2b20-4fff-90d4-04ddb89511fd
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/60499336-2b20-4fff-90d4-04ddb89511fd>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 964de2c0-8276-44bf-962b-424f5b684ee8
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    cameraObject: false
+    deadzoneDegrees: false
+    distanceCm: false
+    distanceToleranceCm: false
+    heightOffsetCm: false
+    smoothing: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - cameraObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      distanceCm: !<float> 80.000000
+      heightOffsetCm: !<float> 0.000000
+      deadzoneDegrees: !<float> 12.000000
+      distanceToleranceCm: !<float> 30.000000
+      smoothing: !<float> 4.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject cameraObject {"hint":"Camera (or any object) to follow"}'
+    - '// @input number distanceCm = "80" {"hint":"Resting distance in front of the camera, cm"}'
+    - '// @input number heightOffsetCm = "0" {"hint":"Vertical offset from eye height, cm"}'
+    - '// @input number deadzoneDegrees = "12" {"hint":"Start following once the view direction is more than this many degrees off the content"}'
+    - '// @input number distanceToleranceCm = "30" {"hint":"Also start following when the distance drifts by more than this, cm (walking)"}'
+    - '// @input number smoothing = "4" {"hint":"Follow smoothing — higher is snappier, lower is floatier"}'

@@ -46,11 +46,22 @@ export class DynamicAudioOutput extends BaseScriptComponent {
       .control as AudioOutputProvider;
     this.audComponent = this.sceneObject.getComponent("AudioComponent");
   }
+  /** Sets up the provider and AudioComponent if onAwake has not run yet (object enabled later). */
+  private ensureReady() {
+    if (!this.audioOutputProvider) {
+      this.audioOutputProvider = this.audioOutputTrack.control as AudioOutputProvider;
+    }
+    if (!this.audComponent) {
+      this.audComponent = this.sceneObject.getComponent("AudioComponent");
+    }
+  }
+
   /**
    * Initializes the audio output with the specified sample rate.
    * @param sampleRate - Sample rate for the audio output.
    */
   initialize(sampleRate: number) {
+    this.ensureReady();
     this.audioOutputProvider.sampleRate = sampleRate;
     this.audComponent.audioTrack = this.audioOutputTrack;
     this.audComponent.play(-1);
@@ -64,6 +75,7 @@ export class DynamicAudioOutput extends BaseScriptComponent {
    * Expects interleaved PCM16 for multi-channel input.
    */
   addAudioFrame(uint8Array: Uint8Array, channels: number = 1) {
+    this.ensureReady();
     if (!this.audComponent.isPlaying()) {
       this.audComponent.play(-1);
     }
@@ -78,7 +90,7 @@ export class DynamicAudioOutput extends BaseScriptComponent {
    * Stops the audio output if it is currently playing.
    */
   interruptAudioOutput() {
-    if (this.audComponent.isPlaying()) {
+    if (this.audComponent && this.audComponent.isPlaying()) {
       this.audComponent.stop(false);
     }
   }

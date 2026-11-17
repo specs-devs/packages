@@ -2,7 +2,7 @@ import {HandState, HandStateEntry} from "AiPreviewAgentInspect.lspkg/AgentMessag
 import {MessagePublisher} from "AiPreviewAgentInspect.lspkg/messaging/MessagePublisher"
 import {getInteractables, isEnabled} from "Leaf.lspkg/Interactors/InteractableUtils"
 import {nextFrame, setTimeout as scheduleAfter} from "Leaf.lspkg/Utils/common/Utils"
-import {Interactable} from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
+import {Interactable} from "InteractionKit.lspkg/Components/Interaction/Interactable/Interactable"
 import {
   DragCommand,
   GestureCommand,
@@ -26,9 +26,9 @@ function findInteractableByUniqueId(uniqueId: string): Interactable | undefined 
   return getInteractables().find((i) => i.getSceneObject().uniqueIdentifier === uniqueId)
 }
 
-// Delay applied after any action that ends a SIK trigger cycle (Pinch no-hold,
+// Delay applied after any action that ends an IK trigger cycle (Pinch no-hold,
 // Drag no-hold, Release). Without this, a follow-up interaction on the same
-// interactable arrives before SIK has finished dispatching onTriggerEnd and
+// interactable arrives before IK has finished dispatching onTriggerEnd and
 // re-armed, and the next onTriggerStart never fires. 250ms is conservative —
 // empirically 300ms explicit Waits worked; tune down later if safe.
 const POST_TRIGGER_SETTLE_MS = 250
@@ -78,7 +78,7 @@ export class InteractionHandler {
     const cached = handType === "right" ? this.rightHandInteractor : this.leftHandInteractor
     if (cached) return cached
 
-    // First-construction retry loop covering two startup races: SIK's
+    // First-construction retry loop covering two startup races: IK's
     // InteractionManager registering interactors during boot (~a few frames),
     // and SIK 3's lazy hand-rig asset load (not frame-bounded; warmed at boot
     // by AgentInteractScript). Both throw a recognizable constructor error, so
@@ -404,7 +404,7 @@ export class InteractionHandler {
 
     // Track whether the pre-drag pinch succeeded in this invocation so we
     // can roll back state if the subsequent drag throws. Without this, a
-    // flaky drag permanently marks the hand busy on a SIK interactor
+    // flaky drag permanently marks the hand busy on an IK interactor
     // that's actually in an indeterminate state.
     let pinchedInThisCall = false
     // Resolved inside the try so a hand rig that never loads answers with

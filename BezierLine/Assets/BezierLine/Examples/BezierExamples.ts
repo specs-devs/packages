@@ -13,8 +13,8 @@
  * Place this on an empty object and assign the meshes/materials, or drop
  * `BezierLine__PLACE_IN_SCENE.prefab` into the scene.
  */
-import Event, {PublicApi} from "SpectaclesInteractionKit.lspkg/Utils/Event"
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
+import Event, {PublicApi} from "InteractionKit.lspkg/Utils/Event"
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
 import {BezierLine} from "../Scripts/BezierLine"
 import {AnchorDragEnd, AnchorDragUpdate, BezierAnchor, OPPOSITE_SIDE} from "./BezierAnchor"
 import {BezierCard, lighten, scaleMeshToSize} from "./BezierCard"

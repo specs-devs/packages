@@ -28,8 +28,8 @@
 // crash in the package (Visual.ts imports ThemeService before defining COLORS, and the
 // theme chain reads COLORS at module-load). Loading ThemeService first lets Visual.ts
 // finish initializing COLORS before the visual chain reads it.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService";
-import { Button } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/Button";
+import "UIKit.lspkg/Scripts/Themes/ThemeService";
+import { Button } from "UIKit.lspkg/Scripts/Components/Button/Button";
 
 // ─── Layout constants ────────────────────────────────────────────────────────
 // Tweak these to nudge the spawned hierarchy. The prefab root itself controls

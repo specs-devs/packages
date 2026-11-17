@@ -1,0 +1,65 @@
+- !<AssetImportMetadata/4d44f981-a1ad-4b68-8169-d652b1d8e4b5>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 6caab273-0aa9-432d-87a2-08950a87fa27
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 6caab273-0aa9-432d-87a2-08950a87fa27
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 909b17e6-820d-4ebe-94cc-49cbf04bb196
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/909b17e6-820d-4ebe-94cc-49cbf04bb196>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: fa156815-106b-4a21-9b5b-681bb82254be
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    fitMargin: false
+    material: false
+    overrideSmoothness: false
+    preset: false
+    proxyMesh: false
+    renderOrder: false
+    smoothnessOverride: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - material: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      proxyMesh: !<reference.RenderMesh> 00000000-0000-0000-0000-000000000000
+      preset: Bubblegum
+      overrideSmoothness: false
+      smoothnessOverride: 0.350000
+      fitMargin: 1.500000
+      renderOrder: !<float> 0.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input Asset.Material material {"hint":"The MetaballField material (Shaders/MetaballField.graphShader). Each field uses its own copy"}'
+    - '// @input Asset.RenderMesh proxyMesh {"hint":"Proxy sphere mesh the field is raymarched inside (Meshes/UnitSphere)"}'
+    - '// @input string preset = "Bubblegum" {"hint":"Look applied on start", "widget":"combobox", "values":[{"label":"Bubblegum", "value":"Bubblegum"}, {"label":"Liquid Chrome", "value":"Liquid Chrome"}, {"label":"Neon Plasma", "value":"Neon Plasma"}, {"label":"Lava", "value":"Lava"}]}'
+    - "// @input bool overrideSmoothness {\"hint\":\"Override the preset's smoothness with the value below\"}"
+    - '// @input float smoothnessOverride = 0.35 {"widget":"slider", "min":0, "max":1, "step":0.01, "showIf":"overrideSmoothness"}'
+    - '// @input float fitMargin = 1.5 {"hint":"Extra room around the balls, in cm, so the gooey bridges are never clipped"}'
+    - '// @input float renderOrder {"hint":"Render order of the volume"}'

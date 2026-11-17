@@ -1,0 +1,108 @@
+- !<AssetImportMetadata/eaddc8f8-4b94-43bc-acba-dd579fb92cd2>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 922cfc1b-1255-429c-aa9d-3b919796fda2
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 922cfc1b-1255-429c-aa9d-3b919796fda2
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 2b7f6fdf-30e6-47f8-9874-58fce62b5fdb
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/2b7f6fdf-30e6-47f8-9874-58fce62b5fdb>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 997f1d68-cb5b-4557-9002-60e05c56fc48
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    aspectRatio: false
+    buttonFontSize: false
+    flexLayoutResize: false
+    infoFontSize: false
+    panelWidth: false
+    player: false
+    positionX: false
+    positionY: false
+    positionZ: false
+    seekStep: false
+    showMediaInfo: false
+    showVolumeSlider: false
+    stateFontSize: false
+    textScale: false
+    timeLabelFontSize: false
+    uiScale: false
+    videoCornerRadius: false
+    volumeLabelFontSize: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - player: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      seekStep: !<float> 1.000000
+      showVolumeSlider: true
+      showMediaInfo: true
+      flexLayoutResize: false
+      panelWidth: !<float> 32.000000
+      aspectRatio: auto
+      positionX: !<float> 0.000000
+      positionY: !<float> 0.000000
+      positionZ: !<float> -110.000000
+      videoCornerRadius: 1.500000
+      uiScale: 1.400000
+      textScale: 3.200000
+      timeLabelFontSize: !<float> 24.000000
+      buttonFontSize: !<float> 20.000000
+      volumeLabelFontSize: !<float> 22.000000
+      stateFontSize: !<float> 20.000000
+      infoFontSize: !<float> 16.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">VideoPlayerPanel – UIKit UI for SpecsVideoPlayer</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">No prefabs. Assign a SpecsVideoPlayer (or put one on this SceneObject). The panel builds frame, video, seek, transport, loop and volume at runtime.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Player"}'
+    - '// @input AssignableType_1 player {"hint":"SpecsVideoPlayer to drive. Empty = the SpecsVideoPlayer on this SceneObject."}'
+    - '// @input number seekStep = "1.0" {"hint":"Seconds to seek per +/- button press (presses stack, so 5 quick taps = 5 s)"}'
+    - '// @input bool showVolumeSlider = true {"hint":"Show the volume slider below the transport controls"}'
+    - '// @input bool showMediaInfo = true {"hint":"Show the media info line (resolution, fps, codecs, source host)"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Layout"}'
+    - "// @input bool flexLayoutResize {\"hint\":\"Corner-grab resize behavior. <br><br><b>ON — flex layout:</b> grabbing a corner changes the frame's inner area; the video cell absorbs the height change and the controls track the width. <br><br><b>OFF — scaling:</b> grabbing a corner uniformly scales the frame and everything inside it.\"}"
+    - '// @input number panelWidth = "32.0" {"hint":"Panel content area width in cm"}'
+    - "// @input string aspectRatio = \"auto\" {\"hint\":\"Video cell aspect ratio. Auto fits the video's own aspect inside a 16:9 cell (letterbox).\", \"widget\":\"combobox\", \"values\":[{\"label\":\"Auto\", \"value\":\"auto\"}, {\"label\":\"16:9\", \"value\":\"16:9\"}, {\"label\":\"4:3\", \"value\":\"4:3\"}, {\"label\":\"1:1\", \"value\":\"1:1\"}]}"
+    - '// @input number positionX = "0" {"hint":"Local X position"}'
+    - '// @input number positionY = "0" {"hint":"Local Y position"}'
+    - '// @input number positionZ = "-110" {"hint":"Offset from the parent in cm (negative Z = in front)"}'
+    - '// @input number videoCornerRadius = "1.5" {"hint":"Corner radius of the video display in cm (0 = sharp corners)"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Typography"}'
+    - '// @input number uiScale = "1.4" {"hint":"Scales the row and button heights of the panel (1 = the original compact size)"}'
+    - '// @input number textScale = "3.2" {"hint":"Scales every text size below. UIKit text units are small: 3.2 gives about 1.4 cm tall button labels on Specs."}'
+    - '// @input number timeLabelFontSize = "24" {"hint":"Font size for the current time / duration label (before UI Scale)"}'
+    - '// @input number buttonFontSize = "20" {"hint":"Font size for the transport buttons"}'
+    - '// @input number volumeLabelFontSize = "22" {"hint":"Font size for the Volume label"}'
+    - '// @input number stateFontSize = "20" {"hint":"Font size for the state line"}'
+    - '// @input number infoFontSize = "16" {"hint":"Font size for the media info line"}'
+    - '// @ui {"widget":"group_end"}'

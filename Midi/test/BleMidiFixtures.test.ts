@@ -5,7 +5,7 @@
 // Teenage Engineering OP-1 Field (2026-08-05, lens/captures/) through
 // BleMidiTransport and asserts the de-framed events. This closes the honest
 // caveat that the other de-framer tests are synthetic: these are the exact
-// bytes a real Specs BLE stack delivered.
+// bytes a real Spectacles BLE stack delivered.
 //
 // The expected sequence (fixtures/op1f-notes.ts, OP1F_EXPECTED) is produced by
 // an INDEPENDENT spec deframer, so a pass means BleMidiTransport agrees with a

@@ -5,8 +5,8 @@
 ## Use when
 
 Use this table when an Access Components example, or code copied from one,
-misbehaves. Generic null-reference and lifecycle bugs belong to the
-lens-api / lens-debug skills.
+misbehaves. Generic null-reference and lifecycle bugs are covered by
+the Lens Studio documentation.
 
 ## Known limitations
 

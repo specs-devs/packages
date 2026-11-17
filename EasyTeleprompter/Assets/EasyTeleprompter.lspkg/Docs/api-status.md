@@ -8,7 +8,7 @@ Check installed source behavior before promising a modality, network connection,
 
 ## Revision evidence
 
-`package_dependencies.json` declares SpectaclesInteractionKit, SpectaclesUIKit, Utilities, SnapDecorators, Motion and Icons. The package version and Studio version are recorded in `package.native`. Device support requires separate verification.
+`package_dependencies.json` declares InteractionKit, UIKit, Utilities, SnapDecorators, Motion and Icons. The package version and Studio version are recorded in `package.native`. Device support requires separate verification.
 
 Lens Studio Preview (SPECS 27, Interactive) QA on 2026-10-01: compile and startup clean; all 16 local slides render; the round Next / Previous buttons step and wrap (16 → 1, 1 → 16); the mic button starts ASR (Preview transcription needs a My Lenses login). Not tested: wrist soft press, companion phone, Google service, WebSocket deployment, device behavior. Fix round 2026-10-02: the Google example's round arrows and wrist pads now target GoogleSlideBridge. In Preview without credentials the arrows reach the bridge and return without errors. A credentialed run is a device check. The [component reference](components.md) is a source contract, not a device readiness certificate.
 

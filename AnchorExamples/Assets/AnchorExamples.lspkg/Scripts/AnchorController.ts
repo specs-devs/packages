@@ -10,7 +10,8 @@
  * - one session at a time, re-opened when the area changes (`openSession` / `closeSession`)
  * - create + save in one call (`createAndSaveWorldAnchor`), with a save-pending flag
  * - restore by id (`resolveAnchor`) or by discovery (`onAnchorNearby`)
- * - tracker management (`track` / `untrack`) with SIK events for state and uncertainty changes
+ * - tracker management (`track` / `untrack`) with IK events for state and uncertainty changes
+ * - Custom Location coordinates (`getGeoPosition`) through the native `AnchorLocationModule`
  * - editor stubs: in Lens Studio Preview there is no anchor service, so every call is a no-op that
  *   returns `null` / `false` and logs once; use `isSupported` to branch.
  *
@@ -21,7 +22,7 @@
  * - there is no `updateAnchor`: to move an anchor, create + save a new one, then delete the old one.
  * - `AnchorSession.reset()` became `clearArea()` / `clearAllAnchors()`.
  */
-import Event, {PublicApi} from "SpectaclesInteractionKit.lspkg/Utils/Event"
+import Event, {PublicApi} from "InteractionKit.lspkg/Utils/Event"
 import {Logger} from "./Logger"
 
 export type Anchor = AnchorModule.Anchor
@@ -52,6 +53,8 @@ export class AnchorController {
   private readonly logger = new Logger("AnchorController", true)
   private module: AnchorModule | null = null
   private moduleResolved = false
+  private locationModule: AnchorLocationModule | null = null
+  private locationModuleResolved = false
   private session: AnchorSession | null = null
   private sessionArea: string | null = null
   private opening: Promise<AnchorSession | null> | null = null
@@ -110,6 +113,23 @@ export class AnchorController {
     }
   }
 
+  /** Human readable name for an anchor's `AnchorType` ("World" or "Custom"). */
+  static typeName(anchor: Anchor | null | undefined): string {
+    switch (anchor?.anchorType) {
+      case AnchorModule.AnchorType.World:
+        return "World"
+      case AnchorModule.AnchorType.Custom:
+        return "Custom"
+      default:
+        return "Unknown"
+    }
+  }
+
+  /** True for a Custom Location anchor (the only type `getGeoPosition` answers for). */
+  static isCustom(anchor: Anchor | null | undefined): boolean {
+    return anchor?.anchorType === AnchorModule.AnchorType.Custom
+  }
+
   // ── Module ───────────────────────────────────────────────────────────────
 
   /**
@@ -120,6 +140,17 @@ export class AnchorController {
     if (module) {
       this.module = module
       this.moduleResolved = true
+    }
+  }
+
+  /**
+   * Optionally provide the `AnchorLocationModule` asset. When not called the controller acquires it
+   * with `require("LensStudio:AnchorLocationModule")` on first `getGeoPosition`.
+   */
+  setLocationModule(module: AnchorLocationModule | null | undefined): void {
+    if (module) {
+      this.locationModule = module
+      this.locationModuleResolved = true
     }
   }
 
@@ -167,6 +198,19 @@ export class AnchorController {
       this.module = null
     }
     return this.module
+  }
+
+  private resolveLocationModule(): AnchorLocationModule | null {
+    if (this.locationModuleResolved) return this.locationModule
+    this.locationModuleResolved = true
+    if (this.isEditor) return null
+    try {
+      this.locationModule = require("LensStudio:AnchorLocationModule") as AnchorLocationModule
+    } catch (e) {
+      this.logger.error(`AnchorLocationModule is not available on this build: ${e}`)
+      this.locationModule = null
+    }
+    return this.locationModule
   }
 
   // ── Session ──────────────────────────────────────────────────────────────
@@ -365,6 +409,31 @@ export class AnchorController {
     } catch (e) {
       this.logger.error(`clearAllAnchors failed: ${e}`)
       return false
+    }
+  }
+
+  // ── Location ─────────────────────────────────────────────────────────────
+
+  /**
+   * Real-world latitude / longitude of a Custom Location anchor, for navigation or "you are here"
+   * UI. Needs no tracker and no active session. The platform gates it on the user's raw location
+   * permission and answers only for Custom anchors, so this resolves to null for World anchors, when
+   * the permission is refused, and in Lens Studio Preview.
+   */
+  async getGeoPosition(anchor: Anchor): Promise<GeoPosition | null> {
+    if (!AnchorController.isCustom(anchor)) {
+      this.logger.debug(`getGeoPosition: ${anchor.id} is a ${AnchorController.typeName(anchor)} anchor (Custom only)`)
+      return null
+    }
+    const module = this.resolveLocationModule()
+    if (!module) return null
+    try {
+      const geo = await module.getGeoPosition(anchor)
+      this.logger.info(`Geo position of ${anchor.id}: ${geo.latitude}, ${geo.longitude}`)
+      return geo
+    } catch (e) {
+      this.logger.warn(`getGeoPosition failed for ${anchor.id} (location permission?): ${e}`)
+      return null
     }
   }
 

@@ -10,10 +10,10 @@ import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent 
 import {
     withAlpha,
     withoutAlpha,
-  } from "SpectaclesInteractionKit.lspkg/Utils/color";
+  } from "InteractionKit.lspkg/Utils/color";
   import InteractorLineRenderer, {
     VisualStyle,
-  } from "SpectaclesInteractionKit.lspkg/Components/Interaction/InteractorLineVisual/InteractorLineRenderer";
+  } from "InteractionKit.lspkg/Components/Interaction/InteractorLineVisual/InteractorLineRenderer";
 
   // Minimum number of segments used to generate a spiral (shared by the inspector input and setTotalSegments)
   const MIN_TOTAL_SEGMENTS = 80;

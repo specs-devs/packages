@@ -166,9 +166,9 @@ Import: `AnimationExamples.lspkg/Scripts/Helpers/AnimationHelpers`.
 
 ## Dependencies used by the scripts
 
-- `SpectaclesUIKit.lspkg/...`: `Frame`, `Button` and `ThemeService` (manager, OpacityCallbackExample, FrameSizingExample, helpers).
+- `UIKit.lspkg/...`: `Frame`, `Button` and `ThemeService` (manager, OpacityCallbackExample, FrameSizingExample, helpers).
 - `SnapDecorators.lspkg/assert`: `assert` in `ExistingPlayerExample` and `TweenExamples`.
-- `SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider`: only the `Example/` demo scripts.
+- `InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider`: only the `Example/` demo scripts.
 
 ## Assets
 

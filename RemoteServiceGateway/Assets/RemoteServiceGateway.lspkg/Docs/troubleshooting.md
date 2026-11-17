@@ -19,19 +19,22 @@ Use when a request, provider view or realtime example fails. Findings below dist
 | Image editing fails or uses no source image | Demo base/mask asset references do not resolve | Assign valid base and mask textures before enabling editing. `Uint8Array[]` is accepted by the type but not encoded as a file array by this revision. |
 | Snap3D polling is too frequent or never finishes without refinement | Poll interval units and completion condition in the source | See [known gaps](api-status.md#known-gaps); do not treat `refine: false` as a verified completion path. |
 | Only the first Lyria track runs | Older example left `isGeneratingMusic` true after success | Fixed here: the flag clears on both success and error. Live generation still needs credentialed QA. |
-| Lyria does nothing on a tap | Its event registration checks `playAudioOnTap`, but generation checks `generateMusicOnTap` | In this revision enable both demo flags when testing generation. The two flag names do not represent independent event bindings. |
+| Lyria plays nothing | `generateMusicOnTap` ("Run in demo") off, or `playAudioOnTap` ("Play generated audio") off | Both are on in the prefab. The request itself takes a while: the log panel shows "lyria-002 music → request sent" until it answers. |
+| A step's log says "token missing" | The token for that provider is empty or a `[INSERT …]` placeholder | Set it on `RemoteServiceGatewayCredentials`. The step does nothing else until then. |
+| The log shows "Proxy error: token is not valid" | The gateway rejected the token | Check the token and the My Lenses sign-in (Preview). |
+| The Lens crashes on Specs right after an image is generated ("global command buffer disabled") | Two `Base64.encodeTextureAsync` calls ran at the same time (for example `Promise.all` over the edit base and mask) | Encode one texture at a time, as the demo does. Verified on device with Lens Studio 5.25. |
+| The first request right after the Lens starts fails in under a second with no details | The gateway was not ready yet | The demo retries a sub-second failure once after 1.5 s; do the same in your Lens. |
 
 ## Demo and realtime flows
 
 | Symptom | Cause | Fix or next check |
 |---|---|---|
-| Hidden providers run on a right-hand pinch | GestureModule delivers global pinch events to registered handlers | The eight call-example scripts now return when their SceneObject is disabled in the hierarchy. |
-| Navigating the carousel also calls the visible provider | Its global pinch handler sees the navigation pinch too | Known open issue. Check on device; the visibility guard only suppresses hidden examples. |
-| A realtime view shows “Websocket connected” without a working session | Initial label reports internet availability | Verify actual `onOpen` / `onMessage` / `onError` / `onClose` events; the label alone is not connection evidence. |
-| A session or microphone stays active after UI is hidden | Demo startup does not implement full disable cleanup | When integrating, retain the socket, stop microphone recording and close the socket when leaving your flow. |
+| A step runs again when you come back to it | Each step starts its demo whenever it is shown | Expected. Requests already sent by a step you left still complete server-side; their answers are ignored. |
+| Realtime audio echoes in the editor | Mic and speakers are both live | Use headphones in Lens Studio. |
+| A session or microphone stays active after UI is hidden | Only the demo examples close their session on disable | The demo realtime examples stop the mic, the audio output and the socket when their step is left (`stopDemo()`). Do the same in your own flow. |
 | Guide binds to an old package script | Old package bundled a same-named GuideDismissPanel | This revision removes that unused script and orphan prefab component; demo guides belong to the project. |
 | Nested realtime content appears above the field of view | An old project carousel moved the listed parent before reading its listed child's pose | Use the updated project carousel, which snapshots every pose before moving any example. This is a demo-project fix. |
 
 ## Verification limits
 
-The six provider views and navigation layout were checked without a signed-in My Lenses account. No real model request, generation, live voice conversation or microphone/playback result was confirmed. Provider model availability and quota are external to this package. Device checks include the visible-provider/navigation pinch overlap.
+The seven auto-run steps were checked in Lens Studio 5.25 Preview without real tokens: each step started its own demo when shown, stopped when left (late responses ignored, sockets closed), and the log panel showed the missing-token lines and, with an invalid token, every request and its gateway error. No real model answer, generation, live voice conversation or microphone/playback result was confirmed. Provider model availability and quota are external to this package.

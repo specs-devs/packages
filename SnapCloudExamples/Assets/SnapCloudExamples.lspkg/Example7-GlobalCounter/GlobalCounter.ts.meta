@@ -1,0 +1,58 @@
+- !<AssetImportMetadata/02042196-f9dc-4ae0-89c5-623e57597379>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 3100d3f1-0607-43bf-93cb-91db9216df9b
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 3100d3f1-0607-43bf-93cb-91db9216df9b
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 5c21b3c1-7a2b-4f6e-b5fb-bcffb42130ac
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/5c21b3c1-7a2b-4f6e-b5fb-bcffb42130ac>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 5f1efa1e-91db-4918-87cc-4435a71bb169
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    actionLabel: false
+    refreshInterval: false
+    snapCloudRequirements: false
+    title: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - snapCloudRequirements: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      title: Global counter
+      actionLabel: Count me in
+      refreshInterval: !<float> 10.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">GlobalCounter – one action per user, one shared total</span><br/><span style=\"color: #94A3B8; font-size: 11px;\">Calls counter_has_joined / counter_join_once / counter_total (see Docs/global-counter.md). Builds its own small panel.</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input AssignableType_1 snapCloudRequirements {"hint":"Holds the Snap Cloud (Supabase) project used by the package"}'
+    - '// @input string title = "Global counter" {"hint":"What the counter is about, shown as the panel title"}'
+    - '// @input string actionLabel = "Count me in" {"hint":"Label of the button that adds you to the total"}'
+    - '// @input float refreshInterval = 10 {"hint":"Seconds between refreshes of the shared total (0 = only on start and after you join)"}'

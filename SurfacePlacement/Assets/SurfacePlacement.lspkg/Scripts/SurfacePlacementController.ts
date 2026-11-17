@@ -1,24 +1,17 @@
 /**
  * SPECS Inc. 2027
- * Central singleton controller for surface placement workflows across all modes. Manages placement mode
- * prefab instantiation (Horizontal, Vertical, TableTop), coordinates HandHintsController for onboarding,
- * provides startSurfacePlacement() and stopSurfacePlacement() public API, handles detector lifecycle with
- * automatic cleanup, plays calibration audio feedback, and ensures only one active placement session at a time.
+ * Entry point for surface placement: starts a mode by instantiating its prefab, plays the
+ * calibration chime, and hands back the position and rotation placed on.
  */
-import { PlacementMode, PlacementSettings } from "./PlacementSettings";
+import { PlacementSettings } from "./PlacementSettings";
 
-import { HandHintsController } from "./HandHintsController";
+import { LensConfig } from "InteractionKit.lspkg/Utils/LensConfig";
 import { Singleton } from "../Decorators/Singleton";
 import { SurfaceDetector } from "./SurfaceDetector";
-import { TableTop } from "./TableTop";
 
 const CALIBRATE_AUDIOTRACK: AudioTrackAsset = requireAsset(
   "../Sounds/CalibrateSnap.mp3"
 ) as AudioTrackAsset;
-
-const HANDHINTS_PREFAB: ObjectPrefab = requireAsset(
-  "../Prefabs/HandHints.prefab"
-) as ObjectPrefab;
 
 const PLACEMENT_MODE_PREFABS: ObjectPrefab[] = [
   requireAsset("../Prefabs/HorizontalPlacement.prefab") as ObjectPrefab,
@@ -30,9 +23,7 @@ const PLACEMENT_MODE_PREFABS: ObjectPrefab[] = [
 export class SurfacePlacementController {
   public static getInstance: () => SurfacePlacementController;
 
-  private handHintsController: HandHintsController = null;
   private currDetector: SurfaceDetector = null;
-  private onCancelled: (() => void) | null = null;
 
   private sceneObject: SceneObject = null;
 
@@ -45,65 +36,54 @@ export class SurfacePlacementController {
   }
 
   private init() {
-    const audioComponent = this.sceneObject.createComponent("AudioComponent");
+    let audioComponent = this.sceneObject.createComponent("AudioComponent");
     audioComponent.audioTrack = CALIBRATE_AUDIOTRACK;
-
-    const handHintsObj = HANDHINTS_PREFAB.instantiate(this.sceneObject);
-    this.handHintsController = handHintsObj.getComponent(
-      HandHintsController.getTypeName()
-    );
-    this.handHintsController.disableHint();
+    this.warmUpChime(audioComponent);
   }
 
-  /**
-   * Starts placement. `callback` fires once with the placed world pose. The optional
-   * `onCancelled` fires instead when the session is stopped (or replaced by a new
-   * start) before it completed, so callers waiting on a result never hang.
-   */
+  // The lens's first sound starts its audio output, and on device that call can
+  // stall a frame for a long time; the chime is that first sound, so it would land
+  // the stall on the first placement. Playing it once, muted, at startup moves
+  // the stall into lens launch. Deferred a frame: audio may not be ready while the
+  // scene is still waking up.
+  private warmUpChime(chime: AudioComponent) {
+    LensConfig.getInstance().updateDispatcher.nextFrame("ChimeWarmup", () => {
+      const volume = chime.volume;
+      chime.volume = 0;
+      chime.setOnFinish(() => {
+        chime.volume = volume;
+      });
+      chime.play(1);
+    });
+  }
+
   startSurfacePlacement(
     settings: PlacementSettings,
-    callback: (pos: vec3, rot: quat) => void,
-    onCancelled: (() => void) | null = null
+    callback: (pos: vec3, rot: quat) => void
   ) {
     if (this.currDetector != null) {
       //in case mode is changed remove current detector
       this.stopSurfacePlacement();
     }
     //create new one and init
-    const detectorObj = PLACEMENT_MODE_PREFABS[
+    var detectorObj = PLACEMENT_MODE_PREFABS[
       settings.placementMode
     ].instantiate(this.sceneObject);
     this.currDetector = detectorObj
       .getComponents("ScriptComponent")
       .find((s) => s instanceof SurfaceDetector) as SurfaceDetector;
+    this.currDetector.showDebug = settings.showDebug;
 
-    if (settings.placementMode == PlacementMode.NEAR_SURFACE) {
-      const tableTop = detectorObj.getComponent(TableTop.getTypeName());
-      tableTop.setOptions(settings);
-    }
-
-    this.currDetector.configure(settings);
-    this.currDetector.init(this.handHintsController);
+    this.currDetector.init();
     //start surface placement on desired mode
-    this.onCancelled = onCancelled;
-    this.currDetector.startSurfaceCalibration((pos, rot) => {
-      //completed, so a later stop is not a cancel
-      this.onCancelled = null;
-      callback(pos, rot);
-    });
+    this.currDetector.startSurfaceCalibration(callback);
   }
 
   stopSurfacePlacement() {
     if (this.currDetector) {
-      this.handHintsController.disableHint();
-      // Defer destruction so SIK's cursor never references a destroyed
-      // interactable mid-update (see SurfaceDetector.destroySafely).
-      this.currDetector.destroySafely();
+      this.currDetector.onDestroy();
+      this.currDetector.getSceneObject().destroy();
       this.currDetector = null;
     }
-    //cleared first, so the handler may start a new placement
-    const onCancelled = this.onCancelled;
-    this.onCancelled = null;
-    if (onCancelled) onCancelled();
   }
 }

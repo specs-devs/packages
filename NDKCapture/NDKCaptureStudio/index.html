@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NDK Capture Studio</title>
+    <link rel="icon" href="assets/icon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <img src="assets/icon.svg" alt="" width="28" height="28" />
+      <h1>NDK Capture Studio</h1>
+      <nav>
+        <button id="nav-live" class="on">Live</button>
+        <button id="nav-edit">Edit</button>
+      </nav>
+    </header>
+
+    <main id="view-live">
+      <section class="stage">
+        <canvas id="live-canvas" width="1280" height="960"></canvas>
+        <p id="live-status" class="status">Connecting…</p>
+        <div class="row">
+          <button id="btn-stream">Start stream</button>
+          <button id="btn-stop-stream">Stop stream</button>
+          <button id="btn-record" class="primary">Record</button>
+          <button id="btn-mark">Mark</button>
+          <button id="btn-key">Key frame</button>
+        </div>
+      </section>
+      <aside>
+        <h2>Layers <small>(changes go to the Lens live)</small></h2>
+        <div id="live-tabs" class="tabs"></div>
+        <div id="live-controls" class="controls"></div>
+      </aside>
+    </main>
+
+    <main id="view-edit" hidden>
+      <section class="stage">
+        <div class="row">
+          <button id="btn-library">Library</button>
+          <label class="file">Open folder…<input id="folder" type="file" webkitdirectory multiple /></label>
+          <strong id="edit-title"></strong>
+        </div>
+        <div id="library" class="library"></div>
+        <canvas id="edit-canvas" width="1280" height="960"></canvas>
+        <div class="timeline">
+          <div id="markers" class="markers"></div>
+          <input id="scrub" type="range" min="0" max="1" value="0" step="1" />
+        </div>
+        <div class="row">
+          <button id="btn-play" class="primary">Play / Pause</button>
+          <span id="time" class="mono">0.00 / 0.00s</span>
+          <label>In <input id="trim-in" type="number" step="0.1" min="0" /></label>
+          <label>Out <input id="trim-out" type="number" step="0.1" min="0" /></label>
+          <button id="btn-cut">Cut 1 s here</button>
+          <button id="btn-add-marker">Add marker</button>
+          <label>Title <input id="title-text" type="text" placeholder="Optional title" /></label>
+        </div>
+        <p id="edit-info" class="status"></p>
+        <div class="row">
+          <button id="btn-save" disabled>Save edits</button>
+          <button id="btn-export" class="primary">Export WebM</button>
+        </div>
+        <details>
+          <summary>Full-quality native tracks (optional)</summary>
+          <pre id="ffmpeg" class="mono"></pre>
+        </details>
+      </section>
+      <aside>
+        <h2>Layer overrides <small>(saved in edits.json)</small></h2>
+        <div id="edit-tabs" class="tabs"></div>
+        <div id="edit-controls" class="controls"></div>
+      </aside>
+    </main>
+    <div id="toast"></div>
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>

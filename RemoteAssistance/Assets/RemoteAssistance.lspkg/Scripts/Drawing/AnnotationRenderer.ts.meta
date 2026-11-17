@@ -1,0 +1,66 @@
+- !<AssetImportMetadata/807ba990-183f-4681-86b3-0f5cbe9c7769>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 8bc4554d-55ed-45fc-8acd-e602e02a4b0e
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 8bc4554d-55ed-45fc-8acd-e602e02a4b0e
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 38db5831-e649-4126-bccc-e85c96764083
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/38db5831-e649-4126-bccc-e85c96764083>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 7ca2873f-e2c1-4e31-937e-d5522ac1f71d
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    anchorDepthCm: false
+    poseLagMs: false
+    povHorizontalFovDeg: false
+    strokeMaterial: false
+    strokeWidthCm: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - strokeMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      anchorDepthCm: !<float> 200.000000
+      povHorizontalFovDeg: !<float> 66.000000
+      strokeWidthCm: !<float> 1.000000
+      poseLagMs: !<float> 400.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">AnnotationRenderer – helper drawings as 3D lines</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"References"}'
+    - '// @input Asset.Material strokeMaterial {"hint":"UNLIT material with a baseColor parameter — cloned + tinted per stroke (wire Materials/StrokeMat)"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Settings"}'
+    - '// @input float anchorDepthCm = 200 {"hint":"Distance (cm) of the anchor plane the strokes land on, ahead of the frozen head pose", "widget":"slider", "min":50, "max":500, "step":10}'
+    - '// @input float povHorizontalFovDeg = 66 {"hint":"Horizontal FOV (deg) of the POV video the helper annotates — match the Glasses RGB camera for best alignment", "widget":"slider", "min":30, "max":110, "step":1}'
+    - '// @input float strokeWidthCm = 1 {"hint":"Ribbon width (cm) at the anchor plane", "widget":"slider", "min":0.2, "max":5, "step":0.1}'
+    - '// @input float poseLagMs = 400 {"hint":"How far back (ms) to reach into the head-pose history when anchoring a new stroke — approximates video + network latency", "widget":"slider", "min":0, "max":2000, "step":50}'
+    - '// @ui {"widget":"group_end"}'

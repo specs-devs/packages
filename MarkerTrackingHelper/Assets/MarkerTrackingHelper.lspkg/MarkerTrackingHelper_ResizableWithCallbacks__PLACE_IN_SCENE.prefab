@@ -68,21 +68,22 @@
   Name: Marker Tracking
   Enabled: true
   Marker: !<reference> 7e6bbc0c-cfa3-4b86-b68d-d4613919119c
-- !<SceneObject/67fd4f88-5c4e-4fd7-af79-3752a694d24a>
+- !<ScriptComponent/5c3e61ef-8e76-4673-a036-bcb6cbb7191e>
   PrefabRemaps:
     []
   Name: ThemeManager
   Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> 926b1e94-aaab-49a2-a1da-9350cab591e3
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/861bd6e2-9d12-4ab6-8dd7-4134935bf682>
   PrefabRemaps:
     []
@@ -117,22 +118,21 @@
   RotationAngle: 0
   Pivot: {x: 0.000000, y: 0.000000}
   ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
-- !<ScriptComponent/926b1e94-aaab-49a2-a1da-9350cab591e3>
+- !<SceneObject/8b8ef308-ce33-478c-a74f-6d7100ecc705>
   PrefabRemaps:
     []
   Name: ThemeManager
   Enabled: true
-  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
-  ScriptInputsDefault:
-    _theme: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      _theme: System3
-  ScriptTypes:
-    "":
-      {}
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 5c3e61ef-8e76-4673-a036-bcb6cbb7191e
 - !<ScriptComponent/942efb3d-6f80-418e-8c85-d148726d21b0>
   PrefabRemaps:
     []
@@ -158,10 +158,10 @@
     - 153bd9ff-c695-46b0-9883-4a1f92041b71: 153bd9ff-c695-46b0-677c-b5e06dfbe48e
     - 4433e568-0fef-44c8-8d79-b00b226a102e: 4433e568-0fef-44c8-7286-4ff4dd95efd1
     - 4c25e32b-18e9-47c2-9d57-a46385079f54: 4c25e32b-18e9-47c2-62a8-5b9c7af860ab
-    - 67fd4f88-5c4e-4fd7-af79-3752a694d24a: 4654d9d6-9738-421a-bad7-a3ffa6729c11
+    - 5c3e61ef-8e76-4673-a036-bcb6cbb7191e: 1479ed40-f64f-4c5f-b6bd-d4c42b337a81
     - 861bd6e2-9d12-4ab6-8dd7-4134935bf682: 861bd6e2-9d12-4ab6-7228-becb6ca4097d
     - 89ae9291-7291-4c8d-9c79-e6d25213942a: 89ae9291-7291-4c8d-6386-192dadec6bd5
-    - 926b1e94-aaab-49a2-a1da-9350cab591e3: 2f36a9f7-f192-46f0-9c3f-2c791aca8cf7
+    - 8b8ef308-ce33-478c-a74f-6d7100ecc705: e4e8694a-1af6-46a0-8fc1-929e3b0a3cf3
     - 942efb3d-6f80-418e-8c85-d148726d21b0: 942efb3d-6f80-418e-737a-2eb78d92de4f
     - a4051ce7-7468-488f-b349-e903ba815820: a4051ce7-7468-488f-4cb6-16fc457ea7df
   Name: MarkerTrackingHelper_ResizableWithCallbacks__PLACE_IN_SCENE
@@ -173,7 +173,7 @@
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
-    - !<own> 67fd4f88-5c4e-4fd7-af79-3752a694d24a
+    - !<own> 8b8ef308-ce33-478c-a74f-6d7100ecc705
     - !<own> 0303c2ae-b75a-46e8-965d-ccab7b74a5ac
     - !<own> 861bd6e2-9d12-4ab6-8dd7-4134935bf682
   Components:

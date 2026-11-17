@@ -59,3 +59,7 @@ them.
   finger), although older text says "26 joints".
 - The prefab ships with `debugMode = true`, so the demo prints
   `Hand tracking started/stopped`.
+- Upcoming: raw hand-joint data (what Hand Attacher reads) will require a
+  one-time user permission in a future Specs OS release. The API surface here
+  does not change; see the
+  [README](../README.md#hand-tracking-permission-upcoming).

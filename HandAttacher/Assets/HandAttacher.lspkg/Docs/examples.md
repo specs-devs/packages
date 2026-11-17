@@ -5,11 +5,11 @@
 ## Use when
 
 Copy the smallest example that matches your setup. For longer compositions see
-[guide](guide.md). For scene construction, use CLAD's scene skills.
+[guide](guide.md).
 
 ## Prefab (no code)
 
-1. Make sure the scene has the SpectaclesInteractionKit prefab.
+1. Make sure the scene has the InteractionKit prefab.
 2. Drag `HandAttacher.lspkg/HandAttacher__PLACE_IN_SCENE.prefab` into the scene.
 3. Replace `HandAttacherDemo/Box` with your content, or point `targetObject` at another
    object, then pick `Hand` / `Joint` in the Inspector.

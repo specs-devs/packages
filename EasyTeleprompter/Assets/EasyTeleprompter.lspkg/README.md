@@ -20,7 +20,7 @@ The original illustrated tutorial (first published as "Public Speaker"), GDC use
 
 ## Usage
 
-This section ships with the package and describes what it contains. EasyTeleprompter setup and limitations live here; generic Lens scripting, scene construction, and Specs spatial design live in the CLAD skills, not here.
+This section ships with the package and describes what it contains. EasyTeleprompter setup and limitations live here; generic Lens scripting, scene construction, and Specs spatial design are out of scope here.
 
 ### Package identity
 
@@ -28,7 +28,7 @@ This section ships with the package and describes what it contains. EasyTeleprom
 - Prefab: `EasyTeleprompter.lspkg/EasyTeleprompter__PLACE_IN_SCENE.prefab`. It's self-contained: it holds the guide panel ("Ok, I understood"), the example carousel, the controllers and both presentation examples. Dropping it into a Specs scene with Camera, lighting and SIK gives the full demo.
 - Demo scaffolding: `EasyTeleprompter.lspkg/Example/` holds `ExampleCarousel` and `GuideDismissPanel`. The prefab uses them to present the demo; the teleprompter scripts don't depend on them.
 - Consumer import prefix: `EasyTeleprompter.lspkg/Scripts/`. `VoiceController.ts` exports `SpeechToText`; the spelling `SmoothRespositioning.ts` is the actual file path for `SmoothRepositioning`.
-- Declared companion packages: SpectaclesInteractionKit, SpectaclesUIKit, Utilities, SnapDecorators, Motion and Icons (see `package_dependencies.json`).
+- Declared companion packages: InteractionKit, UIKit, Utilities, SnapDecorators, Motion and Icons (see `package_dependencies.json`).
 
 ### API status
 
@@ -37,12 +37,6 @@ Read [API status](Docs/api-status.md) for local versus remote behavior, ASR migr
 ### Applicability
 
 Use this package to present local slide objects and route several input modalities to the same navigation component. Add Google Slides only when remote API credentials, image loading, and the unfinished synchronization behavior fit your application. Any relay or web backend you run for it must be hosted on Snap-approved infrastructure; contact the security team if unsure. This is not a generic authenticated presentation server or a guarantee of control over another browser's Google Slides session.
-
-### Related CLAD skills
-
-[specs-build-ui](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/specs-build-ui/SKILL.md), [specs-author-scripts](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/specs-author-scripts/SKILL.md). These skills cover the surrounding Lens workflow.
-
-[Install CLAD](https://developers.specs.com/docs/clad/setup/setup-ai/) or browse its [source](https://github.com/lens-studio-devs/ls-extensions). Read the installed package docs for this package's APIs.
 
 ### Package Docs (ship in Docs/)
 
@@ -65,6 +59,4 @@ Use this package to present local slide objects and route several input modaliti
 ---
 
 ## Built with 👽 by the SPECS team <!-- --> <!-- --> <!-- --> <!-- -->
-
-
 

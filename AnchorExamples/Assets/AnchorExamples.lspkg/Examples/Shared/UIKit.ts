@@ -1,6 +1,6 @@
 /**
  * Glasses Inc. 2026
- * UIKit.ts — SpectaclesUIKit 2.0 composition helpers for the AnchorExamples screens.
+ * UIKit.ts — UIKit 2.0 composition helpers for the AnchorExamples screens.
  *
  * Everything the screens need to lay out content the modern way:
  *  - a single type scale (`applyTextRole` / `roleSize`) so text size + weight never drift
@@ -18,18 +18,18 @@
  * plate / button faces defaults to `renderOrder = TEXT_RENDER_ORDER`. UIKit `Button`s manage
  * their own visual and are left at their default.
  */
-import {FlexLayout} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexLayout"
-import {FlexItem} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexItem"
+import {FlexLayout} from "UIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexLayout"
+import {FlexItem} from "UIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexItem"
 import {
   FlexAlign,
   FlexAlignSelf,
   FlexDirection,
   FlexJustify,
-} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexTypes"
-import {GridLayout} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Grid/GridLayout"
-import {GridItem} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Grid/GridItem"
-import {Button} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/Button"
-import {ElementContent, TextAlignment} from "SpectaclesUIKit.lspkg/Scripts/Components/Content/ElementContent"
+} from "UIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexTypes"
+import {GridLayout} from "UIKit.lspkg/Scripts/Components/Layout2D/Grid/GridLayout"
+import {GridItem} from "UIKit.lspkg/Scripts/Components/Layout2D/Grid/GridItem"
+import {Button} from "UIKit.lspkg/Scripts/Components/Button/Button"
+import {ElementContent, TextAlignment} from "UIKit.lspkg/Scripts/Components/Content/ElementContent"
 
 export {ElementContent}
 

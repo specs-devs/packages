@@ -1,0 +1,68 @@
+# XcodeGen source of truth. Generate the Xcode project with:  cd iOS && xcodegen generate
+name: ARKitSpectator
+options:
+  bundleIdPrefix: com.example
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+packages:
+  GLTFKit2:
+    url: https://github.com/warrenm/GLTFKit2.git
+    from: 0.5.15
+  Supabase:
+    url: https://github.com/supabase/supabase-swift.git
+    from: 2.55.2
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    # Explicit modules break simd resolution inside GLTFKit2 on some Xcode versions.
+    SWIFT_ENABLE_EXPLICIT_MODULES: NO
+    TARGETED_DEVICE_FAMILY: "1,2"
+    CODE_SIGN_STYLE: Automatic
+    DEVELOPMENT_TEAM: "" # Set your Apple Developer Team ID (or pick it in Xcode → Signing & Capabilities)
+targets:
+  ARKitSpectator:
+    type: application
+    platform: iOS
+    sources:
+      - path: ARKitSpectator/Sources
+      - path: ARKitSpectator/Resources
+        buildPhase: resources
+    dependencies:
+      - package: GLTFKit2
+      - package: Supabase
+        product: Supabase
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.arkitspectator # change to your own reverse-DNS id
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: ARKit Spectator
+        INFOPLIST_KEY_NSCameraUsageDescription: Place and watch the shared Lens scene through your camera.
+        INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription: Save your spectator recordings to Photos.
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UIRequiredDeviceCapabilities: arkit
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        MARKETING_VERSION: 2.0.0
+        CURRENT_PROJECT_VERSION: 1
+  ARKitSpectatorTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: AppTests
+    dependencies:
+      - target: ARKitSpectator
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.arkitspectator.tests
+        GENERATE_INFOPLIST_FILE: YES
+schemes:
+  ARKitSpectator:
+    build:
+      targets:
+        ARKitSpectator: all
+    test:
+      targets:
+        - ARKitSpectatorTests

@@ -28,9 +28,9 @@ export class PrefabPlacement extends BaseScriptComponent {
   @input("int")
   @widget(
     new ComboBoxWidget([
-      new ComboBoxItem("Near Surface", 0),
-      new ComboBoxItem("Horizontal", 1),
-      new ComboBoxItem("Vertical", 2),
+      new ComboBoxItem("Tabletop", 0),
+      new ComboBoxItem("Ground", 1),
+      new ComboBoxItem("Wall", 2),
     ])
   )
   placementSettingMode: number = 0;
@@ -116,22 +116,17 @@ export class PrefabPlacement extends BaseScriptComponent {
 
     let placementSettings: PlacementSettings;
     switch (this.placementSettingMode) {
-      case 0: // Near Surface
-        placementSettings = new PlacementSettings(
-          PlacementMode.NEAR_SURFACE,
-          true, // use surface adjustment widget
-          new vec3(10, 10, 0), // offset in cm of widget from surface center
-          this.onSliderUpdated.bind(this) // callback from widget height changes
-        );
+      case 0: // Tabletop
+        placementSettings = new PlacementSettings(PlacementMode.TABLETOP);
         break;
-      case 1: // Horizontal
-        placementSettings = new PlacementSettings(PlacementMode.HORIZONTAL);
+      case 1: // Ground
+        placementSettings = new PlacementSettings(PlacementMode.GROUND);
         break;
-      case 2: // Vertical
-        placementSettings = new PlacementSettings(PlacementMode.VERTICAL);
+      case 2: // Wall
+        placementSettings = new PlacementSettings(PlacementMode.WALL);
         break;
       default:
-        placementSettings = new PlacementSettings(PlacementMode.NEAR_SURFACE);
+        placementSettings = new PlacementSettings(PlacementMode.TABLETOP);
     }
 
     this.surfacePlacement.startSurfacePlacement(
@@ -168,10 +163,6 @@ export class PrefabPlacement extends BaseScriptComponent {
       this.instantiatedPrefab.destroy();
       this.instantiatedPrefab = null;
     }
-  }
-
-  private onSliderUpdated(pos: vec3) {
-    this.transform.setWorldPosition(pos);
   }
 
   private onSurfaceDetected(pos: vec3, rot: quat) {

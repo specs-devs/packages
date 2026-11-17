@@ -1,4 +1,4 @@
-- !<AssetImportMetadata/e109e3c1-3731-f4d4-ced1-a26bbee01738>
+- !<AssetImportMetadata/a10574b5-38d4-44af-8f0b-5dda37c565e7>
   ImportedAssetIds:
     TypeScriptAsset: !<reference> a7086363-33b7-4a30-9e9c-db50e620ecc5
   ImporterName: TypeScriptAssetImporter
@@ -28,17 +28,16 @@
   VersionPatch: 0
   VersionPrerelease: ""
   UpdateOrder: 0
+  RunInEditor: false
   ComponentUid: c2ec78c2-3f36-48d5-bc58-2730823d0b3f
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
     circleAnim: false
     confirmText: false
-    enableLogging: false
-    enableLoggingLifecycle: false
-    hintAnchor: false
+    dotsObj: false
     instructTextObj: false
-    sliderPrefab: false
+    ticksObj: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -49,29 +48,16 @@
     []
   DefaultScriptInputs:
     - circleAnim: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
-      hintAnchor: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       confirmText: !<reference.Text> 00000000-0000-0000-0000-000000000000
-      enableLogging: false
-      enableLoggingLifecycle: false
       instructTextObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
-      sliderPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      dotsObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      ticksObj: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
   InputLines:
-    - '// @ui {"widget":"separator"}'
-    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Visual Feedback</span>"}'
-    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Circle animation and hint components</span>"}'
     - // @input AssignableType_1 circleAnim
-    - // @input SceneObject hintAnchor
     - // @input Component.Text confirmText
-    - '// @ui {"widget":"separator"}'
-    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
-    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'
-    - '// @input bool enableLogging {"hint":"Enable general logging (animation cycles, events, etc.)"}'
-    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)"}'
-    - '// @ui {"widget":"separator"}'
-    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">UI Configuration</span>"}'
-    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Instruction text and height adjustment widget</span>"}'
     - // @input SceneObject instructTextObj
-    - // @input Asset.ObjectPrefab sliderPrefab
+    - // @input SceneObject dotsObj
+    - // @input SceneObject ticksObj

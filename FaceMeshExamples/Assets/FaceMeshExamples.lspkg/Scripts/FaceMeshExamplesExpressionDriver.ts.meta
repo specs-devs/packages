@@ -1,0 +1,66 @@
+- !<AssetImportMetadata/a2081619-a2b7-4112-9438-bba8fba759ec>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 3199bc4a-651d-4af1-9dcc-59a336962019
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 3199bc4a-651d-4af1-9dcc-59a336962019
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> b77fafe4-1d0d-470b-8276-378a06368648
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/b77fafe4-1d0d-470b-8276-378a06368648>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 64f1c584-fdad-42ab-847c-00868324c2e2
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    calibrate: false
+    faceMesh: false
+    gain: false
+    heads: false
+    learnedGain: false
+    minRange: false
+    responsiveness: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - faceMesh: !<reference.RenderMesh> 00000000-0000-0000-0000-000000000000
+      heads: !<reference.RenderMeshVisual[]>
+        []
+      gain: 1.400000
+      responsiveness: 0.450000
+      calibrate: true
+      minRange: 0.150000
+      learnedGain: !<float> 1.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input Asset.RenderMesh faceMesh {"hint":"Face Mesh asset that tracks the person (its control provides expression weights)"}'
+    - '// @input Component.RenderMeshVisual[] heads = {} {"hint":"RenderMeshVisuals of the rigged heads"}'
+    - '// @input float gain = 1 {"hint":"Overall exaggeration on top of the per-expression gains (1 = as tuned)", "widget":"slider", "min":0, "max":3, "step":0.05}'
+    - '// @input float responsiveness = 0.45 {"hint":"Smoothing: 1 = no smoothing, lower = steadier but laggier", "widget":"slider", "min":0.05, "max":1, "step":0.05}'
+    - "// @input bool calibrate = true {\"hint\":\"Learn each person's resting/peak range and stretch it to full strength\"}"
+    - '// @input float minRange = 0.15 {"hint":"Smallest range calibration will stretch (higher = less noise amplification)", "widget":"slider", "min":0.05, "max":0.5, "step":0.01}'
+    - '// @input float learnedGain = 1 {"hint":"Strength of the learned expression shapes (1 = as tracked; they already include a 1.6x boost)", "widget":"slider", "min":0, "max":2, "step":0.05}'

@@ -18,14 +18,14 @@ See [setup and examples](Docs/examples.md) for exact asset paths and the hierarc
 
 ## Usage
 
-This section ships with the package and describes the exact installed revision. Version-specific BodyMesh setup lives here; generic Lens scripting, scene construction, and Specs spatial design live in the CLAD skills, not here.
+This section ships with the package and describes the exact installed revision. Version-specific BodyMesh setup lives here; generic Lens scripting, scene construction, and Specs spatial design are out of scope here.
 
 ### Package identity
 
 - Descriptor: `BodyMesh.lspkg/package.native`.
 - Consumer asset prefix: `BodyMesh.lspkg/`. The package's main surface is native assets and components, with no TypeScript body-tracking manager to import.
 - The `__PLACE_IN_SCENE` prefab is self-contained: besides the Camera → Effects → 3D Body Tracking setup it includes the onboarding `Guide` and the `ExampleCarousel`, so dropping it into an empty Specs scene gives the full demo. Their demo-only scripts ship in `BodyMesh.lspkg/Example/` (`ExampleCarousel/`, `GuideDismissPanel/`), and the Camera's render target ships in `BodyMesh.lspkg/Render/`. Delete `Guide` and `ExampleCarousel` from your instance when you build your own Lens ([components](Docs/components.md#demo-scaffolding-example)).
-- Declared companion packages in `package_dependencies.json`: **SpectaclesInteractionKit**, **SpectaclesUIKit**, **Motion**, **Icons**. The demo scripts in `Example/` import SpectaclesInteractionKit and SpectaclesUIKit; the native body setup needs none of them.
+- Declared companion packages in `package_dependencies.json`: **InteractionKit**, **UIKit**, **Motion**, **Icons**. The demo scripts in `Example/` import InteractionKit and UIKit; the native body setup needs none of them.
 
 ### Version and API status
 
@@ -34,12 +34,6 @@ Read [API status](Docs/api-status.md) before relying on the native setup. This d
 ### Applicability
 
 Use BodyMesh for camera-observed human pose and body mesh effects. Its asset index is zero and its native tracker has 22 configured attachment labels. Hand interaction belongs to the companion interaction package; this body configuration has `TrackHand: false`.
-
-### Related CLAD skills
-
-[scene-construction](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/scene-construction/SKILL.md), [lens-api](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/lens-api/SKILL.md). These skills cover the surrounding Lens workflow.
-
-[Install CLAD](https://developers.specs.com/docs/clad/setup/setup-ai/) or browse its [source](https://github.com/lens-studio-devs/ls-extensions). Read the installed package docs for this revision’s APIs.
 
 ### Package Docs (ship in Docs/)
 

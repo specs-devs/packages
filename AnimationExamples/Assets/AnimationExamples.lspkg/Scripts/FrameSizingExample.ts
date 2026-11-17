@@ -23,8 +23,8 @@
 // crash in the package (Visual.ts imports ThemeService before defining COLORS, and the
 // theme chain reads COLORS at module-load). Loading ThemeService first lets Visual.ts
 // finish initializing COLORS before the visual chain reads it.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService";
-import { Frame } from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame";
+import "UIKit.lspkg/Scripts/Themes/ThemeService";
+import { Frame } from "UIKit.lspkg/Scripts/Components/Frame/Frame";
 import { bindReplay, buildFrameUI, playFirstClip } from "./Helpers/AnimationHelpers";
 
 @component
@@ -34,7 +34,7 @@ export class FrameSizingExample extends BaseScriptComponent {
     @ui.label('<span style="color: #F59E0B; font-size: 11px;">1. Add an AnimationPlayer component on this SceneObject.</span>')
     @ui.label('<span style="color: #F59E0B; font-size: 11px;">2. Add one Clip and configure Name / Playback Mode (Loop recommended) / Speed / Weight / Range.</span>')
     @ui.label('<span style="color: #F59E0B; font-size: 11px;">3. Leave the Clip\'s Animation Asset empty to use this script\'s runtime curve.</span>')
-    @ui.label('<span style="color: #F59E0B; font-size: 11px;">4. Add a SpectaclesUIKit Frame ScriptComponent — its innerSize is what this example animates.</span>')
+    @ui.label('<span style="color: #F59E0B; font-size: 11px;">4. Add a UIKit Frame ScriptComponent — its innerSize is what this example animates.</span>')
 
     @ui.separator
     @ui.label('<span style="color: #60A5FA;">Base Frame Dimensions</span>')

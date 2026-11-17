@@ -965,7 +965,7 @@
 - !<ScriptComponent/67f2943e-fc5d-41a1-b770-acf4074f497b>
   PrefabRemaps:
     []
-  Name: SIKLogLevelConfiguration
+  Name: IKLogLevelConfiguration
   Enabled: true
   ScriptAsset: !<reference> ff7d0aa1-32aa-4b47-84b7-340260da1ef0
   ScriptInputsDefault:
@@ -1064,21 +1064,6 @@
     CapitalizationOverride: None
   DepthTest: false
   TwoSided: false
-- !<SceneObject/73709a90-9b12-45d7-a787-470ebac11d30>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> faa86901-6f8f-4ce7-91b0-7a458e9d40c7
 - !<SceneObject/74bf7c0b-93ee-4cbe-8fc4-b6520ea0d5bd>
   PrefabRemaps:
     []
@@ -1356,7 +1341,7 @@
     - ca9df278-8b81-400d-bf32-20ea258107dc: b7be8856-93cb-4049-76c3-e4a435b4d049
     - d1b75c7a-269a-42a2-ba4c-e83143c4b9d4: 6167dd36-c853-49b0-4d51-842079d5473c
     - ef77b8a5-2d33-4ca2-ac67-91e08d91153a: f24eade7-4784-4f7b-7076-ef3281b8ed81
-  Name: SpectaclesInteractionKit
+  Name: InteractionKit
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
@@ -1490,6 +1475,21 @@
     []
   Components:
     - !<own> fee27607-c0fb-4489-bd43-afec96de23f2
+- !<SceneObject/afdf781c-0a13-419e-9b97-17dbb91e58bd>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> d5747b24-259d-422d-bf40-9955801afc46
 - !<SceneObject/b7e495de-9e27-44dd-8960-4331edb37bca>
   PrefabRemaps:
     []
@@ -1711,6 +1711,22 @@
       directColliderExitRadius: 1.500000
       directDragThreshold: !<float> 3.000000
       forcePokeOnNonDominantPalmProximity: false
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/d5747b24-259d-422d-bf40-9955801afc46>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
   ScriptTypes:
     "":
       {}
@@ -2009,7 +2025,6 @@
     - 62b1e753-ae31-47d4-a413-2cf02da2d87a: 1f422010-77ab-4715-a557-d5bd290c98ba
     - 66045f93-1751-4792-8445-588d92e7993c: f6eed94f-d43f-4126-934c-754f3c430ff7
     - 707bcf45-e167-4921-8b1c-dffc0293a2aa: a738617d-c450-47d5-6e34-10e99269d696
-    - 73709a90-9b12-45d7-a787-470ebac11d30: 6292940f-5365-454a-8adf-ba9fb4f5638c
     - 780766fb-2e95-4934-b292-242a67813dd6: 8aaf0d5b-3466-4c80-57b9-22920e81cd8b
     - 7f3178db-0632-4de6-ac56-6e7e45ff427f: 299487f2-8e71-4beb-5d69-c81f2b3c0381
     - 80262c94-bbec-4214-b0d3-9cf6655fb4c0: fa30058f-cf0e-4070-a2da-3fd2fa6a5824
@@ -2019,6 +2034,7 @@
     - 99d7b67a-1b90-4be8-a41f-d3c79d8d7f13: e2b8d0f4-a373-48b6-562d-cc16d6530af5
     - 9ccbc203-f4a4-47ca-ad40-c9edf0f4ec09: 3caec89c-b359-44f5-5399-bd0a5652c2c7
     - ad75c6d4-1cec-4bda-be37-219e0debf0f3: e2a5277b-bb35-4b6b-54fd-1e278fb81460
+    - afdf781c-0a13-419e-9b97-17dbb91e58bd: ac059f7b-8c4a-43fd-9a90-2082cbec0aad
     - b7e495de-9e27-44dd-8960-4331edb37bca: db911fd9-9cf3-481a-7f93-a5793a7111bf
     - b7fab2f6-9008-474c-bc2c-7c135512ff64: 8f0aae44-f0fa-4237-4aa6-b463a9c30b94
     - c059314c-548c-4b3b-8587-9f57637639cb: 7eae881e-acfb-420c-5c5a-41c746ef97e8
@@ -2026,6 +2042,7 @@
     - cd5d033a-4ffc-4084-9737-43ea6de93aad: 021b6a11-9c2d-41ab-5389-5a48c5f94fd8
     - cea4571f-1637-439c-b09c-ed9e4d36da92: 5b6aa7fc-e9db-4f9b-710f-3e76d5bbe306
     - d189243f-4855-47e8-a640-71894a73f2e2: 36f7f163-cbb7-4b65-6cb3-6afa2a5942e2
+    - d5747b24-259d-422d-bf40-9955801afc46: fd3dc8de-f368-4276-b22a-ec957f414a19
     - e313ac72-cda1-43b0-af2e-148d0ccd506a: c478163c-2c81-41c5-42ed-bbd30d40dd78
     - e8ae2544-1c20-4297-a973-615131e39543: 1eb8aada-11a4-4d8f-79ee-8b8be0495a85
     - e9fed3bd-4cd6-4194-8fdd-806a38df9412: 80c38bf7-8be1-4057-4d76-fef0dca9ac7e
@@ -2035,7 +2052,6 @@
     - f8e994e1-3ac4-4083-bdb2-9c1bc5248918: 39e84719-ab84-4190-583d-4639cc4aa164
     - f9c0ddff-7e10-4723-a3ca-b4f105b1b047: 82018b08-a3b6-4389-aa50-379ed28b69ff
     - f9de6b29-1c66-414f-85a3-61576c2e2a4d: 89bfbaff-5c5a-47dc-4d70-b935e81d187f
-    - faa86901-6f8f-4ce7-91b0-7a458e9d40c7: 9e0677bd-b5e3-43ef-afad-3c811906d4c5
     - fbce88f7-0440-4e33-ada0-ff96e0f066a3: 0c42a9d2-9a92-4f38-a6e9-b70ad96bc6bc
     - fee27607-c0fb-4489-bd43-afec96de23f2: 4e61fb87-c1d8-46c3-5391-c2e7585e15c7
   Name: ShaderLibrary__PLACE_IN_SCENE
@@ -2047,7 +2063,7 @@
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
-    - !<own> 73709a90-9b12-45d7-a787-470ebac11d30
+    - !<own> afdf781c-0a13-419e-9b97-17dbb91e58bd
     - !<own> fbce88f7-0440-4e33-ada0-ff96e0f066a3
     - !<own> 62b1e753-ae31-47d4-a413-2cf02da2d87a
     - !<own> 3d308608-0f5d-4a1d-aee7-47100bc90ff2
@@ -2059,22 +2075,6 @@
     - !<own> b7fab2f6-9008-474c-bc2c-7c135512ff64
   Components:
     []
-- !<ScriptComponent/faa86901-6f8f-4ce7-91b0-7a458e9d40c7>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
-  ScriptInputsDefault:
-    _theme: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      _theme: System3
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/fbce88f7-0440-4e33-ada0-ff96e0f066a3>
   PrefabRemaps:
     []

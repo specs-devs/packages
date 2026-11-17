@@ -1,0 +1,529 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0E7EF2169EDFE1C753B7D79F /* SpectatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD15FAFB0CE891AEFF5F8B4E /* SpectatorProtocol.swift */; };
+		151CABB0A99F0C918C71DE0F /* ScreenRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30EB150E16F1374BB8075EE /* ScreenRecorder.swift */; };
+		1D29CD9EC5F44E938E9113AE /* SpectatorConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFDBF97B248D486649D8776A /* SpectatorConfig.plist */; };
+		24E868F52511CD41BA6B1AB9 /* SpectatorScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063B8587F3D6F62B8CADEA63 /* SpectatorScene.swift */; };
+		601BD959795DA2FF7E461C64 /* SpectatorSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10026E2C434A86801C652DEC /* SpectatorSession.swift */; };
+		6EC108145E0BDB3DEDF32720 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D246882D1587BE9490CD3FE /* Assets.xcassets */; };
+		837B44ACAA736FF9F5F72B8B /* SpectatorProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F63602BCC7D6BDB68C6A9B0 /* SpectatorProtocolTests.swift */; };
+		D5EB73462250CC1D3CE35EF2 /* GLTFKit2 in Frameworks */ = {isa = PBXBuildFile; productRef = 8C2982B13CA33FC1E861542F /* GLTFKit2 */; };
+		D87367304B038E333CAA211A /* SpectatorConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44878D4061FDB0A216D77891 /* SpectatorConfig.swift */; };
+		DEA14DA25145B88CC1BDDC95 /* ARKitSpectatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9980029EF5CD3E0C67861956 /* ARKitSpectatorApp.swift */; };
+		F099C87976CC39A2BF3DF4A2 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 696AA4A973EAB803D5F383DC /* Supabase */; };
+		F9E49ED9B898DC42EE1167C6 /* AssetCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086610035DD020B4C0827BC0 /* AssetCache.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0738272F7EFEA846625EE4BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 499EBC7A377E84A65BFC951E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 22CC3A97418B623A7A4B238D;
+			remoteInfo = ARKitSpectator;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		063B8587F3D6F62B8CADEA63 /* SpectatorScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorScene.swift; sourceTree = "<group>"; };
+		086610035DD020B4C0827BC0 /* AssetCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCache.swift; sourceTree = "<group>"; };
+		10026E2C434A86801C652DEC /* SpectatorSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorSession.swift; sourceTree = "<group>"; };
+		1D246882D1587BE9490CD3FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2F63602BCC7D6BDB68C6A9B0 /* SpectatorProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorProtocolTests.swift; sourceTree = "<group>"; };
+		2F9F304CFBB500DC2EACFBEF /* ARKitSpectatorTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ARKitSpectatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		44878D4061FDB0A216D77891 /* SpectatorConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorConfig.swift; sourceTree = "<group>"; };
+		7C04378A465872A8F96C36E3 /* ARKitSpectator.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ARKitSpectator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9980029EF5CD3E0C67861956 /* ARKitSpectatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARKitSpectatorApp.swift; sourceTree = "<group>"; };
+		AD15FAFB0CE891AEFF5F8B4E /* SpectatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorProtocol.swift; sourceTree = "<group>"; };
+		CFDBF97B248D486649D8776A /* SpectatorConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = SpectatorConfig.plist; sourceTree = "<group>"; };
+		D30EB150E16F1374BB8075EE /* ScreenRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenRecorder.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8A20BAF97C291CC8DB9B89B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5EB73462250CC1D3CE35EF2 /* GLTFKit2 in Frameworks */,
+				F099C87976CC39A2BF3DF4A2 /* Supabase in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1E65DFE37228BA5C251F5C9B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1D246882D1587BE9490CD3FE /* Assets.xcassets */,
+				CFDBF97B248D486649D8776A /* SpectatorConfig.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4925AD3D01A0B4463E885BF6 /* AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				2F63602BCC7D6BDB68C6A9B0 /* SpectatorProtocolTests.swift */,
+			);
+			path = AppTests;
+			sourceTree = "<group>";
+		};
+		52AFA2458471D506A77FC48D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7C04378A465872A8F96C36E3 /* ARKitSpectator.app */,
+				2F9F304CFBB500DC2EACFBEF /* ARKitSpectatorTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D29B987B29011EDD5E6BC4C8 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				9980029EF5CD3E0C67861956 /* ARKitSpectatorApp.swift */,
+				086610035DD020B4C0827BC0 /* AssetCache.swift */,
+				D30EB150E16F1374BB8075EE /* ScreenRecorder.swift */,
+				44878D4061FDB0A216D77891 /* SpectatorConfig.swift */,
+				AD15FAFB0CE891AEFF5F8B4E /* SpectatorProtocol.swift */,
+				063B8587F3D6F62B8CADEA63 /* SpectatorScene.swift */,
+				10026E2C434A86801C652DEC /* SpectatorSession.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		D53D592566435585D4DC973F /* ARKitSpectator */ = {
+			isa = PBXGroup;
+			children = (
+				1E65DFE37228BA5C251F5C9B /* Resources */,
+				D29B987B29011EDD5E6BC4C8 /* Sources */,
+			);
+			path = ARKitSpectator;
+			sourceTree = "<group>";
+		};
+		EB91864E629F61A521240198 = {
+			isa = PBXGroup;
+			children = (
+				4925AD3D01A0B4463E885BF6 /* AppTests */,
+				D53D592566435585D4DC973F /* ARKitSpectator */,
+				52AFA2458471D506A77FC48D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		22CC3A97418B623A7A4B238D /* ARKitSpectator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF4170A11729DC83892779AC /* Build configuration list for PBXNativeTarget "ARKitSpectator" */;
+			buildPhases = (
+				73AF62E964ABD6748A91CDF5 /* Sources */,
+				831C64F9EAA3F04F86FCCC8E /* Resources */,
+				8A20BAF97C291CC8DB9B89B2 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ARKitSpectator;
+			packageProductDependencies = (
+				8C2982B13CA33FC1E861542F /* GLTFKit2 */,
+				696AA4A973EAB803D5F383DC /* Supabase */,
+			);
+			productName = ARKitSpectator;
+			productReference = 7C04378A465872A8F96C36E3 /* ARKitSpectator.app */;
+			productType = "com.apple.product-type.application";
+		};
+		539AD13B0AB5407B4641FADE /* ARKitSpectatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 149F64A98D5222F0901DA3D9 /* Build configuration list for PBXNativeTarget "ARKitSpectatorTests" */;
+			buildPhases = (
+				E1B5242EF0D8B74CC521C1DA /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1D3A4C2FD4A5ECB811F8E3A9 /* PBXTargetDependency */,
+			);
+			name = ARKitSpectatorTests;
+			packageProductDependencies = (
+			);
+			productName = ARKitSpectatorTests;
+			productReference = 2F9F304CFBB500DC2EACFBEF /* ARKitSpectatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		499EBC7A377E84A65BFC951E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					22CC3A97418B623A7A4B238D = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					539AD13B0AB5407B4641FADE = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 505BFD9B9A6C418C72F1994F /* Build configuration list for PBXProject "ARKitSpectator" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = EB91864E629F61A521240198;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				8A84BAEF9271A34D035E653F /* XCRemoteSwiftPackageReference "GLTFKit2" */,
+				6909AC0088252FB4804C99BD /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 52AFA2458471D506A77FC48D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				22CC3A97418B623A7A4B238D /* ARKitSpectator */,
+				539AD13B0AB5407B4641FADE /* ARKitSpectatorTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		831C64F9EAA3F04F86FCCC8E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6EC108145E0BDB3DEDF32720 /* Assets.xcassets in Resources */,
+				1D29CD9EC5F44E938E9113AE /* SpectatorConfig.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		73AF62E964ABD6748A91CDF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DEA14DA25145B88CC1BDDC95 /* ARKitSpectatorApp.swift in Sources */,
+				F9E49ED9B898DC42EE1167C6 /* AssetCache.swift in Sources */,
+				151CABB0A99F0C918C71DE0F /* ScreenRecorder.swift in Sources */,
+				D87367304B038E333CAA211A /* SpectatorConfig.swift in Sources */,
+				0E7EF2169EDFE1C753B7D79F /* SpectatorProtocol.swift in Sources */,
+				24E868F52511CD41BA6B1AB9 /* SpectatorScene.swift in Sources */,
+				601BD959795DA2FF7E461C64 /* SpectatorSession.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1B5242EF0D8B74CC521C1DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				837B44ACAA736FF9F5F72B8B /* SpectatorProtocolTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1D3A4C2FD4A5ECB811F8E3A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 22CC3A97418B623A7A4B238D /* ARKitSpectator */;
+			targetProxy = 0738272F7EFEA846625EE4BA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		64A599C5D1349E4E66F97052 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.arkitspectator.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ARKitSpectator.app/ARKitSpectator";
+			};
+			name = Release;
+		};
+		657B38AE2C9155CC80D9DA53 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_ENABLE_EXPLICIT_MODULES = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		925C79F9D0116E9BA4FDF754 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "ARKit Spectator";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Place and watch the shared Lens scene through your camera.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save your spectator recordings to Photos.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.arkitspectator;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B5DE4D299F8E2E46D5F151E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "ARKit Spectator";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Place and watch the shared Lens scene through your camera.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save your spectator recordings to Photos.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.arkitspectator;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CE647B3B77F4DA50BCA1188C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ENABLE_EXPLICIT_MODULES = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D34DD46B6B28D01385549F5F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.arkitspectator.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ARKitSpectator.app/ARKitSpectator";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		149F64A98D5222F0901DA3D9 /* Build configuration list for PBXNativeTarget "ARKitSpectatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D34DD46B6B28D01385549F5F /* Debug */,
+				64A599C5D1349E4E66F97052 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		505BFD9B9A6C418C72F1994F /* Build configuration list for PBXProject "ARKitSpectator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE647B3B77F4DA50BCA1188C /* Debug */,
+				657B38AE2C9155CC80D9DA53 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		BF4170A11729DC83892779AC /* Build configuration list for PBXNativeTarget "ARKitSpectator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				925C79F9D0116E9BA4FDF754 /* Debug */,
+				B5DE4D299F8E2E46D5F151E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6909AC0088252FB4804C99BD /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase/supabase-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.55.2;
+			};
+		};
+		8A84BAEF9271A34D035E653F /* XCRemoteSwiftPackageReference "GLTFKit2" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/warrenm/GLTFKit2.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.15;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		696AA4A973EAB803D5F383DC /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6909AC0088252FB4804C99BD /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+		8C2982B13CA33FC1E861542F /* GLTFKit2 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A84BAEF9271A34D035E653F /* XCRemoteSwiftPackageReference "GLTFKit2" */;
+			productName = GLTFKit2;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 499EBC7A377E84A65BFC951E /* Project object */;
+}

@@ -1,7 +1,7 @@
-import Event, {PublicApi} from "SpectaclesInteractionKit.lspkg/Utils/Event"
-import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
-import {Frame} from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame"
-import {findAllComponentsInSelfOrChildren} from "SpectaclesInteractionKit.lspkg/Utils/SceneObjectUtils"
+import Event, {PublicApi} from "InteractionKit.lspkg/Utils/Event"
+import WorldCameraFinderProvider from "InteractionKit.lspkg/Providers/CameraProvider/WorldCameraFinderProvider"
+import {Frame} from "UIKit.lspkg/Scripts/Components/Frame/Frame"
+import {findAllComponentsInSelfOrChildren} from "InteractionKit.lspkg/Utils/SceneObjectUtils"
 import {Logger} from "../../Scripts/Logger"
 import {WidgetBase} from "./WidgetBase"
 import {WidgetType} from "./WidgetTypes"
@@ -124,7 +124,7 @@ export class WidgetController {
     // ── Copy settings from existing prefab Frame, then disable it ──
     // Prefab serialization captures Frame's field-initializer components (Collider,
     // Interactable, InteractableManipulation). At runtime instantiate() restores those
-    // AND field initializers create new copies → duplicates → SIK registers the wrong one.
+    // AND field initializers create new copies → duplicates → IK registers the wrong one.
     // Fix: read the prefab Frame's design-time settings, then disable it entirely.
     let prefabInnerSize: vec2 | null = null
     let prefabAppearance: string | null = null

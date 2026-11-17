@@ -14,7 +14,7 @@ The prefab ships with the project EMPTY. Until you assign it, a red-framed "Cred
 
 This package uses no Remote Service Gateway tokens, so `CredentialsWarning` checks only the Snap Cloud project. Never commit a SupabaseProject or tokens into the prefab, scripts or docs.
 
-`SnapCloudRequirements.ts` imports `Utilities.lspkg` (Logger) and `SnapDecorators.lspkg` (decorators). Both are declared in `package_dependencies.json`, next to SpectaclesInteractionKit, SpectaclesUIKit, Motion and Icons. Make sure they resolve when you use the prefab in another project.
+`SnapCloudRequirements.ts` imports `Utilities.lspkg` (Logger) and `SnapDecorators.lspkg` (decorators). Both are declared in `package_dependencies.json`, next to InteractionKit, UIKit, Motion and Icons. Make sure they resolve when you use the prefab in another project.
 
 ## Backend
 

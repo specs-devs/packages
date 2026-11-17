@@ -2,13 +2,13 @@
 // crash in the package (Visual.ts imports ThemeService before defining COLORS, and the
 // theme chain reads COLORS at module-load). Entering the import cycle via ThemeService
 // lets Visual.ts finish defining COLORS first. Must remain the FIRST import.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService"
+import "UIKit.lspkg/Scripts/Themes/ThemeService"
 // The next/previous nav buttons in the scene are UIKit RoundButton components. The @input
 // type MUST match the wired component's concrete @component class, otherwise Lens Studio
 // hands back a bare ScriptComponent without the typed API (onTriggerUp), which is what
 // caused "Cannot read property 'add' of undefined". RoundButton inherits onTriggerUp from
 // the Element base class.
-import { RoundButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton";
+import { RoundButton } from "UIKit.lspkg/Scripts/Components/Button/RoundButton";
 
 @component
 export class UIController extends BaseScriptComponent {

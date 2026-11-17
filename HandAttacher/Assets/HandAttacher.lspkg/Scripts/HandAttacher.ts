@@ -3,7 +3,7 @@
  * Hand attachment system for attaching objects to hand joints in world space. Provides smooth
  * interpolation, customizable offsets, and support for all hand joints with configurable tracking.
  */
-import { SIK } from "SpectaclesInteractionKit.lspkg/SIK";
+import { IK } from "InteractionKit.lspkg/IK";
 import { MathUtils } from "Utilities.lspkg/Scripts/Utils/MathUtils";
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
@@ -90,7 +90,7 @@ export class HandAttacher extends BaseScriptComponent {
 
     @input
     @label("Joint")
-    @hint("Hand joint to follow (SIK TrackedHand property name).")
+    @hint("Hand joint to follow (IK TrackedHand property name).")
     @widget(
         new ComboBoxWidget([
             new ComboBoxItem("Wrist", "wrist"),
@@ -245,10 +245,10 @@ export class HandAttacher extends BaseScriptComponent {
   }
 
   /**
-   * Sets up hand tracking with SIK HandInputData
+   * Sets up hand tracking with IK HandInputData
    */
   private setupHandTracking(): void {
-    const handInputData = SIK.HandInputData;
+    const handInputData = IK.HandInputData;
     this.resolvedHandSide = this.handSide;
     this.wasTracked = null; // re-apply hideWhenNotTracked for the new hand
     this.snapToJoint = true;

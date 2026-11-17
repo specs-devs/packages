@@ -10,13 +10,13 @@ The full scanning tutorial is preserved in [Guide](Docs/guide.md).
 
 ## Usage
 
-This section ships with the package and describes the exact installed revision represented by this source. Generic Lens scripting, scene construction and Specs spatial design live in the CLAD skills; package-specific wiring, names, limitations and examples live here.
+This section ships with the package and describes the exact installed revision represented by this source. Generic Lens scripting, scene construction and Specs spatial design are out of scope here; package-specific wiring, names, limitations and examples live here.
 
 ### Package identity
 
 - Descriptor: [package.native](package.native) (holds the package version). The existing `ReadMe` reference is preserved. SetupScript is empty and no instantiable root is declared.
 - Editable folder and consumer prefix: `Assets/CustomLocations.lspkg/` and `CustomLocations.lspkg/`, for example `CustomLocations.lspkg/Scripts/ActivateWhenInCameraView`.
-- [package_dependencies.json](package_dependencies.json) declares SpectaclesInteractionKit, SpectaclesUIKit, Motion and Icons. These are manifest declarations, not a live installation check.
+- [package_dependencies.json](package_dependencies.json) declares InteractionKit, UIKit, Motion and Icons. These are manifest declarations, not a live installation check.
 - Activation, scale, audio, mesh visibility and Logger modules import no companion package. The example status panel imports UIKit.
 - Prefab entry point: `CustomLocations__PLACE_IN_SCENE.prefab`. The prefab is self-contained: it carries the guide
   panel ("Ok, I understood"), the example carousel, the `CustomLocations Status Panel` and the `Custom Locations` group
@@ -34,12 +34,6 @@ Read [API status](Docs/api-status.md) for the current public surfaces and behavi
 ### Applicability
 
 Use these helpers when content belongs to a published Custom Location scan/group and should activate near it. This package does not scan or publish locations and does not provide GPS navigation. Native group/Located At components own tracking; package listeners own content responses.
-
-### Related CLAD skills
-
-[specs-custom-locations](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/specs-custom-locations/SKILL.md). These skills cover the surrounding Lens workflow.
-
-[Install CLAD](https://developers.specs.com/docs/clad/setup/setup-ai/) or browse its [source](https://github.com/lens-studio-devs/ls-extensions). Read the installed package docs for this revision’s APIs.
 
 ### Package Docs (ship in Docs/)
 
@@ -62,7 +56,7 @@ Checked in the demo project: clean TypeScript compile, no runtime errors from pa
 
 ## Support
 
-See the [Specs Developer Community](https://support.spectacles.com), [Custom Locations documentation](https://developers.snap.com/spectacles/about-spectacles-features/apis/custom-locations) and [Specs design documentation](https://docs.snap.com/spectacles).
+See the [Specs Developer Community](https://developers.specs.com), [Custom Locations documentation](https://developers.snap.com/spectacles/about-spectacles-features/apis/custom-locations) and Specs design documentation.
 
 ## Built with 👽 by the SPECS team <!-- -->
 

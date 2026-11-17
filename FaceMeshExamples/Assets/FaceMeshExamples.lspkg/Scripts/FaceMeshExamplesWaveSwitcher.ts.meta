@@ -1,0 +1,59 @@
+- !<AssetImportMetadata/a82ec472-1a55-40bb-aa24-815d4ac1cf03>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> fbdc1b98-f4bc-47ae-84f1-62e961a0a23d
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> fbdc1b98-f4bc-47ae-84f1-62e961a0a23d
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> f0cd9911-bfa9-4191-818e-924e3b1d19b8
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/f0cd9911-bfa9-4191-818e-924e3b1d19b8>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 77f74304-2562-4550-9691-4a6a9faf0a6a
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    cooldownSec: false
+    main: false
+    minSwingCm: false
+    reversalsNeeded: false
+    windowSec: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - main: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      minSwingCm: !<float> 6.000000
+      windowSec: 1.200000
+      reversalsNeeded: !<float> 3.000000
+      cooldownSec: 1.500000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input AssignableType_1 main {"hint":"FaceMeshExamplesMain to cycle"}'
+    - '// @input float minSwingCm = 6 {"hint":"Minimum distance each swing must travel (cm)", "widget":"slider", "min":3, "max":20, "step":0.5}'
+    - '// @input float windowSec = 1.2 {"hint":"All reversals must happen within this many seconds", "widget":"slider", "min":0.5, "max":3, "step":0.1}'
+    - '// @input float reversalsNeeded = 3 {"widget":"slider", "min":2, "max":6, "step":1}'
+    - '// @input float cooldownSec = 1.5 {"hint":"Ignore further waves for this long after a switch (s)", "widget":"slider", "min":0.5, "max":4, "step":0.1}'

@@ -14,15 +14,16 @@
 // crash in the package (Visual.ts imports ThemeService before defining COLORS, and the
 // theme chain reads COLORS at module-load). Loading ThemeService first lets Visual.ts
 // finish initializing COLORS before the visual chain reads it.
-import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService";
-import {RectangleButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton"
-import Event from "SpectaclesInteractionKit.lspkg/Utils/Event"
+import "UIKit.lspkg/Scripts/Themes/ThemeService";
+import {RectangleButton} from "UIKit.lspkg/Scripts/Components/Button/RectangleButton"
+import Event from "InteractionKit.lspkg/Utils/Event"
 import {DESCALING_STEPS, MaintenanceStep} from "./NespressoKnowledge"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {bindStartEvent, bindUpdateEvent} from "SnapDecorators.lspkg/decorators"
 
-const PANEL_DISTANCE = 50   // cm in front of camera
-const PANEL_HEIGHT = 8      // cm above camera center
+const PANEL_DISTANCE = 110  // cm in front of camera (Specs far-field guideline)
+const PANEL_HEIGHT = 17.6   // cm above camera center (same angle as the authored 8 cm at 50 cm)
+const AUTHORED_DISTANCE = 50 // cm the panel was sized for; scaled up so it keeps its angular size
 const PANEL_LERP = 5        // camera-follow smoothness
 
 @component
@@ -98,6 +99,7 @@ export class GuidancePanel extends BaseScriptComponent {
     if (this.enableLoggingLifecycle) this.logger.debug("LIFECYCLE: onAwake()")
 
     this.trans = this.getSceneObject().getTransform()
+    this.trans.setLocalScale(this.trans.getLocalScale().uniformScale(PANEL_DISTANCE / AUTHORED_DISTANCE))
     this.mainCamTrans = this.mainCamObj.getTransform()
     this.refreshDisplay()
   }

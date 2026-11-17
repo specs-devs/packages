@@ -26,8 +26,8 @@ expect, or the handler object changes on its own.
   gets two replies for one `commandId`. Keep exactly one.
 - **Your own `AgentInspectScript` object disappeared.** When the CLAD
   interaction tools install `AiPreviewAgent Handler` (Inspect + Interact), they
-  delete other objects that carry `AgentInspectScript`. Seen in this package's
-  demo, 2026-10-01. Don't point other inputs at that object. The demo carousel
+  delete other objects that carry `AgentInspectScript`. Seen in the sample
+  project's demo, 2026-10-01. Don't point other inputs at that object. The demo carousel
   points at the `AgentInspectDemo` parent instead, so it survives. Re-add the
   object after QA if you need it.
 - **Old tooling auto-installed.** The tools can pull in an older

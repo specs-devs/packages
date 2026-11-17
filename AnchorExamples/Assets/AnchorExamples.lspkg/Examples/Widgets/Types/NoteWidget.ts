@@ -1,4 +1,4 @@
-import {TextInputField} from "SpectaclesUIKit.lspkg/Scripts/Components/TextInputField/TextInputField"
+import {TextInputField} from "UIKit.lspkg/Scripts/Components/TextInputField/TextInputField"
 import {Logger} from "../../../Scripts/Logger"
 import {WidgetBase} from "../WidgetBase"
 

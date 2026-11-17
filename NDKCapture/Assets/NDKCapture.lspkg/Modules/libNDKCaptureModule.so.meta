@@ -1,0 +1,34 @@
+- !<AssetImportMetadata/429ff0e7-c701-4679-941e-edd67ae6e1ac>
+  ImportedAssetIds:
+    NativeLibraryAsset: !<reference> 34f36d15-2a2e-4e39-99d4-af1587eba8a4
+  ImporterName: NativeLibraryAssetImporter
+  PrimaryAsset: !<reference> 34f36d15-2a2e-4e39-99d4-af1587eba8a4
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    NativeLibraryAsset: !<own> c99a2f6c-dfb2-400b-bce2-c358cd861e5c
+  DependentFiles:
+    []
+  ImporterSettings: !<NativeLibraryImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<NativeLibraryAssetData/c99a2f6c-dfb2-400b-bce2-c358cd861e5c>
+  Info: !<NativeLibraryInfo>
+    BinaryFormat: Elf
+    Architecture: Bit64
+    DependentLibraryNames:
+      - libspecs_media.so.1
+      - libspecs_camera.so.1
+      - libpthread.so.0
+      - libc++.so.1
+      - libm.so.6
+      - libc.so.6
+      - ld-linux-aarch64.so.1
+    DependentLibraries:
+      []
+    Permissions:
+      - CAMERA_RAW
+      - GPS_RAW
+      - MICROPHONE_RAW

@@ -37,13 +37,13 @@ export class SupabaseDataService {
     }));
 
     // No platform signal exists; watch MetaInfo/project changes and emit only when SPECS flips.
-    this._isSpecs = this.isSpecsPlatform();
+    this._isGlassesProject = this.isGlassesProject();
     const rerenderPlatform = () => {
       try {
-        const isSpecs = this.isSpecsPlatform();
-        if (isSpecs === this._isSpecs) return;
-        this._isSpecs = isSpecs;
-        this.emit('PlatformChanged', { isSpecs });
+        const isGlassesProject = this.isGlassesProject();
+        if (isGlassesProject === this._isGlassesProject) return;
+        this._isGlassesProject = isGlassesProject;
+        this.emit('PlatformChanged', { isGlassesProject });
       } catch (e) {
         console.error('[Supabase] PlatformChanged detection failed:', e, console.None);
       }
@@ -55,7 +55,7 @@ export class SupabaseDataService {
   }
 
   // Snap Cloud is SPECS-only. False if the platform isn't known yet (project not loaded).
-  isSpecsPlatform() {
+  isGlassesProject() {
     // A destroyed native project is still truthy in JS; guard with Editor.isNull().
     const project = this.model ? this.model.project : null;
     if (!project || Editor.isNull(project)) return false;
@@ -82,7 +82,7 @@ export class SupabaseDataService {
       }
     // Snap Cloud is SPECS-only: never exchange on other platforms (guards against global
     // SnapAuthorization events, e.g. background token refreshes, firing this on a non-SPECS project).
-    if (!this.isSpecsPlatform()) {
+    if (!this.isGlassesProject()) {
       this.emitFailure('SupabaseAuthorization', 'Snap Cloud is available on SPECS projects only');
       return;
     }

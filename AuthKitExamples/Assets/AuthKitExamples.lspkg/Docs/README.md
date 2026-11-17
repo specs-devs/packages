@@ -40,7 +40,7 @@ and this package adds the UI wiring and the Spotify Web API calls.
 ## Extra info
 - **Requires:** AuthKit, InteractionKit, UIKit, SnapDecorators, Utilities, Motion, Icons. OAuth2 sign-in only
   works on Specs, not in the Lens Studio Preview. You need your own Spotify app (or other provider app) and its
-  Client ID with the redirect URI `https://www.spectacles.com/deeplink/specslink/oauth2redirect/unsecure`.
+  Client ID with the redirect URI `https://lenses.specs.com/deeplink/specslink/oauth2redirect/unsecure`.
   Remote playback also needs Spotify Premium and an active Spotify Connect device.
 - **Get started:** drag `AuthKitExamples__PLACE_IN_SCENE.prefab` into a scene with the Interaction Kit (SIK)
   prefab, paste your Client ID into the `clientId` input of the enabled controller and build to Specs.

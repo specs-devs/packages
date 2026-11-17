@@ -8,12 +8,12 @@
  * ActivateWhenInCameraView listeners on or off so the content flow can be tested in Preview without
  * being at the real location.
  */
-import {FlexLayout} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexLayout"
-import {FlexItem} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexItem"
-import {FlexAlign, FlexDirection, FlexJustify} from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexTypes"
-import {BackPlate} from "SpectaclesUIKit.lspkg/Scripts/BackPlate"
-import {Button} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/Button"
-import {Switch} from "SpectaclesUIKit.lspkg/Scripts/Components/Switch/Switch"
+import {FlexLayout} from "UIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexLayout"
+import {FlexItem} from "UIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexItem"
+import {FlexAlign, FlexDirection, FlexJustify} from "UIKit.lspkg/Scripts/Components/Layout2D/Flex/FlexTypes"
+import {BackPlate} from "UIKit.lspkg/Scripts/BackPlate"
+import {Button} from "UIKit.lspkg/Scripts/Components/Button/Button"
+import {Switch} from "UIKit.lspkg/Scripts/Components/Switch/Switch"
 import {ActivateWhenInCameraView} from "../Scripts/ActivateWhenInCameraView"
 import {DeactivateLocationMeshOnDevice} from "../Scripts/DeactivateLocationMeshOnDevice"
 import {Logger} from "../Scripts/Logger"

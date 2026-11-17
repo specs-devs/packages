@@ -1,5 +1,5 @@
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
-import NativeLogger from "SpectaclesInteractionKit.lspkg/Utils/NativeLogger"
+import NativeLogger from "InteractionKit.lspkg/Utils/NativeLogger"
 import {WebSocketController} from "./WebSocketController"
 const log = new NativeLogger("GoogleSlidesBridge")
 

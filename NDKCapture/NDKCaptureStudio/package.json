@@ -1,0 +1,14 @@
+{
+  "name": "ndkcapture-studio",
+  "private": true,
+  "version": "4.0.0",
+  "description": "NDK Capture Studio: static files, no build step. The NDK Capture plugin serves it at http://127.0.0.1:47792; tests run with Node.",
+  "type": "module",
+  "scripts": {
+    "serve": "python3 -m http.server 47792 --bind 127.0.0.1",
+    "test": "node --test tests/model.test.mjs",
+    "e2e": "node tests/studio.e2e.mjs",
+    "sample": "python3 tools/make-sample.py",
+    "extract": "node tools/nkc-extract.mjs"
+  }
+}

@@ -11,14 +11,19 @@ placeholder you replace with your own.
 ## Spotify
 
 1. Create an app in the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard).
-2. Add the redirect URI exactly: `https://www.spectacles.com/deeplink/specslink/oauth2redirect/unsecure`
+2. Add the redirect URI exactly: `https://lenses.specs.com/deeplink/specslink/oauth2redirect/unsecure`
    (AuthKit's default `redirectUri`).
-3. Copy the app's **Client ID** into the `clientId` input of the controller you enabled
+3. Set **Package ID** in Lens Studio (**Project Settings → Platform Settings → SPECS →
+   SPK Configuration**), e.g. `com.specs.example.authkit` — this is the lensId used by OAuth
+   deep links.
+
+   <img src="../README-ref/LS-PackageID.png" alt="Package ID in Project Settings" width="700" />
+4. Copy the app's **Client ID** into the `clientId` input of the controller you enabled
    (`SpotifyMusicController` or `SpotifyControllerMinimum`). No client secret is needed: the
    examples use the Authorization Code flow with PKCE (`authenticationType = "code"`).
-4. While the Spotify app is in development mode, add each Spotify account that will sign in
+5. While the Spotify app is in development mode, add each Spotify account that will sign in
    under the app's user management in the dashboard.
-5. Build to a SPECS device and press Sign In. The Spotify page opens; after you accept, the Lens
+6. Build to a SPECS device and press Sign In. The Spotify page opens; after you accept, the Lens
    receives the callback and the status changes to `✅ Connected to Spotify!`.
 
 Scopes requested — music controller: `user-read-private user-library-read user-read-playback-state

@@ -5,7 +5,7 @@
 ## Use when
 
 Use this table for package-specific failures. Generic Lens scripting, UIKit
-layout and SIK interaction issues belong to the relevant CLAD skill and to
+layout and SIK interaction issues are covered by
 those packages' own docs.
 
 ## Known limitations
@@ -20,6 +20,7 @@ those packages' own docs.
 | Buttons pile at one point / don't lay out | No GridLayout found from `parentObject` upward, so no `GridItem` is added | Set `parentObject` to the GridLayout node (as in the prefab), or assign `gridLayout` |
 | Buttons below the visible rows extend past the frame in an orthographic editor render | Editor render ignores ScrollWindow clipping | Not a bug: Preview and device clip correctly |
 | Rows past the window cannot be reached | Scroll dimensions come from the grid `height`; without `overrideButtonSize` the grid keeps its authored height | Enable `overrideButtonSize` (the grid height is then computed from the button count) or size the grid yourself |
+| Buttons touch each other | `buttonSpacing` is 0 | Raise `buttonSpacing` (only applied with `overrideButtonSize`) |
 | First button hidden under the Frame title bar | `topPadding` too small | Increase `topPadding` (only applied with `overrideButtonSize`) |
 | Button never reacts, log `Button component not found on button prefab…` then a component list | Prefab has no UIKit button (`Button`, `CapsuleButton`, `RectangleButton`, `RoundButton`) on its root or a direct child, and no other component with an `onTriggerUp` event on its root (fallback scan is root-only) | Put the UIKit button component on the prefab root |
 | Status line sits above the field of view after adding the panel under a carousel or other lifted UI | The prefab is authored at `(0, 0, -60)` for a viewer at the origin | Lower the instance (the QA scene used `y = -12`) |

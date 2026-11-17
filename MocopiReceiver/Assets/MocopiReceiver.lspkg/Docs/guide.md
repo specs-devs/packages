@@ -39,7 +39,7 @@ Read the preserved original network, sensor, server and advanced-use tutorial. I
 
 Set up a basic mocopi receiver with surface placement using the wired prefabs. The three receiver components are not meant to be created from code: a bare `createComponent("Component.ScriptComponent")` cast does not produce a Mocopi class, and `MocopiMainController` wires the client callbacks only in its own `onAwake`, so inputs assigned after creation are never routed.
 
-1. Drag `MocopiReceiver.lspkg/MocopiReceiver__PLACE_IN_SCENE.prefab` into a scene that has a Camera with DeviceTracking and SpectaclesInteractionKit.
+1. Drag `MocopiReceiver.lspkg/MocopiReceiver__PLACE_IN_SCENE.prefab` into a scene that has a Camera with DeviceTracking and InteractionKit.
 2. Open `Prefabs/BasicAvatar/MocopiBasicAvatar/MocopiBasicAvatar.prefab`. It contains three child objects, `MocopiMainController`, `MocopiWebSocketClient` and `MocopiAvatarController`, each carrying the component of the same name; Main already references the other two.
 3. On `MocopiWebSocketClient`, replace the serialized `serverUrl` (it starts with `something like -` and is not a valid URL) with your relay, e.g. `ws://YOUR_IP:8080` or your `wss://` relay. Keep `autoConnect` on.
 4. On `MocopiAvatarController`, adjust `updatePositions` (default false), `smoothFactor` (default 0.3) and `avatarScale` if needed. Leave `prefabPlacement` empty: `PrefabPlacement` assigns itself after it instantiates the avatar.
@@ -63,7 +63,7 @@ Handles real-time WebSocket connectivity to mocopi relay server with automatic r
 
 ### PrefabPlacement.ts
 
-Integrates SurfacePlacement package for AR positioning of mocopi avatars in world space. Provides three placement modes (Near Surface, Horizontal, Vertical) via PlacementSettings configuration. Manages prefab instantiation lifecycle with automatic cleanup of previous instances before starting new placement. Coordinates with MocopiMainController for avatar controller reset when replacing prefabs. Implements height adjustment widget callback with onSliderUpdated() for fine-tuning placement position. Features startPlacement() and resetPlacement() public methods for runtime control. Handles prefab parenting to objectVisuals at local (0,0,0) with identity rotation and unit scale for consistent placement. Includes onDestroy cleanup to prevent prefab leaks.
+Integrates SurfacePlacement package for AR positioning of mocopi avatars in world space. Provides three placement modes (Tabletop, Ground, Wall) via PlacementSettings configuration. Manages prefab instantiation lifecycle with automatic cleanup of previous instances before starting new placement. Coordinates with MocopiMainController for avatar controller reset when replacing prefabs. Features startPlacement() and resetPlacement() public methods for runtime control. Handles prefab parenting to objectVisuals at local (0,0,0) with identity rotation and unit scale for consistent placement. Includes onDestroy cleanup to prevent prefab leaks.
 
 ### ResetButton.ts
 
@@ -148,7 +148,7 @@ getStats(): object                                    // Get mapping statistics
 // Configuration
 @input objectVisuals: SceneObject        // Parent for placed prefab
 @input prefabToPlace: ObjectPrefab       // Prefab to instantiate
-@input placementSettingMode: number      // 0=Near Surface, 1=Horizontal, 2=Vertical
+@input placementSettingMode: number      // 0=Tabletop, 1=Ground, 2=Wall
 @input autoStart: boolean                // Start placement automatically
 // (MocopiMainController is found automatically in the placed prefab; it is a private field, not an input)
 
@@ -370,7 +370,7 @@ export class ConnectionStatusUI extends BaseScriptComponent {
 Switch between surface placement modes:
 
 ```typescript
-import {Interactable} from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable";
+import {Interactable} from "InteractionKit.lspkg/Components/Interaction/Interactable/Interactable";
 import {PrefabPlacement} from "MocopiReceiver.lspkg/Scripts/PrefabPlacement";
 
 @component
@@ -379,19 +379,19 @@ export class PlacementModeSelector extends BaseScriptComponent {
   @input modeButtons: Interactable[];
 
   onAwake() {
-    // Near Surface mode
+    // Tabletop mode
     this.modeButtons[0].onTriggerStart.add(() => {
       this.prefabPlacement.placementSettingMode = 0;
       this.prefabPlacement.resetPlacement();
     });
 
-    // Horizontal mode
+    // Ground mode
     this.modeButtons[1].onTriggerStart.add(() => {
       this.prefabPlacement.placementSettingMode = 1;
       this.prefabPlacement.resetPlacement();
     });
 
-    // Vertical mode
+    // Wall mode
     this.modeButtons[2].onTriggerStart.add(() => {
       this.prefabPlacement.placementSettingMode = 2;
       this.prefabPlacement.resetPlacement();
@@ -638,7 +638,7 @@ Enable position updates only when absolute world-space positioning is required.
 - **Protocol**: Sony Motion Format (binary UDP) → JSON (WebSocket)
 - **Coordinate conversion**: Unity left-handed → Lens Studio right-handed
 - **Interpolation**: Quaternion slerp for rotation, vector lerp for position
-- **Dependencies**: SpectaclesInteractionKit, SpectaclesUIKit, SurfacePlacement
+- **Dependencies**: InteractionKit, UIKit, SurfacePlacement
 
 ## Built with 👽 by the SPECS team 
 

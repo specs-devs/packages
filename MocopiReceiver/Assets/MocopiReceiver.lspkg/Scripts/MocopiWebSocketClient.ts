@@ -5,7 +5,7 @@
  * and frame data streams.
  */
 
-import NativeLogger from "SpectaclesInteractionKit.lspkg/Utils/NativeLogger"
+import NativeLogger from "InteractionKit.lspkg/Utils/NativeLogger"
 import { SkeletonDefinition, FrameData, MocopiMessage, ConnectionStats } from "./MocopiDataTypes"
 import { bindStartEvent, bindUpdateEvent } from "SnapDecorators.lspkg/decorators"
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger"

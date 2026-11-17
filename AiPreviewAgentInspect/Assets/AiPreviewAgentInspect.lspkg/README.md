@@ -14,7 +14,7 @@ This is the universal half of the AI Preview Agent system — it runs on both
 SPECS-only hand interactions and depends on this one.
 
 > Normally you don't wire this up by hand. The editor-side agent tooling
-> (Core-ChatTools / the `verify-preview` and `preview-inspection` skills) installs the
+> (CLAD's preview tools) installs the
 > packed script onto a dedicated **"AiPreviewAgent Handler"** object automatically. Import
 > this package manually only when authoring/debugging the agent pipeline itself.
 
@@ -56,12 +56,13 @@ SPECS-only hand interactions and depends on this one.
 
 ## Dependencies
 
-The bridge scripts at the package root (and `messaging/`) import nothing
-outside this package. `package_dependencies.json` lists SpectaclesInteractionKit,
-SpectaclesUIKit, Motion and Icons. Those are used by the demo pieces: the
-`Example/` scripts import `SpectaclesUIKit.lspkg/...` and
-`SpectaclesInteractionKit.lspkg/...`, and the PLACE_IN_SCENE prefab uses UIKit
-`Frame` / button components. The bridge only runs in the Lens Studio Preview, on SPECS and Snapchat projects; on
+None. The bridge scripts at the package root (and `messaging/`) import
+nothing outside this package, so installing it never pulls InteractionKit,
+UIKit, Motion or Icons into a project. Lens Studio's AI tools install this
+package into every project they inspect, Specs or Snapchat, so it must stay
+dependency-free. The demo (guide panel, example carousel) uses UIKit and
+InteractionKit, so it lives in this repository's sample project
+(`AiPreviewAgentInspect/Assets/Demo/`), not in the package. The bridge only runs in the Lens Studio Preview, on SPECS and Snapchat projects; on
 device the component does nothing.
 
 ## Usage
@@ -69,7 +70,7 @@ device the component does nothing.
 This section ships with the package and describes the installed package.
 Read it, then follow the links into `Docs/` for the topic you need. It is
 written for both people and coding agents; generic Lens scripting, scene
-construction, and Specs spatial design live in the CLAD skills, not here.
+construction, and Specs spatial design are out of scope here.
 
 ### Package identity
 
@@ -79,15 +80,10 @@ construction, and Specs spatial design live in the CLAD skills, not here.
   `AiPreviewAgentInspect.lspkg/AgentMessages`). This is the path
   `AiPreviewAgentInteract` imports.
 - Entry point: the `AgentInspectScript` component.
-- Demo prefab: `AiPreviewAgentInspect__PLACE_IN_SCENE.prefab`. It is
-  self-contained: it carries the guide panel ("Ok, I understood"), the example
-  carousel (minimize) and the `AgentInspectDemo` group with the
-  `AgentInspectScript` object. Drop it into a Specs scene with a Camera and SIK
-  and you get the full demo. The agent tools don't need it.
-- Demo scaffolding: `AiPreviewAgentInspect.lspkg/Example/` holds the scripts the
-  prefab uses for the guide and the carousel (`ExampleCarousel/`,
-  `GuideDismissPanel/`). They are not part of the bridge; see
-  [components](Docs/components.md#demo-scaffolding-example).
+- Not in the package: the demo prefab and its `Example/` scripts (guide
+  panel, example carousel). They are in the sample project under
+  `Assets/Demo/`, because they need UIKit and InteractionKit. The agent tools
+  don't need them; see [components](Docs/components.md#demo-sample-project-only).
 - Companion package: `AiPreviewAgentInteract` (SPECS-only hand actions) depends
   on this one. Nothing here depends on it.
 
@@ -104,15 +100,6 @@ Lens logic, and it does nothing on device. Install `AiPreviewAgentInteract` as
 well when the tools also need to drive SIK hands. Normally the CLAD tools install
 both for you on an `AiPreviewAgent Handler` object. Never ship it as part of an
 experience.
-
-### Related CLAD skills
-
-- [preview-inspection](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/preview-inspection):
-  querying the live Preview and taking orthographic captures through this bridge.
-- [verify-preview](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/verify-preview):
-  the end-to-end QA loop that uses it.
-- No CLAD? Setup: https://developers.specs.com/docs/clad/setup/setup-ai/ ·
-  source: `github.com/lens-studio-devs/ls-extensions`.
 
 ### Package Docs (ship in `Docs/`)
 

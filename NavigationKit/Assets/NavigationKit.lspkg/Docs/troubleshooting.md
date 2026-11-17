@@ -5,7 +5,7 @@
 ## Use when
 
 Use this table for package-specific failures. Generic Lens scripting, scene placement,
-rendering and TypeScript issues belong to the relevant CLAD skill. The rows marked **QA**
+rendering and TypeScript issues are outside this package's scope. The rows marked **QA**
 were found while making the package's demo project QA-ready (2026-09-30, Lens Studio Preview).
 
 ## Known limitations and fixes
