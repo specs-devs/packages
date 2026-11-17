@@ -84,8 +84,8 @@ get currentArea(): string | null
 get isSavePending(): boolean
 
 // Anchors
-createWorldAnchor(toWorldFromAnchor: mat4): AnchorModule.Anchor | null
-createWorldAnchorAt(position: vec3, forward?: vec3): AnchorModule.Anchor | null   // gravity aligned
+createWorldAnchor(toWorldFromAnchor: mat4): Promise<AnchorModule.Anchor | null>
+createWorldAnchorAt(position: vec3, forward?: vec3): Promise<AnchorModule.Anchor | null>   // gravity aligned
 saveAnchor(anchor): Promise<boolean>
 createAndSaveWorldAnchor(toWorldFromAnchor: mat4): Promise<AnchorModule.Anchor | null>
 resolveAnchor(anchorId: string): Promise<AnchorModule.Anchor | null>

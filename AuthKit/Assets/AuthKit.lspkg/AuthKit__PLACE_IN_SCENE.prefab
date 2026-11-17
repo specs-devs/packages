@@ -236,6 +236,22 @@
     CapitalizationOverride: None
   DepthTest: false
   TwoSided: false
+- !<ScriptComponent/34b5cf59-819d-4437-a833-81ed14005e4c>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/39b15fc2-eecb-4478-be25-73d979408a0a>
   PrefabRemaps:
     []
@@ -351,21 +367,6 @@
     []
   Components:
     - !<own> 2357578d-0309-41d3-bb5a-94865884b42c
-- !<SceneObject/a43ff565-ccf5-4ad7-8d43-4ea0d15987ad>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> da7f5dcd-51ff-4ed6-be48-d7daeed65948
 - !<ScriptComponent/a67d0b4f-bb23-43e4-9d84-75ccad6552aa>
   PrefabRemaps:
     []
@@ -396,16 +397,16 @@
     - 2357578d-0309-41d3-bb5a-94865884b42c: d2c7c568-b98d-422d-a3c4-757ade1686e7
     - 26f918ef-b965-4e07-8265-6922d8d47661: 376e0ed1-8621-45f9-9b22-1d2b030a94db
     - 33635d85-b59e-401d-813b-9c80c5fa76f3: 7e218d59-56a5-496e-8e6b-eca69c70adb6
+    - 34b5cf59-819d-4437-a833-81ed14005e4c: 942b5764-9609-4522-8520-3c211a97f65b
     - 39b15fc2-eecb-4478-be25-73d979408a0a: b50b1030-f03b-4141-a923-b7238c9ca1cd
     - 4332eb63-b9dc-4f3f-85f0-d677f6d0e173: 6fdd73e0-1e18-41c2-a659-26e0a067c821
     - 4ec18600-618c-4e5d-8f9f-d02485210733: 9f23f053-9f43-44c8-b3cf-b141ca2aaf79
     - 7c6af83f-4fa5-43e2-93f3-fd17d6872d19: 24d1aa4c-e23c-4e33-9d65-a9a5a2dcbef3
     - 9bbff05a-d3d8-49a0-8f65-775dc631c0c7: 48deaab4-c716-45b5-88d3-24e9965e2293
-    - a43ff565-ccf5-4ad7-8d43-4ea0d15987ad: 15667c4b-e469-467c-a402-c7ce5613ab68
     - a67d0b4f-bb23-43e4-9d84-75ccad6552aa: 161a7475-1f0e-462d-8698-627ceff9c19d
     - d459b3b7-ed03-4768-aa17-49fc03e61b63: d459b3b7-ed03-4768-55e8-b603fc19e49c
-    - da7f5dcd-51ff-4ed6-be48-d7daeed65948: d10bc8d0-8fb3-42e8-be34-79acf5be2236
     - ebfec1e2-1dde-4417-8891-75139c954616: ecda066d-638b-4459-b2c8-9b2b00c28d4b
+    - f0957ff8-7f36-4371-b7bf-9b3601839607: 789da3b1-3cd4-43a7-95a5-5aee5f428325
     - f51805b4-b6c4-4709-bec0-17daaa033c1f: 4087a19a-00e7-450b-84c7-a364b983ad5e
   Name: AuthKit__PLACE_IN_SCENE
   Enabled: true
@@ -416,28 +417,12 @@
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
-    - !<own> a43ff565-ccf5-4ad7-8d43-4ea0d15987ad
+    - !<own> f0957ff8-7f36-4371-b7bf-9b3601839607
     - !<own> 4332eb63-b9dc-4f3f-85f0-d677f6d0e173
     - !<own> 9bbff05a-d3d8-49a0-8f65-775dc631c0c7
     - !<own> 4ec18600-618c-4e5d-8f9f-d02485210733
   Components:
     []
-- !<ScriptComponent/da7f5dcd-51ff-4ed6-be48-d7daeed65948>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
-  ScriptInputsDefault:
-    _theme: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      _theme: System3
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/ebfec1e2-1dde-4417-8891-75139c954616>
   PrefabRemaps:
     []
@@ -454,6 +439,21 @@
   Components:
     - !<own> 7c6af83f-4fa5-43e2-93f3-fd17d6872d19
     - !<own> 26f918ef-b965-4e07-8265-6922d8d47661
+- !<SceneObject/f0957ff8-7f36-4371-b7bf-9b3601839607>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 34b5cf59-819d-4437-a833-81ed14005e4c
 - !<ScriptComponent/f51805b4-b6c4-4709-bec0-17daaa033c1f>
   PrefabRemaps:
     []

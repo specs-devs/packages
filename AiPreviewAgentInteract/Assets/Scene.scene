@@ -321,6 +321,22 @@
     - !<own> 6b7d4e0b-841e-48cc-ae38-77a46d3e461c
   Components:
     []
+- !<ScriptComponent/181989ad-a37d-4bf6-894b-77d181c09b78>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
+  ScriptTypes:
+    "":
+      {}
 - !<RenderMeshVisual/18e167e1-98e6-41d0-8dcd-db17eb92a377>
   PrefabRemaps:
     []
@@ -927,6 +943,7 @@
     []
 - !<SceneObject/51c9f7d6-85b6-45e2-8622-7e5514106e4b>
   PrefabRemaps:
+    - 181989ad-a37d-4bf6-894b-77d181c09b78: 3986376b-b3d1-4e39-b4c7-9e3b6cc7c03d
     - 1d8eb5f3-f1d6-407f-9480-2f34341ce7f6: 00f01f8c-8201-48a3-6a22-cfcda589cd1c
     - 21644032-dff8-411a-8b0f-51fe3709cc26: 021e3e47-2a44-410b-7fe7-fa9884d368ba
     - 2f85c300-698c-48a1-bb6b-8c2be8bdedba: fefb3f1c-d355-4f7a-7a1f-3c2c16e03b8f
@@ -944,11 +961,10 @@
     - 8f3d9bf2-1767-4190-bcfc-ec523d206985: dda092f8-a3e1-48cc-661a-1c044d19fa1f
     - 9371071e-50c1-4c3b-9ec0-9d0486348101: 92bc38bd-a2b4-4667-7dbe-157d6754a9e7
     - a09da54d-10d7-4957-9232-4bffa392a37e: d17b27c2-c265-4684-7d9f-5dedae7f4e11
-    - a36283ad-9792-40c5-b10c-45675ef928cc: aca32b68-0ffb-4e37-b805-e8226e87298a
     - a6680e6c-2ad0-41ea-a19d-18c9edcbb447: 06642dd8-a2dd-45a4-61b6-1488eee21a92
-    - a6bad6cc-e0cd-4d7e-9d48-c8b3d8d6d4d6: b7f7bbdc-b856-4b17-9e1e-dafe67e2bab1
     - bc4d47a5-5936-4dd0-8325-b1fd7c922545: 7b9e19f3-2156-457e-4b9c-c940a8c9d1cf
     - bdb5a0f9-e91b-4684-ab12-5d0cc116ebba: d33c154a-9cb5-4b90-66ad-cbf48f0e2a6b
+    - c47bd472-2b63-4c29-ac73-ce0d43d54db3: d0622a49-85d3-457a-82b7-ef1934b2afe5
     - c49e5b81-e86f-47cd-ab24-750e2bd787b1: 09bdf2ba-960f-4aa6-774e-a28c78c3e2d7
     - c6ce83e1-dd6c-4477-a748-904ab63d46c5: 2c642a1e-d3d9-4b89-7da1-ff96c2a75d9e
     - ce16f111-8c8c-4537-a512-d34b86ecf93c: e1a9b23f-f5bc-4448-4106-fb9dbf228b1e
@@ -968,7 +984,7 @@
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
-    - !<own> a36283ad-9792-40c5-b10c-45675ef928cc
+    - !<own> c47bd472-2b63-4c29-ac73-ce0d43d54db3
     - !<own> 4bd28ac1-07dd-42a0-a5b9-3828fb2362e3
     - !<own> a6680e6c-2ad0-41ea-a19d-18c9edcbb447
     - !<own> 7ac43d78-c115-4708-aecd-3fcd532b0f51
@@ -1992,21 +2008,6 @@
   ScriptTypes:
     "":
       {}
-- !<SceneObject/a36283ad-9792-40c5-b10c-45675ef928cc>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> a6bad6cc-e0cd-4d7e-9d48-c8b3d8d6d4d6
 - !<SceneObject/a364bdf2-91a2-4de8-9ebb-69d80639d4cd>
   PrefabRemaps:
     []
@@ -2054,22 +2055,6 @@
   Components:
     - !<own> d7073a25-96c1-43fd-8281-6b83f7bddd15
     - !<own> f4439fb3-f1a1-47de-b084-bf0b9c556dae
-- !<ScriptComponent/a6bad6cc-e0cd-4d7e-9d48-c8b3d8d6d4d6>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
-  ScriptInputsDefault:
-    _theme: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      _theme: System3
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/aaef8aa1-1f26-49f2-b5d9-6326359b1ae9>
   PrefabRemaps:
     []
@@ -2349,6 +2334,21 @@
     - !<own> 04031b6c-9ff5-4e8b-aa63-9ab655e22c1c
   Components:
     []
+- !<SceneObject/c47bd472-2b63-4c29-ac73-ce0d43d54db3>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 181989ad-a37d-4bf6-894b-77d181c09b78
 - !<SceneObject/c49e5b81-e86f-47cd-ab24-750e2bd787b1>
   PrefabRemaps:
     []

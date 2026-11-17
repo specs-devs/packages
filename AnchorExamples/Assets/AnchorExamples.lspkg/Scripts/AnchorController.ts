@@ -17,7 +17,7 @@
  * Migration notes (from the old `Spatial Anchors.lspkg` framework):
  * - `anchor.toWorldFromAnchor` / `anchor.state` / `anchor.onFound` are gone. Tracking state and pose
  *   live on the `AnchorComponent` (`tracker.state`, `tracker.onStateChanged`, the SceneObject transform).
- * - `createWorldAnchor` is synchronous and returns immediately; `saveAnchor` is the async part.
+ * - `createWorldAnchor` and `saveAnchor` are both async: AnchorSession.createWorldAnchor resolves a Promise.
  * - there is no `updateAnchor`: to move an anchor, create + save a new one, then delete the old one.
  * - `AnchorSession.reset()` became `clearArea()` / `clearAllAnchors()`.
  */
@@ -247,14 +247,14 @@ export class AnchorController {
 
   // ── Anchors ──────────────────────────────────────────────────────────────
 
-  /** Create a world anchor at `toWorldFromAnchor` (synchronous). Save it with `saveAnchor`. */
-  createWorldAnchor(toWorldFromAnchor: mat4): Anchor | null {
+  /** Create a world anchor at `toWorldFromAnchor`. Save it with `saveAnchor`. */
+  async createWorldAnchor(toWorldFromAnchor: mat4): Promise<Anchor | null> {
     if (!this.session) {
       this.logger.warn("createWorldAnchor: no active session")
       return null
     }
     try {
-      const anchor = this.session.createWorldAnchor(toWorldFromAnchor)
+      const anchor = await this.session.createWorldAnchor(toWorldFromAnchor)
       this.logger.info(`Created anchor ${anchor.id}`)
       return anchor
     } catch (e) {
@@ -264,7 +264,7 @@ export class AnchorController {
   }
 
   /** Convenience: gravity-aligned world anchor at a position, facing `forward` on the horizontal plane. */
-  createWorldAnchorAt(position: vec3, forward: vec3 = vec3.forward()): Anchor | null {
+  async createWorldAnchorAt(position: vec3, forward: vec3 = vec3.forward()): Promise<Anchor | null> {
     let flat = new vec3(forward.x, 0, forward.z)
     flat = flat.length < 1e-4 ? vec3.forward() : flat.normalize()
     const rotation = quat.lookAt(flat, vec3.up())
@@ -296,7 +296,7 @@ export class AnchorController {
    * the surroundings, so keep the wearer looking / moving around while it is pending.
    */
   async createAndSaveWorldAnchor(toWorldFromAnchor: mat4): Promise<Anchor | null> {
-    const anchor = this.createWorldAnchor(toWorldFromAnchor)
+    const anchor = await this.createWorldAnchor(toWorldFromAnchor)
     if (!anchor) return null
     const saved = await this.saveAnchor(anchor)
     if (!saved) {

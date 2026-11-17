@@ -666,7 +666,7 @@ export class AppController extends BaseScriptComponent {
     this.screenFactory?.setLocalizationStatus(
       "Look and move around slowly to map the area.\nThe area is saved once mapping has enough data."
     )
-    const anchor = this.anchorController.createWorldAnchorAt(position, forward)
+    const anchor = await this.anchorController.createWorldAnchorAt(position, forward)
     if (!anchor) {
       this.screenFactory?.setLocalizationStatus("Could not create an anchor here. Exit and try again.")
       return

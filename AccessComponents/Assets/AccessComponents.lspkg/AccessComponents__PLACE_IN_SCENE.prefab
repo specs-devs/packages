@@ -988,21 +988,6 @@
     - !<own> bb8da911-2ade-4abd-992d-f06beb950f22
   Components:
     []
-- !<SceneObject/85deed2d-a639-4148-bd95-69fa9d8a62f8>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> aebbf3ff-d75a-4b91-ba76-0ca81024bf9b
 - !<RenderMeshVisual/8879b3fb-0f8e-444c-8f4a-a7fc4af3ae8b>
   PrefabRemaps:
     []
@@ -1288,22 +1273,6 @@
     - !<own> 6710585c-907a-4d61-8ae6-184d6923d9be
   Components:
     []
-- !<ScriptComponent/aebbf3ff-d75a-4b91-ba76-0ca81024bf9b>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
-  ScriptInputsDefault:
-    _theme: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      _theme: System3
-  ScriptTypes:
-    "":
-      {}
 - !<RenderMeshVisual/b29abde8-a28d-4925-8816-6de4bc8ba08d>
   PrefabRemaps:
     []
@@ -1359,6 +1328,21 @@
     []
   Components:
     []
+- !<SceneObject/b89f7679-f349-41e8-bd16-d67c256798e5>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> caad658e-c727-4a6f-9892-8aa6314e6cf6
 - !<SceneObject/ba64cd83-d18c-46b2-89cd-607ec4e9a777>
   PrefabRemaps:
     []
@@ -1510,6 +1494,22 @@
   ScriptInputs:
     "":
       {}
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/caad658e-c727-4a6f-9892-8aa6314e6cf6>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
   ScriptTypes:
     "":
       {}
@@ -1787,7 +1787,6 @@
     - 7e220932-4aed-44bb-80f8-b8d2f254be02: 74fe27e4-c5fd-4fd8-8d63-a6ccecb0d06b
     - 7f787a35-d7cc-492e-ab4e-9d0c86355c63: a8dd6627-3116-41c4-9010-ae21964fa3dc
     - 7fa6e73e-54d2-4fb3-ba90-1ec70e37b308: 7fa6e73e-54d2-4fb3-456f-e138f1c84cf7
-    - 85deed2d-a639-4148-bd95-69fa9d8a62f8: 1e7e6502-6813-4c77-9352-33c4a2a60d3d
     - 8879b3fb-0f8e-444c-8f4a-a7fc4af3ae8b: 8879b3fb-0f8e-444c-70b5-5803b50c5174
     - 8afb3d5b-f6fa-4e5c-9af2-5230bf9b347a: 8afb3d5b-f6fa-4e5c-650d-adcf4064cb85
     - 8bbbf5f5-5f62-4791-a14e-2ba33340486a: 8bbbf5f5-5f62-4791-5eb1-d45cccbfb795
@@ -1806,10 +1805,10 @@
     - ac64197c-74f6-41ce-956a-cd07ca9766c0: ac64197c-74f6-41ce-6a95-32f83568993f
     - acd2c232-5ddb-42d1-b20d-7bd64e99354a: bfcbc6a2-ffa9-4d6a-a5ca-16c1893935c2
     - add9b63a-c5c9-4739-934f-1cb1a3ff4afd: add9b63a-c5c9-4739-6cb0-e34e5c00b502
-    - aebbf3ff-d75a-4b91-ba76-0ca81024bf9b: e9316ac2-5a18-4a33-8c6c-f8f8cdd5364a
     - b29abde8-a28d-4925-8816-6de4bc8ba08d: b29abde8-a28d-4925-77e9-921b43745f72
     - b4166b80-7e51-4b81-b621-89662cc9a6e8: b4166b80-7e51-4b81-49de-7699d3365917
     - b6ba164a-1142-4ee2-95e8-5f9e2c41f1ed: a3a92615-27b1-437e-b9ab-f23dd1a1bc3f
+    - b89f7679-f349-41e8-bd16-d67c256798e5: 15d61453-1297-43cb-8df9-fa56084f20f9
     - ba64cd83-d18c-46b2-89cd-607ec4e9a777: ba64cd83-d18c-46b2-7632-9f813b165888
     - bb8da911-2ade-4abd-992d-f06beb950f22: bb8da911-2ade-4abd-66d2-0f94146af0dd
     - bd9cf5af-51b6-41cb-b991-d55a9a2a3f1a: bd9cf5af-51b6-41cb-466e-2aa565d5c0e5
@@ -1819,6 +1818,7 @@
     - c50b98dd-29f0-482c-9538-dd68c31ba147: c50b98dd-29f0-482c-6ac7-22973ce45eb8
     - c7d8dd90-4a7b-472f-b4e0-388fa07d6e3f: c7d8dd90-4a7b-472f-4b1f-c7705f8291c0
     - caa1e55c-1077-4718-b210-967a2c792632: caa1e55c-1077-4718-4def-6985d386d9cd
+    - caad658e-c727-4a6f-9892-8aa6314e6cf6: a3af2019-3c25-4746-b049-6efaffd3acd9
     - cbe520a0-4e7e-4633-8b7f-cd86e2966bad: cbe520a0-4e7e-4633-7480-32791d699452
     - d2d4cc9f-1211-432c-8195-ff24e3f9c3a9: d2d4cc9f-1211-432c-7e6a-00db1c063c56
     - db7c4289-d963-4001-aa25-70b66669c448: db7c4289-d963-4001-55da-8f4999963bb7
@@ -1844,7 +1844,7 @@
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
-    - !<own> 85deed2d-a639-4148-bd95-69fa9d8a62f8
+    - !<own> b89f7679-f349-41e8-bd16-d67c256798e5
     - !<own> acd2c232-5ddb-42d1-b20d-7bd64e99354a
     - !<own> a0dbcde5-dbcf-478f-813b-67a82c17ed4f
     - !<own> 7e220932-4aed-44bb-80f8-b8d2f254be02

@@ -448,6 +448,7 @@
   ScriptAsset: !<reference> 4e89ba0e-590e-49f8-a54e-0955c1122e57
   ScriptInputsDefault:
     steps: true
+    stepInfo: true
     startIndex: true
     previousLabel: true
     nextLabel: true
@@ -461,6 +462,8 @@
       exampleInfo: !<string[]>
         - Pinch cards to move them. Drag dots between cards to connect; tap a dot to clear its lines.
       steps: !<reference.SceneObject[]>
+        []
+      stepInfo: !<string[]>
         []
       startIndex: !<float> 0.000000
       previousLabel: Previous

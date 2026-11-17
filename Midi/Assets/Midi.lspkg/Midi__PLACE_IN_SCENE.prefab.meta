@@ -135,37 +135,6 @@
   ScriptTypes:
     "":
       {}
-- !<SceneObject/22c56247-44fa-4b50-8f98-f5c7e7bcce8f>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> 2abf3397-44b9-4e4b-a38e-48f84ec8df16
-- !<ScriptComponent/2abf3397-44b9-4e4b-a38e-48f84ec8df16>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
-  ScriptInputsDefault:
-    _theme: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      _theme: System3
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/6857ba17-1e74-4f13-9b5e-9cc8baa0c255>
   PrefabRemaps:
     []
@@ -372,6 +341,22 @@
   ScriptTypes:
     "":
       {}
+- !<ScriptComponent/9ef289ef-46e5-4a25-a15b-cce43b40a1db>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/cd08a35a-24af-4625-7267-b7840b82cca3>
   PrefabRemaps:
     []
@@ -384,7 +369,7 @@
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
-    - !<own> 22c56247-44fa-4b50-8f98-f5c7e7bcce8f
+    - !<own> fb1f6509-4fad-40b6-9847-0e12cc104fff
     - !<own> 6857ba17-1e74-4f13-9b5e-9cc8baa0c255
     - !<own> 94bb56b4-375c-4a47-9366-56b76c547988
     - !<own> 9724956e-a87a-4ba2-bd98-32b3d0802f3e
@@ -575,3 +560,18 @@
   ScriptTypes:
     "":
       {}
+- !<SceneObject/fb1f6509-4fad-40b6-9847-0e12cc104fff>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 9ef289ef-46e5-4a25-a15b-cce43b40a1db

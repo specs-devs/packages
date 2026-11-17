@@ -602,6 +602,22 @@
     CapitalizationOverride: None
   DepthTest: false
   TwoSided: false
+- !<ScriptComponent/0e0cf455-a79e-467d-b249-b759055c7b5e>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/0ee92217-0464-4c52-4285-88aea1829b88>
   PrefabRemaps:
     []
@@ -847,21 +863,6 @@
     []
   Components:
     - !<own> e6445b88-495b-4eb1-59c7-46a55e7de0ef
-- !<SceneObject/1ca330c5-4ccd-4e5d-bd49-36d197d805d8>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> da3664b4-b71b-4d7f-a598-d93688f421e4
 - !<Image/1daf1fb2-edf1-46fd-78d3-cd77c83f60dc>
   PrefabRemaps:
     []
@@ -6189,22 +6190,6 @@
     - !<own> 7fc34bff-3405-4063-5351-58bbbadc1691
   Components:
     - !<own> 98c7ee64-4c7c-498d-6d20-1e5eec470163
-- !<ScriptComponent/da3664b4-b71b-4d7f-a598-d93688f421e4>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
-  ScriptInputsDefault:
-    _theme: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      _theme: System3
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/db2cbf63-677b-4a7b-7e3d-8ea2c6ca78a6>
   PrefabRemaps:
     []
@@ -6220,6 +6205,21 @@
     []
   Components:
     - !<own> 2a6c22e4-b542-49f4-7ff4-020025145b3b
+- !<SceneObject/dbaca8a3-33bb-485d-893c-a4cfe866c9e4>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 0e0cf455-a79e-467d-b249-b759055c7b5e
 - !<RenderMeshVisual/dc2195c4-400e-4634-5fcd-c783c8deb077>
   PrefabRemaps:
     []
@@ -6490,7 +6490,7 @@
     Scale: {x: 0.800000, y: 0.800000, z: 0.800000}
     HasSegmentScaleCompensation: false
   Children:
-    - !<own> 1ca330c5-4ccd-4e5d-bd49-36d197d805d8
+    - !<own> dbaca8a3-33bb-485d-893c-a4cfe866c9e4
     - !<own> 8bac7b12-bd18-4c5a-a7ab-bc2ea3e95389
     - !<own> 81567f4c-1b49-42ad-bba9-e95fb888b6c4
     - !<own> 2abc66f9-593e-4195-5126-ce757b85805a

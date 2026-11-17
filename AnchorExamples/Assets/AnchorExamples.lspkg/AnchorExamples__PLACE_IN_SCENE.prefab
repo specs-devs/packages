@@ -37,22 +37,6 @@
     []
   Components:
     - !<own> 6bd10fc4-b8f6-4be1-a489-5667aa720288
-- !<ScriptComponent/21b8aab3-5254-4ecf-9f95-afdaa76ecd8f>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
-  ScriptInputsDefault:
-    _theme: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      _theme: System3
-  ScriptTypes:
-    "":
-      {}
 - !<ScriptComponent/24e39e61-6014-4947-a888-b40323c78a09>
   PrefabRemaps:
     []
@@ -279,21 +263,6 @@
   ScriptTypes:
     "":
       {}
-- !<SceneObject/3c5edda6-036f-4702-a9be-ac272f519df3>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> 21b8aab3-5254-4ecf-9f95-afdaa76ecd8f
 - !<SceneObject/3e2dad17-c160-4516-b568-0d0887de459f>
   PrefabRemaps:
     []
@@ -347,13 +316,11 @@
   PrefabRemaps:
     - 0b5159b3-3217-4c31-bf09-e4197ffcd6ee: f4a7aaf1-04a2-4492-9f60-900a32717f38
     - 219f2555-6a93-4470-b19c-ee394a6348d5: 309e21bf-a8ea-45c5-9058-cea559533cdb
-    - 21b8aab3-5254-4ecf-9f95-afdaa76ecd8f: da3a36da-984e-438d-a2e9-b97c6214df5b
     - 24e39e61-6014-4947-a888-b40323c78a09: a1f97486-3a26-4131-9bf8-cfbd2d15424c
     - 2d751bde-ab2e-4b39-b2b4-86f837b9179f: 8f601e4f-f970-4c6a-a1db-eaffc5eaa62f
     - 3063cff6-4b2d-4fd0-8a05-6e783adf4dc1: 3063cff6-4b2d-4fd0-75fa-9187c520b23e
     - 3292859b-2a6f-4725-87a5-822e83d140f4: ce8cc2a7-44c9-4e28-8dbc-4bc12266b1b0
     - 38efbcf6-2618-41cf-aaea-6a45b93e6714: 38efbcf6-2618-41cf-5515-95ba46c198eb
-    - 3c5edda6-036f-4702-a9be-ac272f519df3: 2d073933-39b9-4938-a1f1-11381eb03dbf
     - 3e2dad17-c160-4516-b568-0d0887de459f: 3e2dad17-c160-4516-4a97-f2f77821ba60
     - 3f6eb213-a8b9-4459-a24a-2fdfbcc3fcf8: 3ccf9dd7-5ec2-4aea-a296-0364044dfd26
     - 473a824c-c769-46d7-9c93-624a2becb0e1: 473a824c-c769-46d7-636c-9db5d4134f1e
@@ -365,7 +332,9 @@
     - 9dae9bfb-4bec-44f6-b901-b70436ed965b: b9119dd5-3d39-4022-96d0-1f9e218aa39c
     - a5ec8a96-4ca6-43bd-ba95-7a9b1afc20db: a5ec8a96-4ca6-43bd-456a-8564e503df24
     - b94bac6d-a72d-4a60-afd1-807fd0c7ce4c: d651865c-cfe0-4062-beea-39f55c783618
+    - d023409a-106b-4902-ae83-f7cac72ea42e: 9c9a3ef8-97c5-458a-bfa7-d144581eae66
     - d9a41163-e2fa-457c-bb23-81d8d97fc577: 5a103c76-9084-4b4e-a652-070af172525c
+    - ddea3781-7d03-4d34-b387-f43687accd4e: d42a7d4d-2f15-444a-bf90-0bb60c8a7177
     - fc1f0c5a-5265-4276-b808-4ece332ba6cf: d752c9d3-5d36-4b32-a544-bcb06ea358d7
   Name: AnchorExamples__PLACE_IN_SCENE
   Enabled: true
@@ -376,7 +345,7 @@
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
-    - !<own> 3c5edda6-036f-4702-a9be-ac272f519df3
+    - !<own> ddea3781-7d03-4d34-b387-f43687accd4e
     - !<own> 0b5159b3-3217-4c31-bf09-e4197ffcd6ee
     - !<own> 219f2555-6a93-4470-b19c-ee394a6348d5
     - !<own> 3f6eb213-a8b9-4459-a24a-2fdfbcc3fcf8
@@ -616,6 +585,22 @@
   Components:
     - !<own> fc1f0c5a-5265-4276-b808-4ece332ba6cf
     - !<own> 3292859b-2a6f-4725-87a5-822e83d140f4
+- !<ScriptComponent/d023409a-106b-4902-ae83-f7cac72ea42e>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/d9a41163-e2fa-457c-bb23-81d8d97fc577>
   PrefabRemaps:
     []
@@ -631,6 +616,21 @@
     []
   Components:
     - !<own> 2d751bde-ab2e-4b39-b2b4-86f837b9179f
+- !<SceneObject/ddea3781-7d03-4d34-b387-f43687accd4e>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> d023409a-106b-4902-ae83-f7cac72ea42e
 - !<ScriptComponent/fc1f0c5a-5265-4276-b808-4ece332ba6cf>
   PrefabRemaps:
     []

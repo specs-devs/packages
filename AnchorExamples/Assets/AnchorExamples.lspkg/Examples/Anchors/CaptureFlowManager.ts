@@ -112,7 +112,7 @@ export class CaptureFlowManager {
     }
 
     this.logger.info("Starting capture (session already warmed up)")
-    const anchor = this.anchorController.createWorldAnchor(toWorldFromAnchor)
+    const anchor = await this.anchorController.createWorldAnchor(toWorldFromAnchor)
     if (!anchor) {
       this.logger.warn("Anchor creation failed — aborting capture")
       this.cleanupCapture()

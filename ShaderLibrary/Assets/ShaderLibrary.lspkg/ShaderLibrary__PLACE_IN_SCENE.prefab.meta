@@ -14,22 +14,6 @@
   ImporterSettings: !<AssetImporterSettings>
     {}
   CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
-- !<ScriptComponent/00a11fd6-c3ac-4ec0-b662-f86dbde968c1>
-  PrefabRemaps:
-    []
-  Name: ThemeManager
-  Enabled: true
-  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
-  ScriptInputsDefault:
-    _theme: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      _theme: System3
-  ScriptTypes:
-    "":
-      {}
 - !<RenderMeshVisual/021b6a11-9c2d-41ab-5389-5a48c5f94fd8>
   PrefabRemaps:
     []
@@ -685,7 +669,7 @@
     - !<own> 3f48c5ee-dddd-49b3-5ec8-773447a338ec
   Components:
     []
-- !<SceneObject/62888e98-77cf-4409-b70d-144a78cfcdab>
+- !<SceneObject/6292940f-5365-454a-8adf-ba9fb4f5638c>
   PrefabRemaps:
     []
   Name: ThemeManager
@@ -699,7 +683,7 @@
   Children:
     []
   Components:
-    - !<own> 00a11fd6-c3ac-4ec0-b662-f86dbde968c1
+    - !<own> 9e0677bd-b5e3-43ef-afad-3c811906d4c5
 - !<Text/6a340a4f-4529-430c-a390-b5f43d5687b8>
   PrefabRemaps:
     []
@@ -1021,7 +1005,7 @@
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
-    - !<own> 62888e98-77cf-4409-b70d-144a78cfcdab
+    - !<own> 6292940f-5365-454a-8adf-ba9fb4f5638c
     - !<own> 0c42a9d2-9a92-4f38-a6e9-b70ad96bc6bc
     - !<own> 1f422010-77ab-4715-a557-d5bd290c98ba
     - !<own> 82b9229f-070a-4a92-4043-9c2c5e2d9e78
@@ -1189,6 +1173,22 @@
     CapitalizationOverride: None
   DepthTest: false
   TwoSided: false
+- !<ScriptComponent/9e0677bd-b5e3-43ef-afad-3c811906d4c5>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
+  ScriptTypes:
+    "":
+      {}
 - !<Text/a738617d-c450-47d5-6e34-10e99269d696>
   PrefabRemaps:
     []

@@ -448,8 +448,8 @@ get currentArea(): string | null
 get isSavePending(): boolean
 async openSession(area: string | null = null): Promise<AnchorSession | null>
 async closeSession(): Promise<void>
-createWorldAnchor(toWorldFromAnchor: mat4): Anchor | null
-createWorldAnchorAt(position: vec3, forward: vec3 = vec3.forward()): Anchor | null
+createWorldAnchor(toWorldFromAnchor: mat4): Promise<Anchor | null>
+createWorldAnchorAt(position: vec3, forward: vec3 = vec3.forward()): Promise<Anchor | null>
 async saveAnchor(anchor: Anchor): Promise<boolean>
 async createAndSaveWorldAnchor(toWorldFromAnchor: mat4): Promise<Anchor | null>
 async resolveAnchor(anchorId: string): Promise<Anchor | null>
