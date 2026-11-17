@@ -1,12 +1,12 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Shared utility classes for video and audio capture operations in Snap Cloud examples.
  * Provides VideoCaptureUtility for camera frame capture and upload, AudioCaptureUtility for
  * microphone recording and WAV conversion, SupabaseAuthUtility for authentication, and
  * SessionUtility for generating synchronized session IDs and metadata.
  */
 import {createClient} from "SupabaseClient.lspkg/supabase-snapcloud"
-import {SnapCloudRequirements} from "./SnapCloudRequirements"
+import {SnapCloudRequirements} from "../../SnapCloudRequirements"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 
 /**
@@ -57,8 +57,12 @@ export class VideoCaptureUtility {
       this.log("Requesting own camera (may conflict with CameraService!)")
 
       // Create camera request
+      // On device only the Right camera delivers frames; Default/Left do not.
+      // Fall back to Default_Color in the editor where Right_Color is unavailable.
       const cameraRequest = CameraModule.createCameraRequest()
-      cameraRequest.cameraId = CameraModule.CameraId.Default_Color
+      cameraRequest.cameraId = global.deviceInfoSystem.isEditor()
+        ? CameraModule.CameraId.Default_Color
+        : CameraModule.CameraId.Right_Color
 
       // Request camera texture
       this.cameraTexture = this.cameraModule.requestCamera(cameraRequest)

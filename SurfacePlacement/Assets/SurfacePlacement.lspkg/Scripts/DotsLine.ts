@@ -2,7 +2,7 @@ import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
 
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Dynamic dotted line renderer for visual feedback between two points. Calculates real-time distance
  * between line start and end transforms, remaps distance to shader length parameter for visual scaling,
  * updates continuously via UpdateEvent, and provides animated line effect for showing placement height

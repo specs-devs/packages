@@ -2,7 +2,7 @@ import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
 
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Linear instantiation with fixed distance spacing. Spawns objects along a line with consistent
  * spacing between instances, useful for precise linear layouts and measurements.
  */
@@ -63,7 +63,6 @@ export class InstantiateAlongLineWithFixedDistanceTS extends BaseScriptComponent
         });
     }
     
-    @bindStartEvent
 
     
     onStart(): void {

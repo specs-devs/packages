@@ -3,9 +3,10 @@ import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 @component
 export class WebSocketController extends BaseScriptComponent {
   private internetModule: InternetModule = require("LensStudio:InternetModule")
+  // Placeholder host: deploy your own copy of the teleprompter WebSocket server and put its URL here (Inspector or code).
   @input
-  @hint("WebSocket server URL (e.g., wss://google-slide-spectacles-03332e1cf78e.herokuapp.com)")
-  serverUrl: string = "wss://google-slide-spectacles-03332e1cf78e.herokuapp.com"
+  @hint("WebSocket server URL (e.g., wss://your-teleprompter-server.example.com)")
+  serverUrl: string = "wss://your-teleprompter-server.example.com"
 
   @input
   @hint("Text component to display connection status")

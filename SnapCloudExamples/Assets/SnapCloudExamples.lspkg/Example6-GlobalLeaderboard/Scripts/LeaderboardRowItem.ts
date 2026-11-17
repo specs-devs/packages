@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Displays one leaderboard row. Implements bind(entry) for LeaderboardRowInstantiator.
  */
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";

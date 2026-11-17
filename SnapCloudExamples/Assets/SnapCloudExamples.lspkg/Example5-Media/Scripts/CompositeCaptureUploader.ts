@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Synchronized video and audio capture with upload to Snap Cloud Storage. Records frames and
  * audio chunks simultaneously with shared session IDs, stores in memory during recording for
  * zero stuttering, uploads sequentially after completion, triggers Edge Function for video
@@ -13,9 +13,9 @@ import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService";
 import {RectangleButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton"
 import {Switch} from "SpectaclesUIKit.lspkg/Scripts/Components/Switch/Switch"
 import {TextInputField} from "SpectaclesUIKit.lspkg/Scripts/Components/TextInputField/TextInputField"
-import {CameraService} from "../../CompositeCameraModified/Scripts/CameraService"
+import {CameraService} from "../../CompositeCameraWork/Scripts/CameraService"
 import {AudioCaptureUtility, SessionUtility, SupabaseAuthUtility, VideoCaptureUtility} from "./CaptureUtilities"
-import {SnapCloudRequirements} from "./SnapCloudRequirements"
+import {SnapCloudRequirements} from "../../SnapCloudRequirements"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent} from "SnapDecorators.lspkg/decorators"
 
@@ -62,7 +62,7 @@ export class CompositeCaptureUploader extends BaseScriptComponent {
 
   @input
   @hint("Default caption for Spotlight post (used if no input provided)")
-  public defaultCaption: string = "Captured with Spectacles ✨"
+  public defaultCaption: string = "Captured with Glasses ✨"
 
   @ui.separator
   @ui.label('<span style="color: #60A5FA;">Video Format Configuration</span>')

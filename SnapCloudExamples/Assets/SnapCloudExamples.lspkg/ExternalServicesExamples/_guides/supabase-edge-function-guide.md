@@ -3,7 +3,7 @@
 > **⚠️ Disclaimer:** This example uses Railway for hosting the stitching service. Railway is **not endorsed or affiliated with Snap Inc.** You may use any hosting service that supports Node.js and FFmpeg.
 
 ## Overview
-This Edge Function acts as a bridge between your Spectacles app and the stitching service (hosted on Railway or similar platform). It forwards requests including optional social sharing parameters.
+This Edge Function acts as a bridge between your SPECS app and the stitching service (hosted on Railway or similar platform). It forwards requests including optional social sharing parameters.
 
 **Function Name:** `trigger-composite-stitch`
 
@@ -25,7 +25,7 @@ From the root directory:
 supabase functions deploy trigger-composite-stitch
 
 # Set the Railway service URL as an environment variable
-supabase secrets set STITCHER_SERVICE_URL=https://composite-stitcher-production.up.railway.app
+supabase secrets set STITCHER_SERVICE_URL=https://your-composite-stitcher.example.com
 ```
 
 ---
@@ -42,7 +42,7 @@ supabase secrets set STITCHER_SERVICE_URL=https://composite-stitcher-production.
 6. Paste into the editor
 7. Click **"Deploy"**
 8. Go to **Settings → Edge Functions → Secrets**
-9. Add: `STITCHER_SERVICE_URL` = `https://composite-stitcher-production.up.railway.app`
+9. Add: `STITCHER_SERVICE_URL` = `https://your-composite-stitcher.example.com`
 
 ### Option 2: Via CLI from Function Directory
 
@@ -64,7 +64,7 @@ Get your project ref from: Supabase Dashboard → Settings → API → Project U
 
 ---
 
-## Usage from Spectacles App
+## Usage from SPECS App
 
 ### Call from CompositeCaptureUploader
 
@@ -165,7 +165,7 @@ curl -X POST \
 ```
 
 ### Expected Flow
-1. Edge Function receives request from Spectacles
+1. Edge Function receives request from SPECS
 2. Validates sessionId parameter
 3. Calls Railway stitcher service at `/stitch` endpoint
 4. Returns immediate response (job queued)
@@ -180,7 +180,7 @@ Set in Supabase Dashboard → Edge Functions → Secrets:
 
 | Variable | Value | Purpose |
 |----------|-------|---------|
-| `STITCHER_SERVICE_URL` | `https://composite-stitcher-production.up.railway.app` | Railway stitcher endpoint |
+| `STITCHER_SERVICE_URL` | `https://your-composite-stitcher.example.com` | Railway stitcher endpoint |
 
 ---
 
@@ -228,7 +228,7 @@ private async stopRecording() {
 ## Complete Flow Diagram
 
 ```
-Spectacles App (CompositeCaptureUploader)
+SPECS App (CompositeCaptureUploader)
     │
     ├─> Uploads video frames to Storage
     ├─> Uploads audio chunks to Storage
@@ -268,7 +268,7 @@ Spectacles App (CompositeCaptureUploader)
 - Test Railway service health endpoint directly
 
 ### Stitcher Not Responding
-- Test Railway service: `curl https://composite-stitcher-production.up.railway.app/health`
+- Test Railway service: `curl https://your-composite-stitcher.example.com/health`
 - Check Railway deployment status
 - Verify Railway environment variables are set
 

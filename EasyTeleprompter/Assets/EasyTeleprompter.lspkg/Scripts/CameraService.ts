@@ -2,8 +2,8 @@ import WorldCameraFinderProvider from "SpectaclesInteractionKit.lspkg/Providers/
 
 export enum CameraType {
   Main = 0,
-  SpecsLeft = 1,
-  SpecsRight = 2
+  GlassesLeft = 1,
+  GlassesRight = 2
 }
 
 export class CameraService {
@@ -13,8 +13,8 @@ export class CameraService {
   private _mainCamera: Camera = WorldCameraFinderProvider.getInstance().getComponent()
 
   // These can be created on-demand if needed later
-  private _specsLeftCamera: Camera
-  private _specsRightCamera: Camera
+  private _glassesLeftCamera: Camera
+  private _glassesRightCamera: Camera
 
   public static getInstance(): CameraService {
     if (!CameraService.instance) {
@@ -36,17 +36,17 @@ export class CameraService {
     if (cameraType === CameraType.Main) {
       return this._mainCamera
     }
-    if (cameraType === CameraType.SpecsLeft) {
-      if (!this._specsLeftCamera) {
-        print("Warning: SpecsLeft camera requested but not initialized")
+    if (cameraType === CameraType.GlassesLeft) {
+      if (!this._glassesLeftCamera) {
+        print("Warning: GlassesLeft camera requested but not initialized")
       }
-      return this._specsLeftCamera
+      return this._glassesLeftCamera
     }
-    if (cameraType === CameraType.SpecsRight) {
-      if (!this._specsRightCamera) {
-        print("Warning: SpecsRight camera requested but not initialized")
+    if (cameraType === CameraType.GlassesRight) {
+      if (!this._glassesRightCamera) {
+        print("Warning: GlassesRight camera requested but not initialized")
       }
-      return this._specsRightCamera
+      return this._glassesRightCamera
     }
     throw new Error("Invalid camera type")
   }

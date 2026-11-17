@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Snap Cloud table connector example demonstrating database operations. Shows authentication,
  * table queries (select/insert/update/delete), user interactions logging, preferences management,
  * and interactive data retrieval with UI feedback.
@@ -27,7 +27,7 @@ export class TableConnector extends BaseScriptComponent {
 
   @input
   @allowUndefined
-  @hint("Optional: RectangleButton to trigger data retrieval (from Spectacles UI Kit)")
+  @hint("Optional: RectangleButton to trigger data retrieval (from Glasses UI Kit)")
   public dataRetrievalButton: RectangleButton
 
   @input
@@ -314,7 +314,7 @@ export class TableConnector extends BaseScriptComponent {
 
     const testData = {
       message: "Hello from Lens Studio!",
-      sender: "Spectacles User",
+      sender: "Glasses User",
       timestamp: new Date().toISOString(),
       lens_session_id: `session_${Date.now()}`
     }

@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Smart tethering system with angle and distance-based repositioning triggers. Follows target with
  * conditional updates only when angle threshold, vertical distance, or horizontal distance is exceeded,
  * smooth lerp transitions, position offset in target space, and detailed debug visualization.
@@ -71,6 +71,7 @@ export class TetherBetweenAngleRangeTS extends BaseScriptComponent {
     private logger: Logger;
 
     private _targetPosition: vec3 = new vec3(0, 0, 0);
+    private _hasTargetPosition: boolean = false;
     private _lastRepositionTime: number = 0;
     private _currentAngle: number = 0;
     private _verticalDistance: number = 0;
@@ -111,6 +112,7 @@ export class TetherBetweenAngleRangeTS extends BaseScriptComponent {
 
         // Initialize target position
         this._targetPosition = this.calculateNewTargetPosition();
+        this._hasTargetPosition = true;
     }
 
     /**
@@ -124,6 +126,12 @@ export class TetherBetweenAngleRangeTS extends BaseScriptComponent {
         }
 
         if (!this.target) return;
+
+        // Target assigned from code after start: initialize the target position now
+        if (!this._hasTargetPosition) {
+            this._targetPosition = this.calculateNewTargetPosition();
+            this._hasTargetPosition = true;
+        }
 
         // Evaluate current conditions
         this.evaluateConditions();

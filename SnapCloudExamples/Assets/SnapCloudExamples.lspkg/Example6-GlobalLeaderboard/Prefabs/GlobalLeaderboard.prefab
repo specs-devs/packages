@@ -71,8 +71,15 @@
     _vertical: true
     _horizontal: true
     _scrollPosition: true
-    _maxSnapOne: true
+    _contentOrigin: true
+    _snapMode: true
+    _pagingSnapCapMode: true
+    _maxSnapStepsPerFling: true
+    _edgeMode: true
+    _feel: true
     _edgeFade: true
+    _edgeFadeColor: true
+    _renderOrder: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
@@ -82,10 +89,17 @@
       _windowSize: !<Vec2> {x: 32.000000, y: 28.000000}
       _scrollDimensions: !<Vec2> {x: 96.000000, y: 60.000000}
       _scrollPosition: !<Vec2> {x: 0.000000, y: 0.000000}
+      _contentOrigin: Center
       _scrollSnapping: true
+      _snapMode: paging
       _snapRegion: !<Vec2> {x: 0.000000, y: 10.000000}
-      _maxSnapOne: false
+      _pagingSnapCapMode: gestureStart
+      _maxSnapStepsPerFling: 0
+      _edgeMode: elastic
+      _feel: smooth
       _edgeFade: false
+      _edgeFadeColor: !<Vec3> {x: 0.125490, y: 0.125490, z: 0.125490}
+      _renderOrder: 0
   ScriptTypes:
     "":
       {}
@@ -102,6 +116,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: "#1"
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -109,8 +124,7 @@
   SizeToFit: false
   FontSize: 48.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -127,7 +141,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -211,6 +225,7 @@
     _renderOrder: true
     _size: true
     orientation: true
+    _themeOverride: true
     _playAudio: true
   ScriptTypesDefault:
     {}
@@ -219,6 +234,7 @@
       _renderOrder: 0
       _size: !<Vec2> {x: 20.000000, y: 1.800000}
       orientation: Vertical
+      _themeOverride: Inherited
       scrollWindow: !<MappingBased.AssignableType_1> 1716243e-1a6b-4caa-882e-c9310067ef13
       _playAudio: false
   ScriptTypes:
@@ -355,6 +371,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Score
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -362,8 +379,7 @@
   SizeToFit: false
   FontSize: 48.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -380,7 +396,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -479,6 +495,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Jaz Powderman
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -486,8 +503,7 @@
   SizeToFit: false
   FontSize: 48.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -504,7 +520,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>

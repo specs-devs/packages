@@ -78,15 +78,23 @@ export class InteractionHandler {
     const cached = handType === "right" ? this.rightHandInteractor : this.leftHandInteractor
     if (cached) return cached
 
-    // First-construction retry loop: the SIK InteractionManager registers
-    // hand interactors during ScriptComponent boot, and the very first
-    // interaction request after a lens reset can fire before that registration
-    // completes. AiHandInteractor's constructor throws a clear error in that
-    // window; we wait a frame and try again. ~10 frames is generous (~167ms
-    // at 60fps); if SIK hasn't booted by then something else is wrong.
-    const MAX_FRAMES = 10
+    // First-construction retry loop covering two startup races: SIK's
+    // InteractionManager registering interactors during boot (~a few frames),
+    // and SIK 3's lazy hand-rig asset load (not frame-bounded; warmed at boot
+    // by AgentInteractScript). Both throw a recognizable constructor error, so
+    // one loop covers them. 120 frames (~2 s at 60 fps), paid once per hand.
+    const MAX_FRAMES = 120
     let lastError: unknown
     for (let i = 0; i < MAX_FRAMES; i++) {
+      // Re-check the cache each iteration: a concurrent getInteractor() call for
+      // the same hand may have finished constructing while we were awaiting a
+      // frame. Without this, both calls resume in the same frame once the lazy
+      // rig loads, each build a new AiHandInteractor, and the first is leaked —
+      // its per-frame UpdateDispatcher subscription and the forced isTracked/
+      // setEnabled overrides on the shared TrackedHand persist for the session.
+      // Returning the already-built one keeps a single interactor.
+      const current = handType === "right" ? this.rightHandInteractor : this.leftHandInteractor
+      if (current) return current
       try {
         const interactor = new AiHandInteractor(handType)
         if (handType === "right") this.rightHandInteractor = interactor
@@ -133,10 +141,22 @@ export class InteractionHandler {
 
     if (!interactable) {
       const identifier = name ? `name: "${name}"` : `uniqueId: "${uniqueId}"`
+      // List the interactables that DO exist so the caller can correct the
+      // target in one step. Without it the error is a dead end and callers
+      // thrash — retrying many name variants, then falling back to blind
+      // coordinate taps. getInteractables() is already the resolution source
+      // above, so the candidate set is exact; this only runs on the failure path.
+      const available = [...new Set(getInteractables().map((i) => i.getSceneObject().name))]
+      const MAX_LISTED = 40
+      const shown = available.slice(0, MAX_LISTED).join(", ")
+      const more = available.length > MAX_LISTED ? ` (+${available.length - MAX_LISTED} more)` : ""
+      const hint = available.length
+        ? ` Available interactables: ${shown}${more}.`
+        : " No interactables are currently present in the scene."
       this.respond({
         type: "CommandError",
         commandId,
-        message: `No interactable found with ${identifier}`,
+        message: `No interactable found with ${identifier}.${hint}`,
         reason: "not_found"
       })
       return null
@@ -376,7 +396,6 @@ export class InteractionHandler {
       return
     }
     const targetPos = new vec3(cmd.worldPosition.x, cmd.worldPosition.y, cmd.worldPosition.z)
-    const interactor = await this.getInteractor(handType)
     const held = this.heldObjects.get(handType)
     const releaseMidDrag = cmd.releaseMidDrag ?? false
     // releaseMidDrag always releases partway through; a "hold" request
@@ -388,8 +407,12 @@ export class InteractionHandler {
     // flaky drag permanently marks the hand busy on a SIK interactor
     // that's actually in an indeterminate state.
     let pinchedInThisCall = false
+    // Resolved inside the try so a hand rig that never loads answers with
+    // internal_error instead of leaving the command without a reply.
+    let interactor: AiHandInteractor | null = null
 
     try {
+      interactor = await this.getInteractor(handType)
       if (cmd.uniqueId || cmd.name) {
         const interactable = await this.resolveAndValidate(cmd.commandId, cmd.uniqueId, cmd.name, cmd.parentName)
         if (!interactable) return
@@ -441,7 +464,7 @@ export class InteractionHandler {
         this.respond({type: "CommandSuccess", commandId: cmd.commandId})
       }
     } catch (e) {
-      if (pinchedInThisCall) {
+      if (pinchedInThisCall && interactor) {
         this.heldObjects.delete(handType)
         try {
           await interactor.release()

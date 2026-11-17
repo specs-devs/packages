@@ -1,3 +1,4 @@
+//@component
 /**
  * Utility for calculating rotations between two objects or directions.
  */

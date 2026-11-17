@@ -1,3 +1,4 @@
+//@component
 /**
  * The billboard solver allows the content to face a target, rotating only around the Y axis.
  */

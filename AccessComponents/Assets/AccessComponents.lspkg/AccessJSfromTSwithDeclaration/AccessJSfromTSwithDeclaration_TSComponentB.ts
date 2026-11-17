@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Demonstrates accessing a JavaScript component from TypeScript using a declaration file.
  * This approach provides type safety and IntelliSense support for JavaScript components.
  */
@@ -8,7 +8,7 @@ import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent } from "SnapDecorators.lspkg/decorators";
 
 @component
-export class TSComponentB extends BaseScriptComponent {
+export class AccessJSfromTSwithDeclaration_TSComponentB extends BaseScriptComponent {
   @ui.separator
   @ui.label('<span style="color: #60A5FA;">JavaScript Component Reference</span>')
   @ui.label('<span style="color: #94A3B8; font-size: 11px;">Reference to the JavaScript component with full type definitions from the declaration file</span>')
@@ -81,3 +81,6 @@ export class TSComponentB extends BaseScriptComponent {
     }
   }
 }
+
+/** @deprecated Use AccessJSfromTSwithDeclaration_TSComponentB. Kept so existing imports of the old name still compile. */
+export { AccessJSfromTSwithDeclaration_TSComponentB as TSComponentB };

@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Demonstrates how to access custom components using the @typename decorator. This approach provides
  * type-safe access to custom components by declaring their type with @typename before using @input.
  */
@@ -58,7 +58,7 @@ export class AccessCustomComponentsUsingTypenameTS extends BaseScriptComponent {
   @bindStartEvent
   onStart(): void {
     try {
-      if (this.enableLogging || this.enableLoggingLifecycle) {
+      if (this.shouldLog()) {
         print("AccessCustomComponentsUsingTypenameTS initialized");
       }
       
@@ -66,25 +66,30 @@ export class AccessCustomComponentsUsingTypenameTS extends BaseScriptComponent {
       if (this.customComponent) {
         // Call methods on the component
         const hasTexture = this.customComponent.hasTexture();
-        if (this.enableLogging || this.enableLoggingLifecycle) {
+        if (this.shouldLog()) {
           print(`Component has texture: ${hasTexture}`);
         }
         
         // Access properties
         if (this.customComponent.textureSize !== undefined) {
-          if (this.enableLogging || this.enableLoggingLifecycle) {
+          if (this.shouldLog()) {
             print(`Texture size: ${this.customComponent.textureSize}`);
           }
         }
       } else {
-        if (this.enableLogging || this.enableLoggingLifecycle) {
+        if (this.shouldLog()) {
           print("Custom component not found");
         }
       }
     } catch (error) {
-      if (this.enableLogging || this.enableLoggingLifecycle) {
+      if (this.shouldLog()) {
         print(`Error: ${error}`);
       }
     }
+  }
+
+  // Prints only when Debug is on and logging is enabled
+  private shouldLog(): boolean {
+    return this.debug && (this.enableLogging || this.enableLoggingLifecycle);
   }
 }

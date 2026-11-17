@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Dynamic button generator for triggering component functions. Automatically creates UI buttons
  * from an array of triggerable functions, enabling dynamic UI creation with GridLayout support.
  */
@@ -8,8 +8,10 @@
 // theme chain reads COLORS at module-load). Loading ThemeService first lets Visual.ts
 // finish initializing COLORS before the visual chain reads it.
 import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService";
+import { Button } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/Button"
 import { CapsuleButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/CapsuleButton"
 import { RectangleButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton"
+import { RoundButton } from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RoundButton"
 import { ScrollWindow } from "SpectaclesUIKit.lspkg/Scripts/Components/ScrollWindow/ScrollWindow"
 import { GridLayout } from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Grid/GridLayout"
 import { GridItem } from "SpectaclesUIKit.lspkg/Scripts/Components/Layout2D/Grid/GridItem"
@@ -71,6 +73,10 @@ export class ButtonClickEvent extends BaseScriptComponent
     topPadding: number = 3
 
     private scrollWindowInitialized: boolean = false
+
+    // Buttons created by the last build, so rebuild() can replace them
+    private createdButtons: SceneObject[] = []
+    private hasBuilt: boolean = false
 
   @ui.separator
   @ui.label('<span style="color: #60A5FA;">Logging Configuration</span>')
@@ -172,9 +178,29 @@ export class ButtonClickEvent extends BaseScriptComponent
         }
     }
 
+    /**
+     * Destroys the buttons created so far and creates them again from the current
+     * `triggerableFunctions` array. Call after changing the array at runtime.
+     * Does nothing before the first build (it still happens on start / ScrollWindow init).
+     */
+    public rebuild(): void
+    {
+        if (!this.hasBuilt) return
+        for (const buttonObject of this.createdButtons)
+        {
+            if (!isNull(buttonObject))
+            {
+                buttonObject.destroy()
+            }
+        }
+        this.createdButtons = []
+        this.createButtonsAndUpdateScroll()
+    }
+
     // Creates buttons and updates scroll dimensions
     private createButtonsAndUpdateScroll()
     {
+        this.hasBuilt = true
         // Create buttons for each triggerable function
         if (this.triggerableFunctions && this.triggerableFunctions.length > 0)
         {
@@ -239,34 +265,29 @@ export class ButtonClickEvent extends BaseScriptComponent
             scrollDimensionY = functionCount * defaultCellHeight
 
             // Use current window width or a default
-            // Access windowSize property directly or via method
-            const scrollWindowAny = this.scrollWindow as any
-            scrollDimensionX = scrollWindowAny.getWindowSize ? scrollWindowAny.getWindowSize().x : scrollWindowAny.windowSize?.x || 10
+            scrollDimensionX = this.scrollWindow.windowSize?.x || 10
 
             print(`Updating ScrollWindow dimensions using default calculation: ${scrollDimensionX} x ${scrollDimensionY}`)
         }
 
-        // Update scroll dimensions
-        // Use type casting to access methods that may not be in TypeScript definitions
-        const scrollWindowAny = this.scrollWindow as any
-        if (scrollWindowAny.setScrollDimensions)
-        {
-            scrollWindowAny.setScrollDimensions(new vec2(scrollDimensionX, scrollDimensionY))
-            const dimensions = scrollWindowAny.getScrollDimensions ? scrollWindowAny.getScrollDimensions() : scrollWindowAny.scrollDimensions
-            print(`ScrollWindow scroll dimensions set to: ${dimensions}`)
-        }
-        else
-        {
-            // Fallback: try setting scrollDimensions property directly
-            scrollWindowAny.scrollDimensions = new vec2(scrollDimensionX, scrollDimensionY)
-            print(`ScrollWindow scroll dimensions set to: ${scrollWindowAny.scrollDimensions}`)
-        }
+        // Update scroll dimensions through the public property
+        this.scrollWindow.scrollDimensions = new vec2(scrollDimensionX, scrollDimensionY)
+        print(`ScrollWindow scroll dimensions set to: ${this.scrollWindow.scrollDimensions}`)
 
-        // Set initial scroll position to top (for vertical scrolling)
+        // Start at the top. The ScrollWindow rests at scroll position 0 showing the authored view
+        // (normalized 0 = top; it was +1 before), so align the grid's top with the window's top.
         if (this.scrollWindow.vertical)
         {
-            this.scrollWindow.scrollPositionNormalized = new vec2(0, 1)
-            print(`Scroll position set to top (normalized: 0, 1)`)
+            const windowSize = this.scrollWindow.windowSize
+            const windowHeight = windowSize ? windowSize.y : scrollDimensionY
+            if (this.gridLayout)
+            {
+                const gridTransform = this.gridLayout.getSceneObject().getTransform()
+                const position = gridTransform.getLocalPosition()
+                gridTransform.setLocalPosition(new vec3(position.x, windowHeight / 2 - scrollDimensionY / 2, position.z))
+            }
+            this.scrollWindow.scrollPositionNormalized = new vec2(0, 0)
+            print(`Scroll position set to top (normalized: 0, 0)`)
         }
     }
 
@@ -399,16 +420,16 @@ export class ButtonClickEvent extends BaseScriptComponent
         // gets a GridItem component with autoPlacement enabled so the grid's
         // auto-flow engine places it on the next available cell.
         const buttonObject = this.buttonPrefab.instantiate(this.parentObject)
+        this.createdButtons.push(buttonObject)
         if (this.gridLayout)
         {
             const gridItem = buttonObject.createComponent(GridItem.getTypeName()) as GridItem
             gridItem.autoPlacement = true
         }
         
-        // Get button component - try both CapsuleButton and RectangleButton
+        // Get button component - the current UIKit Button first, then the older shape buttons
         // Try root first, then search children recursively
-        let button: any = buttonObject.getComponent(CapsuleButton.getTypeName()) || 
-                         buttonObject.getComponent(RectangleButton.getTypeName())
+        let button: any = this.findButtonComponent(buttonObject)
         
         // If not found on root, search in children
         if (!button)
@@ -416,8 +437,7 @@ export class ButtonClickEvent extends BaseScriptComponent
             for (let i = 0; i < buttonObject.children.length; i++)
             {
                 const child = buttonObject.getChild(i)
-                button = child.getComponent(CapsuleButton.getTypeName()) || 
-                         child.getComponent(RectangleButton.getTypeName())
+                button = this.findButtonComponent(child)
                 if (button)
                 {
                     break
@@ -460,7 +480,15 @@ export class ButtonClickEvent extends BaseScriptComponent
 
         // Set button text if text component exists
         // Use beautified function name if available, otherwise use function name
-        const textChild = buttonObject.getChild(0)
+        // The label isn't always child 0: UIKit buttons add their own visual child on initialize.
+        let textChild: SceneObject = null
+        for (let i = 0; i < buttonObject.getChildrenCount() && !textChild; i++)
+        {
+            if (buttonObject.getChild(i).getComponent("Text"))
+            {
+                textChild = buttonObject.getChild(i)
+            }
+        }
         if (textChild)
         {
             const textComponent = textChild.getComponent("Text")
@@ -474,17 +502,26 @@ export class ButtonClickEvent extends BaseScriptComponent
                     const script = triggerableFunction.script as any
                     print(`Setting text for function: ${triggerableFunction.functionName}, script: ${script ? script.getTypeName() : "null"}`)
                     
-                    if (script.getFunctionName && typeof script.getFunctionName === "function")
+                    if (script.getFunctionName && typeof script.getFunctionName === "function" &&
+                        (script.getFunctionName.length > 0 || !this.isScriptSharedByFunctions(triggerableFunction)))
                     {
                         try
                         {
-                            displayName = script.getFunctionName()
+                            // The function name is passed so one getFunctionName(name) can label each of its functions
+                            displayName = script.getFunctionName(triggerableFunction.functionName)
                             print(`Using beautified name: ${displayName}`)
                         }
                         catch (e)
                         {
                             print(`Error calling getFunctionName: ${e}`)
                         }
+                    }
+                    else if (script.getFunctionName && typeof script.getFunctionName === "function")
+                    {
+                        // A no-argument getFunctionName returns one name per script, so buttons for
+                        // different functions on the same script would all share it
+                        displayName = this.beautifyFunctionName(triggerableFunction.functionName)
+                        print(`Script has several functions; using function name: ${displayName}`)
                     }
                     else
                     {
@@ -509,6 +546,31 @@ export class ButtonClickEvent extends BaseScriptComponent
         {
             print(`Warning: Text child not found on button object`)
         }
+    }
+
+    // Returns the first UIKit button component on the object (current Button, then the deprecated shape buttons)
+    private findButtonComponent(sceneObject: SceneObject): any
+    {
+        return sceneObject.getComponent(Button.getTypeName()) ||
+               sceneObject.getComponent(CapsuleButton.getTypeName()) ||
+               sceneObject.getComponent(RectangleButton.getTypeName()) ||
+               sceneObject.getComponent(RoundButton.getTypeName())
+    }
+
+    // True when another entry points at the same script with a different function
+    private isScriptSharedByFunctions(triggerableFunction: TriggerableFunction): boolean
+    {
+        return this.triggerableFunctions.some(other =>
+            other !== triggerableFunction &&
+            other.script === triggerableFunction.script &&
+            other.functionName !== triggerableFunction.functionName)
+    }
+
+    // Turns "activateSystem" into "Activate System"
+    private beautifyFunctionName(functionName: string): string
+    {
+        const words = (functionName || "").split(/(?=[A-Z])/).filter(word => word.length > 0)
+        return words.map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")
     }
 
     // Invokes the specified function on the script component

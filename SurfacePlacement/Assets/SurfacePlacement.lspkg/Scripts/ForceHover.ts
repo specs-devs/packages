@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Manual hover state controller for RoundButton components. Programmatically triggers hover enter/exit
  * states on button visual elements, bypasses normal interaction flow for forced state changes, enables
  * custom hover effects, and provides debug logging for hover event tracking during development.

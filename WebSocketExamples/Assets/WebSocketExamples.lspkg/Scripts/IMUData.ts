@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * IMU sensor data receiver via WebSocket for real-time motion tracking and 3D visualization.
  * Receives Inertial Measurement Unit (IMU) sensor data and applies rotation to a 3D object.
  * Data format: "angleX,angleZ,angleY" (CSV, angles in degrees).
@@ -21,8 +21,8 @@ export class IMUData extends BaseScriptComponent {
   internetModule: InternetModule;
 
   @input
-  @hint("WebSocket server URL (e.g., ws://192.168.1.100/ws)")
-  ipAddress: string = "ws://192.168.1.100/ws";
+  @hint("WebSocket server URL. This is a PLACEHOLDER - replace YOUR-IP-ADDRESS with your server's IP (e.g., ws://192.168.1.100/ws). See README.")
+  ipAddress: string = "ws://YOUR-IP-ADDRESS/ws";
 
   @ui.separator
   @ui.label('<span style="color: #60A5FA;">Component References</span>')
@@ -63,6 +63,10 @@ export class IMUData extends BaseScriptComponent {
       this.logger.debug("LIFECYCLE: onAwake() - Component waking up");
     }
 
+    // Always surface the setup requirement, even when logging toggles are off,
+    // so it's clear this example won't connect until it's configured.
+    this.logSetupNotice();
+
     // Validate required inputs
     assert(this.internetModule !== null, "Internet Module must be assigned in the inspector");
     assert(this.internetModule !== undefined, "Internet Module must be assigned in the inspector");
@@ -74,6 +78,40 @@ export class IMUData extends BaseScriptComponent {
     if (this.enableLoggingLifecycle) {
       this.logger.success("IMUData initialized successfully");
     }
+  }
+
+  /**
+   * Prints a one-time setup notice that is always visible (independent of the
+   * logging toggles). This example ships with a placeholder IP address and
+   * requires a reachable IMU WebSocket server, so out of the box any
+   * connection attempt is expected to fail. See the package README for setup.
+   */
+  private logSetupNotice(): void {
+    print("========================================================");
+    print("[WebSocketExamples/IMUData] SETUP REQUIRED");
+    print("This example does NOT work out of the box.");
+    print("Configure the 'IP Address' input with your IMU WebSocket server");
+    print("and make sure a compatible server is streaming data.");
+    print("Current IP Address: " + this.ipAddress);
+    if (this.isPlaceholderAddress(this.ipAddress)) {
+      print("NOTE: 'IP Address' is still the placeholder value - update it");
+      print("to your server, e.g. ws://192.168.1.100/ws");
+    }
+    print("See the package README.md (Scene Setup / Hardware Setup) for steps.");
+    print("Until configured, connection attempts are expected to fail.");
+    print("========================================================");
+  }
+
+  /**
+   * Returns true when the configured URL is still an unedited placeholder
+   * (i.e. the example has not been pointed at a real server yet).
+   * @param url - The configured WebSocket URL
+   */
+  private isPlaceholderAddress(url: string): boolean {
+    if (!url) {
+      return true;
+    }
+    return url.toUpperCase().indexOf("YOUR-IP-ADDRESS") !== -1;
   }
 
   /**
@@ -119,7 +157,15 @@ export class IMUData extends BaseScriptComponent {
    * Establishes WebSocket connection to the IMU sensor server
    */
   private connect(): void {
-    this.screenText.text = "Connecting...";
+    // If the address is still a placeholder, make the required setup obvious
+    // both in the console and on screen instead of a bare "connection failed".
+    if (this.isPlaceholderAddress(this.ipAddress)) {
+      print("[WebSocketExamples/IMUData] Cannot connect: 'IP Address' is still the placeholder (" + this.ipAddress + "). Set it to your server, e.g. ws://192.168.1.100/ws. See README.");
+      this.screenText.text = "Setup required - set IP Address (see README)";
+      return;
+    }
+
+    this.screenText.text = "Waiting for connection...";
 
     if (this.enableLogging) {
       this.logger.info("Attempting to connect to " + this.ipAddress);
@@ -137,7 +183,7 @@ export class IMUData extends BaseScriptComponent {
         this.screenText.text = "Connected!";
 
         // Send initial handshake
-        const msg = "HI FROM Spectacles";
+        const msg = "HI FROM Glasses";
         if (this.enableLogging) {
           this.logger.debug("Sending handshake: " + msg);
         }

@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Component search and initialization utilities for finding components in parent hierarchies,
  * safely initializing components, and locating root scene objects with specific components.
  */

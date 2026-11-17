@@ -1,19 +1,3 @@
-#pragma once
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/**
- * @brief Connect to WiFi
- *
- * This function initializes the WiFi driver in Station mode and attempts to connect
- * to the SSID and Password defined in menuconfig.
- *
- * It blocks execution until a connection is established or it fails after retries.
- */
-void wifi_connect(void);
-
-#ifdef __cplusplus
-}
-#endif
+version https://git-lfs.github.com/spec/v1
+oid sha256:ecde61c5948b72a15e27f35c7aa87d467b69be8ee050df24b5d4930f07a4bf9e
+size 368

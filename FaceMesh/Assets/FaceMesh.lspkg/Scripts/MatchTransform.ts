@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Transform matching utility that synchronizes position, rotation, and scale with a target object.
  * Supports smooth lerping, axis constraints, and offset positioning for flexible object following.
  */

@@ -1,11 +1,11 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Scale squish using a CSS cubic-bezier easing preset (AnimationCurve.createEasingCurve).
  * The spring-out bezier (0.34, 1.56, 0.64, 1) overshoots then settles for a classic
  * "squish and release" feel without authoring keyframes.
  */
 
-import { buildFrameUI, playFirstClip } from "./Helpers/AnimationHelpers";
+import { bindReplay, buildFrameUI, playFirstClip } from "./Helpers/AnimationHelpers";
 
 @component
 export class ScaleSquishExample extends BaseScriptComponent {
@@ -51,7 +51,8 @@ export class ScaleSquishExample extends BaseScriptComponent {
      */
     onAwake() {
         if (this.enableLoggingLifecycle) print(`[${this.sceneObject.name}] ScaleSquishExample.onAwake`);
-        buildFrameUI(this.sceneObject, { title: "Scale Squish", buttonText: "TAP" });
+        const ui = buildFrameUI(this.sceneObject, { title: "Scale Squish", buttonText: "TAP" });
+        bindReplay(this, ui, this.target ?? this.sceneObject);
         const target = this.target ?? this.sceneObject;
         playFirstClip(target, this.buildAsset(target), undefined, this.enableLogging);
     }

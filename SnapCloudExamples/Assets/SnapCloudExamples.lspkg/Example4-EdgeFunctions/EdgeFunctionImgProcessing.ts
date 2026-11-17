@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Snap Cloud Edge Functions example for serverless image processing. Demonstrates calling Supabase
  * Edge Functions with image URLs, processing responses, decoding Base64 results, and displaying
  * processed images with interactive button triggers.
@@ -41,7 +41,7 @@ export class EdgeFunctionImgProcessing extends BaseScriptComponent {
 
   // Button Configuration
   @input
-  @hint("RectangleButton to trigger Edge Function call (from Spectacles UI Kit)")
+  @hint("RectangleButton to trigger Edge Function call (from Glasses UI Kit)")
   public processButton: RectangleButton
 
   @input
@@ -98,7 +98,7 @@ export class EdgeFunctionImgProcessing extends BaseScriptComponent {
   }
 
   /**
-   * Setup process button interaction using Spectacles UI Kit
+   * Setup process button interaction using Glasses UI Kit
    */
   private setupProcessButton() {
     if (!this.processButton) {

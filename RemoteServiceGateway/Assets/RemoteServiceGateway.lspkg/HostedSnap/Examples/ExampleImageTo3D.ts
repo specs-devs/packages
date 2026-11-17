@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Example implementation of Snap3D text-to-3D generation with texture display. Demonstrates
  * submitting prompts for 3D generation while displaying a reference texture from the editor.
  * This example shows how to handle generation progress and instantiate 3D mesh assets.
@@ -8,7 +8,7 @@ import { Snap3D } from "RemoteServiceGateway.lspkg/HostedSnap/Snap3D";
 import { Snap3DTypes } from "RemoteServiceGateway.lspkg/HostedSnap/Snap3DTypes";
 
 @component
-export class ExampleSnap3DImageTo3D extends BaseScriptComponent {
+export class ExampleImageTo3D extends BaseScriptComponent {
   @ui.separator
   @ui.label('<span style="color: #60A5FA;">Text-to-3D Configuration</span>')
   @ui.label('<span style="color: #94A3B8; font-size: 11px;">Generate 3D models from text prompts with reference texture</span>')
@@ -93,6 +93,10 @@ export class ExampleSnap3DImageTo3D extends BaseScriptComponent {
   }
 
   private onTap() {
+    // GestureModule pinches arrive even while this example is disabled.
+    if (!this.sceneObject.isEnabledInHierarchy) {
+      return;
+    }
     if (!this.runOnTap) {
       return;
     }

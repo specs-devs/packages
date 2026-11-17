@@ -22,14 +22,31 @@
   VersionMajor: 0
   VersionMinor: 0
   VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
   ComponentUid: 2eeb8dd6-1b58-4eeb-8af3-5be7242b1296
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
+    ceilingColor: false
+    classificationEnabled: false
+    detectCategory: false
     filterEnabled: false
+    groundColor: false
     indexToSpawn: false
+    introHintDuration: false
+    introHintText: false
+    labelScale: false
     objectsToSpawn: false
+    refineEnabled: false
+    showIntroHint: false
+    showSurfaceLabel: false
+    smoothingEnabled: false
+    smoothingSpeed: false
+    tableColor: false
     targetObject: false
+    unknownColor: false
+    wallColor: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -44,6 +61,21 @@
       objectsToSpawn: !<reference.SceneObject[]>
         []
       filterEnabled: false
+      smoothingEnabled: true
+      smoothingSpeed: !<float> 10.000000
+      showIntroHint: true
+      introHintText: Point to surfaces using your hand to see semantic classification and pinch to instantiate the object prefab
+      introHintDuration: !<float> 2.000000
+      classificationEnabled: true
+      showSurfaceLabel: true
+      refineEnabled: false
+      labelScale: !<float> 1.000000
+      detectCategory: 0
+      groundColor: !<Vec4> {x: 0.000000, y: 1.000000, z: 0.000000, w: 1.000000}
+      wallColor: !<Vec4> {x: 0.000000, y: 1.000000, z: 0.968600, w: 1.000000}
+      ceilingColor: !<Vec4> {x: 0.666700, y: 0.000000, z: 1.000000, w: 1.000000}
+      tableColor: !<Vec4> {x: 1.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      unknownColor: !<Vec4> {x: 0.027500, y: 0.000000, z: 0.439200, w: 1.000000}
   ScriptTypes:
     -
       {}

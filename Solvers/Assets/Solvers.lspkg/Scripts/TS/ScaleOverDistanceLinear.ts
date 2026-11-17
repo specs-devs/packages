@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Linear scaling based on distance to target. Automatically adjusts object scale using linear
  * interpolation between min/max distance thresholds, with configurable scale range and real-time
  * distance calculation for distance-based size adjustments and depth perception effects.
@@ -122,7 +122,9 @@ export class ScaleOverDistanceLinearTS extends BaseScriptComponent {
 
         // Calculate scale value based on distance - clamp and remap
         const clampedDist = Math.max(this.minDistance, Math.min(this.maxDistance, this._distance));
-        const t = (clampedDist - this.minDistance) / (this.maxDistance - this.minDistance);
+        // Guard minDistance == maxDistance: step from minScale to maxScale at that distance
+        const range = this.maxDistance - this.minDistance;
+        const t = range !== 0 ? (clampedDist - this.minDistance) / range : (this._distance >= this.maxDistance ? 1 : 0);
         const scale = this.minScale + t * (this.maxScale - this.minScale);
         
         // Apply uniform scale

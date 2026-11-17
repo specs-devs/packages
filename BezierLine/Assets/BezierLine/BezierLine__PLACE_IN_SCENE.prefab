@@ -1,0 +1,598 @@
+- !<ObjectPrefab/a5fe4005-1c69-4828-b83d-741a4b4d731d>
+  PackagePath: ""
+  objects:
+    - !<own> addca2a2-850c-4758-8c7a-b26612e7f6ba
+  LazyLoading: false
+  RetainAssets: true
+  PreviewEnvironment: !<reference> 00000000-0000-0000-0000-000000000000
+- !<ScriptComponent/1d4d8254-9f47-42ac-9097-2acb06393c89>
+  PrefabRemaps:
+    []
+  Name: BezierExamples
+  Enabled: true
+  ScriptAsset: !<reference> 77e207c5-b291-4ae6-a02c-c18f21227582
+  ScriptInputsDefault:
+    lineWidth: true
+    segments: true
+    handleLength: true
+    faceCamera: true
+    debugDraw: true
+    cardSize: true
+    anchorRadius: true
+    flowMarkers: true
+    flowSpeed: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      cardMesh: !<reference.RenderMesh> 41a038be-59c6-4e39-97c8-d4436d99c85a
+      anchorMesh: !<reference.RenderMesh> 4b287aa3-64cc-47f5-b289-404b15fe91ab
+      cardMaterial: !<reference.Material> 1756d988-c9e8-41c3-82e9-b106e6b628f8
+      anchorMaterial: !<reference.Material> 8803c965-ab05-4c3c-b3c1-0d14c0ba950c
+      connectorMaterial: !<reference.Material> e58e17db-c84f-42b8-ba1f-51e115c81665
+      markerMaterial: !<reference.Material> 12ba8a41-433b-4c7e-ac0b-bcf4af2c8053
+      lineWidth: 0.450000
+      segments: 32
+      handleLength: !<float> 15.000000
+      faceCamera: true
+      debugDraw: false
+      cardSize: !<Vec2> {x: 16.000000, y: 10.000000}
+      anchorRadius: 0.900000
+      flowMarkers: true
+      flowSpeed: 0.300000
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/1ed55a52-ee9b-4440-aeff-5ba1fe545db0>
+  PrefabRemaps:
+    []
+  Name: BezierExamplesPanel
+  Enabled: true
+  ScriptAsset: !<reference> 8af0437c-6f0d-4840-9381-cf2ef49ae0d2
+  ScriptInputsDefault:
+    panelWidth: true
+    focalDistanceCm: true
+    hintText: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      board: !<MappingBased.AssignableType_1> 1d4d8254-9f47-42ac-9097-2acb06393c89
+      panelWidth: !<float> 26.000000
+      focalDistanceCm: !<float> 130.000000
+      hintText: "Pinch a card to move it. Pinch a dot, drag to another card. Tap a dot to clear."
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/2b3e20b6-84f0-4444-98c0-d834789f77c5>
+  PrefabRemaps:
+    []
+  Name: BezierDemo
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 65dc70a5-1e3b-4c8a-a399-c63f14784ebf
+    - !<own> 8b113356-a038-4bc0-aa9e-0a5ecf817eea
+  Components:
+    []
+- !<ScriptComponent/3f6293e3-8dde-4359-8e2c-37704584fa3e>
+  PrefabRemaps:
+    []
+  Name: Frame
+  Enabled: true
+  ScriptAsset: !<reference> 3b46d829-f6db-432a-914c-3551904d3994
+  ScriptInputsDefault:
+    _spawnOnStart: true
+    _appearance: true
+    _padding: true
+    _allowScaling: true
+    allowNonUniformScaling: true
+    autoScaleContent: true
+    relativeZ: true
+    _onlyInteractOnMargin: true
+    allowTranslation: true
+    _cutOutCenter: true
+    _cutOutFeather: true
+    _hasShadow: true
+    _minimumSize: true
+    _maximumSize: true
+    useBillboarding: true
+    xOnTranslate: true
+    xAlways: true
+    xBufferDegrees: true
+    yOnTranslate: true
+    yAlways: true
+    yBufferDegrees: true
+    useSnapping: true
+    itemSnapping: true
+    worldSnapping: true
+    _useTagAlong: true
+    _tagAlongDistance: true
+    _showFollowButton: true
+    _useFocusFrame: true
+    useFollowBehavior: true
+    _useTiltMode: true
+    _tiltUpThreshold: true
+    _tiltDownThreshold: true
+    _following: true
+    _useDepthClamping: true
+    _minimumDepth: true
+    _maximumDepth: true
+    _useDepthScaling: true
+    _depthScalingMinimumDepth: true
+    _depthScalingMaximumDepth: true
+    _depthScalingMinimumScale: true
+    _depthScalingMaximumScale: true
+    _showCloseButton: true
+    _enableInteractionPlane: true
+    _interactionPlaneOffset: true
+    _interactionPlanePadding: true
+    _targetingVisual: true
+    _interactablePadding: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _themeOverride: System3
+      autoShowHide: false
+      _spawnOnStart: false
+      _appearance: Large
+      _innerSize: !<Vec2> {x: 44.000000, y: 26.000000}
+      _padding: !<Vec2> {x: 0.000000, y: 0.000000}
+      _allowScaling: true
+      allowNonUniformScaling: false
+      autoScaleContent: true
+      relativeZ: true
+      _onlyInteractOnMargin: false
+      allowTranslation: true
+      _cutOutCenter: false
+      _cutOutFeather: 0.100000
+      _hasShadow: false
+      _minimumSize: !<Vec2> {x: 10.000000, y: 10.000000}
+      _maximumSize: !<Vec2> {x: 150.000000, y: 150.000000}
+      useBillboarding: true
+      xOnTranslate: true
+      xAlways: false
+      xBufferDegrees: !<float> 0.000000
+      yOnTranslate: true
+      yAlways: false
+      yBufferDegrees: !<float> 0.000000
+      useSnapping: false
+      itemSnapping: false
+      worldSnapping: false
+      _useTagAlong: false
+      _tagAlongDistance: !<float> 110.000000
+      _showFollowButton: false
+      _useFocusFrame: true
+      useFollowBehavior: false
+      _useTiltMode: false
+      _tiltUpThreshold: !<float> 25.000000
+      _tiltDownThreshold: !<float> 35.000000
+      _following: false
+      _useDepthClamping: false
+      _minimumDepth: !<float> 35.000000
+      _maximumDepth: !<float> 110.000000
+      _useDepthScaling: false
+      _depthScalingMinimumDepth: !<float> 35.000000
+      _depthScalingMaximumDepth: !<float> 110.000000
+      _depthScalingMinimumScale: 0.500000
+      _depthScalingMaximumScale: !<float> 1.000000
+      _showCloseButton: false
+      _enableInteractionPlane: true
+      _interactionPlaneOffset: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
+      _interactionPlanePadding: !<Vec2> {x: 0.000000, y: 0.000000}
+      _targetingVisual: !<float> 1.000000
+      _interactablePadding: !<Vec2> {x: 1.000000, y: 1.000000}
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/5229fbe8-2d1d-4163-ac5c-938117f8911b>
+  PrefabRemaps:
+    []
+  Name: GuideDismissPanel
+  Enabled: true
+  ScriptAsset: !<reference> 9d4fc9d5-20ec-4791-88a6-e17e1024e759
+  ScriptInputsDefault:
+    buttonLabel: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      buttonLabel: "Ok, I understood"
+      hideUntilDismissed: !<reference.SceneObject[]>
+        - !<reference> 6b3407fe-d968-49e1-99c2-06843c8443d7
+        - !<reference> 2b3e20b6-84f0-4444-98c0-d834789f77c5
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/588cb920-bdc5-4c93-990e-02aa6835f3fe>
+  PrefabRemaps:
+    []
+  Name: OkButton
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: -8.500000, z: 0.500000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 59013115-012a-44a3-a0ea-b6ae11ebcc00
+    - !<own> a9d4957f-312b-4328-aa57-8d04a68226ef
+- !<ScriptComponent/59013115-012a-44a3-a0ea-b6ae11ebcc00>
+  PrefabRemaps:
+    []
+  Name: Button
+  Enabled: true
+  ScriptAsset: !<reference> 44823634-5893-49f9-a805-2295f5c33abb
+  ScriptInputsDefault:
+    _inactive: true
+    _playAudio: true
+    _hasShadow: true
+    _shadowPositionOffset: true
+    _toggleable: true
+    _defaultToOn: true
+    addCallbacks: true
+    triggerUpCallbacks: true
+    triggerDownCallbacks: true
+    onValueChangeCallbacks: true
+    onFinishedCallbacks: true
+    _shapeSystem2: true
+    _shapeSystem3: true
+    _styleSystem2: true
+    _styleSystem3: true
+    _opacity: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _renderOrder: 10
+      _inactive: false
+      _playAudio: false
+      _hasShadow: false
+      _shadowPositionOffset: !<Vec3> {x: 0.050000, y: -0.050000, z: -0.010000}
+      _themeOverride: System3
+      _toggleable: false
+      _defaultToOn: false
+      addCallbacks: false
+      triggerUpCallbacks:
+        []
+      triggerDownCallbacks:
+        []
+      onValueChangeCallbacks:
+        []
+      onFinishedCallbacks:
+        []
+      _size: !<Vec3> {x: 20.000000, y: 5.000000, z: 1.000000}
+      _shapeSystem2: Rectangle
+      _shapeSystem3: Rectangle
+      _styleSystem2: PrimaryNeutral
+      _styleSystem3: Primary
+      _opacity: !<float> 1.000000
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/5c0cb6bc-6794-4d74-9102-2b465a50780c>
+  PrefabRemaps:
+    []
+  Name: GuideText
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 3.250000, z: 0.500000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 83f2f671-979c-499d-99ec-a525816db350
+- !<SceneObject/5dc51965-09ec-4281-a34f-5e17bca760f6>
+  PrefabRemaps:
+    []
+  Name: Guide
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 50.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 5c0cb6bc-6794-4d74-9102-2b465a50780c
+    - !<own> 588cb920-bdc5-4c93-990e-02aa6835f3fe
+  Components:
+    - !<own> 3f6293e3-8dde-4359-8e2c-37704584fa3e
+    - !<own> 5229fbe8-2d1d-4163-ac5c-938117f8911b
+- !<SceneObject/65dc70a5-1e3b-4c8a-a399-c63f14784ebf>
+  PrefabRemaps:
+    []
+  Name: BezierBoard
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 7.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 1d4d8254-9f47-42ac-9097-2acb06393c89
+- !<SceneObject/6b3407fe-d968-49e1-99c2-06843c8443d7>
+  PrefabRemaps:
+    []
+  Name: ExampleCarousel
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 150.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> e0fcc269-ca15-4482-b474-7197d28b3122
+- !<Text/83f2f671-979c-499d-99ec-a525816db350>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 11
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Left
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: |-
+    BezierLine draws curved ribbons between objects and keeps them attached while things move.
+    
+    Pinch a card to move it and its ribbons follow. Drag from a dot to a dot on another card to connect them; tap a dot to clear its lines.
+    
+    The panel under the board changes the ribbon width, curve, segments and flow markers.
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableRichText: false
+  SizeToFit: false
+  FontSize: 60.000000
+  FontSource: !<reference> 00000000-0000-0000-0000-000000000000
+  PreferredStyle: Regular
+  LayoutRect:
+    left: -20.000000
+    bottom: -9.000000
+    right: 20.000000
+    top: 9.000000
+  DebugRenderLayoutRect: false
+  OverflowVertical: Overflow
+  OverflowHorizontal: Wrap
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlphaAuto
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.000000
+      bottom: 0.000000
+      right: 0.000000
+      top: 0.000000
+    CornerRadius: 0.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false
+- !<SceneObject/8b113356-a038-4bc0-aa9e-0a5ecf817eea>
+  PrefabRemaps:
+    []
+  Name: BezierExamplesPanel
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: -33.000000, z: 2.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 1ed55a52-ee9b-4440-aeff-5ba1fe545db0
+- !<ScriptComponent/a9d4957f-312b-4328-aa57-8d04a68226ef>
+  PrefabRemaps:
+    []
+  Name: ElementContent
+  Enabled: true
+  ScriptAsset: !<reference> c74eb6f4-6231-44ee-8336-d4d1f802da42
+  ScriptInputsDefault:
+    _useLeadingIcon: true
+    _leadingIcon: true
+    _useTrailingIcon: true
+    _trailingIcon: true
+    _iconLayout: true
+    _textAlignment: true
+    _textSizing: true
+    _font: true
+    _leadingIconSize: true
+    _trailingIconSize: true
+    _underline: true
+    _underlineThickness: true
+    _underlineOffset: true
+    _customSpacing: true
+    _spacing: true
+    _paddingTop: true
+    _paddingRight: true
+    _paddingBottom: true
+    _paddingLeft: true
+    _autoResizeParent: true
+    _minWidth: true
+    _minHeight: true
+    _sizeOverride: true
+    _useThemeColors: true
+    _defaultTextColor: true
+    _hoveredTextColor: true
+    _triggeredTextColor: true
+    _inactiveTextColor: true
+    _defaultIconTint: true
+    _hoveredIconTint: true
+    _triggeredIconTint: true
+    _inactiveIconTint: true
+    _useTextColorOverride: true
+    _textColorOverride: true
+    _debug: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _text: "Ok, I understood"
+      _useLeadingIcon: false
+      _leadingIcon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      _useTrailingIcon: false
+      _trailingIcon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      _iconLayout: left
+      _textAlignment: center
+      _textSizing: hug
+      _font: !<reference.Font> 00000000-0000-0000-0000-000000000000
+      _textSize: !<float> 64.000000
+      _leadingIconSize: 1.250000
+      _trailingIconSize: 1.250000
+      _underline: false
+      _underlineThickness: 0.120000
+      _underlineOffset: 0.040000
+      _customSpacing: false
+      _spacing: 0.500000
+      _paddingTop: 0.500000
+      _paddingRight: 0.800000
+      _paddingBottom: 0.500000
+      _paddingLeft: 0.800000
+      _autoResizeParent: false
+      _minWidth: !<float> 0.000000
+      _minHeight: !<float> 0.000000
+      _sizeOverride: !<Vec2> {x: 0.000000, y: 0.000000}
+      _useThemeColors: true
+      _defaultTextColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      _hoveredTextColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      _triggeredTextColor: !<Vec4> {x: 0.080000, y: 0.080000, z: 0.080000, w: 1.000000}
+      _inactiveTextColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 0.400000}
+      _defaultIconTint: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      _hoveredIconTint: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      _triggeredIconTint: !<Vec4> {x: 0.080000, y: 0.080000, z: 0.080000, w: 1.000000}
+      _inactiveIconTint: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 0.400000}
+      _useTextColorOverride: false
+      _textColorOverride: !<Vec4> {x: 0.000000, y: 0.000000, z: 0.000000, w: 0.000000}
+      _debug: false
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/addca2a2-850c-4758-8c7a-b26612e7f6ba>
+  PrefabRemaps:
+    - 1d4d8254-9f47-42ac-9097-2acb06393c89: 1d4d8254-9f47-42ac-6f68-d534f9c6c376
+    - 1ed55a52-ee9b-4440-aeff-5ba1fe545db0: 1ed55a52-ee9b-4440-5100-a45e01aba24f
+    - 2b3e20b6-84f0-4444-98c0-d834789f77c5: 7646fa49-0985-450c-9bc0-8d9e7038962a
+    - 3f6293e3-8dde-4359-8e2c-37704584fa3e: c4ad23af-13ae-452e-aacd-68ae390837c5
+    - 5229fbe8-2d1d-4163-ac5c-938117f8911b: 8393fc5a-599e-4794-8e30-0ae87307f120
+    - 588cb920-bdc5-4c93-990e-02aa6835f3fe: ffd552a4-5a5e-4d81-b2ca-2a7148322dc3
+    - 59013115-012a-44a3-a0ea-b6ae11ebcc00: c553ed69-65ea-4ef4-886d-90f2937879d7
+    - 5c0cb6bc-6794-4d74-9102-2b465a50780c: 68f9a3ae-c378-47e1-9387-bf621d6673c0
+    - 5dc51965-09ec-4281-a34f-5e17bca760f6: fe47ea5c-af36-455b-bb5f-0f3f81bf8417
+    - 65dc70a5-1e3b-4c8a-a399-c63f14784ebf: 65dc70a5-1e3b-4c8a-5c66-39c0eb87b140
+    - 6b3407fe-d968-49e1-99c2-06843c8443d7: ab54fea6-48c7-4a2d-a210-7e6a8b54161c
+    - 83f2f671-979c-499d-99ec-a525816db350: d3e0e040-ae2d-46d8-9d06-08b4d0ff9b9a
+    - 8b113356-a038-4bc0-aa9e-0a5ecf817eea: 8b113356-a038-4bc0-5561-f5a1307e8115
+    - a9d4957f-312b-4328-aa57-8d04a68226ef: a64fdef2-736d-4439-8bc3-55de2c5a491e
+    - addca2a2-850c-4758-8c7a-b26612e7f6ba: addca2a2-850c-4758-7385-4d99ed180945
+    - e0fcc269-ca15-4482-b474-7197d28b3122: c7164364-7c0b-4b7f-b413-809eb0995d73
+  Name: BezierLine__PLACE_IN_SCENE
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -130.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 5dc51965-09ec-4281-a34f-5e17bca760f6
+    - !<own> 6b3407fe-d968-49e1-99c2-06843c8443d7
+    - !<own> 2b3e20b6-84f0-4444-98c0-d834789f77c5
+  Components:
+    []
+- !<ScriptComponent/e0fcc269-ca15-4482-b474-7197d28b3122>
+  PrefabRemaps:
+    []
+  Name: ExampleCarousel
+  Enabled: true
+  ScriptAsset: !<reference> 4e89ba0e-590e-49f8-a54e-0955c1122e57
+  ScriptInputsDefault:
+    steps: true
+    startIndex: true
+    previousLabel: true
+    nextLabel: true
+    examplesPushBack: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      examples: !<reference.SceneObject[]>
+        - !<reference> 2b3e20b6-84f0-4444-98c0-d834789f77c5
+      exampleInfo: !<string[]>
+        - Pinch cards to move them. Drag dots between cards to connect; tap a dot to clear its lines.
+      steps: !<reference.SceneObject[]>
+        []
+      startIndex: !<float> 0.000000
+      previousLabel: Previous
+      nextLabel: Next
+      examplesPushBack: !<float> 20.000000
+      anchorExamples: false
+      startMinimized: true
+      extraPanelDrop: !<float> 30.000000
+  ScriptTypes:
+    "":
+      {}

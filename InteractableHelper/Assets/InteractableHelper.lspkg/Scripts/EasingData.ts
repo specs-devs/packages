@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Easing function configuration for animations. Provides a comprehensive set of easing curves
  * including linear, quadratic, cubic, elastic, bounce, and more for smooth animation transitions.
  */

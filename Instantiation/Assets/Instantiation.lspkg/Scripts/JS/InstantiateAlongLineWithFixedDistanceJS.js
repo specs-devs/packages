@@ -1,3 +1,4 @@
+//@component
 /**
  * InstantiateAlongLineWithFixedDistance - JavaScript version of the C# utility
  * Instantiates objects along a line between two points with fixed distance between each

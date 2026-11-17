@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Commerce Kit implementation for Lens Studio. Manages in-app purchases, product catalogs,
  * purchase flows, and ownership tracking using the CommerceKit module.
  */

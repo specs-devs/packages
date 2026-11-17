@@ -2,7 +2,7 @@ import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
 
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Circular area instantiation utility that spawns prefabs within a circular area with random
  * placement. Useful for creating scattered object patterns, particles, or decorative elements.
  */
@@ -64,7 +64,6 @@ export class CircleAreaInstantiatorTS extends BaseScriptComponent {
         });
     }
     
-    @bindStartEvent
 
     
     onStart(): void {
@@ -108,7 +107,10 @@ export class CircleAreaInstantiatorTS extends BaseScriptComponent {
             
             // The actual instantiation code would be something like:
             const instance = this.prefab.instantiate(this.sceneObject);
-            instance.getTransform().setWorldPosition(position);
+            // The offsets above are along world axes: turn them with the center so the layout follows its rotation.
+            const centerTransform = this.center.getTransform();
+            const origin = centerTransform.getWorldPosition();
+            instance.getTransform().setWorldPosition(origin.add(centerTransform.getWorldRotation().multiplyVec3(position.sub(origin))));
         }
     }
 }

@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Example implementation of DeepSeek R1 chat completions with reasoning. Demonstrates how to
  * configure prompts, handle responses with reasoning content, and display results using tap or
  * pinch gestures for interactive AI chat experiences.
@@ -69,6 +69,10 @@ export class ExampleDeepseekCalls extends BaseScriptComponent {
     }
   }
   private onTap() {
+    // GestureModule pinches arrive even while this example is disabled.
+    if (!this.sceneObject.isEnabledInHierarchy) {
+      return;
+    }
     if (this.runOnTap) {
       this.doChatCompletions();
     }

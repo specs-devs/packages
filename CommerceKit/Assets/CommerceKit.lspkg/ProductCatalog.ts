@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Product catalog component that initializes CommerceKit with your product definitions.
  * Add this component to your scene and configure your products to enable in-app purchases.
  */

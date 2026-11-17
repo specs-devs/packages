@@ -1,7 +1,7 @@
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Visual line renderer for connecting two points in 3D space. Provides customizable appearance
  * with gradient colors, variable width, and multiple visual styles for debug visualization.
  */

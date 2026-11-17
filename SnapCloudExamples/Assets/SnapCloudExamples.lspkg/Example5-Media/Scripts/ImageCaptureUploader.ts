@@ -6,13 +6,13 @@ import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService";
 import {RectangleButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton"
 import {Switch} from "SpectaclesUIKit.lspkg/Scripts/Components/Switch/Switch"
 import {createClient} from "SupabaseClient.lspkg/supabase-snapcloud"
-import {CameraService} from "../../CompositeCameraModified/Scripts/CameraService"
-import {SnapCloudRequirements} from "./SnapCloudRequirements"
+import {CameraService} from "../../CompositeCameraWork/Scripts/CameraService"
+import {SnapCloudRequirements} from "../../SnapCloudRequirements"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent} from "SnapDecorators.lspkg/decorators"
 
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Single image capture and upload to Snap Cloud Storage. Captures camera frames or composite
  * textures with AR content, JPEG compression, Base64 encoding, and uploads to Supabase storage
  * with shared camera service support to avoid conflicts.
@@ -43,7 +43,11 @@ export class ImageCaptureUploader extends BaseScriptComponent {
   public cameraService: CameraService
 
   // Fallback camera ID (only used if CameraService not provided)
-  private cameraIdToUse: CameraModule.CameraId = CameraModule.CameraId.Default_Color
+  // On device only the Right camera delivers frames; Default/Left do not.
+  // Fall back to Default_Color in the editor where Right_Color is unavailable.
+  private cameraIdToUse: CameraModule.CameraId = global.deviceInfoSystem.isEditor()
+    ? CameraModule.CameraId.Default_Color
+    : CameraModule.CameraId.Right_Color
 
   @input
   @hint("Image quality for JPEG compression (0-100)")

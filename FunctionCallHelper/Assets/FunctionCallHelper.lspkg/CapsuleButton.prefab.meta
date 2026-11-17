@@ -58,6 +58,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Text
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -65,8 +66,7 @@
   SizeToFit: false
   FontSize: 20.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -83,7 +83,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: true
     Fill: !<TextFill>
@@ -137,8 +137,6 @@
   Enabled: true
   ScriptAsset: !<reference> bea83993-3e75-4af5-ba83-88d1bc5eb366
   ScriptInputsDefault:
-    widthInput: true
-    heightInput: true
     depthInput: true
     _alignmentX: true
     _alignmentY: true
@@ -149,10 +147,10 @@
     "":
       widthInput:
         sizeDriver: layoutAndLayoutItem
-        size: !<float> 2.000000
+        size: !<float> 6.000000
       heightInput:
         sizeDriver: layoutAndLayoutItem
-        size: !<float> 2.000000
+        size: !<float> 8.000000
       depthInput:
         sizeDriver: layoutAndLayoutItem
         size: !<float> 2.000000
@@ -182,8 +180,8 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSnapOS2: true
-    _styleSnapOS3: true
+    _styleSystem2: true
+    _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
     {}
@@ -206,8 +204,8 @@
         []
       onFinishedCallbacks:
         []
-      _styleSnapOS2: PrimaryNeutral
-      _styleSnapOS3: Primary
+      _styleSystem2: PrimaryNeutral
+      _styleSystem3: Primary
       _opacity: !<float> 1.000000
       _size: !<Vec3> {x: 10.000000, y: 2.500000, z: 1.000000}
   ScriptTypes:

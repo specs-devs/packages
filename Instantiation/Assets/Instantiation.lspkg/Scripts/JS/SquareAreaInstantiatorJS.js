@@ -1,3 +1,4 @@
+//@component
 /**
  * SquareAreaInstantiator - JavaScript version of the C# utility
  * Instantiates prefabs within a square area
@@ -42,7 +43,10 @@ function SquareAreaInstantiator() {
     function createPrefabInstance(position) {
         if (script.prefab) {
             var instance = script.prefab.instantiate(script.sceneObject);
-            instance.getTransform().setWorldPosition(position);
+            // The offsets above are along world axes: turn them with the center so the layout follows its rotation.
+            var centerTransform = script.center.getTransform();
+            var origin = centerTransform.getWorldPosition();
+            instance.getTransform().setWorldPosition(origin.add(centerTransform.getWorldRotation().multiplyVec3(position.sub(origin))));
             print("Created prefab instance at position: " + position.x + ", " + position.y + ", " + position.z);
         }
     }

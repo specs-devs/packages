@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Validation and assertion utilities for input checking, null safety, and error handling.
  * Provides consistent validation patterns across the codebase with clear error messages.
  */

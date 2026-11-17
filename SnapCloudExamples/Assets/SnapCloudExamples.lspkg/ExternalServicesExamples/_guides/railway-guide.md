@@ -60,7 +60,7 @@ In Railway Dashboard → Variables tab, add:
 ### 4. Configure Networking
 Settings → Networking → Generate Service Domain:
 - Port: **8080**
-- Domain generated: `composite-stitcher-production.up.railway.app`
+- Domain generated: `your-composite-stitcher.example.com`
 
 ---
 
@@ -83,13 +83,13 @@ git push
 
 ### Health Check
 ```bash
-GET https://composite-stitcher-production.up.railway.app/health
+GET https://your-composite-stitcher.example.com/health
 ```
 Response: `{"status":"healthy","service":"composite-stitcher"}`
 
 ### Stitch Video
 ```bash
-POST https://composite-stitcher-production.up.railway.app/stitch
+POST https://your-composite-stitcher.example.com/stitch
 Content-Type: application/json
 
 {
@@ -104,7 +104,7 @@ Content-Type: application/json
 
 ## How It Works
 
-1. **Spectacles uploads** frames + audio chunks to Supabase Storage
+1. **SPECS uploads** frames + audio chunks to Supabase Storage
 2. **Edge Function triggers** the stitcher with session ID
 3. **Railway service:**
    - Downloads all frames from Storage

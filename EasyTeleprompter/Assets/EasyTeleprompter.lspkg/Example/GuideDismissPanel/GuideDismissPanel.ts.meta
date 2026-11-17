@@ -1,0 +1,50 @@
+- !<AssetImportMetadata/eb193046-1c5e-438e-acd9-1acd95d2ab18>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 44cd567d-bff1-4e4d-85f1-a9d391cdf080
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 44cd567d-bff1-4e4d-85f1-a9d391cdf080
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 2e0fda35-fe38-40a7-8f81-01190ad9b99d
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/2e0fda35-fe38-40a7-8f81-01190ad9b99d>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 5360a9b2-9194-4940-bc4b-2c707d209830
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    buttonLabel: false
+    hideUntilDismissed: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - buttonLabel: "Ok, I understood"
+      hideUntilDismissed: !<reference.SceneObject[]>
+        []
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input string buttonLabel = "Ok, I understood" {"hint":"Label of the button that closes the guide (only used when the panel is built at runtime)"}'
+    - '// @input SceneObject[] hideUntilDismissed = {} {"hint":"Objects hidden while the guide is shown and enabled again when it is closed"}'

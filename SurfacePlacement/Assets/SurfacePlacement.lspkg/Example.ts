@@ -1,11 +1,11 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Surface placement example demonstrating three placement modes: Near Surface (tabletop with height
  * adjustment widget), Horizontal (ground plane detection), and Vertical (wall detection). Integrates
  * SurfacePlacementController singleton for AR object positioning, provides slider callback for height
  * adjustment, auto-start option for immediate placement, and reset functionality for re-calibration.
  */
-import { PlacementMode, PlacementSettings } from "./Scripts/PlacementSettings";
+import { PlacementInteraction, PlacementMode, PlacementSettings } from "./Scripts/PlacementSettings";
 
 import { SurfacePlacementController } from "./Scripts/SurfacePlacementController";
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
@@ -29,7 +29,15 @@ export class Example extends BaseScriptComponent {
       new ComboBoxItem("Vertical", 2),
     ])
   )
-  placementSettingMode: number = 0;
+  placementSettingMode: number = 1;
+
+  @input("int")
+  @widget(new ComboBoxWidget([
+    new ComboBoxItem("Head Pose (hold still)", 0),
+    new ComboBoxItem("Pinch or Tap", 1),
+  ]))
+  @hint("Confirmation for Horizontal and Vertical. Near Surface uses palms.")
+  placementInteraction: number = PlacementInteraction.HEAD_POSE;
 
   @ui.separator
   @ui.label('<span style="color: #60A5FA;">Behavior Settings</span>')
@@ -52,6 +60,7 @@ export class Example extends BaseScriptComponent {
 
   // Logger instance
   private logger: Logger;  private transform: Transform = null;
+  private started = false;
 
   private surfacePlacement: SurfacePlacementController =
     SurfacePlacementController.getInstance();  /**
@@ -68,10 +77,20 @@ export class Example extends BaseScriptComponent {
 
     this.transform = this.getSceneObject().getTransform();
     this.createEvent("OnStartEvent").bind(this.onStart.bind(this));
+    // The placement UI lives under the controller singleton, outside this object, so stop it when
+    // the example is disabled and pick it up again when it comes back.
+    this.createEvent("OnDisableEvent").bind(() => this.surfacePlacement.stopSurfacePlacement());
+    this.createEvent("OnEnableEvent").bind(() => {
+      // The first enable is handled by onStart.
+      if (this.started && this.autoStart) {
+        this.startPlacement();
+      }
+    });
   }
 
   private onStart() {
-    this.objectVisuals.enabled = false;
+    this.started = true;
+    this.setVisualsEnabled(false);
 
     if (this.autoStart) {
       this.startPlacement();
@@ -79,7 +98,7 @@ export class Example extends BaseScriptComponent {
   }
 
   startPlacement() {
-    this.objectVisuals.enabled = false;
+    this.setVisualsEnabled(false);
 
     let placementSettings: PlacementSettings;
     switch (this.placementSettingMode) {
@@ -92,13 +111,13 @@ export class Example extends BaseScriptComponent {
         );
         break;
       case 1: // Horizontal
-        placementSettings = new PlacementSettings(PlacementMode.HORIZONTAL);
+        placementSettings = new PlacementSettings(PlacementMode.HORIZONTAL, true, undefined, null, this.placementInteraction);
         break;
       case 2: // Vertical
-        placementSettings = new PlacementSettings(PlacementMode.VERTICAL);
+        placementSettings = new PlacementSettings(PlacementMode.VERTICAL, true, undefined, null, this.placementInteraction);
         break;
       default:
-        placementSettings = new PlacementSettings(PlacementMode.NEAR_SURFACE);
+        placementSettings = new PlacementSettings();
     }
 
     this.surfacePlacement.startSurfacePlacement(
@@ -118,8 +137,14 @@ export class Example extends BaseScriptComponent {
     this.transform.setWorldPosition(pos);
   }
 
+  private setVisualsEnabled(enabled: boolean) {
+    if (this.objectVisuals) {
+      this.objectVisuals.enabled = enabled;
+    }
+  }
+
   private onSurfaceDetected(pos: vec3, rot: quat) {
-    this.objectVisuals.enabled = true;
+    this.setVisualsEnabled(true);
     this.transform.setWorldPosition(pos);
     this.transform.setWorldRotation(rot);
   }

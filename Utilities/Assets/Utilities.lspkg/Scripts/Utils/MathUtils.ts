@@ -1,8 +1,8 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Math and calculation utilities including interpolation, vector operations, quaternion conversions,
  * angle normalization, geographical calculations (Haversine distance, bearing), and easing functions.
- * Provides common mathematical operations used across Spectacles packages.
+ * Provides common mathematical operations used across Glasses packages.
  */
 
 /**

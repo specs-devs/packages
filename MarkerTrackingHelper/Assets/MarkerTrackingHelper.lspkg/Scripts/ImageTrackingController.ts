@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Image tracking controller with utilities for aspect ratio resizing and custom callbacks. Provides
  * advanced image tracking features including marker found/lost events and object scaling.
  */
@@ -40,10 +40,11 @@ export class ImageTrackingController extends BaseScriptComponent {
   private onMarkerFoundFunctionNames: string[] = [];
   @input
   @hint(
-    "The names for the functions on the provided script, to be called on marker found"
+    "The names for the functions on the provided script, to be called on marker lost"
   )
   @allowUndefined
   private onMarkerLostFunctionNames: string[] = [];
+  @ui.group_end
 
   @ui.separator
   @ui.label('<span style="color: #60A5FA;">Logging Configuration</span>')
@@ -60,7 +61,6 @@ export class ImageTrackingController extends BaseScriptComponent {
   // Logger instance
   private logger: Logger;
 
-  @ui.group_end
   private aspectRatio: number;
   private height: number;
 
@@ -109,13 +109,13 @@ export class ImageTrackingController extends BaseScriptComponent {
 
         /* Run callback when marker is found/lost. */
         if (this.markerTrackingComponent.enabled) {
-          this.markerTrackingComponent.onMarkerFound = () => {
+          Utils.addMarkerFoundHandler(this.markerTrackingComponent, () => {
             this.onMarkerFoundCallback();
-          };
+          });
 
-          this.markerTrackingComponent.onMarkerLost = () => {
+          Utils.addMarkerLostHandler(this.markerTrackingComponent, () => {
             this.onMarkerLostCallback();
-          };
+          });
         }
       });
     } else {
@@ -140,7 +140,7 @@ export class ImageTrackingController extends BaseScriptComponent {
         this.customFunctionScript,
         this.onMarkerLostFunctionNames
       );
-      executeCallback(true);
+      executeCallback(false);
     }
   }
 

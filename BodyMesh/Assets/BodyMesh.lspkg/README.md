@@ -1,55 +1,64 @@
-# Body Mesh 
+<p align="center">
+  <img src="Docs/media/BodyMesh.png" width="250px" alt="BodyMesh"/>
+</p>
 
-A body tracking package for Specs that provides 3D body mesh visualization and tracking. This package includes a full setup prefab with 3D Body Tracking, mesh visualization, materials, and shaders—ready to drop into your scene and use with your camera.
+# Body Mesh
 
-## Features
-
-- **3D Body Tracking**: Leverages Lens Studio 3D Body Tracking for full-body pose estimation
-- **Full Setup Prefab**: Preconfigured prefab with mesh, materials, and tracking—unpack and place in your scene
-- **Camera-Ready**: Designed to work with your scene camera; use the included prefab as a starting point
-- **Mesh & Materials**: Includes mesh assets and shaders for body visualization
-- **Dependencies Included**: Uses Utilities and SnapDecorators packages (resolved via package dependencies)
+A body tracking package for Specs that provides a native 3D body tracking configuration, full-body mesh, material, shader, and a camera-inclusive setup prefab. Use the mesh as a reference for pose-driven effects and the configured attachment labels for accessories.
 
 ## Quick Start
 
-1. **Add the package** to your Lens Studio project (Asset Library or local package).
-2. **Place the prefab**: Drag `BodyMeshFullSetup_UnpackUseYourCamera__PLACE_IN_SCENE` into your Scene Hierarchy.
-3. **Unpack** the prefab instance so you can wire it to your camera or adjust the setup.
-4. **Assign your camera** to the 3D Body Tracking component or scene setup as needed.
-5. **Preview** in the simulator or on device to see body tracking and mesh.
+1. Install BodyMesh and resolve its declared companion packages.
+2. Drag `BodyMesh__PLACE_IN_SCENE.prefab` into the scene.
+3. Keep the included Camera, or unpack the instance and move its `Effects` hierarchy under your existing compatible camera. Avoid duplicate rendering cameras.
+4. Keep `3D Body Tracking` → `Body Mesh` together and their tracking/body indices aligned.
+5. Test with a fully visible person in camera input. A visible video background alone does not prove that tracking or mesh rendering works.
 
-## Package Contents
+See [setup and examples](Docs/examples.md) for exact asset paths and the hierarchy.
 
-| Asset | Description |
-|-------|-------------|
-| `3D Body Tracking.bodyTracking3D` | Body tracking configuration asset |
-| `BodyMeshFullSetup_UnpackUseYourCamera__PLACE_IN_SCENE.prefab` | Full setup prefab (mesh, materials, tracking) |
-| `Materials/` | Materials used for body mesh rendering |
-| `Mesh/` | Mesh assets for body visualization |
-| `Shaders/` | Shaders for the body mesh |
+## Usage
 
-## Dependencies
+This section ships with the package and describes the exact installed revision. Version-specific BodyMesh setup lives here; generic Lens scripting, scene construction, and Specs spatial design live in the CLAD skills, not here.
 
-This package depends on:
+### Package identity
 
-- **Utilities** – shared utilities
-- **SnapDecorators** – decorators used in the package
+- Descriptor: `BodyMesh.lspkg/package.native`.
+- Consumer asset prefix: `BodyMesh.lspkg/`. The package's main surface is native assets and components, with no TypeScript body-tracking manager to import.
+- The `__PLACE_IN_SCENE` prefab is self-contained: besides the Camera → Effects → 3D Body Tracking setup it includes the onboarding `Guide` and the `ExampleCarousel`, so dropping it into an empty Specs scene gives the full demo. Their demo-only scripts ship in `BodyMesh.lspkg/Example/` (`ExampleCarousel/`, `GuideDismissPanel/`), and the Camera's render target ships in `BodyMesh.lspkg/Render/`. Delete `Guide` and `ExampleCarousel` from your instance when you build your own Lens ([components](Docs/components.md#demo-scaffolding-example)).
+- Declared companion packages in `package_dependencies.json`: **SpectaclesInteractionKit**, **SpectaclesUIKit**, **Motion**, **Icons**. The demo scripts in `Example/` import SpectaclesInteractionKit and SpectaclesUIKit; the native body setup needs none of them.
 
-These are declared in `package_dependencies.json` and are resolved when the package is installed.
+### Version and API status
 
-## Requirements
+Read [API status](Docs/api-status.md) before relying on the native setup. This descriptor contains no formal minimum Lens Studio version or hardware compatibility matrix.
 
-- Lens Studio 5.15+
-- Specs device or simulator with body tracking support
-- A camera in the scene to drive the body tracking
+### Applicability
+
+Use BodyMesh for camera-observed human pose and body mesh effects. Its asset index is zero and its native tracker has 22 configured attachment labels. Hand interaction belongs to the companion interaction package; this body configuration has `TrackHand: false`.
+
+### Related CLAD skills
+
+[scene-construction](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/scene-construction/SKILL.md), [lens-api](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/lens-api/SKILL.md). These skills cover the surrounding Lens workflow.
+
+[Install CLAD](https://developers.specs.com/docs/clad/setup/setup-ai/) or browse its [source](https://github.com/lens-studio-devs/ls-extensions). Read the installed package docs for this revision’s APIs.
+
+### Package Docs (ship in Docs/)
+
+- [Cheat sheet](Docs/cheat-sheet.md) — read first for camera ownership, index pairing, and required hierarchy.
+- [API status](Docs/api-status.md) — read when checking the installed revision's supported surface and gaps.
+- [Components](Docs/components.md) — read when wiring native tracking, mesh, material, or attachment points.
+- [Examples](Docs/examples.md) — read when placing the prefab or observing tracking from a script.
+- [Troubleshooting](Docs/troubleshooting.md) — read when the body effect is absent, the Preview never tracks, or a camera conflicts.
+
+### Verification
+
+- Compile cleanly with all declared dependencies resolved and native mesh/material/shader references present.
+- Confirm exactly the intended rendering camera remains active; retain the tracker and mesh beneath its `Effects` hierarchy.
+- Use actual full-body input on the target device and verify `isTracking()` on the native component; the background image is insufficient evidence, and the Lens Studio Preview may not acquire a body at all ([details](Docs/troubleshooting.md#preview-never-tracks-a-body)).
+- Observe the same tracked mesh at two distinct poses, checking head, hands, and legs for movement.
+- If using attachments, exercise a configured label such as `Head` and check both acquisition and loss of tracking.
 
 ## Notes
 
-- Unpack the prefab after placing it in the scene so you can connect your camera and customize the setup.
-- Body tracking availability and quality may vary by device and environment. <!-- --> <!-- --> <!-- --> <!-- -->
+Tracking quality depends on camera input, visibility, and the target device. The descriptor does not establish a supported-device or minimum-editor-version guarantee. Test on the intended Specs hardware before relying on this setup.
 
-
-
-
-
-
+## Built with 👽 by the SPECS team

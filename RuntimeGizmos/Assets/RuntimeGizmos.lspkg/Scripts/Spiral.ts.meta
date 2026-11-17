@@ -23,6 +23,7 @@
   VersionMinor: 0
   VersionPatch: 0
   VersionPrerelease: ""
+  UpdateOrder: 0
   ComponentUid: 3603ddf9-0ed4-4326-8ee4-ffb02aa2c485
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
@@ -84,7 +85,7 @@
     - '// @input vec3 _color = "{1, 0.5, 0}" {"widget":"color"}'
     - // @input float lineWidth = 0.5
     - '// @input float lineStyle {"widget":"combobox", "values":[{"label":"Full", "value":0}, {"label":"Split", "value":1}, {"label":"FadedEnd", "value":2}]}'
-    - '// @input float totalSegments = 120 {"hint":"Total number of segments for the entire spiral (higher = smoother)"}'
+    - '// @input float totalSegments = 120 {"hint":"Total number of segments for the entire spiral (higher = smoother, minimum 80)"}'
     - '// @input float spiralType {"hint":"Type of spiral growth", "widget":"combobox", "values":[{"label":"Linear", "value":0}, {"label":"Exponential", "value":1}, {"label":"Logarithmic", "value":2}, {"label":"Helix", "value":3}]}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'

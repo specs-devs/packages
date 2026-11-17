@@ -1,0 +1,65 @@
+- !<AssetImportMetadata/9d7718bc-4a6d-43bd-9a53-8a0938b333cc>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 056f7d60-066c-4700-8e27-c9bd6d87faaa
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 056f7d60-066c-4700-8e27-c9bd6d87faaa
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 923fcfe2-f6a9-4edc-84a7-899a0fddda7b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/923fcfe2-f6a9-4edc-84a7-899a0fddda7b>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: a852e51b-ae79-474b-ac02-57638f763c2b
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    camera: false
+    enableLogging: false
+    focalDistanceCm: false
+    locationGroup: false
+    panelWidth: false
+    refreshInterval: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - locationGroup: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      camera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      panelWidth: !<float> 28.000000
+      focalDistanceCm: !<float> 130.000000
+      refreshInterval: 0.500000
+      enableLogging: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"CustomLocations Examples Panel"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input SceneObject locationGroup {"hint":"SceneObject holding the CustomLocationGroupComponent (its children are the Located At objects)"}'
+    - '// @input Component.Camera camera {"hint":"Camera used for distance readouts; defaults to the main camera found in the scene"}'
+    - '// @ui {"widget":"group_start", "label":"Settings"}'
+    - '// @input float panelWidth = 28 {"hint":"Panel width in cm.", "widget":"slider", "min":20, "max":40, "step":0.5}'
+    - '// @input float focalDistanceCm = 130 {"hint":"Distance from the viewer the panel is designed for, in cm. Text is scaled from the 110 cm type scale.", "widget":"slider", "min":60, "max":200, "step":5}'
+    - '// @input float refreshInterval = 0.5 {"hint":"Seconds between distance readout refreshes", "widget":"slider", "min":0.1, "max":2, "step":0.1}'
+    - '// @input bool enableLogging {"hint":"Enable general logging"}'
+    - '// @ui {"widget":"group_end"}'

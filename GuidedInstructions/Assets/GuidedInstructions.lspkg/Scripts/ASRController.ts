@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * ASRController for the Depth Cache Spectacles lens experience.
+ * SPECS Inc. 2027
+ * ASRController for the Depth Cache Glasses lens experience.
  */
 // Preload ThemeService before any UIKit visual to break a circular-import init-order
 // crash in the package (Visual.ts imports ThemeService before defining the Visual class +

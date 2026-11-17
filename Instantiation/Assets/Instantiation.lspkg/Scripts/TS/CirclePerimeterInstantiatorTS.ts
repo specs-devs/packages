@@ -2,7 +2,7 @@ import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
 
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Circle perimeter instantiation utility that spawns prefabs evenly spaced along the circumference
  * of a circle. Perfect for creating circular patterns, rings, or radial UI layouts.
  */
@@ -63,7 +63,6 @@ export class CirclePerimeterInstantiatorTS extends BaseScriptComponent {
         });
     }
     
-    @bindStartEvent
 
     
     onStart(): void {
@@ -99,7 +98,10 @@ export class CirclePerimeterInstantiatorTS extends BaseScriptComponent {
     private createPrefabInstance(position: vec3): void {
         if (this.prefab) {
             const instance = this.prefab.instantiate(this.sceneObject);
-            instance.getTransform().setWorldPosition(position);
+            // The offsets above are along world axes: turn them with the center so the layout follows its rotation.
+            const centerTransform = this.center.getTransform();
+            const origin = centerTransform.getWorldPosition();
+            instance.getTransform().setWorldPosition(origin.add(centerTransform.getWorldRotation().multiplyVec3(position.sub(origin))));
             this.logger.debug(`Created prefab instance at position: ${position.x}, ${position.y}, ${position.z}`);
         }
     }

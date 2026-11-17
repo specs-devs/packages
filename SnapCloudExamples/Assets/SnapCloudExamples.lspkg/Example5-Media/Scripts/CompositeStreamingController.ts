@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Synchronized live video and audio streaming to Supabase Realtime. Streams video frames and
  * audio chunks simultaneously with shared session IDs, real-time broadcast via WebSocket,
  * frame markers for reconstruction, and support for both camera and composite texture sources.
@@ -11,9 +11,9 @@
 import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService";
 import {RectangleButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton"
 import {Switch} from "SpectaclesUIKit.lspkg/Scripts/Components/Switch/Switch"
-import {CameraService} from "../../CompositeCameraModified/Scripts/CameraService"
+import {CameraService} from "../../CompositeCameraWork/Scripts/CameraService"
 import {AudioCaptureUtility, SessionUtility, SupabaseAuthUtility, VideoCaptureUtility} from "./CaptureUtilities"
-import {SnapCloudRequirements} from "./SnapCloudRequirements"
+import {SnapCloudRequirements} from "../../SnapCloudRequirements"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent} from "SnapDecorators.lspkg/decorators"
 

@@ -1,0 +1,59 @@
+- !<AssetImportMetadata/903a6168-dada-4288-a9d9-79fc796a7378>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 8af0437c-6f0d-4840-9381-cf2ef49ae0d2
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 8af0437c-6f0d-4840-9381-cf2ef49ae0d2
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 77624f48-5e9d-43dc-9f38-88b64f5c6fa9
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/77624f48-5e9d-43dc-9f38-88b64f5c6fa9>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: f1181446-bd48-4d04-9b65-7c087ba14c81
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    board: false
+    focalDistanceCm: false
+    hintText: false
+    panelWidth: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - board: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      panelWidth: !<float> 26.000000
+      focalDistanceCm: !<float> 130.000000
+      hintText: "Pinch a card to move it. Pinch a dot, drag to another card. Tap a dot to clear."
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"BezierLine Examples Panel"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input AssignableType_1 board {"hint":"The BezierExamples board this panel controls."}'
+    - '// @ui {"widget":"group_start", "label":"Settings"}'
+    - '// @input float panelWidth = 28 {"hint":"Panel width in cm.", "widget":"slider", "min":20, "max":40, "step":0.5}'
+    - '// @input float focalDistanceCm = 130 {"hint":"Distance from the viewer the panel is designed for, in cm. Text is scaled from the 110 cm type scale.", "widget":"slider", "min":60, "max":200, "step":5}'
+    - '// @input string hintText = "Pinch a card to move it. Pinch a dot, drag to another card. Tap a dot to clear." {"hint":"One-line hint shown under the title."}'
+    - '// @ui {"widget":"group_end"}'

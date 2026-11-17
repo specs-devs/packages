@@ -67,7 +67,7 @@ export class SpeechToText extends BaseScriptComponent {
     }
 
     this.logger.debug("SpeechToText onAwake called")
-    this.logger.debug(`Device: ${global.deviceInfoSystem.isSpectacles() ? "Spectacles" : "Editor"}`)
+    this.logger.debug(`Device: ${global.deviceInfoSystem.isSpectacles() ? "Glasses" : "Editor"}`)
 
     // Create ASR options once (following working Depth Cache pattern)
     this.options = AsrModule.AsrTranscriptionOptions.create()

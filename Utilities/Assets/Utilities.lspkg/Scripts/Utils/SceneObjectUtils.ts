@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Scene object and component utilities for hierarchy traversal, component finding,
  * and scene graph operations. Provides convenient methods for working with scene objects
  * and their components across the hierarchy.

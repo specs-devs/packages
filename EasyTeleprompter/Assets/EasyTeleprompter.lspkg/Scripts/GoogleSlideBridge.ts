@@ -38,6 +38,8 @@ export class GoogleSlideBridge extends BaseScriptComponent {
   pollingInterval: number = 5.0
 
   @input
+  @allowUndefined
+  @hint("Optional relay that mirrors next / previous to the web companion")
   webSocketController: WebSocketController
 
   @ui.separator
@@ -315,7 +317,7 @@ export class GoogleSlideBridge extends BaseScriptComponent {
     // Check for RemoteServiceModule for makeResourceFromUrl
     if (!this.remoteServiceModule || !this.remoteServiceModule.makeResourceFromUrl) {
       this.logger.error(
-        "RemoteServiceModule or makeResourceFromUrl is not available. Ensure you are testing on Spectacles or in Lens Studio with Device Type Override set to Spectacles."
+        "RemoteServiceModule or makeResourceFromUrl is not available. Ensure you are testing on Glasses or in Lens Studio with Device Type Override set to Glasses."
       )
       return
     }
@@ -323,7 +325,7 @@ export class GoogleSlideBridge extends BaseScriptComponent {
     // Check for RemoteMediaModule for loadResourceAsImageTexture
     if (!this.remoteMediaModule || !this.remoteMediaModule.loadResourceAsImageTexture) {
       this.logger.error(
-        "RemoteMediaModule or loadResourceAsImageTexture is not available. Ensure you are testing on Spectacles or in Lens Studio with Device Type Override set to Spectacles."
+        "RemoteMediaModule or loadResourceAsImageTexture is not available. Ensure you are testing on Glasses or in Lens Studio with Device Type Override set to Glasses."
       )
       return
     }
@@ -453,22 +455,35 @@ export class GoogleSlideBridge extends BaseScriptComponent {
 
   // Go to next slide
   public next() {
+    if (!this.isInitialized) {
+      // logger is unset while this component is disabled (onAwake has not run)
+      this.logger?.warn("next() ignored: Google presentation not loaded yet (enable this component, set presentationId / accessToken).")
+      return
+    }
     if (this.currentSlideIndex < this.slideCount - 1) {
       this.loadSlideContent(this.currentSlideIndex + 1)
       if (this.syncNavigationToGoogle) {
         this.moveToNextSlideInGoogle() // Sync with Google Slides
-        this.webSocketController.next() // Sync with WebSocket
+        if (this.webSocketController) {
+          this.webSocketController.next() // Sync with WebSocket
+        }
       }
     }
   }
 
   // Go to previous slide
   public previous() {
+    if (!this.isInitialized) {
+      this.logger?.warn("previous() ignored: Google presentation not loaded yet (enable this component, set presentationId / accessToken).")
+      return
+    }
     if (this.currentSlideIndex > 0) {
       this.loadSlideContent(this.currentSlideIndex - 1)
       if (this.syncNavigationToGoogle) {
         this.moveToPreviousSlideInGoogle() // Sync with Google Slides
-        this.webSocketController.previous() // Sync with WebSocket
+        if (this.webSocketController) {
+          this.webSocketController.previous() // Sync with WebSocket
+        }
       }
     }
   }

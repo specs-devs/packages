@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Blendshape animation configuration for InteractableHelper. Defines blendshape animation behaviors
  * including play modes, value ranges, easing, and timing for morph target animations.
  */

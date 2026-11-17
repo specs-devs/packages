@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Demonstrates how to access custom components using the requireType() method. This script shows
  * how to dynamically load and access custom TypeScript components at runtime.
  */
@@ -55,13 +55,13 @@ export class AccessCustomComponentsUsingRequiredTS extends BaseScriptComponent {
 
 
     try {
-      if (this.enableLogging || this.enableLoggingLifecycle) {
+      if (this.shouldLog()) {
         print("AccessCustomComponentsUsingRequiredTS initialized");
       }
 
       // Get all components on this object
-      const components = this.targetObject.getAllComponents();
-      if (this.enableLogging || this.enableLoggingLifecycle) {
+      const components = this.targetObject.getComponents("Component");
+      if (this.shouldLog()) {
         print(`Found ${components.length} components on this object`);
       }
       const customComponentExample = this.targetObject.getComponent(
@@ -70,14 +70,19 @@ export class AccessCustomComponentsUsingRequiredTS extends BaseScriptComponent {
 
       customComponentExample.hasTexture();
 
-      if (this.enableLogging || this.enableLoggingLifecycle) {
+      if (this.shouldLog()) {
         print(`Found Texture Size ${customComponentExample.textureSize} on this object`);
       }
 
     } catch (error) {
-      if (this.enableLogging || this.enableLoggingLifecycle) {
+      if (this.shouldLog()) {
         print(`Error: ${error}`);
       }
     }
+  }
+
+  // Prints only when Debug is on and logging is enabled
+  private shouldLog(): boolean {
+    return this.debug && (this.enableLogging || this.enableLoggingLifecycle);
   }
 }

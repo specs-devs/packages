@@ -2,7 +2,7 @@ import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
 
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Random box surface instantiation utility that spawns prefabs at random points on the surface
  * of a box. Useful for decorating surfaces, creating texture effects, or wall decorations.
  */
@@ -71,7 +71,6 @@ export class RandomPointsOnBoxSurfaceTS extends BaseScriptComponent {
         });
     }
     
-    @bindStartEvent
 
     
     onStart(): void {
@@ -164,7 +163,10 @@ export class RandomPointsOnBoxSurfaceTS extends BaseScriptComponent {
     private createPrefabInstance(position: vec3): void {
         if (this.prefab) {
             const instance = this.prefab.instantiate(this.sceneObject);
-            instance.getTransform().setWorldPosition(position);
+            // The offsets above are along world axes: turn them with the boxObject so the layout follows its rotation.
+            const centerTransform = this.boxObject.getTransform();
+            const origin = centerTransform.getWorldPosition();
+            instance.getTransform().setWorldPosition(origin.add(centerTransform.getWorldRotation().multiplyVec3(position.sub(origin))));
             this.logger.debug(`Created prefab instance at position: ${position.x}, ${position.y}, ${position.z}`);
         }
     }

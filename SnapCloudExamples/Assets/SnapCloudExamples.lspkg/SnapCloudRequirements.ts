@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Centralized Snap Cloud requirements manager for Supabase integration. Validates configuration,
  * provides convenience methods for REST/Storage/Functions API access, manages credentials, and
  * displays setup instructions for connected cloud experiences.

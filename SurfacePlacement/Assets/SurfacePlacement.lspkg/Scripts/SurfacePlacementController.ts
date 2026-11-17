@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Central singleton controller for surface placement workflows across all modes. Manages placement mode
  * prefab instantiation (Horizontal, Vertical, TableTop), coordinates HandHintsController for onboarding,
  * provides startSurfacePlacement() and stopSurfacePlacement() public API, handles detector lifecycle with
@@ -11,8 +11,6 @@ import { HandHintsController } from "./HandHintsController";
 import { Singleton } from "../Decorators/Singleton";
 import { SurfaceDetector } from "./SurfaceDetector";
 import { TableTop } from "./TableTop";
-
-// public static getInstance: () => SIKLogLevelProvider
 
 const CALIBRATE_AUDIOTRACK: AudioTrackAsset = requireAsset(
   "../Sounds/CalibrateSnap.mp3"
@@ -32,8 +30,9 @@ const PLACEMENT_MODE_PREFABS: ObjectPrefab[] = [
 export class SurfacePlacementController {
   public static getInstance: () => SurfacePlacementController;
 
-  private handHindsController: HandHintsController = null;
+  private handHintsController: HandHintsController = null;
   private currDetector: SurfaceDetector = null;
+  private onCancelled: (() => void) | null = null;
 
   private sceneObject: SceneObject = null;
 
@@ -50,15 +49,21 @@ export class SurfacePlacementController {
     audioComponent.audioTrack = CALIBRATE_AUDIOTRACK;
 
     const handHintsObj = HANDHINTS_PREFAB.instantiate(this.sceneObject);
-    this.handHindsController = handHintsObj.getComponent(
+    this.handHintsController = handHintsObj.getComponent(
       HandHintsController.getTypeName()
     );
-    this.handHindsController.disableHint();
+    this.handHintsController.disableHint();
   }
 
+  /**
+   * Starts placement. `callback` fires once with the placed world pose. The optional
+   * `onCancelled` fires instead when the session is stopped (or replaced by a new
+   * start) before it completed, so callers waiting on a result never hang.
+   */
   startSurfacePlacement(
     settings: PlacementSettings,
-    callback: (pos: vec3, rot: quat) => void
+    callback: (pos: vec3, rot: quat) => void,
+    onCancelled: (() => void) | null = null
   ) {
     if (this.currDetector != null) {
       //in case mode is changed remove current detector
@@ -77,17 +82,28 @@ export class SurfacePlacementController {
       tableTop.setOptions(settings);
     }
 
-    this.currDetector.init(this.handHindsController);
+    this.currDetector.configure(settings);
+    this.currDetector.init(this.handHintsController);
     //start surface placement on desired mode
-    this.currDetector.startSurfaceCalibration(callback);
+    this.onCancelled = onCancelled;
+    this.currDetector.startSurfaceCalibration((pos, rot) => {
+      //completed, so a later stop is not a cancel
+      this.onCancelled = null;
+      callback(pos, rot);
+    });
   }
 
   stopSurfacePlacement() {
     if (this.currDetector) {
-      this.handHindsController.disableHint();
-      this.currDetector.onDestroy();
-      this.currDetector.getSceneObject().destroy();
+      this.handHintsController.disableHint();
+      // Defer destruction so SIK's cursor never references a destroyed
+      // interactable mid-update (see SurfaceDetector.destroySafely).
+      this.currDetector.destroySafely();
       this.currDetector = null;
     }
+    //cleared first, so the handler may start a new placement
+    const onCancelled = this.onCancelled;
+    this.onCancelled = null;
+    if (onCancelled) onCancelled();
   }
 }

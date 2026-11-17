@@ -1,0 +1,95 @@
+- !<AssetImportMetadata/e5af546c-4cd0-4e48-a734-72a4a053acac>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 7e73b51d-7146-4559-b06a-849b1a301b15
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 7e73b51d-7146-4559-b06a-849b1a301b15
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 75f404b9-adf4-465e-9d9c-abe0725c6ea9
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/75f404b9-adf4-465e-9d9c-abe0725c6ea9>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 7c0036a0-1776-47d7-bd1a-d441412aa568
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    apiButton: false
+    apiResponseKey: false
+    apiUri: false
+    authenticationType: false
+    authorizationUri: false
+    clientId: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    scope: false
+    signInButton: false
+    signOutButton: false
+    statusText: false
+    title: false
+    titleText: false
+    tokenUri: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - signInButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      signOutButton: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      apiButton: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      statusText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      titleText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      title: Spotify Music Lens
+      clientId: your-spotify-client-id
+      authorizationUri: "https://accounts.spotify.com/authorize"
+      tokenUri: "https://accounts.spotify.com/api/token"
+      authenticationType: code
+      scope: user-read-private user-read-currently-playing user-read-playback-state
+      apiUri: "https://api.spotify.com/v1/me"
+      apiResponseKey: display_name
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType_1 signInButton
+    - // @input AssignableType_2 signOutButton
+    - // @input AssignableType_3 apiButton
+    - // @input Component.Text statusText
+    - // @input Component.Text titleText
+    - '// @ui {"widget":"separator"}'
+    - '// @input string title = "Spotify Music Lens"'
+    - '// @ui {"widget":"separator"}'
+    - '// @input string clientId = "your-spotify-client-id"'
+    - '// @input string authorizationUri = "https://accounts.spotify.com/authorize"'
+    - '// @input string tokenUri = "https://accounts.spotify.com/api/token"'
+    - '// @input string authenticationType = "code"'
+    - '// @ui {"widget":"separator"}'
+    - '// @input string scope = "user-read-private user-read-currently-playing user-read-playback-state"'
+    - '// @ui {"widget":"separator"}'
+    - '// @input string apiUri = "https://api.spotify.com/v1/me"'
+    - '// @input string apiResponseKey = "display_name"'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging (API calls, playback events, etc.)"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)"}'

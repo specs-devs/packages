@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Type conversion utilities for string parsing, number conversions, and safe type handling.
  * Provides functions for converting strings to numbers with locale awareness and default values.
  */

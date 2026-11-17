@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Example controller demonstrating CommerceKit integration for in-app purchases.
  * Shows how to handle purchase flows, check ownership status, and update UI based on purchase state.
  */
@@ -82,18 +82,25 @@ export class ExamplePurchaseController extends BaseScriptComponent {
     });
   }
   private async updateUI() {
-    await this.commerceKit.client;
-    const isOwned = this.commerceKit.isProductOwned(this.productId);
+    try {
+      // Preview uses the local mock catalog; a native client deliberately rejects there.
+      if (!global.deviceInfoSystem.isEditor()) await this.commerceKit.client();
+      const isOwned = this.commerceKit.isProductOwned(this.productId);
 
-    this.purchaseButton.enabled = !isOwned;
-    this.statusText.text = isOwned ? "Premium Owned" : "Tap to Purchase";
+      this.purchaseButton.enabled = !isOwned;
+      this.statusText.text = isOwned ? "Premium Owned" : "Tap to Purchase";
 
-    const product = await this.commerceKit.getProductInfo(this.productId);
-    if (isNull(product)) {
-      this.statusText.text = "Product not found";
-    } else {
-      this.nameText.text = product.displayName;
-      this.priceText.text = `${product.price.price} ${product.price.currency}`;
+      const product = await this.commerceKit.getProductInfo(this.productId);
+      if (isNull(product)) {
+        this.statusText.text = "Product not found";
+      } else {
+        this.nameText.text = product.displayName;
+        this.priceText.text = `${product.price.price} ${product.price.currency}`;
+      }
+    } catch (error) {
+      this.purchaseButton.enabled = false;
+      this.statusText.text = `Commerce unavailable: ${error.message ?? error}`;
+      this.logger.error(`Commerce initialization failed: ${error}`);
     }
   }
   private async onPurchaseButtonPressed() {
@@ -113,6 +120,7 @@ export class ExamplePurchaseController extends BaseScriptComponent {
       if (result.success) {
         this.statusText.text = "Purchase successful!";
         this.enablePremiumFeatures();
+        this.purchaseButton.enabled = false;
       } else if (result.cancelled) {
         this.statusText.text = "Purchase cancelled";
       } else if (!result.success) {

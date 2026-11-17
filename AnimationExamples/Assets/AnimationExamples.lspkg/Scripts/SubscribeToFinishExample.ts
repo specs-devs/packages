@@ -1,10 +1,10 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Subscribe to clip completion via a named event planted at the end timestamp.
  * AnimationPlayer has no built-in onFinish callback — createEvent at t=1.0 acts as one.
  */
 
-import { buildFrameUI, playFirstClip } from "./Helpers/AnimationHelpers";
+import { bindReplay, buildFrameUI, playFirstClip } from "./Helpers/AnimationHelpers";
 
 @component
 export class SubscribeToFinishExample extends BaseScriptComponent {
@@ -56,7 +56,8 @@ export class SubscribeToFinishExample extends BaseScriptComponent {
      */
     onAwake() {
         if (this.enableLoggingLifecycle) print(`[${this.sceneObject.name}] SubscribeToFinishExample.onAwake`);
-        buildFrameUI(this.sceneObject, { title: "Subscribe To Finish", buttonText: "TAP" });
+        const ui = buildFrameUI(this.sceneObject, { title: "Subscribe To Finish", buttonText: "TAP" });
+        bindReplay(this, ui, this.target ?? this.sceneObject);
         const target = this.target ?? this.sceneObject;
         playFirstClip(target, this.buildAsset(target), (args) => {
             if (args.eventName === this.finishedEventName && this.enableLogging) {

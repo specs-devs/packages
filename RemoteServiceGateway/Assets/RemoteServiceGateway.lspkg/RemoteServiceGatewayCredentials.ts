@@ -2,7 +2,7 @@ import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
 
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * API credentials manager for Remote Service Gateway. Securely stores and provides access to
  * API tokens for Snap, OpenAI, and Google services used in remote AI service integrations.
  */
@@ -83,6 +83,12 @@ export class RemoteServiceGatewayCredentials extends BaseScriptComponent {
     switch (avaliableType) {
       case AvaliableApiTypes.Snap:
         RemoteServiceGatewayCredentials.snapToken = token;
+        break;
+      case AvaliableApiTypes.Google:
+        RemoteServiceGatewayCredentials.googleToken = token;
+        break;
+      case AvaliableApiTypes.OpenAI:
+        RemoteServiceGatewayCredentials.openAIToken = token;
         break;
     }
   }

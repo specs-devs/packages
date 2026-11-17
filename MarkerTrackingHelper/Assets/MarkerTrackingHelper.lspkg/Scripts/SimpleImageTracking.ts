@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Simple image tracking component that parents the object to the main camera for marker-based
  * augmented reality. Automatically sets up the object hierarchy for image tracking.
  */

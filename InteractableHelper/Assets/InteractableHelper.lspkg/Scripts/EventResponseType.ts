@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Event response type configuration for InteractableHelper. Defines the complete set of response
  * options for interaction events including state changes, animations, callbacks, and media control.
  */

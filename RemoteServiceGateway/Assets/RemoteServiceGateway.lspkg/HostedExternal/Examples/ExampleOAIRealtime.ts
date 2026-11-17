@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Example implementation of OpenAI Realtime API with streaming audio conversations. Demonstrates
  * WebSocket-based real-time chat with voice selection, microphone input, audio output, function
  * calling, and bidirectional communication using GPT-4o-mini-realtime.
@@ -102,22 +102,18 @@ export class ExampleOAIRealtime extends BaseScriptComponent {
 
     global.deviceInfoSystem.onInternetStatusChanged.add((args) => {
       this.textDisplay.text = args.isInternetAvailable
-        ? "Reconnected to internete"
+        ? "Reconnected to internet"
         : "No internet";
     });
   }
 
   connectToWebsocket() {
     const OAIRealtime = OpenAI.createRealtimeSession({
-      model: "gpt-4o-mini-realtime-preview",
+      model: "gpt-realtime-mini",
     });
 
     OAIRealtime.onOpen.add((event) => {
       print("Connection opened");
-      const modalitiesArray = ["text"];
-      if (this.audioOutput) {
-        modalitiesArray.push("audio");
-      }
 
       const setTextColor: OpenAITypes.Common.ToolDefinition = {
         type: "function",
@@ -144,23 +140,31 @@ export class ExampleOAIRealtime extends BaseScriptComponent {
         },
       };
 
-      // Set up the session
+      // Set up the session (Realtime GA format: session.type, output_modalities, audio.input/output)
       const sessionUpdateMsg: OpenAITypes.Realtime.SessionUpdateRequest = {
         type: "session.update",
         session: {
+          type: "realtime",
           instructions: this.instructions,
-          voice: this.voice,
-          modalities: modalitiesArray,
-          input_audio_format: "pcm16",
-          tools: [setTextColor],
-          output_audio_format: "pcm16",
-          turn_detection: {
-            type: "server_vad",
-            threshold: 0.5,
-            prefix_padding_ms: 300,
-            silence_duration_ms: 500,
-            create_response: true,
+          // GA sessions answer in one modality: "audio" also streams a transcript.
+          output_modalities: this.audioOutput ? ["audio"] : ["text"],
+          audio: {
+            input: {
+              format: { type: "audio/pcm", rate: 24000 },
+              turn_detection: {
+                type: "server_vad",
+                threshold: 0.5,
+                prefix_padding_ms: 300,
+                silence_duration_ms: 500,
+                create_response: true,
+              },
+            },
+            output: {
+              format: { type: "audio/pcm", rate: 24000 },
+              voice: this.voice,
+            },
           },
+          tools: [setTextColor],
         },
       };
       OAIRealtime.send(sessionUpdateMsg);
@@ -188,6 +192,8 @@ export class ExampleOAIRealtime extends BaseScriptComponent {
     OAIRealtime.onMessage.add((message) => {
       // Listen for text responses
       if (
+        message.type === "response.output_text.delta" ||
+        message.type === "response.output_audio_transcript.delta" ||
         message.type === "response.text.delta" ||
         message.type === "response.audio_transcript.delta"
       ) {
@@ -202,7 +208,10 @@ export class ExampleOAIRealtime extends BaseScriptComponent {
       }
 
       // Set up Audio Playback
-      else if (message.type === "response.audio.delta") {
+      else if (
+        message.type === "response.output_audio.delta" ||
+        message.type === "response.audio.delta"
+      ) {
         const delta = Base64.decode(message.delta);
         this.dynamicAudioOutput.addAudioFrame(delta);
       }

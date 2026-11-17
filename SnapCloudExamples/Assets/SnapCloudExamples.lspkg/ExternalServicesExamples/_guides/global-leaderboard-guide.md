@@ -1,6 +1,6 @@
 # Global Leaderboard (Snap Cloud)
 
-This folder contains a reusable **Global Leaderboard** system for Snapchat Spectacles applications.
+This folder contains a reusable **Global Leaderboard** system for Snapchat SPECS applications.
 
 It uses **Snap Cloud** as the backend to store and retrieve leaderboard data.
 
@@ -51,7 +51,7 @@ The database stores:
 
 # Scroll layout (ScrollWindow)
 
-The list is designed to sit inside Spectacles UI Kit’s **ScrollWindow**:
+The list is designed to sit inside SPECS UI Kit’s **ScrollWindow**:
 
 - **Hierarchy:** ScrollWindow → **Content** (or “UI”) → **rowInstantiator** (scene object with LeaderboardRowInstantiator script). Row instances are created as children of the rowInstantiator object (which is the scrollable content).
 - **GlobalLeaderboard** assigns **rowInstantiator** (LeaderboardRowInstantiator) and calls `rowInstantiator.render(entries)` when data is refreshed.

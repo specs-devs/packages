@@ -23,6 +23,7 @@
   VersionMinor: 0
   VersionPatch: 0
   VersionPrerelease: ""
+  UpdateOrder: 0
   ComponentUid: 061956e7-6099-4801-a27c-481af6e0b8f4
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
@@ -91,7 +92,7 @@
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Reachy Position in AR Space</span>"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Configure robot position and head offset</span>"}'
-    - '// @input SceneObject reachyWorldPosition {"hint":"SceneObject representing where Reachy robot is positioned in the AR world (e.g., SpectaclesCamera or a fixed anchor point)"}'
+    - '// @input SceneObject reachyWorldPosition {"hint":"SceneObject representing where Reachy robot is positioned in the AR world (e.g., GlassesCamera or a fixed anchor point)"}'
     - "// @input vec3 reachyHeadOffset = {0,15,0} {\"hint\":\"Offset from reachyWorldPosition to Reachy's head center in local space (default: 0, 15, 0 = 15cm above)\"}"
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Look-At Target Configuration</span>"}'

@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Nespresso VertuoLine knowledge base for AR-guided maintenance assistance.
  * Extracted from official Nespresso VertuoLine User Manual and Descaling Guide.
  */

@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Screen transform utilities for UI dimension calculations, position conversions, and click detection.
  * Provides helper functions for working with ScreenTransform components in Lens Studio.
  */

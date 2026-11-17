@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Hand attachment system for attaching objects to hand joints in world space. Provides smooth
  * interpolation, customizable offsets, and support for all hand joints with configurable tracking.
  */
@@ -185,29 +185,25 @@ export class HandAttacher extends BaseScriptComponent {
   // Private properties
   private logger: Logger;
   private targetTransform: Transform;
+  private resolvedTarget: SceneObject; // target the cached transform belongs to
+  private resolvedHandSide: string; // handSide the current hand was resolved from
+  private snapToJoint: boolean = true; // skip smoothing once so a (re)shown target doesn't slide in from a stale pose
   private currentHand: any; // TrackedHand type
-  private wasTracked: boolean = false;
+  private wasTracked: boolean | null = null; // null = not checked yet, so the first frame applies hideWhenNotTracked
+  private unsubscribeHandEvents: (() => void)[] = [];
 
   /**
    * Called when component wakes up - initialize logger and setup hand tracking
    */
   onAwake(): void {
     // Initialize logger
-    this.logger = new Logger("HandAttacher", this.enableLogging || this.enableLoggingLifecycle, true);
+    this.logger = new Logger("HandAttacher", this.enableLogging || this.enableLoggingLifecycle || this.debugMode, true);
 
     if (this.enableLoggingLifecycle) {
       this.logger.debug("LIFECYCLE: onAwake() - Component waking up");
     }
 
-    // Use this script's scene object if no target specified
-    if (!this.targetObject) {
-      this.targetObject = this.sceneObject;
-      if (this.enableLogging) {
-        this.logger.info("Using script's own scene object as target");
-      }
-    }
-
-    this.targetTransform = this.targetObject.getTransform();
+    this.resolveTarget();
 
     // Set up hand tracking
     this.setupHandTracking();
@@ -231,10 +227,35 @@ export class HandAttacher extends BaseScriptComponent {
   }
 
   /**
+   * Caches the target transform, falling back to this script's scene object
+   */
+  private resolveTarget(): void {
+    // Use this script's scene object if no target specified
+    if (!this.targetObject) {
+      this.targetObject = this.sceneObject;
+      if (this.enableLogging) {
+        this.logger.info("Using script's own scene object as target");
+      }
+    }
+
+    this.resolvedTarget = this.targetObject;
+    this.targetTransform = this.targetObject.getTransform();
+    this.wasTracked = null; // re-apply hideWhenNotTracked to the new target
+    this.snapToJoint = true;
+  }
+
+  /**
    * Sets up hand tracking with SIK HandInputData
    */
   private setupHandTracking(): void {
     const handInputData = SIK.HandInputData;
+    this.resolvedHandSide = this.handSide;
+    this.wasTracked = null; // re-apply hideWhenNotTracked for the new hand
+    this.snapToJoint = true;
+
+    // Drop the previous hand's callbacks so a hand swap doesn't leave them toggling the target
+    this.unsubscribeHandEvents.forEach((unsubscribe) => unsubscribe());
+    this.unsubscribeHandEvents = [];
 
     // Get the appropriate hand
     switch (this.handSide) {
@@ -258,29 +279,38 @@ export class HandAttacher extends BaseScriptComponent {
     }
 
     // Set up hand tracking events
-    this.currentHand.onHandFound.add(() => {
-      if (this.enableLogging) {
+    this.unsubscribeHandEvents.push(this.currentHand.onHandFound.add(() => {
+      if (this.enableLogging || this.debugMode) {
         this.logger.info(`${this.handSide} hand found`);
       }
+      this.snapToJoint = true;
       if (this.hideWhenNotTracked) {
         this.targetObject.enabled = true;
       }
-    });
+    }));
 
-    this.currentHand.onHandLost.add(() => {
-      if (this.enableLogging) {
+    this.unsubscribeHandEvents.push(this.currentHand.onHandLost.add(() => {
+      if (this.enableLogging || this.debugMode) {
         this.logger.info(`${this.handSide} hand lost`);
       }
       if (this.hideWhenNotTracked) {
         this.targetObject.enabled = false;
       }
-    });
+    }));
   }
 
   /**
    * Updates the target object's position and rotation to follow the hand joint
    */
   private onUpdate(): void {
+    // Pick up targetObject / handSide assigned directly after createComponent (onAwake already ran)
+    if (this.targetObject !== this.resolvedTarget) {
+      this.resolveTarget();
+    }
+    if (this.handSide !== this.resolvedHandSide) {
+      this.setupHandTracking();
+    }
+
     if (!this.targetObject || !this.currentHand) {
       if (this.enableLogging) {
         this.logger.warn("Missing target object or current hand");
@@ -293,10 +323,13 @@ export class HandAttacher extends BaseScriptComponent {
     // Handle tracking state changes
     if (isTracked !== this.wasTracked) {
       this.wasTracked = isTracked;
+      if (isTracked) {
+        this.snapToJoint = true;
+      }
       if (this.hideWhenNotTracked) {
         this.targetObject.enabled = isTracked;
       }
-      if (this.enableLogging) {
+      if (this.enableLogging || this.debugMode) {
         this.logger.info(`Hand tracking ${isTracked ? "started" : "stopped"}`);
       }
     }
@@ -332,6 +365,8 @@ export class HandAttacher extends BaseScriptComponent {
     if (this.enableRotation) {
       this.updateRotation(joint);
     }
+
+    this.snapToJoint = false;
   }
 
   /**
@@ -399,7 +434,7 @@ export class HandAttacher extends BaseScriptComponent {
 
     // Apply smoothing if enabled
     let finalPosition: vec3;
-    if (this.usePositionSmoothing) {
+    if (this.usePositionSmoothing && !this.snapToJoint) {
       const deltaTime = getDeltaTime();
       const t = Math.min(1.0, this.positionSmoothSpeed * deltaTime);
       finalPosition = vec3.lerp(currentPosition, targetPosition, t);
@@ -435,7 +470,7 @@ export class HandAttacher extends BaseScriptComponent {
 
     // Apply smoothing if enabled
     let finalRotation: quat;
-    if (this.useRotationSmoothing) {
+    if (this.useRotationSmoothing && !this.snapToJoint) {
       const deltaTime = getDeltaTime();
       const t = Math.min(1.0, this.rotationSmoothSpeed * deltaTime);
       finalRotation = quat.slerp(currentRotation, targetRotation, t);
@@ -454,6 +489,11 @@ export class HandAttacher extends BaseScriptComponent {
     this.handSide = side;
     this.setupHandTracking();
 
+    // A hidden host target has no update loop; re-show it now if the new hand is already tracked
+    if (this.hideWhenNotTracked && this.targetObject && this.isHandTracked()) {
+      this.targetObject.enabled = true;
+    }
+
     if (this.enableLogging) {
       this.logger.info(`Hand changed to: ${side}`);
     }
@@ -469,6 +509,28 @@ export class HandAttacher extends BaseScriptComponent {
     if (this.enableLogging) {
       this.logger.info(`Joint changed to: ${joint}`);
     }
+  }
+
+  /**
+   * Public API: Change the object that follows the joint
+   * @param target - Object to move (null/undefined = this script's scene object)
+   */
+  public setTarget(target: SceneObject): void {
+    this.targetObject = target;
+    this.resolveTarget();
+
+    if (this.enableLogging) {
+      this.logger.info(`Target changed to: ${this.targetObject.name}`);
+    }
+  }
+
+  /**
+   * Public API: Re-read targetObject and handSide after assigning them directly from code.
+   * They are also picked up lazily on the next update, so this is only needed to apply them immediately.
+   */
+  public refresh(): void {
+    this.resolveTarget();
+    this.setHand(this.handSide);
   }
 
   /**

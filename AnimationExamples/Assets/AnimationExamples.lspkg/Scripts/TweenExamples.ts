@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Comprehensive walkthrough of every AnimationPlayer pattern in one component.
  * Uncomment the matching example call in onAwake() to run it in isolation.
  */

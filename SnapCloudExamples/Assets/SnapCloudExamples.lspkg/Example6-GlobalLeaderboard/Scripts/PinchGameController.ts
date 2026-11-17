@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Example game: countdown timer, pinch-to-increment score, submit to leaderboard on game end.
  * Toggles between game UI and leaderboard UI. Assign globalLeaderboard for score submission.
  */

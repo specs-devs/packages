@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Scene Controller for the Depth Cache Spectacles lens experience.
+ * SPECS Inc. 2027
+ * Scene Controller for the Depth Cache Glasses lens experience.
  */
 // Preload ThemeService before any UIKit visual to break a circular-import init-order
 // crash in the package (Visual.ts imports ThemeService before defining the Visual class +
@@ -95,6 +95,12 @@ export class SceneController extends BaseScriptComponent {
     this.speechUI.activateSpeechButton(false)
     if (this.isRequestRunning) {
       this.logger.warn("REQUEST ALREADY RUNNING")
+      return
+    }
+    if (!this.testTexture && !this.depthCache.hasDepthFrame()) {
+      // No depth frame yet (just after launch): skip instead of reading an empty cache
+      this.logger.warn("No depth frame yet - request skipped, try again")
+      this.speechUI.activateSpeechButton(true)
       return
     }
     this.logger.info("MAKING REQUEST~~~~~")

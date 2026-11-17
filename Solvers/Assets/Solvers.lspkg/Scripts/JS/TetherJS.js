@@ -1,3 +1,4 @@
+//@component
 /**
  * Tethers content to a target, repositioning when it moves too far away
  * or when the angle between target's forward and direction to object exceeds threshold.
@@ -13,6 +14,7 @@
 
 function TetherJS() {
     var _targetPosition = new vec3(0, 0, 0);
+    var _hasTargetPosition = false;
     var _currentAngle = 0;
     var _flatAngle = 0;
     var _targetDir = new vec3(0, 0, 0);
@@ -30,10 +32,17 @@ function TetherJS() {
         
         // Initialize target position
         _targetPosition = calculateNewTargetPosition();
+        _hasTargetPosition = true;
     }
     
     function onUpdate() {
         if (!script.target) return;
+        
+        // Target assigned from code after start: initialize the target position now
+        if (!_hasTargetPosition) {
+            _targetPosition = calculateNewTargetPosition();
+            _hasTargetPosition = true;
+        }
         
         // Calculate the angles
         _currentAngle = calculateAngle();

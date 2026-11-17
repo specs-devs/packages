@@ -1,0 +1,100 @@
+- !<AssetImportMetadata/f5de63d8-7885-4bc6-9a1e-0f60a7509c3d>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> e4cc8ce2-0e82-40e9-aeab-8aeb08a15251
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> e4cc8ce2-0e82-40e9-aeab-8aeb08a15251
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 3c36bcb1-3895-4afa-8cc6-5a1fd9f03382
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/3c36bcb1-3895-4afa-8cc6-5a1fd9f03382>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 9e520bd4-cdbe-41b4-b406-806dead8c043
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    axisUseLocal: false
+    camera: false
+    debugDraw: false
+    debugLog: false
+    end: false
+    endAttachOffset: false
+    endAxis: false
+    endCtrl: false
+    endCtrlOffset: false
+    faceCamera: false
+    meshVisual: false
+    segments: false
+    start: false
+    startAttachOffset: false
+    startAxis: false
+    startCtrl: false
+    startCtrlOffset: false
+    useCtrlObjects: false
+    width: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - meshVisual: !<reference.RenderMeshVisual> 00000000-0000-0000-0000-000000000000
+      start: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      end: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      useCtrlObjects: false
+      startCtrl: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      endCtrl: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      axisUseLocal: false
+      startAxis: Start Axis
+      startCtrlOffset: !<float> 0.000000
+      endAxis: End Axis
+      endCtrlOffset: !<float> 0.000000
+      startAttachOffset: !<float> 0.000000
+      endAttachOffset: !<float> 0.000000
+      width: !<float> 0.000000
+      segments: 0
+      faceCamera: false
+      camera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      debugDraw: false
+      debugLog: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Component.RenderMeshVisual meshVisual
+    - // @input SceneObject start
+    - // @input SceneObject end
+    - '// @input bool useCtrlObjects = "Use Control Objects?"'
+    - '// @input SceneObject startCtrl {"showIf":"useCtrlObjects"}'
+    - '// @input SceneObject endCtrl {"showIf":"useCtrlObjects"}'
+    - '// @input bool axisUseLocal = "Axis in Local Space" {"showIf":"useCtrlObjects", "showIfValue":false}'
+    - '// @input string startAxis = "Z" {"label":"Start Axis", "widget":"combobox", "values":[{"label":"X", "value":"X"}, {"label":"Y", "value":"Y"}, {"label":"Z", "value":"Z"}], "showIf":"useCtrlObjects", "showIfValue":false}'
+    - '// @input float startCtrlOffset {"label":"Start Offset", "widget":"slider", "min":-30, "max":30, "step":0.01, "showIf":"useCtrlObjects", "showIfValue":false}'
+    - '// @input string endAxis = "Z" {"label":"End Axis", "widget":"combobox", "values":[{"label":"X", "value":"X"}, {"label":"Y", "value":"Y"}, {"label":"Z", "value":"Z"}], "showIf":"useCtrlObjects", "showIfValue":false}'
+    - '// @input float endCtrlOffset {"label":"End Offset", "widget":"slider", "min":-30, "max":30, "step":0.01, "showIf":"useCtrlObjects", "showIfValue":false}'
+    - '// @input float startAttachOffset {"label":"Start Attach Offset", "widget":"slider", "min":-10, "max":10, "step":0.01}'
+    - '// @input float endAttachOffset {"label":"End Attach Offset", "widget":"slider", "min":-10, "max":10, "step":0.01}'
+    - '// @input float width = 1 {"label":"Width", "widget":"slider", "min":0.01, "max":2, "step":0.001}'
+    - '// @input int segments = 32 {"label":"Segments", "widget":"slider", "min":2, "max":128, "step":1}'
+    - '// @input bool faceCamera = true {"label":"Face Camera"}'
+    - // @input Component.Camera camera
+    - '// @input bool debugDraw = "Draw curve & points"'
+    - '// @input bool debugLog = "Log mesh stats"'

@@ -11,7 +11,7 @@ This guide summarizes the complete setup process for the composite video stitchi
 ## Architecture
 
 ```
-Spectacles App (CompositeCaptureUploader)
+SPECS App (CompositeCaptureUploader)
     ↓
     Uploads frames + audio to Supabase Storage
     ↓
@@ -71,12 +71,12 @@ Final video: composite-videos/{sessionId}/final.mp4
 
 **Health Check:**
 ```bash
-https://composite-stitcher-production.up.railway.app/health
+https://your-composite-stitcher.example.com/health
 ```
 
 **Stitch Video:**
 ```bash
-POST https://composite-stitcher-production.up.railway.app/stitch
+POST https://your-composite-stitcher.example.com/stitch
 Content-Type: application/json
 
 {
@@ -103,7 +103,7 @@ Content-Type: application/json
 ### Created Function
 **Location:** `/supabase/functions/trigger-composite-stitch/`
 **Technology:** Deno (TypeScript)
-**Purpose:** Bridge between Spectacles app and Railway service
+**Purpose:** Bridge between SPECS app and Railway service
 
 ### Setup Steps
 
@@ -130,7 +130,7 @@ Content-Type: application/json
 
 4. **Set Environment Secret:**
    ```bash
-   supabase secrets set STITCHER_SERVICE_URL=https://composite-stitcher-production.up.railway.app --project-ref YOUR PROJECT REF
+   supabase secrets set STITCHER_SERVICE_URL=https://your-composite-stitcher.example.com --project-ref YOUR PROJECT REF
    ```
 
 ### Function Details
@@ -234,13 +234,13 @@ git push
 
 ### Test Railway Service Health
 ```bash
-curl https://composite-stitcher-production.up.railway.app/health
+curl https://your-composite-stitcher.example.com/health
 # Expected: {"status":"healthy","service":"composite-stitcher"}
 ```
 
 ### Test Railway Stitch Endpoint
 ```bash
-curl -X POST "https://composite-stitcher-production.up.railway.app/stitch" \
+curl -X POST "https://your-composite-stitcher.example.com/stitch" \
   -H "Content-Type: application/json" \
   -d '{
     "sessionId": "test_123",
@@ -266,7 +266,7 @@ curl -X POST "https://YOUR PROJECT REF.functions.supabase.co/trigger-composite-s
 
 ---
 
-## Part 6: Integration with Spectacles App
+## Part 6: Integration with SPECS App
 
 ### Update CompositeCaptureUploader.ts
 
@@ -336,7 +336,7 @@ private async stopRecording() {
 
 ## Part 7: How It Works End-to-End
 
-1. **User Records in Spectacles:**
+1. **User Records in SPECS:**
    - Press "Start Composite Recording"
    - App captures video frames (30 FPS) + audio chunks (100ms intervals)
    - Each frame: `composite-video/{sessionId}/frame_00001.jpg`
@@ -371,14 +371,14 @@ private async stopRecording() {
 ## Part 8: Key Credentials & URLs
 
 ### Railway
-- **Service URL:** `https://composite-stitcher-production.up.railway.app`
+- **Service URL:** `https://your-composite-stitcher.example.com`
 - **GitHub Repo:** `https://github.com/YOUR_USERNAME/composite-stitcher`
 - **Environment Variables:** Set in Railway Dashboard
 
 ### Supabase
 - **Project Ref:** `YOUR PROJECT REF`
 - **Function URL:** `https://YOUR PROJECT REF.functions.supabase.co/trigger-composite-stitch`
-- **Anon Key:** `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...` (in Spectacles app)
+- **Anon Key:** `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...` (in SPECS app)
 - **CLI Access Token:** `YOUR TOKEN`
 
 ### Storage Paths
@@ -491,10 +491,10 @@ supabase functions deploy trigger-composite-stitch --project-ref YOUR PROJECT RE
 We've successfully built and deployed a complete video stitching pipeline:
 
 1. ✅ **Railway Service** - Handles heavy FFmpeg processing
-2. ✅ **Edge Function** - Bridges Spectacles app to Railway
+2. ✅ **Edge Function** - Bridges SPECS app to Railway
 3. ✅ **Git Workflow** - Both services tracked and versioned
 4. ✅ **Auto-Deploy** - Push to GitHub = instant Railway update
 5. ✅ **Testing** - All endpoints verified and working
 
-**Ready for integration with your Spectacles app!** 🎉
+**Ready for integration with your SPECS app!** 🎉
 

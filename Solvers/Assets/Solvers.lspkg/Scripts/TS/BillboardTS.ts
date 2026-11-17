@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Billboard solver for Y-axis rotation to face a target. Automatically rotates object to face target
  * with smooth slerp interpolation, optional look-away mode, and flattened rotation on XZ plane for
  * consistent horizontal orientation without pitch or roll.

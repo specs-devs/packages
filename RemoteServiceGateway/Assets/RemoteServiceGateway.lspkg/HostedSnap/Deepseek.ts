@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Snap-hosted DeepSeek R1 AI integration for chat completions. Provides access to DeepSeek's
  * advanced reasoning model with function calling, streaming, and tool use capabilities through
  * Snap's Remote Service Gateway infrastructure.

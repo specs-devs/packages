@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Main orchestrator for mocopi motion capture integration. Coordinates WebSocket client
  * and avatar controller components. Handles event routing and status updates.
  */

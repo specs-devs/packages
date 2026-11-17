@@ -1,3 +1,4 @@
+//@component
 /**
  * Collects a series of positions and detects sharp turns using the dot product.
  */
@@ -23,7 +24,7 @@ function SharpTurnJS() {
     
     function onStart() {
         // Initialize positions array
-        _positions = new Array(script.frameCount).fill(null).map(function() { 
+        _positions = new Array(getBufferSize()).fill(null).map(function() { 
             return new vec3(0, 0, 0); 
         });
         
@@ -35,17 +36,24 @@ function SharpTurnJS() {
         // Get current position
         var currentPos = script.sceneObject.getTransform().getWorldPosition();
         
+        // Resize the buffer if frameCount was changed at runtime
+        var bufferSize = getBufferSize();
+        if (_positions.length !== bufferSize) {
+            resetBuffer(bufferSize, currentPos);
+            return;
+        }
+        
         // Only record position if moved enough
         if (getDistance(currentPos, _positions[_currentIndex]) > script.minVertexDistance) {
             // Move to the next index, looping around if necessary
-            _currentIndex = (_currentIndex + 1) % script.frameCount;
+            _currentIndex = (_currentIndex + 1) % bufferSize;
             _positions[_currentIndex] = currentPos;
             
             // Ensure there are enough points for direction calculations
             if (_currentIndex >= script.step) {
                 // Calculate directions
-                var prevIndex = (_currentIndex - 1 + script.frameCount) % script.frameCount;
-                var oldIndex = (_currentIndex - script.step + script.frameCount) % script.frameCount;
+                var prevIndex = (_currentIndex - 1 + bufferSize) % bufferSize;
+                var oldIndex = (_currentIndex - script.step + bufferSize) % bufferSize;
                 
                 _newestDirection = subtractVectors(
                     _positions[_currentIndex],
@@ -75,6 +83,24 @@ function SharpTurnJS() {
                 }
             }
         }
+    }
+    
+    /**
+     * Buffer length derived from frameCount (whole number, at least 2).
+     */
+    function getBufferSize() {
+        return Math.max(2, Math.floor(script.frameCount));
+    }
+    
+    /**
+     * Recreate the position buffer at a new size, seeded with the current position.
+     */
+    function resetBuffer(size, position) {
+        _positions = new Array(size).fill(null).map(function() {
+            return new vec3(0, 0, 0);
+        });
+        _currentIndex = 0;
+        _positions[0] = position;
     }
     
     /**

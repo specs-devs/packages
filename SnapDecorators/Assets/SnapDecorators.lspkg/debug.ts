@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Debug utilities for error reporting and scene hierarchy path generation. Provides reportError()
  * for pretty-printed error logging with source maps and spath() for generating unique identifiers
  * based on SceneObject hierarchy position.

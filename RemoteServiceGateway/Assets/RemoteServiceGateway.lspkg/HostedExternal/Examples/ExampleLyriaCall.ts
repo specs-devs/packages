@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Example implementation of Google Lyria API for AI music generation. Demonstrates creating
  * original music compositions with customizable prompts, negative prompts, seed values, and
  * playback through dynamic audio output with tap/pinch gestures.
@@ -86,6 +86,10 @@ export class ExampleLyriaCall extends BaseScriptComponent {
   }
 
   onTap() {
+    // GestureModule pinches arrive even while this example is disabled.
+    if (!this.sceneObject.isEnabledInHierarchy) {
+      return;
+    }
     if (this.generateMusicOnTap) {
       this.generateMusic();
     }
@@ -121,6 +125,7 @@ export class ExampleLyriaCall extends BaseScriptComponent {
     // Call the Lyria API
     Lyria.performLyriaRequest(musicRequest)
       .then((response) => {
+        this.isGeneratingMusic = false;
         response.predictions.forEach((prediction) => {
           const b64 = prediction.bytesBase64Encoded;
           this.dynamicAudioOutput.addAudioFrame(Base64.decode(b64), 2);

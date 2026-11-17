@@ -23,6 +23,7 @@
   VersionMinor: 0
   VersionPatch: 0
   VersionPrerelease: ""
+  UpdateOrder: 0
   ComponentUid: 8462204d-8295-4c5a-8e8b-3efb1a058b2e
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
@@ -56,7 +57,7 @@
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">WebSocket Configuration</span>"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Configure WebSocket connection settings</span>"}'
     - '// @input Asset.InternetModule internetModule {"hint":"Internet Module for WebSocket connectivity"}'
-    - '// @input string ipAddress = "ws://192.168.1.100/ws" {"hint":"WebSocket server URL (e.g., ws://192.168.1.100/ws)"}'
+    - "// @input string ipAddress = \"ws://YOUR-IP-ADDRESS/ws\" {\"hint\":\"WebSocket server URL. This is a PLACEHOLDER - replace YOUR-IP-ADDRESS with your server's IP (e.g., ws://192.168.1.100/ws). See README.\"}"
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Component References</span>"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Assign required components</span>"}'

@@ -1,3 +1,4 @@
+//@component
 /**
  * InstantiateAlongLine - JavaScript version of the C# utility
  * Instantiates objects evenly spaced along a line between two points
@@ -33,13 +34,13 @@ function InstantiateAlongLine() {
         // Calculate line length
         var lineLength = Math.sqrt(dx * dx + dy * dy + dz * dz);
 
-        // Normalize direction vector
-        var directionX = dx / lineLength;
-        var directionY = dy / lineLength;
-        var directionZ = dz / lineLength;
+        // Normalize direction vector (coincident endpoints: no direction, every copy at the start)
+        var directionX = lineLength > 0 ? dx / lineLength : 0;
+        var directionY = lineLength > 0 ? dy / lineLength : 0;
+        var directionZ = lineLength > 0 ? dz / lineLength : 0;
 
-        // Calculate step size
-        var step = lineLength / (script.numberOfObjects - 1);
+        // Calculate step size (a single object goes to the start point)
+        var step = script.numberOfObjects > 1 ? lineLength / (script.numberOfObjects - 1) : 0;
 
         for (var i = 0; i < script.numberOfObjects; i++) {
             // Calculate the position for each object along the line

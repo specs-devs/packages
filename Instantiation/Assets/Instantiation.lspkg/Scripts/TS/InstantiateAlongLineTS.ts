@@ -2,7 +2,7 @@ import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
 
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Linear instantiation utility that spawns objects evenly spaced along a line between two points.
  * Ideal for creating paths, borders, fences, or any linear object arrangements.
  */
@@ -63,7 +63,6 @@ export class InstantiateAlongLineTS extends BaseScriptComponent {
         });
     }
 
-    @bindStartEvent
 
 
     onStart(): void {
@@ -87,13 +86,13 @@ export class InstantiateAlongLineTS extends BaseScriptComponent {
         // Calculate line length
         const lineLength = Math.sqrt(dx * dx + dy * dy + dz * dz);
 
-        // Normalize direction vector
-        const directionX = dx / lineLength;
-        const directionY = dy / lineLength;
-        const directionZ = dz / lineLength;
+        // Normalize direction vector (coincident endpoints: no direction, every copy at the start)
+        const directionX = lineLength > 0 ? dx / lineLength : 0;
+        const directionY = lineLength > 0 ? dy / lineLength : 0;
+        const directionZ = lineLength > 0 ? dz / lineLength : 0;
 
-        // Calculate step size
-        const step = lineLength / (this.numberOfObjects - 1);
+        // Calculate step size (a single object goes to the start point)
+        const step = this.numberOfObjects > 1 ? lineLength / (this.numberOfObjects - 1) : 0;
 
         for (let i = 0; i < this.numberOfObjects; i++) {
             // Calculate the position for each object along the line

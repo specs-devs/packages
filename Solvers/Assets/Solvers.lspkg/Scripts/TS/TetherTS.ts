@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Basic tethering system with distance-based repositioning. Follows target with automatic repositioning
  * when vertical or horizontal distance thresholds are exceeded, optional rotation synchronization,
  * Y-axis flattening for horizontal-only orientation, smooth lerp transitions, and configurable offset.
@@ -72,6 +72,7 @@ export class TetherTS extends BaseScriptComponent {
     private logger: Logger;
 
     private _targetPosition: vec3 = new vec3(0, 0, 0);
+    private _hasTargetPosition: boolean = false;
     private _currentAngle: number = 0;
     private _flatAngle: number = 0;
     private _targetDir: vec3 = new vec3(0, 0, 0);
@@ -111,6 +112,7 @@ export class TetherTS extends BaseScriptComponent {
 
         // Initialize target position
         this._targetPosition = this.calculateNewTargetPosition();
+        this._hasTargetPosition = true;
     }
     
     /**
@@ -124,6 +126,12 @@ export class TetherTS extends BaseScriptComponent {
         }
 
         if (!this.target) return;
+
+        // Target assigned from code after start: initialize the target position now
+        if (!this._hasTargetPosition) {
+            this._targetPosition = this.calculateNewTargetPosition();
+            this._hasTargetPosition = true;
+        }
 
         // Calculate the angles
         this._currentAngle = this.calculateAngle();

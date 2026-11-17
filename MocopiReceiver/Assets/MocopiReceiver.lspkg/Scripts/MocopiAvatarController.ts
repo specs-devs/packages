@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Avatar controller for mapping mocopi motion capture data to 3D character rigs. Handles automatic
  * bone mapping, coordinate system conversion, smooth interpolation, and support for custom avatar
  * hierarchies with configurable tracking and T-pose reset.
@@ -86,9 +86,10 @@ export class MocopiAvatarController extends BaseScriptComponent {
       this.logger.debug("LIFECYCLE: onAwake() - Component waking up")
     }
 
+    // PrefabPlacement instantiates this prefab and assigns itself right after
+    // instantiate() returns, so it is still unset here in the placement flow.
     if (!this.prefabPlacement) {
-      print("[MocopiAvatarController] ERROR: PrefabPlacement must be assigned!")
-      log.e("PrefabPlacement not assigned")
+      print("[MocopiAvatarController] Initialized, waiting for PrefabPlacement to assign itself")
       return
     }
 

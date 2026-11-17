@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Audio component control configuration for InteractableHelper. Defines audio playback behaviors
  * including play once, play/stop toggle, and play/pause with optional delay.
  */

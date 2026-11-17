@@ -1,3 +1,4 @@
+//@component
 /**
  * Enhanced Supabase client for real-time cursor broadcasting
  * This version writes cursor positions to a database table AND
@@ -6,7 +7,7 @@
 
 // Use the global supabase object from CDN
 
-class SpectaclesCursorClient {
+class GlassesCursorClient {
     constructor() {
         this.supabase = null;
         this.channel = null;
@@ -15,7 +16,7 @@ class SpectaclesCursorClient {
         this.userColor = this.generateRandomColor();
         this.lastBroadcastTime = 0;
         this.broadcastThrottleMs = 50; // 20 FPS max
-        this.lastSpectaclesCursorData = null; // Cache latest Spectacles cursor
+        this.lastGlassesCursorData = null; // Cache latest Glasses cursor
         this.onModeChange = null; // Callback for mode changes
     }
 
@@ -36,25 +37,25 @@ class SpectaclesCursorClient {
             this.userName = userName;
 
             // Create realtime channel for broadcasting cursor positions
-            // IMPORTANT: Must match the channel name format in Spectacles code: `cursor-${channelName}`
+            // IMPORTANT: Must match the channel name format in Glasses code: `cursor-${channelName}`
             this.channel = this.supabase.channel(`cursor-${channelName}`, {
                 config: {
                     broadcast: { self: false } // Don't broadcast to self
                 }
             });
 
-            // Listen for cursor movements from Spectacles
+            // Listen for cursor movements from Glasses
             this.channel.on('broadcast', { event: 'cursor-move' }, (msg) => {
-                // Cache Spectacles cursor data for follower mode
+                // Cache Glasses cursor data for follower mode
                 if (msg.payload && msg.payload.user_id && msg.payload.user_id.startsWith('spectacles_')) {
-                    this.lastSpectaclesCursorData = msg.payload;
-                    console.log('📍 Received Spectacles cursor:', msg.payload);
+                    this.lastGlassesCursorData = msg.payload;
+                    console.log('📍 Received Glasses cursor:', msg.payload);
                 }
             });
 
-            // Listen for control mode changes from Spectacles
+            // Listen for control mode changes from Glasses
             this.channel.on('broadcast', { event: 'control-mode' }, (msg) => {
-                console.log('🎮 Received mode change from Spectacles:', msg.payload);
+                console.log('🎮 Received mode change from Glasses:', msg.payload);
                 
                 // Store callback for mode changes
                 if (this.onModeChange) {
@@ -106,7 +107,7 @@ class SpectaclesCursorClient {
         };
 
         try {
-            // Broadcast via Realtime channel (matches Spectacles broadcaster format)
+            // Broadcast via Realtime channel (matches Glasses broadcaster format)
             if (this.channel) {
                 this.channel.send({
                     type: 'broadcast',
@@ -171,21 +172,21 @@ class SpectaclesCursorClient {
     }
 
     setModeChangeCallback(callback) {
-        // Set callback function to be called when Spectacles changes mode
+        // Set callback function to be called when Glasses changes mode
         this.onModeChange = callback;
     }
 
-    async getSpectaclesCursor() {
-        // Return cached Spectacles cursor data from realtime broadcasts
-        if (this.lastSpectaclesCursorData) {
-            console.log('🎯 Returning cached Spectacles cursor:', this.lastSpectaclesCursorData);
-            return this.lastSpectaclesCursorData;
+    async getGlassesCursor() {
+        // Return cached Glasses cursor data from realtime broadcasts
+        if (this.lastGlassesCursorData) {
+            console.log('🎯 Returning cached Glasses cursor:', this.lastGlassesCursorData);
+            return this.lastGlassesCursorData;
         } else {
-            console.log('🔍 No Spectacles cursor data received yet');
+            console.log('🔍 No Glasses cursor data received yet');
             return null;
         }
     }
 }
 
 // Make it globally available
-window.SpectaclesCursorClient = SpectaclesCursorClient;
+window.GlassesCursorClient = GlassesCursorClient;

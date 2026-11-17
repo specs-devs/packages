@@ -2,7 +2,7 @@ import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
 
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Hand and mobile hint animation controller for onboarding during surface placement. Plays targeted
  * animations (mobile tap, far pinch, hand touch) from AnimationPlayer clips, smoothly scales hints
  * in/out with lerp-based transitions, anchors hints to specified transforms for world-space positioning,

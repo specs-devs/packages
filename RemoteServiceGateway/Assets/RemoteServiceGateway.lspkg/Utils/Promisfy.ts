@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Promise wrappers for asynchronous Lens Studio modules. Converts callback-based APIs
  * to Promise-based interfaces for RemoteService, Internet, and RemoteMedia modules.
  */

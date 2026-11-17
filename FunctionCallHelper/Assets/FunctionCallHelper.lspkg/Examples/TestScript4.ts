@@ -1,7 +1,7 @@
 /**
 
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Example test script demonstrating function call helper pattern. Provides a callable
  * function that can be triggered from dynamically generated UI buttons or other components.
  */

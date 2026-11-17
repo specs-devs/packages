@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Marker tracking callback handler that responds to marker found/lost events. Demonstrates
  * animation control based on marker tracking state for augmented reality experiences.
  */
@@ -49,8 +49,14 @@ export class MarkerCallbacks extends BaseScriptComponent {
     this.logger.debug("Marker found");
 
     /* Play the animation when the marker is found */
-    const textureProvider = this.animationImage.getMaterial(0).getPass(0)
-      .baseTex.control as AnimatedTextureFileProvider;
+    const control = this.animationImage.getMaterial(0).getPass(0).baseTex.control;
+    if (!control || !control.isOfType("Provider.AnimatedTextureFileProvider")) {
+      this.logger.debug(
+        "WARN: animationImage's base texture is not an animated texture, nothing to play"
+      );
+      return;
+    }
+    const textureProvider = control as AnimatedTextureFileProvider;
     textureProvider.play(this.loop, this.offset);
   }
 

@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Enhanced 3D volumetric line component with Catmull-Rom spline interpolation. Creates smooth tube
  * geometry by extruding circular cross-sections along path defined by scene objects, provides
  * configurable radius, circle segment count, and interpolation steps for quality control, supports
@@ -420,8 +420,7 @@ export class VolumetricLine extends BaseScriptComponent {
 
     // Get component's transform for relative positioning
     const componentTransform = this.getTransform();
-    const componentWorldPos = componentTransform.getWorldPosition();
-    const componentWorldRot = componentTransform.getWorldRotation();
+    const componentInvWorld = componentTransform.getInvertedWorldTransform();
 
     const originalPositions = this.pathPoints.map((point, index) => {
       const transform = point.getTransform();
@@ -452,11 +451,8 @@ export class VolumetricLine extends BaseScriptComponent {
 
       // Apply coordinate space transformation relative to component
       if (this._useRelativeToComponent && this._useWorldPosition) {
-        // Transform to component's local space
-        pos = pos.sub(componentWorldPos);
-        // Apply inverse rotation to align with component's coordinate system
-        const invRotation = componentWorldRot.invert();
-        pos = invRotation.multiplyVec3(pos);
+        // Transform to component's local space (position, rotation and scale)
+        pos = componentInvWorld.multiplyPoint(pos);
 
         if (this._debugPositions) {
           this.logger.debug(            "Point " +

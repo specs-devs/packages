@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Animated circle shader controller for surface placement visual feedback. Controls loading amount,
  * scan animation toggle, circle color, and thickness via shader parameters, provides smooth in/out
  * animations with cubic easing, manages cancellation for interrupted animations, and displays progress
@@ -41,6 +41,14 @@ export class CircleAnimation extends BaseScriptComponent {
     this.rend.mainPass.whiteColor = isWhite
       ? new vec4(1, 1, 1, 1)
       : new vec4(1, 1, 0, 1);
+  }
+
+  cancelAnimations() {
+    this.completeCancel.cancel();
+  }
+
+  onDestroy() {
+    this.cancelAnimations();
   }
 
   reset() {

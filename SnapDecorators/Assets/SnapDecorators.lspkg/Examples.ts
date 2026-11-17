@@ -1,7 +1,5 @@
 /**
-
-import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Example script demonstrating all SnapDecorators functionality with lifecycle event decorators.
  * Shows @bindStartEvent, @bindEnableEvent, @bindDisableEvent, @bindUpdateEvent, @bindLateUpdateEvent,
  * and @bindDestroyEvent with frame counting, FPS tracking, and clean declarative event handling.

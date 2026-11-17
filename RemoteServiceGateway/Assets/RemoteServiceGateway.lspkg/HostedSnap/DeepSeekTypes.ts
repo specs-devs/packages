@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * TypeScript type definitions for DeepSeek AI API. Defines request and response types for
  * chat completions including messages, tools, streaming chunks, and reasoning content for
  * the Snap-hosted DeepSeek R1 model integration.

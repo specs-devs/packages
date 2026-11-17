@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Play options configuration for animations. Defines how animations should behave when triggered
  * including playing from current state, resetting each time, or toggling between states.
  */

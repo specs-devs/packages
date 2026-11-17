@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Unified client for all Google GenAI APIs. Provides centralized access to Gemini (multimodal AI),
  * Lyria (music/vocal generation), and Imagen (image generation/editing) services with consistent
  * interfaces and backwards compatibility for existing implementations.

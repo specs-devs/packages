@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Microphone input manager for audio recording and streaming. Captures audio frames from
  * the device microphone with bystander rejection via VoiceML, configurable sample rates,
  * and event-based frame delivery for AI audio processing.

@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Height adjustment slider for near-surface placement with visual feedback. Controls ground visual
  * position and alpha based on slider interaction, provides smooth interpolation (speed 4) for alpha
  * transitions, manages 4cm slider range for fine-tuned height control, triggers update callback for
@@ -17,6 +17,7 @@ import animate, {
 
 // SIK no longer ships a Slider component; UIKit owns Slider now.
 import { Slider } from "SpectaclesUIKit.lspkg/Scripts/Components/Slider/Slider";
+import { Interactable } from "SpectaclesInteractionKit.lspkg/Components/Interaction/Interactable/Interactable";
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
 
@@ -47,8 +48,9 @@ export class SurfaceSlider extends BaseScriptComponent {
   enableLoggingLifecycle: boolean = false;
 
   // Logger instance
-  private logger: Logger;  private goundVisualTrans: Transform = null;
+  private logger: Logger;  private groundVisualTrans: Transform = null;
   private surfaceRenderer: RenderMeshVisual = null;
+  private slider: Slider = null;
   private desiredAlpha: number = 0;
   private groundVisualPos: vec3 = vec3.zero();
   private sliderOffsetPos: vec3 = vec3.zero();
@@ -66,11 +68,22 @@ export class SurfaceSlider extends BaseScriptComponent {
 
 
     this.trans = this.getSceneObject().getTransform();
-    this.goundVisualTrans = this.groundVisualObj.getTransform();
+    this.groundVisualTrans = this.groundVisualObj.getTransform();
     this.surfaceRenderer =
       this.groundVisualObj.getComponent("RenderMeshVisual");
     this.surfaceRenderer.mainPass.Alpha = this.desiredAlpha;
     this.createEvent("UpdateEvent").bind(this.onUpdate.bind(this));
+  }
+
+  // The UIKit Slider is a child, so it is not awake yet during this onAwake: hook it up on first use.
+  private getSlider(): Slider {
+    if (this.slider == null) {
+      this.slider = this.sliderObj.getComponent(Slider.getTypeName()) as Slider;
+      this.slider.onValueChange.add((value) => this.onSliderMoved(value));
+      this.slider.onTriggerDown.add(() => this.onSliderStart());
+      this.slider.onTriggerUp.add(() => this.onSliderEnd());
+    }
+    return this.slider;
   }
 
   init(offsetPos: vec3, onSliderUpdated: (value: vec3) => void) {
@@ -86,14 +99,40 @@ export class SurfaceSlider extends BaseScriptComponent {
       getDeltaTime() * 4
     );
     //move ground based on slider position
-    this.goundVisualTrans.setLocalPosition(this.groundVisualPos);
+    this.groundVisualTrans.setLocalPosition(this.groundVisualPos);
   }
 
   resetSlider() {
     this.trans.setLocalScale(vec3.zero());
     this.groundVisualPos.y = 0;
-    this.goundVisualTrans.setLocalPosition(vec3.zero());
-    this.sliderObj.getComponent(Slider.getTypeName()).currentValue = 0.5;
+    this.groundVisualTrans.setLocalPosition(vec3.zero());
+    this.getSlider().currentValue = 0.5;
+  }
+
+  /**
+   * Same teardown as SurfaceDetector.destroySafely: interactables off this frame,
+   * SceneObject destroyed on the next, so SIK's cursor never holds a dead one.
+   */
+  destroySafely() {
+    const sceneObject = this.getSceneObject();
+    this.disableInteractables(sceneObject);
+    const delayedDestroy = this.createEvent("DelayedCallbackEvent");
+    delayedDestroy.bind(() => {
+      sceneObject.destroy();
+    });
+    delayedDestroy.reset(0);
+  }
+
+  private disableInteractables(sceneObject: SceneObject) {
+    const interactables = sceneObject.getComponents(
+      Interactable.getTypeName()
+    ) as Interactable[];
+    interactables.forEach((interactable) => {
+      interactable.enabled = false;
+    });
+    for (let i = 0; i < sceneObject.getChildrenCount(); i++) {
+      this.disableInteractables(sceneObject.getChild(i));
+    }
   }
 
   onSliderStart() {
@@ -108,7 +147,7 @@ export class SurfaceSlider extends BaseScriptComponent {
       -SLIDER_RANGE_CM,
       SLIDER_RANGE_CM
     );
-    this.onSliderUpdateEvent?.(this.goundVisualTrans.getWorldPosition());
+    this.onSliderUpdateEvent?.(this.groundVisualTrans.getWorldPosition());
   }
 
   onSliderEnd() {

@@ -2,7 +2,7 @@ import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
 
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Circle perimeter instantiation with fixed arc length spacing. Spawns prefabs along a circle
  * with consistent arc distance between instances, useful for precise circular layouts.
  */
@@ -33,7 +33,7 @@ export class CirclePerimeterInstantiatorWithFixedArcLengthTS extends BaseScriptC
     numberOfPrefabs: number = 10;
 
     @input
-    @hint("Fixed arc length between instantiated prefabs (used only when numberOfPrefabs is 0)")
+    @hint("Not used: the prefabs are spread evenly over arcAngleSpan (kept so existing scenes keep their value)")
     arcLength: number = 2.0;
 
     @input
@@ -75,7 +75,6 @@ export class CirclePerimeterInstantiatorWithFixedArcLengthTS extends BaseScriptC
         });
     }
 
-    @bindStartEvent
 
 
     onStart(): void {
@@ -97,7 +96,9 @@ export class CirclePerimeterInstantiatorWithFixedArcLengthTS extends BaseScriptC
         let prefabCount = this.numberOfPrefabs;
         
         // Calculate angle step based on the number of prefabs
-        const angleStep = (prefabCount > 1) ? arcSpanRad / (prefabCount - 1) : 0;
+        // An arc includes both ends; a full circle (360° or more) doesn't, so the last copy isn't placed on top of the first
+        const isFullCircle = this.arcAngleSpan >= 360;
+        const angleStep = (prefabCount > 1) ? arcSpanRad / (isFullCircle ? prefabCount : prefabCount - 1) : 0;
         
         // If we're working with a very small arc or just one prefab
         if (prefabCount <= 1 || this.arcAngleSpan <= 0) {
@@ -128,7 +129,10 @@ export class CirclePerimeterInstantiatorWithFixedArcLengthTS extends BaseScriptC
 
             if (this.prefab) {
                 const instance = this.prefab.instantiate(this.sceneObject);
-                instance.getTransform().setWorldPosition(position);
+                // The offsets above are along world axes: turn them with the center so the layout follows its rotation.
+                const centerTransform = this.center.getTransform();
+                const origin = centerTransform.getWorldPosition();
+                instance.getTransform().setWorldPosition(origin.add(centerTransform.getWorldRotation().multiplyVec3(position.sub(origin))));
                 this.logger.debug(`Created prefab instance at position: ${position.x}, ${position.y}, ${position.z}`);
             }
         }

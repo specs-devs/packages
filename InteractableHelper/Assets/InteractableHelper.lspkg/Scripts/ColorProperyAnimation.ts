@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Color property animation configuration for InteractableHelper. Defines color animations with
  * timing, easing, and callback options for material base color transitions.
  */

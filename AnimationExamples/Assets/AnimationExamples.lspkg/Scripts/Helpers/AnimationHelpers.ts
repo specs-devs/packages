@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Shared helpers for the AnimationPlayer examples.
  * Two utilities:
  *   - playFirstClip: wire the AnimationPlayer's first clip to either the
@@ -23,12 +23,12 @@ import { Frame } from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame";
 const FRAME_UI_LAYOUT = {
     titleLocalPosition: new vec3(0, 2, 0),
     titleFontSize: 36,
-    // Text wrap is controlled by text.worldSpaceRect (the "Layout Rect" in the
+    // Text wrap is controlled by text.layoutRect (the "Layout Rect" in the
     // Inspector). Width tuned just inside the Frame's 7.5×7.5 bounds; height is
     // generous so wrapped lines aren't clipped vertically.
     titleBoxWidth: 7,
     titleBoxHeight: 4,
-    buttonLocalPosition: new vec3(0, -3, 0),
+    buttonLocalPosition: new vec3(0, -3, 2),
     buttonSize: new vec3(8, 3, 3),
     buttonTextFontSize: 32,
     buttonTextBoxWidth: 7.5,
@@ -42,7 +42,7 @@ const FRAME_UI_LAYOUT = {
 };
 
 /**
- * Build a centered Rect of `width` × `height` for use as Text.worldSpaceRect.
+ * Build a centered Rect of `width` × `height` for use as Text.layoutRect.
  *
  * @param width - Rect width in centimeters
  * @param height - Rect height in centimeters
@@ -86,7 +86,7 @@ export function buildFrameUI(
     titleText.size = FRAME_UI_LAYOUT.titleFontSize;
     titleText.text = options.title;
     titleText.horizontalOverflow = HorizontalOverflow.Wrap;
-    titleText.worldSpaceRect = centeredRect(FRAME_UI_LAYOUT.titleBoxWidth, FRAME_UI_LAYOUT.titleBoxHeight);
+    titleText.layoutRect = centeredRect(FRAME_UI_LAYOUT.titleBoxWidth, FRAME_UI_LAYOUT.titleBoxHeight);
     titleText.renderOrder = FRAME_UI_LAYOUT.textRenderOrder;
 
     // Button below the title
@@ -104,7 +104,7 @@ export function buildFrameUI(
     buttonText.size = FRAME_UI_LAYOUT.buttonTextFontSize;
     buttonText.text = options.buttonText;
     buttonText.horizontalOverflow = HorizontalOverflow.Wrap;
-    buttonText.worldSpaceRect = centeredRect(FRAME_UI_LAYOUT.buttonTextBoxWidth, FRAME_UI_LAYOUT.buttonTextBoxHeight);
+    buttonText.layoutRect = centeredRect(FRAME_UI_LAYOUT.buttonTextBoxWidth, FRAME_UI_LAYOUT.buttonTextBoxHeight);
     buttonText.renderOrder = FRAME_UI_LAYOUT.textRenderOrder;
 
     return { titleText, button, buttonText, allTexts: [titleText, buttonText] };
@@ -183,4 +183,22 @@ export function playFirstClip(
  */
 export function flatCurve(): AnimationCurve {
     return AnimationCurve.createEasingCurve(0, 0, 0, 0, 1, 1);
+}
+
+/** Replay the configured clip when the example becomes visible or its TAP button is pressed. */
+export function bindReplay(script: BaseScriptComponent, ui: FrameUI, target: SceneObject): void {
+    const replay = () => {
+        const player = target.getComponent("Component.AnimationPlayer") as AnimationPlayer;
+        const clip = player && player.clips.length > 0 ? player.clips[0] : null;
+        if (!clip) return;
+        player.stopClip(clip.name);
+        player.playClip(clip.name);
+    };
+    const deferred = script.createEvent("DelayedCallbackEvent");
+    deferred.bind(replay);
+    script.createEvent("OnStartEvent").bind(() => {
+        ui.button.onTriggerUp.add(replay);
+        deferred.reset(0);
+    });
+    script.createEvent("OnEnableEvent").bind(() => deferred.reset(0));
 }

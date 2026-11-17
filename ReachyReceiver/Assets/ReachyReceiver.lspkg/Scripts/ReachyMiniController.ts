@@ -4,8 +4,8 @@ import animate, {CancelFunction} from "SpectaclesInteractionKit.lspkg/Utils/anim
 import {DaemonInterface, XYZRPYPose} from "./DaemonInterface"
 
 /**
- * Specs Inc. 2026
- * Main controller for Reachy Mini robot integration with Spectacles.
+ * SPECS Inc. 2027
+ * Main controller for Reachy Mini robot integration with Glasses.
  * Manages robot state transitions, look-at target tracking, and idle animation loops.
  * Handles smooth head/body movements with character-driven wobble and antenna animations.
  */
@@ -31,7 +31,7 @@ export class ReachyMiniController extends BaseScriptComponent {
     @ui.label('<span style="color: #94A3B8; font-size: 11px;">Configure robot position and head offset</span>')
 
     @input
-    @hint("SceneObject representing where Reachy robot is positioned in the AR world (e.g., SpectaclesCamera or a fixed anchor point)")
+    @hint("SceneObject representing where Reachy robot is positioned in the AR world (e.g., GlassesCamera or a fixed anchor point)")
     private reachyWorldPosition!: SceneObject;
 
     @input

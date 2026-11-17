@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Represents a price structure for commerce products. Handles pricing information including
  * amount and currency with automatic formatting capabilities.
  */

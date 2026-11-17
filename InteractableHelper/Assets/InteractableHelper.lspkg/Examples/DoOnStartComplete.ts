@@ -1,7 +1,5 @@
 /**
-
-import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Example script demonstrating animation lifecycle callbacks. Shows how to respond to animation
  * start and complete events for coordinating behaviors with animation timing.
  */

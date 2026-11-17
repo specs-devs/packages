@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Mesh generation utilities for creating 2D shapes (circles, lines) and render mesh operations.
  * Provides functions for generating meshes with proper indices and vertices for rendering.
  */
@@ -94,13 +94,15 @@ export class MeshUtils {
     const segments = 16;
     const radius = thickness / 2;
     const linesIndicesOffset = (positions.length - 1) * 4;
+    // Each joint circle emits a center vertex plus segments + 1 ring vertices.
+    const circleVertexCount = segments + 2;
 
     for (let i = 0; i < positions.length; ++i) {
       const [indices, vertices] = MeshUtils.makeCircle2DIndicesVerticesPair(
         positions[i],
         radius,
         segments,
-        linesIndicesOffset + i * segments
+        linesIndicesOffset + i * circleVertexCount
       );
 
       builder.appendIndices(indices);

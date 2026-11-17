@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Utility functions for marker tracking. Provides helper methods for finding cameras and
  * creating marker tracking callbacks with dynamic function invocation.
  */
@@ -13,6 +13,34 @@ export class Utils extends BaseScriptComponent {
   // Re-export getRootCamera from Utilities for backward compatibility
   static getRootCamera(): SceneObject | null {
     return ComponentUtils.getRootCamera();
+  }
+
+  /* onMarkerFound / onMarkerLost are single assignable properties. Chain the new
+   * handler after whatever is already assigned instead of overwriting it. */
+  static addMarkerFoundHandler(
+    markerTrackingComponent: MarkerTrackingComponent,
+    handler: () => void
+  ): void {
+    const previous = markerTrackingComponent.onMarkerFound;
+    markerTrackingComponent.onMarkerFound = () => {
+      if (typeof previous === "function") {
+        previous();
+      }
+      handler();
+    };
+  }
+
+  static addMarkerLostHandler(
+    markerTrackingComponent: MarkerTrackingComponent,
+    handler: () => void
+  ): void {
+    const previous = markerTrackingComponent.onMarkerLost;
+    markerTrackingComponent.onMarkerLost = () => {
+      if (typeof previous === "function") {
+        previous();
+      }
+      handler();
+    };
   }
 
   static createMarkerCallback<T>(

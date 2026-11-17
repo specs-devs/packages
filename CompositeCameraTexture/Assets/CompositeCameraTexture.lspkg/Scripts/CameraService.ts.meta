@@ -23,6 +23,7 @@
   VersionMinor: 0
   VersionPatch: 0
   VersionPrerelease: ""
+  UpdateOrder: 0
   ComponentUid: f2f7c1ed-e4ce-4590-8cd4-9db772cce3bf
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
@@ -31,6 +32,8 @@
     editorCamera: false
     enableLogging: false
     enableLoggingLifecycle: false
+    lensContentMaterial: false
+    lensRenderTarget: false
     screenCropTexture: false
   ScriptTypesHidden:
     {}
@@ -44,6 +47,8 @@
     - editorCamera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
       screenCropTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
       camModule: !<reference.CameraModule> 00000000-0000-0000-0000-000000000000
+      lensContentMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      lensRenderTarget: !<reference.Texture> 00000000-0000-0000-0000-000000000000
       enableLogging: false
       enableLoggingLifecycle: false
   ScriptTypes:
@@ -56,6 +61,8 @@
     - // @input Component.Camera editorCamera
     - // @input Asset.Texture screenCropTexture
     - // @input Asset.CameraModule camModule
+    - '// @input Asset.Material lensContentMaterial {"hint":"Material that shows the Lens content in the composite (Materials/ImageVC). Its baseTex is set at start."}'
+    - '// @input Asset.Texture lensRenderTarget {"hint":"Texture with the Lens content. Leave empty to use the render target of Editor Camera (the Lens camera)."}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'

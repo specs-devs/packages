@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Audio buffer processor for streaming audio to external AI services. Converts Float32
  * audio frames to PCM16 format, manages buffering, and emits Base64-encoded chunks at
  * configurable intervals for real-time audio transmission.

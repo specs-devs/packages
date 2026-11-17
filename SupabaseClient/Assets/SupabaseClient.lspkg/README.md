@@ -1,384 +1,89 @@
+<p align="center">
+  <img src="Docs/media/SupabaseClient.png" width="250px" alt="SupabaseClient"/>
+</p>
+
 # SupabaseClient
 
-A complete Supabase integration for Specs that brings backend-as-a-service capabilities to AR experiences. This package provides full access to Supabase's authentication, database, storage, and edge functions through a polyfilled JavaScript client optimized for Lens Studio. With SupabaseClient, developers can build cloud-connected AR applications with user authentication, real-time data synchronization, file storage, and serverless functions without managing backend infrastructure.
-
-## Features
-
-- **Snapchat Authentication** - Seamless OAuth integration with Snapchat accounts
-- **Database Operations** - Full PostgreSQL access with type-safe queries (select, insert, update, delete)
-- **Storage API** - Upload and download files with support for images, videos, and binary data
-- **Edge Functions** - Call serverless TypeScript functions hosted on Supabase
-- **Real-time Subscriptions** - WebSocket-based live data updates
-- **Type Safety** - Full TypeScript support with auto-generated database types
-- **Polyfills** - Complete browser API compatibility for Lens Studio environment
-- **Automatic Authentication** - Session management and token refresh handled automatically
-
-## Quick Start
-
-```typescript
-import { createClient, type SupabaseClient } from 'SupabaseClient.lspkg/supabase-snapcloud';
-import { Database } from 'DatabaseTypes';
-
-@component
-export class SupabaseExample extends BaseScriptComponent {
-    @input
-    supabaseProject: SupabaseProject;
-
-    private supabase: SupabaseClient<Database>;
-
-    async onAwake() {
-        // Initialize client
-        this.supabase = createClient<Database>(
-            this.supabaseProject.url,
-            this.supabaseProject.publicToken
-        );
-
-        // Authenticate with Snapchat
-        const { data, error } = await this.supabase.auth.signInWithSnapchat();
-        if (error) {
-            print("Auth error: " + error);
-            return;
-        }
-
-        print("Authenticated as: " + data.user.email);
-
-        // Database operations
-        await this.queryDatabase();
-        await this.insertData();
+A bundled Supabase JavaScript SDK with Lens Studio transport/polyfills and a
+Snapchat sign-in convenience method. It supplies a client library, the
+`SnapCloudRequirements` credentials component and a demo test prefab, not UI,
+database deployment or a backend project.
+
+## Usage
+
+This section ships with the package and describes the exact installed revision.
+Generic Lens scripting, scene construction and SPECS spatial design live in
+CLAD skills; client factory behavior, declarations and Lens transport limits live here.
+
+### Package identity
+
+- Descriptor `SupabaseClient.lspkg/package.native` (holds the package version).
+  Existing ReadMe UUID retained; empty setup script and no Instantiable assignment.
+- Consumer module: `SupabaseClient.lspkg/supabase-snapcloud` (JS + matching `.d.ts`).
+  `version.json` records upstream commit `5a6c9c2`; this is not the package version.
+- Declared companions (`package_dependencies.json`): SpectaclesInteractionKit, SpectaclesUIKit,
+  Motion, Icons, Utilities and SnapDecorators. The client bundle imports none of them;
+  `SnapCloudRequirements.ts` imports Utilities and SnapDecorators, and the `Example/` scripts
+  import SpectaclesUIKit and SpectaclesInteractionKit.
+- The client bundle has no @component/@input scripts; `SnapCloudRequirements` is the one
+  reusable component (see [Components](Docs/components.md#snapcloudrequirements)). Polyfills are bundled into the
+  main JS; their separate `.d.ts` files do not have corresponding loose JS modules.
+- Demo prefab: `SupabaseClient.lspkg/SupabaseClient__PLACE_IN_SCENE.prefab`. It is self-contained:
+  it includes the guide (dismissed with "Ok, I understood"), the example carousel
+  (Previous / Next / minimize) and the two examples (`Client Tests`, `Realtime Test`), so dropping it
+  into a Specs scene with Camera, lighting and SIK gives the full demo. The demo scripts ship in
+  `SupabaseClient.lspkg/Example/` (`ExampleCarousel`, `GuideDismissPanel`, `ts__test`,
+  `ts_test_realtime`, `DatabaseTypes`, plus the `Text Texture` used by the Storage upload test);
+  see [Components](Docs/components.md).
+- Credentials: assign your Snap Cloud SupabaseProject on the prefab's `SnapCloudRequirements` object
+  (`SupabaseClient.lspkg/SnapCloudRequirements.ts`); both examples read it from there (their own
+  `supabaseProject` input is a deprecated fallback). The prefab ships without one, so a red-framed
+  "Credentials needed" panel (`CredentialsWarning`) shows before the guide until it is set. No Remote
+  Service Gateway tokens are used. See [Setup](Docs/setup.md).
+
+### Version and API status
+
+Read [API status](Docs/api-status.md). Use the installed declarations as the
+mechanical type contract. A declared upstream browser method is not proof that
+Lens transport/runtime or your Snap Cloud deployment supports that flow.
+
+### Applicability
+
+Use this reusable library for Snap Cloud auth, table/RPC queries, storage,
+functions and realtime. Use SnapCloudExamples for scene wiring/demo controllers;
+SyncKit supplies shared object state/ownership rather than this backend SDK.
+
+### Package Docs (ship in Docs/)
+
+- [Setup](Docs/setup.md): read first for the Snap Cloud project on SnapCloudRequirements and the credentials warning.
+- [Cheat sheet](Docs/cheat-sheet.md): read first for factory, result handling and transport limits.
+- [API status](Docs/api-status.md): read for Lens adaptation vs upstream declarations.
+- [Client/auth/query API](Docs/api.md): read for factory, options and complete public callable signatures.
+- [Storage/functions API](Docs/storage-functions.md): read for bucket/file operations and invocation.
+- [Realtime API](Docs/realtime.md): read for channel events, presence, send and cleanup.
+- [Polyfills](Docs/polyfills.md): read for exact Lens transport behavior and unsupported browser assumptions.
+- [Components](Docs/components.md): read for the demo prefab's scripts in `Example/` and their inputs.
+- [Examples](Docs/examples.md): read for compile-checked guarded functions (network only on invocation).
+- [Troubleshooting](Docs/troubleshooting.md): read for source limits and pending validation.
+- [Original tutorial](Docs/tutorial.md): preserved older examples and claims; illustrative fragments.
+
+### Related CLAD skills
+
+Use [Snap Cloud](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/specs-snap-cloud)
+and [Internet](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/specs-internet)
+for platform routing. CLAD setup: https://developers.specs.com/docs/clad/setup/setup-ai/.
+Use the installed SupabaseProject/SupabaseModule declarations for engine assets.
+
+### Verification
+
+1. Compile clean against `SupabaseClient.lspkg/supabase-snapcloud` without `as any`; keep the `SupabaseProject` input `@allowUndefined` and guard it before `createClient`.
+2. Preview with no project assigned: no `TypeError … 'url' of undefined`; your guard message prints instead.
+3. With a test Snap Cloud project: `signInWithSnapchat()` returns a user, then one table query and one Storage upload/download return `error === null`.
+4. Realtime: `channel(...).subscribe()` reaches `SUBSCRIBED`, a `send` broadcast is received, and `removeAllChannels()` runs in `onDestroy`.
+5. Repeat on a paired SPECS device (auth, connection loss, cleanup). The package's demo prefab (`Client Tests` / `Realtime Test` carousel steps) runs exactly these checks and prints PASS / FAIL in the Logger.
+
+## Built with 👽 by the SPECS team
 
-        // Storage operations
-        await this.uploadFile();
-
-        // Call edge function
-        await this.callFunction();
-    }
-
-    async queryDatabase() {
-        const { data, error } = await this.supabase
-            .from('messages')
-            .select('id, content, created_at')
-            .order('created_at', { ascending: false })
-            .limit(10);
-
-        if (error) {
-            print("Query error: " + error);
-            return;
-        }
-
-        print("Retrieved " + data.length + " messages");
-        data.forEach(msg => print(msg.content));
-    }
-
-    async insertData() {
-        const { data, error } = await this.supabase
-            .from('messages')
-            .insert({ content: 'Hello from Specs!' });
-
-        if (error) {
-            print("Insert error: " + error);
-        } else {
-            print("Message inserted successfully");
-        }
-    }
-
-    async uploadFile() {
-        // Upload texture as image
-        const imageData = this.textureToBlob(myTexture);
-
-        const { data, error } = await this.supabase.storage
-            .from('images')
-            .upload('spectacles-photo.jpg', imageData, {
-                contentType: 'image/jpeg',
-                upsert: true
-            });
-
-        if (error) {
-            print("Upload error: " + error);
-        } else {
-            print("File uploaded: " + data.path);
-        }
-    }
-
-    async callFunction() {
-        const { data, error } = await this.supabase.functions.invoke('my-function', {
-            body: { name: 'Specs User' }
-        });
-
-        if (error) {
-            print("Function error: " + error);
-        } else {
-            print("Function result: " + JSON.stringify(data));
-        }
-    }
-
-    private textureToBlob(texture: Texture): Uint8Array {
-        // Implementation for texture conversion
-        return new Uint8Array();
-    }
-}
-```
-
-## Script Highlights
-
-### Authentication System
-
-The authentication module provides seamless integration with Snapchat's OAuth system through the signInWithSnapchat method which handles the complete OAuth flow automatically. Once authenticated, the session is maintained across app launches with automatic token refresh. The getUser method retrieves the current user's profile including email and Snapchat-specific metadata. Authentication state can be monitored through event listeners for sign-in and sign-out events. All API requests automatically include the user's authentication token, and the session persists in secure storage managed by Lens Studio.
-
-### Database Operations
-
-The database client provides a type-safe query builder for PostgreSQL operations with full TypeScript intellisense based on your database schema. The from() method creates a query for a specific table, and chainable methods like select(), insert(), update(), delete(), eq(), gt(), lt(), order(), and limit() build complex queries with compile-time type checking. Queries return promises with data and error properties following Supabase conventions. The client supports joins, aggregations, full-text search, and stored procedure calls. Row-level security policies defined in Supabase are automatically enforced based on the authenticated user.
-
-### Storage API
-
-The storage module enables file uploads and downloads with support for any binary data including images, videos, and 3D models. The from() method selects a storage bucket, and upload() accepts Uint8Array, Blob, or File objects with configurable content types and upsert behavior. The download() method retrieves files as binary data, while getPublicUrl() generates shareable URLs for public buckets. List() retrieves file metadata, and remove() deletes files. The API handles multipart uploads for large files automatically and supports resumable uploads for reliability.
-
-### Edge Functions
-
-Edge functions provide serverless compute capabilities executed on Supabase's global infrastructure. The invoke() method calls a deployed function by name with optional body, headers, and query parameters. Functions receive the authenticated user context automatically and can access the database with admin privileges. Response data is automatically parsed as JSON, and streaming responses are supported for real-time generation use cases. Functions can be used for custom business logic, AI integrations, payment processing, or any server-side operations.
-
-### Polyfill System
-
-The package includes comprehensive polyfills that bridge browser APIs with Lens Studio's environment including fetch(), WebSocket, Headers, FormData, URL, URLSearchParams, TextDecoder, and timer functions. These polyfills enable the standard Supabase JavaScript client to run unmodified in Lens Studio, maintaining full compatibility with Supabase's API surface. The polyfills are optimized for Specs' runtime and handle platform-specific quirks transparently. Developers can use standard web APIs in their code, and the polyfills translate to Lens Studio equivalents automatically.
-
-## Core API Methods
-
-### Authentication
-
-```typescript
-// Sign in with Snapchat OAuth
-supabase.auth.signInWithSnapchat(): Promise<{data, error}>;
-
-// Get current user
-supabase.auth.getUser(): Promise<{data: User, error}>;
-
-// Sign out
-supabase.auth.signOut(): Promise<{error}>;
-
-// Listen to auth state changes
-supabase.auth.onAuthStateChange((event, session) => void);
-```
-
-### Database
-
-```typescript
-// Query builder
-supabase.from('table_name')
-    .select('column1, column2')
-    .eq('column', value)
-    .gt('column', value)
-    .lt('column', value)
-    .order('column', { ascending: true })
-    .limit(10)
-    .single(); // Returns single row
-
-// Insert
-supabase.from('table_name').insert({ col: 'value' });
-supabase.from('table_name').insert([{ col: 'val1' }, { col: 'val2' }]);
-
-// Update
-supabase.from('table_name').update({ col: 'new_value' }).eq('id', 1);
-
-// Delete
-supabase.from('table_name').delete().eq('id', 1);
-
-// Upsert
-supabase.from('table_name').upsert({ id: 1, col: 'value' });
-```
-
-### Storage
-
-```typescript
-// Upload file
-supabase.storage.from('bucket_name').upload('path/file.jpg', fileData, {
-    contentType: 'image/jpeg',
-    upsert: true
-});
-
-// Download file
-supabase.storage.from('bucket_name').download('path/file.jpg');
-
-// Get public URL
-supabase.storage.from('bucket_name').getPublicUrl('path/file.jpg');
-
-// List files
-supabase.storage.from('bucket_name').list('folder');
-
-// Delete file
-supabase.storage.from('bucket_name').remove(['path/file.jpg']);
-```
-
-### Edge Functions
-
-```typescript
-// Invoke function
-supabase.functions.invoke('function-name', {
-    body: { key: 'value' },
-    headers: { 'Custom-Header': 'value' }
-});
-```
-
-## Advanced Usage
-
-### Example 1: Real-time Leaderboard
-
-```typescript
-import { createClient } from 'SupabaseClient.lspkg/supabase-snapcloud';
-
-@component
-export class RealtimeLeaderboard extends BaseScriptComponent {
-    @input supabaseProject: SupabaseProject;
-    @input leaderboardText: Text;
-
-    private supabase: any;
-    private subscription: any;
-
-    async onAwake() {
-        this.supabase = createClient(
-            this.supabaseProject.url,
-            this.supabaseProject.publicToken
-        );
-
-        await this.supabase.auth.signInWithSnapchat();
-
-        // Load initial data
-        await this.loadLeaderboard();
-
-        // Subscribe to real-time updates
-        this.subscription = this.supabase
-            .channel('leaderboard_changes')
-            .on('postgres_changes', {
-                event: '*',
-                schema: 'public',
-                table: 'scores'
-            }, (payload) => {
-                print('Change detected:', payload);
-                this.loadLeaderboard();
-            })
-            .subscribe();
-    }
-
-    async loadLeaderboard() {
-        const { data, error } = await this.supabase
-            .from('scores')
-            .select('username, score')
-            .order('score', { ascending: false })
-            .limit(10);
-
-        if (!error && data) {
-            let text = 'TOP 10 SCORES\n\n';
-            data.forEach((entry, index) => {
-                text += `${index + 1}. ${entry.username}: ${entry.score}\n`;
-            });
-            this.leaderboardText.text = text;
-        }
-    }
-
-    async submitScore(score: number) {
-        const { data: userData } = await this.supabase.auth.getUser();
-
-        await this.supabase.from('scores').insert({
-            user_id: userData.user.id,
-            username: userData.user.email.split('@')[0],
-            score: score
-        });
-    }
-
-    onDestroy() {
-        if (this.subscription) {
-            this.subscription.unsubscribe();
-        }
-    }
-}
-```
-
-### Example 2: User Profile Management
-
-```typescript
-@component
-export class UserProfile extends BaseScriptComponent {
-    @input supabaseProject: SupabaseProject;
-    @input profileImage: Texture;
-
-    private supabase: any;
-    private userId: string;
-
-    async onAwake() {
-        this.supabase = createClient(
-            this.supabaseProject.url,
-            this.supabaseProject.publicToken
-        );
-
-        const { data } = await this.supabase.auth.signInWithSnapchat();
-        this.userId = data.user.id;
-
-        await this.loadProfile();
-    }
-
-    async loadProfile() {
-        const { data, error } = await this.supabase
-            .from('profiles')
-            .select('username, avatar_url, bio')
-            .eq('user_id', this.userId)
-            .single();
-
-        if (data) {
-            print(`Username: ${data.username}`);
-            print(`Bio: ${data.bio}`);
-
-            if (data.avatar_url) {
-                await this.loadAvatar(data.avatar_url);
-            }
-        }
-    }
-
-    async updateProfile(username: string, bio: string) {
-        const { error } = await this.supabase
-            .from('profiles')
-            .upsert({
-                user_id: this.userId,
-                username: username,
-                bio: bio,
-                updated_at: new Date().toISOString()
-            });
-
-        if (!error) {
-            print('Profile updated successfully');
-        }
-    }
-
-    async uploadAvatar(imageData: Uint8Array) {
-        const fileName = `${this.userId}/avatar.jpg`;
-
-        const { data, error } = await this.supabase.storage
-            .from('avatars')
-            .upload(fileName, imageData, {
-                contentType: 'image/jpeg',
-                upsert: true
-            });
-
-        if (!error) {
-            const { data: urlData } = this.supabase.storage
-                .from('avatars')
-                .getPublicUrl(fileName);
-
-            await this.updateProfile(null, null);
-        }
-    }
-
-    async loadAvatar(url: string) {
-        const { data, error } = await this.supabase.storage
-            .from('avatars')
-            .download(url);
-
-        if (!error && data) {
-            // Convert blob to texture
-            // Implementation specific to texture loading
-        }
-    }
-}
-```
-
-*Maintained with 👽 by the SPECS Team*
 
 
 

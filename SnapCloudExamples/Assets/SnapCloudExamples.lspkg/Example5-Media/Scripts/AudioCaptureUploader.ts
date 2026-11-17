@@ -5,12 +5,12 @@
 import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService";
 import {RectangleButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton"
 import {createClient} from "SupabaseClient.lspkg/supabase-snapcloud"
-import {SnapCloudRequirements} from "./SnapCloudRequirements"
+import {SnapCloudRequirements} from "../../SnapCloudRequirements"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent} from "SnapDecorators.lspkg/decorators"
 
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Audio capture and upload to Snap Cloud Storage. Records microphone audio chunks with PCM16
  * conversion, handles frame buffering, uploads to Supabase storage buckets, and provides
  * recording state management with button controls.

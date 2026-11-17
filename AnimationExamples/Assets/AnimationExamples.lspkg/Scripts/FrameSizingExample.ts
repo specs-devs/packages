@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Non-transform animation: drive the Frame's `innerSize` (vec2) directly.
  * Unlike the other examples that animate the SceneObject's Transform (which
  * cascades to children), this one resizes the Frame container itself in place.
@@ -25,7 +25,7 @@
 // finish initializing COLORS before the visual chain reads it.
 import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService";
 import { Frame } from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame";
-import { buildFrameUI, playFirstClip } from "./Helpers/AnimationHelpers";
+import { bindReplay, buildFrameUI, playFirstClip } from "./Helpers/AnimationHelpers";
 
 @component
 export class FrameSizingExample extends BaseScriptComponent {
@@ -79,7 +79,8 @@ export class FrameSizingExample extends BaseScriptComponent {
     onAwake() {
         if (this.enableLoggingLifecycle) print(`[${this.sceneObject.name}] FrameSizingExample.onAwake`);
 
-        buildFrameUI(this.sceneObject, { title: "Frame Sizing", buttonText: "TAP" });
+        const ui = buildFrameUI(this.sceneObject, { title: "Frame Sizing", buttonText: "TAP" });
+        bindReplay(this, ui, this.sceneObject);
         this.frame = this.sceneObject.getComponent(Frame.getTypeName()) as Frame;
 
         this.createEvent("OnStartEvent").bind(() => {

@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Legacy type definitions for Google Gemini API. Maintained for backwards compatibility.
  * New implementations should use GoogleGenAITypes instead.
  *

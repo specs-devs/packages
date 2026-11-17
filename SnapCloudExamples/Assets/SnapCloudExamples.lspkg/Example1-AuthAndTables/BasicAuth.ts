@@ -1,11 +1,12 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Basic Snap Cloud authentication example using Snapchat provider. Demonstrates Supabase client
  * initialization, user sign-in with ID token, session management, and authentication verification
  * for connected experiences.
  */
 import {createClient, SupabaseClient} from "SupabaseClient.lspkg/supabase-snapcloud"
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
+import {SnapCloudRequirements} from "../SnapCloudRequirements"
 
 @component
 export class BasicAuth extends BaseScriptComponent {
@@ -14,6 +15,13 @@ export class BasicAuth extends BaseScriptComponent {
   @ui.label('<span style="color: #94A3B8; font-size: 11px;">Supabase project for authentication</span>')
 
   @input
+  @allowUndefined
+  @hint("SnapCloudRequirements component holding the Supabase project")
+  snapCloudRequirements: SnapCloudRequirements
+
+  @input
+  @allowUndefined
+  @hint("Deprecated: use snapCloudRequirements. Only read when snapCloudRequirements isn't wired.")
   supabaseProject: SupabaseProject
 
   private client: SupabaseClient
@@ -29,9 +37,22 @@ export class BasicAuth extends BaseScriptComponent {
     this.initSupabase()
   }
 
+  /** The project from SnapCloudRequirements, or the deprecated supabaseProject input when it isn't wired. */
+  private getSupabaseProject(): SupabaseProject | undefined {
+    if (this.snapCloudRequirements) {
+      return this.snapCloudRequirements.isConfigured() ? this.snapCloudRequirements.getSupabaseProject() : undefined
+    }
+    return this.supabaseProject
+  }
+
   async initSupabase() {
+    const supabaseProject = this.getSupabaseProject()
+    if (!supabaseProject) {
+      print("Supabase not configured: assign your project to SnapCloudRequirements")
+      return
+    }
     print("Initializing Supabase client...")
-    print("Project URL: " + this.supabaseProject.url)
+    print("Project URL: " + supabaseProject.url)
 
     const options = {
       realtime: {
@@ -40,7 +61,7 @@ export class BasicAuth extends BaseScriptComponent {
       }
     }
 
-    this.client = createClient(this.supabaseProject.url, this.supabaseProject.publicToken, options)
+    this.client = createClient(supabaseProject.url, supabaseProject.publicToken, options)
 
     if (this.client) {
       print("Supabase client created successfully")

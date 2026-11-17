@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Demonstrates accessing a JavaScript component from TypeScript without a declaration file.
  * Uses the 'any' type for flexibility but without IntelliSense support or type checking.
  */
@@ -7,7 +7,7 @@ import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent } from "SnapDecorators.lspkg/decorators";
 
 @component
-export class TSComponentB extends BaseScriptComponent {
+export class AccessJSfromTSwithouthDeclaration_TSComponentB extends BaseScriptComponent {
   @ui.separator
   @ui.label('<span style="color: #60A5FA;">JavaScript Component Reference</span>')
   @ui.label('<span style="color: #94A3B8; font-size: 11px;">Reference to the JavaScript component accessed dynamically without type definitions</span>')
@@ -42,7 +42,7 @@ export class TSComponentB extends BaseScriptComponent {
 
   // Helper method for debug logging
   private log(message: string): void {
-    if (this.enableLogging || this.enableLoggingLifecycle) {
+    if (this.debug && (this.enableLogging || this.enableLoggingLifecycle)) {
       print(message);
     }
   }
@@ -139,6 +139,12 @@ export class TSComponentB extends BaseScriptComponent {
     if (this.initialized && this.refScript) {
       this.refScript.debug = this.debug;
     }
-    this.log(`Debug mode ${this.debug ? 'enabled' : 'disabled'}`);
+    // Report the toggle itself even when Debug was just turned off
+    if (this.enableLogging || this.enableLoggingLifecycle) {
+      print(`Debug mode ${this.debug ? 'enabled' : 'disabled'}`);
+    }
   }
 }
+
+/** @deprecated Use AccessJSfromTSwithouthDeclaration_TSComponentB. Kept so existing imports of the old name still compile. */
+export { AccessJSfromTSwithouthDeclaration_TSComponentB as TSComponentB };

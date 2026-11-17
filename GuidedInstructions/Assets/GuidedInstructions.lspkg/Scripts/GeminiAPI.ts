@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Gemini API component for the Depth Cache Spectacles lens.
+ * SPECS Inc. 2027
+ * Gemini API component for the Depth Cache Glasses lens.
  */
 // Preload ThemeService before any UIKit visual to break a circular-import init-order
 // crash in the package (Visual.ts imports ThemeService before defining the Visual class +
@@ -60,6 +60,14 @@ export class GeminiAPI extends BaseScriptComponent {
       },
       () => {
         this.logger.error("Image encoding failed!")
+        // Complete the request like a Gemini error, so the caller clears its loading state.
+        if (callback != null) {
+          callback({
+            points: [],
+            lines: [],
+            aiMessage: "reponse error..."
+          })
+        }
       },
       CompressionQuality.HighQuality,
       EncodingType.Png

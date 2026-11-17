@@ -1,3 +1,4 @@
+//@component
 //@input SceneObject parentSceneObject {"hint":"The parent scene object to access"}
 //@input bool debug {"hint":"Show logs in the console"}
 

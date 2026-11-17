@@ -1,3 +1,4 @@
+//@component
 //@input SceneObject mySceneObject {"hint":"The object to access the component from"}
 //@input bool debug {"hint":"Show logs in the console"}
 

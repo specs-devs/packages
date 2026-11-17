@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * WebSocket client for receiving real-time mocopi motion capture data from relay server. Handles
  * connection management, automatic reconnection, message parsing, and FPS tracking for skeleton
  * and frame data streams.
@@ -16,11 +16,12 @@ const log = new NativeLogger("MocopiWebSocketClient")
 export class MocopiWebSocketClient extends BaseScriptComponent {
   private internetModule: InternetModule = require("LensStudio:InternetModule")
 
+  // Placeholder host: deploy your own copy of the Mocopi forwarding server (see HostedServerExample/ or LocalServerExample/) and put its URL here (Inspector or code).
   @ui.separator
   @ui.label('<span style="color: #60A5FA;">Server Configuration</span>')
   @ui.label('<span style="color: #94A3B8; font-size: 11px;">WebSocket server URL (wss:// for production, ws:// for local testing)</span>')
   @input
-  serverUrl: string = "wss://mocopy-railway-service-production.up.railway.app"
+  serverUrl: string = "wss://your-mocopi-server.example.com"
 
   @ui.separator
   @ui.label('<span style="color: #60A5FA;">Connection Settings</span>')

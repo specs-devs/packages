@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * TypeScript type definitions for Snap3D generative 3D model API. Defines types for text-to-3D
  * generation requests, status polling, artifact handling (images, base mesh, refined mesh), and
  * event-based asset loading for AI-generated 3D content.

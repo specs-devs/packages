@@ -1,15 +1,19 @@
+//@component
 /**
  * Exposes distance-based events.
  */
 
 //@input SceneObject target {"hint":"Target to measure distance from"}
-//@input float[] distances = {} {"hint":"Distances that will trigger events when crossed (in meters)"}
+//@input float[] distances = {} {"hint":"Distances that will trigger events when crossed (in cm, world units)"}
 //@input Component.ScriptComponent[] events = {} {"hint":"Script components (like DistanceEventsCallbacks) that have the callback functions"}
 //@input string[] eventFunctions = {} {"hint":"Function names to call on the corresponding event scripts (e.g. 'onDistanceThresholdCrossed')"}
 //@input bool triggerOnGreaterThan = true {"hint":"Whether to trigger when distance becomes greater than threshold (true) or less than threshold (false)"}
 
 // Initialize state variables
 var _ranges = [];
+// Ranges created from the inspector arrays, so setup can replace them without touching code-added ranges
+var _inspectorRanges = [];
+var _isSetUp = false;
 var _distanceToTarget = 0;
 var _triggeredDistances = new Set();
 
@@ -31,13 +35,18 @@ function onStart() {
  * Sets up distance events based on inspector values
  * 
  * How to use:
- * 1. Add distances to the "distances" array (e.g., 1, 2, 3 for 1m, 2m, 3m thresholds)
+ * 1. Add distances to the "distances" array (e.g., 50, 100, 200 for 50 cm, 1 m, 2 m thresholds - values are in cm)
  * 2. For each distance, add a corresponding script component (like DistanceEventsCallbacks) to the "events" array
  * 3. For each script component, add the function name you want to call (e.g., "onDistanceThresholdCrossed") to the "eventFunctions" array
  */
 function setupDistanceEvents() {
-    // Clear any existing ranges
-    clearRanges();
+    _isSetUp = true;
+    
+    // Clear previously created inspector ranges (ranges added from code with addRange are kept)
+    _ranges = _ranges.filter(function(range) {
+        return _inspectorRanges.indexOf(range) === -1;
+    });
+    _inspectorRanges = [];
     
     // Validate that we have matching arrays
     if (script.distances.length === 0) {
@@ -68,6 +77,7 @@ function setupDistanceEvents() {
         var maxDistance = script.triggerOnGreaterThan ? Number.MAX_VALUE : distance;
         
         var range = addRange(minDistance, maxDistance);
+        _inspectorRanges.push(range);
         
         // Use an immediately invoked function to create closure with current values
         (function(currentDistance, currentScript, currentFunction) {
@@ -97,6 +107,11 @@ function setupDistanceEvents() {
 
 function onUpdate() {
     if (!script.target) return;
+    
+    // Target assigned from code after start: set up the inspector ranges now
+    if (!_isSetUp) {
+        setupDistanceEvents();
+    }
     
     var myPosition = script.sceneObject.getTransform().getWorldPosition();
     var targetPosition = script.target.getTransform().getWorldPosition();
@@ -137,6 +152,7 @@ function addRange(minDistance, maxDistance) {
  */
 function clearRanges() {
     _ranges = [];
+    _inspectorRanges = [];
 }
 
 /**

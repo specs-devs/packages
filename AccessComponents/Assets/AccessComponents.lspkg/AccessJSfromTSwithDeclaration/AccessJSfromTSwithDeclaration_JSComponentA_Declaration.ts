@@ -1,7 +1,7 @@
 /**
 
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * TypeScript declaration file for a JavaScript component. Provides type definitions that allow
  * TypeScript code to safely access JavaScript component properties and methods with full IntelliSense.
  */

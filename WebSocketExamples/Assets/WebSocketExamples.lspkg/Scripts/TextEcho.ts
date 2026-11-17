@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Simple WebSocket echo example demonstrating basic bidirectional communication.
  * Connects to a WebSocket server, sends text and binary messages, and logs all received messages.
  * Perfect for testing WebSocket connectivity with echo servers.
@@ -20,8 +20,8 @@ export class TextEcho extends BaseScriptComponent {
   internetModule: InternetModule;
 
   @input
-  @hint("WebSocket server URL (e.g., ws://192.168.1.100/ws)")
-  ipAddress: string = "ws://192.168.1.100/ws";
+  @hint("WebSocket server URL. This is a PLACEHOLDER - replace YOUR-IP-ADDRESS with your server's IP (e.g., ws://192.168.1.100/ws). See README.")
+  ipAddress: string = "ws://YOUR-IP-ADDRESS/ws";
 
   @ui.separator
   @ui.label('<span style="color: #60A5FA;">Logging Configuration</span>')
@@ -50,6 +50,10 @@ export class TextEcho extends BaseScriptComponent {
       this.logger.debug("LIFECYCLE: onAwake() - Component waking up");
     }
 
+    // Always surface the setup requirement, even when logging toggles are off,
+    // so it's clear this example won't connect until it's configured.
+    this.logSetupNotice();
+
     // Validate required inputs
     assert(this.internetModule !== null, "Internet Module must be assigned in the inspector");
     assert(this.internetModule !== undefined, "Internet Module must be assigned in the inspector");
@@ -57,6 +61,40 @@ export class TextEcho extends BaseScriptComponent {
     if (this.enableLoggingLifecycle) {
       this.logger.success("TextEcho initialized successfully");
     }
+  }
+
+  /**
+   * Prints a one-time setup notice that is always visible (independent of the
+   * logging toggles). This example ships with a placeholder IP address and
+   * requires a reachable WebSocket echo server, so out of the box any
+   * connection attempt is expected to fail. See the package README for setup.
+   */
+  private logSetupNotice(): void {
+    print("========================================================");
+    print("[WebSocketExamples/TextEcho] SETUP REQUIRED");
+    print("This example does NOT work out of the box.");
+    print("Configure the 'IP Address' input with your WebSocket server");
+    print("and make sure a compatible echo server is running.");
+    print("Current IP Address: " + this.ipAddress);
+    if (this.isPlaceholderAddress(this.ipAddress)) {
+      print("NOTE: 'IP Address' is still the placeholder value - update it");
+      print("to your server, e.g. ws://192.168.1.100/ws");
+    }
+    print("See the package README.md (Scene Setup / Hardware Setup) for steps.");
+    print("Until configured, connection attempts are expected to fail.");
+    print("========================================================");
+  }
+
+  /**
+   * Returns true when the configured URL is still an unedited placeholder
+   * (i.e. the example has not been pointed at a real server yet).
+   * @param url - The configured WebSocket URL
+   */
+  private isPlaceholderAddress(url: string): boolean {
+    if (!url) {
+      return true;
+    }
+    return url.toUpperCase().indexOf("YOUR-IP-ADDRESS") !== -1;
   }
 
   /**
@@ -102,6 +140,13 @@ export class TextEcho extends BaseScriptComponent {
    * Establishes WebSocket connection to the echo server
    */
   private connect(): void {
+    // Always warn (regardless of logging toggles) when the address is still a
+    // placeholder - this is the #1 reason the example appears "broken".
+    if (this.isPlaceholderAddress(this.ipAddress)) {
+      print("[WebSocketExamples/TextEcho] Cannot connect: 'IP Address' is still the placeholder (" + this.ipAddress + "). Set it to your server, e.g. ws://192.168.1.100/ws. See README.");
+      return;
+    }
+
     if (this.enableLogging) {
       this.logger.info("Attempting to connect to " + this.ipAddress);
     }

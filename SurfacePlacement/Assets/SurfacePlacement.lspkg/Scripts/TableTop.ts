@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Tabletop surface detection using hand pose validation for flat surface recognition. Validates hand
  * orientation (palm down), joint height consistency, and stability over 60 frames for calibration,
  * tracks position history for movement threshold detection (1.5cm), integrates optional SurfaceSlider
@@ -66,7 +66,7 @@ export class TableTop extends SurfaceDetector {
   onDestroy() {
     super.onDestroy();
     if (this.surfaceSlider) {
-      this.surfaceSlider.getSceneObject().destroy();
+      this.surfaceSlider.destroySafely();
       this.surfaceSlider = null;
     }
   }
@@ -223,7 +223,7 @@ export class TableTop extends SurfaceDetector {
     list.push(hand.pinkyTip.position.y);
   }
 
-  //support calibation with either single hand only or both hands
+  //support calibration with either single hand only or both hands
   private updateCalibration(leftHandValid: boolean, rightHandValid: boolean) {
     //get angle difference from gravity vs hands to make sure they are on flat surface
     const leftAngleValid =
@@ -292,7 +292,7 @@ export class TableTop extends SurfaceDetector {
         this.desiredPosition = mobilePosition;
         const worldPhoneForward = phoneForward.cross(vec3.up()).normalize();
         //rotate UI to align with gravity
-        this.desiredRotation = this.desiredRotation = quat.lookAt(
+        this.desiredRotation = quat.lookAt(
           worldPhoneForward,
           vec3.up()
         );
@@ -316,7 +316,7 @@ export class TableTop extends SurfaceDetector {
       }
       this.setCircleColor(poseValid);
 
-      //set UI instructions base on phone tracking state
+      //set UI instructions based on phone tracking state
       textRot = poseValid
         ? quat.fromEulerVec(new vec3(Math.PI / 4, 0, 0))
         : quat.quatIdentity();
@@ -332,7 +332,7 @@ export class TableTop extends SurfaceDetector {
 
       const isEitherHandValid = rightHandValid || leftHandValid;
 
-      //set UI instructions base on hand tracking state
+      //set UI instructions based on hand tracking state
       textRot = isEitherHandValid
         ? quat.fromEulerVec(new vec3(Math.PI / 4, 0, 0))
         : quat.quatIdentity();

@@ -2,8 +2,10 @@ import {AgentInspectScript} from "AiPreviewAgentInspect.lspkg/AgentInspectScript
 import {MessagePublisher} from "AiPreviewAgentInspect.lspkg/messaging/MessagePublisher"
 import {Logger} from "Leaf.lspkg/Utils/common/Logger"
 import {BaseMessage} from "Leaf.lspkg/Utils/common/MessagingSystem/MessageTypes/BaseMessage"
+import {SIK} from "SpectaclesInteractionKit.lspkg/SIK"
 import {InteractionCommand, InteractionResponse} from "./AgentMessages"
 import {InteractionHandler} from "./InteractionHandler"
+import {requestHandRig} from "./interactor/TrackedHandWrapper"
 
 const LOG = new Logger("AgentInteractScript")
 
@@ -23,7 +25,7 @@ function findAgentInspectScript(obj: SceneObject): AgentInspectScript | null {
 }
 
 /**
- * Spectacles-only AI preview interaction agent (Pinch / Hover / Poke / Drag /
+ * Glasses-only AI preview interaction agent (Pinch / Hover / Poke / Drag /
  * Gesture / Release / Rotate / Wait).
  *
  * Requires AgentInspectScript on this SceneObject or any ancestor — that
@@ -40,6 +42,11 @@ export class AgentInteractScript extends BaseScriptComponent {
     // the sibling AgentInspectScript never creates its publisher, and these
     // interaction handlers have no agent to drive them, so bail before touching it.
     if (!global.deviceInfoSystem.isEditor()) return
+
+    // Warm SIK 3's lazy hand-rig load at boot so it overlaps idle time (see requestHandRig).
+    for (const handType of ["left", "right"] as const) {
+      requestHandRig(SIK.HandInputData.getHand(handType))
+    }
 
     // Walk up the scene-object chain looking for the sibling/ancestor that
     // owns the publisher. Lets users place AgentInteractScript on the same

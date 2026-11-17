@@ -14,6 +14,22 @@
   ImporterSettings: !<AssetImporterSettings>
     {}
   CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<SceneObject/000f78a7-4e3d-48c8-ad10-ebf5310f73a2>
+  PrefabRemaps:
+    []
+  Name: OkButton
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: -8.500000, z: 0.500000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 4e257d6d-8e50-4669-ac50-e9535380ed1e
+    - !<own> e7f1f760-625b-449a-9fd5-e00d6be750c7
 - !<ScriptComponent/00484e18-a763-4297-7bce-a94e71f865e6>
   PrefabRemaps:
     []
@@ -98,13 +114,14 @@
   Enabled: true
   ScriptAsset: !<reference> 657cbbe5-2a9c-4889-93fb-fd72ba8a1d52
   ScriptInputsDefault:
+    targetOutlineMaterial: true
     hoveringColor: true
     activatingColor: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
-      targetOutlineMaterial: !<reference.Material> 7231c7bc-6c14-4331-ad23-9ab928107707
+      targetOutlineMaterial: !<reference.Material> 7ac80b6c-979a-4a00-a694-099f296be161
       hoveringColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 0.040000, w: 1.000000}
       activatingColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
       outlineWeight: 0.100000
@@ -144,6 +161,7 @@
     Scores: Stored in Supabase in the game_leaderboard_scores table, one best score per authenticated user. In this example, PinchGameController submits via GlobalLeaderboard when a round ends; the leaderboard refreshes with get_top_scores after each submission. Sorting is configurable (descending = higher wins, ascending = lower wins).
     
     Scaling:  Each authenticated player submits to the same shared leaderboard.
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -151,8 +169,7 @@
   SizeToFit: false
   FontSize: 35.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -10.000000
     bottom: -10.000000
@@ -169,7 +186,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -261,6 +278,7 @@
   Text: |
     Capture a series of frames and upload it on your storage bucket or stream in realtime (only frames no audio) 
 
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -268,8 +286,7 @@
   SizeToFit: false
   FontSize: 30.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -10.500000
     bottom: -2.250000
@@ -286,7 +303,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -336,7 +353,7 @@
 - !<SceneObject/0b023d17-0708-42e6-6cab-bab025bef4f3>
   PrefabRemaps:
     []
-  Name: Example2-RealtimeCursor
+  Name: Realtime Cursor
   Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
@@ -361,6 +378,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Composite Camera
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -368,8 +386,7 @@
   SizeToFit: false
   FontSize: 80.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -386,7 +403,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -509,6 +526,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Capture Still Image
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -516,8 +534,7 @@
   SizeToFit: false
   FontSize: 90.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -534,7 +551,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -594,6 +611,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Start Capturing Audio
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -601,8 +619,7 @@
   SizeToFit: false
   FontSize: 90.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -619,7 +636,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -720,8 +737,8 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSnapOS2: true
-    _styleSnapOS3: true
+    _styleSystem2: true
+    _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
     {}
@@ -745,8 +762,8 @@
         []
       onFinishedCallbacks:
         []
-      _styleSnapOS2: PrimaryNeutral
-      _styleSnapOS3: Primary
+      _styleSystem2: PrimaryNeutral
+      _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
     "":
@@ -815,6 +832,7 @@
   Text: |
     Storage
 
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -822,8 +840,7 @@
   SizeToFit: false
   FontSize: 60.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -840,7 +857,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -917,6 +934,120 @@
     []
   Components:
     - !<own> d765ecc7-9234-460e-5ddc-1ad2419451bc
+- !<Text/1bfe4a97-baef-4a22-9bc5-754dc23ad76c>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 11
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Left
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: |-
+    Snap Cloud Examples connects a Specs Lens to a Snap Cloud (Supabase) backend: sign-in and tables, a shared realtime cursor, storage downloads, edge functions, camera and audio capture and streaming, and a global leaderboard.
+    Step through them with Previous / Next on the panel below, then use each example's own buttons.
+    Nothing reaches the cloud until a Snap Cloud project is assigned; the first step's info line says how.
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableRichText: false
+  SizeToFit: false
+  FontSize: 60.000000
+  FontSource: !<reference> 00000000-0000-0000-0000-000000000000
+  PreferredStyle: Regular
+  LayoutRect:
+    left: -20.000000
+    bottom: -9.000000
+    right: 20.000000
+    top: 9.000000
+  DebugRenderLayoutRect: false
+  OverflowVertical: Overflow
+  OverflowHorizontal: Wrap
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  BlendMode: PremultipliedAlphaAuto
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.000000
+      bottom: 0.000000
+      right: 0.000000
+      top: 0.000000
+    CornerRadius: 0.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false
+- !<ScriptComponent/1c0832ae-d07e-47c1-b1ed-63670f299963>
+  PrefabRemaps:
+    []
+  Name: CredentialsWarning
+  Enabled: true
+  ScriptAsset: !<reference> aa2107ce-b92a-448a-bd19-84779af27192
+  ScriptInputsDefault:
+    rsgCredentials: true
+    requireSnapToken: true
+    requireOpenAIToken: true
+    requireGoogleToken: true
+    buttonLabel: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      guide: !<reference.SceneObject> fcdc9611-2138-47d4-80a3-60866139908a
+      snapCloudRequirements: !<reference.ScriptComponent> 58febd3d-a9ed-457e-4ead-0b8d4271d582
+      rsgCredentials: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      requireSnapToken: false
+      requireOpenAIToken: false
+      requireGoogleToken: false
+      buttonLabel: Continue without credentials
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/1c63bc1e-c36a-4cef-75cb-d84f694e0699>
   PrefabRemaps:
     []
@@ -961,7 +1092,6 @@
   Children:
     - !<own> 25eca881-a158-4177-6898-bc9a779049e6
     - !<own> 1d1fee37-030e-4949-5ceb-598a6fa5fbe5
-    - !<own> eef87ddc-eb6c-4637-6870-3a457de9849c
     - !<own> c25be6f0-8bca-4a6d-6a49-6c11c4654be4
     - !<own> 30c374c1-cdee-4200-4707-c99272e53377
     - !<own> ca5c7f4d-aecb-42e3-4ec2-8543e96be676
@@ -993,7 +1123,7 @@
   ScriptAsset: !<reference> 3b46d829-f6db-432a-914c-3551904d3994
   ScriptInputsDefault:
     _themeOverride: true
-    _appearance: true
+    _spawnOnStart: true
     _padding: true
     _allowScaling: true
     allowNonUniformScaling: true
@@ -1002,6 +1132,8 @@
     _onlyInteractOnMargin: true
     allowTranslation: true
     _cutOutCenter: true
+    _cutOutFeather: true
+    _hasShadow: true
     _minimumSize: true
     _maximumSize: true
     useBillboarding: true
@@ -1017,22 +1149,33 @@
     _useTagAlong: true
     _tagAlongDistance: true
     _showFollowButton: true
+    _useFocusFrame: true
     useFollowBehavior: true
     _useTiltMode: true
     _tiltUpThreshold: true
     _tiltDownThreshold: true
     _following: true
+    _useDepthClamping: true
+    _minimumDepth: true
+    _maximumDepth: true
+    _useDepthScaling: true
+    _depthScalingMinimumDepth: true
+    _depthScalingMaximumDepth: true
+    _depthScalingMinimumScale: true
+    _depthScalingMaximumScale: true
     _showCloseButton: true
     _enableInteractionPlane: true
     _interactionPlaneOffset: true
     _interactionPlanePadding: true
     _targetingVisual: true
+    _interactablePadding: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
       _themeOverride: Inherited
       autoShowHide: false
+      _spawnOnStart: false
       _appearance: ""
       _innerSize: !<Vec2> {x: 20.000000, y: 28.000000}
       _padding: !<Vec2> {x: 0.000000, y: 0.000000}
@@ -1043,6 +1186,8 @@
       _onlyInteractOnMargin: false
       allowTranslation: true
       _cutOutCenter: false
+      _cutOutFeather: 0.100000
+      _hasShadow: false
       _minimumSize: !<Vec2> {x: 10.000000, y: 10.000000}
       _maximumSize: !<Vec2> {x: 150.000000, y: 150.000000}
       useBillboarding: true
@@ -1058,16 +1203,26 @@
       _useTagAlong: false
       _tagAlongDistance: !<float> 110.000000
       _showFollowButton: false
+      _useFocusFrame: true
       useFollowBehavior: false
       _useTiltMode: false
       _tiltUpThreshold: !<float> 25.000000
       _tiltDownThreshold: !<float> 35.000000
       _following: false
+      _useDepthClamping: false
+      _minimumDepth: !<float> 35.000000
+      _maximumDepth: !<float> 110.000000
+      _useDepthScaling: false
+      _depthScalingMinimumDepth: !<float> 35.000000
+      _depthScalingMaximumDepth: !<float> 110.000000
+      _depthScalingMinimumScale: 0.500000
+      _depthScalingMaximumScale: !<float> 1.000000
       _showCloseButton: false
       _enableInteractionPlane: true
       _interactionPlaneOffset: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
       _interactionPlanePadding: !<Vec2> {x: 0.000000, y: 0.000000}
       _targetingVisual: !<float> 1.000000
+      _interactablePadding: !<Vec2> {x: 1.000000, y: 1.000000}
   ScriptTypes:
     "":
       {}
@@ -1109,6 +1264,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Audio
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -1116,8 +1272,7 @@
   SizeToFit: false
   FontSize: 80.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -1134,7 +1289,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -1239,6 +1394,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: "After pressing start, tap the button as many times as you can before the countdown ends."
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -1246,8 +1402,7 @@
   SizeToFit: false
   FontSize: 34.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -8.000000
     bottom: -2.250000
@@ -1264,7 +1419,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -1427,16 +1582,23 @@
     hasTrackVisual: true
     customKnobSize: true
     _knobSize: true
+    _knobIcon: true
     addCallbacks: true
     onValueChangeCallbacks: true
-    _styleSnapOS3: true
+    _styleSystem3: true
     onFinishedCallbacks: true
+    _leftIsText: true
+    _leftIcon: true
+    _leftText: true
+    _rightIsText: true
+    _rightIcon: true
+    _rightText: true
+    _trackIconSize: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
       _renderOrder: 0
-      _size: !<Vec3> {x: 4.000000, y: 2.000000, z: 1.000000}
       _inactive: false
       _playAudio: false
       _hasShadow: false
@@ -1445,103 +1607,25 @@
       hasTrackVisual: true
       customKnobSize: false
       _knobSize: !<Vec2> {x: 3.000000, y: 3.000000}
+      _knobIcon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
       addCallbacks: false
       onValueChangeCallbacks:
         []
-      _styleSnapOS3: Flat
+      _size: !<Vec3> {x: 4.000000, y: 2.000000, z: 1.000000}
+      _styleSystem3: Flat
       onFinishedCallbacks:
         []
       _defaultValue: 1
+      _leftIsText: false
+      _leftIcon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      _leftText: ""
+      _rightIsText: false
+      _rightIcon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      _rightText: ""
+      _trackIconSize: 1.500000
   ScriptTypes:
     "":
       {}
-- !<Text/2bfe9018-ba6b-40a7-4c48-a2a039b8653f>
-  PrefabRemaps:
-    []
-  Name: Text
-  Enabled: true
-  RenderOrder: 10
-  StretchMode: Stretch
-  VerticalAlignment: Center
-  HorizontalAlignment: Center
-  MeshShadowMode: None
-  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
-  ShadowDensity: 1.000000
-  Text: |
-    Turn on the example scene objects in the scene hierarchy one at the time.
-
-  Editable: false
-  ShowEditingPreview: true
-  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
-  EnableRichText: false
-  SizeToFit: false
-  FontSize: 50.000000
-  FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
-  LayoutRect:
-    left: -10.000000
-    bottom: -4.000000
-    right: 10.000000
-    top: 2.250000
-  DebugRenderLayoutRect: false
-  OverflowVertical: Truncate
-  OverflowHorizontal: Wrap
-  Fill: !<TextFill>
-    Mode: Solid
-    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 0.657115}
-    Texture: !<reference> 00000000-0000-0000-0000-000000000000
-    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
-    TileCount: 5.000000
-    TileZone: Rect
-    TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
-  Outline: !<OutlineSettings>
-    Enabled: false
-    Fill: !<TextFill>
-      Mode: Solid
-      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
-      Texture: !<reference> 00000000-0000-0000-0000-000000000000
-      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
-      TileCount: 5.000000
-      TileZone: Rect
-      TextureStretch: FitWidth
-    Size: 0.250000
-  Dropshadow: !<DropshadowSettings>
-    Enabled: false
-    Fill: !<TextFill>
-      Mode: Solid
-      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
-      Texture: !<reference> 00000000-0000-0000-0000-000000000000
-      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
-      TileCount: 5.000000
-      TileZone: Rect
-      TextureStretch: FitWidth
-    OffsetX: 0.250000
-    OffsetY: 0.250000
-  Background: !<BackgroundSettings>
-    Enabled: false
-    Fill: !<TextFill>
-      Mode: Solid
-      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
-      Texture: !<reference> 00000000-0000-0000-0000-000000000000
-      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
-      TileCount: 5.000000
-      TileZone: Rect
-      TextureStretch: FitWidth
-    Margins:
-      left: 0.000000
-      bottom: 0.000000
-      right: 0.000000
-      top: 0.000000
-    CornerRadius: 0.000000
-  AdvancedLayout: !<TextAdvancedLayout>
-    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
-    LetterSpacing: 0.000000
-    LineSpacing: 1.000000
-    CapitalizationOverride: None
-  DepthTest: false
-  TwoSided: false
 - !<SceneObject/2c533f83-7b69-4cf2-5b5b-823d22360cc9>
   PrefabRemaps:
     []
@@ -1599,8 +1683,8 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSnapOS2: true
-    _styleSnapOS3: true
+    _styleSystem2: true
+    _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
     {}
@@ -1624,8 +1708,8 @@
         []
       onFinishedCallbacks:
         []
-      _styleSnapOS2: PrimaryNeutral
-      _styleSnapOS3: Primary
+      _styleSystem2: PrimaryNeutral
+      _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
     "":
@@ -1643,6 +1727,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Start Streaming Audio
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -1650,8 +1735,7 @@
   SizeToFit: false
   FontSize: 90.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -1668,7 +1752,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -1735,8 +1819,8 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSnapOS2: true
-    _styleSnapOS3: true
+    _styleSystem2: true
+    _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
     {}
@@ -1760,8 +1844,8 @@
         []
       onFinishedCallbacks:
         []
-      _styleSnapOS2: PrimaryNeutral
-      _styleSnapOS3: Primary
+      _styleSystem2: PrimaryNeutral
+      _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
     "":
@@ -1779,6 +1863,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Countdown
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -1786,8 +1871,7 @@
   SizeToFit: false
   FontSize: 50.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -1804,7 +1888,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -1987,7 +2071,7 @@
 - !<SceneObject/3298dbf2-5fba-4c0b-612f-4dd863ff8c72>
   PrefabRemaps:
     []
-  Name: Example1-SupabaseConnector
+  Name: Tables
   Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
@@ -2002,11 +2086,11 @@
 - !<SceneObject/33240ea5-70cd-4dbb-7597-ee602aaf2c24>
   PrefabRemaps:
     []
-  Name: Examples-5-MediaSuite
+  Name: Media Suite
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 42.000000, y: 0.000000, z: -90.000000}
+    Position: {x: 0.000000, y: -8.000000, z: -90.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.200000, y: 1.200000, z: 1.200000}
     HasSegmentScaleCompensation: false
@@ -2049,6 +2133,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: TAP FAST!
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -2056,8 +2141,7 @@
   SizeToFit: false
   FontSize: 30.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -2074,7 +2158,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -2151,6 +2235,7 @@
   Text: |-
     For Streaming look up 
     ExternalServicesExamples > media-example-web-viewers  follow README and Docs to set up further 
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -2158,8 +2243,7 @@
   SizeToFit: false
   FontSize: 30.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -14.000000
     bottom: -4.000000
@@ -2176,7 +2260,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -2346,6 +2430,22 @@
     []
   Components:
     - !<own> 60cd7b9e-8dcb-440a-7413-8b3d02512551
+- !<ScriptComponent/3a384792-54e5-4cd9-b934-0db02f6d5fd1>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/3ae82a1a-1deb-494b-4b56-5af9fdcd975b>
   PrefabRemaps:
     []
@@ -2391,11 +2491,11 @@
 - !<SceneObject/3d6d39d3-9169-4bf0-44cb-cce16a8985ba>
   PrefabRemaps:
     []
-  Name: "Examples-1,4-GetStarted"
+  Name: Get Started
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: -90.000000}
+    Position: {x: 0.000000, y: -8.000000, z: -90.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.200000, y: 1.200000, z: 1.200000}
     HasSegmentScaleCompensation: false
@@ -2429,8 +2529,8 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSnapOS2: true
-    _styleSnapOS3: true
+    _styleSystem2: true
+    _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
     {}
@@ -2454,8 +2554,8 @@
         []
       onFinishedCallbacks:
         []
-      _styleSnapOS2: PrimaryNeutral
-      _styleSnapOS3: Primary
+      _styleSystem2: PrimaryNeutral
+      _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
     "":
@@ -2563,6 +2663,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Start Streaming
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -2570,8 +2671,7 @@
   SizeToFit: false
   FontSize: 90.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -2588,7 +2688,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -2670,8 +2770,8 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSnapOS2: true
-    _styleSnapOS3: true
+    _styleSystem2: true
+    _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
     {}
@@ -2695,8 +2795,8 @@
         []
       onFinishedCallbacks:
         []
-      _styleSnapOS2: PrimaryNeutral
-      _styleSnapOS3: Primary
+      _styleSystem2: PrimaryNeutral
+      _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
     "":
@@ -2736,8 +2836,8 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSnapOS2: true
-    _styleSnapOS3: true
+    _styleSystem2: true
+    _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
     {}
@@ -2761,8 +2861,8 @@
         []
       onFinishedCallbacks:
         []
-      _styleSnapOS2: PrimaryNeutral
-      _styleSnapOS3: Primary
+      _styleSystem2: PrimaryNeutral
+      _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
     "":
@@ -2780,6 +2880,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Include Virtual Content
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -2787,8 +2888,7 @@
   SizeToFit: false
   FontSize: 50.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -2805,7 +2905,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -2865,6 +2965,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Load assets from your database
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -2872,8 +2973,7 @@
   SizeToFit: false
   FontSize: 40.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -2890,7 +2990,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -2950,6 +3050,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Start capturing and send audio frames to your bucket
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -2957,8 +3058,7 @@
   SizeToFit: false
   FontSize: 50.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -2975,7 +3075,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -3061,6 +3161,7 @@
     (We will need to stitch audio and video together and share it on social) 
     
     In the example, we used Snapchat. You can enhance this service further. 
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -3068,8 +3169,7 @@
   SizeToFit: false
   FontSize: 30.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -14.000000
     bottom: -4.000000
@@ -3086,7 +3186,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -3148,6 +3248,7 @@
   Text: |-
     For Streaming look up 
     ExternalServicesExamples > media-example-web-viewers  After the video is captured, wait for the video to upload   follow README and Docs to set up further 
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -3155,8 +3256,7 @@
   SizeToFit: false
   FontSize: 30.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -14.000000
     bottom: -4.000000
@@ -3173,7 +3273,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -3336,6 +3436,52 @@
     []
   Components:
     - !<own> be88edf8-ab01-474c-410c-bd012ddd4d37
+- !<ScriptComponent/4a0d2b1f-dc54-4c05-9261-75a652e534fd>
+  PrefabRemaps:
+    []
+  Name: ExampleCarousel
+  Enabled: true
+  ScriptAsset: !<reference> 0e884fa8-2cbb-5a25-b415-aeb2d34ffd3c
+  ScriptInputsDefault:
+    stepInfo: true
+    startIndex: true
+    previousLabel: true
+    nextLabel: true
+    examplesPushBack: true
+    anchorExamples: true
+    startMinimized: true
+    extraPanelDrop: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      examples: !<reference.SceneObject[]>
+        - !<reference> 3d6d39d3-9169-4bf0-44cb-cce16a8985ba
+        - !<reference> 33240ea5-70cd-4dbb-7597-ee602aaf2c24
+        - !<reference> fa6d69bc-449f-46af-a0b3-c119b152c5ce
+      exampleInfo: !<string[]>
+        - "One basic per step, use its button on the panel: Table reads and writes rows, Realtime shares the arrow cursor (drag it), Storage downloads a model, image and audio, Edge Functions processes an image in the cloud. Setup: Window > Supabase > Import Credentials, then assign the project on [SnapCloudRequirements]."
+        - "Pick a tab on the left: capture an image, video, audio or a composite and upload it to storage, or stream it live; Sharing records a Spotlight. The HD still capture works on device only."
+        - "Press Start, then tap the button as fast as you can before the countdown ends: the score is submitted and the global leaderboard appears."
+      steps: !<reference.SceneObject[]>
+        - !<reference> 3298dbf2-5fba-4c0b-612f-4dd863ff8c72
+        - !<reference> 0b023d17-0708-42e6-6cab-bab025bef4f3
+        - !<reference> ca8ec2ec-3bb5-440b-55c9-9ffe59b80b8d
+        - !<reference> b9a8bfed-9117-407d-53b9-9448e53f09c9
+        - !<reference> 33240ea5-70cd-4dbb-7597-ee602aaf2c24
+        - !<reference> fa6d69bc-449f-46af-a0b3-c119b152c5ce
+      stepInfo: !<string[]>
+        []
+      startIndex: !<float> 0.000000
+      previousLabel: Previous
+      nextLabel: Next
+      examplesPushBack: !<float> 20.000000
+      anchorExamples: true
+      startMinimized: false
+      extraPanelDrop: !<float> 0.000000
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/4a4accd3-9d0f-46e3-580a-e323539d1cc8>
   PrefabRemaps:
     []
@@ -3366,6 +3512,7 @@
   Text: |
     Table
 
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -3373,8 +3520,7 @@
   SizeToFit: false
   FontSize: 60.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -3391,7 +3537,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -3457,8 +3603,8 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSnapOS2: true
-    _styleSnapOS3: true
+    _styleSystem2: true
+    _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
     {}
@@ -3482,8 +3628,8 @@
         []
       onFinishedCallbacks:
         []
-      _styleSnapOS2: PrimaryNeutral
-      _styleSnapOS3: Primary
+      _styleSystem2: PrimaryNeutral
+      _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
     "":
@@ -3501,6 +3647,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Video
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -3508,8 +3655,7 @@
   SizeToFit: false
   FontSize: 80.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -3526,7 +3672,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -3588,6 +3734,7 @@
   Text: |
     logs
 
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -3595,8 +3742,7 @@
   SizeToFit: false
   FontSize: 30.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -3613,7 +3759,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -3696,8 +3842,8 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSnapOS2: true
-    _styleSnapOS3: true
+    _styleSystem2: true
+    _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
     {}
@@ -3721,8 +3867,8 @@
         []
       onFinishedCallbacks:
         []
-      _styleSnapOS2: PrimaryNeutral
-      _styleSnapOS3: Primary
+      _styleSystem2: PrimaryNeutral
+      _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
     "":
@@ -3740,6 +3886,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Score as many taps as you can in the time limit.
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -3747,8 +3894,7 @@
   SizeToFit: false
   FontSize: 25.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -3765,7 +3911,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -3812,6 +3958,74 @@
     CapitalizationOverride: None
   DepthTest: false
   TwoSided: false
+- !<ScriptComponent/4e257d6d-8e50-4669-ac50-e9535380ed1e>
+  PrefabRemaps:
+    []
+  Name: Button
+  Enabled: true
+  ScriptAsset: !<reference> 44823634-5893-49f9-a805-2295f5c33abb
+  ScriptInputsDefault:
+    _inactive: true
+    _playAudio: true
+    _hasShadow: true
+    _shadowPositionOffset: true
+    _toggleable: true
+    _defaultToOn: true
+    addCallbacks: true
+    triggerUpCallbacks: true
+    triggerDownCallbacks: true
+    onValueChangeCallbacks: true
+    onFinishedCallbacks: true
+    _shapeSystem2: true
+    _shapeSystem3: true
+    _styleSystem2: true
+    _styleSystem3: true
+    _opacity: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _renderOrder: 10
+      _inactive: false
+      _playAudio: false
+      _hasShadow: false
+      _shadowPositionOffset: !<Vec3> {x: 0.050000, y: -0.050000, z: -0.010000}
+      _themeOverride: System3
+      _toggleable: false
+      _defaultToOn: false
+      addCallbacks: false
+      triggerUpCallbacks:
+        []
+      triggerDownCallbacks:
+        []
+      onValueChangeCallbacks:
+        []
+      onFinishedCallbacks:
+        []
+      _size: !<Vec3> {x: 20.000000, y: 5.000000, z: 1.000000}
+      _shapeSystem2: Rectangle
+      _shapeSystem3: Rectangle
+      _styleSystem2: PrimaryNeutral
+      _styleSystem3: Primary
+      _opacity: !<float> 1.000000
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/4e9f24e9-49e7-4339-8d29-b3605a6e37bb>
+  PrefabRemaps:
+    []
+  Name: ExampleCarousel
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: -22.000000, z: -100.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 4a0d2b1f-dc54-4c05-9261-75a652e534fd
 - !<Text/4ea3bf90-4731-4e42-b51e-6e051873bfc8>
   PrefabRemaps:
     []
@@ -3827,6 +4041,7 @@
   Text: |
     logs
 
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -3834,8 +4049,7 @@
   SizeToFit: false
   FontSize: 30.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -3852,7 +4066,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -3911,8 +4125,12 @@
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
-    - !<own> 608ebca2-c02f-4b40-72e0-49b2e323b73d
+    - !<own> 8c7e2aa8-7c1f-4228-9b7e-b23626ae5bdc
     - !<own> d6445034-d17f-4db7-570b-bce01924434a
+    - !<own> 8bc950e9-9556-454e-98cd-c84141ee7fee
+    - !<own> fcdc9611-2138-47d4-80a3-60866139908a
+    - !<own> 4e9f24e9-49e7-4339-8d29-b3605a6e37bb
+    - !<own> 608ebca2-c02f-4b40-72e0-49b2e323b73d
     - !<own> 3d6d39d3-9169-4bf0-44cb-cce16a8985ba
     - !<own> 33240ea5-70cd-4dbb-7597-ee602aaf2c24
     - !<own> fa6d69bc-449f-46af-a0b3-c119b152c5ce
@@ -3969,6 +4187,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Composite Camera
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -3976,8 +4195,7 @@
   SizeToFit: false
   FontSize: 80.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -3994,7 +4212,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -4093,6 +4311,8 @@
   Enabled: true
   ScriptAsset: !<reference> 39105fa9-cbdb-4af4-b260-16316d9904c2
   ScriptInputsDefault:
+    supabaseProject: true
+    text: true
     disableWarningsWhenConfigured: true
     showSetupInstructions: true
     enableDebugLogs: true
@@ -4102,8 +4322,8 @@
     {}
   ScriptInputs:
     "":
-      supabaseProject: !<reference.SupabaseProject> 284aa43a-e905-457a-a1e7-dcffae938388
-      text: !<reference.Text> 92942f55-e916-4cbc-68a1-070396d50e6f
+      supabaseProject: !<reference.SupabaseProject> 00000000-0000-0000-0000-000000000000
+      text: !<reference.Text> 00000000-0000-0000-0000-000000000000
       disableWarningsWhenConfigured: true
       showSetupInstructions: true
       enableDebugLogs: true
@@ -4140,6 +4360,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Sharing
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -4147,8 +4368,7 @@
   SizeToFit: false
   FontSize: 80.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -4165,7 +4385,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -4225,8 +4445,8 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Materials:
-    - !<reference> a581b69c-2a2d-41b7-91ff-f7e61c7e107e
-  Mesh: !<reference> 4c1d095d-3d39-4aa0-9a60-c4620fede337
+    - !<reference> 687ceae5-1afa-4263-85c3-4dd93d78807d
+  Mesh: !<reference> 741e3add-9d8a-4351-897f-78461d1ce5a7
   Skin: !<reference> 00000000-0000-0000-0000-000000000000
   BlendShapesEnabled: true
   BlendNormals: false
@@ -4331,6 +4551,7 @@
   Text: |+
     Realtime
     
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -4338,8 +4559,7 @@
   SizeToFit: false
   FontSize: 60.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -4356,7 +4576,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -4416,6 +4636,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: "9:16 Ratio"
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -4423,8 +4644,7 @@
   SizeToFit: false
   FontSize: 80.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -4441,7 +4661,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -4501,6 +4721,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Score
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -4508,8 +4729,7 @@
   SizeToFit: false
   FontSize: 48.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -4526,7 +4746,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -4588,6 +4808,7 @@
   Text: |
     Start Recording Video
 
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -4595,8 +4816,7 @@
   SizeToFit: false
   FontSize: 90.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -4613,7 +4833,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -4688,6 +4908,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Composite Camera
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -4695,8 +4916,7 @@
   SizeToFit: false
   FontSize: 80.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -4713,7 +4933,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -4833,6 +5053,117 @@
     - !<own> 9515328a-7f53-432e-93fa-37a175ad6abe
   Components:
     - !<own> 3b4d44a1-81a4-4ecf-bd1f-a6b2da36b42b
+- !<ScriptComponent/6f23f2b0-9c04-4361-8256-77d5171ff8b7>
+  PrefabRemaps:
+    []
+  Name: Frame
+  Enabled: true
+  ScriptAsset: !<reference> 3b46d829-f6db-432a-914c-3551904d3994
+  ScriptInputsDefault:
+    _spawnOnStart: true
+    _appearance: true
+    _padding: true
+    _allowScaling: true
+    allowNonUniformScaling: true
+    autoScaleContent: true
+    relativeZ: true
+    _onlyInteractOnMargin: true
+    allowTranslation: true
+    _cutOutCenter: true
+    _cutOutFeather: true
+    _hasShadow: true
+    _minimumSize: true
+    _maximumSize: true
+    useBillboarding: true
+    xOnTranslate: true
+    xAlways: true
+    xBufferDegrees: true
+    yOnTranslate: true
+    yAlways: true
+    yBufferDegrees: true
+    useSnapping: true
+    itemSnapping: true
+    worldSnapping: true
+    _useTagAlong: true
+    _tagAlongDistance: true
+    _showFollowButton: true
+    _useFocusFrame: true
+    useFollowBehavior: true
+    _useTiltMode: true
+    _tiltUpThreshold: true
+    _tiltDownThreshold: true
+    _following: true
+    _useDepthClamping: true
+    _minimumDepth: true
+    _maximumDepth: true
+    _useDepthScaling: true
+    _depthScalingMinimumDepth: true
+    _depthScalingMaximumDepth: true
+    _depthScalingMinimumScale: true
+    _depthScalingMaximumScale: true
+    _showCloseButton: true
+    _enableInteractionPlane: true
+    _interactionPlaneOffset: true
+    _interactionPlanePadding: true
+    _targetingVisual: true
+    _interactablePadding: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _themeOverride: System3
+      autoShowHide: false
+      _spawnOnStart: false
+      _appearance: Large
+      _innerSize: !<Vec2> {x: 44.000000, y: 26.000000}
+      _padding: !<Vec2> {x: 0.000000, y: 0.000000}
+      _allowScaling: true
+      allowNonUniformScaling: false
+      autoScaleContent: true
+      relativeZ: true
+      _onlyInteractOnMargin: false
+      allowTranslation: true
+      _cutOutCenter: false
+      _cutOutFeather: 0.100000
+      _hasShadow: false
+      _minimumSize: !<Vec2> {x: 10.000000, y: 10.000000}
+      _maximumSize: !<Vec2> {x: 150.000000, y: 150.000000}
+      useBillboarding: true
+      xOnTranslate: true
+      xAlways: false
+      xBufferDegrees: !<float> 0.000000
+      yOnTranslate: true
+      yAlways: false
+      yBufferDegrees: !<float> 0.000000
+      useSnapping: false
+      itemSnapping: false
+      worldSnapping: false
+      _useTagAlong: false
+      _tagAlongDistance: !<float> 110.000000
+      _showFollowButton: false
+      _useFocusFrame: true
+      useFollowBehavior: false
+      _useTiltMode: false
+      _tiltUpThreshold: !<float> 25.000000
+      _tiltDownThreshold: !<float> 35.000000
+      _following: false
+      _useDepthClamping: false
+      _minimumDepth: !<float> 35.000000
+      _maximumDepth: !<float> 110.000000
+      _useDepthScaling: false
+      _depthScalingMinimumDepth: !<float> 35.000000
+      _depthScalingMaximumDepth: !<float> 110.000000
+      _depthScalingMinimumScale: 0.500000
+      _depthScalingMaximumScale: !<float> 1.000000
+      _showCloseButton: false
+      _enableInteractionPlane: true
+      _interactionPlaneOffset: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
+      _interactionPlanePadding: !<Vec2> {x: 0.000000, y: 0.000000}
+      _targetingVisual: !<float> 1.000000
+      _interactablePadding: !<Vec2> {x: 1.000000, y: 1.000000}
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/725f24d3-efc5-436b-6509-0b745e56ce2f>
   PrefabRemaps:
     []
@@ -4871,7 +5202,7 @@
   ScriptAsset: !<reference> 3b46d829-f6db-432a-914c-3551904d3994
   ScriptInputsDefault:
     _themeOverride: true
-    _appearance: true
+    _spawnOnStart: true
     _padding: true
     _allowScaling: true
     allowNonUniformScaling: true
@@ -4880,6 +5211,8 @@
     _onlyInteractOnMargin: true
     allowTranslation: true
     _cutOutCenter: true
+    _cutOutFeather: true
+    _hasShadow: true
     _minimumSize: true
     _maximumSize: true
     useBillboarding: true
@@ -4895,22 +5228,33 @@
     _useTagAlong: true
     _tagAlongDistance: true
     _showFollowButton: true
+    _useFocusFrame: true
     useFollowBehavior: true
     _useTiltMode: true
     _tiltUpThreshold: true
     _tiltDownThreshold: true
     _following: true
+    _useDepthClamping: true
+    _minimumDepth: true
+    _maximumDepth: true
+    _useDepthScaling: true
+    _depthScalingMinimumDepth: true
+    _depthScalingMaximumDepth: true
+    _depthScalingMinimumScale: true
+    _depthScalingMaximumScale: true
     _showCloseButton: true
     _enableInteractionPlane: true
     _interactionPlaneOffset: true
     _interactionPlanePadding: true
     _targetingVisual: true
+    _interactablePadding: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
       _themeOverride: Inherited
       autoShowHide: false
+      _spawnOnStart: false
       _appearance: ""
       _innerSize: !<Vec2> {x: 20.000000, y: 28.000000}
       _padding: !<Vec2> {x: 0.000000, y: 0.000000}
@@ -4921,6 +5265,8 @@
       _onlyInteractOnMargin: false
       allowTranslation: true
       _cutOutCenter: false
+      _cutOutFeather: 0.100000
+      _hasShadow: false
       _minimumSize: !<Vec2> {x: 10.000000, y: 10.000000}
       _maximumSize: !<Vec2> {x: 150.000000, y: 150.000000}
       useBillboarding: true
@@ -4936,16 +5282,26 @@
       _useTagAlong: false
       _tagAlongDistance: !<float> 110.000000
       _showFollowButton: false
+      _useFocusFrame: true
       useFollowBehavior: false
       _useTiltMode: false
       _tiltUpThreshold: !<float> 25.000000
       _tiltDownThreshold: !<float> 35.000000
       _following: false
+      _useDepthClamping: false
+      _minimumDepth: !<float> 35.000000
+      _maximumDepth: !<float> 110.000000
+      _useDepthScaling: false
+      _depthScalingMinimumDepth: !<float> 35.000000
+      _depthScalingMaximumDepth: !<float> 110.000000
+      _depthScalingMinimumScale: 0.500000
+      _depthScalingMaximumScale: !<float> 1.000000
       _showCloseButton: false
       _enableInteractionPlane: true
       _interactionPlaneOffset: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
       _interactionPlanePadding: !<Vec2> {x: 0.000000, y: 0.000000}
       _targetingVisual: !<float> 1.000000
+      _interactablePadding: !<Vec2> {x: 1.000000, y: 1.000000}
   ScriptTypes:
     "":
       {}
@@ -4972,6 +5328,7 @@
     effect in the composite texture 
     
     Keep this textue turned off in your application, this is just a reference for you to understand how to obtained a composed image (virtual content and background together) 
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -4979,8 +5336,7 @@
   SizeToFit: false
   FontSize: 10.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -5.000000
     bottom: -2.250000
@@ -4997,7 +5353,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -5103,6 +5459,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Start Recording Video
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -5110,8 +5467,7 @@
   SizeToFit: false
   FontSize: 90.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -5128,92 +5484,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
-  Outline: !<OutlineSettings>
-    Enabled: false
-    Fill: !<TextFill>
-      Mode: Solid
-      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
-      Texture: !<reference> 00000000-0000-0000-0000-000000000000
-      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
-      TileCount: 5.000000
-      TileZone: Rect
-      TextureStretch: FitWidth
-    Size: 0.250000
-  Dropshadow: !<DropshadowSettings>
-    Enabled: false
-    Fill: !<TextFill>
-      Mode: Solid
-      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
-      Texture: !<reference> 00000000-0000-0000-0000-000000000000
-      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
-      TileCount: 5.000000
-      TileZone: Rect
-      TextureStretch: FitWidth
-    OffsetX: 0.250000
-    OffsetY: 0.250000
-  Background: !<BackgroundSettings>
-    Enabled: false
-    Fill: !<TextFill>
-      Mode: Solid
-      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
-      Texture: !<reference> 00000000-0000-0000-0000-000000000000
-      ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
-      TileCount: 5.000000
-      TileZone: Rect
-      TextureStretch: FitWidth
-    Margins:
-      left: 0.000000
-      bottom: 0.000000
-      right: 0.000000
-      top: 0.000000
-    CornerRadius: 0.000000
-  AdvancedLayout: !<TextAdvancedLayout>
-    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
-    LetterSpacing: 0.000000
-    LineSpacing: 1.000000
-    CapitalizationOverride: None
-  DepthTest: false
-  TwoSided: false
-- !<Text/75ed320d-e3d0-4863-8074-4570af321c48>
-  PrefabRemaps:
-    []
-  Name: Text
-  Enabled: true
-  RenderOrder: 10
-  StretchMode: Stretch
-  VerticalAlignment: Center
-  HorizontalAlignment: Left
-  MeshShadowMode: None
-  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
-  ShadowDensity: 1.000000
-  Text: "After setting up your Supabase project and assigning it to GlobalLeaderboard → SupabaseLeaderboardService, press Start to begin the challenge."
-  Editable: false
-  ShowEditingPreview: true
-  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
-  EnableRichText: false
-  SizeToFit: false
-  FontSize: 50.000000
-  FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
-  LayoutRect:
-    left: -10.000000
-    bottom: -4.000000
-    right: 10.000000
-    top: 2.250000
-  DebugRenderLayoutRect: false
-  OverflowVertical: Truncate
-  OverflowHorizontal: Wrap
-  Fill: !<TextFill>
-    Mode: Solid
-    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 0.657115}
-    Texture: !<reference> 00000000-0000-0000-0000-000000000000
-    ColorTint: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
-    TileCount: 5.000000
-    TileZone: Rect
-    TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -5295,8 +5566,8 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSnapOS2: true
-    _styleSnapOS3: true
+    _styleSystem2: true
+    _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
     {}
@@ -5320,8 +5591,8 @@
         []
       onFinishedCallbacks:
         []
-      _styleSnapOS2: PrimaryNeutral
-      _styleSnapOS3: Primary
+      _styleSystem2: PrimaryNeutral
+      _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
     "":
@@ -5429,6 +5700,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: "Capture and send single high quality camera frame to your bucket  ONLY WORKS ON DEVICE - NO EDITOR - NO COMPOSITE - HD "
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -5436,8 +5708,7 @@
   SizeToFit: false
   FontSize: 50.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -5454,7 +5725,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -5516,7 +5787,6 @@
     - !<own> f109b61b-6c90-4f5d-abc7-fe66c0f4d9ef
     - !<own> 9f2aa80b-a7bd-4672-8fbb-c07074cb67b3
     - !<own> 81cec227-3d1c-40d2-84f1-afcf36712c2b
-    - !<own> 8691fba5-1859-4aeb-8090-11797e906ce1
     - !<own> 3e72703f-1c6e-4681-b128-0d368899a385
     - !<own> e320214d-f92d-4fcc-99a4-f135aac1be54
     - !<own> add97c09-fed2-4953-ad5f-cb4129f73683
@@ -5537,6 +5807,7 @@
   Text: |-
     Capture and send single camera frame to your bucket 
     Optional Composite - Change ratio in the Composite Image Asset
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -5544,8 +5815,7 @@
   SizeToFit: false
   FontSize: 50.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -5562,7 +5832,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -5639,6 +5909,7 @@
   Text: |
     Insert a Cation and Start Spotlight. It will be shared automatically on your Snapchat account when the recording ends 
 
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -5646,8 +5917,7 @@
   SizeToFit: false
   FontSize: 30.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -10.500000
     bottom: -2.250000
@@ -5664,7 +5934,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -5773,6 +6043,7 @@
   Text: |-
     Your video will be automatically edited to
     support vertical format 
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -5780,8 +6051,7 @@
   SizeToFit: false
   FontSize: 50.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -5798,7 +6068,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -5880,8 +6150,8 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSnapOS2: true
-    _styleSnapOS3: true
+    _styleSystem2: true
+    _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
     {}
@@ -5905,8 +6175,8 @@
         []
       onFinishedCallbacks:
         []
-      _styleSnapOS2: PrimaryNeutral
-      _styleSnapOS3: Primary
+      _styleSystem2: PrimaryNeutral
+      _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
     "":
@@ -5961,21 +6231,6 @@
   ScriptTypes:
     "":
       {}
-- !<SceneObject/8691fba5-1859-4aeb-8090-11797e906ce1>
-  PrefabRemaps:
-    []
-  Name: Guide
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: -1.500000, z: 2.000004}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 0.750000, y: 0.750000, z: 0.750000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> 75ed320d-e3d0-4863-8074-4570af321c48
 - !<ScriptComponent/86e35a90-94a8-410c-49f6-c181df39bcc9>
   PrefabRemaps:
     []
@@ -5992,16 +6247,23 @@
     hasTrackVisual: true
     customKnobSize: true
     _knobSize: true
+    _knobIcon: true
     addCallbacks: true
     onValueChangeCallbacks: true
-    _styleSnapOS3: true
+    _styleSystem3: true
     onFinishedCallbacks: true
+    _leftIsText: true
+    _leftIcon: true
+    _leftText: true
+    _rightIsText: true
+    _rightIcon: true
+    _rightText: true
+    _trackIconSize: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
       _renderOrder: 0
-      _size: !<Vec3> {x: 4.000000, y: 2.000000, z: 1.000000}
       _inactive: false
       _playAudio: false
       _hasShadow: false
@@ -6010,13 +6272,22 @@
       hasTrackVisual: true
       customKnobSize: false
       _knobSize: !<Vec2> {x: 3.000000, y: 3.000000}
+      _knobIcon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
       addCallbacks: false
       onValueChangeCallbacks:
         []
-      _styleSnapOS3: Flat
+      _size: !<Vec3> {x: 4.000000, y: 2.000000, z: 1.000000}
+      _styleSystem3: Flat
       onFinishedCallbacks:
         []
       _defaultValue: 1
+      _leftIsText: false
+      _leftIcon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      _leftText: ""
+      _rightIsText: false
+      _rightIcon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      _rightText: ""
+      _trackIconSize: 1.500000
   ScriptTypes:
     "":
       {}
@@ -6033,6 +6304,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Composite
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -6040,8 +6312,7 @@
   SizeToFit: false
   FontSize: 80.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -6058,7 +6329,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -6167,6 +6438,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: "Take control or follow the cursor "
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -6174,8 +6446,7 @@
   SizeToFit: false
   FontSize: 40.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -6192,7 +6463,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -6254,6 +6525,21 @@
     []
   Components:
     - !<own> eff6c413-1ebb-4f06-722c-fc42db4b91f6
+- !<SceneObject/8bc950e9-9556-454e-98cd-c84141ee7fee>
+  PrefabRemaps:
+    []
+  Name: CredentialsWarning
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 1c0832ae-d07e-47c1-b1ed-63670f299963
 - !<SceneObject/8c08a662-08d0-4875-7f40-78741e78711c>
   PrefabRemaps:
     []
@@ -6269,6 +6555,21 @@
     []
   Components:
     - !<own> 75471cf8-06c5-4735-4d82-780ac1a95cac
+- !<SceneObject/8c7e2aa8-7c1f-4228-9b7e-b23626ae5bdc>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 3a384792-54e5-4cd9-b934-0db02f6d5fd1
 - !<SceneObject/8d02d1ab-3127-45db-71c5-c4d388ecd11a>
   PrefabRemaps:
     []
@@ -6325,6 +6626,7 @@
     targetingMode: true
     targetingVisual: true
     ignoreInteractionPlane: true
+    includeCollidersInPhysics: true
     keepHoverOnTrigger: true
     enableInstantDrag: true
     isScrollable: true
@@ -6341,6 +6643,7 @@
       targetingMode: !<float> 3.000000
       targetingVisual: !<float> 1.000000
       ignoreInteractionPlane: false
+      includeCollidersInPhysics: false
       keepHoverOnTrigger: false
       enableInstantDrag: false
       isScrollable: false
@@ -6373,8 +6676,8 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSnapOS2: true
-    _styleSnapOS3: true
+    _styleSystem2: true
+    _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
     {}
@@ -6398,8 +6701,8 @@
         []
       onFinishedCallbacks:
         []
-      _styleSnapOS2: PrimaryNeutral
-      _styleSnapOS3: Primary
+      _styleSystem2: PrimaryNeutral
+      _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
     "":
@@ -6440,6 +6743,7 @@
     
     Assign Supabase Project in  [SnapCloudRequirements]
 
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -6447,8 +6751,7 @@
   SizeToFit: false
   FontSize: 40.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -10.000000
@@ -6465,7 +6768,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -6527,6 +6830,7 @@
   Text: |-
     Start capturing a video and share it as Spotlight 
     Video will stop after 30 seconds automatically
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -6534,8 +6838,7 @@
   SizeToFit: false
   FontSize: 50.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -6552,7 +6855,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -6619,8 +6922,8 @@
   PrefabRemaps:
     []
   Name: ImageBackground-CS
-  Enabled: false
-  Layers: 1
+  Enabled: true
+  Layers: 2
   LocalTransform: !<TransformEntity>
     Position: {x: 0.000000, y: 0.000000, z: 0.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
@@ -6660,6 +6963,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: This is a leaderboard example.
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -6667,8 +6971,7 @@
   SizeToFit: false
   FontSize: 50.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -10.000000
     bottom: -4.000000
@@ -6685,7 +6988,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -6758,18 +7061,12 @@
   Enabled: false
   ScriptAsset: !<reference> 1ad7da86-2c32-418c-bdf1-b7150c07c912
   ScriptInputsDefault:
-    _playAudioOnHover: true
-    _hoverAudioTrack: true
-    _playAudioOnTriggerStart: true
-    _triggerStartAudioTrack: true
     _playAudioOnTriggerEnd: true
     _triggerEndAudioTrack: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
-      _playAudioOnHover: false
-      _hoverAudioTrack: !<reference.AudioTrackAsset> 97bf97ae-b2da-47d7-bde6-003f597fe888
       _playAudioOnTriggerStart: true
       _triggerStartAudioTrack: !<reference.AudioTrackAsset> edad7d53-55da-40b1-9025-fad0e7207862
       _playAudioOnTriggerEnd: true
@@ -6827,8 +7124,8 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSnapOS2: true
-    _styleSnapOS3: true
+    _styleSystem2: true
+    _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
     {}
@@ -6852,8 +7149,8 @@
         []
       onFinishedCallbacks:
         []
-      _styleSnapOS2: PrimaryNeutral
-      _styleSnapOS3: Primary
+      _styleSystem2: PrimaryNeutral
+      _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
     "":
@@ -6889,16 +7186,23 @@
     hasTrackVisual: true
     customKnobSize: true
     _knobSize: true
+    _knobIcon: true
     addCallbacks: true
     onValueChangeCallbacks: true
-    _styleSnapOS3: true
+    _styleSystem3: true
     onFinishedCallbacks: true
+    _leftIsText: true
+    _leftIcon: true
+    _leftText: true
+    _rightIsText: true
+    _rightIcon: true
+    _rightText: true
+    _trackIconSize: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
       _renderOrder: 0
-      _size: !<Vec3> {x: 4.000000, y: 2.000000, z: 1.000000}
       _inactive: false
       _playAudio: false
       _hasShadow: false
@@ -6907,13 +7211,22 @@
       hasTrackVisual: true
       customKnobSize: false
       _knobSize: !<Vec2> {x: 3.000000, y: 3.000000}
+      _knobIcon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
       addCallbacks: false
       onValueChangeCallbacks:
         []
-      _styleSnapOS3: Flat
+      _size: !<Vec3> {x: 4.000000, y: 2.000000, z: 1.000000}
+      _styleSystem3: Flat
       onFinishedCallbacks:
         []
       _defaultValue: 1
+      _leftIsText: false
+      _leftIcon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      _leftText: ""
+      _rightIsText: false
+      _rightIcon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      _rightText: ""
+      _trackIconSize: 1.500000
   ScriptTypes:
     "":
       {}
@@ -6933,16 +7246,23 @@
     hasTrackVisual: true
     customKnobSize: true
     _knobSize: true
+    _knobIcon: true
     addCallbacks: true
     onValueChangeCallbacks: true
-    _styleSnapOS3: true
+    _styleSystem3: true
     onFinishedCallbacks: true
+    _leftIsText: true
+    _leftIcon: true
+    _leftText: true
+    _rightIsText: true
+    _rightIcon: true
+    _rightText: true
+    _trackIconSize: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
       _renderOrder: 0
-      _size: !<Vec3> {x: 4.000000, y: 2.000000, z: 1.000000}
       _inactive: false
       _playAudio: false
       _hasShadow: false
@@ -6951,13 +7271,22 @@
       hasTrackVisual: true
       customKnobSize: false
       _knobSize: !<Vec2> {x: 3.000000, y: 3.000000}
+      _knobIcon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
       addCallbacks: false
       onValueChangeCallbacks:
         []
-      _styleSnapOS3: Flat
+      _size: !<Vec3> {x: 4.000000, y: 2.000000, z: 1.000000}
+      _styleSystem3: Flat
       onFinishedCallbacks:
         []
       _defaultValue: 1
+      _leftIsText: false
+      _leftIcon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      _leftText: ""
+      _rightIsText: false
+      _rightIcon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      _rightText: ""
+      _trackIconSize: 1.500000
   ScriptTypes:
     "":
       {}
@@ -6981,8 +7310,11 @@
     addCallbacks: true
     onTextChangedCallbacks: true
     onKeyboardStateChangedCallbacks: true
+    enableFocusFrame: true
+    focusFrameTarget: true
     _horizontalTextAlignment: true
     inputType: true
+    _dragAdjustAxis: true
     contentRequiredOnDeactivate: true
     _actionSlot: true
     icon: true
@@ -7009,8 +7341,11 @@
         []
       onKeyboardStateChangedCallbacks:
         []
+      enableFocusFrame: true
+      focusFrameTarget: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       _horizontalTextAlignment: left
       inputType: default
+      _dragAdjustAxis: none
       contentRequiredOnDeactivate: false
       _actionSlot: voiceInput
       icon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
@@ -7111,8 +7446,8 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSnapOS2: true
-    _styleSnapOS3: true
+    _styleSystem2: true
+    _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
     {}
@@ -7136,8 +7471,8 @@
         []
       onFinishedCallbacks:
         []
-      _styleSnapOS2: PrimaryNeutral
-      _styleSnapOS3: Primary
+      _styleSystem2: PrimaryNeutral
+      _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
     "":
@@ -7146,12 +7481,12 @@
   PrefabRemaps:
     []
   Name: ReminderHint
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: -40.000000}
+    Position: {x: 0.000000, y: -26.000000, z: -100.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    Scale: {x: 0.800000, y: 0.800000, z: 0.800000}
     HasSegmentScaleCompensation: false
   Children:
     []
@@ -7188,16 +7523,23 @@
     hasTrackVisual: true
     customKnobSize: true
     _knobSize: true
+    _knobIcon: true
     addCallbacks: true
     onValueChangeCallbacks: true
-    _styleSnapOS3: true
+    _styleSystem3: true
     onFinishedCallbacks: true
+    _leftIsText: true
+    _leftIcon: true
+    _leftText: true
+    _rightIsText: true
+    _rightIcon: true
+    _rightText: true
+    _trackIconSize: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
       _renderOrder: 0
-      _size: !<Vec3> {x: 4.000000, y: 2.000000, z: 1.000000}
       _inactive: false
       _playAudio: false
       _hasShadow: false
@@ -7206,13 +7548,22 @@
       hasTrackVisual: true
       customKnobSize: false
       _knobSize: !<Vec2> {x: 3.000000, y: 3.000000}
+      _knobIcon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
       addCallbacks: false
       onValueChangeCallbacks:
         []
-      _styleSnapOS3: Flat
+      _size: !<Vec3> {x: 4.000000, y: 2.000000, z: 1.000000}
+      _styleSystem3: Flat
       onFinishedCallbacks:
         []
       _defaultValue: 1
+      _leftIsText: false
+      _leftIcon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      _leftText: ""
+      _rightIsText: false
+      _rightIcon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      _rightText: ""
+      _trackIconSize: 1.500000
   ScriptTypes:
     "":
       {}
@@ -7245,6 +7596,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Start Streaming Video
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -7252,8 +7604,7 @@
   SizeToFit: false
   FontSize: 90.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -7270,7 +7621,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -7351,6 +7702,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Start Spotlight
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -7358,8 +7710,7 @@
   SizeToFit: false
   FontSize: 90.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -7376,7 +7727,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -7436,6 +7787,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Include Virtual Content
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -7443,8 +7795,7 @@
   SizeToFit: false
   FontSize: 50.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -7461,7 +7812,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -7521,6 +7872,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: "#1"
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -7528,8 +7880,7 @@
   SizeToFit: false
   FontSize: 48.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -7546,7 +7897,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -7608,6 +7959,7 @@
   Text: |
     Capture a series of frames and audio frames, composite them as one video and upload it on your storage bucket. Or stream the composite video with audio in realtime. 
 
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -7615,8 +7967,7 @@
   SizeToFit: false
   FontSize: 30.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -10.000000
     bottom: -2.250000
@@ -7633,7 +7984,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -7715,8 +8066,8 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSnapOS2: true
-    _styleSnapOS3: true
+    _styleSystem2: true
+    _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
     {}
@@ -7740,8 +8091,8 @@
         []
       onFinishedCallbacks:
         []
-      _styleSnapOS2: PrimaryNeutral
-      _styleSnapOS3: Primary
+      _styleSystem2: PrimaryNeutral
+      _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
     "":
@@ -7759,6 +8110,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Run function hosted on the Cloud
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -7766,8 +8118,7 @@
   SizeToFit: false
   FontSize: 40.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -7784,7 +8135,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -7856,6 +8207,7 @@
     _renderOrder: true
     _size: true
     orientation: true
+    _themeOverride: true
     _playAudio: true
   ScriptTypesDefault:
     {}
@@ -7864,6 +8216,7 @@
       _renderOrder: 0
       _size: !<Vec2> {x: 20.000000, y: 1.800000}
       orientation: Vertical
+      _themeOverride: Inherited
       scrollWindow: !<MappingBased.AssignableType_1> ca23e718-e48a-494e-832e-5ff77bd42353
       _playAudio: false
   ScriptTypes:
@@ -7917,7 +8270,7 @@
 - !<SceneObject/b9a8bfed-9117-407d-53b9-9448e53f09c9>
   PrefabRemaps:
     []
-  Name: Example4-EdgeFunctions
+  Name: Edge Functions
   Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
@@ -7942,6 +8295,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Start capturing video and streaming it on your realtime channel
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -7949,8 +8303,7 @@
   SizeToFit: false
   FontSize: 50.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -7967,7 +8320,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -8014,6 +8367,21 @@
     CapitalizationOverride: None
   DepthTest: false
   TwoSided: false
+- !<SceneObject/bb37344b-bb56-4a82-bc4a-5b5a467b4f32>
+  PrefabRemaps:
+    []
+  Name: GuideText
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 3.250000, z: 0.500000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 1bfe4a97-baef-4a22-9bc5-754dc23ad76c
 - !<SceneObject/bb6fd00a-d3e5-43d0-4b72-b0f6e97a6763>
   PrefabRemaps:
     []
@@ -8096,6 +8464,7 @@
   Text: |
     Capture a series of audio frames and upload it on your storage bucket or stream in realtime (only audio). Test from editor with headphones. 
 
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -8103,8 +8472,7 @@
   SizeToFit: false
   FontSize: 30.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -10.500000
     bottom: -2.250000
@@ -8121,7 +8489,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -8168,6 +8536,27 @@
     CapitalizationOverride: None
   DepthTest: false
   TwoSided: false
+- !<ScriptComponent/bfc2bbbf-21fa-4705-aaa5-3e9d4d89107c>
+  PrefabRemaps:
+    []
+  Name: GuideDismissPanel
+  Enabled: true
+  ScriptAsset: !<reference> eecb52e6-5e79-4498-9355-0212b3583c8f
+  ScriptInputsDefault:
+    buttonLabel: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      buttonLabel: "Ok, I understood"
+      hideUntilDismissed: !<reference.SceneObject[]>
+        - !<reference> 3d6d39d3-9169-4bf0-44cb-cce16a8985ba
+        - !<reference> 33240ea5-70cd-4dbb-7597-ee602aaf2c24
+        - !<reference> fa6d69bc-449f-46af-a0b3-c119b152c5ce
+        - !<reference> 4e9f24e9-49e7-4339-8d29-b3605a6e37bb
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/c10c9a6b-a9be-4264-a5cd-81cda6e71509>
   PrefabRemaps:
     - 38f6e137-b50d-4cbf-823b-fd14ad34736f: 4af94e9c-e465-4821-5e88-b3e2ae189eea
@@ -8224,6 +8613,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: "Logs here "
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -8231,8 +8621,7 @@
   SizeToFit: false
   FontSize: 50.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -10.000000
     bottom: -4.000000
@@ -8249,7 +8638,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -8324,6 +8713,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Include Virtual Content
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -8331,8 +8721,7 @@
   SizeToFit: false
   FontSize: 50.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -8349,7 +8738,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -8409,8 +8798,8 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Materials:
-    - !<reference> a581b69c-2a2d-41b7-91ff-f7e61c7e107e
-  Mesh: !<reference> 4c1d095d-3d39-4aa0-9a60-c4620fede337
+    - !<reference> 687ceae5-1afa-4263-85c3-4dd93d78807d
+  Mesh: !<reference> 741e3add-9d8a-4351-897f-78461d1ce5a7
   Skin: !<reference> 00000000-0000-0000-0000-000000000000
   BlendShapesEnabled: true
   BlendNormals: false
@@ -8444,6 +8833,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Composite Camera
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -8451,8 +8841,7 @@
   SizeToFit: false
   FontSize: 80.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -8469,7 +8858,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -8545,6 +8934,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Read data from tables
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -8552,8 +8942,7 @@
   SizeToFit: false
   FontSize: 40.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -8570,7 +8959,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -8642,8 +9031,15 @@
     _vertical: true
     _horizontal: true
     _scrollPosition: true
-    _maxSnapOne: true
+    _contentOrigin: true
+    _snapMode: true
+    _pagingSnapCapMode: true
+    _maxSnapStepsPerFling: true
+    _edgeMode: true
+    _feel: true
     _edgeFade: true
+    _edgeFadeColor: true
+    _renderOrder: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
@@ -8653,10 +9049,17 @@
       _windowSize: !<Vec2> {x: 32.000000, y: 28.000000}
       _scrollDimensions: !<Vec2> {x: 96.000000, y: 60.000000}
       _scrollPosition: !<Vec2> {x: 0.000000, y: 0.000000}
+      _contentOrigin: Center
       _scrollSnapping: true
+      _snapMode: paging
       _snapRegion: !<Vec2> {x: 0.000000, y: 10.000000}
-      _maxSnapOne: false
+      _pagingSnapCapMode: gestureStart
+      _maxSnapStepsPerFling: 0
+      _edgeMode: elastic
+      _feel: smooth
       _edgeFade: false
+      _edgeFadeColor: !<Vec3> {x: 0.125490, y: 0.125490, z: 0.125490}
+      _renderOrder: 0
   ScriptTypes:
     "":
       {}
@@ -8679,7 +9082,7 @@
 - !<SceneObject/ca8ec2ec-3bb5-440b-55c9-9ffe59b80b8d>
   PrefabRemaps:
     []
-  Name: Example3-LoadAsset
+  Name: Storage
   Enabled: false
   Layers: 1
   LocalTransform: !<TransformEntity>
@@ -8790,6 +9193,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Image
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -8797,8 +9201,7 @@
   SizeToFit: false
   FontSize: 80.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -8815,7 +9218,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -8973,6 +9376,7 @@
   Text: |
     Capture Frame
 
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -8980,8 +9384,7 @@
   SizeToFit: false
   FontSize: 90.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -8998,7 +9401,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -9122,6 +9525,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Score
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -9129,8 +9533,7 @@
   SizeToFit: false
   FontSize: 50.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -9147,7 +9550,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -9209,6 +9612,7 @@
   Text: |
     Edge Functions 
 
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -9216,8 +9620,7 @@
   SizeToFit: false
   FontSize: 60.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -9234,7 +9637,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -9331,8 +9734,8 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSnapOS2: true
-    _styleSnapOS3: true
+    _styleSystem2: true
+    _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
     {}
@@ -9356,8 +9759,8 @@
         []
       onFinishedCallbacks:
         []
-      _styleSnapOS2: PrimaryNeutral
-      _styleSnapOS3: Primary
+      _styleSystem2: PrimaryNeutral
+      _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
     "":
@@ -9380,8 +9783,8 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSnapOS2: true
-    _styleSnapOS3: true
+    _styleSystem2: true
+    _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
     {}
@@ -9406,8 +9809,8 @@
         []
       onFinishedCallbacks:
         []
-      _styleSnapOS2: PrimaryNeutral
-      _styleSnapOS3: Primary
+      _styleSystem2: PrimaryNeutral
+      _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
     "":
@@ -9498,6 +9901,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Jaz Powderman
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -9505,8 +9909,7 @@
   SizeToFit: false
   FontSize: 48.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -9523,7 +9926,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -9570,6 +9973,92 @@
     CapitalizationOverride: None
   DepthTest: false
   TwoSided: false
+- !<ScriptComponent/e7f1f760-625b-449a-9fd5-e00d6be750c7>
+  PrefabRemaps:
+    []
+  Name: ElementContent
+  Enabled: true
+  ScriptAsset: !<reference> c74eb6f4-6231-44ee-8336-d4d1f802da42
+  ScriptInputsDefault:
+    _useLeadingIcon: true
+    _leadingIcon: true
+    _useTrailingIcon: true
+    _trailingIcon: true
+    _iconLayout: true
+    _textAlignment: true
+    _textSizing: true
+    _font: true
+    _leadingIconSize: true
+    _trailingIconSize: true
+    _underline: true
+    _underlineThickness: true
+    _underlineOffset: true
+    _customSpacing: true
+    _spacing: true
+    _paddingTop: true
+    _paddingRight: true
+    _paddingBottom: true
+    _paddingLeft: true
+    _autoResizeParent: true
+    _minWidth: true
+    _minHeight: true
+    _sizeOverride: true
+    _useThemeColors: true
+    _defaultTextColor: true
+    _hoveredTextColor: true
+    _triggeredTextColor: true
+    _inactiveTextColor: true
+    _defaultIconTint: true
+    _hoveredIconTint: true
+    _triggeredIconTint: true
+    _inactiveIconTint: true
+    _useTextColorOverride: true
+    _textColorOverride: true
+    _debug: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _text: "Ok, I understood"
+      _useLeadingIcon: false
+      _leadingIcon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      _useTrailingIcon: false
+      _trailingIcon: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      _iconLayout: left
+      _textAlignment: center
+      _textSizing: hug
+      _font: !<reference.Font> 00000000-0000-0000-0000-000000000000
+      _textSize: !<float> 64.000000
+      _leadingIconSize: 1.250000
+      _trailingIconSize: 1.250000
+      _underline: false
+      _underlineThickness: 0.120000
+      _underlineOffset: 0.040000
+      _customSpacing: false
+      _spacing: 0.500000
+      _paddingTop: 0.500000
+      _paddingRight: 0.800000
+      _paddingBottom: 0.500000
+      _paddingLeft: 0.800000
+      _autoResizeParent: false
+      _minWidth: !<float> 0.000000
+      _minHeight: !<float> 0.000000
+      _sizeOverride: !<Vec2> {x: 0.000000, y: 0.000000}
+      _useThemeColors: true
+      _defaultTextColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      _hoveredTextColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      _triggeredTextColor: !<Vec4> {x: 0.080000, y: 0.080000, z: 0.080000, w: 1.000000}
+      _inactiveTextColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 0.400000}
+      _defaultIconTint: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      _hoveredIconTint: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      _triggeredIconTint: !<Vec4> {x: 0.080000, y: 0.080000, z: 0.080000, w: 1.000000}
+      _inactiveIconTint: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 0.400000}
+      _useTextColorOverride: false
+      _textColorOverride: !<Vec4> {x: 0.000000, y: 0.000000, z: 0.000000, w: 0.000000}
+      _debug: false
+  ScriptTypes:
+    "":
+      {}
 - !<Text/eb2a1da7-d01f-4bf2-6934-6d0a33c961d0>
   PrefabRemaps:
     []
@@ -9585,6 +10074,7 @@
   Text: |
     logs
 
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -9592,8 +10082,7 @@
   SizeToFit: false
   FontSize: 30.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -9610,7 +10099,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -9707,8 +10196,8 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSnapOS2: true
-    _styleSnapOS3: true
+    _styleSystem2: true
+    _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
     {}
@@ -9732,8 +10221,8 @@
         []
       onFinishedCallbacks:
         []
-      _styleSnapOS2: PrimaryNeutral
-      _styleSnapOS3: Primary
+      _styleSystem2: PrimaryNeutral
+      _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
     "":
@@ -9753,6 +10242,7 @@
   Text: |
     logs
 
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -9760,8 +10250,7 @@
   SizeToFit: false
   FontSize: 30.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -9778,7 +10267,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -9875,21 +10364,6 @@
     []
   Components:
     - !<own> 44899800-887c-46d3-5d94-b87a26dfde62
-- !<SceneObject/eef87ddc-eb6c-4637-6870-3a457de9849c>
-  PrefabRemaps:
-    []
-  Name: Guide
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 1.260201, z: 2.000004}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 0.750000, y: 0.750000, z: 0.750000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> 2bfe9018-ba6b-40a7-4c48-a2a039b8653f
 - !<Image/efbd4cc7-c42d-4551-41a5-0d7a71709452>
   PrefabRemaps:
     []
@@ -9922,6 +10396,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Start capturing and send audio frames to your bucket
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -9929,8 +10404,7 @@
   SizeToFit: false
   FontSize: 50.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -9947,7 +10421,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -10022,6 +10496,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Start capturing and streaming it on your realtime channel
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -10029,8 +10504,7 @@
   SizeToFit: false
   FontSize: 50.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -10047,7 +10521,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -10137,6 +10611,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: "Start capturing a video and store it on your bucket "
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -10144,8 +10619,7 @@
   SizeToFit: false
   FontSize: 50.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -10162,7 +10636,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -10226,6 +10700,7 @@
     
     Camera Module Max Res 1008x756 
     Still Image Max Res 4032 x 3024 from sensor, and it is cropped to 1920x1440
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -10233,8 +10708,7 @@
   SizeToFit: false
   FontSize: 25.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -10.500000
     bottom: -2.250000
@@ -10251,7 +10725,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -10328,10 +10802,11 @@
   ShadowDensity: 1.000000
   Text: |-
     For Recording  look up in the project:  ExternalServicesExamples > media-example-server-composite-stitcher and respective edge function
-    We will need to stitch audio and video together using an edge functions that will spin a job in a hosted service - outside of Spectacles
+    We will need to stitch audio and video together using an edge functions that will spin a job in a hosted service - outside of Glasses
     
     For Streaming look up 
     ExternalServicesExamples > media-example-web-viewers  follow README and Docs to set up further 
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -10339,8 +10814,7 @@
   SizeToFit: false
   FontSize: 30.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -14.000000
     bottom: -4.000000
@@ -10357,7 +10831,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -10439,8 +10913,8 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSnapOS2: true
-    _styleSnapOS3: true
+    _styleSystem2: true
+    _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
     {}
@@ -10464,8 +10938,8 @@
         []
       onFinishedCallbacks:
         []
-      _styleSnapOS2: PrimaryNeutral
-      _styleSnapOS3: Primary
+      _styleSystem2: PrimaryNeutral
+      _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
     "":
@@ -10483,6 +10957,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Include Virtual Content
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -10490,8 +10965,7 @@
   SizeToFit: false
   FontSize: 50.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -10508,7 +10982,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -10600,7 +11074,7 @@
       stitchedOutputFolder: YOUR PATH - TRY composite-stitched
       shareToSpotlight: false
       captionInput: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
-      defaultCaption: Captured with Spectacles ✨
+      defaultCaption: Captured with Glasses ✨
       useVerticalCrop: false
       verticalCropSwitch: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
       imageFormat: !<float> 0.000000
@@ -10674,6 +11148,7 @@
   Text: |-
     Start capturing and send frames to your bucket 
     Wait for the frames to upload at the end of the video 
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -10681,8 +11156,7 @@
   SizeToFit: false
   FontSize: 50.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -10699,7 +11173,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -10763,8 +11237,8 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSnapOS2: true
-    _styleSnapOS3: true
+    _styleSystem2: true
+    _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
     {}
@@ -10789,8 +11263,8 @@
         []
       onFinishedCallbacks:
         []
-      _styleSnapOS2: PrimaryNeutral
-      _styleSnapOS3: Primary
+      _styleSystem2: PrimaryNeutral
+      _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
     "":
@@ -10798,11 +11272,11 @@
 - !<SceneObject/fa6d69bc-449f-46af-a0b3-c119b152c5ce>
   PrefabRemaps:
     []
-  Name: Examples-6-Global Leaderboard
+  Name: Global Leaderboard
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
-    Position: {x: -36.000000, y: 0.000000, z: -90.000000}
+    Position: {x: 0.000000, y: -8.000000, z: -90.000000}
     Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     Scale: {x: 1.200000, y: 1.200000, z: 1.200000}
     HasSegmentScaleCompensation: false
@@ -10890,6 +11364,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: START
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -10897,8 +11372,7 @@
   SizeToFit: false
   FontSize: 60.000000
   FontSource: !<reference> 00000000-0000-0000-0000-000000000000
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -10915,7 +11389,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -10977,6 +11451,23 @@
     []
   Components:
     - !<own> f63f519a-0324-4f60-4662-cb927ea1e304
+- !<SceneObject/fcdc9611-2138-47d4-80a3-60866139908a>
+  PrefabRemaps:
+    []
+  Name: Guide
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: -100.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> bb37344b-bb56-4a82-bc4a-5b5a467b4f32
+    - !<own> 000f78a7-4e3d-48c8-ad10-ebf5310f73a2
+  Components:
+    - !<own> 6f23f2b0-9c04-4361-8256-77d5171ff8b7
+    - !<own> bfc2bbbf-21fa-4705-aaa5-3e9d4d89107c
 - !<ScriptComponent/fdac3852-214f-4afc-5986-3901c16375b2>
   PrefabRemaps:
     []
@@ -10985,7 +11476,7 @@
   ScriptAsset: !<reference> 3b46d829-f6db-432a-914c-3551904d3994
   ScriptInputsDefault:
     _themeOverride: true
-    _appearance: true
+    _spawnOnStart: true
     _padding: true
     _allowScaling: true
     allowNonUniformScaling: true
@@ -10994,6 +11485,8 @@
     _onlyInteractOnMargin: true
     allowTranslation: true
     _cutOutCenter: true
+    _cutOutFeather: true
+    _hasShadow: true
     _minimumSize: true
     _maximumSize: true
     useBillboarding: true
@@ -11009,22 +11502,33 @@
     _useTagAlong: true
     _tagAlongDistance: true
     _showFollowButton: true
+    _useFocusFrame: true
     useFollowBehavior: true
     _useTiltMode: true
     _tiltUpThreshold: true
     _tiltDownThreshold: true
     _following: true
+    _useDepthClamping: true
+    _minimumDepth: true
+    _maximumDepth: true
+    _useDepthScaling: true
+    _depthScalingMinimumDepth: true
+    _depthScalingMaximumDepth: true
+    _depthScalingMinimumScale: true
+    _depthScalingMaximumScale: true
     _showCloseButton: true
     _enableInteractionPlane: true
     _interactionPlaneOffset: true
     _interactionPlanePadding: true
     _targetingVisual: true
+    _interactablePadding: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
       _themeOverride: Inherited
       autoShowHide: false
+      _spawnOnStart: false
       _appearance: ""
       _innerSize: !<Vec2> {x: 30.000000, y: 26.000000}
       _padding: !<Vec2> {x: 0.000000, y: 0.000000}
@@ -11035,6 +11539,8 @@
       _onlyInteractOnMargin: false
       allowTranslation: true
       _cutOutCenter: false
+      _cutOutFeather: 0.100000
+      _hasShadow: false
       _minimumSize: !<Vec2> {x: 10.000000, y: 10.000000}
       _maximumSize: !<Vec2> {x: 150.000000, y: 150.000000}
       useBillboarding: true
@@ -11050,16 +11556,26 @@
       _useTagAlong: false
       _tagAlongDistance: !<float> 110.000000
       _showFollowButton: false
+      _useFocusFrame: true
       useFollowBehavior: false
       _useTiltMode: false
       _tiltUpThreshold: !<float> 25.000000
       _tiltDownThreshold: !<float> 35.000000
       _following: false
+      _useDepthClamping: false
+      _minimumDepth: !<float> 35.000000
+      _maximumDepth: !<float> 110.000000
+      _useDepthScaling: false
+      _depthScalingMinimumDepth: !<float> 35.000000
+      _depthScalingMaximumDepth: !<float> 110.000000
+      _depthScalingMinimumScale: 0.500000
+      _depthScalingMaximumScale: !<float> 1.000000
       _showCloseButton: false
       _enableInteractionPlane: true
       _interactionPlaneOffset: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
       _interactionPlanePadding: !<Vec2> {x: 0.000000, y: 0.000000}
       _targetingVisual: !<float> 1.000000
+      _interactablePadding: !<Vec2> {x: 1.000000, y: 1.000000}
   ScriptTypes:
     "":
       {}
@@ -11082,8 +11598,8 @@
     triggerDownCallbacks: true
     onValueChangeCallbacks: true
     onFinishedCallbacks: true
-    _styleSnapOS2: true
-    _styleSnapOS3: true
+    _styleSystem2: true
+    _styleSystem3: true
     _opacity: true
   ScriptTypesDefault:
     {}
@@ -11107,8 +11623,8 @@
         []
       onFinishedCallbacks:
         []
-      _styleSnapOS2: PrimaryNeutral
-      _styleSnapOS3: Primary
+      _styleSystem2: PrimaryNeutral
+      _styleSystem3: Primary
       _opacity: !<float> 1.000000
   ScriptTypes:
     "":

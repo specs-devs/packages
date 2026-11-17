@@ -8,8 +8,8 @@ import {RuntimeQueryHandler} from "./RuntimeQueryHandler"
 /**
  * Universal AI preview agent — runtime scene query + orthographic capture.
  *
- * Runs on any Lens Studio lens (Spectacles or Snapchat). Owns the postMessage
- * broker and publisher. Sibling AgentInteractScript (Spectacles only) reads
+ * Runs on any Lens Studio lens (Glasses or Snapchat). Owns the postMessage
+ * broker and publisher. Sibling AgentInteractScript (Glasses only) reads
  * `publisher` to attach its own handlers — see AiPreviewAgentInteract.lspkg.
  */
 @component
@@ -32,9 +32,11 @@ export class AgentInspectScript extends BaseScriptComponent {
     // this wired up off-editor crashes the lens. Stay fully inert on device.
     if (!global.deviceInfoSystem.isEditor()) return
 
+    // "MessageEvent" is only in EventNameMap on newer Lens Studio typings
+    // (absent in 5.22), so cast instead of @ts-expect-error — a directive
+    // errors as unused on typings that do include it.
     const broker = new LensMessageBroker(
-      // @ts-expect-error — MessageEvent is the correct event type for postMessage bridge
-      this.createEvent("MessageEvent")
+      this.createEvent("MessageEvent" as unknown as "SceneEvent")
     )
     this.publisher = new MessagePublisher<AgentCommand, AgentResponse>(broker)
 

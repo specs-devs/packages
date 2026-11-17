@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Supabase client and auth for leaderboard RPCs (submit_score, get_top_scores).
  * Manages session, sign-in with Snap ID token, and cleanup on destroy.
  */

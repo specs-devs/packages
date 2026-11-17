@@ -1,3 +1,4 @@
+//@component
 /**
  * InstantiateOn3DGrids - JavaScript version of the C# utility
  * Instantiates objects in a 3D grid pattern
@@ -61,7 +62,10 @@ function InstantiateOn3DGrids() {
     function createPrefabInstance(position) {
         if (script.prefab) {
             var instance = script.prefab.instantiate(script.sceneObject);
-            instance.getTransform().setWorldPosition(position);
+            // The offsets above are along world axes: turn them with the gridCenter so the layout follows its rotation.
+            var centerTransform = script.gridCenter.getTransform();
+            var origin = centerTransform.getWorldPosition();
+            instance.getTransform().setWorldPosition(origin.add(centerTransform.getWorldRotation().multiplyVec3(position.sub(origin))));
             print("Created prefab instance at position: " + position.x + ", " + position.y + ", " + position.z);
         }
     }

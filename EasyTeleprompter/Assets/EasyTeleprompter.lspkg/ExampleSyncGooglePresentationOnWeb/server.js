@@ -1,3 +1,4 @@
+//@component
 // WebSocket server for AR glasses presentation sync
 // This server can be deployed to hosting services like Heroku, Render, etc.
 

@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Singleton decorator for creating single-instance classes. Ensures only one instance of the
  * decorated class exists throughout the application lifecycle, accessible via getInstance().
  */

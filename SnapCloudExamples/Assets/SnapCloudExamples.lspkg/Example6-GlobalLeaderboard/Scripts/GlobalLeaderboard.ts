@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Main leaderboard controller: submit scores to Supabase, refresh list via get_top_scores,
  * and pass entries to rowInstantiator.render(). Assign supabaseService and rowInstantiator in the scene.
  * Supabase credentials flow: assign the project on SnapCloudRequirements, referenced by SupabaseLeaderboardService.

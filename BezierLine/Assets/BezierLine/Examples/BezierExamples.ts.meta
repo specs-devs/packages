@@ -1,0 +1,96 @@
+- !<AssetImportMetadata/ce548eaa-295b-4f81-baf6-7c59ace8fa0a>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 77e207c5-b291-4ae6-a02c-c18f21227582
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 77e207c5-b291-4ae6-a02c-c18f21227582
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 61a1b2ac-456e-4a55-85e6-cdce86b2dd5b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/61a1b2ac-456e-4a55-85e6-cdce86b2dd5b>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 41a7dc2a-1de3-4a29-8c8a-81261653c919
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    anchorMaterial: false
+    anchorMesh: false
+    anchorRadius: false
+    cardMaterial: false
+    cardMesh: false
+    cardSize: false
+    connectorMaterial: false
+    debugDraw: false
+    faceCamera: false
+    flowMarkers: false
+    flowSpeed: false
+    handleLength: false
+    lineWidth: false
+    markerMaterial: false
+    segments: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - cardMesh: !<reference.RenderMesh> 00000000-0000-0000-0000-000000000000
+      anchorMesh: !<reference.RenderMesh> 00000000-0000-0000-0000-000000000000
+      cardMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      anchorMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      connectorMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      markerMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      lineWidth: 0.450000
+      segments: 32
+      handleLength: !<float> 15.000000
+      faceCamera: true
+      debugDraw: false
+      cardSize: !<Vec2> {x: 16.000000, y: 10.000000}
+      anchorRadius: 0.900000
+      flowMarkers: true
+      flowSpeed: 0.300000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"BezierLine Examples — whiteboard-style connector board"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Assets"}'
+    - '// @input Asset.RenderMesh cardMesh {"hint":"Box mesh used for the card faces (scaled to Card Size)."}'
+    - '// @input Asset.RenderMesh anchorMesh {"hint":"Sphere mesh used for anchor dots and flow markers."}'
+    - '// @input Asset.Material cardMaterial {"hint":"Material cloned and tinted per card."}'
+    - '// @input Asset.Material anchorMaterial {"hint":"Material cloned per anchor dot (tinted with the card color on hover)."}'
+    - '// @input Asset.Material connectorMaterial {"hint":"Material cloned and tinted per connector ribbon."}'
+    - '// @input Asset.Material markerMaterial {"hint":"Material cloned and tinted per flow marker."}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"group_start", "label":"Connectors"}'
+    - '// @input float lineWidth = 0.45 {"hint":"Ribbon width in cm.", "widget":"slider", "min":0.05, "max":2, "step":0.01}'
+    - '// @input int segments = 32 {"hint":"Curve subdivisions per connector (2-128). Each adds two vertices.", "widget":"slider", "min":2, "max":128, "step":1}'
+    - '// @input float handleLength = 15 {"hint":"Handle length in cm — how far a connector leaves a card before bending. The Whiteboard uses 15.", "widget":"slider", "min":0, "max":30, "step":0.5}'
+    - '// @input bool faceCamera = true {"hint":"Rotate ribbons to face the camera so they never appear edge-on."}'
+    - '// @input bool debugDraw {"hint":"Draw curve, control points and handles with the debug render system."}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"group_start", "label":"Board"}'
+    - '// @input vec2 cardSize = {16,10} {"hint":"Card size in cm."}'
+    - '// @input float anchorRadius = 0.9 {"hint":"Anchor dot radius in cm.", "widget":"slider", "min":0.4, "max":2.5, "step":0.1}'
+    - '// @input bool flowMarkers = true {"hint":"Show a marker travelling along each connector (getPointAtT / getTangentAtT)."}'
+    - '// @input float flowSpeed = 0.3 {"hint":"Flow marker speed in laps per second.", "widget":"slider", "min":0.05, "max":2, "step":0.05}'
+    - '// @ui {"widget":"group_end"}'

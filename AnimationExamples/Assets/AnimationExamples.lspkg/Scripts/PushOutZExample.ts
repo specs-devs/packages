@@ -1,10 +1,10 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Push out in Z using explicit keyframes (AnimationCurve.createKeyFrame).
  * Lets you express motion a single-segment easing curve cannot — e.g. overshoot then settle.
  */
 
-import { buildFrameUI, flatCurve, playFirstClip } from "./Helpers/AnimationHelpers";
+import { bindReplay, buildFrameUI, flatCurve, playFirstClip } from "./Helpers/AnimationHelpers";
 
 @component
 export class PushOutZExample extends BaseScriptComponent {
@@ -62,7 +62,8 @@ export class PushOutZExample extends BaseScriptComponent {
      */
     onAwake() {
         if (this.enableLoggingLifecycle) print(`[${this.sceneObject.name}] PushOutZExample.onAwake`);
-        buildFrameUI(this.sceneObject, { title: "Push Out (Z)", buttonText: "TAP" });
+        const ui = buildFrameUI(this.sceneObject, { title: "Push Out (Z)", buttonText: "TAP" });
+        bindReplay(this, ui, this.target ?? this.sceneObject);
         const target = this.target ?? this.sceneObject;
         playFirstClip(target, this.buildAsset(target), undefined, this.enableLogging);
     }

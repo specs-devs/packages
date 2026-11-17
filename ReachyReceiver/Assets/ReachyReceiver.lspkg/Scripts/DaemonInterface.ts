@@ -2,7 +2,7 @@ import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent } from "SnapDecorators.lspkg/decorators";
 
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * WebSocket interface for communicating with Reachy Mini robot daemon.
  * Provides singleton access to robot control APIs including movement, emotions, and tracking.
  * Handles WebSocket connection management with automatic reconnection.
@@ -122,10 +122,10 @@ export class DaemonInterface extends BaseScriptComponent {
 
     /**
      * Set the base URL for the daemon (converts HTTP URL to WebSocket bridge URL)
-     * Always uses COMPUTER_IP for Spectacles compatibility
+     * Always uses COMPUTER_IP for Glasses compatibility
      */
     public setBaseUrl(url: string): void {
-        // Always use computer IP so Spectacles can connect to the bridge
+        // Always use computer IP so Glasses can connect to the bridge
         const wsUrl = `ws://${DaemonInterface.COMPUTER_IP}:8001/ws`;
         this.setWebSocketUrl(wsUrl);
     }

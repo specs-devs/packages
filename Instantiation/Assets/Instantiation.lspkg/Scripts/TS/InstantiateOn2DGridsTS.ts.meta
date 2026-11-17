@@ -23,6 +23,7 @@
   VersionMinor: 0
   VersionPatch: 0
   VersionPrerelease: ""
+  UpdateOrder: 0
   ComponentUid: c45ebe85-6c1a-424d-ba12-338bf8d67fbe
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
@@ -65,15 +66,15 @@
     - '// @input SceneObject gridCenter {"hint":"The center of the grid"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Grid Dimensions</span>"}'
-    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Define the grid size along X and Z axes</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Define the grid size along X and Y axes</span>"}'
     - '// @input float gridWidth = 5 {"hint":"Number of elements along the X axis"}'
-    - '// @input float gridHeight = 5 {"hint":"Number of elements along the Z axis"}'
+    - '// @input float gridHeight = 5 {"hint":"Number of elements along the Y axis"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Spacing & Position</span>"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Configure spacing between elements and Z position offset</span>"}'
     - '// @input float spacingX = 1.5 {"hint":"Spacing between elements in the X direction"}'
-    - '// @input float spacingY = 1.5 {"hint":"Spacing between elements in the Z direction"}'
-    - '// @input float zPosition {"hint":"Fixed Y position for all elements on the XZ plane"}'
+    - '// @input float spacingY = 1.5 {"hint":"Spacing between elements in the Y direction"}'
+    - '// @input float zPosition {"hint":"Offset along Z for all elements on the XY plane"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'

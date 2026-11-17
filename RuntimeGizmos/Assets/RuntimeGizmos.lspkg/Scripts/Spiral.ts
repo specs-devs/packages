@@ -2,7 +2,7 @@ import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
 
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Runtime spiral gizmo for visualizing helical paths and rotational motion. Renders customizable
  * spirals with linear, exponential, logarithmic, or helix patterns, configurable radius amplitudes,
  * axis directions, and real-time center tracking.
@@ -15,6 +15,12 @@ import {
     VisualStyle,
   } from "SpectaclesInteractionKit.lspkg/Components/Interaction/InteractorLineVisual/InteractorLineRenderer";
 
+  // Minimum number of segments used to generate a spiral (shared by the inspector input and setTotalSegments)
+  const MIN_TOTAL_SEGMENTS = 80;
+
+  // Maximum number of points per line renderer the spiral is split into
+  const MAX_POINTS_PER_SEGMENT = 30;
+
   @component
   export class Spiral extends BaseScriptComponent {
     @ui.separator
@@ -23,6 +29,7 @@ import {
 
     @input
     @hint("The center point of the spiral")
+    @allowUndefined
     public centerObject!: SceneObject;
   
     @input
@@ -56,6 +63,7 @@ import {
     public axisDirection: number = 1;
   
     @input
+    @allowUndefined
     private lineMaterial!: Material;
   
     @input("vec3", "{1, 0.5, 0}")
@@ -75,7 +83,7 @@ import {
     public lineStyle: number = 0;
   
     @input
-    @hint("Total number of segments for the entire spiral (higher = smoother)")
+    @hint("Total number of segments for the entire spiral (higher = smoother, minimum 80)")
     private totalSegments: number = 120;
   
     @input
@@ -159,22 +167,55 @@ import {
     }
 
 
-      if (!this.centerObject) {
-        this.logger.debug("Error: Center object is not assigned!");
-        return;
-      }
-  
       this.transform = this.sceneObject.getTransform();
-      this.centerTransform = this.centerObject.getTransform();
-      this.lastCenterPosition = this.centerTransform.getWorldPosition();
-      this.lastCenterRotation = this.centerTransform.getWorldRotation();
-  
-      // Create the spiral visualization
-      this.createSpiral();
   
       // Set up update event to track center movement
       this.createEvent("UpdateEvent").bind(() => {
         this.update();
+      });
+
+      if (!this.centerObject || !this.lineMaterial) {
+        this.logger.debug("Center object or material not set yet; call rebuild() after assigning them");
+        return;
+      }
+
+      this.rebuild();
+    }
+
+    /**
+     * (Re)creates the spiral from the current inputs. Call after setting centerObject and
+     * setLineMaterial() from code (e.g. on a component added with createComponent).
+     */
+    rebuild(): void {
+      if (!this.centerObject || !this.lineMaterial) {
+        this.logger.debug("Cannot rebuild spiral: center object and material are required");
+        return;
+      }
+
+      this.centerTransform = this.centerObject.getTransform();
+      this.lastCenterPosition = this.centerTransform.getWorldPosition();
+      this.lastCenterRotation = this.centerTransform.getWorldRotation();
+
+      this.cleanupLines();
+      this.createSpiral();
+    }
+
+    /**
+     * Sets the line material and rebuilds the spiral.
+     */
+    setLineMaterial(material: Material): void {
+      this.lineMaterial = material;
+      this.rebuild();
+    }
+
+    /**
+     * Sets the line width.
+     */
+    setLineWidth(width: number): void {
+      this.lineWidth = width;
+      this.lineSegments.forEach(line => {
+        line.startWidth = width;
+        line.endWidth = width;
       });
     }
   
@@ -182,7 +223,7 @@ import {
      * Updates the spiral position and rotation if the center has moved or rotated
      */
     update() {
-      if (!this.centerObject) return;
+      if (!this.centerObject || !this.centerTransform || this.lineSegments.length === 0) return;
   
       const currentCenterPos = this.centerTransform.getWorldPosition();
       const currentCenterRot = this.centerTransform.getWorldRotation();
@@ -201,9 +242,23 @@ import {
     }
   
     /**
-     * Regenerates the spiral and updates the visual
+     * Regenerates the spiral and updates the visual. Reuses the existing line renderers when the
+     * number of segments is unchanged, otherwise recreates them.
      */
     refreshSpiral(): void {
+      if (!this.centerTransform) {
+        this.rebuild();
+        return;
+      }
+
+      const chunks = this.splitIntoSegments(this.generateSpiralPoints());
+      if (chunks.length === this.lineSegments.length) {
+        chunks.forEach((chunk, index) => {
+          this.lineSegments[index].points = chunk;
+        });
+        return;
+      }
+
       this.cleanupLines();
       this.createSpiral();
     }
@@ -218,6 +273,24 @@ import {
         }
       });
       this.lineSegments = [];
+    }
+
+    /**
+     * Splits the spiral points into overlapping chunks of up to MAX_POINTS_PER_SEGMENT points
+     */
+    private splitIntoSegments(points: vec3[]): vec3[][] {
+      const chunks: vec3[][] = [];
+      for (let i = 0; i < points.length - 1; i += MAX_POINTS_PER_SEGMENT - 1) {
+        // Calculate points for this segment (with overlap for smooth transitions)
+        const segmentPoints: vec3[] = [];
+        for (let j = 0; j < MAX_POINTS_PER_SEGMENT && i + j < points.length; j++) {
+          segmentPoints.push(points[i + j]);
+        }
+        
+        if (segmentPoints.length < 2) continue;
+        chunks.push(segmentPoints);
+      }
+      return chunks;
     }
   
     /**
@@ -234,17 +307,7 @@ import {
       }
       
       // Split the spiral into multiple line segments for better visual quality
-      const maxPointsPerSegment = 30; // Limit points per segment for better performance
-      
-      for (let i = 0; i < points.length - 1; i += maxPointsPerSegment - 1) {
-        // Calculate points for this segment (with overlap for smooth transitions)
-        const segmentPoints = [];
-        for (let j = 0; j < maxPointsPerSegment && i + j < points.length; j++) {
-          segmentPoints.push(points[i + j]);
-        }
-        
-        if (segmentPoints.length < 2) continue;
-        
+      this.splitIntoSegments(points).forEach(segmentPoints => {
         // Create line renderer for this segment
         const line = new InteractorLineRenderer({
           material: this.lineMaterial,
@@ -260,7 +323,7 @@ import {
         line.getSceneObject().enabled = this._enabled;
         
         this.lineSegments.push(line);
-      }
+      });
     }
     
     /**
@@ -273,7 +336,7 @@ import {
       
       // Add extra points in tight areas for smoother curves
       // For the inner part of spiral, we need more points
-      const segments = Math.max(80, this.totalSegments);
+      const segments = Math.max(MIN_TOTAL_SEGMENTS, this.totalSegments);
       
       // Include a starting point at the center
       let localPoint = new vec3(0, 0, 0);  
@@ -446,11 +509,12 @@ import {
     }
   
     /**
-     * Sets the total number of segments used to approximate the spiral
+     * Sets the total number of segments used to approximate the spiral. Values below the
+     * minimum of 80 (the same minimum the inspector value uses) are raised to 80.
      */
     setTotalSegments(segments: number): void {
-      if (segments >= 20) {
-        this.totalSegments = segments;
+      if (segments > 0) {
+        this.totalSegments = Math.max(MIN_TOTAL_SEGMENTS, segments);
         this.refreshSpiral();
       }
     }

@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Callback action configuration for InteractableHelper. Defines callback behaviors including
  * custom script functions and object state changes in response to interaction events.
  */

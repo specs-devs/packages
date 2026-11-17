@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Camera video controller for streaming visual input to AI services. Captures camera frames
  * at configurable intervals, encodes them as Base64 JPG/PNG images, and emits encoded frames
  * for multimodal AI processing with vision capabilities.

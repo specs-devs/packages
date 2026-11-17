@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Generic event system with typed event arguments. Provides a strongly-typed pub/sub mechanism
  * for component communication with automatic subscription management.
  */

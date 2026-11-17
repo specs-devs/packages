@@ -23,6 +23,7 @@
   VersionMinor: 0
   VersionPatch: 0
   VersionPrerelease: ""
+  UpdateOrder: 0
   ComponentUid: e10f3c4d-c3ac-4f4e-a9c4-d152525f1c74
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
@@ -43,7 +44,7 @@
   Attachments:
     []
   DefaultScriptInputs:
-    - serverUrl: "wss://google-slide-spectacles-03332e1cf78e.herokuapp.com"
+    - serverUrl: "wss://your-teleprompter-server.example.com"
       statusText: !<reference.Text> 00000000-0000-0000-0000-000000000000
       autoConnect: true
       maxReconnectAttempts: !<float> 5.000000
@@ -54,7 +55,7 @@
     -
       {}
   InputLines:
-    - '// @input string serverUrl = "wss://google-slide-spectacles-03332e1cf78e.herokuapp.com" {"hint":"WebSocket server URL (e.g., wss://google-slide-spectacles-03332e1cf78e.herokuapp.com)"}'
+    - '// @input string serverUrl = "wss://your-teleprompter-server.example.com" {"hint":"WebSocket server URL (e.g., wss://your-teleprompter-server.example.com)"}'
     - '// @input Component.Text statusText {"hint":"Text component to display connection status"}'
     - '// @input bool autoConnect = true {"hint":"Auto-connect on start"}'
     - '// @input float maxReconnectAttempts = 5 {"hint":"Maximum reconnection attempts"}'

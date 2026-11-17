@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * 3D rotation handler for IMU sensor data visualization.
  * Applies rotation angles to a 3D object and optionally follows the camera.
  * Converts Euler angles (degrees) to quaternion rotation with error handling.

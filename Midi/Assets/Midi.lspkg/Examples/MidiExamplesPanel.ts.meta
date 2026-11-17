@@ -1,0 +1,56 @@
+- !<AssetImportMetadata/386ae6f1-8240-41ee-8b10-2c03218a4614>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 1312cf3c-5ddd-469d-ab29-14d949f32d8f
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 1312cf3c-5ddd-469d-ab29-14d949f32d8f
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> b60b878b-17ae-46d7-a4e5-a46bad63ce58
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/b60b878b-17ae-46d7-a4e5-a46bad63ce58>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: eb684221-52c5-4efb-9aa2-91060566716c
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    accentColor: false
+    autoStart: false
+    bpm: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - bpm: !<float> 70.000000
+      autoStart: true
+      accentColor: !<Vec4> {x: 0.450000, y: 0.900000, z: 0.550000, w: 1.000000}
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"Midi Examples Panel"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Settings"}'
+    - '// @input float bpm = 70 {"hint":"Tempo of the mock instrument, in beats per minute.", "widget":"slider", "min":40, "max":200, "step":1}'
+    - '// @input bool autoStart = true {"hint":"Start the mock instrument automatically when the lens starts."}'
+    - '// @input vec4 accentColor = {0.45,0.9,0.55,1} {"hint":"Accent color used for pad flashes and the running-state highlight.", "widget":"color"}'
+    - '// @ui {"widget":"group_end"}'

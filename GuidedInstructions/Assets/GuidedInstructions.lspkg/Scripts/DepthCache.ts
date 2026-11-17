@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Defines Depth Cache, Color Camera Frame, Depth Color Pair for the Depth Cache lens.
  */
 // Preload ThemeService before any UIKit visual to break a circular-import init-order
@@ -50,7 +50,7 @@ export class DepthCache extends BaseScriptComponent {
 
   @ui.label('<span style="color: #60A5FA;">References</span>')
   @input
-  @hint("Camera module used to request the left color camera feed")
+  @hint("Camera module used to request the left grayscale camera feed")
   camModule: CameraModule
 
   @ui.separator
@@ -86,6 +86,11 @@ export class DepthCache extends BaseScriptComponent {
     this.startDepthUpdate()
   }
 
+  /** True once the first depth frame has been paired with a camera frame. */
+  hasDepthFrame(): boolean {
+    return this.latestCameraDepthPair != null
+  }
+
   saveDepthFrame(): number {
     const depthFrameID = Date.now()
     this.cachedDepthFrames.set(depthFrameID, this.latestCameraDepthPair)
@@ -93,7 +98,12 @@ export class DepthCache extends BaseScriptComponent {
   }
 
   getCamImageWithID(depthFrameID: number): Texture {
-    return this.cachedDepthFrames.get(depthFrameID).colorCameraFrame.imageFrame
+    const cachedDepthColorPair = this.cachedDepthFrames.get(depthFrameID)
+    if (cachedDepthColorPair == null) {
+      this.logger.warn("No depth frame cached for ID: " + depthFrameID)
+      return null
+    }
+    return cachedDepthColorPair.colorCameraFrame.imageFrame
   }
 
   getWorldPositionWithID(pixelPos: vec2, depthFrameID: number): vec3 {
@@ -168,7 +178,7 @@ export class DepthCache extends BaseScriptComponent {
 
   private startCameraUpdates() {
     const camRequest = CameraModule.createCameraRequest()
-    camRequest.cameraId = CameraModule.CameraId.Left_Color
+    camRequest.cameraId = CameraModule.CameraId.Left_Grayscale
     this.camTexture = this.camModule.requestCamera(camRequest)
     const camTexControl = this.camTexture.control as CameraTextureProvider
     camTexControl.onNewFrame.add((frame: CameraFrame) => {
@@ -180,7 +190,7 @@ export class DepthCache extends BaseScriptComponent {
         this.camFrameHistory.shift()
       }
     })
-    this.colorDeviceCamera = global.deviceInfoSystem.getTrackingCameraForId(CameraModule.CameraId.Left_Color)
+    this.colorDeviceCamera = global.deviceInfoSystem.getTrackingCameraForId(CameraModule.CameraId.Left_Grayscale)
   }
 
   private startDepthUpdate() {

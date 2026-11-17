@@ -47,6 +47,7 @@
   ScriptInputsDefault:
     targetingVisual: true
     ignoreInteractionPlane: true
+    includeCollidersInPhysics: true
     keepHoverOnTrigger: true
     enableInstantDrag: true
     isScrollable: true
@@ -62,6 +63,7 @@
       targetingMode: !<float> 2.000000
       targetingVisual: !<float> 1.000000
       ignoreInteractionPlane: false
+      includeCollidersInPhysics: false
       keepHoverOnTrigger: false
       enableInstantDrag: false
       isScrollable: false
@@ -183,6 +185,7 @@
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
   Text: Pinch to Confirm
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -190,13 +193,13 @@
   SizeToFit: false
   FontSize: 100.000000
   FontSource: !<reference> 3b4adcfb-08c7-4263-8410-9664756f5f2b
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -5.000000
     bottom: -10.000000
     right: 5.000000
     top: 10.000000
+  DebugRenderLayoutRect: false
   OverflowVertical: Overflow
   OverflowHorizontal: Wrap
   Fill: !<TextFill>
@@ -207,7 +210,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>
@@ -270,6 +273,7 @@
     Find an
     empty space
     on the wall
+  CustomMaterial: !<reference> 00000000-0000-0000-0000-000000000000
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -277,13 +281,13 @@
   SizeToFit: false
   FontSize: 70.000000
   FontSource: !<reference> 3b4adcfb-08c7-4263-8410-9664756f5f2b
-  FontWeight: 400
-  Italic: false
+  PreferredStyle: Regular
   LayoutRect:
     left: -6.000000
     bottom: -13.000000
     right: 6.000000
     top: 13.000000
+  DebugRenderLayoutRect: false
   OverflowVertical: Truncate
   OverflowHorizontal: Wrap
   Fill: !<TextFill>
@@ -294,7 +298,7 @@
     TileCount: 5.000000
     TileZone: Rect
     TextureStretch: FitWidth
-  BlendMode: PremultipliedAlpha
+  BlendMode: PremultipliedAlphaAuto
   Outline: !<OutlineSettings>
     Enabled: false
     Fill: !<TextFill>

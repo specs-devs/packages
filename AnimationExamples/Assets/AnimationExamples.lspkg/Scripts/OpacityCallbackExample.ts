@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Fade the entire UIKit Frame stack (Frame + Button + Text labels) via
  * AnimationPropertyLayer.setCustomProperty. Demonstrates how to drive a value
  * through a callback every frame and apply it to multiple UI surfaces.
@@ -17,7 +17,7 @@
 // finish initializing COLORS before the visual chain reads it.
 import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService";
 import { Frame } from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame";
-import { buildFrameUI, FrameUI, playFirstClip } from "./Helpers/AnimationHelpers";
+import { bindReplay, buildFrameUI, FrameUI, playFirstClip } from "./Helpers/AnimationHelpers";
 
 @component
 export class OpacityCallbackExample extends BaseScriptComponent {
@@ -64,6 +64,7 @@ export class OpacityCallbackExample extends BaseScriptComponent {
         if (this.enableLoggingLifecycle) print(`[${this.sceneObject.name}] OpacityCallbackExample.onAwake`);
 
         this.ui = buildFrameUI(this.sceneObject, { title: "Opacity Callback", buttonText: "TAP" });
+        bindReplay(this, this.ui, this.sceneObject);
         this.frame = this.sceneObject.getComponent(Frame.getTypeName()) as Frame;
 
         this.createEvent("OnStartEvent").bind(() => {

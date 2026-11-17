@@ -1,0 +1,52 @@
+- !<AssetImportMetadata/4f0c76c4-4b43-46a6-a51e-b8ad18f0e7bf>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 3ec7a5c4-265b-40a0-a711-8638374c0b7d
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 3ec7a5c4-265b-40a0-a711-8638374c0b7d
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> f7ade64b-da84-49d4-8708-90d667ebd12e
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/f7ade64b-da84-49d4-8708-90d667ebd12e>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: a280ed9e-abb8-4ba4-bac2-209e34a849ae
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    lineCount: false
+    panelRoot: false
+    title: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - panelRoot: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      title: Log
+      lineCount: !<float> 7.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject panelRoot {"hint":"Object the panel is built under (hide it to hide the panel)"}'
+    - '// @input string title = "Log" {"hint":"Title shown above the lines"}'
+    - '// @input float lineCount = 6 {"hint":"How many of the latest lines are shown"}'

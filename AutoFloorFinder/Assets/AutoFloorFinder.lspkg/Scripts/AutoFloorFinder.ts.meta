@@ -1,0 +1,74 @@
+- !<AssetImportMetadata/da3c6e71-7b73-4c9c-bc40-7cc840c6ae76>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 20acd331-0862-4886-b0a9-59c65d0d4039
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 20acd331-0862-4886-b0a9-59c65d0d4039
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 0d5bb782-5e4e-4d91-9ff4-39d0a74b17ce
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/0d5bb782-5e4e-4d91-9ff4-39d0a74b17ce>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 72553d21-4e3b-4cc9-b848-e94df1bb02b5
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    enableLogging: false
+    maxUserToFloorDistanceCm: false
+    minUserToFloorDistanceCm: false
+    smoothCoefficient: false
+    targetObjects: false
+    useSmoothedHeight: false
+    worldCamera: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - worldCamera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      targetObjects: !<reference.SceneObject[]>
+        []
+      useSmoothedHeight: true
+      smoothCoefficient: 0.200000
+      minUserToFloorDistanceCm: !<float> 90.000000
+      maxUserToFloorDistanceCm: !<float> 250.000000
+      enableLogging: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Setup</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Camera basis and optional floor-pinned objects</span>"}'
+    - '// @input Component.Camera worldCamera {"hint":"Required: camera whose transform provides the ray origin/direction basis (your main camera). The component throws in onAwake if this is not set."}'
+    - '// @input SceneObject[] targetObjects = {} {"hint":"Optional: scene objects whose world Y is pinned to the estimated floor height. Leave empty to consume the floor purely through the script API."}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Floor Behavior</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Output smoothing and plausible camera-to-floor bounds</span>"}'
+    - '// @input bool useSmoothedHeight = true {"hint":"If true, writes smoothed floor height to targets; if false, writes raw committed floor height."}'
+    - '// @input float smoothCoefficient = 0.4 {"hint":"Smoothing factor [0..1] for floor updates. Higher = faster response, lower = more damping."}'
+    - '// @input float minUserToFloorDistanceCm = 90 {"hint":"Minimum plausible camera-to-floor distance (cm). Hits closer than this are rejected. Defaults assume a standing wearer — LOWER THIS for seated experiences."}'
+    - '// @input float maxUserToFloorDistanceCm = 250 {"hint":"Maximum plausible camera-to-floor distance (cm). Hits farther below the camera than this are rejected."}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Debug</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Logging output for this script instance</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable logging (tuning stats, cycle diagnostics, floor commits, lifecycle transitions)."}'

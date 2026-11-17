@@ -10,7 +10,7 @@ import Event, { PublicApi } from "SpectaclesInteractionKit.lspkg/Utils/Event"
 import { Frame } from "SpectaclesUIKit.lspkg/Scripts/Components/Frame/Frame";
 
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Animates UI Frame visibility with smooth scale transitions.
  * Provides show/hide animations with event callbacks for visibility changes.
  */

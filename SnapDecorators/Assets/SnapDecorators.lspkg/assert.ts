@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Assertion utilities for runtime validation and type guarding. Provides assert() for
  * condition validation with TypeScript type assertions, and verify() for non-null value
  * verification with automatic type narrowing to NonNullable.

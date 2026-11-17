@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Example implementation of Snap3D text-to-3D generation. Demonstrates submitting prompts,
  * tracking generation progress through multiple stages (image, base mesh, refined mesh), and
  * instantiating generated 3D assets with loading spinners and status updates.
@@ -96,6 +96,10 @@ export class ExampleSnap3D extends BaseScriptComponent {
     }
   }
   private onTap() {
+    // GestureModule pinches arrive even while this example is disabled.
+    if (!this.sceneObject.isEnabledInHierarchy) {
+      return;
+    }
     if (!this.runOnTap) {
       return;
     }

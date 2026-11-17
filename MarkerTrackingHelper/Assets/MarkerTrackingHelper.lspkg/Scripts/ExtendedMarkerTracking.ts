@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Extended marker tracking controller with world tracking support. Manages marker tracking with
  * device tracking validation and proper camera hierarchy setup for AR experiences.
  */
@@ -34,6 +34,9 @@ export class ExtendMarkerTrackingController extends BaseScriptComponent {
   // Logger instance
   private logger: Logger;
 
+  private newParent: SceneObject;
+  private detachEvent: DelayedCallbackEvent;
+
   /**
    * Called when component is initialized
    */
@@ -63,9 +66,9 @@ export class ExtendMarkerTrackingController extends BaseScriptComponent {
         this.getSceneObject().setParent(mainCamera);
         this.createEvent("OnStartEvent").bind(() => {
           if (this.markerTrackingComponent.enabled) {
-            this.markerTrackingComponent.onMarkerFound = () => {
+            Utils.addMarkerFoundHandler(this.markerTrackingComponent, () => {
               this.onMarkerFoundCallback();
-            };
+            });
           }
         });
       } else {
@@ -82,14 +85,18 @@ export class ExtendMarkerTrackingController extends BaseScriptComponent {
   onMarkerFoundCallback() {
     this.logger.debug("Marker Found");
 
-    /* Create a new parent object outside of Camera object and set the parentObject to the new parent object */
-    const newParent = global.scene.createSceneObject("NewParent");
-    const delayedEvent = this.createEvent("DelayedCallbackEvent");
-    delayedEvent.bind(() => {
-      this.parentObject.setParentPreserveWorldTransform(newParent);
-      this.markerTrackingComponent.enabled = false;
-    });
+    /* Create the parent object outside of the Camera object once, and reuse it on later detections */
+    if (!this.newParent) {
+      this.newParent = global.scene.createSceneObject("NewParent");
+    }
+    if (!this.detachEvent) {
+      this.detachEvent = this.createEvent("DelayedCallbackEvent");
+      this.detachEvent.bind(() => {
+        this.parentObject.setParentPreserveWorldTransform(this.newParent);
+        this.markerTrackingComponent.enabled = false;
+      });
+    }
 
-    delayedEvent.reset(0.5);
+    this.detachEvent.reset(0.5);
   }
 }

@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Demonstrates how to access components on a scene object. This script shows how to get references
  * to components attached to a specific scene object and check their types.
  */
@@ -52,29 +52,37 @@ export class AccessComponentOnSceneObjectTS extends BaseScriptComponent {
 
   @bindStartEvent
   onStart(): void {
-    if (this.enableLogging || this.enableLoggingLifecycle) {
+    if (this.shouldLog()) {
       print("Start event triggered");
     }
 
-    if (this.mySceneObject !== null) {
-      if (this.enableLogging || this.enableLoggingLifecycle) {
-        print("Scene object is not null");
-        print("Scene object name: " + this.mySceneObject.name);
+    if (!this.mySceneObject) {
+      if (this.shouldLog()) {
+        print("Scene object is not set");
       }
+      return;
     }
 
-    if (
-      this.mySceneObject
-        .getComponent("Component.RenderMeshVisual")
-        .getTypeName()
-    ) {
-      if (this.enableLogging || this.enableLoggingLifecycle) {
+    if (this.shouldLog()) {
+      print("Scene object is not null");
+      print("Scene object name: " + this.mySceneObject.name);
+    }
+
+    // getComponent returns null when the component is missing - check before using it
+    const meshVisual = this.mySceneObject.getComponent("Component.RenderMeshVisual");
+    if (meshVisual) {
+      if (this.shouldLog()) {
         print("Scene object has a RenderMeshVisual component");
       }
     } else {
-      if (this.enableLogging || this.enableLoggingLifecycle) {
+      if (this.shouldLog()) {
         print("Scene object does not have a RenderMeshVisual component");
       }
     }
+  }
+
+  // Prints only when Debug is on and logging is enabled
+  private shouldLog(): boolean {
+    return this.debug && (this.enableLogging || this.enableLoggingLifecycle);
   }
 }

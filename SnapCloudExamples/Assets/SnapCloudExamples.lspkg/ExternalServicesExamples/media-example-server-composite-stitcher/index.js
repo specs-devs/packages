@@ -1,3 +1,4 @@
+//@component
 const express = require('express');
 const { createClient } = require('@supabase/supabase-js');
 const ffmpeg = require('fluent-ffmpeg');
@@ -340,7 +341,7 @@ app.post('/stitch', async (req, res) => {
     {
       useVerticalCrop: verticalCropEnabled,
       shareToSpotlight: spotlightEnabled,
-      spotlightCaption: spotlightCaption || 'Captured with Spectacles ✨',
+      spotlightCaption: spotlightCaption || 'Captured with Glasses ✨',
       imageExtension: imageExtension  // 'jpg' or 'png'
     }
   ).catch(error => {

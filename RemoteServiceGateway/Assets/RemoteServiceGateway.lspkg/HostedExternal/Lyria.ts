@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Google Lyria API integration for AI-generated music and vocals. Provides access to Lyria models
  * for creating original music compositions and vocal performances through Google's Vertex AI platform
  * with error handling and response parsing.

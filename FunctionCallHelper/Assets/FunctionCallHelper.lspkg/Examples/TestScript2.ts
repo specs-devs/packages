@@ -1,7 +1,7 @@
 /**
 
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Example script demonstrating data processing function calls. Shows how to create named
  * functions that can be invoked programmatically with visual feedback.
  */

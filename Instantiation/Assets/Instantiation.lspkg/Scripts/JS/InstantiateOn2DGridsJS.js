@@ -1,15 +1,16 @@
+//@component
 /**
  * InstantiateOn2DGrids - JavaScript version of the C# utility
- * Instantiates objects in a 2D grid pattern on the XZ plane
+ * Instantiates objects in a 2D grid pattern on the XY plane
  */
 
 //@input Asset.ObjectPrefab prefab {"hint":"The prefab to instantiate"}
 //@input SceneObject gridCenter {"hint":"The center of the grid"}
 //@input float gridWidth = 5 {"hint":"Number of elements along the X axis"}
-//@input float gridHeight = 5 {"hint":"Number of elements along the Z axis"}
+//@input float gridHeight = 5 {"hint":"Number of elements along the Y axis"}
 //@input float spacingX = 1.5 {"hint":"Spacing between elements in the X direction"}
-//@input float spacingY = 1.5 {"hint":"Spacing between elements in the Z direction"}
-//@input float zPosition = 0.0 {"hint":"Fixed Y position for all elements on the XZ plane"}
+//@input float spacingY = 1.5 {"hint":"Spacing between elements in the Y direction"}
+//@input float zPosition = 0.0 {"hint":"Offset along Z for all elements on the XY plane"}
 
 function InstantiateOn2DGrids() {
     // Initialize with the proper pattern
@@ -36,7 +37,7 @@ function InstantiateOn2DGrids() {
         // Loop through the rows and columns to instantiate the prefabs
         for (var x = 0; x < script.gridWidth; x++) {
             for (var z = 0; z < script.gridHeight; z++) {
-                // Calculate the position for each prefab (on the XZ plane)
+                // Calculate the position for each prefab (on the XY plane)
                 var position = new vec3(
                     startPosition.x + x * script.spacingX,
                     startPosition.y + z * script.spacingY,
@@ -53,7 +54,10 @@ function InstantiateOn2DGrids() {
     function createPrefabInstance(position) {
         if (script.prefab) {
             var instance = script.prefab.instantiate(script.sceneObject);
-            instance.getTransform().setWorldPosition(position);
+            // The offsets above are along world axes: turn them with the gridCenter so the layout follows its rotation.
+            var centerTransform = script.gridCenter.getTransform();
+            var origin = centerTransform.getWorldPosition();
+            instance.getTransform().setWorldPosition(origin.add(centerTransform.getWorldRotation().multiplyVec3(position.sub(origin))));
             print("Created prefab instance at position: " + position.x + ", " + position.y + ", " + position.z);
         }
     }

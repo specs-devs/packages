@@ -1,3 +1,4 @@
+//@component
 /**
  * Linear Scale of content over distance from target
  */
@@ -76,7 +77,9 @@ function ScaleOverDistanceLinearJS() {
         var clampedValue = Math.max(from1, Math.min(to1, value));
         
         // Calculate how far along the input range the value is (0 to 1)
-        var percentage = (clampedValue - from1) / (to1 - from1);
+        // Guard from1 == to1: step from from2 to to2 at that value
+        var range = to1 - from1;
+        var percentage = range !== 0 ? (clampedValue - from1) / range : (value >= to1 ? 1 : 0);
         
         // Map that percentage to the output range
         return from2 + percentage * (to2 - from2);

@@ -30,7 +30,7 @@ export class SimpleAsrTest extends BaseScriptComponent {
     }
 
     print("=== SimpleAsrTest onAwake ===")
-    print(`Device: ${global.deviceInfoSystem.isSpectacles() ? "Spectacles" : "Editor"}`)
+    print(`Device: ${global.deviceInfoSystem.isSpectacles() ? "Glasses" : "Editor"}`)
 
     // Create options once
     this.options = AsrModule.AsrTranscriptionOptions.create()

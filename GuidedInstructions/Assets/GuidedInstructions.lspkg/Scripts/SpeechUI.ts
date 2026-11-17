@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Speech UI component for the Depth Cache Spectacles lens.
+ * SPECS Inc. 2027
+ * Speech UI component for the Depth Cache Glasses lens.
  */
 // Preload ThemeService before any UIKit visual to break a circular-import init-order
 // crash in the package (Visual.ts imports ThemeService before defining the Visual class +
@@ -99,6 +99,12 @@ export class SpeechUI extends BaseScriptComponent {
     this.asrVoiceController.startListening()
   }
 
+  // Pinch-up hook wired by the demo prefab's TouchDownButton. Intentionally does not stop
+  // listening: the button is tap-to-talk and ASR ends itself on the final transcription.
+  onSpeechButtonUp() {
+    this.logger.debug("Speech button Up")
+  }
+
   stopListening() {
     this.logger.info("Disabling speech UI")
     this.animateSpeechIcon(false)
@@ -110,9 +116,11 @@ export class SpeechUI extends BaseScriptComponent {
     const camPos = this.mainCamTrans.getWorldPosition()
     let desiredPosition = camPos.add(this.mainCamTrans.forward.uniformScale(-UI_CAM_DISTANCE))
     desiredPosition = desiredPosition.add(this.mainCamTrans.up.uniformScale(UI_CAM_HEIGHT))
-    this.trans.setWorldPosition(vec3.lerp(this.trans.getWorldPosition(), desiredPosition, getDeltaTime() * 10))
+    // Clamp so a long frame (low Preview frame rate) can't overshoot and oscillate away
+    const followT = Math.min(1, getDeltaTime() * 10)
+    this.trans.setWorldPosition(vec3.lerp(this.trans.getWorldPosition(), desiredPosition, followT))
     const desiredRotation = quat.lookAt(this.mainCamTrans.forward, vec3.up())
-    this.trans.setWorldRotation(quat.slerp(this.trans.getWorldRotation(), desiredRotation, getDeltaTime() * 10))
+    this.trans.setWorldRotation(quat.slerp(this.trans.getWorldRotation(), desiredRotation, followT))
   }
 
   private animateSpeechIcon(active: boolean) {

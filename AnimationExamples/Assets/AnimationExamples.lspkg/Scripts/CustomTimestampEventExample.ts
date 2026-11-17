@@ -1,10 +1,10 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Fire a named event at an arbitrary timestamp inside the clip via AnimationAsset.createEvent.
  * Useful for syncing secondary effects (sounds, particles, state changes) to a specific moment.
  */
 
-import { buildFrameUI, playFirstClip } from "./Helpers/AnimationHelpers";
+import { bindReplay, buildFrameUI, playFirstClip } from "./Helpers/AnimationHelpers";
 
 @component
 export class CustomTimestampEventExample extends BaseScriptComponent {
@@ -60,7 +60,8 @@ export class CustomTimestampEventExample extends BaseScriptComponent {
      */
     onAwake() {
         if (this.enableLoggingLifecycle) print(`[${this.sceneObject.name}] CustomTimestampEventExample.onAwake`);
-        buildFrameUI(this.sceneObject, { title: "Custom Timestamp Event", buttonText: "TAP" });
+        const ui = buildFrameUI(this.sceneObject, { title: "Custom Timestamp Event", buttonText: "TAP" });
+        bindReplay(this, ui, this.target ?? this.sceneObject);
         const target = this.target ?? this.sceneObject;
         playFirstClip(target, this.buildAsset(target), (args) => {
             if (args.eventName === this.eventName && this.enableLogging) {

@@ -1,0 +1,109 @@
+- !<AssetImportMetadata/e63dd283-8c49-45ee-87b7-a9709a61a26f>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> f47760f4-7c8b-4bca-be81-98efddd3cd90
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> f47760f4-7c8b-4bca-be81-98efddd3cd90
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 3be8b3a2-1f98-4506-961d-8ca2bd1b144e
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/3be8b3a2-1f98-4506-961d-8ca2bd1b144e>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 6fd4d652-9e07-41b5-b347-0fa8b58a29b4
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    albumArtworkImage: false
+    audioComponent: false
+    audioDebugText: false
+    authenticationType: false
+    authorizationUri: false
+    clientId: false
+    enableLogging: false
+    enableLoggingLifecycle: false
+    maxLikedSongs: false
+    nextButton: false
+    pauseButton: false
+    playButton: false
+    previousButton: false
+    signInButton: false
+    signOutButton: false
+    statusText: false
+    stopButton: false
+    title: false
+    tokenUri: false
+    trackInfoText: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - signInButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      signOutButton: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      playButton: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      pauseButton: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
+      stopButton: !<MappingBased.AssignableType_5> 00000000-0000-0000-0000-000000000000
+      nextButton: !<MappingBased.AssignableType_6> 00000000-0000-0000-0000-000000000000
+      previousButton: !<MappingBased.AssignableType_7> 00000000-0000-0000-0000-000000000000
+      statusText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      trackInfoText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      audioDebugText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      albumArtworkImage: !<reference.Image> 00000000-0000-0000-0000-000000000000
+      audioComponent: !<reference.AudioComponent> 00000000-0000-0000-0000-000000000000
+      title: Spotify Music Controller
+      clientId: your-spotify-client-id
+      authorizationUri: "https://accounts.spotify.com/authorize"
+      tokenUri: "https://accounts.spotify.com/api/token"
+      authenticationType: code
+      maxLikedSongs: !<float> 50.000000
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input AssignableType_1 signInButton {"hint":"Button to start Spotify authentication process"}'
+    - '// @input AssignableType_2 signOutButton {"hint":"Button to sign out and clear Spotify authentication"}'
+    - '// @input AssignableType_3 playButton {"hint":"Button to start or resume music playback"}'
+    - '// @input AssignableType_4 pauseButton {"hint":"Button to pause music playback (can be resumed)"}'
+    - '// @input AssignableType_5 stopButton {"hint":"Button to stop music playback completely"}'
+    - '// @input AssignableType_6 nextButton {"hint":"Button to skip to the next liked song"}'
+    - '// @input AssignableType_7 previousButton {"hint":"Button to go back to the previous liked song"}'
+    - '// @input Component.Text statusText {"hint":"Text component to display connection and playback status"}'
+    - '// @input Component.Text trackInfoText {"hint":"Text component to display current track information (name, artist, album)"}'
+    - '// @input Component.Text audioDebugText {"hint":"Text component to display audio debug and error messages"}'
+    - '// @input Component.Image albumArtworkImage {"hint":"Image component to display album artwork for the current track"}'
+    - '// @input Component.AudioComponent audioComponent {"hint":"Audio component for local preview playback (30-second clips)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @input string title = "Spotify Music Controller" {"hint":"Display title for the music controller"}'
+    - '// @ui {"widget":"separator"}'
+    - "// @input string clientId = \"your-spotify-client-id\" {\"hint\":\"Your Spotify app's Client ID from the Developer Dashboard\"}"
+    - '// @input string authorizationUri = "https://accounts.spotify.com/authorize" {"hint":"Spotify OAuth2 authorization endpoint URL"}'
+    - '// @input string tokenUri = "https://accounts.spotify.com/api/token" {"hint":"Spotify OAuth2 token exchange endpoint URL"}'
+    - "// @input string authenticationType = \"code\" {\"hint\":\"OAuth2 authentication flow type (use 'code' for Auth Kit)\"}"
+    - '// @ui {"widget":"separator"}'
+    - '// @input float maxLikedSongs = 50 {"hint":"Maximum number of liked songs to load from Spotify (1-50)"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'
+    - '// @input bool enableLogging {"hint":"Enable general logging (API calls, playback events, etc.)"}'
+    - '// @input bool enableLoggingLifecycle {"hint":"Enable lifecycle logging (onAwake, onStart, onUpdate, onDestroy, etc.)"}'

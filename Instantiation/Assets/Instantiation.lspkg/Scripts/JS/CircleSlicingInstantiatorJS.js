@@ -1,3 +1,4 @@
+//@component
 /**
  * CircleSlicingInstantiator - JavaScript version of the C# utility
  * Instantiates prefabs along slices of a circle (like pizza slices)
@@ -48,8 +49,9 @@ function CircleSlicingInstantiator() {
 
             // Instantiate Y elements along the slice (line)
             for (var j = 0; j < script.yElementsPerSlice; j++) {
-                // Interpolate between the start and end points of the slice
-                var t = j / (script.yElementsPerSlice - 1);
+                // Interpolate between the start and end points of the slice.
+                // The end point is the next slice's start, so it's left out (no duplicates around the circle)
+                var t = j / script.yElementsPerSlice;
                 var position = lerp(sliceStart, sliceEnd, t);
 
                 // Create a prefab instance at the calculated position
@@ -71,7 +73,10 @@ function CircleSlicingInstantiator() {
     function createPrefabInstance(position) {
         if (script.prefab) {
             var instance = script.prefab.instantiate(script.sceneObject);
-            instance.getTransform().setWorldPosition(position);
+            // The offsets above are along world axes: turn them with the center so the layout follows its rotation.
+            var centerTransform = script.center.getTransform();
+            var origin = centerTransform.getWorldPosition();
+            instance.getTransform().setWorldPosition(origin.add(centerTransform.getWorldRotation().multiplyVec3(position.sub(origin))));
             print("Created prefab instance at position: " + position.x + ", " + position.y + ", " + position.z);
         }
     }

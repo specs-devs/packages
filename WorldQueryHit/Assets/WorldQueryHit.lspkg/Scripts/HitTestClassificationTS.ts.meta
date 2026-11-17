@@ -23,12 +23,14 @@
   VersionMinor: 0
   VersionPatch: 0
   VersionPrerelease: ""
+  UpdateOrder: 0
   ComponentUid: 387e3b0c-6a1b-40be-a2b0-d799df8afbc5
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
     enableLogging: false
     enableLoggingLifecycle: false
+    refineEnabled: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -38,12 +40,17 @@
   Attachments:
     []
   DefaultScriptInputs:
-    - enableLogging: false
+    - refineEnabled: false
+      enableLogging: false
       enableLoggingLifecycle: false
   ScriptTypes:
     -
       {}
   InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Semantic Detection Settings</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Surface classification options</span>"}'
+    - '// @input bool refineEnabled {"hint":"Request refined hit results (options.refine). Not available on every SnapOS/Lens Studio version; silently ignored when unsupported"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'

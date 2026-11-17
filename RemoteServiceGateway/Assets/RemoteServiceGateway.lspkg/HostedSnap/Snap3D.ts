@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Snap3D text-to-3D generation API client. Submits prompts to generate 3D models with optional
  * refinement and vertex coloring, manages generation status polling, and loads resulting textures
  * and GLTF assets with event-based progress tracking.
@@ -62,7 +62,7 @@ export class Snap3D {
       };
       submitApiRequest.body = JSON.stringify({
         ...requestBody,
-        use_case: "Spectacles",
+        use_case: "Glasses",
       });
 
       RSM_SUBMIT.performApiRequest(submitApiRequest, (response) => {
@@ -223,6 +223,7 @@ export class Snap3D {
                 ]);
                 break;
               } catch (error) {
+                taskCompleted = true;
                 submitGetStatus.status = "failed";
 
                 submitGetStatus.event.invoke([
@@ -268,6 +269,7 @@ export class Snap3D {
                 ]);
                 break;
               } catch (error) {
+                taskCompleted = true;
                 submitGetStatus.status = "failed";
 
                 submitGetStatus.event.invoke([
@@ -280,12 +282,63 @@ export class Snap3D {
               }
             }
           }
-        } else if (
-          responseBody.status === "completed" &&
-          !submitGetStatus.refinedMeshGltf
-        ) {
+        } else if (responseBody.status === "completed") {
+          // A completed task is final: stop polling whether or not it was refined.
+          taskCompleted = true;
+          // With refine: false the task completes with a base_mesh and no refined_mesh.
+          const hasRefinedMesh = responseBody.artifacts.some(
+            (artifact) => artifact.artifact_type === "refined_mesh"
+          );
+          if (!hasRefinedMesh && !submitGetStatus.baseMeshGltf) {
+            for (const artifact of responseBody.artifacts) {
+              if (artifact.artifact_type === "base_mesh") {
+                const baseMeshUrl = artifact.url;
+                const httpRequest = RemoteServiceHttpRequest.create();
+                httpRequest.url = baseMeshUrl;
+                const dynamicGltfResource =
+                  await Promisfy.InternetModule.performHttpRequest(
+                    INTERNET_MODULE,
+                    httpRequest
+                  );
+                try {
+                  const gltfAsset =
+                    await Promisfy.RemoteMediaModule.loadResourceAsGltfAsset(
+                      REMOTE_MEDIA_MODULE,
+                      dynamicGltfResource.asResource()
+                    );
+                  submitGetStatus.baseMeshGltf = gltfAsset;
+                  submitGetStatus.status = "completed";
+
+                  const gltfAssetData: Snap3DTypes.GltfAssetData = {
+                    url: baseMeshUrl,
+                    gltfAsset: gltfAsset,
+                  };
+                  submitGetStatus.event.invoke([
+                    artifact.artifact_type,
+                    gltfAssetData,
+                  ]);
+                  break;
+                } catch (error) {
+                  submitGetStatus.status = "failed";
+                  submitGetStatus.event.invoke([
+                    "failed",
+                    {
+                      errorMsg: error,
+                      errorCode: -1,
+                    },
+                  ]);
+                  break;
+                }
+              }
+            }
+          } else if (!hasRefinedMesh) {
+            submitGetStatus.status = "completed";
+          }
           for (const artifact of responseBody.artifacts) {
-            if (artifact.artifact_type === "refined_mesh") {
+            if (
+              artifact.artifact_type === "refined_mesh" &&
+              !submitGetStatus.refinedMeshGltf
+            ) {
               const refinedMeshUrl = artifact.url;
               const httpRequest = RemoteServiceHttpRequest.create();
               httpRequest.url = refinedMeshUrl;
@@ -314,6 +367,7 @@ export class Snap3D {
                 ]);
                 break;
               } catch (error) {
+                taskCompleted = true;
                 submitGetStatus.status = "failed";
                 submitGetStatus.event.invoke([
                   "failed",
@@ -327,6 +381,7 @@ export class Snap3D {
           }
         }
       } catch (error) {
+        taskCompleted = true;
         submitGetStatus.status = "failed";
         submitGetStatus.event.invoke([
           "failed",
@@ -336,7 +391,9 @@ export class Snap3D {
           },
         ]);
       }
-      await Snap3D.promiseSetTimeout(REPEAT_SUBMIT_TIME);
+      if (!taskCompleted) {
+        await Snap3D.promiseSetTimeout(REPEAT_SUBMIT_TIME);
+      }
     }
   }
 
@@ -400,7 +457,7 @@ export class Snap3D {
       };
       submitApiRequest.body = JSON.stringify({
         ...requestBody,
-        use_case: "Spectacles",
+        use_case: "Glasses",
       });
 
       RSM_SUBMIT.performApiRequest(submitApiRequest, async (response) => {

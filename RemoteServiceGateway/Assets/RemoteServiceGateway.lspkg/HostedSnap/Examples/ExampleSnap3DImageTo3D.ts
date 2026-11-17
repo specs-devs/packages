@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Example implementation of Snap3D image-to-3D generation. Demonstrates using an existing image
  * URL to generate 3D models, bypassing the text-to-image stage. This example shows how to
  * submit an image directly for mesh generation and handle the resulting 3D assets.
@@ -20,7 +20,8 @@ export class ExampleSnap3DImageTo3D extends BaseScriptComponent {
   @input
   @widget(new TextAreaWidget())
   @hint("URL of the image to convert to 3D (must be publicly accessible)")
-  private imageUrl: string = "https://example.com/image.png";
+  private imageUrl: string =
+    "https://raw.githubusercontent.com/specs-devs/packages/main/RemoteServiceGateway/Assets/AssetImage/RemoteServiceGateway.png";
 
   @input
   @widget(new TextAreaWidget())
@@ -118,6 +119,10 @@ export class ExampleSnap3DImageTo3D extends BaseScriptComponent {
   }
 
   private onTap() {
+    // GestureModule pinches arrive even while this example is disabled.
+    if (!this.sceneObject.isEnabledInHierarchy) {
+      return;
+    }
     if (!this.runOnTap) {
       return;
     }

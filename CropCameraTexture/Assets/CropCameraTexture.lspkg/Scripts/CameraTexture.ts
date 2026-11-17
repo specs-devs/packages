@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Camera texture cropping utility that allows you to crop camera frames to specific regions.
  * Provides both cropped and original texture access with configurable crop boundaries.
  */
@@ -76,9 +76,10 @@ export class CameraTexture extends BaseScriptComponent {
           return this.cameraTexture;
         }
 
-        ValidationUtils.ifExists(cropProvider.inputTexture, () => {
+        // Assign even when the crop texture has no input yet (null); skip textures without the field.
+        if (cropProvider.inputTexture !== undefined) {
           cropProvider.inputTexture = this.cameraTexture;
-        });
+        }
 
         ValidationUtils.ifExists(cropProvider.cropRect, (rect) => {
           rect.left = this.cropLeft;
@@ -164,9 +165,9 @@ export class CameraTexture extends BaseScriptComponent {
 
       this.cropProvider = this.screenTexture.control as any;
 
-      ValidationUtils.ifExists(this.cropProvider?.inputTexture, () => {
+      if (this.cropProvider && this.cropProvider.inputTexture !== undefined) {
         this.cropProvider.inputTexture = this.cameraTexture;
-      });
+      }
 
       const cameraControl = this.cameraTexture.control as any;
       ValidationUtils.ifExists(cameraControl?.onNewFrame, (onNewFrame) => {

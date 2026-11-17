@@ -2,7 +2,7 @@ import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
 
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * 3D grid instantiation utility that creates volumetric grid patterns in three-dimensional space.
  * Ideal for creating voxel-based structures, particle volumes, or 3D data visualizations.
  */
@@ -83,7 +83,6 @@ export class InstantiateOn3DGridsTS extends BaseScriptComponent {
         });
     }
     
-    @bindStartEvent
 
     
     onStart(): void {
@@ -131,7 +130,10 @@ export class InstantiateOn3DGridsTS extends BaseScriptComponent {
     private createPrefabInstance(position: vec3): void {
         if (this.prefab) {
             const instance = this.prefab.instantiate(this.sceneObject);
-            instance.getTransform().setWorldPosition(position);
+            // The offsets above are along world axes: turn them with the gridCenter so the layout follows its rotation.
+            const centerTransform = this.gridCenter.getTransform();
+            const origin = centerTransform.getWorldPosition();
+            instance.getTransform().setWorldPosition(origin.add(centerTransform.getWorldRotation().multiplyVec3(position.sub(origin))));
             this.logger.debug(`Created prefab instance at position: ${position.x}, ${position.y}, ${position.z}`);
         }
     }

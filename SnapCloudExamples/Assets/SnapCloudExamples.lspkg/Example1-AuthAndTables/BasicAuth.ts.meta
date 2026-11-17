@@ -23,10 +23,12 @@
   VersionMinor: 0
   VersionPatch: 0
   VersionPrerelease: ""
+  UpdateOrder: 0
   ComponentUid: 07219ed6-633a-4629-8bf4-478911b15e5b
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
+    snapCloudRequirements: false
     supabaseProject: false
   ScriptTypesHidden:
     {}
@@ -37,7 +39,8 @@
   Attachments:
     []
   DefaultScriptInputs:
-    - supabaseProject: !<reference.SupabaseProject> 00000000-0000-0000-0000-000000000000
+    - snapCloudRequirements: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      supabaseProject: !<reference.SupabaseProject> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
@@ -45,4 +48,5 @@
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Supabase Configuration</span>"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Supabase project for authentication</span>"}'
-    - // @input Asset.SupabaseProject supabaseProject
+    - '// @input AssignableType_1 snapCloudRequirements {"hint":"SnapCloudRequirements component holding the Supabase project"}'
+    - "// @input Asset.SupabaseProject supabaseProject {\"hint\":\"Deprecated: use snapCloudRequirements. Only read when snapCloudRequirements isn't wired.\"}"

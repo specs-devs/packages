@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#37d6c0"/>
+      <stop offset="1" stop-color="#1f8fe0"/>
+    </linearGradient>
+    <linearGradient id="pinGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffd94d"/>
+      <stop offset="1" stop-color="#ff9d2e"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Perspective floor plane -->
+  <g>
+    <polygon points="96,392 416,392 356,272 156,272" fill="url(#floorGrad)" opacity="0.92"/>
+    <!-- grid lines: horizontals -->
+    <line x1="141" y1="302" x2="371" y2="302" stroke="#ffffff" stroke-width="5" opacity="0.55"/>
+    <line x1="126" y1="332" x2="386" y2="332" stroke="#ffffff" stroke-width="5" opacity="0.55"/>
+    <line x1="111" y1="362" x2="401" y2="362" stroke="#ffffff" stroke-width="5" opacity="0.55"/>
+    <!-- grid lines: converging verticals -->
+    <line x1="206" y1="272" x2="176" y2="392" stroke="#ffffff" stroke-width="5" opacity="0.55"/>
+    <line x1="256" y1="272" x2="256" y2="392" stroke="#ffffff" stroke-width="5" opacity="0.55"/>
+    <line x1="306" y1="272" x2="336" y2="392" stroke="#ffffff" stroke-width="5" opacity="0.55"/>
+  </g>
+
+  <!-- Scan rays fanning down from above -->
+  <g stroke="#7ee8ff" stroke-width="8" stroke-linecap="round" opacity="0.9">
+    <line x1="256" y1="120" x2="176" y2="296"/>
+    <line x1="256" y1="120" x2="256" y2="284"/>
+    <line x1="256" y1="120" x2="336" y2="296"/>
+  </g>
+  <g fill="#7ee8ff" opacity="0.95">
+    <circle cx="176" cy="300" r="12"/>
+    <circle cx="256" cy="288" r="12"/>
+    <circle cx="336" cy="300" r="12"/>
+  </g>
+
+  <!-- Locator pin -->
+  <g>
+    <path d="M256 44 C216 44 186 74 186 112 C186 156 236 178 252 214 C254 219 258 219 260 214 C276 178 326 156 326 112 C326 74 296 44 256 44 Z" fill="url(#pinGrad)"/>
+    <circle cx="256" cy="110" r="30" fill="#ffffff"/>
+    <circle cx="256" cy="110" r="16" fill="#1f8fe0"/>
+  </g>
+
+  <!-- Confirmation tick on the floor under the pin -->
+  <ellipse cx="256" cy="392" rx="58" ry="16" fill="#0e5f9e" opacity="0.55"/>
+  <ellipse cx="256" cy="388" rx="40" ry="11" fill="#ffffff" opacity="0.8"/>
+</svg>

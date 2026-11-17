@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Demonstrates how to access components on child scene objects. This script shows how to navigate
  * the scene hierarchy to find and access components on child objects of a parent scene object.
  */
@@ -52,36 +52,39 @@ export class AccessComponentOnChildSceneObjectTS extends BaseScriptComponent {
 
   @bindStartEvent
   onStart(): void {
-    if (this.enableLogging || this.enableLoggingLifecycle) {
+    if (this.shouldLog()) {
       print("Start event triggered");
     }
 
-    if (
-      this.parentSceneobject !== null &&
-      this.parentSceneobject.getChild(0) !== null
-    ) {
-      if (this.enableLogging || this.enableLoggingLifecycle) {
-        print("Parent scene object is not null");
-        print("Parent scene object name: " + this.parentSceneobject.name);
-        print(
-          "Parent child object name: " + this.parentSceneobject.getChild(0).name
-        );
+    if (!this.parentSceneobject || this.parentSceneobject.getChildrenCount() === 0) {
+      if (this.shouldLog()) {
+        print("Parent scene object is not set or has no children");
       }
+      return;
     }
 
-    if (
-      this.parentSceneobject
-        .getChild(0)
-        .getComponent("Component.RenderMeshVisual")
-        .getTypeName()
-    ) {
-      if (this.enableLogging || this.enableLoggingLifecycle) {
+    const child = this.parentSceneobject.getChild(0);
+    if (this.shouldLog()) {
+      print("Parent scene object is not null");
+      print("Parent scene object name: " + this.parentSceneobject.name);
+      print("Parent child object name: " + child.name);
+    }
+
+    // getComponent returns null when the component is missing - check before using it
+    const meshVisual = child.getComponent("Component.RenderMeshVisual");
+    if (meshVisual) {
+      if (this.shouldLog()) {
         print("Parent child object has a RenderMeshVisual component");
       }
     } else {
-      if (this.enableLogging || this.enableLoggingLifecycle) {
+      if (this.shouldLog()) {
         print("Parent child object does not have a RenderMeshVisual component");
       }
     }
+  }
+
+  // Prints only when Debug is on and logging is enabled
+  private shouldLog(): boolean {
+    return this.debug && (this.enableLogging || this.enableLoggingLifecycle);
   }
 }

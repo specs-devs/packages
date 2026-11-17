@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Comprehensive TypeScript type definitions for Google GenAI APIs. Provides unified types for
  * Gemini (chat/live), Lyria (music/vocals), and Imagen (image generation) with support for
  * multimodal content, function calling, safety settings, and streaming responses.
@@ -620,7 +620,29 @@ export namespace GoogleGenAITypes {
     }
 
     /**
+     * Gemini image models served by the Imagen route.
+     */
+    export type GenerateContentModel =
+      | "gemini-3.1-flash-image"
+      | "gemini-3.1-flash-lite-image"
+      | string;
+
+    /**
+     * Image generation request for the Imagen route: a Gemini generateContent request.
+     * Ask for images with body.generationConfig.responseModalities ["TEXT", "IMAGE"].
+     */
+    export type GenerateContentRequest = {
+      model: GenerateContentModel;
+      /** Defaults to "generateContent", the only type the route accepts. */
+      type?: "generateContent" | string;
+      body: Gemini.Models.GenerateContentRequestBody;
+      [key: string]: any;
+    };
+
+    /**
      * Generic Imagen API request structure
+     * @deprecated The imagen-3.0 / imagen-4.0 predict models are no longer served by the Remote
+     * Service Gateway. Use GenerateContentRequest with Imagen.generateContent.
      */
     export interface ImagenRequest {
       model:

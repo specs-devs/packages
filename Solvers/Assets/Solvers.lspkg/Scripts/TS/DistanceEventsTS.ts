@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Distance-based event system for triggering callbacks at configurable distance thresholds. Monitors
  * distance to target, supports multiple threshold ranges with enter/exit/percent events, configurable
  * greater-than or less-than triggering, and dynamic callback binding to external script components.
@@ -19,7 +19,7 @@ export class DistanceEventsTS extends BaseScriptComponent {
     target!: SceneObject;
 
     @input
-    @hint("Distances that will trigger events when crossed (in meters)")
+    @hint("Distances that will trigger events when crossed (in cm, world units)")
     @allowUndefined
     distances: number[] = [];
 
@@ -57,6 +57,9 @@ export class DistanceEventsTS extends BaseScriptComponent {
     private logger: Logger;
 
     private _ranges: DistanceRange[] = [];
+    // Ranges created from the inspector arrays, so setup can replace them without touching code-added ranges
+    private _inspectorRanges: DistanceRange[] = [];
+    private _isSetUp: boolean = false;
     private _distanceToTarget: number = 0;
     private _triggeredDistances: Set<number> = new Set();
 
@@ -100,13 +103,16 @@ export class DistanceEventsTS extends BaseScriptComponent {
      * Sets up distance events based on inspector values
      * 
      * How to use:
-     * 1. Add distances to the "distances" array (e.g., 1, 2, 3 for 1m, 2m, 3m thresholds)
+     * 1. Add distances to the "distances" array (e.g., 50, 100, 200 for 50 cm, 1 m, 2 m thresholds - values are in cm)
      * 2. For each distance, add a corresponding script component (like DistanceEventsCallbacks) to the "events" array
      * 3. For each script component, add the function name you want to call (e.g., "onDistanceThresholdCrossed") to the "eventFunctions" array
      */
     private setupDistanceEvents(): void {
-        // Clear any existing ranges
-        this.clearRanges();
+        this._isSetUp = true;
+
+        // Clear previously created inspector ranges (ranges added from code with addRange are kept)
+        this._ranges = this._ranges.filter(range => this._inspectorRanges.indexOf(range) === -1);
+        this._inspectorRanges = [];
         
         // Validate that we have matching arrays
         if (this.distances.length === 0) {
@@ -149,6 +155,7 @@ export class DistanceEventsTS extends BaseScriptComponent {
             const maxDistance = this.triggerOnGreaterThan ? Number.MAX_VALUE : distance;
             
             const range = this.addRange(minDistance, maxDistance);
+            this._inspectorRanges.push(range);
             
             // Add event listener
             range.addOnEnterRangeListener(() => {
@@ -181,6 +188,11 @@ export class DistanceEventsTS extends BaseScriptComponent {
         }
 
         if (!this.target) return;
+
+        // Target assigned from code after start: set up the inspector ranges now
+        if (!this._isSetUp) {
+            this.setupDistanceEvents();
+        }
 
         const myPosition = this.sceneObject.getTransform().getWorldPosition();
         const targetPosition = this.target.getTransform().getWorldPosition();
@@ -221,6 +233,7 @@ export class DistanceEventsTS extends BaseScriptComponent {
      */
     clearRanges(): void {
         this._ranges = [];
+        this._inspectorRanges = [];
     }
     
     /**

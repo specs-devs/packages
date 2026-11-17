@@ -1,3 +1,4 @@
+//@component
 // Quick local test - run with: node test-local.js
 const axios = require('axios');
 

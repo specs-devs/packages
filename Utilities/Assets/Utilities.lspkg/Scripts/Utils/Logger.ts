@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Centralized logging utility for consistent log formatting across the package.
  * Provides tagged logging with optional debug mode toggling and beautifully formatted output.
  */

@@ -1,7 +1,7 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Real-time cursor synchronization example using Snap Cloud WebSocket. Demonstrates bidirectional
- * broadcasting/following modes, coordinate mapping between web and Spectacles, smooth interpolation,
+ * broadcasting/following modes, coordinate mapping between web and Glasses, smooth interpolation,
  * and multimodal real-time collaboration with configurable parameters.
  */
 // Preload ThemeService before any UIKit visual to break a circular-import init-order
@@ -31,7 +31,7 @@ export class RealtimeCursor extends BaseScriptComponent {
 
   @input
   @allowUndefined
-  @hint("RectangleButton to toggle between broadcast and follow modes (from Spectacles UI Kit)")
+  @hint("RectangleButton to toggle between broadcast and follow modes (from Glasses UI Kit)")
   public toggleModeButton: RectangleButton
 
   // Cursor Object
@@ -172,6 +172,14 @@ export class RealtimeCursor extends BaseScriptComponent {
     if (this.cursorObject) {
       this.currentPosition = this.cursorObject.getTransform().getLocalPosition()
       this.targetPosition = this.currentPosition
+      // The cursor ships disabled: show it only while this example is enabled.
+      this.cursorObject.enabled = true
+      this.createEvent("OnEnableEvent").bind(() => {
+        this.cursorObject.enabled = true
+      })
+      this.createEvent("OnDisableEvent").bind(() => {
+        this.cursorObject.enabled = false
+      })
     }
 
     // Get camera reference
@@ -320,7 +328,7 @@ export class RealtimeCursor extends BaseScriptComponent {
   private setupButtonInteraction() {
     if (!this.toggleModeButton) {
       this.log("No toggle button assigned - mode switching disabled")
-      this.log("Assign a RectangleButton from Spectacles UI Kit to enable toggling")
+      this.log("Assign a RectangleButton from Glasses UI Kit to enable toggling")
       return
     }
 
@@ -349,11 +357,11 @@ export class RealtimeCursor extends BaseScriptComponent {
   }
 
   /**
-   * Switch to broadcast mode (Spectacles → Web)
+   * Switch to broadcast mode (Glasses → Web)
    */
   private switchToBroadcastMode() {
     this.isBroadcastMode = true
-    this.log("SWITCHING TO BROADCAST MODE: Spectacles -> Web")
+    this.log("SWITCHING TO BROADCAST MODE: Glasses -> Web")
 
     // Update mode text
     if (this.modeText) {
@@ -376,11 +384,11 @@ export class RealtimeCursor extends BaseScriptComponent {
   }
 
   /**
-   * Switch to follow mode (Web → Spectacles)
+   * Switch to follow mode (Web → Glasses)
    */
   private switchToFollowMode() {
     this.isBroadcastMode = false
-    this.log("SWITCHING TO FOLLOW MODE: Web -> Spectacles")
+    this.log("SWITCHING TO FOLLOW MODE: Web -> Glasses")
 
     // Update mode text
     if (this.modeText) {
@@ -539,7 +547,7 @@ export class RealtimeCursor extends BaseScriptComponent {
       payload: {
         channel_name: this.channelName,
         user_id: this.userId,
-        user_name: "Spectacles",
+        user_name: "Glasses",
         x: x,
         y: y,
         color: this.userColor,

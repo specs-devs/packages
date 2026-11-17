@@ -2,8 +2,8 @@ import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
 
 /**
- * Specs Inc. 2026
- * 2D grid instantiation utility that creates organized grid patterns on the XZ plane. Perfect for
+ * SPECS Inc. 2027
+ * 2D grid instantiation utility that creates organized grid patterns on the XY plane. Perfect for
  * creating tile-based layouts, game boards, or structured object arrangements.
  */
 @component
@@ -22,14 +22,14 @@ export class InstantiateOn2DGridsTS extends BaseScriptComponent {
 
     @ui.separator
     @ui.label('<span style="color: #60A5FA;">Grid Dimensions</span>')
-    @ui.label('<span style="color: #94A3B8; font-size: 11px;">Define the grid size along X and Z axes</span>')
+    @ui.label('<span style="color: #94A3B8; font-size: 11px;">Define the grid size along X and Y axes</span>')
 
     @input
     @hint("Number of elements along the X axis")
     gridWidth: number = 5;
 
     @input
-    @hint("Number of elements along the Z axis")
+    @hint("Number of elements along the Y axis")
     gridHeight: number = 5;
 
     @ui.separator
@@ -41,11 +41,11 @@ export class InstantiateOn2DGridsTS extends BaseScriptComponent {
     spacingX: number = 1.5;
 
     @input
-    @hint("Spacing between elements in the Z direction")
+    @hint("Spacing between elements in the Y direction")
     spacingY: number = 1.5;
 
     @input
-    @hint("Fixed Y position for all elements on the XZ plane")
+    @hint("Offset along Z for all elements on the XY plane")
     zPosition: number = 0.0;
 
   @ui.separator
@@ -79,7 +79,6 @@ export class InstantiateOn2DGridsTS extends BaseScriptComponent {
         });
     }
     
-    @bindStartEvent
 
     
     onStart(): void {
@@ -103,7 +102,7 @@ export class InstantiateOn2DGridsTS extends BaseScriptComponent {
         // Loop through the rows and columns to instantiate the prefabs
         for (let x = 0; x < this.gridWidth; x++) {
             for (let z = 0; z < this.gridHeight; z++) {
-                // Calculate the position for each prefab (on the XZ plane)
+                // Calculate the position for each prefab (on the XY plane)
                 const position = new vec3(
                     startPosition.x + x * this.spacingX,
                     startPosition.y + z * this.spacingY,
@@ -120,7 +119,10 @@ export class InstantiateOn2DGridsTS extends BaseScriptComponent {
     private createPrefabInstance(position: vec3): void {
         if (this.prefab) {
             const instance = this.prefab.instantiate(this.sceneObject);
-            instance.getTransform().setWorldPosition(position);
+            // The offsets above are along world axes: turn them with the gridCenter so the layout follows its rotation.
+            const centerTransform = this.gridCenter.getTransform();
+            const origin = centerTransform.getWorldPosition();
+            instance.getTransform().setWorldPosition(origin.add(centerTransform.getWorldRotation().multiplyVec3(position.sub(origin))));
             this.logger.debug(`Created prefab instance at position: ${position.x}, ${position.y}, ${position.z}`);
         }
     }

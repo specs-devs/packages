@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Video texture control configuration for InteractableHelper. Manages video playback behaviors
  * including play once, loop, delay, and callbacks for video texture interactions.
  */

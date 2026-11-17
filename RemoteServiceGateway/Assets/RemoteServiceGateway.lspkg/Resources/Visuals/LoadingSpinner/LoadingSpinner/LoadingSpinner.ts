@@ -1,7 +1,7 @@
 /**
 
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Animated loading spinner component for indeterminate progress indication. Provides smooth
  * spinning animation with configurable fade in/out, arc spread effects, and render order for
  * visual feedback during asynchronous operations like AI generation requests.

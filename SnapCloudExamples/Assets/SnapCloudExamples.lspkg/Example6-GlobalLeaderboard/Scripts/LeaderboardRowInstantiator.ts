@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Instantiates a pool of row prefabs under its scene object, positions them (startPosition + step × index),
  * and binds leaderboard data via each row's bind(entry). Call render(entries) to update visible rows.
  */

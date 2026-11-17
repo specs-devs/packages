@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * NativeTween — self-contained procedural tween built on Lens Studio runtime
  * primitives ONLY. No package/library dependency (replaces LSTween).
  *

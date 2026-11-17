@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Singleton pattern decorator for TypeScript classes. Ensures single instance creation with lazy
  * initialization, provides getInstance() static method for global access, preserves prototype chain
  * for instanceof checks, and manages instance lifecycle with automatic caching on first construction.

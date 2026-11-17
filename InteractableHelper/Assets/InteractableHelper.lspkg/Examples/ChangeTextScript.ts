@@ -1,7 +1,5 @@
 /**
-
-import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Example script demonstrating text change callback. Simple example showing how to create
  * callable functions that modify text components in response to interaction events.
  */

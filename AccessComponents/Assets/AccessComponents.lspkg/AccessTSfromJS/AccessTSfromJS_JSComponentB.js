@@ -1,3 +1,4 @@
+//@component
 //@input Component.ScriptComponent refScript
 //@input bool debug = true
 

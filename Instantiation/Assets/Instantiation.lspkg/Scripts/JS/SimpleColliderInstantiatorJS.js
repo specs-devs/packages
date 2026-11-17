@@ -1,3 +1,4 @@
+//@component
 /**
  * SimpleColliderInstantiator - JavaScript version of the C# utility
  * Instantiates prefabs inside or on the surface of collider shapes
@@ -116,15 +117,10 @@ function SimpleColliderInstantiator() {
 
     // Box implementation
     function randomPointInBox() {
-        var transform = script.targetObject.getTransform();
-        var centerPos = transform.getWorldPosition();
-        var rotation = transform.getWorldRotation();
+        // Unit cube in the target's local space: its world transform (scale, rotation, parents) sizes it
+        var boxSize = new vec3(1, 1, 1);
 
-        // Get box size from the target object's scale
-        var objectScale = transform.getWorldScale();
-        var boxSize = new vec3(objectScale.x, objectScale.y, objectScale.z);
-
-        print("DEBUG: Using object scale as box size: " +
+        print("DEBUG: Using local unit box size: " +
             boxSize.x.toFixed(2) + ", " +
             boxSize.y.toFixed(2) + ", " +
             boxSize.z.toFixed(2));
@@ -137,19 +133,14 @@ function SimpleColliderInstantiator() {
         );
 
         // Transform to world space
-        return transformPoint(localPoint, centerPos, rotation);
+        return transformPoint(localPoint);
     }
 
     function randomPointOnBoxSurface() {
-        var transform = script.targetObject.getTransform();
-        var centerPos = transform.getWorldPosition();
-        var rotation = transform.getWorldRotation();
+        // Unit cube in the target's local space: its world transform (scale, rotation, parents) sizes it
+        var boxSize = new vec3(1, 1, 1);
 
-        // Get box size from the target object's scale
-        var objectScale = transform.getWorldScale();
-        var boxSize = new vec3(objectScale.x, objectScale.y, objectScale.z);
-
-        print("DEBUG: Using object scale as box size for surface: " +
+        print("DEBUG: Using local unit box size for surface: " +
             boxSize.x.toFixed(2) + ", " +
             boxSize.y.toFixed(2) + ", " +
             boxSize.z.toFixed(2));
@@ -213,19 +204,15 @@ function SimpleColliderInstantiator() {
         }
 
         // Transform to world space
-        return transformPoint(localPoint, centerPos, rotation);
+        return transformPoint(localPoint);
     }
 
     // Sphere implementation
     function randomPointInSphere() {
-        var transform = script.targetObject.getTransform();
-        var centerPos = transform.getWorldPosition();
-        var rotation = transform.getWorldRotation();
-
         // Try to find the sphere radius from the collider component
         var radius = getSphereRadius();
         if (radius <= 0) {
-            // Fallback to using transform scale if no collider radius found
+            // Fallback to a unit sphere in the target's local space if no collider radius found
             radius = getSphereRadiusFromTransform();
         }
 
@@ -263,18 +250,14 @@ function SimpleColliderInstantiator() {
         print("DEBUG: Generated sphere point at local coordinates (" + randomPoint.x.toFixed(2) + ", " + randomPoint.y.toFixed(2) + ", " + randomPoint.z.toFixed(2) + ")");
 
         // Transform to world space (apply rotation and translation)
-        return transformPoint(randomPoint, centerPos, rotation);
+        return transformPoint(randomPoint);
     }
 
     function randomPointOnSphereSurface() {
-        var transform = script.targetObject.getTransform();
-        var centerPos = transform.getWorldPosition();
-        var rotation = transform.getWorldRotation();
-
         // Try to find the sphere radius from the collider component
         var radius = getSphereRadius();
         if (radius <= 0) {
-            // Fallback to using transform scale if no collider radius found
+            // Fallback to a unit sphere in the target's local space if no collider radius found
             radius = getSphereRadiusFromTransform();
         }
 
@@ -305,7 +288,7 @@ function SimpleColliderInstantiator() {
         print("DEBUG: Generated sphere surface point at local coordinates (" + randomPoint.x.toFixed(2) + ", " + randomPoint.y.toFixed(2) + ", " + randomPoint.z.toFixed(2) + ")");
 
         // Transform to world space (apply rotation and translation)
-        return transformPoint(randomPoint, centerPos, rotation);
+        return transformPoint(randomPoint);
     }
 
     // Helper method to get sphere radius from collider component (if available)
@@ -343,12 +326,9 @@ function SimpleColliderInstantiator() {
 
     // Fallback method to derive sphere radius from transform
     function getSphereRadiusFromTransform() {
-        var transform = script.targetObject.getTransform();
-        var objectScale = transform.getWorldScale();
-
-        // Use the smallest dimension to ensure sphere fits within object bounds
-        var radius = Math.min(objectScale.x, objectScale.y, objectScale.z) / 2.0;
-        print("DEBUG: Derived sphere radius from transform scale: " + radius.toFixed(2));
+        // Unit sphere (radius 0.5) in the target's local space; the target's world transform scales it
+        var radius = 0.5;
+        print("DEBUG: Using local unit sphere radius: " + radius.toFixed(2));
         return radius;
     }
 
@@ -419,38 +399,15 @@ function SimpleColliderInstantiator() {
     }
 
     // Helper method to transform a point from local to world space
-    function transformPoint(localPoint, position, rotation) {
-        // Apply rotation
-        var rotatedPoint = rotatePointByQuaternion(localPoint, rotation);
-
-        // Apply translation
-        var worldPoint = new vec3(
-            position.x + rotatedPoint.x,
-            position.y + rotatedPoint.y,
-            position.z + rotatedPoint.z
-        );
+    function transformPoint(localPoint) {
+        // The full world matrix applies the target's scale, rotation and parents (not just its world scale)
+        var worldPoint = script.targetObject.getTransform().getWorldTransform().multiplyPoint(localPoint);
 
         // Print transformation info
         print("DEBUG: Local point " + localPoint.x.toFixed(2) + ", " + localPoint.y.toFixed(2) + ", " + localPoint.z.toFixed(2) + 
               " transformed to world point " + worldPoint.x.toFixed(2) + ", " + worldPoint.y.toFixed(2) + ", " + worldPoint.z.toFixed(2));
 
         return worldPoint;
-    }
-
-    // Helper method to rotate a point by a quaternion
-    function rotatePointByQuaternion(point, rotation) {
-        // This is a simplified rotation calculation
-        // In a full implementation, you'd use the complete quaternion rotation formula
-        var x = rotation.x;
-        var y = rotation.y;
-        var z = rotation.z;
-        var w = rotation.w;
-
-        var qx = point.x * (1 - 2 * y * y - 2 * z * z) + point.y * (2 * x * y - 2 * w * z) + point.z * (2 * x * z + 2 * w * y);
-        var qy = point.x * (2 * x * y + 2 * w * z) + point.y * (1 - 2 * x * x - 2 * z * z) + point.z * (2 * y * z - 2 * w * x);
-        var qz = point.x * (2 * x * z - 2 * w * y) + point.y * (2 * y * z + 2 * w * x) + point.z * (1 - 2 * x * x - 2 * y * y);
-
-        return new vec3(qx, qy, qz);
     }
 
     // Helper method to create a prefab instance at a specific position

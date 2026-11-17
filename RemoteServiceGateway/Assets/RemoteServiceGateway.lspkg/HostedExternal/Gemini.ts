@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Google Gemini AI integration for content generation and live interactions. Provides synchronous
  * content generation via models API and WebSocket-based live connections for real-time multimodal
  * conversations with Gemini models.

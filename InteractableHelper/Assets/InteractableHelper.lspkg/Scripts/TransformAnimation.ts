@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Transform animation configuration for InteractableHelper. Defines position, rotation, and scale
  * animations with play modes, easing, timing, and coordinate space options.
  */

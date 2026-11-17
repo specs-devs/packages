@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Rotation utility for calculating in-between orientations of two targets. Computes the midpoint
  * rotation between two objects' forward directions using quaternion slerp interpolation, useful for
  * smooth camera positioning, look-at averaging, and balanced directional calculations.

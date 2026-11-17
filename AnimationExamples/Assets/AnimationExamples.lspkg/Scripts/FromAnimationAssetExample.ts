@@ -1,11 +1,11 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Use an authored .animationAsset by dropping it on the AnimationPlayer's clip.
  * Falls back to a small programmatic multi-track shake if the clip's asset slot is empty,
  * so the example runs either way.
  */
 
-import { buildFrameUI, playFirstClip } from "./Helpers/AnimationHelpers";
+import { bindReplay, buildFrameUI, playFirstClip } from "./Helpers/AnimationHelpers";
 
 @component
 export class FromAnimationAssetExample extends BaseScriptComponent {
@@ -58,7 +58,8 @@ export class FromAnimationAssetExample extends BaseScriptComponent {
      */
     onAwake() {
         if (this.enableLoggingLifecycle) print(`[${this.sceneObject.name}] FromAnimationAssetExample.onAwake`);
-        buildFrameUI(this.sceneObject, { title: "From Animation Asset", buttonText: "TAP" });
+        const ui = buildFrameUI(this.sceneObject, { title: "From Animation Asset", buttonText: "TAP" });
+        bindReplay(this, ui, this.target ?? this.sceneObject);
         const target = this.target ?? this.sceneObject;
         playFirstClip(target, this.buildShakeFallback(target), (args) => {
             if (this.enableLogging) print(`[${this.sceneObject.name}] Asset event: ${args.eventName}`);

@@ -1,3 +1,4 @@
+//@component
 /**
  * Tethers content to a target, but ONLY repositions when:
  * 1. The angle between target's forward and direction to object exceeds threshold, OR
@@ -16,6 +17,7 @@
 function TetherBetweenAngleRangeJS() {
     // Private variables
     var _targetPosition = new vec3(0, 0, 0);
+    var _hasTargetPosition = false;
     var _lastRepositionTime = 0;
     var _currentAngle = 0;
     var _verticalDistance = 0;
@@ -34,10 +36,17 @@ function TetherBetweenAngleRangeJS() {
 
         // Initialize target position
         _targetPosition = calculateNewTargetPosition();
+        _hasTargetPosition = true;
     }
 
     function onUpdate() {
         if (!script.target) return;
+        
+        // Target assigned from code after start: initialize the target position now
+        if (!_hasTargetPosition) {
+            _targetPosition = calculateNewTargetPosition();
+            _hasTargetPosition = true;
+        }
 
         // Evaluate current conditions
         evaluateConditions();

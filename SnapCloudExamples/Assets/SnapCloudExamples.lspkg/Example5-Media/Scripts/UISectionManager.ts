@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * UI section manager for toggling between multiple SceneObject sections with ToggleGroup
  * integration. Activates selected section and deactivates others, supports default section
  * on start, manual section switching, and debug logging for section state tracking.

@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * GuidancePanel – step-by-step maintenance guidance display.
  *
  * MANUAL mode – user navigates with the prev/next RectangleButtons assigned below.

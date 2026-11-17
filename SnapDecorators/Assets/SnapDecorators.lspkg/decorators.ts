@@ -1,11 +1,11 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * TypeScript decorators for declarative event binding and dependency injection in Lens Studio.
  * Provides @bindStartEvent, @bindUpdateEvent, @bindDestroyEvent and others for clean event
  * handling, @memo for lazy-evaluated getters, @depends for component dependencies, and
  * @provider for parent component lookup with automatic error reporting.
  */
-import { assert, verify } from "./assert";
+import { assert } from "./assert";
 import { reportError, spath } from "./debug";
 
 /**
@@ -90,7 +90,7 @@ export function memo(target: any, context: ClassGetterDecoratorContext) {
 
 /**
  * Decorator to define a script component field as an injected dependency, auto-initialized with a reference to a
- * component found on a parent node.
+ * component on the same scene object.
  */
 export function depends(componentType: keyof ComponentNameMap) {
   return function dependsDecorator(target: undefined, context: ClassFieldDecoratorContext) {
@@ -109,7 +109,7 @@ export function depends(componentType: keyof ComponentNameMap) {
 
 /**
  * Decorator to define a script component field as an injected dependency, auto-initialized with a reference to a
- * component above it on the same scene object.
+ * component found on the same scene object or the nearest parent above it.
  */
 export function provider(componentType: keyof ComponentNameMap) {
   return function providerDecorator(target: undefined, context: ClassFieldDecoratorContext) {

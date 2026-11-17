@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * APIKey Hint component for the Depth Cache Spectacles lens.
+ * SPECS Inc. 2027
+ * APIKey Hint component for the Depth Cache Glasses lens.
  */
 // Preload ThemeService before any UIKit visual to break a circular-import init-order
 // crash in the package (Visual.ts imports ThemeService before defining the Visual class +
@@ -52,7 +52,8 @@ export class APIKeyHint extends BaseScriptComponent {
     const hasInvalidApiKey = apiTypes.some((apiType) => {
       const apiKey = RemoteServiceGatewayCredentials.getApiToken(apiType)
       const placeholder = APIKeyHint.PLACEHOLDER_MESSAGES[apiType]
-      return apiKey === placeholder || apiKey === ""
+      // The prefab ships "[INSERT YOUR ... TOKEN HERE]" while the credentials defaults are "[INSERT ... TOKEN HERE]".
+      return !apiKey || apiKey === placeholder || apiKey.startsWith("[INSERT")
     })
 
     if (hasInvalidApiKey) {

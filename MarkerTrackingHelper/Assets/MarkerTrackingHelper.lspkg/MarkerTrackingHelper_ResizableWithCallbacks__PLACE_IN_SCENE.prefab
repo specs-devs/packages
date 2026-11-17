@@ -1,0 +1,180 @@
+- !<ObjectPrefab/7d294d23-b55a-41f9-94e2-fe3a7acdf6ac>
+  PackagePath: ""
+  objects:
+    - !<own> a4051ce7-7468-488f-b349-e903ba815820
+  LazyLoading: false
+  RetainAssets: true
+  PreviewEnvironment: !<reference> 00000000-0000-0000-0000-000000000000
+- !<SceneObject/0303c2ae-b75a-46e8-965d-ccab7b74a5ac>
+  PrefabRemaps:
+    []
+  Name: Image Tracking
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 4433e568-0fef-44c8-8d79-b00b226a102e
+  Components:
+    - !<own> 4c25e32b-18e9-47c2-9d57-a46385079f54
+- !<SceneObject/055fb68c-f9dd-4f10-8ecc-3e83921b3438>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 81253230-28f8-4085-a958-2bb933879938
+- !<ScriptComponent/153bd9ff-c695-46b0-9883-4a1f92041b71>
+  PrefabRemaps:
+    []
+  Name: ImageTrackingController
+  Enabled: true
+  ScriptAsset: !<reference> 1ee84c52-45e4-4174-88ae-231b441d3708
+  ScriptInputsDefault:
+    enableLogging: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      markerTrackingComponent: !<reference.MarkerTrackingComponent> 4c25e32b-18e9-47c2-9d57-a46385079f54
+      resizeObjectArray: !<reference.SceneObject[]>
+        - !<reference> 4433e568-0fef-44c8-8d79-b00b226a102e
+      editEventCallbacks: true
+      customFunctionScript: !<reference.ScriptComponent> 942efb3d-6f80-418e-8c85-d148726d21b0
+      onMarkerFoundFunctionNames: !<string[]>
+        - onMarkerFound
+      onMarkerLostFunctionNames: !<string[]>
+        - onMarkerLost
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/4433e568-0fef-44c8-8d79-b00b226a102e>
+  PrefabRemaps:
+    []
+  Name: Image
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 29.280960, y: 29.280960, z: 29.280960}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 89ae9291-7291-4c8d-9c79-e6d25213942a
+- !<MarkerTrackingComponent/4c25e32b-18e9-47c2-9d57-a46385079f54>
+  PrefabRemaps:
+    []
+  Name: Marker Tracking
+  Enabled: true
+  Marker: !<reference> 7e6bbc0c-cfa3-4b86-b68d-d4613919119c
+- !<ScriptComponent/81253230-28f8-4085-a958-2bb933879938>
+  PrefabRemaps:
+    []
+  Name: ThemeManager
+  Enabled: true
+  ScriptAsset: !<reference> 7ae27bcb-2c1d-4c7a-b5e1-93a8109bd6a2
+  ScriptInputsDefault:
+    _theme: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      _theme: System3
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/861bd6e2-9d12-4ab6-8dd7-4134935bf682>
+  PrefabRemaps:
+    []
+  Name: MarkerCallback
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 942efb3d-6f80-418e-8c85-d148726d21b0
+- !<Image/89ae9291-7291-4c8d-9c79-e6d25213942a>
+  PrefabRemaps:
+    []
+  Name: Image
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Fit
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> c774d19a-7e58-4be7-b51b-93c65dfd3398
+  FlipX: false
+  FlipY: false
+  RotationAngle: 0
+  Pivot: {x: 0.000000, y: 0.000000}
+  ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+- !<ScriptComponent/942efb3d-6f80-418e-8c85-d148726d21b0>
+  PrefabRemaps:
+    []
+  Name: MarkerCallback
+  Enabled: true
+  ScriptAsset: !<reference> 8051f4d8-eb7d-4942-a62c-3a827cad528d
+  ScriptInputsDefault:
+    enableLogging: true
+    enableLoggingLifecycle: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      animationImage: !<reference.Image> 89ae9291-7291-4c8d-9c79-e6d25213942a
+      enableLogging: false
+      enableLoggingLifecycle: false
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/a4051ce7-7468-488f-b349-e903ba815820>
+  PrefabRemaps:
+    - 0303c2ae-b75a-46e8-965d-ccab7b74a5ac: 0303c2ae-b75a-46e8-69a2-3354848b5a53
+    - 055fb68c-f9dd-4f10-8ecc-3e83921b3438: 32958ef4-4943-44da-aade-e812e034db5a
+    - 153bd9ff-c695-46b0-9883-4a1f92041b71: 153bd9ff-c695-46b0-677c-b5e06dfbe48e
+    - 4433e568-0fef-44c8-8d79-b00b226a102e: 4433e568-0fef-44c8-7286-4ff4dd95efd1
+    - 4c25e32b-18e9-47c2-9d57-a46385079f54: 4c25e32b-18e9-47c2-62a8-5b9c7af860ab
+    - 81253230-28f8-4085-a958-2bb933879938: 27cf0a6c-e6cc-460c-9ee6-27ab23efea7f
+    - 861bd6e2-9d12-4ab6-8dd7-4134935bf682: 861bd6e2-9d12-4ab6-7228-becb6ca4097d
+    - 89ae9291-7291-4c8d-9c79-e6d25213942a: 89ae9291-7291-4c8d-6386-192dadec6bd5
+    - 942efb3d-6f80-418e-8c85-d148726d21b0: 942efb3d-6f80-418e-737a-2eb78d92de4f
+    - a4051ce7-7468-488f-b349-e903ba815820: a4051ce7-7468-488f-4cb6-16fc457ea7df
+  Name: MarkerTrackingHelper_ResizableWithCallbacks__PLACE_IN_SCENE
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    - !<own> 055fb68c-f9dd-4f10-8ecc-3e83921b3438
+    - !<own> 0303c2ae-b75a-46e8-965d-ccab7b74a5ac
+    - !<own> 861bd6e2-9d12-4ab6-8dd7-4134935bf682
+  Components:
+    - !<own> 153bd9ff-c695-46b0-9883-4a1f92041b71

@@ -23,6 +23,7 @@
   VersionMinor: 0
   VersionPatch: 0
   VersionPrerelease: ""
+  UpdateOrder: 0
   ComponentUid: 704b4df1-d9be-47c5-8359-a47e8ce946d7
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
@@ -67,7 +68,7 @@
     - '// @input bool syncNavigationToGoogle = true {"hint":"Auto-sync with Google Slides when navigating locally"}'
     - '// @input bool pollForChanges = true {"hint":"Poll for changes from Google Slides"}'
     - '// @input float pollingInterval = 5 {"hint":"Polling interval in seconds"}'
-    - // @input AssignableType_1 webSocketController
+    - '// @input AssignableType_1 webSocketController {"hint":"Optional relay that mirrors next / previous to the web companion"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
     - '// @input bool enableLogging {"hint":"Enable general logging"}'

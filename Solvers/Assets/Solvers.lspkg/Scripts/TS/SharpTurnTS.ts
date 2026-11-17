@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Sharp turn detection system using position history and dot product analysis. Tracks movement path
  * over configurable frame buffer, detects directional changes via normalized vector comparison,
  * triggers callbacks on sharp turns (dot product < -0.1), and provides debug logging for tuning.
@@ -73,7 +73,7 @@ export class SharpTurnTS extends BaseScriptComponent {
         }
 
         // Initialize positions array
-        this._positions = new Array(this.frameCount).fill(null).map(() => new vec3(0, 0, 0));
+        this._positions = new Array(this.getBufferSize()).fill(null).map(() => new vec3(0, 0, 0));
     }
     
     /**
@@ -103,17 +103,24 @@ export class SharpTurnTS extends BaseScriptComponent {
         // Get current position
         const currentPos = this.sceneObject.getTransform().getWorldPosition();
 
+        // Resize the buffer if frameCount was changed at runtime
+        const bufferSize = this.getBufferSize();
+        if (this._positions.length !== bufferSize) {
+            this.resetBuffer(bufferSize, currentPos);
+            return;
+        }
+
         // Only record position if moved enough
         if (currentPos.distance(this._positions[this._currentIndex]) > this.minVertexDistance) {
             // Move to the next index, looping around if necessary
-            this._currentIndex = (this._currentIndex + 1) % this.frameCount;
+            this._currentIndex = (this._currentIndex + 1) % bufferSize;
             this._positions[this._currentIndex] = currentPos;
 
             // Ensure there are enough points for direction calculations
             if (this._currentIndex >= this.step) {
                 // Calculate directions
-                const prevIndex = (this._currentIndex - 1 + this.frameCount) % this.frameCount;
-                const oldIndex = (this._currentIndex - this.step + this.frameCount) % this.frameCount;
+                const prevIndex = (this._currentIndex - 1 + bufferSize) % bufferSize;
+                const oldIndex = (this._currentIndex - this.step + bufferSize) % bufferSize;
 
                 this._newestDirection = this._positions[this._currentIndex].sub(
                     this._positions[prevIndex]
@@ -151,6 +158,24 @@ export class SharpTurnTS extends BaseScriptComponent {
         }
     }
     
+    /**
+     * Buffer length derived from frameCount (whole number, at least 2).
+     */
+    private getBufferSize(): number {
+        return Math.max(2, Math.floor(this.frameCount));
+    }
+
+    /**
+     * Recreate the position buffer at a new size, seeded with the current position.
+     * @param size The new buffer length
+     * @param position The position to seed the buffer with
+     */
+    private resetBuffer(size: number, position: vec3): void {
+        this._positions = new Array(size).fill(null).map(() => new vec3(0, 0, 0));
+        this._currentIndex = 0;
+        this._positions[0] = position;
+    }
+
     /**
      * Calculate the dot product between two direction vectors.
      * @param newestDirection The newest direction vector

@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Type definitions for mocopi motion capture data protocol. Defines the structure for skeleton
  * definitions, frame data, bones, and connection statistics used throughout the mocopi integration.
  */

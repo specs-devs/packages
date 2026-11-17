@@ -1,7 +1,5 @@
 /**
-
-import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * A sample custom component that demonstrates how to create reusable components that can be
  * accessed by other scripts. Provides public methods and properties for cross-script communication.
  */

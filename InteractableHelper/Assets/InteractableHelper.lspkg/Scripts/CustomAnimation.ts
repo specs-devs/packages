@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Custom animation configuration for InteractableHelper. Allows triggering specific animation
  * clips or iterating through all available clips in sequence.
  */

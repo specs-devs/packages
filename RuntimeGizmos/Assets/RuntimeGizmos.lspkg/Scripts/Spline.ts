@@ -2,7 +2,7 @@ import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
 
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Runtime spline gizmo for visualizing smooth curves through control points. Renders Catmull-Rom
  * interpolated splines with customizable tension, interpolation density, closed loop support, and
  * real-time control point tracking for dynamic curve visualization.
@@ -23,6 +23,7 @@ export class Spline extends BaseScriptComponent {
 
   @input
   @hint("The control points for the spline curve")
+  @allowUndefined
   public controlPoints!: SceneObject[];
 
   @input
@@ -38,6 +39,7 @@ export class Spline extends BaseScriptComponent {
   public closedLoop: boolean = false;
 
   @input
+  @allowUndefined
   private lineMaterial!: Material;
 
   @input("vec3", "{1, 1, 0}")
@@ -121,42 +123,75 @@ export class Spline extends BaseScriptComponent {
     }
 
 
-    if (!this.controlPoints || this.controlPoints.length < 2) {
-      this.logger.debug("Error: At least 2 control points are required for a spline!");
-      return;
-    }
-
     this.transform = this.sceneObject.getTransform();
-    
-    // Initialize last positions
-    this.lastControlPositions = this.controlPoints.map(point => 
-      point.getTransform().getWorldPosition()
-    );
-
-    // Generate the spline points
-    this.generateSplinePoints();
-
-    // Create the line renderer
-    this.createSpline();
 
     // Set up update event to track control point movements
     this.createEvent("UpdateEvent").bind(() => {
       this.update();
     });
+
+    if (!this.controlPoints || this.controlPoints.length < 2 || !this.lineMaterial) {
+      this.logger.debug("At least 2 control points and a material are required; call rebuild() after assigning them");
+      return;
+    }
+
+    this.rebuild();
+  }
+
+  /**
+   * (Re)creates the spline from the current inputs. Call after setting controlPoints and
+   * setLineMaterial() from code (e.g. on a component added with createComponent).
+   */
+  rebuild(): void {
+    if (!this.controlPoints || this.controlPoints.length < 2 || !this.lineMaterial) {
+      this.logger.debug("Cannot rebuild spline: at least 2 control points and a material are required");
+      return;
+    }
+
+    this.lastControlPositions = this.controlPoints.map(point =>
+      point.getTransform().getWorldPosition()
+    );
+
+    this.generateSplinePoints();
+
+    if (this.line) {
+      this.line.destroy();
+      this.line = null;
+    }
+    this.createSpline();
+  }
+
+  /**
+   * Sets the line material and rebuilds the spline.
+   */
+  setLineMaterial(material: Material): void {
+    this.lineMaterial = material;
+    this.rebuild();
+  }
+
+  /**
+   * Sets the line width.
+   */
+  setLineWidth(width: number): void {
+    this.lineWidth = width;
+    if (this.line) {
+      this.line.startWidth = width;
+      this.line.endWidth = width;
+    }
   }
 
   /**
    * Updates the spline if any control points have moved
    */
   update() {
-    if (!this.controlPoints || this.controlPoints.length < 2) return;
+    if (!this.controlPoints || this.controlPoints.length < 2 || !this.line) return;
 
     let hasChanged = false;
     
     // Check if any control point has moved
     for (let i = 0; i < this.controlPoints.length; i++) {
       const currentPos = this.controlPoints[i].getTransform().getWorldPosition();
-      if (!currentPos.equal(this.lastControlPositions[i])) {
+      if (!this.lastControlPositions[i] || !currentPos.equal(this.lastControlPositions[i])) {
         hasChanged = true;
         this.lastControlPositions[i] = currentPos;
       }
@@ -172,18 +207,25 @@ export class Spline extends BaseScriptComponent {
    * Regenerates the spline points and updates the visual
    */
   refreshSpline(): void {
+    if (!this.line) {
+      this.rebuild();
+      return;
+    }
     this.generateSplinePoints();
     this.updateSplineVisual();
   }
 
   /**
-   * Updates the spline's visual representation
+   * Updates the spline's points in place on the existing line renderer
    */
   private updateSplineVisual(): void {
-    if (this.line) {
-      this.line.destroy();
+    if (this.splinePoints.length < 2) {
+      this.logger.debug("Error: Not enough points to update the spline!");
+      return;
     }
-    this.createSpline();
+    this.line.points = this.closedLoop
+      ? [...this.splinePoints, this.splinePoints[0]]
+      : this.splinePoints;
   }
 
   /**
@@ -274,13 +316,14 @@ export class Spline extends BaseScriptComponent {
   }
   
   /**
-   * Performs Catmull-Rom interpolation between points
+   * Performs Catmull-Rom interpolation between points. `tension` scales the tangents at p1 and p2:
+   * 0.5 is the classic Catmull-Rom curve, 0 gives straight segments, 1 a tighter curve.
    */
   private catmullRomInterpolate(p0: vec3, p1: vec3, p2: vec3, p3: vec3, t: number): vec3 {
     const t2 = t * t;
     const t3 = t2 * t;
     
-    // Simplified Catmull-Rom formula for each component
+    // Cubic Hermite form with Catmull-Rom tangents scaled by the tension
     const x = this.interpolateComponent(p0.x, p1.x, p2.x, p3.x, t, t2, t3);
     const y = this.interpolateComponent(p0.y, p1.y, p2.y, p3.y, t, t2, t3);
     const z = this.interpolateComponent(p0.z, p1.z, p2.z, p3.z, t, t2, t3);
@@ -289,17 +332,20 @@ export class Spline extends BaseScriptComponent {
   }
   
   /**
-   * Interpolates a single component using Catmull-Rom formula
+   * Interpolates a single component: cubic Hermite between v1 and v2 with tangents
+   * tension * (v2 - v0) and tension * (v3 - v1). With tension 0.5 this is exactly Catmull-Rom.
    */
   private interpolateComponent(v0: number, v1: number, v2: number, v3: number, t: number, t2: number, t3: number): number {
-    // Catmull-Rom coefficients
-    const a = 0.5 * (2 * v1);
-    const b = 0.5 * (v2 - v0);
-    const c = 0.5 * (2 * v0 - 5 * v1 + 4 * v2 - v3);
-    const d = 0.5 * (-v0 + 3 * v1 - 3 * v2 + v3);
+    const m1 = this.tension * (v2 - v0);
+    const m2 = this.tension * (v3 - v1);
     
-    // Calculate the interpolated value
-    return a + b * t + c * t2 + d * t3;
+    // Hermite basis functions
+    const h00 = 2 * t3 - 3 * t2 + 1;
+    const h10 = t3 - 2 * t2 + t;
+    const h01 = -2 * t3 + 3 * t2;
+    const h11 = t3 - t2;
+    
+    return h00 * v1 + h10 * m1 + h01 * v2 + h11 * m2;
   }
   
   /**

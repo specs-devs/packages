@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Type guard utilities for runtime type checking of Lens Studio objects. Provides isScriptObject()
  * for validating ScriptObject types and isComponent() for Component type validation with TypeScript
  * type narrowing support.

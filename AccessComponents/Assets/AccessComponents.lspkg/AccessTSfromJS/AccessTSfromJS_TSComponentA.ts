@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * TypeScript component that can be accessed from JavaScript code. Demonstrates how to create
  * TypeScript components with methods and properties that are callable from JavaScript scripts.
  */
@@ -7,7 +7,7 @@ import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent } from "SnapDecorators.lspkg/decorators";
 
 @component
-export class TSComponentA extends BaseScriptComponent {
+export class AccessTSfromJS_TSComponentA extends BaseScriptComponent {
   @ui.separator
   @ui.label('<span style="color: #60A5FA;">Debug Settings</span>')
 
@@ -58,7 +58,7 @@ export class TSComponentA extends BaseScriptComponent {
   
   // Helper method for debug logging
   private log(message: string): void {
-    if (this.enableLogging || this.enableLoggingLifecycle) {
+    if (this.debug && (this.enableLogging || this.enableLoggingLifecycle)) {
       print(`[TSComponentA] ${message}`);
     }
   }
@@ -111,7 +111,10 @@ export class TSComponentA extends BaseScriptComponent {
   toggleDebug(): void {
     this.debug = !this.debug;
     if (this.enableLogging || this.enableLoggingLifecycle) {
-      this.log(`Debug mode ${this.debug ? 'enabled' : 'disabled'}`);
+      print(`[TSComponentA] Debug mode ${this.debug ? 'enabled' : 'disabled'}`);
     }
   }
 }
+
+/** @deprecated Use AccessTSfromJS_TSComponentA. Kept so existing imports of the old name still compile. */
+export { AccessTSfromJS_TSComponentA as TSComponentA };

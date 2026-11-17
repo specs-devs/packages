@@ -1,15 +1,14 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Place-in-scene manager for AnimationExamples.
- * Single script on the PLACE_IN_SCENE prefab root: spawns the 7 animation example
+ * Single script on the PLACE_IN_SCENE prefab root: spawns the 8 animation example
  * prefabs as disabled children, then dynamically builds a UIKit left/right arrow
  * cycler (buttons + title/description labels) from code. No other authored
  * SceneObjects are needed — drop this prefab into a scene and it just works.
  *
  * Architecture (spawned hierarchy):
  *   [AnimationExamples-__PLACE_IN_SCENE]   ← root, ScriptComponent (this)
- *   ├── Guide_ReadAndDisable             ← static Text, authored manually
- *   ├── Animations                       ← spawned container, holds the 7 prefab instances
+ *   ├── Animations                       ← spawned container, holds the 8 prefab instances
  *   │     └── <PrefabName>               ← one enabled, rest disabled
  *   └── UI                               ← spawned container
  *         ├── LeftButton                 ← UIKit Button
@@ -117,7 +116,7 @@ export class AnimationExamplesManager extends BaseScriptComponent {
 
     @ui.separator
     @ui.label('<span style="color: #60A5FA;">Animations</span>')
-    @ui.label('<span style="color: #94A3B8; font-size: 11px;">Drag the 7 example prefabs from AnimationExamples.lspkg/Prefabs/ in any order.</span>')
+    @ui.label('<span style="color: #94A3B8; font-size: 11px;">Drag the 8 example prefabs from AnimationExamples.lspkg/Prefabs/ in any order.</span>')
 
     @input
     @hint("The animation example prefabs to spawn and cycle through.")

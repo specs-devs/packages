@@ -1,3 +1,4 @@
+//@module
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
@@ -12668,7 +12669,7 @@ class WebSocketPolyfill {
         this.CLOSING = 2;
         this.CLOSED = 3;
         this.url = url;
-        this.protocols = Array.isArray(protocols) ? protocols : (protocols ? [protocols] : []);
+        this.protocols = Array.isArray(protocols) ? protocols : (protocols ? [protocols] : null);
         this.readyState = WebSocketPolyfill.CONNECTING;
         this.bufferedAmount = 0;
         this.extensions = '';

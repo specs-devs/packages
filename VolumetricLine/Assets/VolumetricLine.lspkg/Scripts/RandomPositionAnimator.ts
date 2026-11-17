@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Organic position animator using multi-frequency sine waves for smooth motion. Animates scene objects
  * with random phase offsets and time variations per axis, provides configurable XYZ range and speed
  * parameters, implements smooth interpolation with lerp-based smoothing, and maintains initial positions

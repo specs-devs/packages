@@ -1,223 +1,70 @@
-# Public Speaker 
+<p align="center">
+  <img src="Docs/media/EasyTeleprompter.png" width="250px" alt="EasyTeleprompter"/>
+</p>
 
-[![SIK](https://img.shields.io/badge/SIK-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/features/overview?) [![Audio](https://img.shields.io/badge/Audio-Light%20Gray?color=D3D3D3)](https://developers.snap.com/lens-studio/features/audio/playing-audio?) [![Gesture Module](https://img.shields.io/badge/Gesture%20Module-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/apis/gesture-module?) [![Motion Controller](https://img.shields.io/badge/Motion%20Controller-Light%20Gray?color=D3D3D3)](https://developers.snap.com/spectacles/about-spectacles-features/apis/motion-controller?)
+# EasyTeleprompter
+
+EasyTeleprompter is a Specs teleprompter for rehearsal and public speaking. It includes a local slide deck and examples of button, wrist soft-press, ASR voice, and companion-phone navigation. Google Slides and a WebSocket relay are optional integration examples with [documented source limitations](Docs/api-status.md).
 
 <img src="./README-ref/sample-list-public-speaker-rounded-edges.gif" alt="public-speaker" width="500" />
 
-> **NOTE:**
-> The project uses VoiceML - Speech Recognition
+The original illustrated tutorial (first published as "Public Speaker"), GDC use story, design links, prerequisites, OAuth walkthrough, and contributor notes are preserved in [the human guide](Docs/guide.md). Voice commands use the Lens Studio ASR module (`LensStudio:AsrModule`), not VoiceML.
 
-## Overview
-This project is a fun teleprompter lens integrated into Specs designed for both rehearsal and live public speaking. It displays speech text directly within the speaker’s field of view, enabling easy reference without breaking engagement with the audience. The system supports real-time adjustments, allowing the slides to update at a variable pace controlled by intuitive gestures, pinch actions, voice commands, or using the Specs mobile app. And yes, we used this lens at GDC 2025 :)! 
+## Quick Start
 
-<img src="./README-ref/gdc-pres.png" alt="gdc-pres" width="500" />
+1. Resolve the package's declared companions and add `EasyTeleprompter__PLACE_IN_SCENE.prefab` to a configured Specs scene.
+2. Start with `[StaticPresentationExample]`; its PresentationSwitcher reads direct children of its configured slide parent and wraps in both directions.
+3. Wire controller component inputs to the same local switcher, keeping each `useGoogleSlide` false for local slides.
+4. Test Next/Previous and their wraparound before enabling voice, soft press, phone, or network input.
+5. For remote slides, read [setup](Docs/setup.md) before enabling the Google bridge or WebSocket component. The prefab ships its Google example and those network components disabled.
 
-## Design Guidelines
+## Usage
 
-Designing Lenses for Specs offers all-new possibilities to rethink user interaction with digital spaces and the physical world.
-[View Design Guidelines](https://docs.snap.com/spectacles)
+This section ships with the package and describes what it contains. EasyTeleprompter setup and limitations live here; generic Lens scripting, scene construction, and Specs spatial design live in the CLAD skills, not here.
 
-## Prerequisites
+### Package identity
 
-- **Lens Studio**: v5.15.0+
-- **Specs OS Version**: v5.64+
-- **Specs App iOS**: v0.64+
-- **Specs App Android**: v0.64+
+- Descriptor: `EasyTeleprompter.lspkg/package.native`.
+- Prefab: `EasyTeleprompter.lspkg/EasyTeleprompter__PLACE_IN_SCENE.prefab`. It's self-contained: it holds the guide panel ("Ok, I understood"), the example carousel, the controllers and both presentation examples. Dropping it into a Specs scene with Camera, lighting and SIK gives the full demo.
+- Demo scaffolding: `EasyTeleprompter.lspkg/Example/` holds `ExampleCarousel` and `GuideDismissPanel`. The prefab uses them to present the demo; the teleprompter scripts don't depend on them.
+- Consumer import prefix: `EasyTeleprompter.lspkg/Scripts/`. `VoiceController.ts` exports `SpeechToText`; the spelling `SmoothRespositioning.ts` is the actual file path for `SmoothRepositioning`.
+- Declared companion packages: SpectaclesInteractionKit, SpectaclesUIKit, Utilities, SnapDecorators, Motion and Icons (see `package_dependencies.json`).
 
-To update your Specs device and mobile app, please refer to this [guide](https://support.spectacles.com/hc/en-us/articles/30214953982740-Updating).
+### API status
 
-You can download the latest version of Lens Studio from [here](https://ar.snap.com/download?lang=en-US).
+Read [API status](Docs/api-status.md) for local versus remote behavior, ASR migration, unimplemented sync, and native-camera limitations.
 
-The camera feature requires you to use Experimental APIs. Please see Experimental APIs for more details [here](https://developers.snap.com/spectacles/about-spectacles-features/apis/experimental-apis).
+### Applicability
 
-Extended Permissions mode on device must be enabled for enabling some of the Specs APIs. Please see Extended Permissions for more details [here](https://developers.snap.com/spectacles/permission-privacy/extended-permissions).
+Use this package to present local slide objects and route several input modalities to the same navigation component. Add Google Slides only when remote API credentials, image loading, and the unfinished synchronization behavior fit your application. Any relay or web backend you run for it must be hosted on Snap-approved infrastructure; contact the security team if unsure. This is not a generic authenticated presentation server or a guarantee of control over another browser's Google Slides session.
 
-## Getting Started
+### Related CLAD skills
 
-To obtain the project folder, clone the repository.
+[specs-build-ui](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/specs-build-ui/SKILL.md), [specs-author-scripts](https://github.com/lens-studio-devs/ls-extensions/blob/main/plugins/ls-clad/skills/specs-author-scripts/SKILL.md). These skills cover the surrounding Lens workflow.
 
-> **IMPORTANT:**
-> This project uses Git Large Files Support (LFS). Downloading a zip file using the green button on GitHub **will not work**. You must clone the project with a version of git that has LFS.
-> You can download Git LFS [here](https://git-lfs.github.com/).
+[Install CLAD](https://developers.specs.com/docs/clad/setup/setup-ai/) or browse its [source](https://github.com/lens-studio-devs/ls-extensions). Read the installed package docs for this package's APIs.
 
-## Google Slides Integration
+### Package Docs (ship in Docs/)
 
-This project allows you to connect your Specs to Google Slides presentations, enabling you to view and control slides directly from your Specs or synchronize with a presenter using Google Slides.
+- [Cheat sheet](Docs/cheat-sheet.md) — read first for slide collection and controller selection.
+- [API status](Docs/api-status.md) — read before relying on network synchronization or legacy instructions.
+- [Components](Docs/components.md) — read when importing scripts or wiring any input, method, or helper.
+- [Examples](Docs/examples.md) — read for typed local navigation and explicit receipt consumption.
+- [Setup](Docs/setup.md) — read for Google credential inputs and bundled relay/client limitations.
+- [Troubleshooting](Docs/troubleshooting.md) — read for missed commands, stale slides, input conflicts, and remote failures.
+- [Human guide](Docs/guide.md) — read the preserved illustrated tutorial with current-source corrections.
 
-<img src="./README-ref/web-slide-viewer.png" alt="web-slide-viewer" width="500" />
+### Verification
 
-The integration consists of three main components:
-
-1. **Heroku WebSocket Server**: A server that relays commands between your Specs and Google Slides
-2. **Web Slide Viewer**: A web interface for viewing and controlling Google Slides
-3. **Specs Scripts**: Components that connect to Google Slides API and the WebSocket server
-
-### Setting Up Heroku Server
-
-#### Step 1: Heroku Setup
-
-1. Sign up for a free Heroku account at [heroku.com](https://www.heroku.com/)
-2. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
-3. Log in to Heroku from your terminal:
-   ```
-   heroku login
-   ```
-4. Create a new Heroku app:
-   ```
-   heroku create google-slide-spectacles
-   ```
-   Note: Choose a unique name for your app, as it will be part of your WebSocket URL
-
-5. Deploy the WebSocket server to Heroku:
-   ```
-   cd SyncPresentationOnWeb/google-slide-spectacles
-   git init
-   git add .
-   git commit -m "Initial commit"
-   heroku git:remote -a your-app-name
-   git push heroku master
-   ```
-
-6. Verify your server is running by visiting `https://your-app-name.herokuapp.com`
-
-### Setting Up Google OAuth
-
-#### Step 2: Google OAuth Setup
-
-1. Go to the [Google Cloud Console](https://console.cloud.google.com/)
-2. Create a new project or select an existing one
-3. Enable the Google Slides API:
-   - Navigate to "APIs & Services" > "Library"
-   - Search for "Google Slides API" and enable it
-
-<img src="./README-ref/oauth-1.png" alt="oauth-1" width="500" />
-
-4. Create OAuth credentials:
-   - Go to "APIs & Services" > "Credentials"
-   - Click "Create Credentials" > "OAuth client ID"
-   - Select "Web application" as the application type
-   - Add authorized redirect URIs (including `https://developers.google.com/oauthplayground`)
-   - Click "Create" and note your Client ID and Client Secret
-
-<img src="./README-ref/oauth-2.png" alt="oauth-2" width="500" />
-
-5. Get a refresh token using OAuth Playground:
-   - Go to [OAuth Playground](https://developers.google.com/oauthplayground/)
-   - Click the gear icon in the top right and check "Use your own OAuth credentials"
-   - Enter your Client ID and Client Secret
-   - Select "Google Slides API v1" from the list of APIs
-   - Select the scopes: `https://www.googleapis.com/auth/presentations` and `https://www.googleapis.com/auth/drive.readonly`
-   - Click "Authorize APIs" and complete the OAuth flow
-   - Click "Exchange authorization code for tokens"
-   - Note the Access Token (you'll need to refresh this periodically) and Refresh Token
-
-<img src="./README-ref/oauth-3.png" alt="oauth-3" width="500" />
-
-### Connecting Everything Together
-
-1. Update the `GoogleSlideBridge.ts` script with your Google Slides presentation ID and access token:
-   ```typescript
-   @input
-   @hint("Your presentation id - find it in the google slide link")
-   presentationId: string = "your-presentation-id";
-
-   @input
-   @hint("Your refreshed access token, find it in the https://developers.google.com/oauthplayground")
-   private accessToken: string = "Bearer your-access-token";
-   ```
-
-2. Update the `WebSocketController.ts` script with your Heroku WebSocket URL:
-   ```typescript
-   @input
-   @hint("WebSocket server URL (e.g., wss://google-slide-spectacles-03332e1cf78e.herokuapp.com)")
-   serverUrl: string = "wss://your-app-name.herokuapp.com";
-   ```
-
-3. Open the Web Slide Viewer by visiting:
-   ```
-   https://your-app-name.herokuapp.com/direct-controller.html
-   ```
-
-4. Enter your presentation ID and access token in the Web Slide Viewer
-5. Click "Connect" to connect to the WebSocket server
-6. Click "Load Presentation" to load your Google Slides presentation
-
-Now your Specs will be synchronized with the Google Slides presentation. When you navigate slides on your Specs, the Web Slide Viewer will update, and vice versa.
-
-## Input Modalities 
-
-This project include different ways to change slides.
-
-- Target with the cursor the "Next" and "Previous" buttons. 
-- Toggle the audio input to use voice commands: "Next", "Previous", "Go Back".
-- Use the soft buttons on the side with your hands.
-- Use the Spectacle companion app as a "Clicker". 
-
-## Key Scripts
-
-- `PresentationSwitcher.ts` allows you to go next or go previous on the slides using [SIK](https://developers.snap.com/spectacles/spectacles-frameworks/spectacles-interaction-kit/get-started).
-
-<img src="./README-ref/mobile-divided.png" alt="mobile-divided" width="500" />
-
-- `MobileController.ts` allows you to go next or go previous on the slides using the [Motion Controller Module](https://developers.snap.com/spectacles/about-spectacles-features/apis/motion-controller). Open the Specs app, pair it with your Specs, and use the controller panel. The left half of the window will call "Previous", the right half of the window will call "Next".
-
-<img src="./README-ref/soft-press-diagram.png" alt="soft-press-diagram" width="500" />
-
-- `SoftPressController.ts` allows you to go next or go previous on the slides using a custom soft press button and [The Gesture Module](https://developers.snap.com/spectacles/about-spectacles-features/apis/gesture-module).
-
-- `VoiceController.ts` allows you to go next or go previous on the slides using [VoiceML](https://developers.snap.com/lens-studio/features/voice-ml/speech-recognition).
-
-## Modify the sample
-
-Change the Orientation of the soft button that includes `SoftPressController.ts` and the distance from the Container UI based on your preference. 
-
-<img src="./README-ref/orientation.png" alt="orientation" width="500" />
-
-Change the voice commands in `VoiceController.ts`. 
-
-```typescript
-        if (this.isListening) { 
-          if (this.lastTranscription === "next" 
-              || this.lastTranscription === "next.") {
-            this.presentationSwitcher.next();
-            log.d("Going to next slide");
-          } else if (this.lastTranscription === "previous" 
-              || this.lastTranscription === "go back"||
-              this.lastTranscription === "previous." 
-              || this.lastTranscription === "go back.") {
-            this.presentationSwitcher.previous();
-            log.d("Going to previous slide");
-          }
-```
-Update the slides with your images and text. 
-
-<img src="./README-ref/slides-hierarchy.png" alt="slides-hierarchy" width="500" />
-
-## Testing the Lens
-
-### In Lens Studio Editor
-
-1. Open the Preview panel in Lens Studio.
-2. Explore the key script described above.
-3. Modify the sample.  
-
-### On Specs Device
-
-1. Build and deploy the project to your Specs device.
-2. Follow the [Spectacles guide](https://developers.snap.com/spectacles/get-started/start-building/preview-panel) for device testing.
-3. Rehearse your presentation or delivery it using Specs. 
-
-## Support
-
-If you have any questions or need assistance, please don't hesitate to reach out. Our community is here to help, and you can connect with us and ask for support [here](https://www.reddit.com/r/Spectacles/). We look forward to hearing from you and are excited to assist you on your journey!
-
-## Contributing
-
-Feel free to provide improvements or suggestions or directly contributing via merge request. By sharing insights, you help everyone else build better Lenses.
+- Compile imports against the installed package and its dependencies; wire every required reference without `as any`.
+- Check that only one local slide is enabled, Next wraps to the first, and Previous wraps to the last.
+- Verify exact final ASR phrases after the configured delay, both hand soft presses, and phone left/right navigation on the intended device.
+- For remote slides, validate credentials, first thumbnail/notes loading, navigation bounds, and expected relay receipts separately.
+- Prove any requested browser-to-Lens synchronization explicitly; receipt storage alone does not navigate the Lens.
 
 ---
 
-*Maintained with 👽 by the SPECS Team* <!-- --> <!-- --> <!-- --> <!-- -->
+## Built with 👽 by the SPECS team <!-- --> <!-- --> <!-- --> <!-- -->
 
 
 

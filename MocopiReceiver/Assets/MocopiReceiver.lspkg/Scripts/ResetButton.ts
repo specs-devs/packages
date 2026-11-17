@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Simple reset button handler for PrefabPlacement component.
  * Attach this to a button and assign the PrefabPlacement component to enable placement reset.
  */

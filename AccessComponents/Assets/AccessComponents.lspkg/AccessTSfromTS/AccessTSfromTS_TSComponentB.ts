@@ -1,21 +1,21 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Demonstrates accessing another TypeScript component with full type safety and IntelliSense.
  * Shows the benefits of TypeScript-to-TypeScript communication with compile-time type checking.
  */
-import { TSComponentA } from './AccessTSfromTS_TSComponentA';
+import { AccessTSfromTS_TSComponentA } from './AccessTSfromTS_TSComponentA';
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent } from "SnapDecorators.lspkg/decorators";
 
 @component
-export class TSComponentB extends BaseScriptComponent {
+export class AccessTSfromTS_TSComponentB extends BaseScriptComponent {
   @ui.separator
   @ui.label('<span style="color: #60A5FA;">TypeScript Component Reference</span>')
   @ui.label('<span style="color: #94A3B8; font-size: 11px;">Reference to TSComponentA with full type safety and IntelliSense support</span>')
 
   // Reference to TSComponentA with proper typing
   @input
-  refScript: TSComponentA;
+  refScript: AccessTSfromTS_TSComponentA;
 
   @ui.separator
   @ui.label('<span style="color: #60A5FA;">Debug Settings</span>')
@@ -44,7 +44,7 @@ export class TSComponentB extends BaseScriptComponent {
   
   // Helper method for debug logging
   private log(message: string): void {
-    if (this.enableLogging || this.enableLoggingLifecycle) {
+    if (this.debug && (this.enableLogging || this.enableLoggingLifecycle)) {
       print(`[TSComponentB] ${message}`);
     }
   }
@@ -116,9 +116,17 @@ export class TSComponentB extends BaseScriptComponent {
   public toggleDebug(): void {
     this.debug = !this.debug;
     if (this.initialized && this.refScript) {
-      this.refScript.debug = this.debug;
-      this.refScript.toggleDebug();
+      // toggleDebug() flips the flag, so only call it when the two are out of sync
+      if (this.refScript.debug !== this.debug) {
+        this.refScript.toggleDebug();
+      }
     }
-    this.log(`Debug mode ${this.debug ? 'enabled' : 'disabled'}`);
+    // Report the toggle itself even when Debug was just turned off
+    if (this.enableLogging || this.enableLoggingLifecycle) {
+      print(`[TSComponentB] Debug mode ${this.debug ? 'enabled' : 'disabled'}`);
+    }
   }
 }
+
+/** @deprecated Use AccessTSfromTS_TSComponentB. Kept so existing imports of the old name still compile. */
+export { AccessTSfromTS_TSComponentB as TSComponentB };

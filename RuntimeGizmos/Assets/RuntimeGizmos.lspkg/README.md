@@ -1,304 +1,93 @@
+<p align="center">
+  <img src="Docs/media/RuntimeGizmos.png" width="250px" alt="RuntimeGizmos"/>
+</p>
+
 # Runtime Gizmos 
 
-A debugging and visualization toolkit that renders geometric primitives in real-time. This package provides Line, Circle, Spline, ClosedPolyline, and Spiral gizmos for visualizing vectors, paths, boundaries, and spatial relationships directly in your AR experience.
+Runtime Gizmos draws debug and visualization geometry while the Lens runs:
+lines, closed polylines, circles, splines and spirals that follow scene objects.
+Every gizmo renders with SIK's `InteractorLineRenderer`.
 
 ## Features
 
-- **Line Gizmos**: Render straight lines between two points with configurable width and color
-- **Circle Gizmos**: Draw circles with dynamic radius and rotation following
-- **Spline Curves**: Smooth interpolated curves through control points with adjustable tension
-- **Closed Polylines**: Connect multiple points in a closed shape
-- **Spiral Patterns**: Generate logarithmic or Archimedean spirals for decorative effects
-- **Visual Styles**: Three rendering modes - Full, Split, and FadedEnd
-- **Dynamic Updates**: Gizmos automatically track moving objects in real-time
-- **InteractorLineRenderer Integration**: Leverages SIK's line rendering system for performance
-
-## Quick Start
-
-Create a line gizmo to visualize a connection between two objects:
-
-```typescript
-import {Line} from "RuntimeGizmos.lspkg/Scripts/Line";
-
-@component
-export class DebugConnection extends BaseScriptComponent {
-  @input pointA: SceneObject;
-  @input pointB: SceneObject;
-  @input lineMaterial: Material;
-
-  onAwake() {
-    // Create line gizmo
-    const lineGizmo = this.sceneObject.createComponent("Line");
-    lineGizmo.startObject = this.pointA;
-    lineGizmo.endObject = this.pointB;
-    lineGizmo.lineMaterial = this.lineMaterial;
-    lineGizmo.color = new vec3(1, 0, 0);  // Red
-    lineGizmo.lineWidth = 0.5;
-
-    // Line will automatically update as objects move
-  }
-}
-```
-
-## Script Highlights
-
-### Line.ts
-Renders a dynamic line segment between two scene objects with automatic position tracking. The component continuously monitors both start and end object transforms and updates the line visualization when either object moves. Supports configurable width, color (vec3), and three visual styles (Full, Split, FadedEnd). Uses InteractorLineRenderer from SIK for efficient rendering and provides enable/disable functionality for toggling visibility. The line maintains local-to-world transform calculations for proper world-space rendering.
-
-### Circle.ts
-Creates a circular gizmo that follows a center object with optional rotation tracking. The circle is approximated using a configurable number of segments (default 32) for smooth appearance. Supports dynamic radius changes and can either follow the center object's rotation or maintain a fixed orientation. The component generates circle points in the XY plane using trigonometric calculations and converts them to world space. Includes methods for runtime radius adjustment (setRadius), rotation following toggle (setFollowRotation), and segment count changes (setSegments).
-
-### Spline.ts
-Generates smooth curves through an array of control points using Catmull-Rom spline interpolation. The component supports configurable tension (0 = straight lines, 1 = tight curve) and interpolation density for smoothness control. Can create closed loops by connecting the last point to the first. The spline automatically tracks control point movements and regenerates the curve when positions change. Perfect for visualizing paths, animation curves, or creating decorative ribbons that follow multiple reference objects.
-
-### ClosedPolyline.ts
-Connects multiple scene objects with line segments forming a closed polygon. The component monitors all control points and updates the shape when any point moves. Useful for visualizing boundaries, creating selection boxes around multiple objects, or drawing arbitrary closed shapes. Supports the same visual style options as other gizmos and maintains efficient rendering by only regenerating when needed.
-
-## Core API Methods
-
-### Line
-
-```typescript
-// Start and end points
-startObject: SceneObject
-endObject: SceneObject
-
-// Visual properties
-color: vec3
-lineWidth: number
-lineStyle: number  // 0=Full, 1=Split, 2=FadedEnd
-
-// Material
-lineMaterial: Material
-
-// Enable/disable
-isEnabled: boolean
-```
-
-### Circle
-
-```typescript
-// Center and rotation tracking
-centerObject: SceneObject
-followRotation: boolean
-
-// Circle dimensions
-radius: number
-segments: number
-
-// Visual properties
-color: vec3
-lineWidth: number
-lineStyle: number
-
-// Runtime adjustments
-setRadius(newRadius: number): void
-setFollowRotation(follow: boolean): void
-setSegments(segments: number): void
-```
-
-### Spline
-
-```typescript
-// Control points array
-controlPoints: SceneObject[]
-
-// Curve parameters
-tension: number
-interpolationPoints: number
-closedLoop: boolean
-
-// Visual properties
-color: vec3
-lineWidth: number
-lineStyle: number
-
-// Regenerate curve
-refreshSpline(): void
-```
-
-## Advanced Usage
-
-### Vector Field Visualization
-
-Create a field of arrows showing direction and magnitude:
-
-```typescript
-@component
-export class VectorField extends BaseScriptComponent {
-  @input fieldCenter: SceneObject;
-  @input gridSize: number = 10;
-  @input spacing: number = 2.0;
-  @input lineMaterial: Material;
-
-  private lines: Line[] = [];
-
-  onAwake() {
-    this.generateVectorField();
-
-    // Animate field over time
-    const updateEvent = this.createEvent("UpdateEvent");
-    let time = 0;
-    updateEvent.bind(() => {
-      time += getDeltaTime();
-      this.updateVectorDirections(time);
-    });
-  }
-
-  generateVectorField() {
-    const centerPos = this.fieldCenter.getTransform().getWorldPosition();
-
-    for (let x = 0; x < this.gridSize; x++) {
-      for (let z = 0; z < this.gridSize; z++) {
-        const startPos = new vec3(
-          centerPos.x + (x - this.gridSize / 2) * this.spacing,
-          centerPos.y,
-          centerPos.z + (z - this.gridSize / 2) * this.spacing
-        );
-
-        // Create start point
-        const startObj = global.scene.createSceneObject("VectorStart");
-        startObj.getTransform().setWorldPosition(startPos);
-
-        // Create end point (will be animated)
-        const endObj = global.scene.createSceneObject("VectorEnd");
-
-        // Create line
-        const line = this.sceneObject.createComponent("Line");
-        line.startObject = startObj;
-        line.endObject = endObj;
-        line.lineMaterial = this.lineMaterial;
-        line.color = new vec3(0, 1, 1);
-        line.lineWidth = 0.3;
-        line.lineStyle = 2;  // FadedEnd
-
-        this.lines.push(line);
-      }
-    }
-  }
-
-  updateVectorDirections(time: number) {
-    this.lines.forEach((line, index) => {
-      const startPos = line.startObject.getTransform().getWorldPosition();
-
-      // Calculate direction based on some function
-      const dx = Math.sin(startPos.x * 0.5 + time);
-      const dz = Math.cos(startPos.z * 0.5 + time);
-      const direction = new vec3(dx, 0, dz).normalize();
-
-      const endPos = startPos.add(direction.uniformScale(1.5));
-      line.endObject.getTransform().setWorldPosition(endPos);
-    });
-  }
-}
-```
-
-### Path Preview System
-
-Visualize a curved path with control point handles:
-
-```typescript
-@component
-export class PathEditor extends BaseScriptComponent {
-  @input pathPoints: SceneObject[];
-  @input splineMaterial: Material;
-  @input handleMaterial: Material;
-
-  private pathSpline: Spline;
-  private handleCircles: Circle[] = [];
-
-  onAwake() {
-    // Create main path spline
-    this.pathSpline = this.sceneObject.createComponent("Spline");
-    this.pathSpline.controlPoints = this.pathPoints;
-    this.pathSpline.lineMaterial = this.splineMaterial;
-    this.pathSpline.color = new vec3(1, 1, 0);
-    this.pathSpline.lineWidth = 0.5;
-    this.pathSpline.tension = 0.5;
-    this.pathSpline.interpolationPoints = 20;
-    this.pathSpline.closedLoop = false;
-
-    // Add handle circles at each control point
-    this.pathPoints.forEach((point) => {
-      const circle = this.sceneObject.createComponent("Circle");
-      circle.centerObject = point;
-      circle.lineMaterial = this.handleMaterial;
-      circle.color = new vec3(0, 1, 0);
-      circle.radius = 0.5;
-      circle.lineWidth = 0.2;
-      circle.followRotation = false;
-
-      this.handleCircles.push(circle);
-    });
-  }
-
-  addPathPoint(newPoint: SceneObject) {
-    this.pathPoints.push(newPoint);
-    this.pathSpline.controlPoints = this.pathPoints;
-    this.pathSpline.refreshSpline();
-
-    // Add handle for new point
-    const circle = this.sceneObject.createComponent("Circle");
-    circle.centerObject = newPoint;
-    circle.lineMaterial = this.handleMaterial;
-    circle.color = new vec3(0, 1, 0);
-    circle.radius = 0.5;
-    this.handleCircles.push(circle);
-  }
-}
-```
-
-### Debug Boundary Visualization
-
-Show collision boundaries and trigger zones with colored gizmos:
-
-```typescript
-@component
-export class BoundaryDebugger extends BaseScriptComponent {
-  @input triggerZones: SceneObject[];
-  @input collisionBounds: SceneObject[];
-  @input lineMaterial: Material;
-
-  onAwake() {
-    // Visualize trigger zones as green circles
-    this.triggerZones.forEach((zone) => {
-      const circle = this.sceneObject.createComponent("Circle");
-      circle.centerObject = zone;
-      circle.lineMaterial = this.lineMaterial;
-      circle.color = new vec3(0, 1, 0);  // Green
-      circle.radius = zone.getTransform().getLocalScale().x;
-      circle.lineWidth = 0.3;
-      circle.followRotation = true;
-    });
-
-    // Visualize collision bounds as red closed polylines
-    this.collisionBounds.forEach((bounds) => {
-      const children = bounds.getChildren();
-      if (children.length > 0) {
-        const polyline = this.sceneObject.createComponent("ClosedPolyline");
-        polyline.controlPoints = children;
-        polyline.lineMaterial = this.lineMaterial;
-        polyline.color = new vec3(1, 0, 0);  // Red
-        polyline.lineWidth = 0.4;
-      }
-    });
-
-    // Toggle visibility with tap
-    const touchEvent = this.createEvent("TapEvent");
-    let debugVisible = true;
-    touchEvent.bind(() => {
-      debugVisible = !debugVisible;
-      this.sceneObject.enabled = debugVisible;
-      print(`Debug gizmos: ${debugVisible ? "ON" : "OFF"}`);
-    });
-  }
-}
-```
-
-*Maintained with 👽 by the SPECS Team*
-
-
-
-
-
-
+- **Line**: a straight line between two objects, redrawn every frame
+- **Closed Polyline**: a closed shape through N points, drawn continuous or split
+- **Circle**: a ring around a center object, with optional rotation following
+- **Spline**: a smooth curve through control points, with tension and closed-loop options
+- **Spiral**: linear, exponential, logarithmic or helix growth along the X, Y or Z axis
+- **Visual Styles**: Full, Split and FadedEnd
+
+## Usage
+
+This section ships with the package and describes the exact installed revision.
+Read it, then follow the links into `Docs/` for the topic you need. It is
+written for both people and coding agents; generic Lens scripting, scene
+construction, and Specs spatial design live in the CLAD skills, not here.
+
+### Package identity
+
+- Package descriptor: `RuntimeGizmos.lspkg/package.native`
+- Consumer import prefix: `RuntimeGizmos.lspkg/Scripts/`, for example
+  `RuntimeGizmos.lspkg/Scripts/Circle`. See [components](Docs/components.md).
+- Prefab entry point: `RuntimeGizmos__PLACE_IN_SCENE.prefab` (a gallery of all
+  five gizmos, each in its own group with its points).
+- The prefab includes the demo guide panel and example carousel: dragging it
+  into an empty Specs scene gives the full demo. Their scripts ship in
+  `RuntimeGizmos.lspkg/Example/` (`ExampleCarousel`, `GuideDismissPanel`, see
+  [components](Docs/components.md#demo-scaffolding-example)). They only present
+  the demo; the gizmo scripts don't import them.
+- Required companion packages (`package_dependencies.json`):
+  `SpectaclesInteractionKit` (line renderer, color utils, and the line
+  material the prefab uses), `Utilities` (Logger) and `SnapDecorators`
+  (imported by every script), plus `SpectaclesUIKit`, `Motion` and `Icons`.
+
+### Version and API status
+
+Read [API status](Docs/api-status.md) before reusing an older Runtime Gizmos
+example. Older README snippets used property names that do not exist in this
+revision. Gizmos created with `createComponent` need `setLineMaterial()` and
+`rebuild()` (see [examples](Docs/examples.md)).
+
+### Applicability
+
+Use Runtime Gizmos for debug overlays and simple line art that tracks objects:
+connections, boundaries, paths, radii, decorative spirals. It is not a general
+mesh or line-drawing toolkit. For thick, styled or animated lines use a mesh /
+line package, and for interaction rays use SIK's own visuals.
+
+### Related CLAD skills
+
+- [lens-api](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/lens-api):
+  instantiating prefabs and generic component scripting.
+- [mesh-builder-scripting](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/mesh-builder-scripting):
+  when you need real geometry rather than gizmo lines.
+- No CLAD? Setup: https://developers.specs.com/docs/clad/setup/setup-ai/ ·
+  source: `github.com/lens-studio-devs/ls-extensions`.
+
+### Package Docs (ship in `Docs/`)
+
+Lens Studio auto-extracts these files into the project's install Cache on
+import, so an agent can read them there. Treat only the members documented
+here as supported API; never guess an import path.
+
+- [cheat sheet](Docs/cheat-sheet.md) - load-bearing rules; read first
+- [components](Docs/components.md) - the five gizmos: import paths, inputs, defaults, methods, update behavior, plus the `Example/` demo scaffolding
+- [API status](Docs/api-status.md) - Current / Deprecated / Experimental / Removed / Internal
+- [minimal examples](Docs/examples.md) - prefab path and compiling snippets
+- [guide and recipes](Docs/guide.md) - vector field, path preview, boundary debugger, built the supported way
+- [troubleshooting](Docs/troubleshooting.md) - package-specific symptoms and fixes
+
+### Verification
+
+1. Compile with no TypeScript errors and no `as any`. Imports come from
+   `RuntimeGizmos.lspkg/Scripts/<Gizmo>`.
+2. Every gizmo you add has its required references wired in the Inspector
+   (points/center and `lineMaterial`) **before** the Lens starts, or call
+   `rebuild()` after assigning them. A missing reference silently draws
+   nothing (the message goes to `logger.debug`); only a ClosedPolyline with
+   exactly 1 point throws.
+3. In Preview, move a point/center: Line, Circle, Spline and Spiral follow it.
+   ClosedPolyline only follows after `refreshLine()`.
+4. The logs show no `Line` / `ClosedPolyline` errors at start.
+
+## Built with 👽 by the SPECS team

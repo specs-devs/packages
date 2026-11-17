@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Snap Cloud Storage asset loader example. Demonstrates loading 3D models, images, and audio from
  * Supabase Storage buckets with progress tracking, camera-relative positioning, GLTF instantiation,
  * texture application, and interactive asset management.
@@ -69,7 +69,7 @@ export class StorageLoader extends BaseScriptComponent {
 
   // Button Configuration
   @input
-  @hint("RectangleButton to trigger asset loading (from Spectacles UI Kit)")
+  @hint("RectangleButton to trigger asset loading (from Glasses UI Kit)")
   public loadButton: RectangleButton
 
   // Loading Configuration
@@ -203,7 +203,7 @@ export class StorageLoader extends BaseScriptComponent {
   }
 
   /**
-   * Setup load button interaction using Spectacles UI Kit
+   * Setup load button interaction using Glasses UI Kit
    */
   private setupLoadButton() {
     if (!this.loadButton) {

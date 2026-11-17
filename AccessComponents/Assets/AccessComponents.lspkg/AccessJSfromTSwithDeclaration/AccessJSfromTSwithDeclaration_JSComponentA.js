@@ -1,3 +1,4 @@
+//@component
 // Basic properties
 script.numberVal = 1;
 script.stringVal = "Hello from JS";

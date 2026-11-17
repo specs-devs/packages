@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * TypeScript type definitions for OpenAI API. Defines types for chat completions, image
  * generation/editing, speech synthesis, and realtime WebSocket interactions adapted for
  * Lens Studio with support for multimodal content and function calling.
@@ -343,7 +343,19 @@ export namespace OpenAITypes {
   }
 
   export namespace ImageGenerate {
-    export type Model = "dall-e-2" | "dall-e-3" | "gpt-image-1" | string;
+    /**
+     * Image models. dall-e-2 / dall-e-3 (shut down 2026-05-12) and gpt-image-1 (shut down
+     * 2026-10-23) are retired upstream; use gpt-image-2 or newer. gpt-image models always
+     * answer b64_json and take sizes such as 1024x1024.
+     */
+    export type Model =
+      | "gpt-image-2"
+      | "gpt-image-2.5-sunburst"
+      | "gpt-image-2.5-flare"
+      | "dall-e-2"
+      | "dall-e-3"
+      | "gpt-image-1"
+      | string;
     export type Quality =
       | "standard"
       | "hd"
@@ -468,7 +480,8 @@ export namespace OpenAITypes {
 
   export namespace Realtime {
     export type AudioFormat = "pcm16" | "g711_ulaw" | "g711_alaw" | string;
-    export type Model = "gpt-4o-realtime-preview" | string;
+    /** Realtime GA models (the preview models are retired). */
+    export type Model = "gpt-realtime" | "gpt-realtime-mini" | string;
     export type Voice =
       | "alloy"
       | "ash"
@@ -527,7 +540,40 @@ export namespace OpenAITypes {
     /**
      * @link https://platform.openai.com/docs/api-reference/realtime-sessions/create
      */
+    /** GA audio format, e.g. `{ type: "audio/pcm", rate: 24000 }`. */
+    export interface AudioFormatGA {
+      type: "audio/pcm" | "audio/pcmu" | "audio/pcma" | string;
+      rate?: number;
+      [key: string]: any;
+    }
+
+    /** GA `session.audio`: input format and turn detection, output format and voice. */
+    export interface SessionAudio {
+      input?: {
+        format?: AudioFormatGA;
+        noise_reduction?: InputAudioNoiseReduction | null;
+        transcription?: InputAudioTranscription | null;
+        turn_detection?: TurnDetection;
+        [key: string]: any;
+      };
+      output?: {
+        format?: AudioFormatGA;
+        voice?: Voice;
+        speed?: number;
+        [key: string]: any;
+      };
+      [key: string]: any;
+    }
+
+    /**
+     * Session fields. GA sessions (`gpt-realtime`, `gpt-realtime-mini`) need `type: "realtime"`
+     * and use `output_modalities` + `audio`; the flat beta fields (`modalities`,
+     * `input_audio_format`, `voice`, ...) are rejected by GA models.
+     */
     export interface SessionParameters {
+      type?: "realtime" | "transcription" | string;
+      output_modalities?: Array<"text" | "audio" | string>;
+      audio?: SessionAudio;
       input_audio_format?: AudioFormat;
       input_audio_noise_reduction?: InputAudioNoiseReduction | null;
       input_audio_transcription?: InputAudioTranscription | null;
@@ -993,7 +1039,36 @@ export namespace OpenAITypes {
       | ResponseAudioDeltaEvent
       | ResponseAudioDoneEvent
       | ResponseFunctionCallArgumentsDeltaEvent
-      | ResponseFunctionCallArgumentsDoneEvent;
+      | ResponseFunctionCallArgumentsDoneEvent
+      | ResponseOutputTextDeltaEvent
+      | ResponseOutputAudioTranscriptDeltaEvent
+      | ResponseOutputAudioDeltaEvent;
+
+    // Realtime GA names for the delta events above.
+    export interface ResponseOutputTextDeltaEvent extends ServerEventBase {
+      type: "response.output_text.delta";
+      response_id?: string;
+      item_id?: string;
+      output_index: number;
+      content_index: number;
+      delta: string;
+    }
+    export interface ResponseOutputAudioTranscriptDeltaEvent extends ServerEventBase {
+      type: "response.output_audio_transcript.delta";
+      response_id?: string;
+      item_id?: string;
+      output_index: number;
+      content_index: number;
+      delta: string;
+    }
+    export interface ResponseOutputAudioDeltaEvent extends ServerEventBase {
+      type: "response.output_audio.delta";
+      response_id?: string;
+      item_id?: string;
+      output_index: number;
+      content_index: number;
+      delta: string; // Base64 encoded audio data delta
+    }
 
     // Server TranscriptionSession Messages
     export interface TranscriptionSessionResponse {

@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Example implementation of Gemini Live API with real-time multimodal interaction. Demonstrates
  * WebSocket-based streaming with audio input/output, optional video capture, voice selection,
  * and bidirectional communication for conversational AI experiences.
@@ -101,7 +101,7 @@ export class ExampleGeminiLive extends BaseScriptComponent {
 
     global.deviceInfoSystem.onInternetStatusChanged.add((args) => {
       this.textDisplay.text = args.isInternetAvailable
-        ? "Reconnected to internete"
+        ? "Reconnected to internet"
         : "No internet";
     });
   }
@@ -164,7 +164,7 @@ export class ExampleGeminiLive extends BaseScriptComponent {
       ];
 
       // Send the session setup message
-      const modelUri = `models/gemini-2.0-flash-live-preview-04-09`;
+      const modelUri = `models/gemini-live-2.5-flash`;
       const sessionSetupMessage: GeminiTypes.Live.Setup = {
         setup: {
           model: modelUri,

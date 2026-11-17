@@ -1,12 +1,12 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Horizontal surface (ground) placement detector extending SurfaceDetector. Performs hit tests for
  * horizontal planes with configurable distance range (20-500cm), manages default screen distance for
  * non-detected state, integrates SingleSurface for cursor positioning and interaction, updates
  * instruction text on hover, and provides smooth interpolation for ground plane object placement.
  */
 import { SurfaceDetector } from "../Scripts/SurfaceDetector";
-import { SingleSurface } from "../Scripts/SingleSurface";
+import { HEAD_POSE_HORIZONTAL_RAY_TILT, SingleSurface } from "../Scripts/SingleSurface";
 import { HandHintsController } from "./HandHintsController";
 
 // Set min and max hit distance to surfaces
@@ -45,7 +45,7 @@ export class Horizontal extends SurfaceDetector {
   }
 
   onHoverEnter() {
-    if (!this.isCalibrationRunning) {
+    if (!this.isCalibrationRunning || this.usesHeadPose) {
       return;
     }
     super.onHoverEnter();
@@ -53,7 +53,7 @@ export class Horizontal extends SurfaceDetector {
   }
 
   onHoverExit() {
-    if (!this.isCalibrationRunning) {
+    if (!this.isCalibrationRunning || this.usesHeadPose) {
       return;
     }
     super.onHoverExit();
@@ -61,6 +61,7 @@ export class Horizontal extends SurfaceDetector {
   }
 
   onInteractionCanceled() {
+    if (!this.isCalibrationRunning || this.usesHeadPose) return;
     super.onInteractionCanceled();
     this.circleAnim.setLoadingColor(true);
     this.circleAnim.animateCircleIn(null);
@@ -68,7 +69,7 @@ export class Horizontal extends SurfaceDetector {
   }
 
   onInteractionStart() {
-    if (!this.isCalibrationRunning) {
+    if (!this.isCalibrationRunning || this.usesHeadPose) {
       return;
     }
 
@@ -79,7 +80,7 @@ export class Horizontal extends SurfaceDetector {
   }
 
   onInteractionEnd() {
-    if (!this.isCalibrationRunning) {
+    if (!this.isCalibrationRunning || this.usesHeadPose) {
       return;
     }
     super.onInteractionEnd();
@@ -97,11 +98,14 @@ export class Horizontal extends SurfaceDetector {
     this.singleSurface.startCalibration();
     this.circleAnim.setLoadingColor(true);
     this.circleAnim.enableScanAnimation(true);
-    this.handHintController.enableHint(this.hintAnchor.getTransform());
-    this.playHandHint(this.isMobileConnected());
+    if (!this.usesHeadPose) {
+      this.handHintController.enableHint(this.hintAnchor.getTransform());
+      this.playHandHint(this.isMobileConnected());
+    }
   }
 
   private playHandHint(isMobile: boolean) {
+    if (this.usesHeadPose) return;
     if (isMobile) {
       this.handHintController.playMobileTap();
       this.hintAnchor
@@ -123,7 +127,14 @@ export class Horizontal extends SurfaceDetector {
   }
 
   private startCalibrationComplete() {
-    super.onCalibrationComplete(this.invokeCalibrationComplete);
+    this.isCalibrationRunning = false;
+    if (this.usesHeadPose) {
+      this.circleAnim.animateCircleOut(() => {
+        super.onCalibrationComplete(this.invokeCalibrationComplete.bind(this));
+      });
+    } else {
+      super.onCalibrationComplete(this.invokeCalibrationComplete.bind(this));
+    }
   }
 
   private invokeCalibrationComplete() {
@@ -135,6 +146,7 @@ export class Horizontal extends SurfaceDetector {
 
   protected update() {
     super.update();
+    if (!this.isCalibrationRunning) return;
     if (this.singleSurface.hasFoundPlane()) {
       this.singleSurface.adjustPosition();
     } else {
@@ -148,6 +160,14 @@ export class Horizontal extends SurfaceDetector {
     }
     this.faceCamera();
     this.singleSurface.interpolatePositionVisuals();
+    if (this.usesHeadPose) {
+      this.updateReticleScale();
+      if (this.hitTestSession != null && this.hasFreshSurfaceHit()) {
+        if (this.updateDwellPlacement()) this.startCalibrationComplete();
+      } else {
+        this.resetDwellPlacement();
+      }
+    }
 
     //keep screen text at same height as camera
     const worldTextPos = this.screenTextObj
@@ -165,6 +185,7 @@ export class Horizontal extends SurfaceDetector {
   }
 
   private onHitTestResult(hitTestResult) {
+    if (!this.isCalibrationRunning || this.singleSurface.hasFoundPlane()) return;
     let foundPosition = vec3.zero();
     let foundNormal = vec3.zero();
     if (hitTestResult != null) {
@@ -179,10 +200,21 @@ export class Horizontal extends SurfaceDetector {
     //check if horizontal plane is being tracked
     const foundHorizontalPlane = foundNormal.y > 0.95;
     if (foundHorizontalPlane) {
+      this.markSurfaceHit();
       this.singleSurface.useDefaultHeight = false;
       this.singleSurface.lastGroundHeight = foundPosition.y;
 
       this.singleSurface.desiredPosition = foundPosition;
+    } else if (this.usesHeadPose) {
+      const planeY = this.singleSurface.useDefaultHeight
+        ? camPos.y - DEFAULT_GROUND_DISTANCE : this.singleSurface.lastGroundHeight;
+      const direction = this.cameraTransform.forward.uniformScale(-1);
+      direction.y -= HEAD_POSE_HORIZONTAL_RAY_TILT;
+      const ray = direction.normalize();
+      const distance = ray.y < -0.05 ? (planeY - camPos.y) / ray.y : MAX_HIT_DISTANCE;
+      const position = camPos.add(ray.uniformScale(Math.max(MIN_HIT_DISTANCE, Math.min(MAX_HIT_DISTANCE, distance))));
+      position.y = planeY;
+      this.singleSurface.desiredPosition = position;
     } else {
       const worldCameraForward = this.cameraTransform.right
         .cross(vec3.up())

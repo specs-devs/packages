@@ -2,7 +2,7 @@ import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent } from "SnapDecorators.lspkg/decorators";
 
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Camera service for managing composite camera textures. Handles camera requests and texture
  * composition for both editor and device environments with different camera configurations.
  */
@@ -16,6 +16,16 @@ export class CameraService extends BaseScriptComponent {
     @input screenCropTexture: Texture;
     @input
     private camModule: CameraModule;
+
+    @input
+    @allowUndefined
+    @hint("Material that shows the Lens content in the composite (Materials/ImageVC). Its baseTex is set at start.")
+    lensContentMaterial: Material;
+
+    @input
+    @allowUndefined
+    @hint("Texture with the Lens content. Leave empty to use the render target of Editor Camera (the Lens camera).")
+    lensRenderTarget: Texture;
 
   @ui.separator
   @ui.label('<span style="color: #60A5FA;">Logging Configuration</span>')
@@ -68,8 +78,30 @@ export class CameraService extends BaseScriptComponent {
         cropTexControl.inputTexture = camTexture;
         camTexControl.onNewFrame.add(() => { });
 
+        this.assignLensContent();
+
         if (this.enableLoggingLifecycle) {
             this.logger.debug("LIFECYCLE: start() - Camera service initialized");
+        }
+    }
+
+    /**
+     * Points the Lens content material at the Lens camera's render target, so the composite
+     * works in any project without editing the material by hand.
+     */
+    private assignLensContent(): void {
+        if (!this.lensContentMaterial) {
+            return;
+        }
+        const lensTexture = this.lensRenderTarget ?? this.editorCamera?.renderTarget;
+        if (!lensTexture) {
+            this.logger.warn("No Lens render target found; set Lens Render Target or Editor Camera.");
+            return;
+        }
+        this.lensContentMaterial.mainPass.baseTex = lensTexture;
+
+        if (this.enableLogging) {
+            this.logger.debug(`Lens content texture assigned: ${lensTexture}`);
         }
     }
 }

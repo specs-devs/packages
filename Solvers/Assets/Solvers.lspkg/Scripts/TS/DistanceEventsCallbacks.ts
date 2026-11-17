@@ -1,7 +1,7 @@
 /**
 
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Callback provider for DistanceEventsTS with preset event handlers. Provides example callbacks for
  * distance threshold crossing, returning within threshold, showing/hiding elements, triggering
  * animations, playing sounds, and generic customizable callbacks for distance-based interactions.

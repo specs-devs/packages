@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Runtime closed polyline gizmo for visualizing connected paths. Renders a sequence of lines
  * through control points with options for continuous or split segments, customizable colors,
  * and dynamic updates for path visualization.
@@ -16,9 +16,11 @@ export class ClosedPolyline extends BaseScriptComponent {
     @ui.label('<span style="color: #94A3B8; font-size: 11px;">Configure control points and line rendering style</span>')
 
     @input
+    @allowUndefined
     public points!: SceneObject[]
 
     @input
+    @allowUndefined
     private lineMaterial!: Material
 
     @input("vec3", "{1, 1, 0}")
@@ -79,16 +81,49 @@ export class ClosedPolyline extends BaseScriptComponent {
     }
 
 
-        if (!this.points || this.points.length < 2) {
+        this.transform = this.sceneObject.getTransform()
+
+        if (!this.points || this.points.length === 0 || !this.lineMaterial) {
+            this.logger.debug("Points or material not set yet; call rebuild() after assigning them");
+            return
+        }
+
+        if (this.points.length < 2) {
             throw new Error("ClosedPolylineVisual requires at least 2 points")
         }
 
-        this.transform = this.sceneObject.getTransform()
         this.createOrUpdateLines()
     }
 
+    /**
+     * (Re)creates the lines from the current inputs. Call after setting points and setLineMaterial()
+     * from code (e.g. on a component added with createComponent).
+     */
+    rebuild(): void {
+        this.refreshLine()
+    }
+
+    /**
+     * Sets the line material and rebuilds the lines.
+     */
+    setLineMaterial(material: Material): void {
+        this.lineMaterial = material
+        this.refreshLine()
+    }
+
+    /**
+     * Sets the line width.
+     */
+    setLineWidth(width: number): void {
+        this.lineWidth = width
+        this.lines.forEach(line => {
+            line.startWidth = width
+            line.endWidth = width
+        })
+    }
+
     refreshLine(): void {
-        if (!this.points || this.points.length < 2) {
+        if (!this.points || this.points.length < 2 || !this.lineMaterial) {
             this.logger.debug("Cannot refresh line: Invalid state");
             return;
         }
@@ -146,7 +181,7 @@ export class ClosedPolyline extends BaseScriptComponent {
 
     onDestroy(): void {
         this.lines.forEach(line => line.destroy())
-        this.sceneObject.destroy()
+        this.lines = []
     }
 
     getPoints(): SceneObject[] {

@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Transform matching utility with optional position, rotation, and scale synchronization. Follows
  * target transform with configurable per-axis constraints, smooth lerp interpolation, position offset,
  * and independent speed controls for position, rotation, and scale matching.
@@ -210,7 +210,7 @@ export class MatchTransformTS extends BaseScriptComponent {
         // Apply lerp if enabled, otherwise use direct position matching
         if (this.usePositionLerp) {
             // Smooth transition with lerp
-            const t = Math.min(1.0, this.positionLerpSpeed * getDeltaTime());
+            const t = Math.max(0, Math.min(1, this.positionLerpSpeed * getDeltaTime()));
             newPosition = vec3.lerp(currentPosition, newPosition, t);
         } else {
             // Direct 1:1 position matching (no lerp)
@@ -242,11 +242,11 @@ export class MatchTransformTS extends BaseScriptComponent {
         // Convert back to quaternion
         const newRotation = quat.fromEulerAngles(newEuler.x, newEuler.y, newEuler.z);
         
-        // Apply lerp
+        // Apply lerp (factor clamped to 0..1 so large speeds don't overshoot)
         const lerpedRotation = quat.slerp(
             currentRotation,
             newRotation,
-            this.rotationLerpSpeed * getDeltaTime()
+            Math.max(0, Math.min(1, this.rotationLerpSpeed * getDeltaTime()))
         );
         
         // Set the new rotation
@@ -257,8 +257,9 @@ export class MatchTransformTS extends BaseScriptComponent {
      * Update the scale based on target and constraints.
      */
     private updateScale(myTransform: Transform, targetTransform: Transform): void {
+        // Read and write world scale so the match holds under scaled parents
         const targetScale = targetTransform.getWorldScale();
-        const currentScale = myTransform.getLocalScale();
+        const currentScale = myTransform.getWorldScale();
         
         // Apply constraints
         const newScale = new vec3(
@@ -268,11 +269,11 @@ export class MatchTransformTS extends BaseScriptComponent {
         );
         
         // Apply lerp
-        const t = Math.min(1.0, this.scaleLerpSpeed * getDeltaTime());
+        const t = Math.max(0, Math.min(1, this.scaleLerpSpeed * getDeltaTime()));
         const lerpedScale = vec3.lerp(currentScale, newScale, t);
         
         // Set the new scale
-        myTransform.setLocalScale(lerpedScale);
+        myTransform.setWorldScale(lerpedScale);
     }
     
 }

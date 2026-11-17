@@ -1,3 +1,4 @@
+//@component
 /**
  * CircleAreaInstantiator - JavaScript version of the C# utility
  * Instantiates prefabs within a circular area
@@ -52,7 +53,10 @@ function CircleAreaInstantiator() {
             
             // The actual instantiation code would be something like:
             var instance = script.prefab.instantiate(script.sceneObject);
-            instance.getTransform().setWorldPosition(position);
+            // The offsets above are along world axes: turn them with the center so the layout follows its rotation.
+            var centerTransform = script.center.getTransform();
+            var origin = centerTransform.getWorldPosition();
+            instance.getTransform().setWorldPosition(origin.add(centerTransform.getWorldRotation().multiplyVec3(position.sub(origin))));
         }
     }
 }

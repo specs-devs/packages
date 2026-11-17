@@ -1,7 +1,7 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * OpenAI API integration for chat, image generation/editing, speech synthesis, and realtime
- * interactions. Provides access to GPT models, DALL-E image generation, TTS speech, and
+ * interactions. Provides access to GPT models, GPT Image generation, TTS speech, and
  * WebSocket-based realtime conversations with multipart form data support.
  */
 import {

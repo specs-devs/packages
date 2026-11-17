@@ -1,8 +1,8 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Example implementation of Google Imagen API for AI image generation. Demonstrates text-to-image
- * generation with customizable parameters including aspect ratio, watermarking, and prompt enhancement
- * using Imagen 3.0 models with tap/pinch gesture triggers.
+ * generation with generateContent requests
+ * using the Gemini image models served by the Imagen route, with tap/pinch gesture triggers.
  */
 import { Imagen } from "../Imagen";
 import { GoogleGenAITypes } from "../GoogleGenAITypes";
@@ -67,6 +67,10 @@ export class ExampleImagenCalls extends BaseScriptComponent {
   }
 
   private onTap() {
+    // GestureModule pinches arrive even while this example is disabled.
+    if (!this.sceneObject.isEnabledInHierarchy) {
+      return;
+    }
     if (this.doGenerateOnTap) {
       this.generateImageExample();
     }
@@ -98,40 +102,35 @@ export class ExampleImagenCalls extends BaseScriptComponent {
 
   private generateImageExample() {
     this.logger.debug("Generating image with prompt: " + this.generatePrompt);
-    const request: GoogleGenAITypes.Imagen.ImagenRequest = {
-      model: "imagen-3.0-generate-002",
+    const request: GoogleGenAITypes.Imagen.GenerateContentRequest = {
+      model: "gemini-3.1-flash-image",
+      type: "generateContent",
       body: {
-        parameters: {
-          sampleCount: 1,
-          addWatermark: false,
-          aspectRatio: "1:1",
-          enhancePrompt: true,
-          language: "en",
-          seed: 0,
-        },
-        instances: [
+        contents: [
           {
-            prompt: this.generatePrompt,
+            role: "user",
+            parts: [
+              {
+                text: this.generatePrompt,
+              },
+            ],
           },
         ],
+        generationConfig: {
+          responseModalities: ["TEXT", "IMAGE"],
+        },
       },
     };
 
-    Imagen.generateImage(request)
+    Imagen.generateContent(request)
       .then((response) => {
-        this.logger.debug("Response: " + JSON.stringify(response));
-        response.predictions.forEach((prediction) => {
-          const b64 = prediction.bytesBase64Encoded;
-          Base64.decodeTextureAsync(
-            b64,
-            (texture) => {
-              this.imgObject.getComponent("Image").mainPass.baseTex = texture;
-            },
-            () => {
-              this.logger.debug("Failed to decode texture from base64 data.");
-            }
-          );
-        });
+        const parts = response.candidates?.[0]?.content?.parts ?? [];
+        const imagePart = parts.find((part) => part?.inlineData?.data);
+        if (!imagePart) {
+          this.logger.debug("Imagen response has no image part: " + JSON.stringify(response));
+          return;
+        }
+        this.setImageTextureFromBase64(imagePart.inlineData.data);
       })
       .catch((error) => {
         this.logger.debug("Imagen generate error: " + error);

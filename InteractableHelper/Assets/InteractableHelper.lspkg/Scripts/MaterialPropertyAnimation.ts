@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Material property animation configuration for InteractableHelper. Animates shader parameters
  * including float, vec3, and vec4 values with easing and timing control.
  */

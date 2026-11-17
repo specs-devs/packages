@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Example implementations of Google Gemini API calls. Demonstrates text generation, multimodal
  * image generation, and function calling with color manipulation using Gemini 2.0 Flash models
  * with tap/pinch gesture triggers.
@@ -94,6 +94,10 @@ export class ExampleGeminiCalls extends BaseScriptComponent {
   }
 
   private onTap() {
+    // GestureModule pinches arrive even while this example is disabled.
+    if (!this.sceneObject.isEnabledInHierarchy) {
+      return;
+    }
     if (this.generateImageOnTap) {
       this.generateImageExample();
     }
@@ -111,7 +115,7 @@ export class ExampleGeminiCalls extends BaseScriptComponent {
     this.textDisplay.sceneObject.enabled = true;
     this.textDisplay.text = "Generating...";
     const request: GeminiTypes.Models.GenerateContentRequest = {
-      model: "gemini-2.0-flash",
+      model: "gemini-2.5-flash",
       type: "generateContent",
       body: {
         contents: [
@@ -150,7 +154,7 @@ export class ExampleGeminiCalls extends BaseScriptComponent {
     this.imgObject.enabled = true;
     this.loaderSpinnerImage.enabled = true;
     const request: GeminiTypes.Models.GenerateContentRequest = {
-      model: "gemini-2.0-flash-exp",
+      model: "gemini-3.1-flash-image",
       type: "generateContent",
       body: {
         contents: [
@@ -207,7 +211,7 @@ export class ExampleGeminiCalls extends BaseScriptComponent {
     this.textDisplay.text = "Processing function call...";
 
     const request: GeminiTypes.Models.GenerateContentRequest = {
-      model: "gemini-2.0-flash",
+      model: "gemini-2.5-flash",
       type: "generateContent",
       body: {
         contents: [

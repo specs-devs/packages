@@ -2,7 +2,7 @@ import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
 
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Radial slice instantiation utility that creates pizza-slice patterns with objects arranged
  * along radial divisions. Perfect for circular menus, radial UI, or pie chart visualizations.
  */
@@ -67,7 +67,6 @@ export class CircleSlicingInstantiatorTS extends BaseScriptComponent {
         });
     }
 
-    @bindStartEvent
 
 
     onStart(): void {
@@ -105,8 +104,9 @@ export class CircleSlicingInstantiatorTS extends BaseScriptComponent {
 
             // Instantiate Y elements along the slice (line)
             for (let j = 0; j < this.yElementsPerSlice; j++) {
-                // Interpolate between the start and end points of the slice
-                const t = j / (this.yElementsPerSlice - 1);
+                // Interpolate between the start and end points of the slice.
+                // The end point is the next slice's start, so it's left out (no duplicates around the circle)
+                const t = j / this.yElementsPerSlice;
                 const position = this.lerp(sliceStart, sliceEnd, t);
 
                 // Create a prefab instance at the calculated position
@@ -128,7 +128,10 @@ export class CircleSlicingInstantiatorTS extends BaseScriptComponent {
     private createPrefabInstance(position: vec3): void {
         if (this.prefab) {
             const instance = this.prefab.instantiate(this.sceneObject);
-            instance.getTransform().setWorldPosition(position);
+            // The offsets above are along world axes: turn them with the center so the layout follows its rotation.
+            const centerTransform = this.center.getTransform();
+            const origin = centerTransform.getWorldPosition();
+            instance.getTransform().setWorldPosition(origin.add(centerTransform.getWorldRotation().multiplyVec3(position.sub(origin))));
             this.logger.debug(`Created prefab instance at position: ${position.x}, ${position.y}, ${position.z}`);
         }
     }

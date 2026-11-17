@@ -1,0 +1,58 @@
+- !<AssetImportMetadata/101e1d25-7db4-4de3-a4b4-15e260b2caaf>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 6e322498-c30d-43b0-9b5a-782b88c831c5
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 6e322498-c30d-43b0-9b5a-782b88c831c5
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 5e870b8e-96a4-4c35-8eea-36e37a6ae108
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/5e870b8e-96a4-4c35-8eea-36e37a6ae108>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: a46a11ae-2084-4044-9b4d-880cc25b13f8
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    authenticationType: false
+    authorizationUri: false
+    clientId: false
+    scope: false
+    tokenUri: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - clientId: authkit-demo-client
+      authorizationUri: "https://provider.example/oauth/authorize"
+      tokenUri: "https://provider.example/oauth/token"
+      scope: openid profile
+      authenticationType: code
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input string clientId = "authkit-demo-client" {"hint":"OAuth2 client ID registered with your provider (tokens are stored per client ID)"}'
+    - '// @input string authorizationUri = "https://provider.example/oauth/authorize" {"hint":"Provider authorization endpoint"}'
+    - '// @input string tokenUri = "https://provider.example/oauth/token" {"hint":"Provider token endpoint"}'
+    - '// @input string scope = "openid profile" {"hint":"Space-separated scopes requested by Sign in"}'
+    - '// @input string authenticationType = "code" {"hint":"\"code\" (Authorization Code Flow with PKCE) or \"implicit\""}'

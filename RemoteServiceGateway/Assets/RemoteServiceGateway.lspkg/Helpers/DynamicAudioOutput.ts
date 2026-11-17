@@ -2,7 +2,7 @@ import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
 
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Dynamic audio output manager for AI-generated audio. Converts PCM16 audio data to
  * playable audio frames, manages audio track playback, and supports multi-channel audio
  * for real-time audio streaming from generative AI models.

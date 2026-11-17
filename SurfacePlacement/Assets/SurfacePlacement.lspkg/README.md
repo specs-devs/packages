@@ -1,154 +1,104 @@
+<p align="center">
+  <img src="Docs/media/SurfacePlacement.png" width="250px" alt="SurfacePlacement"/>
+</p>
+
 # Surface Placement
 
-A comprehensive surface detection and object placement system for AR experiences. This package provides horizontal, vertical, and near-surface placement modes with adjustment widgets, surface detection utilities, and SIK integration for interactive object positioning.
+Place content on floors, tables, and walls. **Head-pose placement is the default:** look at a surface and hold your view steady while the ring fills. Pinch/tap confirmation and palm-based near-surface placement remain available.
 
-## Features
+## Try the example
 
-- **Multiple Placement Modes**: Horizontal (floor/tables), Vertical (walls), and Near-Surface detection
-- **Adjustment Widget**: Interactive slider for fine-tuning object placement
-- **Surface Detection**: Automatic surface discovery with hit testing
-- **Hand Hints Integration**: Visual tutorials for surface placement gestures
-- **Placement Settings**: Configurable modes with offset and callback support
-- **Circle Animation**: Visual feedback during surface detection
-- **SIK Compatibility**: Works seamlessly with Specs Interaction Kit
+1. Open the SurfacePlacement project, or install the package and add `SurfacePlacement__PLACE_IN_SCENE` to your scene. It brings its own guide and an example carousel.
+2. Read the guide and pinch **Ok, I understood**. The carousel then steps through four examples with **Previous / Next**: Horizontal · Head Pose (default), Horizontal · Pinch or Tap, Vertical · Head Pose (walls) and Near Surface · Palms.
+3. Look at a real surface. After about half a second of steady aim, the ring fills over 1.5 seconds and confirms placement. Moving your head or losing the surface restarts the timer.
+4. Pinch the example's **Reset** button (it calls `resetPlacement()`) to place again.
 
-## Quick Start
+Head pose uses the world camera's position and forward direction; it does not require eye tracking or a hand gesture. The step-by-step guide, placement options and tracking details are in [the guide](Docs/guide.md).
 
-Set up basic horizontal surface placement:
+## Usage
 
-```typescript
-import {PlacementSettings, PlacementMode} from "SurfacePlacement.lspkg/Scripts/PlacementSettings";
+This section ships with the package and describes the exact installed revision.
+Read it, then follow the links into `Docs/` for the topic you need. It is
+written for both people and coding agents; generic Lens scripting, scene
+construction, and Specs spatial design live in the CLAD skills, not here.
 
-@component
-export class SurfacePlacementExample extends BaseScriptComponent {
-  @input objectToPlace: SceneObject;
-  @input interactable: Interactable;
+### Package identity
 
-  private settings: PlacementSettings;
+- Package descriptor: `SurfacePlacement.lspkg/package.native` (holds the package version)
+- Consumer import prefix: `SurfacePlacement.lspkg/Scripts/` for the API
+  (`Scripts/SurfacePlacementController`, `Scripts/PlacementSettings`); the
+  example component is `SurfacePlacement.lspkg/Example` (the file `Example.ts` at the package root, no
+  `Scripts/`). See [components](Docs/components.md).
+- Prefab entry point: `SurfacePlacement__PLACE_IN_SCENE.prefab`. It is
+  self-contained: a guide panel (`Guide`), an `ExampleCarousel`, and four
+  example groups (Horizontal · Head Pose, Horizontal · Pinch or Tap, Vertical ·
+  Head Pose, Near Surface · Palms). Each group carries an `Example` component
+  with its own mode, a red panda and a reset button. The placement UI itself is
+  created from code; you never place `Prefabs/*Placement.prefab` by hand.
+- Demo scaffolding: `SurfacePlacement.lspkg/Example/` holds the guide and
+  carousel scripts (`Example/GuideDismissPanel`, `Example/ExampleCarousel`)
+  used only by the prefab. They are not placement API (see
+  [components](Docs/components.md)); delete `Guide` / `ExampleCarousel` from
+  your copy of the prefab if you only want one example.
+- Required companion packages (see `package_dependencies.json`):
+  `SpectaclesInteractionKit`, `SpectaclesUIKit`, `Utilities`,
+  `SnapDecorators`, `Motion` and `Icons`. The scene needs the
+  SIK prefab and a world-tracked camera (SIK's `WorldCameraFinderProvider`
+  locates it).
 
-  onAwake() {
-    // Configure placement for horizontal surfaces
-    this.settings = new PlacementSettings(
-      PlacementMode.HORIZONTAL,
-      true,  // use adjustment widget
-      new vec3(2, 2, 0),  // widget offset
-      (position) => this.onPositionUpdate(position)
-    );
+### Version and API status
 
-    // Trigger placement on interaction
-    this.interactable.onTriggerStart.add(() => {
-      this.placementObject();
-    });
-  }
+Read [API status](Docs/api-status.md) before reusing an older Surface
+Placement example: horizontal and vertical placement now default to head-pose
+confirmation, and the height-adjustment widget now uses the UIKit `Slider`.
 
-  placeObject() {
-    // Surface detection and placement logic
-    print("Placing object on horizontal surface");
-    this.objectToPlace.enabled = true;
-  }
+### Applicability
 
-  onPositionUpdate(newPosition: vec3) {
-    this.objectToPlace.getTransform().setWorldPosition(newPosition);
-  }
-}
-```
+Use Surface Placement to let the user choose where content goes: a floor or
+table spot (Horizontal), a wall (Vertical), or a surface under their palm
+(Near Surface). It returns one world pose and stops; it does not anchor or
+persist content across sessions, keep content attached to a moving surface, or
+expose raw hit tests. For your own World Query hit testing, use the World
+Query skill; for persistent anchors, use a custom-locations or anchor workflow.
 
-## Script Highlights
+### Related CLAD skills
 
-### PlacementSettings.ts
-Defines configuration for surface placement behavior with three modes (HORIZONTAL, VERTICAL, NEAR_SURFACE). Provides settings for adjustment widget usage, widget offset positioning, and slider update callbacks. The PlacementSettings class encapsulates all placement parameters in a single configuration object that can be passed to placement controllers for consistent behavior across different placement scenarios.
+- [specs-world-query](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/specs-world-query):
+  custom hit tests and surface queries when you need more than one placement pose.
+- [specs-interaction-recipes](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/specs-interaction-recipes):
+  pinch, tap and grab interactions with the placed content.
+- [lens-api](https://github.com/lens-studio-devs/ls-extensions/tree/main/plugins/ls-clad/skills/lens-api):
+  generic component lifecycle and scripting.
+- No CLAD? Setup: https://developers.specs.com/docs/clad/setup/setup-ai/ ·
+  source: `github.com/lens-studio-devs/ls-extensions`.
 
-### SurfaceDetector.ts
-Implements surface detection using raycasting and hit testing to find suitable placement locations. Performs continuous surface scanning and evaluates surface normals to determine if detected surfaces match the requested placement mode (horizontal vs vertical). Provides callbacks for surface found/lost events and maintains surface validity state based on angle thresholds and distance requirements.
+### Package Docs (ship in `Docs/`)
 
-### CircleAnimation.ts
-Creates animated visual feedback during surface detection with expanding/contracting circles. The animation provides users with visual confirmation that the system is actively searching for placement surfaces. Circle size and opacity animate to draw attention to detected surfaces and provide intuitive feedback during the placement process.
+Lens Studio auto-extracts these files into the project's install Cache on
+import, so an agent can read them there. Treat only the members documented
+here as supported API; never guess an import path.
 
-## Core API Methods
+- [cheat sheet](Docs/cheat-sheet.md) - load-bearing rules; read first
+- [components](Docs/components.md) - `SurfacePlacementController`, `PlacementSettings`, enums, `Example`; internal prefab scripts
+- [lifecycle](Docs/lifecycle.md) - start / confirm / callback / stop order and what stays in the scene
+- [API status](Docs/api-status.md) - Current / Deprecated / Experimental / Removed / Internal
+- [minimal examples](Docs/examples.md) - prefab path and compiling snippets
+- [guide](Docs/guide.md) - placement modes, head-pose tracking details, migration from pinch/tap
+- [troubleshooting](Docs/troubleshooting.md) - package-specific symptoms and fixes
 
-```typescript
-// Placement configuration
-PlacementSettings(
-  mode: PlacementMode,
-  useWidget: boolean,
-  widgetOffset: vec3,
-  onSliderUpdate: (value: vec3) => void
-)
+### Verification
 
-// Placement modes
-enum PlacementMode {
-  HORIZONTAL,
-  VERTICAL,
-  NEAR_SURFACE
-}
+1. Compile with no TypeScript errors and no `as any`; imports resolve under
+   `SurfacePlacement.lspkg/Scripts/`.
+2. Preview with the SIK prefab and a scene that has floor geometry: in
+   Horizontal + Head Pose the ring appears on the floor, fills while the view
+   is still, and your callback receives the pose (content appears there).
+3. Restart placement (`startSurfacePlacement` again or the example's
+   `resetPlacement()`): the previous reticle disappears and a fresh ring starts;
+   no "Object is null" errors in the log.
+4. Disable the object that started placement: the reticle must disappear too
+   (call `stopSurfacePlacement()`; the UI is not under your object).
+5. Vertical needs wall geometry (the default Preview room has none) and Near
+   Surface needs a palm-down hand or a tap; verify those on device.
 
-// Surface detection
-detectSurface(): Surface | null
-isSurfaceValid(surface: Surface): boolean
-```
-
-## Advanced Usage
-
-### Multi-Mode Placement System
-
-Allow users to switch between horizontal and vertical placement:
-
-```typescript
-@component
-export class AdaptivePlacement extends BaseScriptComponent {
-  @input objectToPlace: SceneObject;
-  @input modeToggleButton: Interactable;
-
-  private currentMode = PlacementMode.HORIZONTAL;
-  private settings: PlacementSettings;
-
-  onAwake() {
-    this.updatePlacementMode();
-
-    this.modeToggleButton.onTriggerStart.add(() => {
-      this.toggleMode();
-    });
-  }
-
-  toggleMode() {
-    if (this.currentMode === PlacementMode.HORIZONTAL) {
-      this.currentMode = PlacementMode.VERTICAL;
-    } else {
-      this.currentMode = PlacementMode.HORIZONTAL;
-    }
-
-    this.updatePlacementMode();
-    print(`Switched to ${this.currentMode} mode`);
-  }
-
-  updatePlacementMode() {
-    this.settings = new PlacementSettings(
-      this.currentMode,
-      true,
-      new vec3(2, 2, 0),
-      (pos) => this.updateObjectPosition(pos)
-    );
-  }
-
-  updateObjectPosition(position: vec3) {
-    const transform = this.objectToPlace.getTransform();
-    transform.setWorldPosition(position);
-
-    // Rotate object based on mode
-    if (this.currentMode === PlacementMode.VERTICAL) {
-      const rotation = quat.fromEulerVec(new vec3(90, 0, 0));
-      transform.setWorldRotation(rotation);
-    } else {
-      transform.setWorldRotation(quat.quatIdentity());
-    }
-  }
-}
-```
-
-*Maintained with 👽 by the SPECS Team*
-
-
-
-
-
-
+## Built with 👽 by the SPECS team

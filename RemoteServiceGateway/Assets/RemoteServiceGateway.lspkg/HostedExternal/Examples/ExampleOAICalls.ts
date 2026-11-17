@@ -1,7 +1,7 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Example implementations of OpenAI API calls. Demonstrates chat completions with GPT models,
- * DALL-E image generation and editing, TTS speech synthesis, and function calling with color
+ * GPT Image generation and editing, TTS speech synthesis, and function calling with color
  * manipulation using tap/pinch gestures.
  */
 import { OpenAI } from "../OpenAI";
@@ -129,6 +129,10 @@ export class ExampleOAICalls extends BaseScriptComponent {
     }
   }
   private onTap() {
+    // GestureModule pinches arrive even while this example is disabled.
+    if (!this.sceneObject.isEnabledInHierarchy) {
+      return;
+    }
     if (this.generateVoiceOnTap) {
       this.doSpeechGeneration();
     }
@@ -153,7 +157,7 @@ export class ExampleOAICalls extends BaseScriptComponent {
     this.textDisplay.sceneObject.enabled = true;
     this.textDisplay.text = "Generating...";
     OpenAI.chatCompletions({
-      model: "gpt-4.1-nano",
+      model: "gpt-5.6-luna",
       messages: [
         {
           role: "system",
@@ -164,7 +168,6 @@ export class ExampleOAICalls extends BaseScriptComponent {
           content: this.userPrompt,
         },
       ],
-      temperature: 0.7,
     })
       .then((response) => {
         this.textDisplay.text = response.choices[0].message.content;
@@ -179,10 +182,10 @@ export class ExampleOAICalls extends BaseScriptComponent {
     this.imgObject.enabled = true;
     this.loaderSpinnerImage.enabled = true;
     OpenAI.imagesGenerate({
-      model: "dall-e-2",
+      model: "gpt-image-2",
       prompt: this.imageGenerationPrompt,
       n: 1,
-      size: "512x512",
+      size: "1024x1024",
     })
       .then((response) => {
         print("Image Generated");
@@ -266,8 +269,8 @@ export class ExampleOAICalls extends BaseScriptComponent {
           image: baseImageData,
           mask: maskImageData,
           n: 1,
-          size: "512x512",
-          model: "dall-e-2",
+          size: "1024x1024",
+          model: "gpt-image-2",
         };
         OpenAI.imagesEdit(imageEditRequest)
           .then((response) => {
@@ -382,7 +385,7 @@ export class ExampleOAICalls extends BaseScriptComponent {
     ];
 
     OpenAI.chatCompletions({
-      model: "gpt-4.1-nano",
+      model: "gpt-5.6-luna",
       messages: [
         {
           role: "user",
@@ -391,7 +394,8 @@ export class ExampleOAICalls extends BaseScriptComponent {
       ],
       tools: tools,
       tool_choice: "auto",
-      temperature: 0.7,
+      // gpt-5.6-luna rejects function tools on /v1/chat/completions unless reasoning is off.
+      reasoning_effort: "none",
     })
       .then((response) => {
         const message = response.choices[0].message;

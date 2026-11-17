@@ -23,16 +23,32 @@
   VersionMinor: 0
   VersionPatch: 0
   VersionPrerelease: ""
+  UpdateOrder: 0
   ComponentUid: abf12d7c-d76f-41db-bbf0-393be730cfcc
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
+    ceilingColor: false
+    classificationEnabled: false
+    detectCategory: false
     enableLogging: false
     enableLoggingLifecycle: false
     filterEnabled: false
+    groundColor: false
     indexToSpawn: false
+    introHintDuration: false
+    introHintText: false
+    labelScale: false
     objectsToSpawn: false
+    refineEnabled: false
+    showIntroHint: false
+    showSurfaceLabel: false
+    smoothingEnabled: false
+    smoothingSpeed: false
+    tableColor: false
     targetObject: false
+    unknownColor: false
+    wallColor: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -47,6 +63,21 @@
       objectsToSpawn: !<reference.SceneObject[]>
         []
       filterEnabled: false
+      smoothingEnabled: true
+      smoothingSpeed: !<float> 10.000000
+      showIntroHint: true
+      introHintText: Point to surfaces using your hand to see semantic classification and pinch to instantiate the object prefab
+      introHintDuration: !<float> 2.000000
+      classificationEnabled: true
+      showSurfaceLabel: true
+      refineEnabled: false
+      labelScale: !<float> 1.000000
+      detectCategory: !<float> 0.000000
+      groundColor: !<Vec4> {x: 0.000000, y: 1.000000, z: 0.000000, w: 1.000000}
+      wallColor: !<Vec4> {x: 0.000000, y: 1.000000, z: 0.968600, w: 1.000000}
+      ceilingColor: !<Vec4> {x: 0.666700, y: 0.000000, z: 1.000000, w: 1.000000}
+      tableColor: !<Vec4> {x: 1.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      unknownColor: !<Vec4> {x: 0.027500, y: 0.000000, z: 0.439200, w: 1.000000}
       enableLogging: false
       enableLoggingLifecycle: false
   ScriptTypes:
@@ -63,6 +94,34 @@
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Hit Test Settings</span>"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Surface detection filter configuration</span>"}'
     - // @input bool filterEnabled
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Cursor Smoothing</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Ease the preview object toward the hit point instead of snapping</span>"}'
+    - '// @input bool smoothingEnabled = true {"hint":"Smoothly interpolate (lerp) the preview object toward the hit point instead of snapping to it"}'
+    - '// @input float smoothingSpeed = 10 {"hint":"Smoothing speed — higher is snappier. ~5 feels floaty, ~10 balanced, ~25 tight. Frame-rate independent"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Intro Hint</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Short instruction tethered in front of the user at the start</span>"}'
+    - '// @input bool showIntroHint = true {"hint":"Show a brief instruction tethered in front of the user when the Lens starts"}'
+    - '// @input string introHintText = "Point to surfaces using your hand to see semantic classification and pinch to instantiate the object prefab" {"hint":"Instruction text shown at start (long lines wrap automatically)"}'
+    - '// @input float introHintDuration = 2 {"hint":"How long the intro hint stays visible, in seconds"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Semantic Surface Detection</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Classification options and hit-point label</span>"}'
+    - '// @input bool classificationEnabled = true {"hint":"Enable surface classification (options.classification) on the hit test session"}'
+    - '// @input bool showSurfaceLabel = true {"hint":"Show a color-coded label at the hit point naming the detected surface (GROUND, WALL, TABLE, ...)"}'
+    - '// @input bool refineEnabled {"hint":"Request refined hit results (options.refine). Not available on every SnapOS/Lens Studio version; silently ignored when unsupported"}'
+    - '// @input float labelScale = 1 {"hint":"Uniform scale multiplier for the semantic surface label"}'
+    - "// @input float detectCategory {\"hint\":\"The full set of detectable surface categories. 'All' labels every detected surface; pick one category to only label hits of that type\", \"widget\":\"combobox\", \"values\":[{\"label\":\"All\", \"value\":0}, {\"label\":\"Ground\", \"value\":1}, {\"label\":\"Wall\", \"value\":2}, {\"label\":\"Ceiling\", \"value\":3}, {\"label\":\"Table\", \"value\":4}, {\"label\":\"None / Unknown\", \"value\":5}]}"
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Surface Category Colors</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">All supported categories: Ground, Wall, Ceiling, Table, None/Unknown</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Colors are matched to the detected surface NAME at runtime</span>"}'
+    - '// @input vec4 groundColor = "{0.0, 1.0, 0.0, 1.0}" {"hint":"Label color when the detected surface is Ground", "widget":"color"}'
+    - '// @input vec4 wallColor = "{0.0, 1.0, 0.9686, 1.0}" {"hint":"Label color when the detected surface is a Wall", "widget":"color"}'
+    - '// @input vec4 ceilingColor = "{0.6667, 0.0, 1.0, 1.0}" {"hint":"Label color when the detected surface is a Ceiling", "widget":"color"}'
+    - '// @input vec4 tableColor = "{1.0, 0.0, 0.0, 1.0}" {"hint":"Label color when the detected surface is a Table", "widget":"color"}'
+    - '// @input vec4 unknownColor = "{0.0275, 0.0, 0.4392, 1.0}" {"hint":"Label color for None/Unknown surfaces — also the fallback for any category without its own color above", "widget":"color"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Logging Configuration</span>"}'
     - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Control logging output for this script instance</span>"}'

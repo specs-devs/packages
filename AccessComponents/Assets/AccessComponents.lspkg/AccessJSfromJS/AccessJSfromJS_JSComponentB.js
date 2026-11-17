@@ -1,3 +1,4 @@
+//@component
 /**
  * AccessJSfromJS_JSComponentB.js
  * 

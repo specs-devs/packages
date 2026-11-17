@@ -10,12 +10,8 @@ import {AiBaseInteractor} from "./BaseInteractor"
 import {Hand} from "./Hand"
 import {TrackedHandWrapper} from "./TrackedHandWrapper"
 
-// Time given to the relaxed-pose pre-roll before sampling the wrist→indexTip
-// offset for an approach. Must be > 0: the animate library special-cases
-// `duration=0` by skipping the per-frame update tick entirely, so the
-// rotation is never applied and the sampled offset reflects the previous
-// pose. ~80ms lets the animation tick advance through several frames at
-// 60fps and settle the relaxed pose before we measure.
+// Finish the gesture animation before measuring the handRoot-to-tip offset.
+// Keep the duration positive: the animation interpolator divides by duration.
 const GESTURE_SETTLE_MS = 80
 
 /**
@@ -58,7 +54,7 @@ export class AiHandInteractor extends AiBaseInteractor {
 
     this.handWrapper = new TrackedHandWrapper(this.trackedHand, handType)
 
-    this.hand.hide()
+    // LEAF's Hand constructor already parks the rig at its hidden position.
   }
 
   override destroy(): void {
@@ -73,33 +69,13 @@ export class AiHandInteractor extends AiBaseInteractor {
   // ─── Helpers ───────────────────────────────────────────────────────────
 
   /**
-   * Sample the handRoot→indexTip offset while the rig is in pinch pose, then
-   * leave the rig in relaxed pose ready for the actual relaxed → pinch
-   * transition SIK uses to detect a new trigger.
-   *
-   * The offset is measured against `handRoot`, not the wrist: `setPosition`
-   * translates handRoot, so to land the indexTip on a target the caller adds
-   * `handRoot − indexTip` to it. Using the wrist instead leaves the indexTip
-   * off by the handRoot→wrist vector (~3cm in y for the puppet rig) — the same
-   * bug pokeInteractable and hoverInteractable already avoid.
-   *
-   * Why pinch pose: the offset is pose-dependent. Pinch curls the index finger
-   * toward the thumb, so the fingertip ends up closer to the wrist than in
-   * relaxed. If we sample in relaxed and `setPosition` accordingly, by the time
-   * SIK runs proximity detection (during/after the relaxed → pinch transition)
-   * the fingertip has moved to the pinch position, ~12 units away from where we
-   * aimed. Sampling in pinch pose makes the curled fingertip the one that lands
-   * on target.
-   *
-   * GESTURE_SETTLE_MS is non-zero because the animate library special-cases
-   * `duration=0` by skipping the per-frame update tick — the rotation
-   * never actually applies and the offset reads the previous pose.
+   * Finish the visual pinch before approaching UI, without sending pinch-down.
+   * The hand stays in this pose so the measured handRoot-to-tip offset remains
+   * valid during translation. SIK acquires the target before the gesture signal.
    */
-  private async measurePinchOffset(): Promise<vec3> {
+  private async preparePinchOffset(): Promise<vec3> {
     await this.hand.makeGesture("pinch", undefined, GESTURE_SETTLE_MS)
-    const offset = this.hand.getHandRootWorldPosition().sub(this.hand.indexTip.position)
-    await this.hand.makeGesture("relaxed", undefined, GESTURE_SETTLE_MS)
-    return offset
+    return this.hand.getHandRootWorldPosition().sub(this.hand.indexTip.position)
   }
 
   /**
@@ -174,16 +150,9 @@ export class AiHandInteractor extends AiBaseInteractor {
    * any interactable at that position via collider overlap.
    */
   async pinch(position: vec3, hold: boolean = false, durationMs?: number): Promise<void> {
-    // The wrist→indexTip offset is pose-dependent — pinch curls the finger
-    // inward, so the indexTip's relative-to-wrist position is different
-    // from relaxed. To land the indexTip at `position` once SIK reads it,
-    // measure the offset while the rig is in pinch pose, then transition
-    // back to relaxed before doing the actual relaxed → pinch transition
-    // SIK uses to detect a new trigger.
-    const offset = await this.measurePinchOffset()
+    const offset: vec3 = await this.preparePinchOffset()
     await this.hand.setPosition(position.add(offset))
     await nextFrame()
-    await this.hand.makeGesture("pinch")
     // Drive SIK's PinchDetector pipeline. Both `hand.onPinchDown` event
     // subscribers and `hand.isPinching()` polling consumers downstream see
     // the pinch through SIK's natural plumbing (state machine → events).
@@ -221,22 +190,24 @@ export class AiHandInteractor extends AiBaseInteractor {
     try {
       // Subscribe to events BEFORE making gestures — the events may fire
       // during the gesture animation and we'd miss them if we subscribe after.
-      const triggerStarted = this.awaitEventOnce(interactable.onTriggerStart, 5000, `onTriggerStart for "${name}"`)
+      const triggerStarted: Promise<void> = this.awaitEventOnce(interactable.onTriggerStart, 5000, `onTriggerStart for "${name}"`)
+      // Observe timeout rejection even if a gesture/move throws before the await.
+      triggerStarted.catch(() => {})
 
-      // See pinch() for why we sample the wrist→indexTip offset in pinch
-      // pose, not relaxed. With pinch-pose offset, the curled fingertip
-      // lands on the interactable at the moment SIK fires onTriggerStart.
-      const offset = await this.measurePinchOffset()
+      // Curl away from UI: the relaxed-to-pinch arc can cross a neighboring
+      // control. Then approach with the fingertip already in its final pose.
+      const offset: vec3 = await this.preparePinchOffset()
+      const forward: vec3 = interactable.getSceneObject().getTransform().forward
+      this.hand.setWorldPosition(targetPos.add(forward.uniformScale(4)).add(offset))
+      await nextFrame()
       await this.hand.setPosition(targetPos.add(offset))
       await nextFrame()
-      // Relaxed → pinch transition is what SIK reads as a new trigger.
-      // Without this, rapid consecutive interactions can leave SIK in a state
-      // where it doesn't fire onTriggerStart.
-      await this.hand.makeGesture("pinch")
-      // Drive SIK's PinchDetector pipeline. SIK's interactable trigger logic
-      // gates onTriggerStart on `hand.isPinching()` returning true — the
-      // pipeline drive makes that happen via the natural state machine.
+      // Direct-only targets need pinch-down; poke-capable controls may already
+      // have triggered during approach and transition to pinch on the next frame.
       this.handWrapper.firePinchDown()
+      // TrackedHand.isPinching is frame-cached. A poke may have already
+      // resolved triggerStarted during approach; do not send Up in this frame.
+      await nextFrame()
       await triggerStarted
 
       if (!hold && durationMs !== undefined && durationMs > 0) {
@@ -250,7 +221,8 @@ export class AiHandInteractor extends AiBaseInteractor {
         // proximity-sensor volume of buttons that listen on both ends of
         // the trigger lifecycle (e.g. PinchButton fires its action on
         // onTriggerEnd, and won't dispatch unless the hand actually leaves).
-        const triggerEnded = this.awaitEventOnce(interactable.onTriggerEnd, 5000, `onTriggerEnd for "${name}"`)
+        const triggerEnded: Promise<void> = this.awaitEventOnce(interactable.onTriggerEnd, 5000, `onTriggerEnd for "${name}"`)
+        triggerEnded.catch(() => {})
         // Fire Up BEFORE retraction so SIK sees `isPinching()` false the
         // moment the trigger should end — the gesture/hide animation that
         // follows handles the visual rig retract.
@@ -259,6 +231,31 @@ export class AiHandInteractor extends AiBaseInteractor {
         await this.hand.hide()
         await triggerEnded
       }
+    } catch (error) {
+      let actualTarget: string = "none"
+      // Engine objects can be destroyed without becoming null/undefined.
+      // Diagnostics must never prevent the hand cleanup below.
+      try {
+        const current: Interactable | null = this.sikInteractor.currentInteractable
+        if (current && !isNull(current)) {
+          const sceneObject: SceneObject = current.getSceneObject()
+          if (!isNull(sceneObject)) actualTarget = sceneObject.name
+        }
+      } catch {
+        actualTarget = "unavailable"
+      }
+      let message: string = `${error instanceof Error ? error.message : String(error)} SIK target at failure: "${actualTarget}".`
+      // A timed-out command must not leave the physical hand pinching while
+      // InteractionHandler reports it as free. Restore a usable retry state.
+      try {
+        this.handWrapper.firePinchCancel()
+        await this.hand.makeGesture("neutral")
+        await this.hand.hide()
+        await nextFrame()
+      } catch (cleanupError) {
+        message += ` Cleanup failed: ${cleanupError instanceof Error ? cleanupError.message : String(cleanupError)}.`
+      }
+      throw new Error(message)
     } finally {
       restoreColliders?.()
     }

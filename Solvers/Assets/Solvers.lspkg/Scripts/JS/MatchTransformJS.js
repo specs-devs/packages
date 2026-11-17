@@ -1,3 +1,4 @@
+//@component
 /**
  * Optionally matches the position, rotation, or scale of another object.
  * Works in-editor.
@@ -117,11 +118,11 @@ function MatchTransformJS() {
         // Convert back to quaternion
         var newRotation = quat.fromEulerAngles(newEuler.x, newEuler.y, newEuler.z);
         
-        // Apply lerp
+        // Apply lerp (factor clamped to 0..1 so large speeds don't overshoot)
         var lerpedRotation = quat.slerp(
             currentRotation,
             newRotation,
-            script.rotationLerpSpeed * getDeltaTime()
+            Math.max(0, Math.min(1, script.rotationLerpSpeed * getDeltaTime()))
         );
         
         // Set the new rotation
@@ -132,8 +133,9 @@ function MatchTransformJS() {
      * Update the scale based on target and constraints.
      */
     function updateScale(myTransform, targetTransform) {
+        // Read and write world scale so the match holds under scaled parents
         var targetScale = targetTransform.getWorldScale();
-        var currentScale = myTransform.getLocalScale();
+        var currentScale = myTransform.getWorldScale();
         
         // Apply constraints
         var newScale = new vec3(
@@ -150,7 +152,7 @@ function MatchTransformJS() {
         );
         
         // Set the new scale
-        myTransform.setLocalScale(lerpedScale);
+        myTransform.setWorldScale(lerpedScale);
     }
     
     /**

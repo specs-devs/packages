@@ -1,0 +1,102 @@
+- !<AssetImportMetadata/b5f68029-dc7d-49e4-8112-be0cb7961660>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 0546e23a-b8fb-4da2-8f56-d8df04662ad2
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 0546e23a-b8fb-4da2-8f56-d8df04662ad2
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> f6c5683c-804c-46b3-8f42-6c67cbde3b03
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/f6c5683c-804c-46b3-8f42-6c67cbde3b03>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 33a8f43b-d70b-4fe2-8a15-08c154f44b5e
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    apiButton: false
+    apiResponseKey: false
+    apiUri: false
+    authenticationType: false
+    authorizationUri: false
+    clientId: false
+    clientSecret: false
+    refreshUri: false
+    scope: false
+    signInButton: false
+    signOutButton: false
+    statusText: false
+    title: false
+    titleText: false
+    tokenUri: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - signInButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      signOutButton: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      apiButton: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      statusText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      titleText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      title: ""
+      clientId: ""
+      clientSecret: ""
+      authorizationUri: ""
+      tokenUri: ""
+      refreshUri: ""
+      authenticationType: ""
+      scope: ""
+      apiUri: ""
+      apiResponseKey: ""
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">UI References</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Connect the UI elements for authentication controls and status display</span>"}'
+    - // @input AssignableType_1 signInButton
+    - // @input AssignableType_2 signOutButton
+    - // @input AssignableType_3 apiButton
+    - // @input Component.Text statusText
+    - // @input Component.Text titleText
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Display Settings</span>"}'
+    - // @input string title
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">OAuth2 Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Configure your OAuth2 provider settings including client ID, endpoints, and authentication type</span>"}'
+    - // @input string clientId
+    - // @input string clientSecret
+    - // @input string authorizationUri
+    - // @input string tokenUri
+    - // @input string refreshUri
+    - // @input string authenticationType
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">Scope Configuration</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Space-separated OAuth2 scopes to request during authorization</span>"}'
+    - // @input string scope
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">API Testing</span>"}'
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #94A3B8; font-size: 11px;\">Configure API endpoint for testing authenticated requests after sign-in</span>"}'
+    - // @input string apiUri
+    - // @input string apiResponseKey

@@ -1,16 +1,10 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Animation utilities for tweening, easing, and visual feedback animations.
  * Provides cancelable animation helpers and common animation patterns used across packages.
  */
 
-// Ambient declarations for Lens Studio runtime globals
-// These are available at runtime but may not be in TypeScript compilation context
-declare const script: any;
-declare class CancelSet {
-  constructor();
-}
-declare function animate(config: any): void;
+import animate, {CancelSet} from "SpectaclesInteractionKit.lspkg/Utils/animate";
 
 /**
  * Utility class for animation operations
@@ -24,29 +18,13 @@ export class AnimationUtils {
    * @returns Cancel function to stop animation
    */
   static makeTween(callback: (time: number) => void, duration: number): () => void {
-    const startTime = getTime();
-    let hasRemovedEvent = false;
-
-    const updateEvent = script.createEvent("UpdateEvent");
-    updateEvent.bind(() => {
-      if (getTime() > startTime + duration) {
-        hasRemovedEvent = true;
-        script.removeEvent(updateEvent);
-        callback(1);
-      } else {
-        callback((getTime() - startTime) / duration);
-      }
+    // Driven by SpectaclesInteractionKit's animate(): it calls back every frame with the normalized
+    // time and finishes with callback(1). (A TypeScript module has no global `script` to create an
+    // UpdateEvent on.)
+    return animate({
+      duration: duration,
+      update: callback,
     });
-
-    // Create a Cancelation function to stop this animation at any time
-    function cancel() {
-      if (!hasRemovedEvent) {
-        hasRemovedEvent = true;
-        script.removeEvent(updateEvent);
-      }
-    }
-
-    return cancel;
   }
 
   /**

@@ -1,3 +1,4 @@
+//@component
 // Debug flag
 script.debug = true;
 

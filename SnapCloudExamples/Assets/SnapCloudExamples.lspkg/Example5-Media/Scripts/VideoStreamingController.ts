@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Live video streaming to Supabase Realtime for real-time viewing without storage. Supports
  * both camera and composite texture streaming, buffered streaming for AR content, frame markers
  * for reconstruction, quality/FPS controls, and on-device debug logging with 250KB message limit.
@@ -11,8 +11,8 @@
 import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService";
 import {RectangleButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton"
 import {Switch} from "SpectaclesUIKit.lspkg/Scripts/Components/Switch/Switch"
-import {CameraService} from "../../CompositeCameraModified/Scripts/CameraService"
-import {SnapCloudRequirements} from "./SnapCloudRequirements"
+import {CameraService} from "../../CompositeCameraWork/Scripts/CameraService"
+import {SnapCloudRequirements} from "../../SnapCloudRequirements"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent} from "SnapDecorators.lspkg/decorators"
 
@@ -333,8 +333,12 @@ export class VideoStreamingController extends BaseScriptComponent {
       this.log("No CameraService provided - requesting own camera (may conflict!)")
 
       // Create camera request
+      // On device only the Right camera delivers frames; Default/Left do not.
+      // Fall back to Default_Color in the editor where Right_Color is unavailable.
       const cameraRequest = CameraModule.createCameraRequest()
-      cameraRequest.cameraId = CameraModule.CameraId.Default_Color
+      cameraRequest.cameraId = global.deviceInfoSystem.isEditor()
+        ? CameraModule.CameraId.Default_Color
+        : CameraModule.CameraId.Right_Color
 
       // Request camera texture
       this.cameraTexture = this.cameraModule.requestCamera(cameraRequest)

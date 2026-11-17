@@ -1,0 +1,57 @@
+- !<AssetImportMetadata/cb0a7e13-38b7-4605-976c-f8369f85e5d7>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 57c331d6-b7b4-4345-8cd5-e7190b68922c
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 57c331d6-b7b4-4345-8cd5-e7190b68922c
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 1132893e-0078-428e-815d-28078b91758d
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/1132893e-0078-428e-815d-28078b91758d>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: db7802cc-2b9d-4c1a-b7ed-8e59c21fc816
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    exampleInfo: false
+    exampleNames: false
+    holderOffset: false
+    manager: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - manager: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      exampleNames: !<string[]>
+        []
+      exampleInfo: !<string[]>
+        []
+      holderOffset: !<Vec3> {x: 0.000000, y: 0.000000, z: 0.000000}
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input SceneObject manager {"hint":"The AnimationExamples__PLACE_IN_SCENE instance (holds AnimationExamplesManager)"}'
+    - '// @input string[] exampleNames = {} {"hint":"Order of the steps: names of the spawned examples (prefab root names). Unlisted examples follow in spawn order."}'
+    - '// @input string[] exampleInfo = {} {"hint":"What each example shows, in the same order as `exampleNames`"}'
+    - "// @input vec3 holderOffset = {0,0,0} {\"hint\":\"Holder position of every example, in the manager's Animations container (cm)\"}"

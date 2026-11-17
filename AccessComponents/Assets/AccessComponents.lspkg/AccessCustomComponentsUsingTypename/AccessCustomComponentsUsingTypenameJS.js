@@ -1,7 +1,9 @@
+//@component
 /**
  * AccessCustomComponentsUsingTypenameJS.js
  * 
- * This example demonstrates how to access custom components using the @typename annotation in JavaScript.
+ * This example demonstrates how to access a custom TypeScript component from JavaScript using a typename annotation.
+ * The CustomComponentTS typename is bound to CustomComponentTS.ts in the Inspector.
  */
 
 //@typename CustomComponentTS

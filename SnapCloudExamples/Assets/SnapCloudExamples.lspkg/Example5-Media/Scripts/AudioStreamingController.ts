@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Live audio streaming to Supabase Realtime for real-time communication. Streams audio chunks
  * with WAV format encoding, synchronized timestamps, and Realtime broadcast support for live
  * listening applications without file storage.
@@ -10,7 +10,7 @@
 // finish initializing COLORS before the visual chain reads it.
 import "SpectaclesUIKit.lspkg/Scripts/Themes/ThemeService";
 import {RectangleButton} from "SpectaclesUIKit.lspkg/Scripts/Components/Button/RectangleButton"
-import {SnapCloudRequirements} from "./SnapCloudRequirements"
+import {SnapCloudRequirements} from "../../SnapCloudRequirements"
 import {Logger} from "Utilities.lspkg/Scripts/Utils/Logger"
 import {bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent} from "SnapDecorators.lspkg/decorators"
 

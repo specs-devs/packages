@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Interactable helper component that simplifies setting up interactions with visual responses.
  * Provides easy configuration for hover, pinch, and trigger events with animation support.
  */
@@ -69,6 +69,7 @@ export class InteractableHelper extends BaseScriptComponent
   private hoverExitCurrentIterationIndex = 0;
   private triggerDownCurrentIterationIndex = 0;
   private triggerUpCurrentIterationIndex = 0;
+  private videoCallbackItems = new Set<EventResponseType>();
 
   /**
    * Called when component wakes up - initialize logger and setup collider
@@ -405,7 +406,7 @@ export class InteractableHelper extends BaseScriptComponent
                     {
                         case 0:
                             //play from current value
-                            tween = LSTween.scaleToWorld(item.sceneObject.getTransform(), animationInfo.endValue, animationInfo.animationDurationInSeconds * 1000.0)
+                            tween = LSTween.scaleToWorld(item.sceneObject.getTransform(), animationInfo.endVal, animationInfo.animationDurationInSeconds * 1000.0)
                             break
                         case 1:
                             //play from set value
@@ -713,11 +714,11 @@ export class InteractableHelper extends BaseScriptComponent
         {
             //text
             meshVisual = item.sceneObject.getComponent("Text")
+            if(isNull(meshVisual))
+            {
+                throw new Error("Interactable Helper on " + this.getSceneObject().name + ": " + item.sceneObject.name + " is missing MaterialMeshVisual Component. SceneObject must contain RenderMeshVisual or Text or Image Component.")
+            }
             tween = LSTween.colorTextTo(meshVisual, item.colorProperyData.endColor, item.colorProperyData.animationDurationInSeconds * 1000.0)
-        }
-        if(isNull(meshVisual))
-        {
-            throw new Error("Interactable Helper on " + this.getSceneObject().name + ": " + item.sceneObject.name + " is missing MaterialMeshVisual Component. SceneObject must contain RenderMeshVisual or Text or Image Component.")
         }
         tween.delay(item.colorProperyData.delay * 1000.0)
         this.setEasing(tween, item.colorProperyData.easingData)
@@ -816,7 +817,7 @@ export class InteractableHelper extends BaseScriptComponent
         {
             case 0:
                 //play from current value
-                tween = LSTween.blendShapeValueTo(renderMeshVisual, blendShapeData.blenshapeName, blendShapeData.endValue, blendShapeData.animationDurationInSeconds * 1000.0)
+                tween = LSTween.blendShapeValueTo(renderMeshVisual, blendShapeData.blenshapeName, blendShapeData.endVal, blendShapeData.animationDurationInSeconds * 1000.0)
                 break
             case 1:
                 //play from set value
@@ -972,6 +973,10 @@ export class InteractableHelper extends BaseScriptComponent
                     }
                 })
                 playVideoTextureDelayedCallback.reset(item.videoTextureControl.delay)
+
+                //subscribe playback callbacks once per response
+                if(this.videoCallbackItems.has(item)) return
+                this.videoCallbackItems.add(item)
 
                 videoTextureProvider.onPlaybackReady.add(() =>
                 {
@@ -1177,22 +1182,22 @@ export class InteractableHelper extends BaseScriptComponent
             case 27:
                 tween.easing(Easing.Back.InOut)
                 break
-            case 29:
+            case 28:
                 tween.easing(Easing.Bounce.In)
                 break
-            case 30:
+            case 29:
                 tween.easing(Easing.Bounce.Out)
                 break
-            case 31:
+            case 30:
                 tween.easing(Easing.Bounce.InOut)
                 break
-            case 32:
+            case 31:
                 tween.easing(Easing.Sinusoidal.In)
                 break
-            case 33:
+            case 32:
                 tween.easing(Easing.Sinusoidal.Out)
                 break
-            case 34:
+            case 33:
                 tween.easing(Easing.Sinusoidal.InOut)
                 break
         }

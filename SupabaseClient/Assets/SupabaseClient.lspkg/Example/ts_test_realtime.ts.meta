@@ -1,0 +1,52 @@
+- !<AssetImportMetadata/feb6d49b-3f47-411a-a914-0d577dcb9037>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> a022dfbc-5c8e-4195-9572-adbe3b76b0f6
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> a022dfbc-5c8e-4195-9572-adbe3b76b0f6
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 4fe0d703-ae0a-482f-93af-d4d0b49413b7
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/4fe0d703-ae0a-482f-93af-d4d0b49413b7>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 6f6775a9-aba5-407d-9cfd-012ade99b627
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    channelName: false
+    snapCloudRequirements: false
+    supabaseProject: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - snapCloudRequirements: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      supabaseProject: !<reference.SupabaseProject> 00000000-0000-0000-0000-000000000000
+      channelName: test_realtime
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input AssignableType_1 snapCloudRequirements {"hint":"SnapCloudRequirements holding the Supabase project"}'
+    - '// @input Asset.SupabaseProject supabaseProject {"hint":"Deprecated: use snapCloudRequirements"}'
+    - '// @input string channelName = "test-channel" {"hint":"Channel name for realtime subscription"}'

@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Represents a complete product definition for commerce catalogs. Contains all necessary
  * information to display and process product purchases including pricing, metadata, and display info.
  */

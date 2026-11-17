@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * TypeScript component that demonstrates providing methods and properties to other TypeScript components.
  * Shows how to create reusable components with full type safety and IntelliSense support.
  */
@@ -7,7 +7,7 @@ import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent } from "SnapDecorators.lspkg/decorators";
 
 @component
-export class TSComponentA extends BaseScriptComponent {
+export class AccessTSfromTS_TSComponentA extends BaseScriptComponent {
   @ui.separator
   @ui.label('<span style="color: #60A5FA;">Debug Settings</span>')
 
@@ -59,7 +59,7 @@ export class TSComponentA extends BaseScriptComponent {
   
   // Helper method for debug logging
   private log(message: string): void {
-    if (this.enableLogging || this.enableLoggingLifecycle) {
+    if (this.debug && (this.enableLogging || this.enableLoggingLifecycle)) {
       print(`[TSComponentA] ${message}`);
     }
   }
@@ -134,7 +134,10 @@ export class TSComponentA extends BaseScriptComponent {
     this.debug = !this.debug;
     this.lastCalledMethod = "toggleDebug";
     if (this.enableLogging || this.enableLoggingLifecycle) {
-      this.log(`Debug mode ${this.debug ? 'enabled' : 'disabled'}`);
+      print(`[TSComponentA] Debug mode ${this.debug ? 'enabled' : 'disabled'}`);
     }
   }
 }
+
+/** @deprecated Use AccessTSfromTS_TSComponentA. Kept so existing imports of the old name still compile. */
+export { AccessTSfromTS_TSComponentA as TSComponentA };

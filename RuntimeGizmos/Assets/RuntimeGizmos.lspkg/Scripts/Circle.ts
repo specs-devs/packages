@@ -2,7 +2,7 @@ import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
 
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Runtime circle gizmo for visual debugging and scene visualization. Renders a customizable circle
  * that tracks a center object's position and rotation with configurable radius, segments, style, and
  * automatic updates for real-time scene representation.
@@ -23,6 +23,7 @@ export class Circle extends BaseScriptComponent {
 
   @input
   @hint("The center point of the circle")
+  @allowUndefined
   public centerObject!: SceneObject;
 
   @input
@@ -34,6 +35,7 @@ export class Circle extends BaseScriptComponent {
   public followRotation: boolean = true;
 
   @input
+  @allowUndefined
   private lineMaterial!: Material;
 
   @input("vec3", "{1, 1, 0}")
@@ -123,32 +125,67 @@ export class Circle extends BaseScriptComponent {
     }
 
 
-    if (!this.centerObject) {
-      this.logger.debug("Error: Center object is not assigned!");
-      return;
-    }
-
     this.transform = this.sceneObject.getTransform();
-    this.centerTransform = this.centerObject.getTransform();
-    this.lastCenterPosition = this.centerTransform.getWorldPosition();
-
-    // Generate the circle points
-    this.generateCirclePoints();
-
-    // Create the line renderer
-    this.createCircle();
 
     // Set up update event to track center movement
     this.createEvent("UpdateEvent").bind(() => {
       this.update();
     });
+
+    if (!this.centerObject || !this.lineMaterial) {
+      this.logger.debug("Center object or material not set yet; call rebuild() after assigning them");
+      return;
+    }
+
+    this.rebuild();
+  }
+
+  /**
+   * (Re)creates the circle from the current inputs. Call after setting centerObject and
+   * setLineMaterial() from code (e.g. on a component added with createComponent).
+   */
+  rebuild(): void {
+    if (!this.centerObject || !this.lineMaterial) {
+      this.logger.debug("Cannot rebuild circle: center object and material are required");
+      return;
+    }
+
+    this.centerTransform = this.centerObject.getTransform();
+    this.lastCenterPosition = this.centerTransform.getWorldPosition();
+    this.lastCenterRotation = this.centerTransform.getWorldRotation();
+
+    this.generateCirclePoints();
+
+    if (this.line) {
+      this.line.destroy();
+    }
+    this.createCircle();
+  }
+
+  /**
+   * Sets the line material and rebuilds the circle.
+   */
+  setLineMaterial(material: Material): void {
+    this.lineMaterial = material;
+    this.rebuild();
+  }
+
+  /**
+   * Sets the line width.
+   */
+  setLineWidth(width: number): void {
+    this.lineWidth = width;
+    if (this.line) {
+      this.line.startWidth = width;
+      this.line.endWidth = width;
+    }
   }
 
   /**
    * Updates the circle position and rotation if the center has moved or rotated
    */
   update() {
-    if (!this.centerObject) return;
+    if (!this.centerObject || !this.centerTransform || !this.line) return;
 
     const currentCenterPos = this.centerTransform.getWorldPosition();
     const currentCenterRot = this.centerTransform.getWorldRotation();
@@ -170,18 +207,19 @@ export class Circle extends BaseScriptComponent {
    * Regenerates the circle points and updates the visual
    */
   refreshCircle(): void {
+    if (!this.line) {
+      this.rebuild();
+      return;
+    }
     this.generateCirclePoints();
     this.updateCircleVisual();
   }
 
   /**
-   * Updates the circle's visual representation
+   * Updates the circle's points in place on the existing line renderer
    */
   private updateCircleVisual(): void {
-    if (this.line) {
-      this.line.destroy();
-    }
-    this.createCircle();
+    this.line.points = [...this.circlePoints, this.circlePoints[0]];
   }
 
   /**

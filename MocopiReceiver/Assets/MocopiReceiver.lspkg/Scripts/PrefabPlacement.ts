@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Prefab placement controller for Mocopi avatar instantiation with surface placement integration.
  * Automatically detects and connects Mocopi controller from instantiated prefabs.
  */

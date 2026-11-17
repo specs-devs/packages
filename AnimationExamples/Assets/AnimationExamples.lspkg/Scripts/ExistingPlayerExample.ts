@@ -1,12 +1,12 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Play an entirely Inspector-configured AnimationPlayer.
  * No runtime asset, no script-built curve — the developer wires the AnimationPlayer's
  * first clip in the Inspector and the script just starts it.
  */
 
 import { assert } from "SnapDecorators.lspkg/assert";
-import { buildFrameUI } from "./Helpers/AnimationHelpers";
+import { bindReplay, buildFrameUI } from "./Helpers/AnimationHelpers";
 
 @component
 export class ExistingPlayerExample extends BaseScriptComponent {
@@ -33,7 +33,8 @@ export class ExistingPlayerExample extends BaseScriptComponent {
      */
     onAwake() {
         if (this.enableLoggingLifecycle) print(`[${this.sceneObject.name}] ExistingPlayerExample.onAwake`);
-        buildFrameUI(this.sceneObject, { title: "Existing Player", buttonText: "TAP" });
+        const ui = buildFrameUI(this.sceneObject, { title: "Existing Player", buttonText: "TAP" });
+        bindReplay(this, ui, this.sceneObject);
 
         const player = this.sceneObject.getComponent("Component.AnimationPlayer") as AnimationPlayer;
         assert(player != null, `[${this.sceneObject.name}] ExistingPlayerExample requires an AnimationPlayer component on this SceneObject`);

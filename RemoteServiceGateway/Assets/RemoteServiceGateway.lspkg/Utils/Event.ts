@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Generic event system with typed arguments. Provides a pub-sub pattern for managing event
  * handlers with type safety, supporting add, remove, invoke, and public API functionality.
  */

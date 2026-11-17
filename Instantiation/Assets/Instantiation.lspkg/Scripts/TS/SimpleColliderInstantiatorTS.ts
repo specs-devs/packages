@@ -2,7 +2,7 @@ import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 import { bindStartEvent, bindUpdateEvent, bindLateUpdateEvent, bindDestroyEvent } from "SnapDecorators.lspkg/decorators";
 
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Collider-based instantiation utility that spawns prefabs inside or on the surface of collider
  * shapes. Works with any collider geometry for flexible spatial distribution.
  */
@@ -75,7 +75,6 @@ export class SimpleColliderInstantiatorTS extends BaseScriptComponent {
         });
     }
 
-    @bindStartEvent
 
 
     onStart(): void {
@@ -180,15 +179,10 @@ export class SimpleColliderInstantiatorTS extends BaseScriptComponent {
 
     // Box implementation
     randomPointInBox(): vec3 {
-        const transform = this.targetObject.getTransform();
-        const centerPos = transform.getWorldPosition();
-        const rotation = transform.getWorldRotation();
+        // Unit cube in the target's local space: its world transform (scale, rotation, parents) sizes it
+        const boxSize = new vec3(1, 1, 1);
 
-        // Get box size from the target object's scale
-        const objectScale = transform.getWorldScale();
-        const boxSize = new vec3(objectScale.x, objectScale.y, objectScale.z);
-
-        this.logger.debug("DEBUG: Using object scale as box size: " +
+        this.logger.debug("DEBUG: Using local unit box size: " +
             boxSize.x.toFixed(2) + ", " +
             boxSize.y.toFixed(2) + ", " +
             boxSize.z.toFixed(2));
@@ -201,19 +195,14 @@ export class SimpleColliderInstantiatorTS extends BaseScriptComponent {
         );
 
         // Transform to world space
-        return this.transformPoint(localPoint, centerPos, rotation);
+        return this.transformPoint(localPoint);
     }
 
     randomPointOnBoxSurface(): vec3 {
-        const transform = this.targetObject.getTransform();
-        const centerPos = transform.getWorldPosition();
-        const rotation = transform.getWorldRotation();
+        // Unit cube in the target's local space: its world transform (scale, rotation, parents) sizes it
+        const boxSize = new vec3(1, 1, 1);
 
-        // Get box size from the target object's scale
-        const objectScale = transform.getWorldScale();
-        const boxSize = new vec3(objectScale.x, objectScale.y, objectScale.z);
-
-        this.logger.debug("DEBUG: Using object scale as box size for surface: " +
+        this.logger.debug("DEBUG: Using local unit box size for surface: " +
             boxSize.x.toFixed(2) + ", " +
             boxSize.y.toFixed(2) + ", " +
             boxSize.z.toFixed(2));
@@ -277,19 +266,15 @@ export class SimpleColliderInstantiatorTS extends BaseScriptComponent {
         }
 
         // Transform to world space
-        return this.transformPoint(localPoint, centerPos, rotation);
+        return this.transformPoint(localPoint);
     }
 
     // Sphere implementation
     randomPointInSphere(): vec3 {
-        const transform = this.targetObject.getTransform();
-        const centerPos = transform.getWorldPosition();
-        const rotation = transform.getWorldRotation();
-
         // Try to find the sphere radius from the collider component
         let radius = this.getSphereRadius();
         if (radius <= 0) {
-            // Fallback to using transform scale if no collider radius found
+            // Fallback to a unit sphere in the target's local space if no collider radius found
             radius = this.getSphereRadiusFromTransform();
         }
 
@@ -325,18 +310,14 @@ export class SimpleColliderInstantiatorTS extends BaseScriptComponent {
         this.logger.debug(`DEBUG: Generated sphere point at local coordinates (${randomPoint.x.toFixed(2)}, ${randomPoint.y.toFixed(2)}, ${randomPoint.z.toFixed(2)})`);
 
         // Transform to world space (apply rotation and translation)
-        return this.transformPoint(randomPoint, centerPos, rotation);
+        return this.transformPoint(randomPoint);
     }
 
     randomPointOnSphereSurface(): vec3 {
-        const transform = this.targetObject.getTransform();
-        const centerPos = transform.getWorldPosition();
-        const rotation = transform.getWorldRotation();
-
         // Try to find the sphere radius from the collider component
         let radius = this.getSphereRadius();
         if (radius <= 0) {
-            // Fallback to using transform scale if no collider radius found
+            // Fallback to a unit sphere in the target's local space if no collider radius found
             radius = this.getSphereRadiusFromTransform();
         }
 
@@ -367,7 +348,7 @@ export class SimpleColliderInstantiatorTS extends BaseScriptComponent {
         this.logger.debug(`DEBUG: Generated sphere surface point at local coordinates (${randomPoint.x.toFixed(2)}, ${randomPoint.y.toFixed(2)}, ${randomPoint.z.toFixed(2)})`);
 
         // Transform to world space (apply rotation and translation)
-        return this.transformPoint(randomPoint, centerPos, rotation);
+        return this.transformPoint(randomPoint);
     }
 
 
@@ -406,12 +387,9 @@ export class SimpleColliderInstantiatorTS extends BaseScriptComponent {
 
     // Fallback method to derive sphere radius from transform
     private getSphereRadiusFromTransform(): number {
-        const transform = this.targetObject.getTransform();
-        const objectScale = transform.getWorldScale();
-
-        // Use the smallest dimension to ensure sphere fits within object bounds
-        const radius = Math.min(objectScale.x, objectScale.y, objectScale.z) / 2.0;
-        this.logger.debug("DEBUG: Derived sphere radius from transform scale: " + radius.toFixed(2));
+        // Unit sphere (radius 0.5) in the target's local space; the target's world transform scales it
+        const radius = 0.5;
+        this.logger.debug("DEBUG: Using local unit sphere radius: " + radius.toFixed(2));
         return radius;
     }
 
@@ -482,38 +460,15 @@ export class SimpleColliderInstantiatorTS extends BaseScriptComponent {
     }
 
     // Helper method to transform a point from local to world space
-    private transformPoint(localPoint: vec3, position: vec3, rotation: quat): vec3 {
-        // Apply rotation
-        const rotatedPoint = this.rotatePointByQuaternion(localPoint, rotation);
-
-        // Apply translation
-        const worldPoint = new vec3(
-            position.x + rotatedPoint.x,
-            position.y + rotatedPoint.y,
-            position.z + rotatedPoint.z
-        );
+    private transformPoint(localPoint: vec3): vec3 {
+        // The full world matrix applies the target's scale, rotation and parents (not just its world scale)
+        const worldPoint = this.targetObject.getTransform().getWorldTransform().multiplyPoint(localPoint);
 
         // Print transformation info
         this.logger.debug(`DEBUG: Local point ${localPoint.x.toFixed(2)}, ${localPoint.y.toFixed(2)}, ${localPoint.z.toFixed(2)} 
                transformed to world point ${worldPoint.x.toFixed(2)}, ${worldPoint.y.toFixed(2)}, ${worldPoint.z.toFixed(2)}`);
 
         return worldPoint;
-    }
-
-    // Helper method to rotate a point by a quaternion
-    private rotatePointByQuaternion(point: vec3, rotation: quat): vec3 {
-        // This is a simplified rotation calculation
-        // In a full implementation, you'd use the complete quaternion rotation formula
-        const x = rotation.x;
-        const y = rotation.y;
-        const z = rotation.z;
-        const w = rotation.w;
-
-        const qx = point.x * (1 - 2 * y * y - 2 * z * z) + point.y * (2 * x * y - 2 * w * z) + point.z * (2 * x * z + 2 * w * y);
-        const qy = point.x * (2 * x * y + 2 * w * z) + point.y * (1 - 2 * x * x - 2 * z * z) + point.z * (2 * y * z - 2 * w * x);
-        const qz = point.x * (2 * x * z - 2 * w * y) + point.y * (2 * y * z + 2 * w * x) + point.z * (1 - 2 * x * x - 2 * y * y);
-
-        return new vec3(qx, qy, qz);
     }
 
     // Helper method to create a prefab instance at a specific position

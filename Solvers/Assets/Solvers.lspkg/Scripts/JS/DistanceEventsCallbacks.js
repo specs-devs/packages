@@ -1,3 +1,4 @@
+//@component
 /**
  * Provides callback functions for DistanceEventsJS.
  * Attach this to objects and set the event functions in DistanceEventsJS to call the functions in this script.

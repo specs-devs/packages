@@ -1,6 +1,6 @@
 /**
- * Specs Inc. 2026
- * Touch Down Button component for the Depth Cache Spectacles lens.
+ * SPECS Inc. 2027
+ * Touch Down Button component for the Depth Cache Glasses lens.
  */
 // Preload ThemeService before any UIKit visual to break a circular-import init-order
 // crash in the package (Visual.ts imports ThemeService before defining the Visual class +
@@ -76,11 +76,11 @@ export class TouchDownButton extends BaseScriptComponent {
           this.onButtonPinchedDownFunctionNames
         )
       )
-      if (this.editEventCallbacks && this.customFunctionForOnButtonPinchedUp) {
-        this.onButtonPinchedUp.add(
-          createCallback<InteractorEvent>(this.customFunctionForOnButtonPinchedUp, this.onButtonPinchedUpFunctionNames)
-        )
-      }
+    }
+    if (this.editEventCallbacks && this.customFunctionForOnButtonPinchedUp) {
+      this.onButtonPinchedUp.add(
+        createCallback<InteractorEvent>(this.customFunctionForOnButtonPinchedUp, this.onButtonPinchedUpFunctionNames)
+      )
     }
   }
 

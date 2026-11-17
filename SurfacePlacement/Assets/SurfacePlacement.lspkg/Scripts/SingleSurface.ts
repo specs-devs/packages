@@ -1,5 +1,5 @@
 /**
- * Specs Inc. 2026
+ * SPECS Inc. 2027
  * Single surface interaction handler for cursor positioning and drag operations. Manages interactable
  * hover/trigger events with drag threshold detection (11cm minimum), interpolates desired position and
  * rotation smoothly (speed 8), handles pinch-up and tap events for placement confirmation, integrates
@@ -15,6 +15,7 @@ import { SurfaceDetector } from "./SurfaceDetector";
 import { Logger } from "Utilities.lspkg/Scripts/Utils/Logger";
 
 const DRAG_THRESHOLD = 11; // Minimum distance to start drag in CM
+export const HEAD_POSE_HORIZONTAL_RAY_TILT = 0.1;
 const SPEED = 8; // Interpolation speed
 
 @component
@@ -42,7 +43,16 @@ export class SingleSurface extends BaseScriptComponent {
   private isDragging = false;
   private surfaceDetector: SurfaceDetector = null;
 
+  private readonly handleClick = () => this.onClick();
+  private subscribedToHands = false;
+
   onAwake() {
+    this.createEvent("OnDestroyEvent").bind(() => {
+      if (this.subscribedToHands) {
+        this.leftHand.onPinchUp.remove(this.handleClick);
+        this.rightHand.onPinchUp.remove(this.handleClick);
+      }
+    });
     this.createEvent("OnStartEvent").bind(this.onStart.bind(this));
     this.surfaceDetector = this.getSceneObject()
       .getComponents("ScriptComponent")
@@ -50,10 +60,12 @@ export class SingleSurface extends BaseScriptComponent {
   }
 
   private onStart() {
+    if (this.surfaceDetector.usesHeadPose) return;
+    this.subscribedToHands = true;
     //setup generation click/pinch
-    this.leftHand.onPinchUp.add(this.onClick.bind(this));
-    this.rightHand.onPinchUp.add(this.onClick.bind(this));
-    this.createEvent("TapEvent").bind(this.onClick.bind(this));
+    this.leftHand.onPinchUp.add(this.handleClick);
+    this.rightHand.onPinchUp.add(this.handleClick);
+    this.createEvent("TapEvent").bind(this.handleClick);
     //setup direct interaction on UI
     this.interactable.onHoverEnter.add((args: InteractableEventArgs) => {
       this.surfaceDetector.onHoverEnter();
@@ -80,7 +92,7 @@ export class SingleSurface extends BaseScriptComponent {
   }
 
   private onClick() {
-    print("SingleSurface clicked");
+    if (this.surfaceDetector.usesHeadPose) return;
     this.surfaceDetector.onInteractionStart();
     this.touchStartPosition = this.desiredPosition;
     this.isDragging = false;
@@ -98,8 +110,7 @@ export class SingleSurface extends BaseScriptComponent {
   startCalibration() {
     this.useDefaultHeight = true;
     this.lastGroundHeight = 0;
-    this.desiredPosition = vec3.zero();
-    this.desiredRotation = quat.quatIdentity();
+    this.setDefaultPose();
   }
 
   setDefaultPose() {
@@ -128,10 +139,13 @@ export class SingleSurface extends BaseScriptComponent {
     }
 
     const rayDirection = this.cameraTransform.forward;
-    if (isHorizontal) rayDirection.y += 0.2; // slight downward angle
+    if (isHorizontal) {
+      rayDirection.y += this.surfaceDetector.usesHeadPose ? HEAD_POSE_HORIZONTAL_RAY_TILT : 0.2;
+    }
+    const direction = rayDirection.normalize();
     const camPos = this.cameraTransform.getWorldPosition();
-    const rayStart = camPos.add(rayDirection.uniformScale(-min));
-    const rayEnd = camPos.add(rayDirection.uniformScale(-max));
+    const rayStart = camPos.add(direction.uniformScale(-min));
+    const rayEnd = camPos.add(direction.uniformScale(-max));
 
     if (hitTestSession != null) {
       hitTestSession.hitTest(rayStart, rayEnd, (hitTestResult) => {
@@ -170,14 +184,14 @@ export class SingleSurface extends BaseScriptComponent {
       vec3.lerp(
         this.trans.getWorldPosition(),
         this.desiredPosition,
-        getDeltaTime() * SPEED
+        Math.min(1, getDeltaTime() * SPEED)
       )
     );
     this.trans.setWorldRotation(
       quat.slerp(
         this.trans.getWorldRotation(),
         this.desiredRotation,
-        getDeltaTime() * SPEED
+        Math.min(1, getDeltaTime() * SPEED)
       )
     );
   }

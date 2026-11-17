@@ -23,6 +23,7 @@
   VersionMinor: 0
   VersionPatch: 0
   VersionPrerelease: ""
+  UpdateOrder: 0
   ComponentUid: 3cee8ae7-456e-4e1a-a3fb-15a5e0e7c208
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
@@ -30,6 +31,8 @@
     debugMode: false
     enableLogging: false
     enableLoggingLifecycle: false
+    enablePosition: false
+    enableRotation: false
     handJoint: false
     handSide: false
     hideWhenNotTracked: false
@@ -38,8 +41,6 @@
     rotationOffset: false
     rotationSmoothSpeed: false
     targetObject: false
-    enablePosition: false
-    enableRotation: false
     usePositionSmoothing: false
     useRotationSmoothing: false
   ScriptTypesHidden:
@@ -91,8 +92,8 @@
     - '// @input float positionSmoothSpeed = 10 {"hint":"Position smoothing speed (higher = faster response)"}'
     - '// @input bool useRotationSmoothing = true {"hint":"Enable smooth rotation interpolation"}'
     - '// @input float rotationSmoothSpeed = 8 {"hint":"Rotation smoothing speed (higher = faster response)"}'
-    - '// @input bool enablePosition = true {"hint":"Follow the hand joint''s position"}'
-    - '// @input bool enableRotation = true {"hint":"Follow the hand joint''s rotation"}'
+    - "// @input bool enablePosition = true {\"hint\":\"Follow the hand joint's position\"}"
+    - "// @input bool enableRotation = true {\"hint\":\"Follow the hand joint's rotation\"}"
     - '// @input bool hideWhenNotTracked = true {"hint":"Hide object when hand is not tracked"}'
     - '// @input bool debugMode {"hint":"Debug: Show tracking status in console"}'
     - '// @ui {"widget":"separator"}'
